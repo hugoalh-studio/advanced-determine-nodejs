@@ -63,11 +63,11 @@ A library to provide a better and more accuracy determine.
 
 ## 💽 Installation
 
-**For NPMJS:**
-
-```powershell
-> npm install @hugoalh/advanced-determine
-```
+- NodeJS 8+
+- NPMJS 6+
+  ```powershell
+  > npm install @hugoalh/advanced-determine
+  ```
 
 ## ✍ Guide
 
