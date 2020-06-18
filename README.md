@@ -8,6 +8,8 @@
   <img src="https://img.shields.io/github/watchers/hugoalh/NodeJS.AdvancedDetermine?style=flat-square&logo=github" />
   <img src="https://img.shields.io/github/stars/hugoalh/NodeJS.AdvancedDetermine?style=flat-square&logo=github" />
   <img src="https://img.shields.io/github/forks/hugoalh/NodeJS.AdvancedDetermine?style=flat-square&logo=github" />
+  <a href="https://lgtm.com/projects/g/hugoalh/NodeJS.AdvancedDetermine/alerts/"><img src="https://img.shields.io/lgtm/alerts/g/hugoalh/NodeJS.AdvancedDetermine.svg?style=flat-square&logo=lgtm&label=%20" /></a>
+  <a href="https://lgtm.com/projects/g/hugoalh/NodeJS.AdvancedDetermine/context:javascript"><img src="https://img.shields.io/lgtm/grade/javascript/g/hugoalh/NodeJS.AdvancedDetermine.svg?style=flat-square&logo=lgtm" /></a>
 </div>
 
 <table align="right">
