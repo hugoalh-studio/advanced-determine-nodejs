@@ -5,7 +5,7 @@
 	Language:
 		NodeJS 14
 ==================*/
-module.exports.version = "1.0.0";
+module.exports.version = "1.0.1";
 module.exports.allIs = require("./allis.js");
 module.exports.isActuallyNull = require("./isactuallynull.js");
 module.exports.isArray = require("./isarray.js");
