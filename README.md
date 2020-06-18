@@ -54,7 +54,7 @@
 
 ## 📜 Description
 
-A NodeJS library to provide a better and more accuracy determine.
+A library to provide a better and more accuracy determine.
 
 ## 💽 Installation
 
@@ -85,6 +85,8 @@ A NodeJS library to provide a better and more accuracy determine.
 
 ```javascript
 const determine = require("@hugoalh/advanced-determine");
+
+console.log(determine.version);// 1.0.0
 
 console.log(determine.isString(""));// null
 console.log(determine.isActuallyNull(""));// true

@@ -1,7 +1,7 @@
 {
 	"name": "@hugoalh/advanced-determine",
 	"version": "1.0.0",
-	"description": "A NodeJS library to provide a better and more accuracy determine.",
+	"description": "A library to provide a better and more accuracy determine.",
 	"main": "main.js",
 	"scripts": {},
 	"repository": {
