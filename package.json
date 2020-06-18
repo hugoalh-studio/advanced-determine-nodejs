@@ -1,0 +1,22 @@
+{
+	"name": "@hugoalh/advanced-determine",
+	"version": "1.0.0",
+	"description": "A NodeJS library to provide a better and more accuracy determine.",
+	"main": "main.js",
+	"scripts": {},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/hugoalh/NodeJS.AdvancedDetermine.git"
+	},
+	"keywords": [
+		"nodejs",
+		"determine",
+		"type-test"
+	],
+	"author": "hugoalh",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/hugoalh/NodeJS.AdvancedDetermine/issues"
+	},
+	"homepage": "https://github.com/hugoalh/NodeJS.AdvancedDetermine#readme"
+}
