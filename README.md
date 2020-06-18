@@ -34,7 +34,10 @@
       <b>Download</b><br />
       <img src="https://img.shields.io/github/downloads/hugoalh/NodeJS.AdvancedDetermine/total?style=flat-square&color=000000&label=%20" />
     </td>
-    <td><a href="https://github.com/hugoalh/NodeJS.AdvancedDetermine/releases">GitHub</a></td>
+    <td><ul>
+      <li><a href="https://github.com/hugoalh/NodeJS.AdvancedDetermine/releases">GitHub</a></li>
+      <li><a href="https://www.npmjs.com/package/@hugoalh/advanced-determine">NPMJS</a></li>
+    </td>
   </tr>
   <tr>
     <td align="center"><b>Issue</b></td>
