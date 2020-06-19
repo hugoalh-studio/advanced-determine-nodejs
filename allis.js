@@ -12,11 +12,11 @@ function allIsSmallData(type, ...items) {
 	};
 	type = type.toLowerCase();
 	try {
-		const typeDetermine = require(`./is${type}.js`);
+		const typeDeterminer = require(`./is${type}.js`);
 		let resultArray = [];
 		items.forEach((item, index) => {
 			resultArray.push(
-				typeDetermine(item)
+				typeDeterminer(item)
 			);
 		});
 		if (resultArray.includes(false) || resultArray.includes(null)) {
@@ -33,12 +33,12 @@ function allIsBigData(type, ...items) {
 	};
 	type = type.toLowerCase();
 	try {
-		const typeDetermine = require(`./is${type}.js`);
+		const typeDeterminer = require(`./is${type}.js`);
 		let resultJSON = {};
 		Promise.allSettled(
 			items.map((item, index) => {
 				new Promise((resolve, reject) => {
-					resultJSON[index] = typeDetermine(item);
+					resultJSON[index] = typeDeterminer(item);
 				}).catch((error) => { });
 			})
 		);
