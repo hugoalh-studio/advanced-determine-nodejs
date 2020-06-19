@@ -1,6 +1,6 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"description": "A library to provide a better and more accuracy determine.",
 	"main": "main.js",
 	"scripts": {},

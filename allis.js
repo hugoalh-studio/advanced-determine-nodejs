@@ -6,7 +6,28 @@
 		NodeJS 14
 ==================*/
 const isString = require("./isstring.js");
-function allIs(type, ...items) {
+function allIsSmallData(type, ...items) {
+	if (isString(type) != true) {
+		throw new TypeError(`Invalid type of "type"! Require type of string.`);
+	};
+	type = type.toLowerCase();
+	try {
+		const typeDetermine = require(`./is${type}.js`);
+		let resultArray = [];
+		items.forEach((item, index) => {
+			resultArray.push(
+				typeDetermine(item)
+			);
+		});
+		if (resultArray.includes(false) || resultArray.includes(null)) {
+			return false;
+		};
+		return true;
+	} catch (error) {
+		throw new Error(`Invalid argument "type"! Cannot find the module.`);
+	};
+};
+function allIsBigData(type, ...items) {
 	if (isString(type) != true) {
 		throw new TypeError(`Invalid type of "type"! Require type of string.`);
 	};
@@ -21,12 +42,19 @@ function allIs(type, ...items) {
 				}).catch((error) => { });
 			})
 		);
-		if (resultJSON.includes(false) || resultJSON.includes(null)) {
+		const resultArray = Object.values(resultJSON);
+		if (resultArray.includes(false) || resultArray.includes(null)) {
 			return false;
 		};
 		return true;
 	} catch (error) {
 		throw new Error(`Invalid argument "type"! Cannot find the module.`);
 	};
+};
+function allIs(type, ...items) {
+	if (items.length <= 16) {
+		return allIsSmallData(type, ...items);
+	};
+	return allIsBigData(type, ...items);
 };
 module.exports = allIs;
