@@ -7,10 +7,6 @@
 ==================*/
 const isString = require("./isstring.js");
 function allIsSmallData(type, ...items) {
-	if (isString(type) != true) {
-		throw new TypeError(`Invalid type of "type"! Require type of string.`);
-	};
-	type = type.toLowerCase();
 	try {
 		const typeDeterminer = require(`./is${type}.js`);
 		let resultArray = [];
@@ -28,10 +24,6 @@ function allIsSmallData(type, ...items) {
 	};
 };
 function allIsBigData(type, ...items) {
-	if (isString(type) != true) {
-		throw new TypeError(`Invalid type of "type"! Require type of string.`);
-	};
-	type = type.toLowerCase();
 	try {
 		const typeDeterminer = require(`./is${type}.js`);
 		let resultJSON = {};
@@ -52,6 +44,10 @@ function allIsBigData(type, ...items) {
 	};
 };
 function allIs(type, ...items) {
+	if (isString(type) != true) {
+		throw new TypeError(`Invalid type of "type"! Require type of string.`);
+	};
+	type = type.toLowerCase();
 	if (items.length <= 16) {
 		return allIsSmallData(type, ...items);
 	};
