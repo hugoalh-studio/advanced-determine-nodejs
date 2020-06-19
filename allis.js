@@ -9,13 +9,13 @@ const isString = require("./isstring.js");
 function allIsSmallData(type, ...items) {
 	try {
 		const typeDeterminer = require(`./is${type}.js`);
-		let resultArray = [];
+		let result = [];
 		items.forEach((item, index) => {
-			resultArray.push(
+			result.push(
 				typeDeterminer(item)
 			);
 		});
-		if (resultArray.includes(false) || resultArray.includes(null)) {
+		if (result.includes(false) || result.includes(null)) {
 			return false;
 		};
 		return true;
