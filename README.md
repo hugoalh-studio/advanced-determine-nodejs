@@ -75,7 +75,7 @@ A library to provide a better and more accuracy determine.
 
 |  | <div align="center"><b>Description</b></div> |
 |:----|:----|
-| `allIs(type, ...items)` | **type {string.lowercase}:** Type to determine, e.g.: `"regexp"`, `"stringifyjson"`.<br />**...items {\*}**: Support infinity arguments.<br /><br />Return `true` when items are all meet the `true` determine requirement; Return `false` otherwise. |
+| `allIs(type, ...items)` | **type {string.lowercase}:** Type to determine, e.g.: `"regexp"`, `"stringifyjson"`.<br />**...items {\*}:** Support infinity arguments.<br /><br />Return `true` when items are all meet the `true` determine requirement; Return `false` otherwise. |
 | `isActuallyNull(item)` | Return `true` when item is `""`, `[]`, or `{}`; Return `false` otherwise. |
 | `isArray(item)` | Return `true` when item is array and has length (i.e.: `> 0`); Return `null` when item is array but no length (i.e.: `= 0`); Return `false` otherwise. |
 | `isBuffer(item)` |  |
