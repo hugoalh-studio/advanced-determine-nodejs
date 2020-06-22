@@ -77,14 +77,14 @@ A library to provide a better and more accuracy determine.
 |:----|:----|
 | `allIs(type, ...items)` | **type {string.lowercase}:** Type to determine, e.g.: `"regexp"`, `"stringifyjson"`.<br />**...items {\*}:** Support infinity arguments.<br /><br />Return `true` when items are all meet the `true` determine requirement; Return `false` otherwise. |
 | `isActuallyNull(item)` | Return `true` when item is `""`, `[]`, or `{}`; Return `false` otherwise. |
-| `isArray(item)` | Return `true` when item is array and has length (i.e.: `> 0`); Return `null` when item is array but no length (i.e.: `= 0`); Return `false` otherwise. |
+| `isArray(item)` | Return `true` when item is array and has length (i.e.: > 0); Return `null` when item is array but no length (i.e.: = 0); Return `false` otherwise. |
 | `isBuffer(item)` |  |
 | `isDate(item)` |  |
-| `isJSON(item)` | Return `true` when item is JSON and has length (i.e.: `> 0`); Return `null` when item is JSON but no length (i.e.: `= 0`); Return `false` otherwise. |
+| `isJSON(item)` | Return `true` when item is JSON and has length (i.e.: > 0); Return `null` when item is JSON but no length (i.e.: = 0); Return `false` otherwise. |
 | `isNumber(item)` | Return `false` when item is type of bigint, or `NaN`. |
 | `isRegExp(item)` |  |
-| `isString(item)` | Return `true` when item is string and has length (i.e.: `> 0`); Return `null` when item is string but no length (i.e.: `= 0`); Return `false` otherwise. |
-| `isStringifyJSON(item)` | Return `true` when item is stringify JSON and has length (i.e.: `> 0`); Return `null` when item is stringify JSON but no length (i.e.: `= 0`); Return `false` otherwise. |
+| `isString(item)` | Return `true` when item is string and has length (i.e.: > 0); Return `null` when item is string but no length (i.e.: = 0); Return `false` otherwise. |
+| `isStringifyJSON(item)` | Return `true` when item is stringify JSON and has length (i.e.: > 0); Return `null` when item is stringify JSON but no length (i.e.: = 0); Return `false` otherwise. |
 
 ### Example
 
