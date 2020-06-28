@@ -13,11 +13,11 @@ assignees: ""
 
 ## Version
 
-*\[Optional\] Must be a supported version listed in the [security policy](https://github.com/hugoalh/NodeJS.AdvancedDetermine/security/policy); Leaving this slot blank will default to the newest released version.*
+*Must be a supported version listed in the [security policy](https://github.com/hugoalh/NodeJS.AdvancedDetermine/security/policy). (Leaving this slot blank will default to the newest released version.)*
 
 
 
-## Step(s) To Reproduce
+## To Reproduce
 
 *\[Optional\] If this bug can be reproduce repeatedly, please list your step(s)!*
 
