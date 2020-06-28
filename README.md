@@ -34,17 +34,19 @@ A library to provide a better and more accuracy way to determine item's type.
 
 ### API
 
-|  | <div align="center"><b>Description</b></div> |
+|  | **Description** |
 |:----|:----|
-| `allIs(type/option, ...items)` | **type {string.lowercase}:** Type to determine, e.g.: `"regexp"`, `"stringifyjson"`.<br />**option {array[string.lowercase, boolean]}:** Type to determine with fuzzy mode options, e.g.: `["string", false]`.<br />**...items {\*}:** Support infinity arguments.<br /><br />Return `true` when items are all meet the `true` determine requirement; Return `false` otherwise. |
-| `isNull(item, fuzzyMode)` | **fuzzyMode {boolean}:** Enable fuzzy mode. Default: `false`.<br /><br />Return `true` when item is `null`, `""`, `[]`, `{}`, or `"null"` (only in fuzzy mode); Return `false` otherwise. |
+| `allIs(type/option, ...items)` | **type {string.lowerCase}:** Type to determine, e.g.: `"regexp"`, `"stringifyjson"`.<br />**option {array[string.lowerCase, boolean = false]}:** Type to determine with fuzzy mode options, e.g.: `["string", false]`.<br />**...items {\*}:** Support infinity arguments.<br /><br />Return `true` when items are all meet the `true` determine requirement; Return `false` otherwise. |
+| `isNull(item, fuzzyMode?)` | ***fuzzyMode {boolean = false}:*** Enable fuzzy mode.<br /><br />Return `true` when item is `null`, `""`, `[]`, `{}`, or `"null"` (only in fuzzy mode); Return `false` otherwise. |
 | `isArray(item)` | Return `true` when item is array and has length (i.e.: > 0); Return `null` when item is array but no length (i.e.: = 0); Return `false` otherwise. |
 | `isBuffer(item)` |  |
 | `isDate(item)` |  |
 | `isJSON(item)` | Return `true` when item is JSON and has length (i.e.: > 0); Return `null` when item is JSON but no length (i.e.: = 0); Return `false` otherwise. |
 | `isNumber(item)` | Return `false` when item is type of bigint, or `NaN`. |
 | `isRegExp(item)` |  |
-| `isString(item, fuzzyMode)` | **fuzzyMode {boolean}:** Enable fuzzy mode. Default: `false`.<br /><br />Return `true` when item is string and has length (i.e.: > 0); Return `null` when item is string but no length (i.e.: = 0), or item is `"null"` (only in fuzzy mode); Return `false` otherwise. |
+| `isString(item, fuzzyMode?)` | ***fuzzyMode {boolean = false}:*** Enable fuzzy mode.<br /><br />Return `true` when item is string and has length (i.e.: > 0); Return `null` when item is string but no length (i.e.: = 0), or item is `"null"` (only in fuzzy mode); Return `false` otherwise. |
+| `isStringAllLowerCase(item)` |  |
+| `isStringAllUpperCase(item)` |  |
 | `isStringifyJSON(item)` | Return `true` when item is stringify JSON and has length (i.e.: > 0); Return `null` when item is stringify JSON but no length (i.e.: = 0); Return `false` otherwise. |
 
 ### Example
@@ -52,7 +54,7 @@ A library to provide a better and more accuracy way to determine item's type.
 ```javascript
 const determine = require("@hugoalh/advanced-determine");
 
-console.log(determine.version);// 1.2.0
+console.log(determine.version);// 1.2.1
 
 console.log(determine.isString(""));// null
 console.log(determine.isString("", false));// null
@@ -60,6 +62,8 @@ console.log(determine.isString("null", false));// true
 console.log(determine.isString("null", true));// null
 console.log(determine.isNull(""));// true
 console.log(determine.isArray([]));// null
-console.log(determine.allIs("actuallynull", "", [], {}));// true
+console.log(determine.allIs("null", "", [], {}));// true
 console.log(determine.allIs("string", "Hello, world!", 10, [8, 31]));// false
+console.log(determine.isStringAllLowerCase("Test word."));// false
+console.log(determine.isStringAllUpperCase("NO"));// true
 ```
