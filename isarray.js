@@ -1,7 +1,5 @@
 /*==================
 [NodeJS] Advanced Determine - Is Array
-	Contributor:
-		hugoalh
 	Language:
 		NodeJS 14
 ==================*/

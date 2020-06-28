@@ -1,9 +1,11 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "1.1.0",
-	"description": "A library to provide a better and more accuracy determine.",
+	"version": "1.2.0",
+	"description": "A library to provide a better and more accuracy way to determine item's type.",
 	"main": "main.js",
-	"scripts": {},
+	"scripts": {
+		"publish": "npm publish --access public"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/hugoalh/NodeJS.AdvancedDetermine.git"

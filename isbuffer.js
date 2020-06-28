@@ -1,7 +1,5 @@
 /*==================
 [NodeJS] Advanced Determine - Is Buffer
-	Contributor:
-		hugoalh
 	Language:
 		NodeJS 14
 ==================*/

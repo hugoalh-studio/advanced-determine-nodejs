@@ -1,7 +1,5 @@
 /*==================
 [NodeJS] Advanced Determine - Is String
-	Contributor:
-		hugoalh
 	Language:
 		NodeJS 14
 ==================*/

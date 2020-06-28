@@ -1,7 +1,5 @@
 /*==================
 [NodeJS] Advanced Determine - Is RegExp
-	Contributor:
-		hugoalh
 	Language:
 		NodeJS 14
 ==================*/

@@ -1,7 +1,5 @@
 /*==================
 [NodeJS] Advanced Determine - All Is
-	Contributor:
-		hugoalh
 	Language:
 		NodeJS 14
 ==================*/
