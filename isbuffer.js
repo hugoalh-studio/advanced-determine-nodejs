@@ -5,7 +5,7 @@
 ==================*/
 function isBuffer(item) {
 	return (
-		item != null && item.constructor != null && typeof item.constructor.isBuffer == "function" && item.constructor.isBuffer(item)
+		item !== null && item !== undefined && item.constructor !== null && item.constructor !== undefined && typeof item.constructor.isBuffer == "function" && item.constructor.isBuffer(item)
 	);
 };
 module.exports = isBuffer;
