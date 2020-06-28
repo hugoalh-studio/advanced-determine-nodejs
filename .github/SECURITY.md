@@ -3,10 +3,9 @@
 ## Supported Version
 
 | **Version** | **Support** |
-|:---:|:---:|
-| 1.1.X | ✔ |
-| 1.0.X | ✔ |
-|  | ❌ |
+|:----|:----|
+| 1.2.0 | ✔ |
+| < 1.2.0 | ❌ |
 
 ## Report Vulnerability
 

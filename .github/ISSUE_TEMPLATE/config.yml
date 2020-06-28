@@ -1,0 +1,12 @@
+# ==================
+# hugoalh's Repository Resource - GitHub Issues Configuration
+#   Language:
+#     YAML
+#   Last Update:
+#     2020-06-28
+# ==================
+blank_issues_enabled: false
+contact_links:
+  - name: "Report Security Vulnerability"
+    url: "https://github.com/hugoalh"
+    about: "Send an email to @hugoalh to report security vulnerability (See the GitHub profile to obtain the email address). Please include the project index at the email title!"

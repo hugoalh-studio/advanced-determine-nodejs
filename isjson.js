@@ -1,22 +1,20 @@
 /*==================
 [NodeJS] Advanced Determine - Is JSON
-	Contributor:
-		hugoalh
 	Language:
 		NodeJS 14
 ==================*/
 function isJSON(item) {
-	if (item !== null && typeof item == "object") {
-		if (Object.keys(item).length > 0) {
-			try {
-				const trashBin = JSON.stringify(item);
-			} catch (error) {
-				return false;
-			};
-			return true;
-		};
-		return null;
+	if (typeof item != "object" || item === null) {
+		return false;
 	};
-	return false;
+	try {
+		const bin = JSON.stringify(item);
+		if (Object.keys(item).length == 0 || bin === "{}") {
+			return null;
+		};
+		return true;
+	} catch (error) {
+		return false;
+	};
 };
 module.exports = isJSON;

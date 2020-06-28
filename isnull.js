@@ -1,19 +1,20 @@
 /*==================
-[NodeJS] Advanced Determine - Is Actually Null
-	Contributor:
-		hugoalh
+[NodeJS] Advanced Determine - Is Null
 	Language:
 		NodeJS 14
 ==================*/
 const isArray = require("./isarray.js");
 const isJSON = require("./isjson.js");
 const isString = require("./isstring.js");
-function isActuallyNull(item) {
+function isNull(item, fuzzyMode = false) {
+	if (typeof fuzzyMode != "boolean") {
+		throw new TypeError(`Invalid type of "fuzzyMode"! Require type of boolean.`);
+	};
 	return (
 		item === null ||
 		isArray(item) == null ||
 		isJSON(item) == null ||
-		isString(item) == null
+		isString(item, fuzzyMode) == null
 	);
 };
-module.exports = isActuallyNull;
+module.exports = isNull;

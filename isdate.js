@@ -1,7 +1,5 @@
 /*==================
 [NodeJS] Advanced Determine - Is Date
-	Contributor:
-		hugoalh
 	Language:
 		NodeJS 14
 ==================*/

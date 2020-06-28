@@ -1,17 +1,15 @@
 /*==================
 [NodeJS] Advanced Determine - Is Stringify JSON
-	Contributor:
-		hugoalh
 	Language:
 		NodeJS 14
 ==================*/
 function isStringifyJSON(item) {
 	try {
-		const trashBin = JSON.parse(item);
-		if (Object.keys(trashBin).length > 0) {
-			return true;
+		const bin = JSON.parse(item);
+		if (Object.keys(bin).length == 0 || item === "{}") {
+			return null;
 		};
-		return null;
+		return true;
 	} catch (error) {
 		return false;
 	};

@@ -1,7 +1,5 @@
 /*==================
 [NodeJS] Advanced Determine - Is Number
-	Contributor:
-		hugoalh
 	Language:
 		NodeJS 14
 ==================*/
