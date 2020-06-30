@@ -48,6 +48,8 @@ A library to provide a better and more accuracy way to determine item's type.
 | `isStringAllLowerCase(item)` |  |
 | `isStringAllUpperCase(item)` |  |
 | `isStringifyJSON(item)` | Return `true` when item is stringify JSON and has length (i.e.: > 0); Return `null` when item is stringify JSON but no length (i.e.: = 0); Return `false` otherwise. |
+| `isUndefined(item, fuzzyMode?)` | ***fuzzyMode {boolean = false}:*** Enable fuzzy mode. |
+
 
 ### Example
 
