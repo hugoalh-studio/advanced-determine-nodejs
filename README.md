@@ -43,7 +43,7 @@ A library to provide a better and more accuracy way to determine item's type.
 | `isDate(item)` | Check if the item is date. |
 | `isJSON(item)` | Return `true` when item is JSON and has length (i.e.: > 0); Return `null` when item is JSON but no length (i.e.: = 0); Return `false` otherwise. |
 | `isNumber(item)` | Return `false` when item is type of bigint, or `NaN`. |
-| `isRegExp(item)` | Check if the item is regular expression. |
+| - `isRegularExpression(item)`<br />- `isRegExp(item)` | Check if the item is regular expression. |
 | `isString(item, fuzzyMode?)` | ***fuzzyMode {boolean = false}:*** Enable fuzzy mode.<br /><br />Return `true` when item is string and has length (i.e.: > 0); Return `null` when item is string but no length (i.e.: = 0), or item is `"null"` (fuzzy mode only); Return `false` otherwise. |
 | `isStringLowerCase(item)` | Check if the string is all lowercase. |
 | `isStringUpperCase(item)` | Check if the string is all uppercase. |
