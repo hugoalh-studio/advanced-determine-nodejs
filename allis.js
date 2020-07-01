@@ -16,9 +16,6 @@ function allIs(option, ...items) {
 	if (isString(option[0]) != true) {
 		throw new TypeError(`Invalid type of "type"! Require type of string.`);
 	};
-	if (typeof option[1] != "boolean") {
-		throw new TypeError(`Invalid type of "fuzzyMode"! Require type of boolean.`);
-	};
 	try {
 		const typeDeterminer = require(`./is${option[0]}.js`);
 		let resultJSON = {};
