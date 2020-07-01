@@ -66,6 +66,6 @@ console.log(determine.isNull(""));// true
 console.log(determine.isArray([]));// null
 console.log(determine.allIs("null", "", [], {}));// true
 console.log(determine.allIs("string", "Hello, world!", 10, [8, 31]));// false
-console.log(determine.isStringAllLowerCase("Test word."));// false
-console.log(determine.isStringAllUpperCase("NO"));// true
+console.log(determine.isStringLowerCase("Test word."));// false
+console.log(determine.isStringUpperCase("NO"));// true
 ```
