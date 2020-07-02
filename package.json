@@ -3,7 +3,6 @@
 	"version": "1.2.2",
 	"description": "A library to provide a better and more accuracy way to determine item's type.",
 	"main": "main.js",
-	"scripts": {},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/hugoalh/NodeJS.AdvancedDetermine.git"
