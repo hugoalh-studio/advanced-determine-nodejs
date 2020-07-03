@@ -9,6 +9,7 @@ module.exports.isArray = require("./isarray.js");
 module.exports.isBuffer = require("./isbuffer.js");
 module.exports.isDate = require("./isdate.js");
 module.exports.isJSON = require("./isjson.js");
+module.exports.isNul = require("./isnull.js");
 module.exports.isNull = require("./isnull.js");
 module.exports.isNumber = require("./isnumber.js");
 module.exports.isRegExp = require("./isregularexpression.js");
