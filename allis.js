@@ -7,7 +7,7 @@ const isString = require("./isstring.js");
 const isArray = require("./isarray.js");
 function allIs(option, ...items) {
 	if (isString(option) == true) {
-		option = [option, false];
+		option = [option, undefined];
 	} else if (isArray(option) == true) {
 		if (isString(option[0]) != true) {
 			throw new TypeError(`Invalid type of "type"! Require type of string.`);
