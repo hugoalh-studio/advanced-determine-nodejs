@@ -4,14 +4,15 @@
 		NodeJS 14
 ==================*/
 function isStringifyJSON(item) {
+	let bin;
 	try {
-		const bin = JSON.parse(item);
-		if (Object.keys(bin).length == 0 || item === "{}") {
-			return null;
-		};
-		return true;
+		bin = JSON.parse(item);
 	} catch (error) {
 		return false;
 	};
+	if (Object.keys(bin).length == 0 || item === "{}") {
+		return null;
+	};
+	return true;
 };
 module.exports = isStringifyJSON;
