@@ -3,7 +3,7 @@
 	Language:
 		NodeJS 14
 ==================*/
-module.exports.version = "1.2.2";
+module.exports.version = "1.3.0";
 module.exports.allIs = require("./allis.js");
 module.exports.isArray = require("./isarray.js");
 module.exports.isBuffer = require("./isbuffer.js");
