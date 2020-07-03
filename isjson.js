@@ -7,14 +7,15 @@ function isJSON(item) {
 	if (typeof item != "object" || item === null) {
 		return false;
 	};
+	let bin;
 	try {
-		const bin = JSON.stringify(item);
-		if (Object.keys(item).length == 0 || bin === "{}") {
-			return null;
-		};
-		return true;
+		bin = JSON.stringify(item);
 	} catch (error) {
 		return false;
 	};
+	if (Object.keys(item).length == 0 || bin === "{}") {
+		return null;
+	};
+	return true;
 };
 module.exports = isJSON;
