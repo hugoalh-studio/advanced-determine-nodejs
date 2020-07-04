@@ -36,7 +36,7 @@ A library to provide a better and more accuracy way to determine item's type.
 
 |  | **Description** |
 |:----|:----|
-| - `allIs(type, ...items)`<br />- `allIs(option, ...items)` | **type {string.lowerCase}:** Type to determine (e.g.: `"regexp"`, `"stringifyjson"`). Type's alias cannot use in here!<br />**option {array[string.lowerCase, ...\*]}:** Type to determine with determiner option(s) (e.g.: `["string", true]`). Type's alias cannot use in here!<br />**...items {\*}:** Support infinity arguments.<br /><br />Return `true` when items are all meet the `true` determine requirement; Return `false` otherwise. |
+| - `allIs(type, ...items)`<br />- `allIs(option, ...items)` | **type {string.lowerCase}:** Type to determine (e.g.: `"regexp"`, `"stringifyjson"`); Type's alias cannot use in here!<br />**option {array[string.lowerCase, ...\*]}:** Type to determine with determiner option(s) (e.g.: `["string", true]`); Type's alias cannot use in here!<br />**...items {\*}:** Support infinity arguments.<br /><br />Return `true` when items are all meet the `true` determine requirement; Return `false` otherwise. |
 | `isNull(item, fuzzyMode?)`<br />*(**Alias:** `isNul`)* | ***fuzzyMode {boolean = false}:*** Enable fuzzy mode.<br /><br />Return `true` when item is `null`, `""`, `[]`, `{}`, or `"null"` (fuzzy mode only); Return `false` otherwise. |
 | `isArray(item)`<br />*(**Alias:** `isArr`)* | Return `true` when item is array and has length (i.e.: > 0); Return `null` when item is array but no length (i.e.: = 0); Return `false` otherwise. |
 | `isBuffer(item)`<br />*(**Alias:** `isBuf`)* | Check if the item is instance of buffer. |
