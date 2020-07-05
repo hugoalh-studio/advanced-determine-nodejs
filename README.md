@@ -1,4 +1,4 @@
-# [NodeJS] Advanced Determine
+# \[NodeJS\] Advanced Determine
 
 [`hugoalh/NodeJS.AdvancedDetermine`](https://github.com/hugoalh/NodeJS.AdvancedDetermine)
 
@@ -14,20 +14,29 @@
 [![](https://img.shields.io/lgtm/alerts/g/hugoalh/NodeJS.AdvancedDetermine.svg?style=flat-square&logo=lgtm&label=%20)](https://lgtm.com/projects/g/hugoalh/NodeJS.AdvancedDetermine/alerts)
 [![](https://img.shields.io/lgtm/grade/javascript/g/hugoalh/NodeJS.AdvancedDetermine.svg?style=flat-square&logo=lgtm)](https://lgtm.com/projects/g/hugoalh/NodeJS.AdvancedDetermine/context:javascript)
 
-| **[Release](https://github.com/hugoalh/NodeJS.AdvancedDetermine/releases)** ![](https://img.shields.io/github/downloads/hugoalh/NodeJS.AdvancedDetermine/total?style=flat-square&color=000000&label=%20) | **Outside Download**  | **[Issue](https://github.com/hugoalh/NodeJS.AdvancedDetermine/issues?q=is%3Aissue)** | **[Pull Request](https://github.com/hugoalh/NodeJS.AdvancedDetermine/pulls?q=is%3Apr)** |
-|:----|:----|:----|:----|
-| **Stable:** ![](https://img.shields.io/github/release/hugoalh/NodeJS.AdvancedDetermine?sort=semver&style=flat-square&color=000000&label=%20) (![](https://img.shields.io/github/release-date/hugoalh/NodeJS.AdvancedDetermine?style=flat-square&color=000000&label=%20))<br />**Latest:** ![](https://img.shields.io/github/release/hugoalh/NodeJS.AdvancedDetermine?include_prereleases&sort=semver&style=flat-square&color=000000&label=%20) (![](https://img.shields.io/github/release-date-pre/hugoalh/NodeJS.AdvancedDetermine?style=flat-square&color=000000&label=%20)) | [NPMJS](https://www.npmjs.com/package/@hugoalh/advanced-determine) | **Open:** ![](https://img.shields.io/github/issues-raw/hugoalh/NodeJS.AdvancedDetermine?style=flat-square&color=000000&label=%20)<br />**Closed:** ![](https://img.shields.io/github/issues-closed-raw/hugoalh/NodeJS.AdvancedDetermine?style=flat-square&color=000000&label=%20) | **Open:** ![](https://img.shields.io/github/issues-pr-raw/hugoalh/NodeJS.AdvancedDetermine?style=flat-square&color=000000&label=%20)<br />**Closed:** ![](https://img.shields.io/github/issues-pr-closed-raw/hugoalh/NodeJS.AdvancedDetermine?style=flat-square&color=000000&label=%20) |
+| **[Release](https://github.com/hugoalh/NodeJS.AdvancedDetermine/releases)** | **[Issue](https://github.com/hugoalh/NodeJS.AdvancedDetermine/issues?q=is%3Aissue)** | **[Pull Request](https://github.com/hugoalh/NodeJS.AdvancedDetermine/pulls?q=is%3Apr)** |
+|:----|:----|:----|
+| **Latest:** ![](https://img.shields.io/github/release/hugoalh/NodeJS.AdvancedDetermine?sort=semver&style=flat-square&color=000000&label=%20) (![](https://img.shields.io/github/release-date/hugoalh/NodeJS.AdvancedDetermine?style=flat-square&color=000000&label=%20))<br />**Pre:** ![](https://img.shields.io/github/release/hugoalh/NodeJS.AdvancedDetermine?include_prereleases&sort=semver&style=flat-square&color=000000&label=%20) (![](https://img.shields.io/github/release-date-pre/hugoalh/NodeJS.AdvancedDetermine?style=flat-square&color=000000&label=%20))<br />[![](https://img.shields.io/npm/v/@hugoalh/advanced-determine?style=flat-square&logo=npm)](https://www.npmjs.com/package/@hugoalh/advanced-determine) | **Open:** ![](https://img.shields.io/github/issues-raw/hugoalh/NodeJS.AdvancedDetermine?style=flat-square&color=000000&label=%20)<br />**Closed:** ![](https://img.shields.io/github/issues-closed-raw/hugoalh/NodeJS.AdvancedDetermine?style=flat-square&color=000000&label=%20) | **Open:** ![](https://img.shields.io/github/issues-pr-raw/hugoalh/NodeJS.AdvancedDetermine?style=flat-square&color=000000&label=%20)<br />**Closed:** ![](https://img.shields.io/github/issues-pr-closed-raw/hugoalh/NodeJS.AdvancedDetermine?style=flat-square&color=000000&label=%20) |
 
 ## 📜 Description
 
 A library to provide a better and more accuracy way to determine item's type.
 
-## 💽 Installation
+## Environment
 
-- NodeJS 8+
-- NPMJS 6+
+### 🎯 Target
+
+- NodeJS (v10+)
+
+### 💽 Installation
+
+- NPMJS (v6+)
   ```powershell
   > npm install @hugoalh/advanced-determine
+  ```
+- Yarn
+  ```powershell
+  > yarn add @hugoalh/advanced-determine
   ```
 
 ## ✍ Guide
