@@ -68,7 +68,7 @@ A library to provide a better and more accuracy way to determine item's type.
 ```javascript
 const advancedDetermine = require("@hugoalh/advanced-determine");
 
-console.log(advancedDetermine.version);// "1.3.0"
+console.log(advancedDetermine.version);// "2.0.0"
 
 console.log(advancedDetermine.isString(""));// null
 console.log(advancedDetermine.isString("", false));// null
