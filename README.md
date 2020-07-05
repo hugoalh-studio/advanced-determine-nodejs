@@ -22,11 +22,11 @@
 
 A library to provide a better and more accuracy way to determine item's type.
 
-## Environment
+## 🏗 Environment
 
 ### 🎯 Target
 
-- NodeJS (v10+)
+- NodeJS (v8+)
 
 ### 💽 Installation
 
@@ -34,7 +34,7 @@ A library to provide a better and more accuracy way to determine item's type.
   ```powershell
   > npm install @hugoalh/advanced-determine
   ```
-- Yarn
+- Yarn (v2+)
   ```powershell
   > yarn add @hugoalh/advanced-determine
   ```
