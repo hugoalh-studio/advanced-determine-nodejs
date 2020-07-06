@@ -20,73 +20,46 @@
 
 ## 📜 Description
 
-A library to provide a better and more accuracy way to determine item's type.
+A module/library to provide a better and more accurate way to determine item type.
 
-## 🏗 Environment
+[Click here to view the official documentation online.](https://github.com/hugoalh/NodeJS.AdvancedDetermine/wiki)
 
-### 🎯 Target
+## 📄 Documentation (Excerpt)
 
-- NodeJS (v8+)
+### Getting Started
 
-### 💽 Installation
+NodeJS (v8+) & NPMJS (v6+):
 
-- NPMJS (v6+)
-  ```powershell
-  > npm install @hugoalh/advanced-determine
-  ```
-- Yarn (v2+)
-  ```powershell
-  > yarn add @hugoalh/advanced-determine
-  ```
-
-## ✍ Guide
+```powershell
+> npm install @hugoalh/advanced-determine
+```
 
 ### API
 
-|  | **Description** |
-|:----|:----|
-| - `allIs(type, ...items)`<br />- `allIs(option, ...items)` | **type {string.lowerCase}:** Type to determine (e.g.: `"regexp"`, `"stringifyjson"`); Type's alias cannot use in here!<br />**option {array[string.lowerCase, ...\*]}:** Type to determine with determiner option(s) (e.g.: `["string", true]`); Type's alias cannot use in here!<br />**...items {\*}:** Support infinity arguments.<br /><br />Return `true` when items are all meet the `true` determine requirement; Return `false` otherwise. |
-| `isNull(item, fuzzyMode?)`<br />*(**Alias:** `isNul`)* | ***fuzzyMode {boolean = false}:*** Enable fuzzy mode.<br /><br />Return `true` when item is `null`, `""`, `[]`, `{}`, or `"null"` (fuzzy mode only); Return `false` otherwise. |
-| `isArray(item)`<br />*(**Alias:** `isArr`)* | Return `true` when item is array and has length (i.e.: > 0); Return `null` when item is array but no length (i.e.: = 0); Return `false` otherwise. |
-| `isBuffer(item)`<br />*(**Alias:** `isBuf`)* | Check if the item is instance of buffer. |
-| `isDate(item)` | Check if the item is instance of date. |
-| `isJSON(item)` | Return `true` when item is JSON and has length (i.e.: > 0); Return `null` when item is JSON but no length (i.e.: = 0); Return `false` otherwise. |
-| `isNumber(item)`<br />*(**Alias:** `isNum`)* | Return `false` when item is type of bigint, or `NaN`. |
-| `isNumberFloat(item)` |  |
-| `isNumberNegative(item)` |  |
-| `isNumberNegativeFloat(item)` |  |
-| `isNumberNegativeInteger(item)` |  |
-| `isNumberNegativeSafeFloat(item)` |  |
-| `isNumberNegativeSafeInteger(item)` |  |
-| `isNumberPositive(item)` |  |
-| `isNumberPositiveFloat(item)` |  |
-| `isNumberPositiveInteger(item)` |  |
-| `isNumberPositiveSafeFloat(item)` |  |
-| `isNumberPositiveSafeInteger(item)` |  |
-| `isNumberSafeFloat(item)` |  |
-| `isRegularExpression(item)`<br />*(**Alias:** `isRegEx`, `isRegExp`, `isRegExr`)* | Check if the item is instance of regular expression. |
-| `isString(item, fuzzyMode?)`<br />*(**Alias:** `isStr`)* | ***fuzzyMode {boolean = false}:*** Enable fuzzy mode.<br /><br />Return `true` when item is string and has length (i.e.: > 0); Return `null` when item is string but no length (i.e.: = 0), or item is `"null"` (fuzzy mode only); Return `false` otherwise. |
-| `isStringLowerCase(item)` | Check if the string is all lowercase. |
-| `isStringUpperCase(item)` | Check if the string is all uppercase. |
-| `isStringASCII(item)` | Check if the string is all ASCII. |
-| `isStringifyJSON(item)` | Return `true` when item is stringify JSON and has length (i.e.: > 0); Return `null` when item is stringify JSON but no length (i.e.: = 0); Return `false` otherwise. |
-| `isUndefined(item, fuzzyMode?)`<br />*(**Alias:** `isUdf`)* | ***fuzzyMode {boolean = false}:*** Enable fuzzy mode.<br /><br />Return `true` when item is `undefined`, or `"undefined"` (fuzzy mode only); Return `false` otherwise. |
+- `isNull(item, fuzzyMode?)`
+- `isArray(item)`
+- `isBuffer(item)`
+- `isDate(item)`
+- `isJSON(item)`
+- `isNumber(item)`
+- `isRegularExpression(item)`
+- `isString(item, fuzzyMode?)`
+- `isStringLowerCase(item)`
+- `isStringUpperCase(item)`
+- `isStringASCII(item)`
+- `isStringifyJSON(item)`
+- `isUndefined(item, fuzzyMode?)`
 
 ### Example
 
 ```javascript
 const advancedDetermine = require("@hugoalh/advanced-determine");
 
-console.log(advancedDetermine.version);// "2.0.0"
-
 console.log(advancedDetermine.isString(""));// null
 console.log(advancedDetermine.isString("", false));// null
-console.log(advancedDetermine.isString("null", false));// true
 console.log(advancedDetermine.isString("null", true));// null
 console.log(advancedDetermine.isNull(""));// true
 console.log(advancedDetermine.isArray([]));// null
-console.log(advancedDetermine.allIs("null", "", [], {}));// true
-console.log(advancedDetermine.allIs("string", "Hello, world!", 10, [8, 31]));// false
 console.log(advancedDetermine.isStringLowerCase("Test word."));// false
 console.log(advancedDetermine.isStringLowerCase("word"));// true
 console.log(advancedDetermine.isStringUpperCase("NO"));// true
