@@ -3,29 +3,42 @@
 	Language:
 		NodeJS 14
 ==================*/
-const isString = require("./isstring.js");
+const internalService = require("./internalservice.js");
 const isArray = require("./isarray.js");
-function allIs(option, ...items) {
-	if (isString(option) == true) {
-		option = [option, undefined];
-	} else if (isArray(option) == true) {
-		if (isString(option[0]) != true) {
-			throw new TypeError(`Invalid type of "type"! Require type of string.`);
+const isString = require("./isstring.js");
+/**
+ * @function allIs
+ * @param {(string|[string, object])} config
+ * @param  {...*} items
+ * @returns {boolean}
+ */
+function allIs(config, ...items) {
+	if (isString(config) == true) {
+		if (config.indexOf("/") != -1) {
+			return internalService.customError(`Invalid path of "type"!`);
+		};
+		config = [config, undefined];
+	} else if (isArray(config) == true) {
+		if (isString(config[0]) != true) {
+			return internalService.customTypeError(`Invalid type of "type"! Require type of string.`);
+		};
+		if (config[0].indexOf("/") != -1) {
+			return internalService.customError(`Invalid path of "type"!`);
 		};
 	} else {
-		throw new TypeError(`Invalid type of "option"! Require type of string, or array.`);
+		return internalService.customTypeError(`Invalid type of "option"! Require type of string, or array.`);
 	};
 	let typeDeterminer;
 	try {
-		typeDeterminer = require(`./is${option[0]}.js`);
+		typeDeterminer = require(`./is${config[0]}.js`);
 	} catch (error) {
-		throw new Error(`Invalid argument "type"! Cannot find the module.`);
+		return internalService.customError(`Invalid argument "type"! Cannot find the module.`);
 	};
 	let resultJSON = {};
 	Promise.allSettled(
 		items.map((item, index) => {
 			new Promise((resolve, reject) => {
-				resultJSON[index] = typeDeterminer(item, option[1]);
+				resultJSON[index] = typeDeterminer(item, config[1]);
 			}).catch((error) => { });
 		})
 	);

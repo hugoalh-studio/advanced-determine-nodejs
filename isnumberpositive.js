@@ -4,6 +4,11 @@
 		NodeJS 14
 ==================*/
 const isNumber = require("./isnumber.js");
+/**
+ * @function isNumberPositive
+ * @param {*} item
+ * @returns {boolean}
+ */
 function isNumberPositive(item) {
 	return (
 		isNumber(item) == true && item >= 0

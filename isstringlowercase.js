@@ -3,10 +3,16 @@
 	Language:
 		NodeJS 14
 ==================*/
+const internalService = require("./internalservice.js");
 const isString = require("./isstring.js");
+/**
+ * @function isStringLowerCase
+ * @param {string} item
+ * @returns {boolean}
+ */
 function isStringLowerCase(item) {
 	if (isString(item) == false) {
-		throw new TypeError(`Invalid type of "item"! Require type of string.`);
+		return internalService.customTypeError(`Invalid type of "item"! Require type of string.`);
 	};
 	const bin = item.toLowerCase();
 	if (item !== bin) {

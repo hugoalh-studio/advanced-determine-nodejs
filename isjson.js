@@ -3,6 +3,11 @@
 	Language:
 		NodeJS 14
 ==================*/
+/**
+ * @function isJSON
+ * @param {*} item
+ * @returns {(boolean|null)}
+ */
 function isJSON(item) {
 	if (typeof item != "object" || item === null) {
 		return false;

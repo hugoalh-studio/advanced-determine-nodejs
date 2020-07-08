@@ -3,6 +3,11 @@
 	Language:
 		NodeJS 14
 ==================*/
+/**
+ * @function isStringifyJSON
+ * @param {*} item
+ * @returns {(boolean|null)}
+ */
 function isStringifyJSON(item) {
 	let bin;
 	try {

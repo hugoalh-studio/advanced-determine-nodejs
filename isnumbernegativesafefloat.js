@@ -4,6 +4,11 @@
 		NodeJS 14
 ==================*/
 const isNumberNegativeFloat = require("./isnumbernegativefloat.js");
+/**
+ * @function isNumberNegativeSafeFloat
+ * @param {*} item
+ * @returns {boolean}
+ */
 function isNumberNegativeSafeFloat(item) {
 	return (
 		isNumberNegativeFloat(item) == true && item > Number.MIN_SAFE_INTEGER

@@ -6,15 +6,19 @@
 const isArray = require("./isarray.js");
 const isJSON = require("./isjson.js");
 const isString = require("./isstring.js");
-function isNull(item, fuzzyMode = false) {
-	if (typeof fuzzyMode != "boolean") {
-		throw new TypeError(`Invalid type of "fuzzyMode"! Require type of boolean.`);
-	};
+/**
+ * @function isNull
+ * @alias isNul
+ * @param {*} item
+ * @param {object} [config]
+ * @returns {boolean}
+ */
+function isNull(item, config) {
 	return (
 		item === null ||
 		isArray(item) == null ||
 		isJSON(item) == null ||
-		isString(item, fuzzyMode) == null
+		isString(item, config) == null
 	);
 };
 module.exports = isNull;
