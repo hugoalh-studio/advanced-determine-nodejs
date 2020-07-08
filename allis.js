@@ -8,6 +8,7 @@ const isArray = require("./isarray.js");
 const isString = require("./isstring.js");
 /**
  * @function allIs
+ * @description 
  * @param {(string|[string, object])} config
  * @param  {...*} items
  * @returns {boolean}

@@ -4,7 +4,7 @@
 		NodeJS 14
 ==================*/
 const fuzzyModeDefault = false;
-const internalService = require("./internalservice.js");
+const isJSON = require("./isjson.js");
 /**
  * @function isUndefined
  * @alias isUdf
@@ -17,10 +17,11 @@ function isUndefined(item, config) {
 	let fuzzyMode = fuzzyModeDefault;
 	if (isJSON(config) == true) {
 		if (config.fuzzyMode) {
-			if (typeof config.fuzzyMode != "boolean") {
-				return internalService.customTypeError(`Invalid type of "fuzzyMode"! Require type of boolean.`);
+			if (typeof config.fuzzyMode == "boolean") {
+				fuzzyMode = config.fuzzyMode;
+			} else {
+				console.warn(`Invalid type of "fuzzyMode"! Require type of boolean. Ignored.`);
 			};
-			fuzzyMode = config.fuzzyMode;
 		};
 	};
 	if (typeof item == "undefined") {
