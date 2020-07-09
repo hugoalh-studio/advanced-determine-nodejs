@@ -6,8 +6,8 @@
 const isNumber = require("./isnumber.js");
 /**
  * @function isNumberFloat
- * @param {*} item
- * @returns {boolean}
+ * @param {*} item Item that need to determine.
+ * @returns {boolean} Determine result.
  */
 function isNumberFloat(item) {
 	return (

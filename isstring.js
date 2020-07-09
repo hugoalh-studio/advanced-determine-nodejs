@@ -8,19 +8,19 @@ const isJSON = require("./isjson.js");
 /**
  * @function isString
  * @alias isStr
- * @param {*} item
- * @param {object} [config]
- * @param {boolean} [config.fuzzyMode=false]
- * @returns {(boolean|null)}
+ * @param {*} item Item that need to determine.
+ * @param {object} [configuration]
+ * @param {boolean} [configuration.fuzzyMode=false]
+ * @returns {(boolean|null)} Determine result.
  */
-function isString(item, config) {
+function isString(item, configuration) {
 	let fuzzyMode = fuzzyModeDefault;
-	if (isJSON(config) == true) {
-		if (config.fuzzyMode) {
-			if (typeof config.fuzzyMode == "boolean") {
-				fuzzyMode = config.fuzzyMode;
+	if (isJSON(configuration) == true) {
+		if (configuration.fuzzyMode) {
+			if (typeof configuration.fuzzyMode == "boolean") {
+				fuzzyMode = configuration.fuzzyMode;
 			} else {
-				console.warn(`Invalid type of "fuzzyMode"! Require type of boolean. Ignored.`);
+				console.warn(`Invalid type of "configuration.fuzzyMode"! Require type of boolean. Ignored.`);
 			};
 		};
 	};

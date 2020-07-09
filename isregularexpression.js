@@ -5,8 +5,8 @@
 ==================*/
 /**
  * @function isRegularExpression
- * @param {*} item
- * @returns {boolean}
+ * @param {*} item Item that need to determine.
+ * @returns {boolean} Determine result.
  */
 function isRegularExpression(item) {
 	return (

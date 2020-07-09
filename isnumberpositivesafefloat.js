@@ -6,8 +6,8 @@
 const isNumberPositiveFloat = require("./isnumberpositivefloat.js");
 /**
  * @function isNumberPositiveSafeFloat
- * @param {*} item
- * @returns {boolean}
+ * @param {*} item Item that need to determine.
+ * @returns {boolean} Determine result.
  */
 function isNumberPositiveSafeFloat(item) {
 	return (

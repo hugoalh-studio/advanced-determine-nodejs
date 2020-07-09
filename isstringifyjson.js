@@ -5,8 +5,8 @@
 ==================*/
 /**
  * @function isStringifyJSON
- * @param {*} item
- * @returns {(boolean|null)}
+ * @param {*} item Item that need to determine.
+ * @returns {(boolean|null)} Determine result.
  */
 function isStringifyJSON(item) {
 	let bin;

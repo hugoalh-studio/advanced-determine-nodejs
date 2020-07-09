@@ -7,12 +7,12 @@ const internalService = require("./internalservice.js");
 const isString = require("./isstring.js");
 /**
  * @function isStringASCII
- * @param {string} item
- * @returns {boolean}
+ * @param {string} item Item that need to determine.
+ * @returns {boolean} Determine result.
  */
 function isStringASCII(item) {
 	if (isString(item) == false) {
-		return internalService.customTypeError(`Invalid type of "item"! Require type of string.`);
+		return internalService.typeError(`Invalid type of "item"! Require type of string.`);
 	};
 	for (let index = 0; index < item.length; index++) {
 		if (item.charCodeAt(index) > 127) {

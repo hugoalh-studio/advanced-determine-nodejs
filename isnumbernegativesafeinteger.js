@@ -6,8 +6,8 @@
 const isNumberNegative = require("./isnumbernegative.js");
 /**
  * @function isNumberNegativeSafeInteger
- * @param {*} item
- * @returns {boolean}
+ * @param {*} item Item that need to determine.
+ * @returns {boolean} Determine result.
  */
 function isNumberNegativeSafeInteger(item) {
 	return (

@@ -7,12 +7,12 @@ const internalService = require("./internalservice.js");
 const isString = require("./isstring.js");
 /**
  * @function isStringLowerCase
- * @param {string} item
- * @returns {boolean}
+ * @param {string} item Item that need to determine.
+ * @returns {boolean} Determine result.
  */
 function isStringLowerCase(item) {
 	if (isString(item) == false) {
-		return internalService.customTypeError(`Invalid type of "item"! Require type of string.`);
+		return internalService.typeError(`Invalid type of "item"! Require type of string.`);
 	};
 	const bin = item.toLowerCase();
 	if (item !== bin) {

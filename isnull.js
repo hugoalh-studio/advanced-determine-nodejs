@@ -9,16 +9,16 @@ const isString = require("./isstring.js");
 /**
  * @function isNull
  * @alias isNul
- * @param {*} item
- * @param {object} [config]
- * @returns {boolean}
+ * @param {*} item Item that need to determine.
+ * @param {object} [configuration]
+ * @returns {boolean} Determine result.
  */
-function isNull(item, config) {
+function isNull(item, configuration) {
 	return (
 		item === null ||
 		isArray(item) == null ||
 		isJSON(item) == null ||
-		isString(item, config) == null
+		isString(item, configuration) == null
 	);
 };
 module.exports = isNull;

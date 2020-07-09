@@ -3,7 +3,12 @@
 	Language:
 		NodeJS 14
 ==================*/
-const config = require("./config.js");
+/**
+ * @const {string} version
+ */
+const version = "2.0.0";
+
+const configuration = require("./configuration.js");
 const isArray = require("./isarray.js");
 const isBuffer = require("./isbuffer.js");
 const isNull = require("./isnull.js");
@@ -25,7 +30,9 @@ const isString = require("./isstring.js");
 const isStringASCII = require("./isstringascii.js");
 const isUndefined = require("./isundefined.js");
 module.exports.allIs = require("./allis.js");
-module.exports.config.ignoreError = config.ignoreError;
+module.exports.cfg = configuration;
+module.exports.config = configuration;
+module.exports.configuration = configuration;
 module.exports.isArr = isArray;
 module.exports.isArray = isArray;
 module.exports.isBuf = isBuffer;
@@ -73,5 +80,6 @@ module.exports.isStringLowerCase = require("./isstringlowercase.js");
 module.exports.isStringUpperCase = require("./isstringuppercase.js");
 module.exports.isUdf = isUndefined;
 module.exports.isUndefined = isUndefined;
-module.exports.v = config.version;
-module.exports.version = config.version;
+module.exports.v = version;
+module.exports.ver = version;
+module.exports.version = version;

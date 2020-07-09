@@ -6,8 +6,8 @@
 /**
  * @function isNumber
  * @alias isNum
- * @param {*} item
- * @returns {boolean}
+ * @param {*} item Item that need to determine.
+ * @returns {boolean} Determine result.
  */
 function isNumber(item) {
 	return (

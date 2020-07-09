@@ -3,30 +3,56 @@
 	Language:
 		NodeJS 14
 ==================*/
-const config = require("./config.js");
+const configuration = require("./configuration.js");
 /**
- * @function customError
+ * @function generalError
  * @param {string} message
  * @returns {undefined}
  */
-function customError(message) {
-	if (config.ignoreError() == true) {
+function generalError(message) {
+	if (configuration.ignoreGeneralError() == true) {
 		console.error(message);
 		return undefined;
 	};
 	throw new Error(message);
 };
 /**
- * @function customTypeError
+ * @function rangeError
  * @param {string} message
  * @returns {undefined}
  */
-function customTypeError(message) {
-	if (config.ignoreError() == true) {
+function rangeError(message) {
+	if (configuration.ignoreRangeError() == true) {
+		console.error(message);
+		return undefined;
+	};
+	throw new RangeError(message);
+};
+/**
+ * @function referenceError
+ * @param {string} message
+ * @returns {undefined}
+ */
+function referenceError(message) {
+	if (configuration.ignoreReferenceError() == true) {
+		console.error(message);
+		return undefined;
+	};
+	throw new ReferenceError(message);
+};
+/**
+ * @function typeError
+ * @param {string} message
+ * @returns {undefined}
+ */
+function typeError(message) {
+	if (configuration.ignoreTypeError() == true) {
 		console.error(message);
 		return undefined;
 	};
 	throw new TypeError(message);
 };
-module.export.customError = customError;
-module.export.customTypeError = customTypeError;
+module.exports.generalError = generalError;
+module.exports.rangeError = rangeError;
+module.exports.referenceError = referenceError;
+module.exports.typeError = typeError;

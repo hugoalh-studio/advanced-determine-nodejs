@@ -7,12 +7,12 @@ const internalService = require("./internalservice.js");
 const isString = require("./isstring.js");
 /**
  * @function isStringUpperCase
- * @param {string} item
- * @returns {boolean}
+ * @param {string} item Item that need to determine.
+ * @returns {boolean} Determine result.
  */
 function isStringUpperCase(item) {
 	if (isString(item) == false) {
-		return internalService.customTypeError(`Invalid type of "item"! Require type of string.`);
+		return internalService.typeError(`Invalid type of "item"! Require type of string.`);
 	};
 	const bin = item.toUpperCase();
 	if (item !== bin) {

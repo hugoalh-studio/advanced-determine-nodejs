@@ -6,8 +6,9 @@
 /**
  * @function isArray
  * @alias isArr
- * @param {*} item
- * @returns {(boolean|null)}
+ * @description To determine item is array or not.
+ * @param {*} item Item that need to determine.
+ * @returns {(boolean|null)} Determine result.
  */
 function isArray(item) {
 	if (Array.isArray(item) == false) {

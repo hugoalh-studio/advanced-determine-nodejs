@@ -5,8 +5,8 @@
 ==================*/
 /**
  * @function isJSON
- * @param {*} item
- * @returns {(boolean|null)}
+ * @param {*} item Item that need to determine.
+ * @returns {(boolean|null)} Determine result.
  */
 function isJSON(item) {
 	if (typeof item != "object" || item === null) {
