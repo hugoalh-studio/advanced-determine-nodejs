@@ -9,8 +9,9 @@ const isString = require("./isstring.js");
 /**
  * @function isNull
  * @alias isNul
+ * @description Determine item is type of null or not.
  * @param {*} item Item that need to determine.
- * @param {object} [configuration]
+ * @param {object} [configuration] Configuration.
  * @returns {boolean} Determine result.
  */
 function isNull(item, configuration) {

@@ -7,6 +7,8 @@ const internalService = require("./internalservice.js");
 const isString = require("./isstring.js");
 /**
  * @function isStringUpperCase
+ * @alias isStrUpperCase
+ * @description Determine item is type of uppercase string or not.
  * @param {string} item Item that need to determine.
  * @returns {boolean} Determine result.
  */

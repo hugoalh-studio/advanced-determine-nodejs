@@ -6,6 +6,8 @@
 const isNumber = require("./isnumber.js");
 /**
  * @function isNumberPositive
+ * @alias isNumPositive
+ * @description Determine item is type of positive number or not.
  * @param {*} item Item that need to determine.
  * @returns {boolean} Determine result.
  */

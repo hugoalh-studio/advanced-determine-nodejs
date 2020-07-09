@@ -6,7 +6,7 @@
 /**
  * @function isArray
  * @alias isArr
- * @description To determine item is array or not.
+ * @description Determine item is type of array or not.
  * @param {*} item Item that need to determine.
  * @returns {(boolean|null)} Determine result.
  */

@@ -8,30 +8,30 @@ const isArray = require("./isarray.js");
 const isString = require("./isstring.js");
 /**
  * @function allIs
- * @description 
- * @param {(string|[string, object])} config
- * @param  {...*} items
+ * @description Determine items are the same type or not.
+ * @param {(string|[string, object])} configuration Type determiner, or with configuration.
+ * @param  {...*} items Items that need to determine.
  * @returns {boolean} Determine result.
  */
-function allIs(config, ...items) {
-	if (isString(config) == true) {
-		if (config.indexOf("/") != -1) {
-			return internalService.generalError(`Invalid path of "type"!`);
+function allIs(configuration, ...items) {
+	if (isString(configuration) == true) {
+		if (configuration.indexOf("/") != -1) {
+			return internalService.referenceError(`Invalid path of "type"!`);
 		};
-		config = [config, undefined];
-	} else if (isArray(config) == true) {
-		if (isString(config[0]) != true) {
+		configuration = [configuration, undefined];
+	} else if (isArray(configuration) == true) {
+		if (isString(configuration[0]) != true) {
 			return internalService.typeError(`Invalid type of "type"! Require type of string.`);
 		};
-		if (config[0].indexOf("/") != -1) {
-			return internalService.generalError(`Invalid path of "type"!`);
+		if (configuration[0].indexOf("/") != -1) {
+			return internalService.referenceError(`Invalid path of "type"!`);
 		};
 	} else {
 		return internalService.typeError(`Invalid type of "option"! Require type of string, or array.`);
 	};
 	let typeDeterminer;
 	try {
-		typeDeterminer = require(`./is${config[0]}.js`);
+		typeDeterminer = require(`./is${configuration[0]}.js`);
 	} catch (error) {
 		return internalService.generalError(`Invalid argument "type"! Cannot find the module.`);
 	};
@@ -39,7 +39,7 @@ function allIs(config, ...items) {
 	Promise.allSettled(
 		items.map((item, index) => {
 			new Promise((resolve, reject) => {
-				resultJSON[index] = typeDeterminer(item, config[1]);
+				resultJSON[index] = typeDeterminer(item, configuration[1]);
 			}).catch((error) => { });
 		})
 	);

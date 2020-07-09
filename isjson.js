@@ -5,6 +5,7 @@
 ==================*/
 /**
  * @function isJSON
+ * @description Determine item is type of JSON or not.
  * @param {*} item Item that need to determine.
  * @returns {(boolean|null)} Determine result.
  */

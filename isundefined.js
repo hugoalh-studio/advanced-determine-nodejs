@@ -8,9 +8,10 @@ const isJSON = require("./isjson.js");
 /**
  * @function isUndefined
  * @alias isUdf
+ * @description Determine item is type of undefined or not.
  * @param {*} item Item that need to determine.
- * @param {object} [configuration]
- * @param {boolean} [configuration.fuzzyMode=false]
+ * @param {object} [configuration] Configuration.
+ * @param {boolean} [configuration.fuzzyMode=false] Enable or disable fuzzy mode.
  * @returns {boolean} Determine result.
  */
 function isUndefined(item, configuration) {
@@ -20,7 +21,7 @@ function isUndefined(item, configuration) {
 			if (typeof configuration.fuzzyMode == "boolean") {
 				fuzzyMode = configuration.fuzzyMode;
 			} else {
-				console.warn(`Invalid type of "configuration.fuzzyMode"! Require type of boolean. Ignored.`);
+				console.warn(`Invalid type of "configuration.fuzzyMode"! Require type of boolean. Ignored this parameter.`);
 			};
 		};
 	};

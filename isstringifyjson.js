@@ -5,6 +5,7 @@
 ==================*/
 /**
  * @function isStringifyJSON
+ * @description Determine item is type of stringify JSON or not.
  * @param {*} item Item that need to determine.
  * @returns {(boolean|null)} Determine result.
  */

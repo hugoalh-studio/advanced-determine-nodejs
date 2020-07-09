@@ -6,6 +6,8 @@
 const isNumber = require("./isnumber.js");
 /**
  * @function isNumberFloat
+ * @alias isNumFloat
+ * @description Determine item is type of float number or not.
  * @param {*} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
