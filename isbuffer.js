@@ -6,7 +6,7 @@
 /**
  * @function isBuffer
  * @alias isBuf
- * @description Determine item is type of buffer or not.
+ * @description Determine item is instance of buffer or not.
  * @param {*} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
