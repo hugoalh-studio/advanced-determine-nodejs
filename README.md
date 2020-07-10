@@ -36,19 +36,19 @@ NodeJS (v8+) & NPMJS (v6+):
 
 ### API
 
-- `isNull(item, fuzzyMode?)`
+- `isNull(item, configuration?)`
 - `isArray(item)`
 - `isBuffer(item)`
 - `isDate(item)`
 - `isJSON(item)`
 - `isNumber(item)`
 - `isRegularExpression(item)`
-- `isString(item, fuzzyMode?)`
+- `isString(item, configuration?)`
 - `isStringLowerCase(item)`
 - `isStringUpperCase(item)`
 - `isStringASCII(item)`
 - `isStringifyJSON(item)`
-- `isUndefined(item, fuzzyMode?)`
+- `isUndefined(item, configuration?)`
 
 ### Example
 
@@ -56,8 +56,8 @@ NodeJS (v8+) & NPMJS (v6+):
 const advancedDetermine = require("@hugoalh/advanced-determine");
 
 console.log(advancedDetermine.isString(""));// null
-console.log(advancedDetermine.isString("", false));// null
-console.log(advancedDetermine.isString("null", true));// null
+console.log(advancedDetermine.isString("null", { fuzzyMode: false }));// true
+console.log(advancedDetermine.isString("null", { fuzzyMode: true }));// null
 console.log(advancedDetermine.isNull(""));// true
 console.log(advancedDetermine.isArray([]));// null
 console.log(advancedDetermine.isStringLowerCase("Test word."));// false
