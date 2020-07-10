@@ -11,7 +11,7 @@ const isJSON = require("./isjson.js");
  * @description Determine item is type of undefined or not.
  * @param {*} item Item that need to determine.
  * @param {object} [configuration] Configuration.
- * @param {boolean} [configuration.fuzzyMode=false] Enable or disable fuzzy mode.
+ * @param {boolean} [configuration.fuzzyMode=false] Enable/Disable fuzzy mode.
  * @returns {boolean} Determine result.
  */
 function isUndefined(item, configuration) {

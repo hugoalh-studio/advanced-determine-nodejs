@@ -9,7 +9,7 @@ const isString = require("./isstring.js");
 /**
  * @function allIs
  * @description Determine items are the same type or not.
- * @param {(string|[string, object])} configuration Type determiner, or with configuration.
+ * @param {(string|[string, object])} configuration Type to determine; or with type determiner configuration.
  * @param  {...*} items Items that need to determine.
  * @returns {boolean} Determine result.
  */
@@ -18,7 +18,6 @@ function allIs(configuration, ...items) {
 		if (configuration.indexOf("/") != -1) {
 			return internalService.referenceError(`Invalid path of "type"!`);
 		};
-		configuration = [configuration, undefined];
 	} else if (isArray(configuration) == true) {
 		if (isString(configuration[0]) != true) {
 			return internalService.typeError(`Invalid type of "type"! Require type of string.`);
@@ -31,7 +30,7 @@ function allIs(configuration, ...items) {
 	};
 	let typeDeterminer;
 	try {
-		typeDeterminer = require(`./is${configuration[0]}.js`);
+		typeDeterminer = require(`./is${configuration[0].toLowerCase()}.js`);
 	} catch (error) {
 		return internalService.generalError(`Invalid argument "type"! Cannot find the module.`);
 	};
