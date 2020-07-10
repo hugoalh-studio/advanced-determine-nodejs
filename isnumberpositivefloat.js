@@ -6,7 +6,7 @@
 const isNumberPositive = require("./isnumberpositive.js");
 /**
  * @function isNumberPositiveFloat
- * @alias isNumPositiveFloat
+ * @alias isNumPstFlt
  * @description Determine item is type of positive float number or not.
  * @param {*} item Item that need to determine.
  * @returns {boolean} Determine result.

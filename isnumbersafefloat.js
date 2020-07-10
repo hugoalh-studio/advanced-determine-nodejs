@@ -6,7 +6,7 @@
 const isNumberFloat = require("./isnumberfloat.js");
 /**
  * @function isNumberSafeFloat
- * @alias isNumSafeFloat
+ * @alias isNumSFlt
  * @description Determine item is type of safe float number or not.
  * @param {*} item Item that need to determine.
  * @returns {boolean} Determine result.
