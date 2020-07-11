@@ -3,8 +3,8 @@
 	Language:
 		NodeJS 14
 ==================*/
-const fuzzyModeDefault = false;
 const isJSON = require("./isjson.js");
+const fuzzyModeDefault = false;
 /**
  * @function isString
  * @alias isStr
