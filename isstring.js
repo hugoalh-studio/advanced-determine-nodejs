@@ -4,7 +4,6 @@
 		NodeJS 14
 ==================*/
 const isJSON = require("./isjson.js");
-const fuzzyModeDefault = false;
 /**
  * @function isString
  * @alias isStr
@@ -15,7 +14,7 @@ const fuzzyModeDefault = false;
  * @returns {(boolean|null)} Determine result.
  */
 function isString(item, configuration) {
-	let fuzzyMode = fuzzyModeDefault;
+	let fuzzyMode = false;
 	if (isJSON(configuration) == true) {
 		if (configuration.fuzzyMode) {
 			if (typeof configuration.fuzzyMode == "boolean") {
