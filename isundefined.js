@@ -14,11 +14,11 @@ const isJSON = require("./isjson.js");
  * @returns {boolean} Determine result.
  */
 function isUndefined(item, configuration) {
-	let modeFuzzy = false;
+	let fuzzyMode = false;
 	if (isJSON(configuration) == true) {
 		if (configuration.fuzzyMode) {
 			if (typeof configuration.fuzzyMode == "boolean") {
-				modeFuzzy = configuration.fuzzyMode;
+				fuzzyMode = configuration.fuzzyMode;
 			} else {
 				console.warn(`Invalid type of "configuration.fuzzyMode"! Require type of boolean. Ignored this parameter.`);
 			};
@@ -27,7 +27,7 @@ function isUndefined(item, configuration) {
 	if (typeof item == "undefined") {
 		return true;
 	};
-	if (modeFuzzy == true) {
+	if (fuzzyMode == true) {
 		if (item === "undefined") {
 			return true;
 		};
