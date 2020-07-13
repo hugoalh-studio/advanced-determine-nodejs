@@ -29,7 +29,7 @@ A module/library to provide a better and more accurate way to determine item typ
 
 ### Getting Started
 
-NodeJS (v8+) & NPMJS (v6+):
+NodeJS (v8+) & NPM (v6+):
 
 ```powershell
 > npm install @hugoalh/advanced-determine
