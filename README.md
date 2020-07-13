@@ -11,6 +11,7 @@
 ![](https://img.shields.io/github/watchers/hugoalh/NodeJS.AdvancedDetermine?style=flat-square&logo=github)
 ![](https://img.shields.io/github/stars/hugoalh/NodeJS.AdvancedDetermine?style=flat-square&logo=github)
 ![](https://img.shields.io/github/forks/hugoalh/NodeJS.AdvancedDetermine?style=flat-square&logo=github)
+[![](https://www.codefactor.io/repository/github/hugoalh/nodejs.advanceddetermine/badge)](https://www.codefactor.io/repository/github/hugoalh/nodejs.advanceddetermine)
 [![](https://img.shields.io/lgtm/alerts/g/hugoalh/NodeJS.AdvancedDetermine.svg?style=flat-square&logo=lgtm&label=%20)](https://lgtm.com/projects/g/hugoalh/NodeJS.AdvancedDetermine/alerts)
 [![](https://img.shields.io/lgtm/grade/javascript/g/hugoalh/NodeJS.AdvancedDetermine.svg?style=flat-square&logo=lgtm)](https://lgtm.com/projects/g/hugoalh/NodeJS.AdvancedDetermine/context:javascript)
 
