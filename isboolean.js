@@ -1,19 +1,18 @@
 /*==================
-[NodeJS] Advanced Determine - Is Undefined
+[NodeJS] Advanced Determine - Is Boolean
 	Language:
 		NodeJS 14
 ==================*/
 const isJSON = require("./isjson.js");
 /**
- * @function isUndefined
- * @alias isUdf
- * @description Determine item is type of undefined or not.
+ * @function isBoolean
+ * @description Determine item is type of boolean or not.
  * @param {*} item Item that need to determine.
  * @param {object} [configuration] Configuration.
  * @param {boolean} [configuration.fuzzyMode=false] Enable/Disable fuzzy mode.
  * @returns {boolean} Determine result.
  */
-function isUndefined(item, configuration) {
+function isBoolean(item, configuration) {
 	let fuzzyMode = false;
 	if (isJSON(configuration) == true) {
 		if (configuration.fuzzyMode) {
@@ -24,14 +23,14 @@ function isUndefined(item, configuration) {
 			};
 		};
 	};
-	if (typeof item == "undefined") {
+	if (typeof item == "boolean") {
 		return true;
 	};
 	if (fuzzyMode == true) {
-		if (item === "undefined") {
+		if (item === "true" || item === "false") {
 			return true;
 		};
 	};
 	return false;
 };
-module.exports = isUndefined;
+module.exports = isBoolean;
