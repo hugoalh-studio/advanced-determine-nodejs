@@ -38,6 +38,7 @@ module.exports.config = configuration;
 module.exports.configuration = configuration;
 module.exports.isArr = isArray;
 module.exports.isArray = isArray;
+module.exports.isBoolean = require("./isboolean.js");
 module.exports.isBuf = isBuffer;
 module.exports.isBuffer = isBuffer;
 module.exports.isDate = require("./isdate.js");
