@@ -3,7 +3,6 @@
 	Language:
 		NodeJS 14
 ==================*/
-const fuzzyModeDefault = false;
 const isJSON = require("./isjson.js");
 /**
  * @function isString
@@ -15,7 +14,7 @@ const isJSON = require("./isjson.js");
  * @returns {(boolean|null)} Determine result.
  */
 function isString(item, configuration) {
-	let fuzzyMode = fuzzyModeDefault;
+	let fuzzyMode = false;
 	if (isJSON(configuration) == true) {
 		if (configuration.fuzzyMode) {
 			if (typeof configuration.fuzzyMode == "boolean") {
