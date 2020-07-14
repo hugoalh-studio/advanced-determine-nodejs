@@ -13,11 +13,13 @@ const isJSON = require("./isjson.js");
  * @returns {boolean} Determine result.
  */
 function isBoolean(item, configuration) {
-	let fuzzyMode = false;
+	let runtime = {
+		fuzzyMode: false
+	};
 	if (isJSON(configuration) == true) {
 		if (configuration.fuzzyMode) {
 			if (typeof configuration.fuzzyMode == "boolean") {
-				fuzzyMode = configuration.fuzzyMode;
+				runtime.fuzzyMode = configuration.fuzzyMode;
 			} else {
 				console.warn(`Invalid type of "configuration.fuzzyMode"! Require type of boolean. Ignored this parameter.`);
 			};
@@ -26,7 +28,7 @@ function isBoolean(item, configuration) {
 	if (typeof item == "boolean") {
 		return true;
 	};
-	if (fuzzyMode == true) {
+	if (runtime.fuzzyMode == true) {
 		if (item === "true" || item === "false") {
 			return true;
 		};
