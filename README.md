@@ -37,19 +37,19 @@ NodeJS (v8+) & NPM (v6+):
 
 ### API
 
-- `isNull(item, configuration?)`
+- `isNull(item, option?)`
 - `isArray(item)`
 - `isBuffer(item)`
 - `isDate(item)`
 - `isJSON(item)`
 - `isNumber(item)`
 - `isRegularExpression(item)`
-- `isString(item, configuration?)`
+- `isString(item, option?)`
 - `isStringLowerCase(item)`
 - `isStringUpperCase(item)`
 - `isStringASCII(item)`
 - `isStringifyJSON(item)`
-- `isUndefined(item, configuration?)`
+- `isUndefined(item, option?)`
 
 ### Example
 
