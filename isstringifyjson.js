@@ -3,7 +3,6 @@
 	Language:
 		NodeJS 14
 ==================*/
-const internalService = require("./internalservice.js");
 const isString = require("./isstring.js");
 /**
  * @function isStringifyJSON
@@ -13,8 +12,8 @@ const isString = require("./isstring.js");
  * @returns {(boolean|null)} Determine result.
  */
 function isStringifyJSON(item) {
-	if (isString(item) == false) {
-		return internalService.typeError(`Invalid type of "item"! Require type of string.`);
+	if (isString(item) != true) {
+		return false;
 	};
 	let bin;
 	try {

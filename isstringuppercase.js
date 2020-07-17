@@ -3,7 +3,6 @@
 	Language:
 		NodeJS 14
 ==================*/
-const internalService = require("./internalservice.js");
 const isString = require("./isstring.js");
 /**
  * @function isStringUpperCase
@@ -13,8 +12,8 @@ const isString = require("./isstring.js");
  * @returns {boolean} Determine result.
  */
 function isStringUpperCase(item) {
-	if (isString(item) == false) {
-		return internalService.typeError(`Invalid type of "item"! Require type of string.`);
+	if (isString(item) != true) {
+		return false;
 	};
 	const bin = item.toUpperCase();
 	if (item !== bin) {
