@@ -15,15 +15,16 @@ const isString = require("./isstring.js");
  */
 function allIs(condition, ...items) {
 	if (isString(condition) == true) {
-		if (condition.indexOf("/") != -1) {
-			return internalService.referenceError(`Invalid path of "type"! (Read the documentation for more information.)`);
+		if (condition.search(/[^a-z]/gui) != -1) {
+			return internalService.referenceError(`Invalid reference of "type"! (Read the documentation for more information.)`);
 		};
+		condition = [condition, undefined];
 	} else if (isArray(condition) == true) {
 		if (isString(condition[0]) != true) {
 			return internalService.typeError(`Invalid type of "type"! Require type of string.`);
 		};
-		if (condition[0].indexOf("/") != -1) {
-			return internalService.referenceError(`Invalid path of "type"! (Read the documentation for more information.)`);
+		if (condition[0].search(/[^a-z]/gui) != -1) {
+			return internalService.referenceError(`Invalid reference of "type"! (Read the documentation for more information.)`);
 		};
 	} else {
 		return internalService.typeError(`Invalid type of "condition"! Require type of string, or array.`);
