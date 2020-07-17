@@ -26,10 +26,7 @@ function isUndefined(item, option) {
 			runtime.allowStringify = option.allowStringify;
 		};
 	};
-	if (
-		typeof item == "undefined" ||
-		item === undefined
-	) {
+	if (typeof item == "undefined") {
 		return true;
 	};
 	if (runtime.allowStringify == true) {

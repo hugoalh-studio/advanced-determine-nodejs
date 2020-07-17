@@ -25,11 +25,7 @@ function isBoolean(item, option) {
 			runtime.allowStringify = option.allowStringify;
 		};
 	};
-	if (
-		typeof item == "boolean" ||
-		item === true ||
-		item === false
-	) {
+	if (typeof item == "boolean") {
 		return true;
 	};
 	if (runtime.allowStringify == true) {
