@@ -3,23 +3,37 @@
 	Language:
 		NodeJS 14
 ==================*/
-const isArray = require("./isarray.js");
+const internalService = require("./internalservice.js");
 const isJSON = require("./isjson.js");
-const isString = require("./isstring.js");
 /**
  * @function isNull
  * @alias isNul
  * @description Determine item is type of null or not.
  * @param {*} item Item that need to determine.
  * @param {object} [option] Option.
+ * @param {boolean} [option.allowStringify=false] Allow stringify type.
  * @returns {boolean} Determine result.
  */
 function isNull(item, option) {
-	return (
-		item === null ||
-		isArray(item) == null ||
-		isJSON(item) == null ||
-		isString(item, option) == null
-	);
+	let runtime = {
+		allowStringify: false
+	};
+	if (isJSON(option) == true) {
+		if (option.allowStringify) {
+			if (typeof option.allowStringify != "boolean") {
+				return internalService.typeError(`Invalid type of "option.allowStringify"! Require type of boolean.`);
+			};
+			runtime.allowStringify = option.allowStringify;
+		};
+	};
+	if (item === null) {
+		return true;
+	};
+	if (runtime.allowStringify == true) {
+		if (item === "null") {
+			return true;
+		};
+	};
+	return false;
 };
 module.exports = isNull;
