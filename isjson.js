@@ -10,7 +10,10 @@
  * @returns {(boolean|null)} Determine result.
  */
 function isJSON(item) {
-	if (typeof item != "object" || item === null) {
+	if (
+		typeof item != "object" ||
+		item === null
+	) {
 		return false;
 	};
 	let bin;
@@ -19,7 +22,10 @@ function isJSON(item) {
 	} catch (error) {
 		return false;
 	};
-	if (Object.keys(item).length == 0 || bin === "{}") {
+	if (
+		Object.keys(item).length == 0 ||
+		bin === "{}"
+	) {
 		return null;
 	};
 	return true;

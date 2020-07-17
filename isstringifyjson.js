@@ -21,7 +21,10 @@ function isStringifyJSON(item) {
 	} catch (error) {
 		return false;
 	};
-	if (Object.keys(bin).length == 0 || item === "{}") {
+	if (
+		Object.keys(bin).length == 0 ||
+		item === "{}"
+	) {
 		return null;
 	};
 	return true;

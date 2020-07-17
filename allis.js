@@ -44,7 +44,10 @@ function allIs(condition, ...items) {
 		})
 	);
 	const resultArray = Object.values(resultJSON);
-	if (resultArray.includes(false) == true || resultArray.includes(null) == true) {
+	if (
+		resultArray.includes(false) == true ||
+		resultArray.includes(null) == true
+	) {
 		return false;
 	};
 	return true;
