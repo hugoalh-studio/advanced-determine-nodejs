@@ -14,8 +14,8 @@ const isString = require("./isString.js");
  * @description Determine item is type of null or not.
  * @param {*} item Item that need to determine.
  * @param {object} [option] Option.
- * @param {boolean} [option.allowStringify=false] Allow stringify type.
  * @param {boolean} [option.allowExtend=false] Allow to extend determine type of null.
+ * @param {boolean} [option.allowStringify=false] Allow stringify type.
  * @returns {boolean} Determine result.
  */
 function isNull(item, option) {
