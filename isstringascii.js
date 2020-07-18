@@ -8,7 +8,7 @@ const isString = require("./isstring.js");
  * @function isStringASCII
  * @alias isStrASCII
  * @description Determine item is type of ASCII string or not.
- * @param {string} item Item that need to determine.
+ * @param {*} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
 function isStringASCII(item) {

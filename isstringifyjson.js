@@ -8,7 +8,7 @@ const isString = require("./isstring.js");
  * @function isStringifyJSON
  * @alias isStrJSON
  * @description Determine item is type of stringify JSON or not.
- * @param {string} item Item that need to determine.
+ * @param {*} item Item that need to determine.
  * @returns {(boolean|null)} Determine result.
  */
 function isStringifyJSON(item) {

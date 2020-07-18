@@ -8,7 +8,7 @@ const isString = require("./isstring.js");
  * @function isStringLowerCase
  * @alias isStrL
  * @description Determine item is type of lowercase string or not.
- * @param {string} item Item that need to determine.
+ * @param {*} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
 function isStringLowerCase(item) {
