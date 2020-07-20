@@ -16,6 +16,7 @@ const isString = require("./isString.js");
  * @param {object} [option] Option.
  * @param {boolean} [option.allowExtend=false] Allow to extend determine type of null.
  * @param {boolean} [option.allowStringify=false] Allow stringify type.
+ * @param {boolean} [option.allowWhitespace=true] When option.allowExtend is true, allow whitespace in string.
  * @returns {boolean} Determine result.
  */
 function isNull(item, option) {
@@ -49,7 +50,7 @@ function isNull(item, option) {
 		if (
 			isArray(item) == null ||
 			isJSON(item) == null ||
-			isString(item) == null
+			isString(item, option) == null
 		) {
 			return true;
 		};
