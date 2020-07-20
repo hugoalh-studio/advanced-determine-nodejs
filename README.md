@@ -45,7 +45,7 @@ NodeJS (v10+) & NPM (v6+):
 - `isNull(item, option?)`
 - `isNumber(item)`
 - `isRegularExpression(item)`
-- `isString(item)`
+- `isString(item, option?)`
 - `isStringASCII(item)`
 - `isStringifyJSON(item)`
 - `isStringLowerCase(item)`
