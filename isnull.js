@@ -7,7 +7,6 @@ const internalService = require("./internalservice.js");
 const isArray = require("./isarray.js");
 const isJSON = require("./isjson.js");
 const isString = require("./isstring.js");
-
 /**
  * @function isNull
  * @alias isNul
