@@ -20,7 +20,7 @@ function isBoolean(item, option) {
 	if (isJSON(option) == true) {
 		if (option.allowStringify) {
 			if (typeof option.allowStringify != "boolean") {
-				return internalService.typeError(`Invalid type of "option.allowStringify"! Require type of boolean. Ignored this parameter.`);
+				return internalService.typeError(`Invalid type of "option.allowStringify"! Require type of boolean.`);
 			};
 			runtime.allowStringify = option.allowStringify;
 		};
