@@ -6,7 +6,7 @@
 /**
  * @const {string} version
  */
-const version = "2.0.2";
+const version = "3.0.0";
 
 const configuration = require("./configuration.js");
 const isArray = require("./isarray.js");

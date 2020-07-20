@@ -29,7 +29,7 @@ A module/library to provide a better and more accurate way to determine item typ
 
 ### Getting Started
 
-NodeJS (v8+) & NPM (v6+):
+NodeJS (v10+) & NPM (v6+):
 
 ```powershell
 > npm install @hugoalh/advanced-determine
@@ -37,18 +37,19 @@ NodeJS (v8+) & NPM (v6+):
 
 ### API
 
-- `isNull(item, option?)`
 - `isArray(item)`
+- `isBoolean(item, option?)`
 - `isBuffer(item)`
 - `isDate(item)`
 - `isJSON(item)`
+- `isNull(item, option?)`
 - `isNumber(item)`
 - `isRegularExpression(item)`
 - `isString(item, option?)`
-- `isStringLowerCase(item)`
-- `isStringUpperCase(item)`
 - `isStringASCII(item)`
 - `isStringifyJSON(item)`
+- `isStringLowerCase(item)`
+- `isStringUpperCase(item)`
 - `isUndefined(item, option?)`
 
 ### Example
@@ -57,9 +58,10 @@ NodeJS (v8+) & NPM (v6+):
 const advancedDetermine = require("@hugoalh/advanced-determine");
 
 console.log(advancedDetermine.isString(""));// null
-console.log(advancedDetermine.isString("null", { fuzzyMode: false }));// true
-console.log(advancedDetermine.isString("null", { fuzzyMode: true }));// null
-console.log(advancedDetermine.isNull(""));// true
+console.log(advancedDetermine.isNull("null", { allowStringify: false }));// false
+console.log(advancedDetermine.isNull("null", { allowStringify: true }));// true
+console.log(advancedDetermine.isNull(""));// false
+console.log(advancedDetermine.isNull("", { allowExtend: true }));// true
 console.log(advancedDetermine.isArray([]));// null
 console.log(advancedDetermine.isStringLowerCase("Test word."));// false
 console.log(advancedDetermine.isStringLowerCase("word"));// true
