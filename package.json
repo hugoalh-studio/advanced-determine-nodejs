@@ -1,21 +1,26 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "3.0.0",
+	"version": "3.0.1",
 	"description": "A module/library to provide a better and more accurate way to determine item type.",
-	"main": "main.js",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/hugoalh/NodeJS.AdvancedDetermine.git"
-	},
 	"keywords": [
 		"nodejs",
 		"determine",
 		"type-test"
 	],
-	"author": "hugoalh",
-	"license": "MIT",
+	"homepage": "https://github.com/hugoalh/NodeJS.AdvancedDetermine#readme",
 	"bugs": {
 		"url": "https://github.com/hugoalh/NodeJS.AdvancedDetermine/issues"
 	},
-	"homepage": "https://github.com/hugoalh/NodeJS.AdvancedDetermine#readme"
+	"license": "MIT",
+	"author": "hugoalh",
+	"main": "main.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/hugoalh/NodeJS.AdvancedDetermine.git"
+	},
+	"engines": {
+		"node": ">= 10.0.0",
+		"npm": ">= 6.0.0"
+	},
+	"private": false
 }
