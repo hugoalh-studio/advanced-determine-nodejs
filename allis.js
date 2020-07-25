@@ -15,7 +15,7 @@ const isString = require("./isstring.js");
  */
 function allIs(condition, ...items) {
 	if (isString(condition) == true) {
-		if (condition.search(/[^a-z]/gui) != -1) {
+		if (condition.search(/[^a-z]/giu) != -1) {
 			return internalService.referenceError(`Invalid reference of "type"! (Read the documentation for more information.)`);
 		};
 		condition = [condition, undefined];
@@ -23,7 +23,7 @@ function allIs(condition, ...items) {
 		if (isString(condition[0]) != true) {
 			return internalService.typeError(`Invalid type of "type"! Require type of string.`);
 		};
-		if (condition[0].search(/[^a-z]/gui) != -1) {
+		if (condition[0].search(/[^a-z]/giu) != -1) {
 			return internalService.referenceError(`Invalid reference of "type"! (Read the documentation for more information.)`);
 		};
 	} else {

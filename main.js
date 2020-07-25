@@ -6,7 +6,7 @@
 /**
  * @const {string} version
  */
-const version = "3.0.0";
+const version = "3.0.1";
 
 const configuration = require("./configuration.js");
 const isArray = require("./isarray.js");
@@ -25,6 +25,7 @@ const isNumberPositiveInteger = require("./isnumberpositiveinteger.js");
 const isNumberPositiveSafeFloat = require("./isnumberpositivesafefloat.js");
 const isNumberPositiveSafeInteger = require("./isnumberpositivesafeinteger.js");
 const isNumberSafeFloat = require("./isnumbersafefloat.js");
+const isObject = require("./isobject.js");
 const isRegularExpression = require("./isregularexpression.js");
 const isString = require("./isstring.js");
 const isStringASCII = require("./isstringascii.js");
@@ -71,6 +72,8 @@ module.exports.isNumPstInt = isNumberPositiveInteger;
 module.exports.isNumPstSFlt = isNumberPositiveSafeFloat;
 module.exports.isNumPstSInt = isNumberPositiveSafeInteger;
 module.exports.isNumSFlt = isNumberSafeFloat;
+module.exports.isObj = isObject;
+module.exports.isObject = isObject;
 module.exports.isRegEx = isRegularExpression;
 module.exports.isRegExp = isRegularExpression;
 module.exports.isRegExr = isRegularExpression;

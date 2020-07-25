@@ -4,7 +4,7 @@
 		NodeJS 14
 ==================*/
 const internalService = require("./internalservice.js");
-const isJSON = require("./isjson.js");
+const isObject = require("./isobject.js");
 /**
  * @function isString
  * @alias isStr
@@ -18,7 +18,7 @@ function isString(item, option) {
 	let runtime = {
 		allowWhitespace: true
 	};
-	if (isJSON(option) == true) {
+	if (isObject(option) == true) {
 		if (option.allowWhitespace) {
 			if (typeof option.allowWhitespace != "boolean") {
 				return internalService.typeError(`Invalid type of "option.allowWhitespace"! Require type of boolean.`);

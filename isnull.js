@@ -6,6 +6,7 @@
 const internalService = require("./internalservice.js");
 const isArray = require("./isarray.js");
 const isJSON = require("./isjson.js");
+const isObject = require("./isobject.js");
 const isString = require("./isstring.js");
 /**
  * @function isNull
@@ -23,7 +24,7 @@ function isNull(item, option) {
 		allowStringify: false,
 		allowExtend: false
 	};
-	if (isJSON(option) == true) {
+	if (isObject(option) == true) {
 		if (option.allowStringify) {
 			if (typeof option.allowStringify != "boolean") {
 				return internalService.typeError(`Invalid type of "option.allowStringify"! Require type of boolean.`);

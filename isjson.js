@@ -3,6 +3,7 @@
 	Language:
 		NodeJS 14
 ==================*/
+const isObject = require("./isobject.js");
 /**
  * @function isJSON
  * @description Determine item is type of JSON or not.
@@ -10,10 +11,7 @@
  * @returns {(boolean|null)} Determine result.
  */
 function isJSON(item) {
-	if (
-		typeof item != "object" ||
-		item === null
-	) {
+	if (isObject(item) == false) {
 		return false;
 	};
 	let bin;
