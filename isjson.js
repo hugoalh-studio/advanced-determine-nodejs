@@ -14,15 +14,21 @@ function isJSON(item) {
 	if (isObject(item) == false) {
 		return false;
 	};
-	let bin;
+	let binValue = Object.values(item);
+	for (let index = 0; index < binValue.length; index++) {
+		if (typeof element == "function") {
+			return false;
+		};
+	};
+	let binStringify;
 	try {
-		bin = JSON.stringify(item);
+		binStringify = JSON.stringify(item);
 	} catch (error) {
 		return false;
 	};
 	if (
 		Object.keys(item).length == 0 ||
-		bin === "{}"
+		binStringify === "{}"
 	) {
 		return null;
 	};
