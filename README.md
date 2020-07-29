@@ -39,7 +39,7 @@ NodeJS (v10+) & NPM (v6+):
 
 - `isArray(item)`
 - `isBoolean(item, option?)`
-- `isBuffer(item)`
+- `isBuffer(item, option?)`
 - `isDate(item)`
 - `isJSON(item)`
 - `isNull(item, option?)`
