@@ -33,7 +33,7 @@ function allIs(condition, ...items) {
 	try {
 		typeDeterminer = require(`./is${condition[0].toLowerCase()}.js`);
 	} catch (error) {
-		return internalService.generalError(`Invalid argument "type"! Cannot find the module. (Read the documentation for more information.)`);
+		return internalService.referenceError(`Invalid reference of "type"! Cannot find the module. (Read the documentation for more information.)`);
 	};
 	let resultJSON = {};
 	Promise.allSettled(
