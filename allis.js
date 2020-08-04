@@ -38,9 +38,9 @@ function allIs(condition, ...items) {
 	let resultJSON = {};
 	Promise.allSettled(
 		items.map((item, index) => {
-			new Promise((resolve, reject) => {
+			new Promise(() => {
 				resultJSON[index] = typeDeterminer(item, condition[1]);
-			}).catch((error) => { });
+			}).catch();
 		})
 	);
 	const resultArray = Object.values(resultJSON);
