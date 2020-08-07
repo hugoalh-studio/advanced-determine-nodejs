@@ -4,7 +4,7 @@
 		NodeJS 14
 ==================*/
 const internalService = require("./internalservice.js");
-const isObject = require("./isobject.js");
+const isObjectPair = require("./isobjectpair.js");
 const isString = require("./isstring.js");
 /**
  * @function isBuffer
@@ -19,7 +19,7 @@ function isBuffer(item, option) {
 	let runtime = {
 		method: "node"
 	};
-	if (isObject(option) == true) {
+	if (isObjectPair(option) == true) {
 		if (typeof option.method != "undefined") {
 			if (isString(option.method) != true) {
 				return internalService.typeError(`Invalid type of "option.method"! Require type of string.`);
@@ -34,9 +34,7 @@ function isBuffer(item, option) {
 			);
 			break;
 		case "node":
-			return (
-				Buffer.isBuffer(item)
-			);
+			return Buffer.isBuffer(item);
 			break;
 		default:
 			return internalService.referenceError(`Invalid reference of "option.method"! (Read the documentation for more information.)`);

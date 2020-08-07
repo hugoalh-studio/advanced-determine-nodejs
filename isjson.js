@@ -3,7 +3,7 @@
 	Language:
 		NodeJS 14
 ==================*/
-const isObject = require("./isobject.js");
+const isObjectPair = require("./isobjectpair.js");
 /**
  * @function isJSON
  * @description Determine item is type of JSON or not.
@@ -11,16 +11,16 @@ const isObject = require("./isobject.js");
  * @returns {(boolean|null)} Determine result.
  */
 function isJSON(item) {
-	if (isObject(item) == false) {
-		return false;
+	const isObjectPairResult = isObjectPair(item);
+	if (isObjectPairResult != true) {
+		return isObjectPairResult;
 	};
 	let binValue = Object.values(item);
 	for (let index = 0; index < binValue.length; index++) {
-		let element = item[index];
+		let element = binValue[index];
 		if (
-			(typeof element != "boolean" && typeof element != "number" && typeof element != "object" && typeof element != "string" && Array.isArray(element) == false) ||
-			element === null
-		) {
+			(typeof element != "boolean" && typeof element != "number" && typeof element != "object" && typeof element != "string") ||
+			element === null) {
 			return false;
 		};
 	};
@@ -30,12 +30,8 @@ function isJSON(item) {
 	} catch (error) {
 		return false;
 	};
-	if (
-		Object.keys(item).length == 0 ||
-		binStringify === "{}"
-	) {
-		return null;
-	};
-	return true;
+	return (
+		(Object.keys(item).length > 0 && binStringify !== "{}") ? true : null
+	);
 };
 module.exports = isJSON;

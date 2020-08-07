@@ -21,12 +21,8 @@ function isStringifyJSON(item) {
 	} catch (error) {
 		return false;
 	};
-	if (
-		Object.keys(bin).length == 0 ||
-		item === "{}"
-	) {
-		return null;
-	};
-	return true;
+	return (
+		(Object.keys(bin).length > 0 && item !== "{}") ? true : null
+	);
 };
 module.exports = isStringifyJSON;
