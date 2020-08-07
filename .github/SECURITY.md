@@ -4,14 +4,14 @@
 
 | **Version** | **Support** |
 |:----|:----|
-| v3.0.2 | ✔ |
-| < v3.0.2 | ❌ |
+| v3.1.0 | ✔ |
+| < v3.1.0 | ❌ |
 
 ### Buggy
 
 Version(s) that listed in here were confirmed contains bug(s), and forever not supported (even if listed as a supported version).
 
-- v3.0.1
+- v3.0.X
 - v2.X.X
 - v1.X.X
 

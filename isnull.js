@@ -25,13 +25,13 @@ function isNull(item, option) {
 		allowExtend: false
 	};
 	if (isObject(option) == true) {
-		if (option.allowStringify) {
+		if (typeof option.allowStringify != "undefined") {
 			if (typeof option.allowStringify != "boolean") {
 				return internalService.typeError(`Invalid type of "option.allowStringify"! Require type of boolean.`);
 			};
 			runtime.allowStringify = option.allowStringify;
 		};
-		if (option.allowExtend) {
+		if (typeof option.allowExtend != "undefined") {
 			if (typeof option.allowExtend != "boolean") {
 				return internalService.typeError(`Invalid type of "option.allowExtend"! Require type of boolean.`);
 			};

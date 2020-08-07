@@ -20,7 +20,7 @@ function isBuffer(item, option) {
 		method: "node"
 	};
 	if (isObject(option) == true) {
-		if (option.method) {
+		if (typeof option.method != "undefined") {
 			if (isString(option.method) != true) {
 				return internalService.typeError(`Invalid type of "option.method"! Require type of string.`);
 			};

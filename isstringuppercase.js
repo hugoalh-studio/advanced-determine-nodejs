@@ -16,9 +16,8 @@ function isStringUpperCase(item) {
 		return false;
 	};
 	const bin = item.toUpperCase();
-	if (item !== bin) {
-		return false;
-	};
-	return true;
+	return (
+		item === bin
+	);
 };
 module.exports = isStringUpperCase;

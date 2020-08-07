@@ -17,7 +17,10 @@ function isJSON(item) {
 	let binValue = Object.values(item);
 	for (let index = 0; index < binValue.length; index++) {
 		let element = item[index];
-		if (typeof element != "boolean" && typeof element != "number" && typeof element != "object" && typeof element != "string" && Array.isArray(element) == false) {
+		if (
+			(typeof element != "boolean" && typeof element != "number" && typeof element != "object" && typeof element != "string" && Array.isArray(element) == false) ||
+			element === null
+		) {
 			return false;
 		};
 	};

@@ -8,7 +8,7 @@
  * @alias isObj
  * @description Determine item is type of object or not.
  * @param {*} item Item that need to determine.
- * @returns {boolean} Determine result.
+ * @returns {(boolean|null)} Determine result.
  */
 function isObject(item) {
 	if (
@@ -16,6 +16,12 @@ function isObject(item) {
 		item === null
 	) {
 		return false;
+	};
+	if (
+		Object.keys(item).length == 0 ||
+		item === {}
+	) {
+		return null;
 	};
 	return true;
 };

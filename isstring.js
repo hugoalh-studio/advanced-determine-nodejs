@@ -19,7 +19,7 @@ function isString(item, option) {
 		allowWhitespace: true
 	};
 	if (isObject(option) == true) {
-		if (option.allowWhitespace) {
+		if (typeof option.allowWhitespace != "undefined") {
 			if (typeof option.allowWhitespace != "boolean") {
 				return internalService.typeError(`Invalid type of "option.allowWhitespace"! Require type of boolean.`);
 			};

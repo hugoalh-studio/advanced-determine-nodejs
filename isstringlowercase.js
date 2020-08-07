@@ -16,9 +16,8 @@ function isStringLowerCase(item) {
 		return false;
 	};
 	const bin = item.toLowerCase();
-	if (item !== bin) {
-		return false;
-	};
-	return true;
+	return (
+		item === bin
+	);
 };
 module.exports = isStringLowerCase;

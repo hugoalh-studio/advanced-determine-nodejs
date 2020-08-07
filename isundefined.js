@@ -19,7 +19,7 @@ function isUndefined(item, option) {
 		allowStringify: false
 	};
 	if (isObject(option) == true) {
-		if (option.allowStringify) {
+		if (typeof option.allowStringify != "undefined") {
 			if (typeof option.allowStringify != "boolean") {
 				return internalService.typeError(`Invalid type of "option.allowStringify"! Require type of boolean.`);
 			};
