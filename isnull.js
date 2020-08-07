@@ -49,7 +49,7 @@ function isNull(item, option) {
 		if (
 			isArray(item) == null ||
 			isObjectPair(item) == null ||
-			isString(item) == null
+			isString(item, option) == null
 		) {
 			return true;
 		};
