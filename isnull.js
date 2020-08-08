@@ -5,8 +5,7 @@
 ==================*/
 const internalService = require("./internalservice.js");
 const isArray = require("./isarray.js");
-const isJSON = require("./isjson.js");
-const isObject = require("./isobject.js");
+const isObjectPair = require("./isobjectpair.js");
 const isString = require("./isstring.js");
 /**
  * @function isNull
@@ -24,14 +23,14 @@ function isNull(item, option) {
 		allowStringify: false,
 		allowExtend: false
 	};
-	if (isObject(option) == true) {
-		if (option.allowStringify) {
+	if (isObjectPair(option) == true) {
+		if (typeof option.allowStringify != "undefined") {
 			if (typeof option.allowStringify != "boolean") {
 				return internalService.typeError(`Invalid type of "option.allowStringify"! Require type of boolean.`);
 			};
 			runtime.allowStringify = option.allowStringify;
 		};
-		if (option.allowExtend) {
+		if (typeof option.allowExtend != "undefined") {
 			if (typeof option.allowExtend != "boolean") {
 				return internalService.typeError(`Invalid type of "option.allowExtend"! Require type of boolean.`);
 			};
@@ -49,7 +48,7 @@ function isNull(item, option) {
 	if (runtime.allowExtend == true) {
 		if (
 			isArray(item) == null ||
-			isJSON(item) == null ||
+			isObjectPair(item) == null ||
 			isString(item, option) == null
 		) {
 			return true;

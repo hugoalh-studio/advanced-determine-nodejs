@@ -4,7 +4,7 @@
 		NodeJS 14
 ==================*/
 const internalService = require("./internalservice.js");
-const isObject = require("./isobject.js");
+const isObjectPair = require("./isobjectpair.js");
 /**
  * @function isString
  * @alias isStr
@@ -18,8 +18,8 @@ function isString(item, option) {
 	let runtime = {
 		allowWhitespace: true
 	};
-	if (isObject(option) == true) {
-		if (option.allowWhitespace) {
+	if (isObjectPair(option) == true) {
+		if (typeof option.allowWhitespace != "undefined") {
 			if (typeof option.allowWhitespace != "boolean") {
 				return internalService.typeError(`Invalid type of "option.allowWhitespace"! Require type of boolean.`);
 			};
@@ -32,9 +32,8 @@ function isString(item, option) {
 	if (runtime.allowWhitespace == false) {
 		item = item.replace(/[\s\t\r\n]/gu, "");
 	};
-	if (item.length == 0) {
-		return null;
-	};
-	return true;
+	return (
+		(item.length > 0) ? true : null
+	);
 };
 module.exports = isString;

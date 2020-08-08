@@ -11,12 +11,8 @@
  * @returns {boolean} Determine result.
  */
 function isObject(item) {
-	if (
-		typeof item != "object" ||
-		item === null
-	) {
-		return false;
-	};
-	return true;
+	return (
+		typeof item == "object" && item !== null && Array.isArray(item) == false
+	);
 };
 module.exports = isObject;

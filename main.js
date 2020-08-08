@@ -6,7 +6,7 @@
 /**
  * @const {string} version
  */
-const version = "3.0.2";
+const version = "3.1.0";
 
 const configuration = require("./configuration.js");
 const isArray = require("./isarray.js");
@@ -26,6 +26,7 @@ const isNumberPositiveSafeFloat = require("./isnumberpositivesafefloat.js");
 const isNumberPositiveSafeInteger = require("./isnumberpositivesafeinteger.js");
 const isNumberSafeFloat = require("./isnumbersafefloat.js");
 const isObject = require("./isobject.js");
+const isObjectPair = require("./isobjectpair.js");
 const isRegularExpression = require("./isregularexpression.js");
 const isString = require("./isstring.js");
 const isStringASCII = require("./isstringascii.js");
@@ -34,6 +35,7 @@ const isStringLowerCase = require("./isstringlowercase.js");
 const isStringUpperCase = require("./isstringuppercase.js");
 const isUndefined = require("./isundefined.js");
 module.exports.allIs = require("./allis.js");
+module.exports.allIsNot = require("./allisnot.js");
 module.exports.cfg = configuration;
 module.exports.config = configuration;
 module.exports.configuration = configuration;
@@ -74,6 +76,10 @@ module.exports.isNumPstSInt = isNumberPositiveSafeInteger;
 module.exports.isNumSFlt = isNumberSafeFloat;
 module.exports.isObj = isObject;
 module.exports.isObject = isObject;
+module.exports.isObjectPair = isObjectPair;
+module.exports.isObjectPlain = isObjectPair;
+module.exports.isObjPair = isObjectPair;
+module.exports.isObjPlain = isObjectPair;
 module.exports.isRegEx = isRegularExpression;
 module.exports.isRegExp = isRegularExpression;
 module.exports.isRegExr = isRegularExpression;

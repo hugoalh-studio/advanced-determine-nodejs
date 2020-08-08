@@ -4,7 +4,7 @@
 		NodeJS 14
 ==================*/
 const internalService = require("./internalservice.js");
-const isObject = require("./isobject.js");
+const isObjectPair = require("./isobjectpair.js");
 /**
  * @function isBoolean
  * @description Determine item is type of boolean or not.
@@ -17,8 +17,8 @@ function isBoolean(item, option) {
 	let runtime = {
 		allowStringify: false
 	};
-	if (isObject(option) == true) {
-		if (option.allowStringify) {
+	if (isObjectPair(option) == true) {
+		if (typeof option.allowStringify != "undefined") {
 			if (typeof option.allowStringify != "boolean") {
 				return internalService.typeError(`Invalid type of "option.allowStringify"! Require type of boolean.`);
 			};
