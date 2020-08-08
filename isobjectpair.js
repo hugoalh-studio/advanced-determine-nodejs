@@ -17,8 +17,8 @@ function isObjectPair(item) {
 	if (isObject(item) != true) {
 		return false;
 	};
-	if (Object.entries(item).length > 0) {
-		return true;
+	if (Object.entries(item).length > 0 && Object.keys(item).length == Object.values(item).length) {
+		return (item.constructor.name.toLowerCase() == "object");
 	};
 	let bin = item;
 	while (Object.getPrototypeOf(bin) !== null) {

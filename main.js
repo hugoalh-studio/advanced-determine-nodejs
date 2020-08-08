@@ -35,6 +35,7 @@ const isStringLowerCase = require("./isstringlowercase.js");
 const isStringUpperCase = require("./isstringuppercase.js");
 const isUndefined = require("./isundefined.js");
 module.exports.allIs = require("./allis.js");
+module.exports.allIsNot = require("./allisnot.js");
 module.exports.cfg = configuration;
 module.exports.config = configuration;
 module.exports.configuration = configuration;
