@@ -6,6 +6,12 @@
 const internalService = require("./internalservice.js");
 const isArray = require("./isarray.js");
 const isString = require("./isstring.js");
+/**
+ * @function batchInternal
+ * @param {(string|[string, object])} condition
+ * @param {...*} items
+ * @returns {(boolean|null)[]}
+ */
 function batchInternal(condition, ...items) {
 	let typeDeterminerName,
 		option;
