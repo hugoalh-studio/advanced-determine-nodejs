@@ -37,7 +37,6 @@ const isStringUpperCase = require("./isstringuppercase.js");
 const isUndefined = require("./isundefined.js");
 module.exports.allIs = batch.allIs;
 module.exports.allIsNot = batch.allIsNot;
-module.exports.batch = batch;
 module.exports.cfg = configuration;
 module.exports.config = configuration;
 module.exports.configuration = configuration;
