@@ -50,7 +50,6 @@ function batchInternal(condition, ...items) {
 };
 /**
  * @function allIs
- * @alias batch.allIs
  * @description Determine items are the same type or not.
  * @param {(string|[string, object])} condition Type to determine; or with type determiner option.
  * @param  {...*} items Items that need to determine.
@@ -68,7 +67,6 @@ function allIs(condition, ...items) {
 };
 /**
  * @function allIsNot
- * @alias batch.allIsNot
  * @description Determine items are not the same type or not.
  * @param {(string|[string, object])} condition Type to determine; or with type determiner option.
  * @param  {...*} items Items that need to determine.
