@@ -21,7 +21,7 @@ function isString(item, option) {
 	if (isObjectPair(option) == true) {
 		if (typeof option.allowWhitespace != "undefined") {
 			if (typeof option.allowWhitespace != "boolean") {
-				return internalService.typeError(`Invalid type of "option.allowWhitespace"! Require type of boolean.`);
+				return internalService.prefabTypeError("option.allowWhitespace", "boolean");
 			};
 			runtime.allowWhitespace = option.allowWhitespace;
 		};

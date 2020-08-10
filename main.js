@@ -6,10 +6,9 @@
 /**
  * @const {string} version
  */
-const version = "3.1.0";
+const version = "3.2.0";
 
 const batch = require("./batchdetermine.js");
-const configuration = require("./configuration.js");
 const isArray = require("./isarray.js");
 const isBuffer = require("./isbuffer.js");
 const isNull = require("./isnull.js");
@@ -37,9 +36,6 @@ const isStringUpperCase = require("./isstringuppercase.js");
 const isUndefined = require("./isundefined.js");
 module.exports.allIs = batch.allIs;
 module.exports.allIsNot = batch.allIsNot;
-module.exports.cfg = configuration;
-module.exports.config = configuration;
-module.exports.configuration = configuration;
 module.exports.isArr = isArray;
 module.exports.isArray = isArray;
 module.exports.isBoolean = require("./isboolean.js");

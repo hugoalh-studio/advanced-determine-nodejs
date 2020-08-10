@@ -26,13 +26,13 @@ function isNull(item, option) {
 	if (isObjectPair(option) == true) {
 		if (typeof option.allowStringify != "undefined") {
 			if (typeof option.allowStringify != "boolean") {
-				return internalService.typeError(`Invalid type of "option.allowStringify"! Require type of boolean.`);
+				return internalService.prefabTypeError("option.allowStringify", "boolean");
 			};
 			runtime.allowStringify = option.allowStringify;
 		};
 		if (typeof option.allowExtend != "undefined") {
 			if (typeof option.allowExtend != "boolean") {
-				return internalService.typeError(`Invalid type of "option.allowExtend"! Require type of boolean.`);
+				return internalService.prefabTypeError("option.allowExtend", "boolean");
 			};
 			runtime.allowExtend = option.allowExtend;
 		};

@@ -3,8 +3,8 @@
 	Language:
 		NodeJS 14
 ==================*/
-const configuration = require("./configuration.js");
 /**
+ * @private
  * @const {object} moduleMap
  */
 const moduleMap = {
@@ -67,55 +67,14 @@ const moduleMap = {
 	"undefined": "undefined"
 };
 /**
- * @function generalError
- * @param {string} message
- * @returns {undefined}
+ * @private
+ * @function prefabTypeError
+ * @param {string} argumentName
+ * @param {string} typeCondition
+ * @returns {TypeError}
  */
-function generalError(message) {
-	if (configuration.ignoreGeneralError() == true) {
-		console.error(message);
-		return undefined;
-	};
-	throw new Error(message);
-};
-/**
- * @function rangeError
- * @param {string} message
- * @returns {undefined}
- */
-function rangeError(message) {
-	if (configuration.ignoreRangeError() == true) {
-		console.error(message);
-		return undefined;
-	};
-	throw new RangeError(message);
-};
-/**
- * @function referenceError
- * @param {string} message
- * @returns {undefined}
- */
-function referenceError(message) {
-	if (configuration.ignoreReferenceError() == true) {
-		console.error(message);
-		return undefined;
-	};
-	throw new ReferenceError(message);
-};
-/**
- * @function typeError
- * @param {string} message
- * @returns {undefined}
- */
-function typeError(message) {
-	if (configuration.ignoreTypeError() == true) {
-		console.error(message);
-		return undefined;
-	};
-	throw new TypeError(message);
+function prefabTypeError(argumentName, typeCondition) {
+	throw new TypeError(`Invalid type of "${argumentName}"! Require type of ${typeCondition}.`);
 };
 module.exports.moduleMap = moduleMap;
-module.exports.generalError = generalError;
-module.exports.rangeError = rangeError;
-module.exports.referenceError = referenceError;
-module.exports.typeError = typeError;
+module.exports.prefabTypeError = prefabTypeError;

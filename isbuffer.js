@@ -22,7 +22,7 @@ function isBuffer(item, option) {
 	if (isObjectPair(option) == true) {
 		if (typeof option.method != "undefined") {
 			if (isString(option.method) != true) {
-				return internalService.typeError(`Invalid type of "option.method"! Require type of string.`);
+				return internalService.prefabTypeError("option.method", "string");
 			};
 			runtime.method = option.method.toLowerCase();
 		};
@@ -37,7 +37,7 @@ function isBuffer(item, option) {
 			return Buffer.isBuffer(item);
 			break;
 		default:
-			return internalService.referenceError(`Invalid reference of "option.method"! (Read the documentation for more information.)`);
+			throw new ReferenceError(`Invalid reference of "option.method"! (Read the documentation for more information.)`);
 			break;
 	};
 };

@@ -20,7 +20,7 @@ function isBoolean(item, option) {
 	if (isObjectPair(option) == true) {
 		if (typeof option.allowStringify != "undefined") {
 			if (typeof option.allowStringify != "boolean") {
-				return internalService.typeError(`Invalid type of "option.allowStringify"! Require type of boolean.`);
+				return internalService.prefabTypeError("option.allowStringify", "boolean");
 			};
 			runtime.allowStringify = option.allowStringify;
 		};

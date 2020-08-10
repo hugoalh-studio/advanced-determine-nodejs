@@ -7,6 +7,7 @@ const internalService = require("./internalservice.js");
 const isArray = require("./isarray.js");
 const isString = require("./isstring.js");
 /**
+ * @private
  * @function batchInternal
  * @param {(string|[string, object])} condition
  * @param {...*} items
@@ -17,32 +18,32 @@ function batchInternal(condition, ...items) {
 		option;
 	if (isString(condition) == true) {
 		if (condition.search(/[^a-z]/giu) != -1) {
-			return internalService.referenceError(`Invalid reference of "type"! (Read the documentation for more information.)`);
+			throw new ReferenceError(`Invalid reference of "type"! (Read the documentation for more information.)`);
 		};
 		typeDeterminerName = condition;
 	} else if (isArray(condition) == true) {
 		if (isString(condition[0]) != true) {
-			return internalService.typeError(`Invalid type of "type"! Require type of string.`);
+			return internalService.prefabTypeError("type", "string");
 		};
 		if (condition[0].search(/[^a-z]/giu) != -1) {
-			return internalService.referenceError(`Invalid reference of "type"! (Read the documentation for more information.)`);
+			throw new ReferenceError(`Invalid reference of "type"! (Read the documentation for more information.)`);
 		};
 		[typeDeterminerName, option] = condition;
 	} else {
-		return internalService.typeError(`Invalid type of "condition"! Require type of string, or array.`);
+		return internalService.prefabTypeError("condition", "string, or array");
 	};
 	if (items.length == 0) {
-		return internalService.generalError(`No input of "items"!`);
+		throw new Error(`No input of "items"!`);
 	};
 	let typeDeterminerFile = internalService.moduleMap[typeDeterminerName.toLowerCase()];
 	if (typeof typeDeterminerFile != "string") {
-		return internalService.referenceError(`Invalid reference of "type"! (Read the documentation for more information.)`);
+		throw new ReferenceError(`Invalid reference of "type"! (Read the documentation for more information.)`);
 	};
 	let typeDeterminerFunction;
 	try {
 		typeDeterminerFunction = require(`./is${typeDeterminerFile}.js`);
 	} catch (error) {
-		return internalService.generalError(`Cannot find the module "${typeDeterminerFile}"! Seems missing file(s).`);
+		throw new Error(`Cannot find the module "${typeDeterminerFile}"! Seems missing file(s).`);
 	};
 	let resultJSON = {};
 	Promise.allSettled(
