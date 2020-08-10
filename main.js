@@ -8,6 +8,7 @@
  */
 const version = "3.1.0";
 
+const batch = require("./batchdetermine.js");
 const configuration = require("./configuration.js");
 const isArray = require("./isarray.js");
 const isBuffer = require("./isbuffer.js");
@@ -34,8 +35,8 @@ const isStringifyJSON = require("./isstringifyjson.js");
 const isStringLowerCase = require("./isstringlowercase.js");
 const isStringUpperCase = require("./isstringuppercase.js");
 const isUndefined = require("./isundefined.js");
-module.exports.allIs = require("./allis.js");
-module.exports.allIsNot = require("./allisnot.js");
+module.exports.allIs = batch.allIs;
+module.exports.allIsNot = batch.allIsNot;
 module.exports.cfg = configuration;
 module.exports.config = configuration;
 module.exports.configuration = configuration;
