@@ -64,13 +64,10 @@ function batchInternal(condition, ...items) {
  */
 function allIs(condition, ...items) {
 	const resultArray = batchInternal(condition, ...items);
-	if (
+	return (!(
 		resultArray.includes(false) == true ||
 		resultArray.includes(null) == true
-	) {
-		return false;
-	};
-	return true;
+	));
 };
 /**
  * @function allIsNot
@@ -81,13 +78,10 @@ function allIs(condition, ...items) {
  */
 function allIsNot(condition, ...items) {
 	const resultArray = batchInternal(condition, ...items);
-	if (
+	return (!(
 		resultArray.includes(true) == true ||
 		resultArray.includes(null) == true
-	) {
-		return false;
-	};
-	return true;
+	));
 };
 module.exports.allIs = allIs;
 module.exports.allIsNot = allIsNot;
