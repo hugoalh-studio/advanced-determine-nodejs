@@ -45,15 +45,15 @@ function batchInternal(condition, ...items) {
 	} catch (error) {
 		throw new Error(`Cannot find the module "${typeDeterminerFile}"! Seems missing file(s).`);
 	};
-	let resultJSON = {};
+	let resultObject = {};
 	Promise.allSettled(
 		items.map((item, index) => {
 			new Promise(() => {
-				resultJSON[index] = typeDeterminerFunction(item, option);
+				resultObject[index] = typeDeterminerFunction(item, option);
 			}).catch();
 		})
 	);
-	return Object.values(resultJSON);
+	return Object.values(resultObject);
 };
 /**
  * @function allIs
