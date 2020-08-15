@@ -68,6 +68,16 @@ const moduleMap = {
 };
 /**
  * @private
+ * @function prefabReferenceError
+ * @param {string} argumentName
+ * @param {string} [description="(Read the documentation for more information.)"]
+ * @returns {ReferenceError}
+ */
+function prefabReferenceError(argumentName, description = "(Read the documentation for more information.)") {
+	throw new ReferenceError(`Invalid reference of "${argumentName}"! ${description}`);
+};
+/**
+ * @private
  * @function prefabTypeError
  * @param {string} argumentName
  * @param {string} typeCondition
@@ -77,4 +87,5 @@ function prefabTypeError(argumentName, typeCondition) {
 	throw new TypeError(`Invalid type of "${argumentName}"! Require type of ${typeCondition}.`);
 };
 module.exports.moduleMap = moduleMap;
+module.exports.prefabReferenceError = prefabReferenceError;
 module.exports.prefabTypeError = prefabTypeError;

@@ -44,6 +44,7 @@ NodeJS (v10+) & NPM (v6+):
 - `isJSON(item)`
 - `isNull(item, option?)`
 - `isNumber(item)`
+- `isObject(item)`
 - `isRegularExpression(item)`
 - `isString(item, option?)`
 - `isStringASCII(item)`
@@ -51,21 +52,22 @@ NodeJS (v10+) & NPM (v6+):
 - `isStringLowerCase(item)`
 - `isStringUpperCase(item)`
 - `isUndefined(item, option?)`
+- `typeOf(item)`
 
 ### Example
 
 ```javascript
 const advancedDetermine = require("@hugoalh/advanced-determine");
 
-console.log(advancedDetermine.isString(""));// null
+console.log(advancedDetermine.isArray([]));// null
+console.log(advancedDetermine.isNull("", { allowExtend: true }));// true
+console.log(advancedDetermine.isNull(""));// false
 console.log(advancedDetermine.isNull("null", { allowStringify: false }));// false
 console.log(advancedDetermine.isNull("null", { allowStringify: true }));// true
-console.log(advancedDetermine.isNull(""));// false
-console.log(advancedDetermine.isNull("", { allowExtend: true }));// true
-console.log(advancedDetermine.isArray([]));// null
+console.log(advancedDetermine.isNumberFloat(-8.31));// true
+console.log(advancedDetermine.isNumberFloat(51));// false
+console.log(advancedDetermine.isString(""));// null
 console.log(advancedDetermine.isStringLowerCase("Test word."));// false
 console.log(advancedDetermine.isStringLowerCase("word"));// true
 console.log(advancedDetermine.isStringUpperCase("NO"));// true
-console.log(advancedDetermine.isNumberFloat(-8.31));// true
-console.log(advancedDetermine.isNumberFloat(51));// false
 ```

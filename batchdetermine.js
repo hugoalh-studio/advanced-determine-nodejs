@@ -18,7 +18,7 @@ function batchInternal(condition, ...items) {
 		option;
 	if (isString(condition) == true) {
 		if (condition.search(/[^a-z]/giu) != -1) {
-			throw new ReferenceError(`Invalid reference of "type"! (Read the documentation for more information.)`);
+			return internalService.prefabReferenceError("type");
 		};
 		typeDeterminerName = condition;
 	} else if (isArray(condition) == true) {
@@ -26,7 +26,7 @@ function batchInternal(condition, ...items) {
 			return internalService.prefabTypeError("type", "string");
 		};
 		if (condition[0].search(/[^a-z]/giu) != -1) {
-			throw new ReferenceError(`Invalid reference of "type"! (Read the documentation for more information.)`);
+			return internalService.prefabReferenceError("type");
 		};
 		[typeDeterminerName, option] = condition;
 	} else {
@@ -37,7 +37,7 @@ function batchInternal(condition, ...items) {
 	};
 	let typeDeterminerFile = internalService.moduleMap[typeDeterminerName.toLowerCase()];
 	if (typeof typeDeterminerFile != "string") {
-		throw new ReferenceError(`Invalid reference of "type"! (Read the documentation for more information.)`);
+		return internalService.prefabReferenceError("type");
 	};
 	let typeDeterminerFunction;
 	try {

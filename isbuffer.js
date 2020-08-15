@@ -37,7 +37,7 @@ function isBuffer(item, option) {
 			return Buffer.isBuffer(item);
 			break;
 		default:
-			throw new ReferenceError(`Invalid reference of "option.method"! (Read the documentation for more information.)`);
+			return internalService.prefabReferenceError("option.method");
 			break;
 	};
 };

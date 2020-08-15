@@ -6,7 +6,7 @@
 /**
  * @const {string} version
  */
-const version = "3.2.0";
+const version = "3.2.1";
 
 const batch = require("./batchdetermine.js");
 const isArray = require("./isarray.js");
@@ -93,6 +93,7 @@ module.exports.isStrL = isStringLowerCase;
 module.exports.isStrU = isStringUpperCase;
 module.exports.isUdf = isUndefined;
 module.exports.isUndefined = isUndefined;
+module.exports.typeOf = require("./typeof.js");
 module.exports.v = version;
 module.exports.ver = version;
 module.exports.version = version;
