@@ -33,7 +33,7 @@ function batchInternal(condition, ...items) {
 		return internalService.prefabTypeError("condition", "string, or array");
 	};
 	if (items.length == 0) {
-		throw new Error(`No input of "items"!`);
+		return internalService.prefabNoInputError("items");
 	};
 	let typeDeterminerFile = internalService.moduleMap[typeDeterminerName.toLowerCase()];
 	if (typeof typeDeterminerFile != "string") {
@@ -43,7 +43,7 @@ function batchInternal(condition, ...items) {
 	try {
 		typeDeterminerFunction = require(`./is${typeDeterminerFile}.js`);
 	} catch (error) {
-		throw new Error(`Cannot find the module "${typeDeterminerFile}"! Seems missing file(s).`);
+		throw new Error(`Cannot find the module "is${typeDeterminerFile}.js"! Seems missing file(s).`);
 	};
 	let resultObject = {};
 	Promise.allSettled(
