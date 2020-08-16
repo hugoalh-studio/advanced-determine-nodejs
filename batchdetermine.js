@@ -18,7 +18,7 @@ function batchInternal(condition, ...items) {
 		option;
 	if (isString(condition) == true) {
 		if (condition.search(/[^a-z]/giu) != -1) {
-			throw new ReferenceError(`Invalid reference of "type"! (Read the documentation for more information.)`);
+			return internalService.prefabReferenceError("type");
 		};
 		typeDeterminerName = condition;
 	} else if (isArray(condition) == true) {
@@ -26,24 +26,24 @@ function batchInternal(condition, ...items) {
 			return internalService.prefabTypeError("type", "string");
 		};
 		if (condition[0].search(/[^a-z]/giu) != -1) {
-			throw new ReferenceError(`Invalid reference of "type"! (Read the documentation for more information.)`);
+			return internalService.prefabReferenceError("type");
 		};
 		[typeDeterminerName, option] = condition;
 	} else {
 		return internalService.prefabTypeError("condition", "string, or array");
 	};
 	if (items.length == 0) {
-		throw new Error(`No input of "items"!`);
+		return internalService.prefabNoInputError("items");
 	};
 	let typeDeterminerFile = internalService.moduleMap[typeDeterminerName.toLowerCase()];
 	if (typeof typeDeterminerFile != "string") {
-		throw new ReferenceError(`Invalid reference of "type"! (Read the documentation for more information.)`);
+		return internalService.prefabReferenceError("type");
 	};
 	let typeDeterminerFunction;
 	try {
 		typeDeterminerFunction = require(`./is${typeDeterminerFile}.js`);
 	} catch (error) {
-		throw new Error(`Cannot find the module "${typeDeterminerFile}"! Seems missing file(s).`);
+		throw new Error(`Cannot find the module "is${typeDeterminerFile}.js"! Seems missing file(s).`);
 	};
 	let resultObject = {};
 	Promise.allSettled(
