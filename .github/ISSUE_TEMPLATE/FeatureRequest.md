@@ -2,7 +2,7 @@
 name: "Feature Request"
 about: "Suggest an idea."
 title: ""
-labels: "enhancement➕", "unconfirm📋"
+labels: "enhancement➕,unconfirm📋"
 assignees: ""
 ---
 ## Describe

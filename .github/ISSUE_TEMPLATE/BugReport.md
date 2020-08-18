@@ -2,7 +2,7 @@
 name: "Bug Report"
 about: "Report a bug."
 title: ""
-labels: "bug🐛", "unconfirm📋"
+labels: "bug🐛,unconfirm📋"
 assignees: ""
 ---
 ## Describe

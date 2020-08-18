@@ -2,7 +2,7 @@
 name: "文檔問題"
 about: "報告一個文檔問題。"
 title: ""
-labels: "documentation📚", "unconfirm📋"
+labels: "documentation📚,unconfirm📋"
 assignees: ""
 ---
 ## 頁面
