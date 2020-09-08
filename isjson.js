@@ -14,7 +14,7 @@ function isJSON(item) {
 	const isObjectPairResult = isObjectPair(item);
 	if (isObjectPairResult != true) {
 		return isObjectPairResult;
-	};
+	}
 	let binValue = Object.values(item);
 	for (let index = 0; index < binValue.length; index++) {
 		let element = binValue[index];
@@ -22,16 +22,16 @@ function isJSON(item) {
 			(typeof element != "boolean" && typeof element != "number" && typeof element != "object" && typeof element != "string") ||
 			element === null) {
 			return false;
-		};
-	};
+		}
+	}
 	let binStringify;
 	try {
 		binStringify = JSON.stringify(item);
 	} catch (error) {
 		return false;
-	};
+	}
 	return (
-		(Object.keys(item).length > 0 && binStringify !== "{}") ? true : null
+		Object.keys(item).length > 0 && binStringify !== "{}" ? true : null
 	);
-};
+}
 module.exports = isJSON;

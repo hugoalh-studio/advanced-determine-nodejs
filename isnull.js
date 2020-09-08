@@ -27,24 +27,24 @@ function isNull(item, option) {
 		if (typeof option.allowStringify != "undefined") {
 			if (typeof option.allowStringify != "boolean") {
 				return internalService.prefabTypeError("option.allowStringify", "boolean");
-			};
+			}
 			runtime.allowStringify = option.allowStringify;
-		};
+		}
 		if (typeof option.allowExtend != "undefined") {
 			if (typeof option.allowExtend != "boolean") {
 				return internalService.prefabTypeError("option.allowExtend", "boolean");
-			};
+			}
 			runtime.allowExtend = option.allowExtend;
-		};
-	};
+		}
+	}
 	if (item === null) {
 		return true;
-	};
+	}
 	if (runtime.allowStringify == true) {
 		if (item === "null") {
 			return true;
-		};
-	};
+		}
+	}
 	if (runtime.allowExtend == true) {
 		if (
 			isArray(item) == null ||
@@ -52,8 +52,8 @@ function isNull(item, option) {
 			isString(item, option) == null
 		) {
 			return true;
-		};
-	};
+		}
+	}
 	return false;
-};
+}
 module.exports = isNull;

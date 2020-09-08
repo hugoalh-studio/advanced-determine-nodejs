@@ -14,5 +14,5 @@ function isNumber(item) {
 	return (
 		typeof item == "number" && Number.isNaN(item) == false
 	);
-};
+}
 module.exports = isNumber;

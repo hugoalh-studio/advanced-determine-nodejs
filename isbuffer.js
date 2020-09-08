@@ -23,10 +23,10 @@ function isBuffer(item, option) {
 		if (typeof option.method != "undefined") {
 			if (isString(option.method) != true) {
 				return internalService.prefabTypeError("option.method", "string");
-			};
+			}
 			runtime.method = option.method.toLowerCase();
-		};
-	};
+		}
+	}
 	switch (runtime.method) {
 		case "classic":
 			return (
@@ -39,6 +39,6 @@ function isBuffer(item, option) {
 		default:
 			return internalService.prefabReferenceError("option.method");
 			break;
-	};
-};
+	}
+}
 module.exports = isBuffer;

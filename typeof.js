@@ -24,21 +24,21 @@ function typeOf(item) {
 			break;
 		case "number":
 			return (
-				(Number.isNaN(item) == true) ? "nan" : "number"
+				Number.isNaN(item) == true ? "nan" : "number"
 			);
 			break;
 		case "object":
 			if (isArray(item) != false) {
 				return "array";
-			};
+			}
 			if (isNull(item) != false) {
 				return "null";
-			};
+			}
 			return "object";
 			break;
 		default:
 			return undefined;
 			break;
-	};
-};
+	}
+}
 module.exports = typeOf;

@@ -15,5 +15,5 @@ function isNumberNegativeSafeInteger(item) {
 	return (
 		isNumberNegative(item) == true && Number.isSafeInteger(item) == true
 	);
-};
+}
 module.exports = isNumberNegativeSafeInteger;

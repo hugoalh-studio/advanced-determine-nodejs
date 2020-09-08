@@ -15,5 +15,5 @@ function isNumberPositiveInteger(item) {
 	return (
 		isNumberPositive(item) == true && Number.isInteger(item) == true
 	);
-};
+}
 module.exports = isNumberPositiveInteger;

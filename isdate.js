@@ -13,5 +13,5 @@ function isDate(item) {
 	return (
 		item instanceof Date
 	);
-};
+}
 module.exports = isDate;

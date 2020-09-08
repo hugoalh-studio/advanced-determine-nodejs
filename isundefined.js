@@ -22,18 +22,18 @@ function isUndefined(item, option) {
 		if (typeof option.allowStringify != "undefined") {
 			if (typeof option.allowStringify != "boolean") {
 				return internalService.prefabTypeError("option.allowStringify", "boolean");
-			};
+			}
 			runtime.allowStringify = option.allowStringify;
-		};
-	};
+		}
+	}
 	if (typeof item == "undefined") {
 		return true;
-	};
+	}
 	if (runtime.allowStringify == true) {
 		if (item === "undefined") {
 			return true;
-		};
-	};
+		}
+	}
 	return false;
-};
+}
 module.exports = isUndefined;

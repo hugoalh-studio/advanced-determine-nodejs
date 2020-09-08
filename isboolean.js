@@ -21,21 +21,21 @@ function isBoolean(item, option) {
 		if (typeof option.allowStringify != "undefined") {
 			if (typeof option.allowStringify != "boolean") {
 				return internalService.prefabTypeError("option.allowStringify", "boolean");
-			};
+			}
 			runtime.allowStringify = option.allowStringify;
-		};
-	};
+		}
+	}
 	if (typeof item == "boolean") {
 		return true;
-	};
+	}
 	if (runtime.allowStringify == true) {
 		if (
 			item === "true" ||
 			item === "false"
 		) {
 			return true;
-		};
-	};
+		}
+	}
 	return false;
-};
+}
 module.exports = isBoolean;

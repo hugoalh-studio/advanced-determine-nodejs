@@ -15,5 +15,5 @@ function isNumberPositiveSafeFloat(item) {
 	return (
 		isNumberPositiveFloat(item) == true && item < Number.MAX_SAFE_INTEGER
 	);
-};
+}
 module.exports = isNumberPositiveSafeFloat;

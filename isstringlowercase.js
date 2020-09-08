@@ -14,9 +14,9 @@ const isString = require("./isstring.js");
 function isStringLowerCase(item) {
 	if (isString(item) != true) {
 		return false;
-	};
+	}
 	return (
 		item === item.toLowerCase()
 	);
-};
+}
 module.exports = isStringLowerCase;

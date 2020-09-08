@@ -14,5 +14,5 @@ function isObject(item) {
 	return (
 		typeof item == "object" && item !== null && Array.isArray(item) == false
 	);
-};
+}
 module.exports = isObject;

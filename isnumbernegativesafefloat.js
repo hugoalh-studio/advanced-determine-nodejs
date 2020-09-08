@@ -15,5 +15,5 @@ function isNumberNegativeSafeFloat(item) {
 	return (
 		isNumberNegativeFloat(item) == true && item > Number.MIN_SAFE_INTEGER
 	);
-};
+}
 module.exports = isNumberNegativeSafeFloat;

@@ -22,18 +22,18 @@ function isString(item, option) {
 		if (typeof option.allowWhitespace != "undefined") {
 			if (typeof option.allowWhitespace != "boolean") {
 				return internalService.prefabTypeError("option.allowWhitespace", "boolean");
-			};
+			}
 			runtime.allowWhitespace = option.allowWhitespace;
-		};
-	};
+		}
+	}
 	if (typeof item != "string") {
 		return false;
-	};
+	}
 	if (runtime.allowWhitespace == false) {
 		item = item.replace(/[\s\t\r\n]/gu, "");
-	};
+	}
 	return (
-		(item.length > 0) ? true : null
+		item.length > 0 ? true : null
 	);
-};
+}
 module.exports = isString;
