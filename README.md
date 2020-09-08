@@ -38,20 +38,20 @@ NodeJS (v10+) & NPM (v6+):
 ### API
 
 - `isArray(item)`
-- `isBoolean(item[, option])`
-- `isBuffer(item[, option])`
+- `isBoolean(item, option?)`
+- `isBuffer(item, option?)`
 - `isDate(item)`
 - `isJSON(item)`
-- `isNull(item[, option])`
+- `isNull(item, option?)`
 - `isNumber(item)`
 - `isObject(item)`
 - `isRegularExpression(item)`
-- `isString(item[, option])`
+- `isString(item, option?)`
 - `isStringASCII(item)`
 - `isStringifyJSON(item)`
 - `isStringLowerCase(item)`
 - `isStringUpperCase(item)`
-- `isUndefined(item[, option])`
+- `isUndefined(item, option?)`
 - `typeOf(item)`
 
 ### Example
