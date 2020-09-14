@@ -1,6 +1,15 @@
 # \[NodeJS\] Advanced Determine
 
 [`hugoalh-studio/NodeJS.AdvancedDetermine`](https://github.com/hugoalh-studio/NodeJS.AdvancedDetermine)
+![GitHub Language Count](https://img.shields.io/github/languages/count/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square)
+![GitHub Top Langauge](https://img.shields.io/github/languages/top/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square)
+![GitHub Repo Size](https://img.shields.io/github/repo-size/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square)
+![GitHub Code Size](https://img.shields.io/github/languages/code-size/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square)
+![GitHub Watcher](https://img.shields.io/github/watchers/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square)
+![GitHub Star](https://img.shields.io/github/stars/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square)
+![GitHub Fork](https://img.shields.io/github/forks/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square)
+
+A NodeJS library/module to provide a better and more accurate way to determine item type.
 
 <table>
   <tr>
@@ -34,29 +43,24 @@
     <td><b>Code Quality</b></td>
     <td>
       <a href="https://www.codefactor.io/repository/github/hugoalh-studio/nodejs.advanceddetermine"><img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/hugoalh-studio/NodeJS.AdvancedDetermine?logo=codefactor&logoColor=ffffff&style=flat-square" /></a>
-      <a href="https://lgtm.com/projects/g/hugoalh-studio/NodeJS.AdvancedDetermine/alerts"><img alt="LGTM Alert" src="https://img.shields.io/lgtm/alerts/g/hugoalh-studio/NodeJS.AdvancedDetermine.svg?label=%20&logo=lgtm&logoColor=ffffff&style=flat-square" /></a>
-      <a href="https://lgtm.com/projects/g/hugoalh-studio/NodeJS.AdvancedDetermine/context:javascript"><img alt="LGTM Grade" src="https://img.shields.io/lgtm/grade/javascript/g/hugoalh-studio/NodeJS.AdvancedDetermine.svg?logo=lgtm&logoColor=ffffff&style=flat-square" /></a>
+      <a href="https://lgtm.com/projects/g/hugoalh-studio/NodeJS.AdvancedDetermine/alerts"><img alt="LGTM Alert" src="https://img.shields.io/lgtm/alerts/g/hugoalh-studio/NodeJS.AdvancedDetermine?label=%20&logo=lgtm&logoColor=ffffff&style=flat-square" /></a>
+      <a href="https://lgtm.com/projects/g/hugoalh-studio/NodeJS.AdvancedDetermine/context:javascript"><img alt="LGTM Grade" src="https://img.shields.io/lgtm/grade/javascript/g/hugoalh-studio/NodeJS.AdvancedDetermine?logo=lgtm&logoColor=ffffff&style=flat-square" /></a>
     </td>
   </tr>
 </table>
 
-![GitHub Language Count](https://img.shields.io/github/languages/count/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square)
-![GitHub Top Langauge](https://img.shields.io/github/languages/top/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square)
-![GitHub Repo Size](https://img.shields.io/github/repo-size/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square)
-![GitHub Code Size](https://img.shields.io/github/languages/code-size/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square)
-![GitHub Watcher](https://img.shields.io/github/watchers/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square)
-![GitHub Star](https://img.shields.io/github/stars/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square)
-![GitHub Fork](https://img.shields.io/github/forks/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square)
-
 ## 📜 Description
 
-A module/library to provide a better and more accurate way to determine item type.
+### 🌟 Feature
 
-[Click here to view the official documentation online.](https://github.com/hugoalh-studio/NodeJS.AdvancedDetermine/wiki)
+- Better and accurate type determine.
+- Native support for CommonJS and ECMAScript.
 
-## 📄 Documentation (Excerpt)
+## 📄 Documentation
 
-### Getting Started
+*For the official documentation, please visit [GitHub Repository Wiki](https://github.com/hugoalh-studio/NodeJS.AdvancedDetermine/wiki)*.
+
+### Getting Started (Excerpt)
 
 NodeJS (v10+) & NPM (v6+):
 
@@ -64,7 +68,7 @@ NodeJS (v10+) & NPM (v6+):
 > npm install @hugoalh/advanced-determine
 ```
 
-### API
+### API (Excerpt)
 
 - `isArray(item)`
 - `isBoolean(item, option?)`
@@ -83,7 +87,7 @@ NodeJS (v10+) & NPM (v6+):
 - `isUndefined(item, option?)`
 - `typeOf(item)`
 
-### Example
+### Example (Excerpt)
 
 ```javascript
 const advancedDetermine = require("@hugoalh/advanced-determine");
