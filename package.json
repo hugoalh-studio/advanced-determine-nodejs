@@ -1,7 +1,7 @@
 {
 	"name": "@hugoalh/advanced-determine",
 	"version": "3.2.2",
-	"description": "A module/library to provide a better and more accurate way to determine item type.",
+	"description": "A library/module to provide a better and more accurate way to determine item type.",
 	"keywords": [
 		"nodejs",
 		"determine",
