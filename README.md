@@ -61,7 +61,7 @@ A NodeJS library/module to provide a better and more accurate way to determine i
 
 ### 🌟 Feature
 
-- Better and accurate type determine.
+- Better and more accurate type determine.
 - Native support for CommonJS and ECMAScript.
 
 ## 📄 Documentation
