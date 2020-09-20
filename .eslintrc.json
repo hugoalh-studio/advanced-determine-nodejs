@@ -3,8 +3,8 @@
 		"amd": false,
 		"applescript": false,
 		"atomtest": false,
-		"browser": false,
-		"commonjs": false,
+		"browser": true,
+		"commonjs": true,
 		"embertest": false,
 		"es6": true,
 		"es2017": true,
@@ -33,7 +33,7 @@
 			"impliedStrict": true,
 			"jsx": false
 		},
-		"ecmaVersion": 6,
+		"ecmaVersion": 2020,
 		"sourceType": "module"
 	},
 	"rules": {
