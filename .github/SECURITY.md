@@ -8,10 +8,10 @@
 > | ✔ | **Yes:** This is supported. |
 > | 👎 | **Partly:** This is partly supported due to this version(s) is deprecated by a newer version(s). |
 > | ❌ | **No:** This is not supported due to this version(s) is too old. |
-> | ⚠ | **No (I):** This is not supported due to this version(s) is confirmed contains bug(s) and/or issue(s). |
+> | ⚠ | **Issue:** This is not supported due to this version(s) is confirmed contains bug(s) and/or issue(s). |
 
 | **Version** | **Support** |
-|:----|:----|
+|:---:|:---:|
 | v3.3.0 | L |
 | v3.2.2 | ✔ |
 | < v3.2.2 | 👎 |
