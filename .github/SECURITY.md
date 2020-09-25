@@ -10,14 +10,14 @@
 > | ❌ | **No:** This is not supported due to this version(s) is too old. |
 > | ⚠ | **Issue:** This is not supported due to this version(s) is confirmed contains bug(s) and/or issue(s). |
 
-| **Version** | **Support** |
-|:---:|:---:|
-| v3.3.0 | L |
-| v3.2.2 | ✔ |
-| < v3.2.2 | 👎 |
-| v3.0.X | ❌⚠ |
-| v2.X.X | ❌⚠ |
-| v1.X.X | ❌⚠ |
+| **Version** | **Targeted NodeJS Version** | **Support** |
+|:---:|:---:|:---:|
+| v3.3.1 | v10.0.0 | L |
+| v3.3.0 | v10.0.0 | ⚠ |
+| v3.2 | v10.0.0 | ❌⚠ |
+| v3.1 | v10.0.0 | ❌⚠ |
+| v3.0 | v10.0.0 | ❌⚠ |
+| < v3 | *(N/A)* | ❌⚠ |
 
 ## Report Vulnerability
 
