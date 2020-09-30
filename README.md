@@ -62,6 +62,7 @@ A NodeJS library/module to provide a better and more accurate way to determine i
 ### 🌟 Feature
 
 - Better and more accurate type determine.
+- Easier to identify null string, null array, and null object.
 - Native support for CommonJS and ECMAScript.
 
 ## 📄 Documentation
