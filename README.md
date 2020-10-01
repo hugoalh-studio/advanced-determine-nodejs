@@ -61,10 +61,10 @@ A NodeJS library/module to provide a better and more accurate way to determine i
 
 ### 🌟 Feature
 
-- Ability to minify condition code's length.
 - Better and more accurate type determine.
 - Easier to identify null string, null array, and null object.
 - Native support for CommonJS and ECMAScript.
+- Write condition(s) without writing a lot of codes.
 
 ## 📄 Documentation
 

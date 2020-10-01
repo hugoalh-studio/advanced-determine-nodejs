@@ -1,4 +1,4 @@
-name: "CodeQL"
+name: "CodeQL Analysis"
 on:
   push:
     branches:
@@ -7,8 +7,8 @@ on:
     branches:
       - "**"
 jobs:
-  analyze:
-    name: "Analyze"
+  analysis:
+    name: "Analysis"
     runs-on: "ubuntu-latest"
     strategy:
       fail-fast: false
@@ -25,17 +25,18 @@ jobs:
         uses: "actions/checkout@v2"
         with:
           fetch-depth: 2
-      - run: "git checkout HEAD^2"
-        if: "${{github.event_name == 'pull_request'}}"
-      - name: "Initialize CodeQL"
+      - if: "${{github.event_name == 'pull_request'}}"
+        name: "Checkout Pull Request"
+        run: "git checkout HEAD^2"
+      - name: "Initialize"
         uses: "github/codeql-action/init@v1"
         with:
           languages: "${{matrix.language}}"
           # queries:
-      # - name: "Autobuild"
+      # - name: "Auto-Build"
       #   uses: "github/codeql-action/autobuild@v1"
       # - run: |
       #     make bootstrap
       #     make release
-      - name: "Perform CodeQL Analysis"
+      - name: "Analyze"
         uses: "github/codeql-action/analyze@v1"

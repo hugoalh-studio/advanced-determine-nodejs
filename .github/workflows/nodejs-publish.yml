@@ -8,28 +8,35 @@ jobs:
     name: "Publish To NPM"
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "actions/checkout@v2"
-      - uses: "actions/setup-node@v1"
+      - name: "Checkout Repository"
+        uses: "actions/checkout@v2"
+      - name: "Setup NodeJS"
+        uses: "actions/setup-node@v1"
         with:
           node-version: 12
           registry-url: "https://registry.npmjs.org/"
-      - run: "npm publish"
-        if: ${{github.event.release.prerelease == false}}
+      - if: ${{github.event.release.prerelease == false}}
+        name: "Publish To Tag @latest"
+        run: "npm publish"
         env:
           NODE_AUTH_TOKEN: "${{secrets.NPM_TOKEN}}"
-      - run: "npm publish --tag pre"
-        if: ${{github.event.release.prerelease == true}}
+      - if: ${{github.event.release.prerelease == true}}
+        name: "Publish To Tag @pre"
+        run: "npm publish --tag pre"
         env:
           NODE_AUTH_TOKEN: "${{secrets.NPM_TOKEN}}"
   # publish-gpr:
   #   name: "Publish To GitHub Package"
   #   runs-on: "ubuntu-latest"
   #   steps:
-  #     - uses: "actions/checkout@v2"
-  #     - uses: "actions/setup-node@v1"
+  #     - name: "Checkout Repository"
+  #       uses: "actions/checkout@v2"
+  #     - name: "Setup NodeJS"
+  #       uses: "actions/setup-node@v1"
   #       with:
   #         node-version: 12
   #         registry-url: "https://npm.pkg.github.com/"
-  #     - run: "npm publish"
+  #     - name: "Publish"
+  #       run: "npm publish"
   #       env:
   #         NODE_AUTH_TOKEN: "${{secrets.GITHUB_TOKEN}}"
