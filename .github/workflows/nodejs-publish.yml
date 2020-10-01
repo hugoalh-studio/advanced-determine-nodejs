@@ -14,6 +14,11 @@ jobs:
           node-version: 12
           registry-url: "https://registry.npmjs.org/"
       - run: "npm publish"
+        if: ${{github.event.release.prerelease == false}}
+        env:
+          NODE_AUTH_TOKEN: "${{secrets.NPM_TOKEN}}"
+      - run: "npm publish --tag pre"
+        if: ${{github.event.release.prerelease == true}}
         env:
           NODE_AUTH_TOKEN: "${{secrets.NPM_TOKEN}}"
   # publish-gpr:
