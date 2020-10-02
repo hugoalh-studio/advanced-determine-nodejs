@@ -31,7 +31,6 @@ jobs:
       - name: "Initialize"
         uses: "github/codeql-action/init@v1"
         with:
-          disable-default-queries: false
           languages: "${{matrix.language}}"
           queries: "+security-and-quality"
       # - name: "Auto-Build"
