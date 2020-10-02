@@ -14,12 +14,12 @@ jobs:
       fail-fast: false
       matrix:
         language:
-          - "csharp"
-          - "cpp"
-          - "go"
-          - "java"
+          # - "csharp"
+          # - "cpp"
+          # - "go"
+          # - "java"
           - "javascript"
-          - "python"
+          # - "python"
     steps:
       - name: "Checkout Repository"
         uses: "actions/checkout@v2"
