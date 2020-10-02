@@ -15,13 +15,13 @@ jobs:
         with:
           node-version: 12
           registry-url: "https://registry.npmjs.org/"
-      - if: ${{github.event.release.prerelease == false}}
-        name: "Publish To Tag @latest"
+      - name: "Publish To Tag @latest"
+        if: ${{github.event.release.prerelease == false}}
         run: "npm publish"
         env:
           NODE_AUTH_TOKEN: "${{secrets.NPM_TOKEN}}"
-      - if: ${{github.event.release.prerelease == true}}
-        name: "Publish To Tag @pre"
+      - name: "Publish To Tag @pre"
+        if: ${{github.event.release.prerelease == true}}
         run: "npm publish --tag pre"
         env:
           NODE_AUTH_TOKEN: "${{secrets.NPM_TOKEN}}"

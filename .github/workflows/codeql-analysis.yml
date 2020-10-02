@@ -25,8 +25,8 @@ jobs:
         uses: "actions/checkout@v2"
         with:
           fetch-depth: 2
-      - if: "${{github.event_name == 'pull_request'}}"
-        name: "Checkout Pull Request"
+      - name: "Checkout Pull Request"
+        if: "${{github.event_name == 'pull_request'}}"
         run: "git checkout HEAD^2"
       - name: "Initialize"
         uses: "github/codeql-action/init@v1"
@@ -35,7 +35,8 @@ jobs:
           # queries:
       # - name: "Auto-Build"
       #   uses: "github/codeql-action/autobuild@v1"
-      # - run: |
+      # - name: "Build"
+      #   run: |
       #     make bootstrap
       #     make release
       - name: "Analyze"
