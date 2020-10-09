@@ -80,7 +80,13 @@ NodeJS (>= v10) & NPM (>= v6):
 
 ### API (Excerpt)
 
+- `allIs(condition, ...items)`
+- `allIsNot(condition, ...items)`
+- `areEqual(item1, item2)`
+- `eitherIs(condition, ...items)`
+- `eitherIsNot(condition, ...items)`
 - `isArray(item)`
+- `isBigInteger(item)`
 - `isBoolean(item, option?)`
 - `isBuffer(item, option?)`
 - `isDate(item)`
@@ -88,6 +94,7 @@ NodeJS (>= v10) & NPM (>= v6):
 - `isNull(item, option?)`
 - `isNumber(item)`
 - `isObject(item)`
+- `isObjectPair(item)`
 - `isRegularExpression(item)`
 - `isString(item, option?)`
 - `isStringASCII(item)`
