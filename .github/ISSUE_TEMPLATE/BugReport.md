@@ -5,7 +5,7 @@ title: ""
 labels: "bug🐛,unconfirm📋"
 assignees: ""
 ---
-> ## Suggested Content List
+> ### Suggested Content List
 >
 > - **Describe:** What the bug is?
 > - **Version:** Must be a supported version(s) listed in the "[Security Policy](https://github.com/hugoalh-studio/NodeJS.AdvancedDetermine/security/policy)".
