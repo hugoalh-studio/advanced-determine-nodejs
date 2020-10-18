@@ -5,6 +5,8 @@
 	"keywords": [
 		"nodejs",
 		"determine",
+		"type",
+		"typeof",
 		"type-test"
 	],
 	"homepage": "https://github.com/hugoalh-studio/NodeJS.AdvancedDetermine#readme",
