@@ -1,13 +1,13 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "3.4.2",
+	"version": "4.0.0-rc.1",
 	"description": "A library/module to provide a better and more accurate way to determine item type.",
 	"keywords": [
 		"nodejs",
 		"determine",
+		"type-test",
 		"type",
-		"typeof",
-		"type-test"
+		"typeof"
 	],
 	"homepage": "https://github.com/hugoalh-studio/NodeJS.AdvancedDetermine#readme",
 	"bugs": {

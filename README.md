@@ -62,9 +62,9 @@ A NodeJS library/module to provide a better and more accurate way to determine i
 ### 🌟 Feature
 
 - Better and more accurate type determine.
-- Easier to identify null string (`""`), null array (`[]`), and null object (`{}`).
+- Easier to identify empty string (`""`), empty array (`[]`), and empty object (`{}`).
 - Native support for CommonJS and ECMAScript.
-- Write condition(s) without writing a lot of codes.
+- Write complex condition(s) without writing a lot of codes.
 
 ## 📄 Documentation
 
