@@ -12,7 +12,7 @@
 
 | **Version** | **Targeted NodeJS Version** | **Support** |
 |:---:|:---:|:---:|
-| v4 | v10.0.0 | L |
+| v4 | v10.13.0 | L |
 | v3 | v10.0.0 | ❌⚠ |
 | < v3 | *(N/A)* | ❌⚠ |
 
