@@ -143,6 +143,6 @@ yarn-error.log*
 .gitattributes
 .github/*
 .gitignore
-.lgtm.yml
+.lgtm.*
 .npmignore
 .npmrc
