@@ -97,10 +97,10 @@ NodeJS (>= v10.13) & NPM (>= v6.4.1):
 - `isObjectPair(item)`
 - `isRegularExpression(item)`
 - `isString(item, option?)`
-- `isStringASCII(item)`
+- `isStringASCII(item, option?)`
 - `isStringifyJSON(item)`
-- `isStringLowerCase(item)`
-- `isStringUpperCase(item)`
+- `isStringLowerCase(item, option?)`
+- `isStringUpperCase(item, option?)`
 - `isUndefined(item, option?)`
 - `typeOf(item)`
 
