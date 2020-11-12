@@ -100,8 +100,8 @@ NodeJS (>= v10.13) & NPM (>= v6.4.1):
 - `isStringASCII(item, option?)`
 - `isStringifyJSON(item)`
 - `isStringLowerCase(item, option?)`
-- `isStringMultipleLine(item)`
-- `isStringSingleLine(item)`
+- `isStringMultipleLine(item, option?)`
+- `isStringSingleLine(item, option?)`
 - `isStringUpperCase(item, option?)`
 - `isUndefined(item, option?)`
 - `typeOf(item)`
