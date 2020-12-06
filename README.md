@@ -72,7 +72,7 @@ A NodeJS library/module to provide a better and more accurate way to determine i
 
 ### Getting Started (Excerpt)
 
-NodeJS (>= v10.13) & NPM (>= v6.4.1):
+NodeJS (>= v12.13) & NPM (>= v6.12):
 
 ```powershell
 > npm install @hugoalh/advanced-determine
