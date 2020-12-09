@@ -14,8 +14,10 @@ jobs:
         with:
           node-version: 14
           registry-url: "https://npm.pkg.github.com/"
-      - name: "Hot Fix"
-        run: "echo \"registry=https://npm.pkg.github.com/\" > .npmrc"
+      - name: "Additional Fix"
+        run: |
+          echo "registry=https://npm.pkg.github.com/" > .npmrc
+          sed -i "s;@hugoalh/;@hugoalh-studio/" package.json
         working-directory: "${{env.GITHUB_WORKSPACE}}"
       - name: "Publish"
         run: "npm publish"
