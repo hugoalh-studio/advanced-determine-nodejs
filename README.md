@@ -72,7 +72,7 @@ A NodeJS library/module to provide a better and more accurate way to determine i
 
 ### Getting Started (Excerpt)
 
-NodeJS (>= v10.13) & NPM (>= v6.4.1):
+NodeJS (>= v14.15) & NPM (>= v6.14.8):
 
 ```powershell
 > npm install @hugoalh/advanced-determine
@@ -88,7 +88,7 @@ NodeJS (>= v10.13) & NPM (>= v6.4.1):
 - `isArray(item)`
 - `isBigInteger(item)`
 - `isBoolean(item, option?)`
-- `isBuffer(item, option?)`
+- `isBuffer(item)`
 - `isDate(item)`
 - `isJSON(item)`
 - `isNull(item, option?)`

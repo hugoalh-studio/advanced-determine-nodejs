@@ -1,6 +1,6 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "4.2.0",
+	"version": "4.3.0",
 	"description": "A library/module to provide a better and more accurate way to determine item type.",
 	"keywords": [
 		"nodejs",
@@ -21,9 +21,8 @@
 		"url": "git+https://github.com/hugoalh-studio/NodeJS.AdvancedDetermine.git"
 	},
 	"engines": {
-		"node": ">= 10.13.0",
-		"npm": ">= 6.4.1",
-		"pnpm": ">= 4.0.0"
+		"node": ">= 14.15.0",
+		"npm": ">= 6.14.8"
 	},
 	"private": false
 }
