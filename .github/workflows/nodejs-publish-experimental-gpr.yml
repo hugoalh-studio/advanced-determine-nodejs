@@ -17,7 +17,7 @@ jobs:
       - name: "Hot Fix"
         run: |
           cd ${{env.GITHUB_WORKSPACE}}
-          echo \"registry=https://npm.pkg.github.com/\" > .npmrc
+          echo "registry=https://npm.pkg.github.com/" > .npmrc
       - name: "Publish"
         run: "npm publish"
         env:
