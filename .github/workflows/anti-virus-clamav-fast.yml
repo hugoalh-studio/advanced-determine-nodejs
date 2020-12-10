@@ -1,4 +1,4 @@
-name: "Anti Virus - ClamAV"
+name: "Anti Virus - ClamAV (Fast)"
 on:
   push:
     branches:
@@ -11,22 +11,18 @@ on:
       - "edited"
       - "reopened"
       - "synchronize"
-  schedule:
-    - cron: "0 0 * * 3"
   workflow_dispatch:
 jobs:
-  anti-virus-clamav:
-    name: "Anti Virus - ClamAV"
+  anti-virus-clamav-fast:
+    name: "Anti Virus - ClamAV (Fast)"
     runs-on: "ubuntu-latest"
     steps:
       - name: "Checkout Repository"
         uses: "actions/checkout@v2.3.4"
         with:
-          fetch-depth: 0
+          fetch-depth: 2
       - name: "Checkout Pull Request"
         if: "${{github.event_name == 'pull_request'}}"
         run: "git checkout HEAD^2"
-      - name: "Scan"
+      - name: "Fast Scan"
         uses: "djdefi/gitavscan@2"
-        with:
-          full: "--full"
