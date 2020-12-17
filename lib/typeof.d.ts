@@ -3,6 +3,6 @@ type ReturnTypeOf = "array" | "bigint" | "boolean" | "dataview" | "date" | "func
  * @function typeOf
  * @description Determine item type of the unevaluated operand.
  * @param {*} item Item that need to determine.
- * @returns {(string|undefined)} Determine result.
+ * @returns {ReturnTypeOf} Determine result.
  */
 export function typeOf(item: any): ReturnTypeOf;
