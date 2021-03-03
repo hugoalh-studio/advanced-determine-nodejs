@@ -3,7 +3,7 @@
 # avatar_url:
 tts: false
 embeds:
-  - title: "[NodeJS] Advanced Determine"
+  - title: "Advanced Determine (NodeJS Edition)"
     description: "Version %payload.release.name% (%payload.release.tag_name%) is released and available on:"
     # url:
     color: "2,110,0"
@@ -28,5 +28,5 @@ embeds:
         value: "https://www.npmjs.com/package/@hugoalh/advanced-determine"
         inline: false
       - name: "GitHub Repository"
-        value: "https://github.com/hugoalh-studio/NodeJS.AdvancedDetermine"
+        value: "https://github.com/hugoalh-studio/AdvancedDetermine.NodeJS"
         inline: false

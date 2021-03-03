@@ -1,17 +1,17 @@
-# \[NodeJS\] Advanced Determine
+# Advanced Determine (NodeJS Edition)
 
 <details>
-  <summary><a href="https://github.com/hugoalh-studio/NodeJS.AdvancedDetermine"><code>hugoalh-studio/NodeJS.AdvancedDetermine</code></a></summary>
-  <img align="center" alt="GitHub Language Count" src="https://img.shields.io/github/languages/count/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square" />
-  <img align="center" alt="GitHub Top Langauge" src="https://img.shields.io/github/languages/top/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square" />
-  <img align="center" alt="GitHub Repo Size" src="https://img.shields.io/github/repo-size/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square" />
-  <img align="center" alt="GitHub Code Size" src="https://img.shields.io/github/languages/code-size/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square" />
-  <img align="center" alt="GitHub Watcher" src="https://img.shields.io/github/watchers/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square" />
-  <img align="center" alt="GitHub Star" src="https://img.shields.io/github/stars/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square" />
-  <img align="center" alt="GitHub Fork" src="https://img.shields.io/github/forks/hugoalh-studio/NodeJS.AdvancedDetermine?logo=github&logoColor=ffffff&style=flat-square" />
+  <summary><a href="https://github.com/hugoalh-studio/AdvancedDetermine.NodeJS"><code>hugoalh-studio/AdvancedDetermine.NodeJS</code></a></summary>
+  <img align="center" alt="GitHub Language Count" src="https://img.shields.io/github/languages/count/hugoalh-studio/AdvancedDetermine.NodeJS?logo=github&logoColor=ffffff&style=flat-square" />
+  <img align="center" alt="GitHub Top Langauge" src="https://img.shields.io/github/languages/top/hugoalh-studio/AdvancedDetermine.NodeJS?logo=github&logoColor=ffffff&style=flat-square" />
+  <img align="center" alt="GitHub Repo Size" src="https://img.shields.io/github/repo-size/hugoalh-studio/AdvancedDetermine.NodeJS?logo=github&logoColor=ffffff&style=flat-square" />
+  <img align="center" alt="GitHub Code Size" src="https://img.shields.io/github/languages/code-size/hugoalh-studio/AdvancedDetermine.NodeJS?logo=github&logoColor=ffffff&style=flat-square" />
+  <img align="center" alt="GitHub Watcher" src="https://img.shields.io/github/watchers/hugoalh-studio/AdvancedDetermine.NodeJS?logo=github&logoColor=ffffff&style=flat-square" />
+  <img align="center" alt="GitHub Star" src="https://img.shields.io/github/stars/hugoalh-studio/AdvancedDetermine.NodeJS?logo=github&logoColor=ffffff&style=flat-square" />
+  <img align="center" alt="GitHub Fork" src="https://img.shields.io/github/forks/hugoalh-studio/AdvancedDetermine.NodeJS?logo=github&logoColor=ffffff&style=flat-square" />
 </details>
 
-A NodeJS library/module to provide a better and more accurate way to determine item type.
+A library/module for NodeJS to provide a better and more accurate way to determine item type.
 
 <table>
   <tr>
@@ -19,10 +19,10 @@ A NodeJS library/module to provide a better and more accurate way to determine i
     <td>MIT</td>
   </tr>
   <tr>
-    <td><a href="https://github.com/hugoalh-studio/NodeJS.AdvancedDetermine/releases"><b>Release</b></a> <img align="center" src="https://img.shields.io/github/downloads/hugoalh-studio/NodeJS.AdvancedDetermine/total?label=%20&style=flat-square" /></td>
+    <td><a href="https://github.com/hugoalh-studio/AdvancedDetermine.NodeJS/releases"><b>Release (GitHub)</b></a> <img align="center" src="https://img.shields.io/github/downloads/hugoalh-studio/AdvancedDetermine.NodeJS/total?label=%20&style=flat-square" /></td>
     <td>
-      <b>Latest:</b> <img align="center" src="https://img.shields.io/github/release/hugoalh-studio/NodeJS.AdvancedDetermine?sort=semver&label=%20&style=flat-square" /> (<img align="center" src="https://img.shields.io/github/release-date/hugoalh-studio/NodeJS.AdvancedDetermine?label=%20&style=flat-square" />)<br />
-      <b>Pre:</b> <img align="center" src="https://img.shields.io/github/release/hugoalh-studio/NodeJS.AdvancedDetermine?include_prereleases&sort=semver&label=%20&style=flat-square" /> (<img align="center" src="https://img.shields.io/github/release-date-pre/hugoalh-studio/NodeJS.AdvancedDetermine?label=%20&style=flat-square" />)
+      <b>Latest:</b> <img align="center" src="https://img.shields.io/github/release/hugoalh-studio/AdvancedDetermine.NodeJS?sort=semver&label=%20&style=flat-square" /> (<img align="center" src="https://img.shields.io/github/release-date/hugoalh-studio/AdvancedDetermine.NodeJS?label=%20&style=flat-square" />)<br />
+      <b>Pre:</b> <img align="center" src="https://img.shields.io/github/release/hugoalh-studio/AdvancedDetermine.NodeJS?include_prereleases&sort=semver&label=%20&style=flat-square" /> (<img align="center" src="https://img.shields.io/github/release-date-pre/hugoalh-studio/AdvancedDetermine.NodeJS?label=%20&style=flat-square" />)
     </td>
   </tr>
   <tr>
@@ -33,26 +33,26 @@ A NodeJS library/module to provide a better and more accurate way to determine i
     </td>
   </tr>
   <tr>
-    <td><a href="https://github.com/hugoalh-studio/NodeJS.AdvancedDetermine/graphs/contributors"><b>Contributor</b></a> <img align="center" src="https://img.shields.io/github/contributors/hugoalh-studio/NodeJS.AdvancedDetermine?label=%20&style=flat-square" /></td>
+    <td><a href="https://github.com/hugoalh-studio/AdvancedDetermine.NodeJS/graphs/contributors"><b>Contributor</b></a> <img align="center" src="https://img.shields.io/github/contributors/hugoalh-studio/AdvancedDetermine.NodeJS?label=%20&style=flat-square" /></td>
     <td><ul>
         <li><a href="https://github.com/hugoalh-studio">hugoalh Studio</a></li>
         <li><a href="https://github.com/hugoalh">hugoalh</a></li>
     </ul></td>
   </tr>
   <tr>
-    <td><a href="https://github.com/hugoalh-studio/NodeJS.AdvancedDetermine/issues?q=is%3Aissue"><b>Issue</b></a></td>
-    <td><img align="center" src="https://img.shields.io/github/issues-raw/hugoalh-studio/NodeJS.AdvancedDetermine?label=%20&style=flat-square" /> : <img align="center" src="https://img.shields.io/github/issues-closed-raw/hugoalh-studio/NodeJS.AdvancedDetermine?label=%20&style=flat-square" /></td>
+    <td><a href="https://github.com/hugoalh-studio/AdvancedDetermine.NodeJS/issues?q=is%3Aissue"><b>Issue</b></a></td>
+    <td><img align="center" src="https://img.shields.io/github/issues-raw/hugoalh-studio/AdvancedDetermine.NodeJS?label=%20&style=flat-square" /> : <img align="center" src="https://img.shields.io/github/issues-closed-raw/hugoalh-studio/AdvancedDetermine.NodeJS?label=%20&style=flat-square" /></td>
   </tr>
   <tr>
-    <td><a href="https://github.com/hugoalh-studio/NodeJS.AdvancedDetermine/pulls?q=is%3Apr"><b>Pull Request</b></a></td>
-    <td><img align="center" src="https://img.shields.io/github/issues-pr-raw/hugoalh-studio/NodeJS.AdvancedDetermine?label=%20&style=flat-square" /> : <img align="center" src="https://img.shields.io/github/issues-pr-closed-raw/hugoalh-studio/NodeJS.AdvancedDetermine?label=%20&style=flat-square" /></td>
+    <td><a href="https://github.com/hugoalh-studio/AdvancedDetermine.NodeJS/pulls?q=is%3Apr"><b>Pull Request</b></a></td>
+    <td><img align="center" src="https://img.shields.io/github/issues-pr-raw/hugoalh-studio/AdvancedDetermine.NodeJS?label=%20&style=flat-square" /> : <img align="center" src="https://img.shields.io/github/issues-pr-closed-raw/hugoalh-studio/AdvancedDetermine.NodeJS?label=%20&style=flat-square" /></td>
   </tr>
   <tr>
     <td><b>Code Quality</b></td>
     <td>
-      <a href="https://www.codefactor.io/repository/github/hugoalh-studio/nodejs.advanceddetermine"><img align="center" alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/hugoalh-studio/NodeJS.AdvancedDetermine?logo=codefactor&logoColor=ffffff&style=flat-square" /></a>
-      <a href="https://lgtm.com/projects/g/hugoalh-studio/NodeJS.AdvancedDetermine/alerts"><img align="center" alt="LGTM Alert" src="https://img.shields.io/lgtm/alerts/g/hugoalh-studio/NodeJS.AdvancedDetermine?label=%20&logo=lgtm&logoColor=ffffff&style=flat-square" /></a>
-      <a href="https://lgtm.com/projects/g/hugoalh-studio/NodeJS.AdvancedDetermine/context:javascript"><img align="center" alt="LGTM Grade" src="https://img.shields.io/lgtm/grade/javascript/g/hugoalh-studio/NodeJS.AdvancedDetermine?logo=lgtm&logoColor=ffffff&style=flat-square" /></a>
+      <a href="https://www.codefactor.io/repository/github/hugoalh-studio/AdvancedDetermine.NodeJS"><img align="center" alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/hugoalh-studio/AdvancedDetermine.NodeJS?logo=codefactor&logoColor=ffffff&style=flat-square" /></a>
+      <a href="https://lgtm.com/projects/g/hugoalh-studio/AdvancedDetermine.NodeJS/alerts"><img align="center" alt="LGTM Alert" src="https://img.shields.io/lgtm/alerts/g/hugoalh-studio/AdvancedDetermine.NodeJS?label=%20&logo=lgtm&logoColor=ffffff&style=flat-square" /></a>
+      <a href="https://lgtm.com/projects/g/hugoalh-studio/AdvancedDetermine.NodeJS/context:javascript"><img align="center" alt="LGTM Grade" src="https://img.shields.io/lgtm/grade/javascript/g/hugoalh-studio/AdvancedDetermine.NodeJS?logo=lgtm&logoColor=ffffff&style=flat-square" /></a>
     </td>
   </tr>
 </table>
@@ -68,14 +68,14 @@ A NodeJS library/module to provide a better and more accurate way to determine i
 
 ## 📄 Documentation
 
-*For the official documentation, please visit [GitHub Repository Wiki](https://github.com/hugoalh-studio/NodeJS.AdvancedDetermine/wiki)*.
+*For the official documentation, please visit [GitHub Repository Wiki](https://github.com/hugoalh-studio/AdvancedDetermine.NodeJS/wiki)*.
 
 ### Getting Started (Excerpt)
 
-NodeJS (>= v14.15) & NPM (>= v6.14.8):
+NodeJS (>= v14.15.0) & NPM (>= v6.14.8):
 
 ```sh
-> npm install @hugoalh/advanced-determine
+npm install @hugoalh/advanced-determine
 ```
 
 ### API (Excerpt)
