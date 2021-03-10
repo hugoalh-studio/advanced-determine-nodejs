@@ -50,7 +50,7 @@ A library/module for NodeJS to provide a better and more accurate way to determi
   <tr>
     <td><b>Code Quality</b></td>
     <td>
-      <a href="https://www.codefactor.io/repository/github/hugoalh-studio/AdvancedDetermine.NodeJS"><img align="center" alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/hugoalh-studio/AdvancedDetermine.NodeJS?logo=codefactor&logoColor=ffffff&style=flat-square" /></a>
+      <a href="https://www.codefactor.io/repository/github/hugoalh-studio/advanceddetermine.nodejs"><img align="center" alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/hugoalh-studio/AdvancedDetermine.NodeJS?logo=codefactor&logoColor=ffffff&style=flat-square" /></a>
       <a href="https://lgtm.com/projects/g/hugoalh-studio/AdvancedDetermine.NodeJS/alerts"><img align="center" alt="LGTM Alert" src="https://img.shields.io/lgtm/alerts/g/hugoalh-studio/AdvancedDetermine.NodeJS?label=%20&logo=lgtm&logoColor=ffffff&style=flat-square" /></a>
       <a href="https://lgtm.com/projects/g/hugoalh-studio/AdvancedDetermine.NodeJS/context:javascript"><img align="center" alt="LGTM Grade" src="https://img.shields.io/lgtm/grade/javascript/g/hugoalh-studio/AdvancedDetermine.NodeJS?logo=lgtm&logoColor=ffffff&style=flat-square" /></a>
     </td>
