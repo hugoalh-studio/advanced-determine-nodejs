@@ -21,12 +21,12 @@ embeds:
       # url:
       # icon_url:
     fields:
-      - name: "GitHub Repository Release (& Changelog)"
+      - name: "GitHub (& Changelog)"
         value: "%payload.release.html_url%"
         inline: false
-      - name: "NPM (NodeJS Package Manager)"
+      - name: "NPM"
         value: "https://www.npmjs.com/package/@hugoalh/advanced-determine"
         inline: false
-      - name: "GitHub Repository"
+      - name: "Repository"
         value: "https://github.com/hugoalh-studio/AdvancedDetermine.NodeJS"
         inline: false
