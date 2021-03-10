@@ -12,12 +12,12 @@
 
 | **Version** | **Targeted NodeJS Version** | **Support** |
 |:---:|:---:|:---:|
-| v5 | v14.15.0 | L |
-| v4.2 | v10.13.0 | 👎 |
-| v4.1 | v10.13.0 | ❌⚠ |
-| v4.0 | v10.13.0 | ❌ |
-| v3 | v10.0.0 | ❌⚠ |
-| < v3 | *(N/A)* | ❌⚠ |
+| v5.X.X | v14.15.0 | L |
+| v4.2.X | v10.13.0 | 👎 |
+| v4.1.X | v10.13.0 | ❌⚠ |
+| v4.0.X | v10.13.0 | ❌ |
+| v3.X.X | v10.0.0 | ❌⚠ |
+| < v3.0.0 | *(N/A)* | ❌⚠ |
 
 ## Report Vulnerability
 
@@ -30,7 +30,7 @@ Send an email to anyone who listed in here (click the link to obtain the email a
 ### Suggested Content List
 
 - Your GitHub account username (e.g.: `@octocat`)
-- Project index (mostly start with `hugoalh/` or `hugoalh-studio/`)
+- Project identification name
 - Affected version(s) (must be a supported version(s))
 - Affected file(s)
 - Issue(s) to cause this security issue

@@ -1,7 +1,7 @@
 # Advanced Determine (NodeJS Edition)
 
 <details>
-  <summary><a href="https://github.com/hugoalh-studio/AdvancedDetermine.NodeJS"><code>hugoalh-studio/AdvancedDetermine.NodeJS</code></a></summary>
+  <summary><a href="https://github.com/hugoalh-studio/AdvancedDetermine.NodeJS"><code>AdvancedDetermine.NodeJS</code></a></summary>
   <img align="center" alt="GitHub Language Count" src="https://img.shields.io/github/languages/count/hugoalh-studio/AdvancedDetermine.NodeJS?logo=github&logoColor=ffffff&style=flat-square" />
   <img align="center" alt="GitHub Top Langauge" src="https://img.shields.io/github/languages/top/hugoalh-studio/AdvancedDetermine.NodeJS?logo=github&logoColor=ffffff&style=flat-square" />
   <img align="center" alt="GitHub Repo Size" src="https://img.shields.io/github/repo-size/hugoalh-studio/AdvancedDetermine.NodeJS?logo=github&logoColor=ffffff&style=flat-square" />
