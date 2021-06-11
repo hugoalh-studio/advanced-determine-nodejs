@@ -14,6 +14,6 @@ jobs:
         with:
           fetch-depth: 0
       - name: "Full Scan Repository"
-        uses: "djdefi/gitavscan@2"
+        uses: "djdefi/gitavscan@3"
         with:
           full: "--full"
