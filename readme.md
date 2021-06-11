@@ -1,14 +1,15 @@
 # Advanced Determine (NodeJS Edition)
 
-[`AdvancedDetermine.NodeJS`](https://github.com/hugoalh-studio/advanced-determine-nodejs)
-
-<img align="center" alt="GitHub Language Count" src="https://img.shields.io/github/languages/count/hugoalh-studio/advanced-determine-nodejs?logo=github&logoColor=ffffff&style=flat-square" />
-<img align="center" alt="GitHub Top Langauge" src="https://img.shields.io/github/languages/top/hugoalh-studio/advanced-determine-nodejs?logo=github&logoColor=ffffff&style=flat-square" />
-<img align="center" alt="GitHub Repo Size" src="https://img.shields.io/github/repo-size/hugoalh-studio/advanced-determine-nodejs?logo=github&logoColor=ffffff&style=flat-square" />
-<img align="center" alt="GitHub Code Size" src="https://img.shields.io/github/languages/code-size/hugoalh-studio/advanced-determine-nodejs?logo=github&logoColor=ffffff&style=flat-square" />
-<img align="center" alt="GitHub Watcher" src="https://img.shields.io/github/watchers/hugoalh-studio/advanced-determine-nodejs?logo=github&logoColor=ffffff&style=flat-square" />
-<img align="center" alt="GitHub Star" src="https://img.shields.io/github/stars/hugoalh-studio/advanced-determine-nodejs?logo=github&logoColor=ffffff&style=flat-square" />
-<img align="center" alt="GitHub Fork" src="https://img.shields.io/github/forks/hugoalh-studio/advanced-determine-nodejs?logo=github&logoColor=ffffff&style=flat-square" />
+<details>
+  <summary><a href="https://github.com/hugoalh-studio/advanced-determine-nodejs"><code>AdvancedDetermine.NodeJS</code></a></summary>
+  <img align="center" alt="GitHub Language Count" src="https://img.shields.io/github/languages/count/hugoalh-studio/advanced-determine-nodejs?logo=github&logoColor=ffffff&style=flat-square" />
+  <img align="center" alt="GitHub Top Langauge" src="https://img.shields.io/github/languages/top/hugoalh-studio/advanced-determine-nodejs?logo=github&logoColor=ffffff&style=flat-square" />
+  <img align="center" alt="GitHub Repo Size" src="https://img.shields.io/github/repo-size/hugoalh-studio/advanced-determine-nodejs?logo=github&logoColor=ffffff&style=flat-square" />
+  <img align="center" alt="GitHub Code Size" src="https://img.shields.io/github/languages/code-size/hugoalh-studio/advanced-determine-nodejs?logo=github&logoColor=ffffff&style=flat-square" />
+  <img align="center" alt="GitHub Watcher" src="https://img.shields.io/github/watchers/hugoalh-studio/advanced-determine-nodejs?logo=github&logoColor=ffffff&style=flat-square" />
+  <img align="center" alt="GitHub Star" src="https://img.shields.io/github/stars/hugoalh-studio/advanced-determine-nodejs?logo=github&logoColor=ffffff&style=flat-square" />
+  <img align="center" alt="GitHub Fork" src="https://img.shields.io/github/forks/hugoalh-studio/advanced-determine-nodejs?logo=github&logoColor=ffffff&style=flat-square" />
+</details>
 
 A module for NodeJS to provide a better and more accurate way to determine item type.
 
