@@ -68,7 +68,7 @@ A module for NodeJS to provide a better and more accurate way to determine item 
 
 ## 📄 Documentation
 
-*For the official documentation, please visit [GitHub Repository Wiki](https://github.com/hugoalh-studio/advanced-determine-nodejs/wiki)*.
+*For the official documentation, please visit [GitHub Repository Wiki](https://github.com/hugoalh-studio/advanced-determine-nodejs/wiki).*
 
 ### Getting Started (Excerpt)
 
