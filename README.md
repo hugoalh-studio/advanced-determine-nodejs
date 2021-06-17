@@ -85,7 +85,7 @@ npm install @hugoalh/advanced-determine
 - `areEqual(item1, item2)`
 - `eitherIs(condition, ...items)`
 - `eitherIsNot(condition, ...items)`
-- `isArray(item)`
+- `isArray(item, option?)`
 - `isBigInteger(item)`
 - `isBoolean(item, option?)`
 - `isBuffer(item)`
