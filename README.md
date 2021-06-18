@@ -90,11 +90,11 @@ npm install @hugoalh/advanced-determine
 - `isBoolean(item, option?)`
 - `isBuffer(item)`
 - `isDate(item)`
-- `isJSON(item)`
+- `isJSON(item, option?)`
 - `isNull(item, option?)`
 - `isNumber(item)`
 - `isObject(item)`
-- `isObjectPair(item)`
+- `isObjectPair(item, option?)`
 - `isRegularExpression(item)`
 - `isString(item, option?)`
 - `isStringASCII(item, option?)`
