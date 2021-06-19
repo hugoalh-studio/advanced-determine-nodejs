@@ -98,7 +98,7 @@ npm install @hugoalh/advanced-determine
 - `isRegularExpression(item)`
 - `isString(item, option?)`
 - `isStringASCII(item, option?)`
-- `isStringifyJSON(item)`
+- `isStringifyJSON(item, option?)`
 - `isStringLowerCase(item, option?)`
 - `isStringMultipleLine(item, option?)`
 - `isStringSingleLine(item, option?)`
