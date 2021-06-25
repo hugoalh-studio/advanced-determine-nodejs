@@ -70,7 +70,7 @@ npm install @hugoalh/advanced-determine
 
 ### Example (Excerpt)
 
-```javascript
+```js
 const advancedDetermine = require("@hugoalh/advanced-determine");
 
 console.log(advancedDetermine.isArray([]));// null
