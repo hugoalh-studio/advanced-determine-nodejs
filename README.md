@@ -19,7 +19,6 @@
 | [**GitHub**](https://github.com/hugoalh-studio/advanced-determine-nodejs/releases) ![](https://img.shields.io/github/downloads/hugoalh-studio/advanced-determine-nodejs/total?label=%20&style=flat-square) | ![](https://img.shields.io/github/release/hugoalh-studio/advanced-determine-nodejs?sort=semver&label=%20&style=flat-square) (![](https://img.shields.io/github/release-date/hugoalh-studio/advanced-determine-nodejs?label=%20&style=flat-square)) | ![](https://img.shields.io/github/release/hugoalh-studio/advanced-determine-nodejs?include_prereleases&sort=semver&label=%20&style=flat-square) (![](https://img.shields.io/github/release-date-pre/hugoalh-studio/advanced-determine-nodejs?label=%20&style=flat-square)) |
 | [**NPM**](https://www.npmjs.com/package/@hugoalh/advanced-determine) ![](https://img.shields.io/npm/dt/@hugoalh/advanced-determine?label=%20&style=flat-square) | ![](https://img.shields.io/npm/v/@hugoalh/advanced-determine/latest?label=%20&style=flat-square) | ![](https://img.shields.io/npm/v/@hugoalh/advanced-determine/pre?label=%20&style=flat-square) |
 
-
 ## 📝 Description
 
 ### 🌟 Feature
