@@ -20,7 +20,7 @@
 | [**NPM**](https://www.npmjs.com/package/@hugoalh/advanced-determine) ![](https://img.shields.io/npm/dt/@hugoalh/advanced-determine?label=%20&style=flat-square) | ![](https://img.shields.io/npm/v/@hugoalh/advanced-determine/latest?label=%20&style=flat-square) | ![](https://img.shields.io/npm/v/@hugoalh/advanced-determine/pre?label=%20&style=flat-square) |
 
 
-## 📜 Description
+## 📝 Description
 
 ### 🌟 Feature
 
@@ -29,7 +29,7 @@
 - Native support for CommonJS and ECMAScript.
 - Write complex condition(s) without writing a lot of codes.
 
-## 📄 Documentation
+## 📚 Documentation
 
 *For the official documentation, please visit [GitHub Repository Wiki](https://github.com/hugoalh-studio/advanced-determine-nodejs/wiki).*
 
