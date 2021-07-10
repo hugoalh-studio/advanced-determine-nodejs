@@ -1,5 +1,5 @@
 ---
-name: "Bug Report (Legacy)"
+name: "Bug Report (Markdown Edition)"
 about: "Report a bug."
 labels: "🐛bug,🔵unconfirm"
 ---

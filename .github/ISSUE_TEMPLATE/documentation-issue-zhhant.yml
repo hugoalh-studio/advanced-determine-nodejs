@@ -1,8 +1,8 @@
 # $<Schema>$ https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
-name: "錯誤報告（表單版）"
-description: "報告一個錯誤。"
+name: "文檔問題（表單版）"
+description: "報告一個文檔問題。"
 labels:
-  - "🐛bug"
+  - "📚documentation"
   - "🔵unconfirm"
 body:
   - type: "markdown"
@@ -12,35 +12,21 @@ body:
     id: "describe"
     attributes:
       label: "描述"
-      description: "是甚麼錯誤？"
-    validations:
-      required: false
-  - type: "checkboxes"
-    id: "version"
-    attributes:
-      label: "版本"
-      description: "甚麼版本受到影響？必須是「安全政策（英文）」（/.github/SECURITY.md）中列出的受支持版本。"
-      options:
-        - label: "5.0.2"
-          required: false
-        - label: "5.0.1"
-          required: false
-        - label: "5.0.0"
-          required: false
+      description: "是甚麼問題？"
     validations:
       required: false
   - type: "textarea"
-    id: "reproduce"
+    id: "page"
     attributes:
-      label: "重現"
-      description: "如果該錯誤可以重現，請列出所需步驟！"
+      label: "頁面"
+      description: "相關頁面的列表。"
     validations:
       required: false
   - type: "textarea"
-    id: "expected-behavior"
+    id: "expected-content"
     attributes:
-      label: "預期行為"
-      description: "應該要發生甚麼事情？"
+      label: "預期內容"
+      description: "應該要有甚麼內容？"
     validations:
       required: false
   - type: "textarea"
