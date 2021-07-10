@@ -1,5 +1,5 @@
 # $<Schema>$ https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
-name: "Bug Report (Issue Form)"
+name: "Bug Report (Issue Form Old)"
 description: "Report a bug."
 labels:
   - "🐛bug"
@@ -7,56 +7,16 @@ labels:
 body:
   - type: "markdown"
     attributes:
-      value: "> 🧪 **Experimental:** GitHub Issue Form is currently in beta; If encounter any issue(s), please use the original form."
+      value: |
+        > ### Suggested Content List
+        >
+        > - **Describe:** What the bug is?
+        > - **Version:** Must be a supported version(s) listed in the "Security Policy" (/.github/SECURITY.md).
+        > - **To Reproduce:** If this bug can be reproduce, please list your step(s)!
+        > - **Expected Behavior:** What thing(s) should expected to happen?
   - type: "textarea"
-    id: "describe"
+    id: "content"
     attributes:
-      label: "Describe"
-      description: "What the bug is?"
-      placeholder: ""
-      value: ""
+      label: "Content"
     validations:
       required: false
-  - type: "checkboxes"
-    id: "version"
-    attributes:
-      label: "Version"
-      description: "What version(s) is affected? Must be a supported version(s) listed in the \"Security Policy\" (/.github/SECURITY.md)."
-    options:
-      - label: "5.0.2"
-        required: false
-      - label: "5.0.1"
-        required: false
-      - label: "5.0.0"
-        required: false
-    validations:
-      required: false
-  - type: "textarea"
-    id: "reproduce"
-    attributes:
-      label: "To Reproduce"
-      description: "If this bug can be reproduce, please list your step(s)!"
-      placeholder: ""
-      value: ""
-    validations:
-      required: false
-  - type: "textarea"
-    id: "expected-behavior"
-    attributes:
-      label: "Expected Behavior"
-      description: "What thing(s) should expected to happen?"
-      placeholder: ""
-      value: ""
-    validations:
-      required: false
-  - type: "markdown"
-    attributes:
-      value: "---"
-  - type: "checkboxes"
-    id: "issue-not-duplicated"
-    attributes:
-      label: ""
-      description: ""
-      options:
-        - label: "This issue is not duplicated"
-          required: true
