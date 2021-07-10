@@ -1,0 +1,22 @@
+# $<Schema>$ https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
+name: "錯誤報告"
+description: "報告一個錯誤。"
+labels:
+  - "🐛bug"
+  - "🔵unconfirm"
+body:
+  - type: "markdown"
+    attributes:
+      value: |
+        > ### 建議內容列表
+        >
+        > - **描述：** 是甚麼錯誤？
+        > - **版本：** 甚麼版本受到影響？必須是「安全政策（英文）」（/.github/SECURITY.md）中列出的受支持版本。
+        > - **重現：** 如果該錯誤可以重現，請列出所需步驟！
+        > - **預期行為：** 應該要發生甚麼事情？
+  - type: "textarea"
+    id: "content"
+    attributes:
+      label: "內容"
+    validations:
+      required: false

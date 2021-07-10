@@ -1,25 +1,25 @@
 # $<Schema>$ https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
-name: "Bug Report (Field Edition)"
-description: "Report a bug."
+name: "錯誤報告（表格版）"
+description: "報告一個錯誤。"
 labels:
   - "🐛bug"
   - "🔵unconfirm"
 body:
   - type: "markdown"
     attributes:
-      value: "> 🧪 **Experimental:** GitHub Issue Form is currently in beta; If encounter any issue(s), please use the legacy form."
+      value: "> 🧪 **實驗：** GitHub議題表單目前處於測試階段；如果遇到任何問題，請使用舊版。"
   - type: "textarea"
     id: "describe"
     attributes:
-      label: "Describe"
-      description: "What the bug is?"
+      label: "描述"
+      description: "是甚麼錯誤？"
     validations:
       required: false
   - type: "checkboxes"
     id: "version"
     attributes:
-      label: "Version"
-      description: "What version(s) is affected? Must be a supported version(s) listed in the \"Security Policy\" (/.github/SECURITY.md)."
+      label: "版本"
+      description: "甚麼版本受到影響？必須是「安全政策（英文）」（/.github/SECURITY.md）中列出的受支持版本。"
       options:
         - label: "5.0.2"
           required: false
@@ -32,21 +32,21 @@ body:
   - type: "textarea"
     id: "reproduce"
     attributes:
-      label: "To Reproduce"
-      description: "If this bug can be reproduce, please list the step(s)!"
+      label: "重現"
+      description: "如果該錯誤可以重現，請列出所需步驟！"
     validations:
       required: false
   - type: "textarea"
     id: "expected-behavior"
     attributes:
-      label: "Expected Behavior"
-      description: "What thing(s) should expected to happen?"
+      label: "預期行為"
+      description: "應該要發生甚麼事情？"
     validations:
       required: false
   - type: "textarea"
     id: "additional"
     attributes:
-      label: "Additional"
-      description: "If there has any information that related to this bug but not suitable to the other field(s), please list it here."
+      label: "其他"
+      description: "如果有任何與此錯誤相關但是不適用於任何欄位的資料，請在此處列出。"
     validations:
       required: false
