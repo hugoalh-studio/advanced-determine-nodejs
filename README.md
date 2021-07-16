@@ -74,8 +74,8 @@ npm install @hugoalh/advanced-determine
 const advancedDetermine = require("@hugoalh/advanced-determine");
 
 console.log(advancedDetermine.isArray([]));// null
+console.log(advancedDetermine.isNull("", { allowExtend: false }));// false
 console.log(advancedDetermine.isNull("", { allowExtend: true }));// true
-console.log(advancedDetermine.isNull(""));// false
 console.log(advancedDetermine.isNull("null", { allowStringify: false }));// false
 console.log(advancedDetermine.isNull("null", { allowStringify: true }));// true
 console.log(advancedDetermine.isNumberFloat(-8.31));// true
