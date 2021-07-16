@@ -58,13 +58,13 @@ npm install @hugoalh/advanced-determine
 - `isObject(item)`
 - `isObjectPair(item, option?)`
 - `isRegularExpression(item)`
-- `isString(item, option?)`
-- `isStringASCII(item, option?)`
+- `isString(item)`
+- `isStringASCII(item)`
 - `isStringifyJSON(item, option?)`
-- `isStringLowerCase(item, option?)`
-- `isStringMultipleLine(item, option?)`
-- `isStringSingleLine(item, option?)`
-- `isStringUpperCase(item, option?)`
+- `isStringLowerCase(item)`
+- `isStringMultipleLine(item)`
+- `isStringSingleLine(item)`
+- `isStringUpperCase(item)`
 - `isUndefined(item, option?)`
 - `typeOf(item)`
 
