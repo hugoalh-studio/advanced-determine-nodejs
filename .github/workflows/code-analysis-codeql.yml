@@ -38,7 +38,6 @@ jobs:
           queries: "+security-and-quality"
       # Auto build attempts to build any compiled languages (C/C++, C#, or Java).
       - name: "Auto Build"
-        id: "auto-build"
         if: "${{matrix.language == 'cpp' || matrix.language == 'csharp' || matrix.language == 'java'}}"
         uses: "github/codeql-action/autobuild@v1"
         continue-on-error: true
