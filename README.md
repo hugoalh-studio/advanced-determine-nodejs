@@ -42,30 +42,19 @@ npm install @hugoalh/advanced-determine
 
 ### API (Excerpt)
 
-- `allIs(condition, ...items)`
-- `allIsNot(condition, ...items)`
 - `areEqual(item1, item2)`
-- `eitherIs(condition, ...items)`
-- `eitherIsNot(condition, ...items)`
 - `isArray(item, option?)`
-- `isBigInteger(item)`
-- `isBoolean(item, option?)`
-- `isBuffer(item)`
-- `isDate(item)`
 - `isJSON(item, option?)`
-- `isNull(item, option?)`
 - `isNumber(item)`
 - `isObject(item)`
 - `isObjectPair(item, option?)`
-- `isRegularExpression(item)`
-- `isString(item)`
-- `isStringASCII(item)`
+- `isString(item, option?)`
+- `isStringASCII(item, option?)`
 - `isStringifyJSON(item, option?)`
-- `isStringLowerCase(item)`
-- `isStringMultipleLine(item)`
-- `isStringSingleLine(item)`
-- `isStringUpperCase(item)`
-- `isUndefined(item, option?)`
+- `isStringLowerCase(item, option?)`
+- `isStringMultipleLine(item, option?)`
+- `isStringSingleLine(item, option?)`
+- `isStringUpperCase(item, option?)`
 - `typeOf(item)`
 
 ### Example (Excerpt)
@@ -74,10 +63,6 @@ npm install @hugoalh/advanced-determine
 const advancedDetermine = require("@hugoalh/advanced-determine");
 
 console.log(advancedDetermine.isArray([]));// null
-console.log(advancedDetermine.isNull("", { allowExtend: false }));// false
-console.log(advancedDetermine.isNull("", { allowExtend: true }));// true
-console.log(advancedDetermine.isNull("null", { allowStringify: false }));// false
-console.log(advancedDetermine.isNull("null", { allowStringify: true }));// true
 console.log(advancedDetermine.isNumberFloat(-8.31));// true
 console.log(advancedDetermine.isNumberFloat(51));// false
 console.log(advancedDetermine.isString(""));// null
