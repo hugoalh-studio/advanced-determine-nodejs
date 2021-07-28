@@ -1,6 +1,6 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "5.1.0",
+	"version": "5.2.0-beta.1",
 	"description": "A module to provide a better and more accurate way to determine item type.",
 	"keywords": [
 		"determine",
@@ -14,7 +14,11 @@
 	},
 	"license": "MIT",
 	"author": "hugoalh",
-	"main": "lib/main.js",
+	"main": "./lib/main.js",
+	"exports": {
+		"import": "./lib/main.mjs",
+		"require": "./lib/main.js"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/hugoalh-studio/advanced-determine-nodejs.git"
