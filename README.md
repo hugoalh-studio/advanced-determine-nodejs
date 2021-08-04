@@ -25,7 +25,7 @@
 
 - Better and more accurate type determine.
 - Easier to identify empty string (`""`), empty array (`[]`), and empty object (`{}`).
-- Native support for CommonJS and ECMAScript.
+- Native support for CommonJS and ModuleJS.
 - Write complex condition(s) without writing a lot of codes.
 
 ## 📚 Documentation
