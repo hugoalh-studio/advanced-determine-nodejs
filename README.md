@@ -42,7 +42,7 @@ npm install @hugoalh/advanced-determine
 
 ### API (Excerpt)
 
-- `areEqual(item1, item2)`
+- `areEqual(...items)`
 - `isArray(item, option?)`
 - `isJSON(item, option?)`
 - `isNumber(item)`
