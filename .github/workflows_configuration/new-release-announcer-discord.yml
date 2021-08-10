@@ -28,5 +28,5 @@ embeds:
         value: "https://www.npmjs.com/package/@hugoalh/advanced-determine"
         inline: false
       - name: "Repository"
-        value: "https://github.com/hugoalh-studio/advanced-determine-nodejs"
+        value: "%payload.repository.html_url%"
         inline: false
