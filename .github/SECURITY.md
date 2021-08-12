@@ -13,7 +13,7 @@
 | **Tag / Version** | **Target** | **Support** |
 |:-:|:-:|:-:|
 | v6.X.X | NodeJS v14.15.0 + NPM v6.14.8 | L |
-| v6.0.0 | NodeJS v14.15.0 + NPM v6.14.8 | ❌⚠ |
+| v6.0.0 \~ v6.0.2 | NodeJS v14.15.0 + NPM v6.14.8 | ❌⚠ |
 | v5.X.X | NodeJS v14.15.0 + NPM v6.14.8 | ❌⚠ |
 | < v5.0.0 | NodeJS <= v10.13.0 + NPM <= v6.4.1 | ❌⚠ |
 
