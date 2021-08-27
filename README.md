@@ -45,16 +45,11 @@ npm install @hugoalh/advanced-determine
 - `areEqual(...items)`
 - `isArray(item, option?)`
 - `isJSON(item, option?)`
-- `isNumber(item)`
+- `isNumber(item, option?)`
 - `isObject(item)`
 - `isObjectPair(item, option?)`
 - `isString(item, option?)`
-- `isStringASCII(item, option?)`
 - `isStringifyJSON(item, option?)`
-- `isStringLowerCase(item, option?)`
-- `isStringMultipleLine(item, option?)`
-- `isStringSingleLine(item, option?)`
-- `isStringUpperCase(item, option?)`
 - `typeOf(item)`
 
 ### Example (Excerpt)
@@ -63,10 +58,7 @@ npm install @hugoalh/advanced-determine
 const advancedDetermine = require("@hugoalh/advanced-determine");
 
 console.log(advancedDetermine.isArray([]));// null
-console.log(advancedDetermine.isNumberFloat(-8.31));// true
-console.log(advancedDetermine.isNumberFloat(51));// false
+console.log(advancedDetermine.isNumber(-8.31, { safe: true, type: "integer" }));// false
 console.log(advancedDetermine.isString(""));// null
-console.log(advancedDetermine.isStringLowerCase("Test word."));// false
-console.log(advancedDetermine.isStringLowerCase("word"));// true
-console.log(advancedDetermine.isStringUpperCase("NO"));// true
+console.log(advancedDetermine.isString("Hello World", { allowCase: "lower" }));// false
 ```
