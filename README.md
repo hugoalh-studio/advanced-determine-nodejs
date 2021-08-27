@@ -23,10 +23,9 @@
 
 ### 🌟 Feature
 
-- Better and more accurate type determine.
+- Better and more accurate type determine similar to TypeScript.
 - Easier to identify empty string (`""`), empty array (`[]`), and empty object (`{}`).
 - Native support for CommonJS and ModuleJS.
-- Write complex condition(s) without writing a lot of codes.
 
 ## 📚 Documentation
 
