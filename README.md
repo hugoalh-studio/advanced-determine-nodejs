@@ -57,7 +57,7 @@ npm install @hugoalh/advanced-determine
 const advancedDetermine = require("@hugoalh/advanced-determine");
 
 console.log(advancedDetermine.isArray([]));// null
-console.log(advancedDetermine.isNumber(-8.31, { safe: true, type: "integer" }));// false
+console.log(advancedDetermine.isNumber(8.31, { float: true, positive: true, safe: true }));// true
 console.log(advancedDetermine.isString(""));// null
-console.log(advancedDetermine.isString("Hello World", { allowCase: "lower" }));// false
+console.log(advancedDetermine.isString("Hello World", { lowerCase: true }));// false
 ```
