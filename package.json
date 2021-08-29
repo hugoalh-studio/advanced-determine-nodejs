@@ -1,6 +1,6 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "6.1.0-beta.1+next",
+	"version": "6.1.0-beta.1.next",
 	"description": "A module to provide a better and more accurate way to determine item type.",
 	"keywords": [
 		"determine",
