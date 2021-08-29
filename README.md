@@ -43,6 +43,7 @@ npm install @hugoalh/advanced-determine
 
 - `areEqual(...items)`
 - `isArray(item, option?)`
+- `isBigInteger(item, option?)`
 - `isJSON(item, option?)`
 - `isNumber(item, option?)`
 - `isObject(item)`
