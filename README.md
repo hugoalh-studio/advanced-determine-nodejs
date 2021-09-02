@@ -33,7 +33,7 @@
 
 ### Getting Started (Excerpt)
 
-NodeJS (>= v14.15.0) & NPM (>= v6.14.8):
+NodeJS (>= v14.15.0) + NPM (>= v6.14.8):
 
 ```sh
 npm install @hugoalh/advanced-determine

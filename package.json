@@ -1,9 +1,22 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "6.1.0-beta.1.next",
+	"version": "6.1.0-beta.1",
 	"description": "A module to provide a better and more accurate way to determine item type.",
 	"keywords": [
+		"are-equal",
+		"determine-type",
 		"determine",
+		"is-array",
+		"is-big-integer",
+		"is-json",
+		"is-number",
+		"is-object-pair",
+		"is-object",
+		"is-string",
+		"is-stringify-json",
+		"type-check",
+		"type-determine",
+		"type-of",
 		"type-test",
 		"type",
 		"typeof"

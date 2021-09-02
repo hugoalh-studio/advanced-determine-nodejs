@@ -23,7 +23,6 @@ body:
       multiple: true
       options:
         - "v6.1.0-beta.1"
-        - "v6.1.0-beta.1.next"
         - "v6.0.8"
         - "v6.0.7"
     validations:
