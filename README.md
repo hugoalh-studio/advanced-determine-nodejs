@@ -34,13 +34,29 @@ A NodeJS module to provide a better and more accurate way to determine item type
 
 ### Getting Started (Excerpt)
 
+#### Install
+
 NodeJS (>= v14.15.0) + NPM (>= v6.14.8):
 
 ```sh
 npm install @hugoalh/advanced-determine
 ```
 
+#### Use In CommonJS
+
+```js
+const advancedDetermine = require("@hugoalh/advanced-determine");
+```
+
+#### Use In ModuleJS
+
+```js
+import * as advancedDetermine from "@hugoalh/advanced-determine";
+```
+
 ### API (Excerpt)
+
+#### Function
 
 - `areEqual(...items)`
 - `isArray(item, option?)`
@@ -56,10 +72,15 @@ npm install @hugoalh/advanced-determine
 ### Example (Excerpt)
 
 ```js
-const advancedDetermine = require("@hugoalh/advanced-determine");
+advancedDetermine.isArray([]);
+//=> null
 
-console.log(advancedDetermine.isArray([]));// null
-console.log(advancedDetermine.isNumber(8.31, { float: true, positive: true, safe: true }));// true
-console.log(advancedDetermine.isString(""));// null
-console.log(advancedDetermine.isString("Hello World", { lowerCase: true }));// false
+advancedDetermine.isNumber(8.31, { float: true, positive: true, safe: true });
+//=> true
+
+advancedDetermine.isString("");
+//=> null
+
+advancedDetermine.isString("Hello World", { lowerCase: true });
+//=> false
 ```
