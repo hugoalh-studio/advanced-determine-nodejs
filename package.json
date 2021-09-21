@@ -37,7 +37,7 @@
 		"url": "git+https://github.com/hugoalh-studio/advanced-determine-nodejs.git"
 	},
 	"dependencies": {
-		"@hugoalh/repattern": "^0.2.0"
+		"@hugoalh/repattern": "^0.2.1"
 	},
 	"engines": {
 		"node": ">= 14.15.0",
