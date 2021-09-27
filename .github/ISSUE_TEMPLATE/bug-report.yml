@@ -23,12 +23,6 @@ body:
       multiple: true
       options:
         - "v6.2.0"
-        - "v6.1.3"
-        - "v6.1.2"
-        - "v6.1.1"
-        - "v6.1.0"
-        - "v6.0.8"
-        - "v6.0.7"
     validations:
       required: false
   - type: "textarea"
