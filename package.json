@@ -8,6 +8,7 @@
 		"determine",
 		"is-array",
 		"is-big-integer",
+		"is-function",
 		"is-json",
 		"is-number",
 		"is-object-pair",
