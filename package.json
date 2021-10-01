@@ -9,6 +9,7 @@
 		"is-array",
 		"is-big-integer",
 		"is-function",
+		"is-generator",
 		"is-json",
 		"is-number",
 		"is-object-pair",

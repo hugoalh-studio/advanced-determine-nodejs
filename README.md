@@ -62,6 +62,7 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";
 - `isArray(item, option?)`
 - `isBigInteger(item, option?)`
 - `isFunction(item, option?)`
+- `isGenerator(item, option?)`
 - `isJSON(item, option?)`
 - `isNumber(item, option?)`
 - `isObject(item)`
