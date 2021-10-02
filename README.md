@@ -66,7 +66,7 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";
 - `isJSON(item, option?)`
 - `isNumber(item, option?)`
 - `isObject(item)`
-- `isObjectPair(item, option?)`
+- `isPlainObject(item, option?)`
 - `isString(item, option?)`
 - `isStringifyJSON(item, option?)`
 - `typeOf(item)`
