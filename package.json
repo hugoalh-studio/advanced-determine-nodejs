@@ -1,6 +1,6 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "6.2.1",
+	"version": "6.3.0",
 	"description": "A module to provide a better and more accurate way to determine item type.",
 	"keywords": [
 		"are-equal",
@@ -30,6 +30,7 @@
 	"license": "MIT",
 	"author": "hugoalh",
 	"main": "./lib/main.js",
+	"module": "./lib/main.mjs",
 	"exports": {
 		"import": "./lib/main.mjs",
 		"require": "./lib/main.js"
@@ -37,6 +38,9 @@
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/hugoalh-studio/advanced-determine-nodejs.git"
+	},
+	"scripts": {
+		"bundle": "rollup --config .rolluprc.mjs"
 	},
 	"dependencies": {
 		"@hugoalh/undefinish": "^1.0.0"
