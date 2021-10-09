@@ -30,7 +30,14 @@ try {
 			let searchRE = new RegExp(search, "gu");
 			content = content.replace(searchRE, replace);
 		};
-		fileSystemWriteFileSync(fileFullPath,content);
+		fileSystemWriteFileSync(
+			fileFullPath,
+			content,
+			{
+				encoding: "utf8",
+				flag: "w"
+			}
+		);
 	});
 } catch (error) {
 	console.error(error);
