@@ -1,73 +1,285 @@
+let timeLoadStart = new Date();
 import * as advancedDetermine from "./lib/main.mjs";
+let timeLoadEnd = new Date();
 let tests = [
-	[advancedDetermine.areEqual, ["Test", "test"], false],
-	[advancedDetermine.areEqual, [[10, [20], 30, 40], [10, 20, 30, 40]], false],
-	[advancedDetermine.areEqual, [[10, 20, 30, 40], [10, 20, 30, 40]], true],
-	[advancedDetermine.areEqual, [1, "1"], false],
-	[advancedDetermine.isArray, [""], false],
-	[advancedDetermine.isArray, [[]], null],
-	[advancedDetermine.isArray, [[1, 2, 3]], true],
-	[advancedDetermine.isBigInteger, [-10], false],
-	[advancedDetermine.isBigInteger, [-10n, { positive: true }], false],
-	[advancedDetermine.isBigInteger, [7n, { negative: true, positive: true }], false],
-	[advancedDetermine.isBigInteger, [1024n, { positive: true }], true],
-	[advancedDetermine.isBigInteger, [1024n], true],
-	[advancedDetermine.isBigInteger, [NaN], false],
-	[advancedDetermine.isFunction, [() => { }], true],
-	[advancedDetermine.isFunction, [function* foo() { }, { generator: false }], false],
-	[advancedDetermine.isJSON, [{ magic: () => { console.log("Test!"); } }], false],
-	[advancedDetermine.isJSON, [{ number: 1 }], true],
-	[advancedDetermine.isJSON, [{}], null],
-	[advancedDetermine.isNumber, [-10, { positive: true }], false],
-	[advancedDetermine.isNumber, [-10], true],
-	[advancedDetermine.isNumber, [7.21, { float: true, integer: true }], false],
-	[advancedDetermine.isNumber, [8.31, { float: true, positive: true, safe: true }], true],
-	[advancedDetermine.isNumber, [1024, { positive: true }], true],
-	[advancedDetermine.isNumber, [1024], true],
-	[advancedDetermine.isNumber, [NaN], false],
-	[advancedDetermine.isObject, [{ enable: false }], true],
-	[advancedDetermine.isObject, [{ magic: () => { console.log("Test!"); } }], true],
-	[advancedDetermine.isObject, [new Boolean(true)], true],
-	[advancedDetermine.isObject, [null], false],
-	[advancedDetermine.isObject, [true], false],
-	[advancedDetermine.isPlainObject, [{ enable: false }], true],
-	[advancedDetermine.isPlainObject, [{ magic: () => { console.log("Test!"); } }], true],
-	[advancedDetermine.isPlainObject, [new Boolean(true)], false],
-	[advancedDetermine.isPlainObject, [null], false],
-	[advancedDetermine.isPlainObject, [true], false],
-	[advancedDetermine.isString, ["    ", { allowWhitespace: false }], null],
-	[advancedDetermine.isString, ["    "], true],
-	[advancedDetermine.isString, [""], null],
-	[advancedDetermine.isString, ["Hello World", { lowerCase: true }], false],
-	[advancedDetermine.isString, ["Hello, world!", { lowerCase: true, upperCase: true }], false],
-	[advancedDetermine.isString, ["Hello, world!"], true],
-	[advancedDetermine.isString, ["null", { lowerCase: true }], true],
-	[advancedDetermine.isString, ["null"], true],
-	[advancedDetermine.isString, [null], false],
-	[advancedDetermine.isStringifyJSON, ["{ \"number\": 1 }"], true],
-	[advancedDetermine.isStringifyJSON, ["{}"], null],
-	[advancedDetermine.isStringifyJSON, ["word"], false],
-	[advancedDetermine.typeOf, ["undefined"], "string"],
-	[advancedDetermine.typeOf, [[]], "array"],
-	[advancedDetermine.typeOf, [[10, 20]], "array"],
-	[advancedDetermine.typeOf, [undefined], "undefined"]
+	{
+		code: advancedDetermine.areEqual,
+		inputs: ["Test", "test"],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.areEqual,
+		inputs: [[10, [20], 30, 40], [10, 20, 30, 40]],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.areEqual,
+		inputs: [[10, 20, 30, 40], [10, 20, 30, 40]],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.areEqual,
+		inputs: [1, "1"],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isArray,
+		inputs: [""],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isArray,
+		inputs: [[]],
+		expectedResult: null
+	},
+	{
+		code: advancedDetermine.isArray,
+		inputs: [[1, 2, 3]],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isBigInteger,
+		inputs: [-10],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isBigInteger,
+		inputs: [-10n, { positive: true }],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isBigInteger,
+		inputs: [7n, { negative: true, positive: true }],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isBigInteger,
+		inputs: [1024n, { positive: true }],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isBigInteger,
+		inputs: [1024n],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isBigInteger,
+		inputs: [NaN],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isFunction,
+		inputs: [() => { }],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isFunction,
+		inputs: [function* foo() { }, { generator: false }],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isJSON,
+		inputs: [{ magic: () => { console.log("Test!"); } }],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isJSON,
+		inputs: [{ number: 1 }],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isJSON,
+		inputs: [{}],
+		expectedResult: null
+	},
+	{
+		code: advancedDetermine.isNumber,
+		inputs: [-10, { positive: true }],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isNumber,
+		inputs: [-10],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isNumber,
+		inputs: [7.21, { float: true, integer: true }],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isNumber,
+		inputs: [8.31, { float: true, positive: true, safe: true }],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isNumber,
+		inputs: [1024, { positive: true }],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isNumber,
+		inputs: [1024],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isNumber,
+		inputs: [NaN],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isObject,
+		inputs: [{ enable: false }],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isObject,
+		inputs: [{ magic: () => { console.log("Test!"); } }],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isObject,
+		inputs: [new Boolean(true)],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isObject,
+		inputs: [null],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isObject,
+		inputs: [true],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isPlainObject,
+		inputs: [{ enable: false }],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isPlainObject,
+		inputs: [{ magic: () => { console.log("Test!"); } }],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isPlainObject,
+		inputs: [new Boolean(true)],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isPlainObject,
+		inputs: [null],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isPlainObject,
+		inputs: [true],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isString,
+		inputs: ["    ", { allowWhitespace: false }],
+		expectedResult: null
+	},
+	{
+		code: advancedDetermine.isString,
+		inputs: ["    "],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isString,
+		inputs: [""],
+		expectedResult: null
+	},
+	{
+		code: advancedDetermine.isString,
+		inputs: ["Hello World", { lowerCase: true }],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isString,
+		inputs: ["Hello, world!", { lowerCase: true, upperCase: true }],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isString,
+		inputs: ["Hello, world!"],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isString,
+		inputs: ["null", { lowerCase: true }],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isString,
+		inputs: ["null"],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isString,
+		inputs: [null],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.isStringifyJSON,
+		inputs: ["{ \"number\": 1 }"],
+		expectedResult: true
+	},
+	{
+		code: advancedDetermine.isStringifyJSON,
+		inputs: ["{}"],
+		expectedResult: null
+	},
+	{
+		code: advancedDetermine.isStringifyJSON,
+		inputs: ["word"],
+		expectedResult: false
+	},
+	{
+		code: advancedDetermine.typeOf,
+		inputs: ["undefined"],
+		expectedResult: "string"
+	},
+	{
+		code: advancedDetermine.typeOf,
+		inputs: [[]],
+		expectedResult: "array"
+	},
+	{
+		code: advancedDetermine.typeOf,
+		inputs: [[10, 20]],
+		expectedResult: "array"
+	},
+	{
+		code: advancedDetermine.typeOf,
+		inputs: [undefined],
+		expectedResult: "undefined"
+	}
 ];
 let testsFailed = [];
-for (let index = 0; index < tests.length; index++) {
-	let [testFunction, testFunctionArguments, testExpectedResult] = tests[index];
+let timeExecuteStart = new Date();
+tests.forEach((test, index) => {
 	try {
-		let testActualResult = testFunction(...testFunctionArguments);
-		if (testActualResult !== testExpectedResult) {
+		if (test.code(...test.inputs) !== test.expectedResult) {
 			throw new Error("Actual result is not as expected!");
 		};
 	} catch (error) {
-		testsFailed.push([index, error]);
+		testsFailed.push({
+			index: index,
+			reason: error
+		});
 	};
-};
+});
+let timeExecuteEnd = new Date();
+console.log(`Load Time: ${(timeLoadEnd - timeLoadStart) / 1000} s`);
+console.log(`Execute Time (Total - ${tests.length}): ${(timeExecuteEnd - timeExecuteStart) / 1000} s`);
+console.log(`Execute Time (Each): ${(timeExecuteEnd - timeExecuteStart) / 1000 / tests.length} s`);
 if (testsFailed.length > 0) {
-	console.error("Code Test Failed:");
+	console.error("Failed Tests:");
 	testsFailed.forEach((testFailed) => {
-		console.error(`{${testFailed[0]}}: ${testFailed[1]}`);
+		console.error(`{${testFailed.index}}: ${testFailed.reason}`);
 	});
 	process.exit(1);
 };
