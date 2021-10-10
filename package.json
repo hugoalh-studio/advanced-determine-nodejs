@@ -39,9 +39,6 @@
 		"type": "git",
 		"url": "git+https://github.com/hugoalh-studio/advanced-determine-nodejs.git"
 	},
-	"scripts": {
-		"bundle": "node .rollup-main.mjs"
-	},
 	"dependencies": {
 		"@hugoalh/undefinish": "^1.0.0"
 	},
