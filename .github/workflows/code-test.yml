@@ -22,7 +22,7 @@ jobs:
       - name: "Cache Workspace"
         uses: "actions/cache@v2.1.6"
         with:
-          key: "${{github.repository}}-${{github.sha}}"
+          key: "${{github.repository}}-${{github.sha}}-${{github.run_id}}"
           path: "${{github.workspace}}/**"
   code-test:
     name: "Code Test"
@@ -40,7 +40,7 @@ jobs:
       - name: "Restore Workspace"
         uses: "actions/cache@v2.1.6"
         with:
-          key: "${{github.repository}}-${{github.sha}}"
+          key: "${{github.repository}}-${{github.sha}}-${{github.run_id}}"
           path: "${{github.workspace}}/**"
       - name: "Setup NodeJS"
         uses: "actions/setup-node@v2.4.1"
