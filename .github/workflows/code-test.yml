@@ -1,0 +1,60 @@
+# $<Schema>$ https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
+name: "Code Test"
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches:
+      - "**"
+    types:
+      - "opened"
+      - "edited"
+      - "reopened"
+      - "synchronize"
+jobs:
+  checkout-repository:
+    name: "Checkout Repository"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout Repository"
+        uses: "actions/checkout@v2.3.4"
+      - name: "Cache Repository"
+        uses: "actions/cache@v2.1.6"
+        with:
+          key: "${{github.repository}}-${{github.sha}}"
+          path: "${{github.workspace}}"
+  code-test:
+    name: "Code Test"
+    runs-on: "ubuntu-latest"
+    needs:
+      - "checkout-repository"
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version:
+          - "12.13.0"
+          - "12.22.6"
+          - "14.15.0"
+          - "14.18.0"
+          - "16.11.0"
+    steps:
+      - name: "Restore Repository"
+        uses: "actions/cache@v2.1.6"
+        with:
+          key: "${{github.repository}}-${{github.sha}}"
+          path: "${{github.workspace}}"
+      - name: "Setup NodeJS ${{matrix.node-version}}"
+        uses: "actions/setup-node@v2.4.1"
+        with:
+          node-version: "${{matrix.node-version}}"
+          registry-url: "https://registry.npmjs.org/"
+      - name: "Install Dependencies"
+        run: "npm clean-install"
+      - name: "Test CommonJS"
+        run: "node test.js"
+        continue-on-error: true
+      - name: "Test ModuleJS"
+        run: "node test.mjs"
+        continue-on-error: true
