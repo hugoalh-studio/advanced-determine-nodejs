@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: "Checkout Repository"
         uses: "actions/checkout@v2.3.4"
+      - name: "Check Files"
+        run: "ls -a -R"
       - name: "Cache Repository"
         uses: "actions/cache@v2.1.6"
         with:
@@ -44,6 +46,8 @@ jobs:
         with:
           key: "${{github.repository}}-${{github.sha}}"
           path: "./"
+      - name: "Check Files"
+        run: "ls -a -R"
       - name: "Setup NodeJS ${{matrix.node-version}}"
         uses: "actions/setup-node@v2.4.1"
         with:
@@ -52,6 +56,6 @@ jobs:
       - name: "Install Dependencies"
         run: "npm clean-install"
       - name: "Test CommonJS"
-        run: "node test.js"
+        run: "node code-test.js"
       - name: "Test ModuleJS"
-        run: "node test.mjs"
+        run: "node code-test.mjs"

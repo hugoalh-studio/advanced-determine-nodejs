@@ -1,4 +1,4 @@
-import * as advancedDetermine from "./lib/main.mjs";
+const advancedDetermine = require("./lib/main.js");
 let tests = [
 	[advancedDetermine.areEqual, ["Test", "test"], false],
 	[advancedDetermine.areEqual, [[10, [20], 30, 40], [10, 20, 30, 40]], false],
@@ -58,12 +58,16 @@ for (let index = 0; index < tests.length; index++) {
 	try {
 		let testActualResult = testFunction(...testFunctionArguments);
 		if (testActualResult !== testExpectedResult) {
-			throw new Error();
+			throw new Error("Actual result is not as expected!");
 		};
-	} catch {
-		testsFailed.push(index);
+	} catch (error) {
+		testsFailed.push([index, error]);
 	};
 };
 if (testsFailed.length > 0) {
-	throw new Error(`Tests failed: ${testsFailed.join(", ")}`);
+	console.error("Code Test Failed:");
+	testsFailed.forEach((testFailed) => {
+		console.error(`{${testFailed[0]}}: ${testFailed[1]}`);
+	});
+	process.exit(1);
 };
