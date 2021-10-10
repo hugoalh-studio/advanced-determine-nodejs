@@ -60,4 +60,4 @@ jobs:
         continue-on-error: true
       - name: "Conclusion"
         run: "exit 1"
-        if: "${{steps.test-commonjs.conclusion == 'failure' || steps.test-modulejs.conclusion == 'failure'}}"
+        if: "${{steps.test-commonjs.outcome == 'failure' || steps.test-modulejs.outcome == 'failure'}}"
