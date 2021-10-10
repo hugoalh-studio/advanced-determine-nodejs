@@ -23,7 +23,7 @@ jobs:
         uses: "actions/cache@v2.1.6"
         with:
           key: "${{github.repository}}-${{github.sha}}"
-          path: "${{github.workspace}}"
+          path: "/"
   code-test:
     name: "Code Test"
     runs-on: "ubuntu-latest"
