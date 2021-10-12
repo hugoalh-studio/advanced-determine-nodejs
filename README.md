@@ -63,10 +63,12 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";
 - `isFunction(item, option?)`
 - `isGenerator(item, option?)`
 - `isJSON(item, option?)`
+- `isMap(item, option?)`
 - `isNumber(item, option?)`
 - `isObject(item)`
 - `isPlainObject(item, option?)`
 - `isRegularExpression(item, option?)`
+- `isSet(item, option?)`
 - `isString(item, option?)`
 - `isStringifyJSON(item, option?)`
 - `typeOf(item)`
