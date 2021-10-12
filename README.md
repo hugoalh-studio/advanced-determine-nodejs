@@ -26,7 +26,6 @@ A NodeJS module to provide a better and more accurate way to determine item type
 
 - Better and more accurate type determine similar to TypeScript.
 - Easier to identify empty string (`""`), empty array (`[]`), and empty object (`{}`).
-- Native support for CommonJS and ModuleJS.
 
 ## 📚 Documentation
 
@@ -67,6 +66,7 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";
 - `isNumber(item, option?)`
 - `isObject(item)`
 - `isPlainObject(item, option?)`
+- `isRegularExpression(item, option?)`
 - `isString(item, option?)`
 - `isStringifyJSON(item, option?)`
 - `typeOf(item)`
