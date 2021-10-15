@@ -4,10 +4,33 @@ on:
   release:
     types:
       - "published"
+  workflow_dispatch:
 jobs:
+  publish-test:
+    name: "Publish Test"
+    runs-on: "ubuntu-latest"
+    if: "${{github.event_name != 'release'}}"
+    steps:
+      - name: "Checkout Repository"
+        uses: "actions/checkout@v2.3.4"
+      - name: "Test Name"
+        id: "test-name"
+        run: "repo_name=$(jq .name) | echo '::set-output name=package-name::$repo_name'"
+        shell: "bash"
+      - name: "Test Version"
+        id: "test-version"
+        run: "repo_version=$(jq .version) | echo '::set-output name=package-version::$repo_version'"
+        shell: "bash"
+      - name: "Test Conclusion"
+        run: "echo ${{steps.test-name.outputs.package-name}}"
+        shell: "bash"
+      - name: "Test Conclusion 2"
+        run: "echo ${{steps.test-version.outputs.package-version}}"
+        shell: "bash"
   publish-npm:
     name: "Publish - NPM"
     runs-on: "ubuntu-latest"
+    if: "${{github.event_name == 'release'}}"
     steps:
       - name: "Checkout Repository"
         uses: "actions/checkout@v2.3.4"
