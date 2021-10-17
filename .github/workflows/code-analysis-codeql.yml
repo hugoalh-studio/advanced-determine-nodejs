@@ -25,7 +25,7 @@ jobs:
       - name: "Initialize CodeQL"
         uses: "github/codeql-action/init@v1"
         with:
-          config-file: "./.lgtm.yml"
+          queries: "+security-and-quality"
       # Automatically build attempts to build any compiled languages (C/C++, C#, or Java).
       - name: "Automatically Build"
         uses: "github/codeql-action/autobuild@v1"
