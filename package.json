@@ -39,6 +39,7 @@
 		"import": "./lib/main.mjs",
 		"require": "./lib/main.js"
 	},
+	"types": "./@types/main.d.ts",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/hugoalh-studio/advanced-determine-nodejs.git"
