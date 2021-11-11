@@ -6,3 +6,4 @@ export = isPrimeNumber;
  * @returns {boolean}
  */
 declare function isPrimeNumber(item: (bigint | number)): boolean;
+//# sourceMappingURL=is-prime-number.d.ts.map

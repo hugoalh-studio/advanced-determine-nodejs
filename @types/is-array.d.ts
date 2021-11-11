@@ -14,3 +14,4 @@ declare function isArray(item: any, option?: {
     checkElements?: Function;
     super?: boolean;
 }): (boolean | null);
+//# sourceMappingURL=is-array.d.ts.map

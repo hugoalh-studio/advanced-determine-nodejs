@@ -24,3 +24,4 @@ declare function isRegularExpression(item: any, option?: {
     sticky?: boolean;
     unicode?: boolean;
 }): boolean;
+//# sourceMappingURL=is-regular-expression.d.ts.map

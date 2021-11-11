@@ -6,3 +6,4 @@ export = typeOf;
  * @returns {("array"|"bigint"|"boolean"|"function"|"nan"|"null"|"number"|"object"|"regexp"|"string"|"symbol"|"undefined"|undefined)} Determine result.
  */
 declare function typeOf(item: any): ("array" | "bigint" | "boolean" | "function" | "nan" | "null" | "number" | "object" | "regexp" | "string" | "symbol" | "undefined" | undefined);
+//# sourceMappingURL=type-of.d.ts.map

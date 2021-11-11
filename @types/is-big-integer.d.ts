@@ -19,3 +19,4 @@ declare function isBigInteger(item: any, option?: {
     safe?: boolean;
     unsafe?: boolean;
 }): boolean;
+//# sourceMappingURL=is-big-integer.d.ts.map

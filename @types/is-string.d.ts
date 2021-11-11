@@ -23,3 +23,4 @@ declare function isString(item: any, option?: {
     singleLine?: boolean;
     upperCase?: boolean;
 }): (boolean | null);
+//# sourceMappingURL=is-string.d.ts.map

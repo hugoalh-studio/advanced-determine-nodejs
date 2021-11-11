@@ -41,3 +41,4 @@ declare function isPlainObject(item: any, option?: {
     strictKeys?: boolean;
     super?: boolean;
 }): (boolean | null);
+//# sourceMappingURL=is-plain-object.d.ts.map

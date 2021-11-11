@@ -26,3 +26,4 @@ declare function isJSON(item: any, option?: {
     strict?: boolean;
     strictKeys?: boolean;
 }): (boolean | null);
+//# sourceMappingURL=is-json.d.ts.map

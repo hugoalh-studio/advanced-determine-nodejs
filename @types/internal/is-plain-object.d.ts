@@ -13,3 +13,4 @@ declare function $isPlainObject(item: any, { configurable, enumerable, get, set,
     symbol: any;
     writable: any;
 }): (boolean | null);
+//# sourceMappingURL=is-plain-object.d.ts.map

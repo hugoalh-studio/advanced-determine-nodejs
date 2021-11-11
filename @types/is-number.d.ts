@@ -27,3 +27,4 @@ declare function isNumber(item: any, option?: {
     safe?: boolean;
     unsafe?: boolean;
 }): boolean;
+//# sourceMappingURL=is-number.d.ts.map

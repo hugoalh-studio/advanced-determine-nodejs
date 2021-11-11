@@ -14,3 +14,4 @@ declare function isMap(item: any, option?: {
     checkKeys?: Function;
     checkValues?: Function;
 }): (boolean | null);
+//# sourceMappingURL=is-map.d.ts.map

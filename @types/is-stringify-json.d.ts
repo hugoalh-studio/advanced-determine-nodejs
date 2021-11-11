@@ -31,3 +31,4 @@ declare function isStringifyJSON(item: any, option?: {
     strict?: boolean;
     strictKeys?: boolean;
 }): (boolean | null);
+//# sourceMappingURL=is-stringify-json.d.ts.map

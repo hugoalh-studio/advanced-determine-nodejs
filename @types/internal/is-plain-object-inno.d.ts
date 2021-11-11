@@ -6,3 +6,4 @@ export = isPlainObjectInno;
  * @returns {(boolean|null)}
  */
 declare function isPlainObjectInno(item: any): (boolean | null);
+//# sourceMappingURL=is-plain-object-inno.d.ts.map

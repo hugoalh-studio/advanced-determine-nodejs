@@ -10,3 +10,4 @@ export = isSet;
 declare function isSet(item: any, option?: {
     checkElements?: Function;
 }): (boolean | null);
+//# sourceMappingURL=is-set.d.ts.map

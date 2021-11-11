@@ -13,3 +13,4 @@ declare function isFunction(item: any, option?: {
     asynchronous?: boolean;
     generator?: boolean;
 }): boolean;
+//# sourceMappingURL=is-function.d.ts.map

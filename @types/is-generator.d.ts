@@ -10,3 +10,4 @@ export = isGenerator;
 declare function isGenerator(item: any, option?: {
     asynchronous?: boolean;
 }): boolean;
+//# sourceMappingURL=is-generator.d.ts.map
