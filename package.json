@@ -1,6 +1,6 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "6.4.1",
+	"version": "6.4.2",
 	"description": "A module to provide a better and more accurate way to determine item type.",
 	"keywords": [
 		"are-equal",
