@@ -20,10 +20,11 @@ export = isPlainObject;
  * @param {boolean} [option.elementsConfigurable] Configurable elements/properties in the plain object.
  * @param {boolean} [option.elementsEnumerable] Enumerable elements/properties in the plain object.
  * @param {boolean} [option.elementsWritable] Writable elements/properties in the plain object.
+ * @param {boolean} [option.empty] An empty plain object.
  * @param {boolean} [option.keysSymbols] Symbols in the plain object keys.
  * @param {boolean} [option.strictKeys=false] Ensure no illegal namespace characters in the plain object keys.
  * @param {boolean} [option.super=false] Ensure no custom defined properties (i.e.: getters, setters, non-configurable, non-enumerable, and non-writable) in the plain object, and no symbols in the plain object keys.
- * @returns {(boolean|null)} Determine result.
+ * @returns {boolean} Determine result.
  */
 declare function isPlainObject(item: any, option?: {
     allowKeysAsterisks?: boolean;
@@ -37,8 +38,9 @@ declare function isPlainObject(item: any, option?: {
     elementsConfigurable?: boolean;
     elementsEnumerable?: boolean;
     elementsWritable?: boolean;
+    empty?: boolean;
     keysSymbols?: boolean;
     strictKeys?: boolean;
     super?: boolean;
-}): (boolean | null);
+}): boolean;
 //# sourceMappingURL=is-plain-object.d.ts.map

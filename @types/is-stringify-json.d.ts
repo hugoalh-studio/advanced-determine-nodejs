@@ -16,9 +16,10 @@ export = isStringifyJSON;
  * @param {Function} [option.checkElements] A function to ensure elements types.
  * @param {Function} [option.checkKeys] A function to ensure keys types.
  * @param {Function} [option.checkValues] A function to ensure values types.
+ * @param {boolean} [option.empty] An empty stringify JSON.
  * @param {boolean} [option.strict=false] Ensure type of array is not as the root of the stringify JSON, and no illegal namespace characters in the stringify JSON keys.
  * @param {boolean} [option.strictKeys=false] Ensure no illegal namespace characters in the stringify JSON keys.
- * @returns {(boolean|null)} Determine result.
+ * @returns {boolean} Determine result.
  */
 declare function isStringifyJSON(item: any, option?: {
     allowKeysAsterisks?: boolean;
@@ -28,7 +29,8 @@ declare function isStringifyJSON(item: any, option?: {
     checkElements?: Function;
     checkKeys?: Function;
     checkValues?: Function;
+    empty?: boolean;
     strict?: boolean;
     strictKeys?: boolean;
-}): (boolean | null);
+}): boolean;
 //# sourceMappingURL=is-stringify-json.d.ts.map

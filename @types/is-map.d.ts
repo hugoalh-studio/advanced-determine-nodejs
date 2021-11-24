@@ -7,11 +7,13 @@ export = isMap;
  * @param {Function} [option.checkElements] A function to ensure elements types.
  * @param {Function} [option.checkKeys] A function to ensure keys types.
  * @param {Function} [option.checkValues] A function to ensure values types.
- * @returns {(boolean|null)} Determine result.
+ * @param {boolean} [option.empty] An empty map.
+ * @returns {boolean} Determine result.
  */
 declare function isMap(item: any, option?: {
     checkElements?: Function;
     checkKeys?: Function;
     checkValues?: Function;
-}): (boolean | null);
+    empty?: boolean;
+}): boolean;
 //# sourceMappingURL=is-map.d.ts.map

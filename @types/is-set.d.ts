@@ -5,9 +5,11 @@ export = isSet;
  * @param {any} item Item that need to determine.
  * @param {object} [option={}] Option.
  * @param {Function} [option.checkElements] A function to ensure elements types.
- * @returns {(boolean|null)} Determine result.
+ * @param {boolean} [option.empty] An empty set.
+ * @returns {boolean} Determine result.
  */
 declare function isSet(item: any, option?: {
     checkElements?: Function;
-}): (boolean | null);
+    empty?: boolean;
+}): boolean;
 //# sourceMappingURL=is-set.d.ts.map

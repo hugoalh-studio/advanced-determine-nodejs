@@ -1,4 +1,4 @@
-# Advanced Determine (NodeJS Edition)
+# Advanced Determine (NodeJS)
 
 [`AdvancedDetermine.NodeJS`](https://github.com/hugoalh-studio/advanced-determine-nodejs)
 [![GitHub Contributors](https://img.shields.io/github/contributors/hugoalh-studio/advanced-determine-nodejs?label=Contributors&logo=github&logoColor=ffffff&style=flat-square)](https://github.com/hugoalh-studio/advanced-determine-nodejs/graphs/contributors)
@@ -76,14 +76,14 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";
 ### Example (Excerpt)
 
 ```js
-advancedDetermine.isArray([]);
-//=> null
+advancedDetermine.isArray([], { empty: false });
+//=> false
 
 advancedDetermine.isNumber(8.31, { float: true, positive: true, safe: true });
 //=> true
 
-advancedDetermine.isString("");
-//=> null
+advancedDetermine.isString("", { empty: false });
+//=> false
 
 advancedDetermine.isString("Hello World", { lowerCase: true });
 //=> false

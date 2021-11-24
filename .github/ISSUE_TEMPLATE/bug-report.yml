@@ -1,5 +1,5 @@
 # $<Schema>$ https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
-name: "Bug Report (Form Edition)"
+name: "Bug Report (Form)"
 description: "Report a bug."
 labels:
   - "Status/Unread 🔵"
@@ -19,6 +19,7 @@ body:
       description: "What versions are affected? Versions must be listed as supported in the Security Policy (/.github/SECURITY.md)."
       multiple: true
       options:
+        - "v7.0.0-beta.1"
         - "v6.4.2"
         - "v6.4.1"
         - "v6.4.0"

@@ -7,20 +7,22 @@ export = isString;
  * @param {object} [option={}] Option.
  * @param {boolean} [option.allowNonASCIICharacters=true] Allow non-ASCII characters in the string.
  * @param {boolean} [option.allowWhitespaces=true] Allow whitespaces from both ends of a string.
+ * @param {boolean} [option.empty] An empty string.
  * @param {boolean} [option.lowerCase] A lower case string.
  * @param {boolean} [option.multipleLine] A multiple line string.
  * @param {RegExp} [option.pattern] Pattern.
  * @param {boolean} [option.singleLine] A single line string.
  * @param {boolean} [option.upperCase] An upper case string.
- * @returns {(boolean|null)} Determine result.
+ * @returns {boolean} Determine result.
  */
 declare function isString(item: any, option?: {
     allowNonASCIICharacters?: boolean;
     allowWhitespaces?: boolean;
+    empty?: boolean;
     lowerCase?: boolean;
     multipleLine?: boolean;
     pattern?: RegExp;
     singleLine?: boolean;
     upperCase?: boolean;
-}): (boolean | null);
+}): boolean;
 //# sourceMappingURL=is-string.d.ts.map
