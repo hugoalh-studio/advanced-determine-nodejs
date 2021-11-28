@@ -9,27 +9,25 @@ export = isStringifyJSON;
  * @description Determine item is type of stringify JSON or not.
  * @param {any} item Item that need to determine.
  * @param {object} [option={}] Option.
- * @param {boolean} [option.allowKeysAsterisks=true] Allow asterisk characters (`*`) in the stringify JSON keys.
- * @param {boolean} [option.allowKeysHyphens=true] Allow hyphen characters (`-`) in the stringify JSON keys.
- * @param {boolean} [option.allowKeysWhitespaces=true] Allow whitespaces in the stringify JSON keys.
  * @param {boolean} [option.arrayRoot] Type of array as the root of the stringify JSON.
- * @param {Function} [option.checkElements] A function to ensure elements types.
- * @param {Function} [option.checkKeys] A function to ensure keys types.
- * @param {Function} [option.checkValues] A function to ensure values types.
+ * @param {Function} [option.checkEntries] A function to check entries.
+ * @param {Function} [option.checkKeys] A function to check keys.
+ * @param {Function} [option.checkValues] A function to check values.
  * @param {boolean} [option.empty] An empty stringify JSON.
+ * @param {number} [option.maximumEntries=Infinity] Maximum entries of the stringify JSON.
+ * @param {number} [option.minimumEntries=0] Minimum entries of the stringify JSON.
  * @param {boolean} [option.strict=false] Ensure type of array is not as the root of the stringify JSON, and no illegal namespace characters in the stringify JSON keys.
  * @param {boolean} [option.strictKeys=false] Ensure no illegal namespace characters in the stringify JSON keys.
  * @returns {boolean} Determine result.
  */
 declare function isStringifyJSON(item: any, option?: {
-    allowKeysAsterisks?: boolean;
-    allowKeysHyphens?: boolean;
-    allowKeysWhitespaces?: boolean;
     arrayRoot?: boolean;
-    checkElements?: Function;
+    checkEntries?: Function;
     checkKeys?: Function;
     checkValues?: Function;
     empty?: boolean;
+    maximumEntries?: number;
+    minimumEntries?: number;
     strict?: boolean;
     strictKeys?: boolean;
 }): boolean;
