@@ -6,7 +6,6 @@ export default isArray;
  * @description Determine item is type of array or not.
  * @param {any} item Item that need to determine.
  * @param {object} [option={}] Option.
- * @param {Function} [option.checkElements] A function to check elements.
  * @param {boolean} [option.empty] An empty array.
  * @param {number} [option.maximumLength=Infinity] Maximum length of the array.
  * @param {number} [option.minimumLength=0] Minimum length of the array.
@@ -15,7 +14,6 @@ export default isArray;
  * @returns {boolean} Determine result.
  */
 declare function isArray(item: any, option?: {
-    checkElements?: Function;
     empty?: boolean;
     maximumLength?: number;
     minimumLength?: number;
