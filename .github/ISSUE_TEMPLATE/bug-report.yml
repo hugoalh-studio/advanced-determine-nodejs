@@ -19,7 +19,7 @@ body:
       description: "What versions are affected? Versions must be listed as supported in the Security Policy (/.github/SECURITY.md)."
       multiple: true
       options:
-        - "v7.0.0-beta.2"
+        - "v7.0.0-beta.3"
         - "v6.4.2"
         - "v6.4.1"
         - "v6.4.0"
