@@ -50,7 +50,10 @@ const advancedDetermine = require("@hugoalh/advanced-determine");
 #### Use In ModuleJS
 
 ```js
-import * as advancedDetermine from "@hugoalh/advanced-determine";
+/* Either */
+import * as advancedDetermine from "@hugoalh/advanced-determine";// All
+import advancedDetermine from "@hugoalh/advanced-determine";// All (>= v7.0.1)
+import { ... } from "@hugoalh/advanced-determine";// Part / Tree-shake
 ```
 
 ### API (Excerpt)

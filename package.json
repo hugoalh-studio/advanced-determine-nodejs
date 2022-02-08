@@ -1,6 +1,6 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "7.0.0",
+	"version": "7.0.1",
 	"description": "A module to provide a better and more accurate way to determine item type.",
 	"keywords": [
 		"are-equal",
@@ -45,11 +45,12 @@
 		"url": "git+https://github.com/hugoalh-studio/advanced-determine-nodejs.git"
 	},
 	"dependencies": {
-		"@hugoalh/undefinish": "^1.0.7"
+		"@hugoalh/undefinish": "^1.0.9"
 	},
 	"engines": {
 		"node": ">= 14.15.0",
 		"npm": ">= 6.14.8"
 	},
-	"private": false
+	"private": false,
+	"runkitExampleFilename": "./example.js"
 }
