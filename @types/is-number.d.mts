@@ -5,6 +5,7 @@ export default isNumber;
  * @description Determine item is type of number or not.
  * @param {any} item Item that need to determine.
  * @param {object} [option={}] Option.
+ * @param {boolean} [option.even] An even number.
  * @param {boolean} [option.exclusiveMaximum=false] Exclusive maximum of the number.
  * @param {boolean} [option.exclusiveMinimum=false] Exclusive minimum of the number.
  * @param {boolean} [option.finite] A finite number.
@@ -14,6 +15,7 @@ export default isNumber;
  * @param {number} [option.maximum=Infinity] Maximum of the number.
  * @param {number} [option.minimum=-Infinity] Minimum of the number.
  * @param {boolean} [option.negative] A negative number.
+ * @param {boolean} [option.odd] An odd number.
  * @param {boolean} [option.positive] A positive number.
  * @param {boolean} [option.prime] A prime number.
  * @param {boolean} [option.safe] An IEEE-754 number.
@@ -21,6 +23,7 @@ export default isNumber;
  * @returns {boolean} Determine result.
  */
 declare function isNumber(item: any, option?: {
+    even?: boolean;
     exclusiveMaximum?: boolean;
     exclusiveMinimum?: boolean;
     finite?: boolean;
@@ -30,6 +33,7 @@ declare function isNumber(item: any, option?: {
     maximum?: number;
     minimum?: number;
     negative?: boolean;
+    odd?: boolean;
     positive?: boolean;
     prime?: boolean;
     safe?: boolean;
