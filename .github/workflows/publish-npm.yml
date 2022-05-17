@@ -18,7 +18,7 @@ jobs:
           Write-Host -Object "::set-output name=version::$($PackageMeta.version)"
         shell: "pwsh"
       - name: "Setup NodeJS"
-        uses: "actions/setup-node@v3.1.1"
+        uses: "actions/setup-node@v3.2.0"
         with:
           node-version: 14
           check-latest: true
@@ -32,6 +32,7 @@ jobs:
           NODE_AUTH_TOKEN: "${{secrets.NPM_TOKEN}}"
       - name: "Publish To Tag @pre"
         if: "${{github.event.release.prerelease == true && !(startsWith(steps.get-package-meta.outputs.version, '0.'))}}"
-        run: "npm publish --tag pre"
+        run: |
+          npm publish --tag pre
         env:
           NODE_AUTH_TOKEN: "${{secrets.NPM_TOKEN}}"
