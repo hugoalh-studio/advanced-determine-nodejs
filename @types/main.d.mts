@@ -35,9 +35,6 @@ declare namespace _default {
     export { isStringifyJSON };
     export { isStringifyJSON as isStrJSON };
     export { typeOf };
-    export { version as v };
-    export { version as ver };
-    export { version };
 }
 export default _default;
 import areEqual from "./are-equal.mjs";
@@ -56,6 +53,5 @@ import isRegularExpression from "./is-regular-expression.mjs";
 import isSet from "./is-set.mjs";
 import isString from "./is-string.mjs";
 import typeOf from "./type-of.mjs";
-export const version: 6;
-export { areEqual, isArray as isArr, isArray, isBigInteger as isBigInt, isBigInteger, isPlainObject as isDict, isPlainObject as isDictionary, isFunction as isFn, isFunction, isGenerator, isJSON, isStringifyJSON as isJSONStr, isStringifyJSON as isJSONStringified, isStringifyJSON as isJSONStringify, isArray as isList, isMap, $isNaN as isNaN, $isNaN as isNotANumber, isNumber as isNum, isNumber, isObject as isObj, isObject, isPlainObject as isObjectPlain, isPlainObject as isObjPlain, isPlainObject as isPlainObj, isPlainObject, isRegularExpression as isRegEx, isRegularExpression as isRegExp, isRegularExpression, isSet, isString as isStr, isString, isStringifyJSON as isStringifiedJSON, isStringifyJSON, isStringifyJSON as isStrJSON, typeOf, version as v, version as ver };
+export { areEqual, isArray as isArr, isArray, isBigInteger as isBigInt, isBigInteger, isPlainObject as isDict, isPlainObject as isDictionary, isFunction as isFn, isFunction, isGenerator, isJSON, isStringifyJSON as isJSONStr, isStringifyJSON as isJSONStringified, isStringifyJSON as isJSONStringify, isArray as isList, isMap, $isNaN as isNaN, $isNaN as isNotANumber, isNumber as isNum, isNumber, isObject as isObj, isObject, isPlainObject as isObjectPlain, isPlainObject as isObjPlain, isPlainObject as isPlainObj, isPlainObject, isRegularExpression as isRegEx, isRegularExpression as isRegExp, isRegularExpression, isSet, isString as isStr, isString, isStringifyJSON as isStringifiedJSON, isStringifyJSON, isStringifyJSON as isStrJSON, typeOf };
 //# sourceMappingURL=main.d.mts.map
