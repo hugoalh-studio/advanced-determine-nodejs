@@ -1,6 +1,6 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "7.1.0",
+	"version": "7.2.0",
 	"description": "A module to provide a better and more accurate way to determine item type.",
 	"keywords": [
 		"are-equal",
@@ -48,8 +48,8 @@
 		"@hugoalh/undefinish": "^1.0.11"
 	},
 	"engines": {
-		"node": ">= 14.15.0",
-		"npm": ">= 6.14.8"
+		"node": ">= 10.13.0",
+		"npm": ">= 6.4.1"
 	},
 	"private": false
 }
