@@ -6,8 +6,6 @@
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr-raw/hugoalh-studio/advanced-determine-nodejs?label=Pull%20Requests&logo=github&logoColor=ffffff&style=flat-square)](https://github.com/hugoalh-studio/advanced-determine-nodejs/pulls)
 [![GitHub Discussions](https://img.shields.io/github/discussions/hugoalh-studio/advanced-determine-nodejs?label=Discussions&logo=github&logoColor=ffffff&style=flat-square)](https://github.com/hugoalh-studio/advanced-determine-nodejs/discussions)
 [![GitHub Stars](https://img.shields.io/github/stars/hugoalh-studio/advanced-determine-nodejs?label=Stars&logo=github&logoColor=ffffff&style=flat-square)](https://github.com/hugoalh-studio/advanced-determine-nodejs/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/hugoalh-studio/advanced-determine-nodejs?label=Forks&logo=github&logoColor=ffffff&style=flat-square)](https://github.com/hugoalh-studio/advanced-determine-nodejs/network/members)
-![GitHub Languages](https://img.shields.io/github/languages/count/hugoalh-studio/advanced-determine-nodejs?label=Languages&logo=github&logoColor=ffffff&style=flat-square)
 [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/hugoalh-studio/advanced-determine-nodejs?label=Grade&logo=codefactor&logoColor=ffffff&style=flat-square)](https://www.codefactor.io/repository/github/hugoalh-studio/advanced-determine-nodejs)
 [![License](https://img.shields.io/static/v1?label=License&message=MIT&style=flat-square)](./LICENSE.md)
 

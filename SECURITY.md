@@ -11,7 +11,7 @@
 > | ❌{🐛} | **No (Issue):** Not supported due to confirmed contains bugs and/or issues. |
 > | ❌{🧓} | **No (Old):** Not supported due to too old. |
 
-| **Versions** | **Status** | **Target - NodeJS** | **Target - NPM** |
+| **Releases / Tags / Versions** | **Status** | **Target - NodeJS** | **Target - NPM** |
 |:-:|:-:|:-:|:-:|
 | >= v7.1.1 | L | >= v10.13.0 | >= v6.4.1 |
 | v7.0.X \~ v7.1.0 | L |>=  v14.15.0 | >= v6.14.8 |
