@@ -1,6 +1,6 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "7.1.3",
+	"version": "8.0.0",
 	"description": "A module to provide a better and more accurate way to determine item type.",
 	"keywords": [
 		"are-equal",
@@ -33,19 +33,15 @@
 	},
 	"license": "MIT",
 	"author": "hugoalh",
+	"type": "module",
 	"main": "./lib/main.js",
-	"module": "./lib/main.mjs",
 	"exports": {
-		"import": "./lib/main.mjs",
-		"require": "./lib/main.js"
+		"import": "./lib/main.js"
 	},
 	"types": "./lib/main.d.ts",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/hugoalh-studio/advanced-determine-nodejs.git"
-	},
-	"dependencies": {
-		"@hugoalh/undefinish": "^1.0.13"
 	},
 	"devDependencies": {
 		"@types/node": "^18.7.17",
@@ -54,8 +50,8 @@
 		"typescript": "^4.8.3"
 	},
 	"engines": {
-		"node": ">= 10.13.0",
-		"npm": ">= 6.4.1"
+		"node": ">= 16.13.0",
+		"npm": ">= 8.1.0"
 	},
 	"private": false
 }

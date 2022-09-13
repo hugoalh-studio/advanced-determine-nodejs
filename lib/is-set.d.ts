@@ -1,4 +1,4 @@
-export = isSet;
+export default isSet;
 /**
  * @function isSet
  * @description Determine item is type of set or not.

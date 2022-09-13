@@ -1,4 +1,4 @@
-export = isPlainObject;
+export default isPlainObject;
 /**
  * @function isPlainObject
  * @alias isDict

@@ -1,4 +1,4 @@
-export = isFunction;
+export default isFunction;
 /**
  * @function isFunction
  * @alias isFn

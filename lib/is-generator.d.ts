@@ -1,4 +1,4 @@
-export = isGenerator;
+export default isGenerator;
 /**
  * @function isGenerator
  * @description Determine item is type of generator or not.

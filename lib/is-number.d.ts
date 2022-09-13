@@ -1,4 +1,4 @@
-export = isNumber;
+export default isNumber;
 /**
  * @function isNumber
  * @alias isNum

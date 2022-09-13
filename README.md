@@ -38,13 +38,7 @@ A NodeJS module to provide a better and more accurate way to determine item type
 npm install @hugoalh/advanced-determine
 ```
 
-#### Use In CommonJS
-
-```js
-const advancedDetermine = require("@hugoalh/advanced-determine");
-```
-
-#### Use In ModuleJS
+#### Use
 
 ```js
 /* Either */

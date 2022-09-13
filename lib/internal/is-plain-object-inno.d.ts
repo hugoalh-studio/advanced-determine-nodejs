@@ -1,4 +1,4 @@
-export = isPlainObjectInno;
+export default isPlainObjectInno;
 /**
  * @private
  * @function isPlainObjectInno

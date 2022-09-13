@@ -1,4 +1,4 @@
-export = isJSON;
+export default isJSON;
 /**
  * @function isJSON
  * @description Determine item is type of JSON or not.

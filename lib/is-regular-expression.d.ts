@@ -1,4 +1,4 @@
-export = isRegularExpression;
+export default isRegularExpression;
 /**
  * @function isRegularExpression
  * @alias isRegEx

@@ -1,4 +1,4 @@
-export = isStringifyJSON;
+export default isStringifyJSON;
 /**
  * @function isStringifyJSON
  * @alias isJSONStr

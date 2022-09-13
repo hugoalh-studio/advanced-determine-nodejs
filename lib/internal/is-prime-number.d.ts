@@ -1,4 +1,4 @@
-export = isPrimeNumber;
+export default isPrimeNumber;
 /**
  * @private
  * @function isPrimeNumber

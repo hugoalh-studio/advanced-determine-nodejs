@@ -1,4 +1,4 @@
-export = isString;
+export default isString;
 /**
  * @function isString
  * @alias isStr

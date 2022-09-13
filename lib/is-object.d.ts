@@ -1,4 +1,4 @@
-export = isObject;
+export default isObject;
 /**
  * @function isObject
  * @alias isObj

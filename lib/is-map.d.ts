@@ -1,4 +1,4 @@
-export = isMap;
+export default isMap;
 /**
  * @function isMap
  * @description Determine item is type of map or not.

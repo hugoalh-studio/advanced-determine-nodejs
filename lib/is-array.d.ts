@@ -1,4 +1,4 @@
-export = isArray;
+export default isArray;
 /**
  * @function isArray
  * @alias isArr

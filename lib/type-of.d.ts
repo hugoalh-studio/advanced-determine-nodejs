@@ -1,4 +1,4 @@
-export = typeOf;
+export default typeOf;
 /**
  * @function typeOf
  * @description Determine item type of the unevaluated operand.

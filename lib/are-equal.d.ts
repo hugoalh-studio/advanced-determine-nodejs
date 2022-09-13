@@ -1,4 +1,4 @@
-export = areEqual;
+export default areEqual;
 /**
  * @function areEqual
  * @description Determine items are equal or not.

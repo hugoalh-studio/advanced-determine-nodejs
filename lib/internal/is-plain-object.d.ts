@@ -1,4 +1,4 @@
-export = $isPlainObject;
+export default $isPlainObject;
 /**
  * @private
  * @function $isPlainObject

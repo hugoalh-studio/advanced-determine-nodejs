@@ -1,4 +1,4 @@
-export = isBigInteger;
+export default isBigInteger;
 /**
  * @function isBigInteger
  * @alias isBigInt
