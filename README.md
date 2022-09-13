@@ -31,8 +31,8 @@ A NodeJS module to provide a better and more accurate way to determine item type
 
 #### Install
 
-- NodeJS >= v10.13.0
-- NPM >= v6.4.1
+- NodeJS >= v16.13.0
+- NPM >= v8.1.0
 
 ```sh
 npm install @hugoalh/advanced-determine
