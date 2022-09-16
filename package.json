@@ -43,15 +43,17 @@
 		"type": "git",
 		"url": "git+https://github.com/hugoalh-studio/advanced-determine-nodejs.git"
 	},
+	"dependencies": {
+		"@hugoalh/undefinish": "^1.0.13"
+	},
 	"devDependencies": {
-		"@types/node": "^18.7.17",
+		"@types/node": "^18.7.18",
 		"eslint": "^8.23.1",
 		"eslint-plugin-only-warn": "^1.0.3",
 		"typescript": "^4.8.3"
 	},
 	"engines": {
-		"node": ">= 16.13.0",
-		"npm": ">= 8.1.0"
+		"node": "^ 12.20.0 || ^ 14.15.0 || >= 16.13.0"
 	},
 	"private": false
 }
