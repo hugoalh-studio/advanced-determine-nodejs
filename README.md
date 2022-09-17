@@ -1,7 +1,7 @@
 # Advanced Determine (NodeJS)
 
 [`AdvancedDetermine.NodeJS`](https://github.com/hugoalh-studio/advanced-determine-nodejs)
-[![License](https://img.shields.io/static/v1?label=License&message=MIT&style=flat-square)](./LICENSE.md)
+![License](https://img.shields.io/static/v1?label=License&message=MIT&style=flat-square)
 [![GitHub Stars](https://img.shields.io/github/stars/hugoalh-studio/advanced-determine-nodejs?label=Stars&logo=github&logoColor=ffffff&style=flat-square)](https://github.com/hugoalh-studio/advanced-determine-nodejs/stargazers)
 [![GitHub Contributors](https://img.shields.io/github/contributors/hugoalh-studio/advanced-determine-nodejs?label=Contributors&logo=github&logoColor=ffffff&style=flat-square)](https://github.com/hugoalh-studio/advanced-determine-nodejs/graphs/contributors)
 [![GitHub Issues](https://img.shields.io/github/issues-raw/hugoalh-studio/advanced-determine-nodejs?label=Issues&logo=github&logoColor=ffffff&style=flat-square)](https://github.com/hugoalh-studio/advanced-determine-nodejs/issues)
@@ -38,14 +38,6 @@ npm install @hugoalh/advanced-determine
 ```
 
 #### Use
-
-##### CommonJS
-
-```js
-const advancedDetermine = require("@hugoalh/advanced-determine");
-```
-
-##### ModuleJS
 
 ```js
 /* Either */
