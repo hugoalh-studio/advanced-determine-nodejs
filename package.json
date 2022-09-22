@@ -44,7 +44,7 @@
 		"url": "git+https://github.com/hugoalh-studio/advanced-determine-nodejs.git"
 	},
 	"dependencies": {
-		"@hugoalh/undefinish": "^1.0.14"
+		"@hugoalh/undefinish": "^1.0.15"
 	},
 	"devDependencies": {
 		"@types/node": "^18.7.18",
