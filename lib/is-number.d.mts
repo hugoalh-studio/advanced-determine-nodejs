@@ -4,25 +4,25 @@ export default isNumber;
  * @alias isNum
  * @description Determine item is type of number or not.
  * @param {any} item Item that need to determine.
- * @param {object} [option={}] Option.
- * @param {boolean} [option.even] An even number.
- * @param {boolean} [option.exclusiveMaximum=false] Exclusive maximum of the number.
- * @param {boolean} [option.exclusiveMinimum=false] Exclusive minimum of the number.
- * @param {boolean} [option.finite] A finite number.
- * @param {boolean} [option.float] A float number.
- * @param {boolean} [option.infinite] An infinite number.
- * @param {boolean} [option.integer] An integer number.
- * @param {number} [option.maximum=Infinity] Maximum of the number.
- * @param {number} [option.minimum=-Infinity] Minimum of the number.
- * @param {boolean} [option.negative] A negative number.
- * @param {boolean} [option.odd] An odd number.
- * @param {boolean} [option.positive] A positive number.
- * @param {boolean} [option.prime] A prime number.
- * @param {boolean} [option.safe] An IEEE-754 number.
- * @param {boolean} [option.unsafe] Not an IEEE-754 number.
+ * @param {object} [param1={}] Options.
+ * @param {boolean} [param1.even] An even number.
+ * @param {boolean} [param1.exclusiveMaximum=false] Exclusive maximum of the number.
+ * @param {boolean} [param1.exclusiveMinimum=false] Exclusive minimum of the number.
+ * @param {boolean} [param1.finite] A finite number.
+ * @param {boolean} [param1.float] A float number.
+ * @param {boolean} [param1.infinite] An infinite number.
+ * @param {boolean} [param1.integer] An integer number.
+ * @param {number} [param1.maximum=Infinity] Maximum of the number.
+ * @param {number} [param1.minimum=-Infinity] Minimum of the number.
+ * @param {boolean} [param1.negative] A negative number.
+ * @param {boolean} [param1.odd] An odd number.
+ * @param {boolean} [param1.positive] A positive number.
+ * @param {boolean} [param1.prime] A prime number.
+ * @param {boolean} [param1.safe] An IEEE-754 number.
+ * @param {boolean} [param1.unsafe] Not an IEEE-754 number.
  * @returns {boolean} Determine result.
  */
-declare function isNumber(item: any, option?: {
+declare function isNumber(item: any, { even, exclusiveMaximum, exclusiveMinimum, finite, float, infinite, integer, maximum, minimum, negative, odd, positive, prime, safe, unsafe, ...aliases }?: {
     even?: boolean;
     exclusiveMaximum?: boolean;
     exclusiveMinimum?: boolean;

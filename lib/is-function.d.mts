@@ -4,12 +4,12 @@ export default isFunction;
  * @alias isFn
  * @description Determine item is type of function or not.
  * @param {any} item Item that need to determine.
- * @param {object} [option={}] Option.
- * @param {boolean} [option.asynchronous] An asynchronous function.
- * @param {boolean} [option.generator] A generator function.
+ * @param {object} [param1={}] Options.
+ * @param {boolean} [param1.asynchronous] An asynchronous function.
+ * @param {boolean} [param1.generator] A generator function.
  * @returns {boolean} Determine result.
  */
-declare function isFunction(item: any, option?: {
+declare function isFunction(item: any, { asynchronous, generator, ...aliases }?: {
     asynchronous?: boolean;
     generator?: boolean;
 }): boolean;
