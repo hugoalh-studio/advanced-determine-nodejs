@@ -61,19 +61,19 @@ import { ... } from "@hugoalh/advanced-determine";// Part / Tree-shake
 #### Function
 
 - `areEqual(...items)`
-- `isArray(item, option?)`
-- `isBigInteger(item, option?)`
-- `isFunction(item, option?)`
-- `isGenerator(item, option?)`
-- `isJSON(item, option?)`
-- `isMap(item, option?)`
-- `isNumber(item, option?)`
+- `isArray(item, options?)`
+- `isBigInteger(item, options?)`
+- `isFunction(item, options?)`
+- `isGenerator(item, options?)`
+- `isJSON(item, options?)`
+- `isMap(item, options?)`
+- `isNumber(item, options?)`
 - `isObject(item)`
-- `isPlainObject(item, option?)`
-- `isRegularExpression(item, option?)`
-- `isSet(item, option?)`
-- `isString(item, option?)`
-- `isStringifyJSON(item, option?)`
+- `isPlainObject(item, options?)`
+- `isRegularExpression(item, options?)`
+- `isSet(item, options?)`
+- `isString(item, options?)`
+- `isStringifyJSON(item, options?)`
 - `typeOf(item)`
 
 ### Example
