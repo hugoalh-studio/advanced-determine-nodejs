@@ -19,10 +19,11 @@ export = isNumber;
  * @param {boolean} [param1.positive] A positive number.
  * @param {boolean} [param1.prime] A prime number.
  * @param {boolean} [param1.safe] An IEEE-754 number.
+ * @param {string} [param1.type] Type of the big integer.
  * @param {boolean} [param1.unsafe] Not an IEEE-754 number.
  * @returns {boolean} Determine result.
  */
-declare function isNumber(item: any, { even, exclusiveMaximum, exclusiveMinimum, finite, float, infinite, integer, maximum, minimum, negative, odd, positive, prime, safe, unsafe, ...aliases }?: {
+declare function isNumber(item: any, { even, exclusiveMaximum, exclusiveMinimum, finite, float, infinite, integer, maximum, minimum, negative, odd, positive, prime, safe, type, unsafe, ...aliases }?: {
     even?: boolean;
     exclusiveMaximum?: boolean;
     exclusiveMinimum?: boolean;
@@ -37,6 +38,7 @@ declare function isNumber(item: any, { even, exclusiveMaximum, exclusiveMinimum,
     positive?: boolean;
     prime?: boolean;
     safe?: boolean;
+    type?: string;
     unsafe?: boolean;
 }): boolean;
 //# sourceMappingURL=is-number.d.ts.map

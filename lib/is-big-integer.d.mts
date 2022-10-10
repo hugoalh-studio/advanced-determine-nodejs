@@ -15,10 +15,11 @@ export default isBigInteger;
  * @param {boolean} [param1.positive] A positive big integer.
  * @param {boolean} [param1.prime] A prime number.
  * @param {boolean} [param1.safe] An IEEE-754 big integer.
+ * @param {string} [param1.type] Type of the big integer.
  * @param {boolean} [param1.unsafe] Not an IEEE-754 big integer.
  * @returns {boolean} Determine result.
  */
-declare function isBigInteger(item: any, { even, exclusiveMaximum, exclusiveMinimum, maximum, minimum, negative, odd, positive, prime, safe, unsafe, ...aliases }?: {
+declare function isBigInteger(item: any, { even, exclusiveMaximum, exclusiveMinimum, maximum, minimum, negative, odd, positive, prime, safe, type, unsafe, ...aliases }?: {
     even?: boolean;
     exclusiveMaximum?: boolean;
     exclusiveMinimum?: boolean;
@@ -29,6 +30,7 @@ declare function isBigInteger(item: any, { even, exclusiveMaximum, exclusiveMini
     positive?: boolean;
     prime?: boolean;
     safe?: boolean;
+    type?: string;
     unsafe?: boolean;
 }): boolean;
 //# sourceMappingURL=is-big-integer.d.mts.map
