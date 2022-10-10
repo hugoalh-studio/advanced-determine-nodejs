@@ -13,7 +13,7 @@ export default isBigInteger;
  * @param {boolean} [param1.negative] A negative big integer.
  * @param {boolean} [param1.odd] An odd big integer.
  * @param {boolean} [param1.positive] A positive big integer.
- * @param {boolean} [param1.prime] A prime number.
+ * @param {boolean} [param1.prime] A prime big integer.
  * @param {boolean} [param1.safe] An IEEE-754 big integer.
  * @param {string} [param1.type] Type of the big integer.
  * @param {boolean} [param1.unsafe] Not an IEEE-754 big integer.
