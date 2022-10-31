@@ -16,14 +16,14 @@ declare class ObjectMeta {
     } & {
         [x: string]: PropertyDescriptor;
     };
-    entriesConfigurable: string[];
-    entriesEnumerable: string[];
-    entriesGetter: string[];
-    entriesNonAccessor: string[];
-    entriesNonConfigurable: string[];
-    entriesNonEnumerable: string[];
-    entriesNonWritable: string[];
-    entriesSetter: string[];
-    entriesWritable: string[];
+    configurableEntries: string[];
+    enumerableEntries: string[];
+    getterEntries: string[];
+    nonAccessorEntries: string[];
+    nonConfigurableEntries: string[];
+    nonEnumerableEntries: string[];
+    nonWritableEntries: string[];
+    setterEntries: string[];
+    writableEntries: string[];
 }
 //# sourceMappingURL=object-meta.d.ts.map

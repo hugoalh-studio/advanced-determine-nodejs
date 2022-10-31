@@ -19,7 +19,7 @@ export default isNumber;
  * @param {boolean} [param1.positive] A positive number.
  * @param {boolean} [param1.prime] A prime number.
  * @param {boolean} [param1.safe] An IEEE-754 number.
- * @param {string} [param1.type] Type of the big integer.
+ * @param {string} [param1.type] Type of the integer.
  * @param {boolean} [param1.unsafe] Not an IEEE-754 number.
  * @returns {item is number} Determine result.
  */
