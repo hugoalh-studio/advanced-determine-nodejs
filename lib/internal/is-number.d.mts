@@ -2,7 +2,7 @@ export default $isNumber;
 /**
  * @private
  * @function $isNumber
- * @param {any} item
+ * @param {unknown} item
  * @param {object} [param1={}]
  * @param {boolean} [param1.even]
  * @param {boolean} [param1.exclusiveMaximum=false]
@@ -19,9 +19,9 @@ export default $isNumber;
  * @param {boolean} [param1.prime]
  * @param {boolean} [param1.safe]
  * @param {boolean} [param1.unsafe]
- * @returns {boolean}
+ * @returns {item is number}
  */
-declare function $isNumber(item: any, { even, exclusiveMaximum, exclusiveMinimum, finite, float, infinite, integer, maximum, minimum, negative, odd, positive, prime, safe, unsafe }?: {
+declare function $isNumber(item: unknown, { even, exclusiveMaximum, exclusiveMinimum, finite, float, infinite, integer, maximum, minimum, negative, odd, positive, prime, safe, unsafe }?: {
     even?: boolean;
     exclusiveMaximum?: boolean;
     exclusiveMinimum?: boolean;
@@ -37,5 +37,5 @@ declare function $isNumber(item: any, { even, exclusiveMaximum, exclusiveMinimum
     prime?: boolean;
     safe?: boolean;
     unsafe?: boolean;
-}): boolean;
+}): item is number;
 //# sourceMappingURL=is-number.d.mts.map

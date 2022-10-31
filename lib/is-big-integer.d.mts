@@ -3,7 +3,7 @@ export default isBigInteger;
  * @function isBigInteger
  * @alias isBigInt
  * @description Determine item is type of big integer or not.
- * @param {any} item Item that need to determine.
+ * @param {unknown} item Item that need to determine.
  * @param {object} [param1={}] Options.
  * @param {boolean} [param1.even] An even big integer.
  * @param {boolean} [param1.exclusiveMaximum=false] Exclusive maximum of the big integer.
@@ -17,9 +17,9 @@ export default isBigInteger;
  * @param {boolean} [param1.safe] An IEEE-754 big integer.
  * @param {string} [param1.type] Type of the big integer.
  * @param {boolean} [param1.unsafe] Not an IEEE-754 big integer.
- * @returns {boolean} Determine result.
+ * @returns {item is bigint} Determine result.
  */
-declare function isBigInteger(item: any, { even, exclusiveMaximum, exclusiveMinimum, maximum, minimum, negative, odd, positive, prime, safe, type, unsafe, ...aliases }?: {
+declare function isBigInteger(item: unknown, { even, exclusiveMaximum, exclusiveMinimum, maximum, minimum, negative, odd, positive, prime, safe, type, unsafe, ...aliases }?: {
     even?: boolean;
     exclusiveMaximum?: boolean;
     exclusiveMinimum?: boolean;
@@ -32,5 +32,5 @@ declare function isBigInteger(item: any, { even, exclusiveMaximum, exclusiveMini
     safe?: boolean;
     type?: string;
     unsafe?: boolean;
-}): boolean;
+}): item is bigint;
 //# sourceMappingURL=is-big-integer.d.mts.map

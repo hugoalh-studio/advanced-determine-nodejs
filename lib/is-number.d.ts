@@ -3,11 +3,11 @@ export = isNumber;
  * @function isNumber
  * @alias isNum
  * @description Determine item is type of number or not.
- * @param {any} item Item that need to determine.
+ * @param {unknown} item Item that need to determine.
  * @param {object} [param1={}] Options.
  * @param {boolean} [param1.even] An even number.
- * @param {boolean} [param1.exclusiveMaximum=false] Exclusive maximum of the number.
- * @param {boolean} [param1.exclusiveMinimum=false] Exclusive minimum of the number.
+ * @param {boolean} [param1.exclusiveMaximum=false] Whether to exclusive maximum of the number.
+ * @param {boolean} [param1.exclusiveMinimum=false] Whether to exclusive minimum of the number.
  * @param {boolean} [param1.finite] A finite number.
  * @param {boolean} [param1.float] A float number.
  * @param {boolean} [param1.infinite] An infinite number.
@@ -21,9 +21,9 @@ export = isNumber;
  * @param {boolean} [param1.safe] An IEEE-754 number.
  * @param {string} [param1.type] Type of the big integer.
  * @param {boolean} [param1.unsafe] Not an IEEE-754 number.
- * @returns {boolean} Determine result.
+ * @returns {item is number} Determine result.
  */
-declare function isNumber(item: any, { even, exclusiveMaximum, exclusiveMinimum, finite, float, infinite, integer, maximum, minimum, negative, odd, positive, prime, safe, type, unsafe, ...aliases }?: {
+declare function isNumber(item: unknown, { even, exclusiveMaximum, exclusiveMinimum, finite, float, infinite, integer, maximum, minimum, negative, odd, positive, prime, safe, type, unsafe, ...aliases }?: {
     even?: boolean;
     exclusiveMaximum?: boolean;
     exclusiveMinimum?: boolean;
@@ -40,5 +40,5 @@ declare function isNumber(item: any, { even, exclusiveMaximum, exclusiveMinimum,
     safe?: boolean;
     type?: string;
     unsafe?: boolean;
-}): boolean;
+}): item is number;
 //# sourceMappingURL=is-number.d.ts.map

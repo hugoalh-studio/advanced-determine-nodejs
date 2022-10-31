@@ -1,7 +1,7 @@
 export default $isBigInteger;
 /**
  * @function $isBigInteger
- * @param {any} item
+ * @param {unknown} item
  * @param {object} [param1={}]
  * @param {boolean} [param1.even]
  * @param {boolean} [param1.exclusiveMaximum=false]
@@ -14,9 +14,9 @@ export default $isBigInteger;
  * @param {boolean} [param1.prime]
  * @param {boolean} [param1.safe]
  * @param {boolean} [param1.unsafe]
- * @returns {boolean}
+ * @returns {item is bigint}
  */
-declare function $isBigInteger(item: any, { even, exclusiveMaximum, exclusiveMinimum, maximum, minimum, negative, odd, positive, prime, safe, unsafe }?: {
+declare function $isBigInteger(item: unknown, { even, exclusiveMaximum, exclusiveMinimum, maximum, minimum, negative, odd, positive, prime, safe, unsafe }?: {
     even?: boolean;
     exclusiveMaximum?: boolean;
     exclusiveMinimum?: boolean;
@@ -28,5 +28,5 @@ declare function $isBigInteger(item: any, { even, exclusiveMaximum, exclusiveMin
     prime?: boolean;
     safe?: boolean;
     unsafe?: boolean;
-}): boolean;
+}): item is bigint;
 //# sourceMappingURL=is-big-integer.d.mts.map

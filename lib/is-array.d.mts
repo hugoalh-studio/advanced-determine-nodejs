@@ -4,20 +4,20 @@ export default isArray;
  * @alias isArr
  * @alias isList
  * @description Determine item is type of array or not.
- * @param {any} item Item that need to determine.
+ * @param {unknown} item Item that need to determine.
  * @param {object} [param1={}] Options.
- * @param {boolean} [param1.empty] An empty array.
+ * @param {boolean} [param1.allowEmpty=false] Whether to allow an empty array.
  * @param {number} [param1.maximumLength=Infinity] Maximum length of the array.
- * @param {number} [param1.minimumLength=0] Minimum length of the array.
- * @param {boolean} [param1.strict=false] Ensure no custom defined properties in the array.
- * @param {boolean} [param1.unique=false] Elements must be unique in the array.
- * @returns {boolean} Determine result.
+ * @param {number} [param1.minimumLength=1] Minimum length of the array.
+ * @param {boolean} [param1.strict=false] Whether to determine the array does not contain custom defined properties.
+ * @param {boolean} [param1.unique=false] Whether to determine all of the elements in the array are unique.
+ * @returns {item is Array} Determine result.
  */
-declare function isArray(item: any, { empty, maximumLength, minimumLength, strict, unique, ...aliases }?: {
-    empty?: boolean;
+declare function isArray(item: unknown, { allowEmpty, maximumLength, minimumLength, strict, unique, ...aliases }?: {
+    allowEmpty?: boolean;
     maximumLength?: number;
     minimumLength?: number;
     strict?: boolean;
     unique?: boolean;
-}): boolean;
+}): item is any[];
 //# sourceMappingURL=is-array.d.mts.map

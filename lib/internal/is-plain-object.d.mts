@@ -2,7 +2,7 @@ export default $isPlainObject;
 /**
  * @private
  * @function $isPlainObject
- * @param {any} item
+ * @param {unknown} item
  * @param {object} [param1={}]
  * @param {boolean} [param1.configurableEntries]
  * @param {boolean} [param1.enumerableEntries]
@@ -12,9 +12,9 @@ export default $isPlainObject;
  * @param {boolean} [param1.setterEntries]
  * @param {boolean} [param1.symbolKeys]
  * @param {boolean} [param1.writableEntries]
- * @returns {boolean}
+ * @returns {item is object}
  */
-declare function $isPlainObject(item: any, { configurableEntries, enumerableEntries, getterEntries, maximumEntries, minimumEntries, setterEntries, symbolKeys, writableEntries }?: {
+declare function $isPlainObject(item: unknown, { configurableEntries, enumerableEntries, getterEntries, maximumEntries, minimumEntries, setterEntries, symbolKeys, writableEntries }?: {
     configurableEntries?: boolean;
     enumerableEntries?: boolean;
     getterEntries?: boolean;
@@ -23,5 +23,5 @@ declare function $isPlainObject(item: any, { configurableEntries, enumerableEntr
     setterEntries?: boolean;
     symbolKeys?: boolean;
     writableEntries?: boolean;
-}): boolean;
+}): item is any;
 //# sourceMappingURL=is-plain-object.d.mts.map

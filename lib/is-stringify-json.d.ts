@@ -7,7 +7,7 @@ export = isStringifyJSON;
  * @alias isStringifiedJSON
  * @alias isStrJSON
  * @description Determine item is type of stringify JSON or not.
- * @param {any} item Item that need to determine.
+ * @param {unknown} item Item that need to determine.
  * @param {object} [param1={}] Options.
  * @param {boolean} [param1.arrayRoot] Type of array as the root of the stringify JSON.
  * @param {boolean} [param1.empty] An empty stringify JSON.
@@ -18,7 +18,7 @@ export = isStringifyJSON;
  * @param {boolean} [param1.strictKeys=false] Ensure no illegal namespace characters in the stringify JSON keys.
  * @returns {boolean} Determine result.
  */
-declare function isStringifyJSON(item: any, { arrayRoot, empty, keysPattern, maximumEntries, minimumEntries, strict, strictKeys, ...aliases }?: {
+declare function isStringifyJSON(item: unknown, { arrayRoot, empty, keysPattern, maximumEntries, minimumEntries, strict, strictKeys, ...aliases }?: {
     arrayRoot?: boolean;
     empty?: boolean;
     keysPattern?: RegExp;
