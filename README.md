@@ -65,7 +65,6 @@ import { ... } from "@hugoalh/advanced-determine";// Part / Tree-shake
 - `isBigInteger`
 - `isFunction`
 - `isGenerator`
-- `isGeneratorFunction`
 - `isJSON`
 - `isMap`
 - `isNumber`
@@ -83,11 +82,17 @@ import { ... } from "@hugoalh/advanced-determine";// Part / Tree-shake
 advancedDetermine.isArray([]);
 //=> false (`allowEmpty` is `false`)
 
+advancedDetermine.isArray([], { allowEmpty: true });
+//=> true
+
 advancedDetermine.isNumber(8.31, { float: true, positive: true, safe: true });
 //=> true
 
 advancedDetermine.isString("");
 //=> false (`allowEmpty` is `false`)
+
+advancedDetermine.isString("", { allowEmpty: true });
+//=> true
 
 advancedDetermine.isString("Hello World", { lowerCase: true });
 //=> false

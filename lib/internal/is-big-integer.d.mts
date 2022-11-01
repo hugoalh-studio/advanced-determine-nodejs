@@ -6,8 +6,8 @@ export default $isBigInteger;
  * @param {unknown} item Item that need to determine.
  * @param {object} [param1={}] Options.
  * @param {boolean} [param1.even] Whether an even big integer.
- * @param {boolean} [param1.exclusiveMaximum=false] Exclusive maximum of the big integer.
- * @param {boolean} [param1.exclusiveMinimum=false] Exclusive minimum of the big integer.
+ * @param {boolean} [param1.exclusiveMaximum=false] Whether to exclusive maximum of the big integer.
+ * @param {boolean} [param1.exclusiveMinimum=false] Whether to exclusive minimum of the big integer.
  * @param {bigint} [param1.maximum=Infinity] Maximum of the big integer.
  * @param {bigint} [param1.minimum=-Infinity] Minimum of the big integer.
  * @param {boolean} [param1.negative] Whether a negative big integer.

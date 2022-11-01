@@ -1,1 +1,1 @@
-{"version":3,"file":"is-map.d.mts","sourceRoot":"","sources":["is-map.mjs"],"names":[],"mappings":";AAEA;;;;;;;;;GASG;AACH,6BAPW,OAAO;IAEU,KAAK,GAAtB,OAAO;IACS,WAAW,GAA3B,MAAM;IACU,WAAW,GAA3B,MAAM;0BA4ChB"}
+{"version":3,"file":"is-map.d.mts","sourceRoot":"","sources":["is-map.mjs"],"names":[],"mappings":";AAEA;;;;;;;;;GASG;AACH,6BAPW,OAAO;IAEU,UAAU,GAA3B,OAAO;IACS,WAAW,GAA3B,MAAM;IACU,WAAW,GAA3B,MAAM;0BAwChB"}
