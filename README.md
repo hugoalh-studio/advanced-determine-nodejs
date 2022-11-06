@@ -60,33 +60,39 @@ import { ... } from "@hugoalh/advanced-determine";// Part / Tree-shake
 
 #### Function
 
-- `areEqual(...items)`
-- `isArray(item, options?)`
-- `isBigInteger(item, options?)`
-- `isFunction(item, options?)`
-- `isGenerator(item, options?)`
-- `isJSON(item, options?)`
-- `isMap(item, options?)`
-- `isNumber(item, options?)`
-- `isObject(item)`
-- `isPlainObject(item, options?)`
-- `isRegularExpression(item, options?)`
-- `isSet(item, options?)`
-- `isString(item, options?)`
-- `isStringifyJSON(item, options?)`
-- `typeOf(item)`
+- `areEqual`
+- `isArray`
+- `isBigInteger`
+- `isFunction`
+- `isGenerator`
+- `isJSON`
+- `isMap`
+- `isNumber`
+- `isObject`
+- `isPlainObject`
+- `isRegularExpression`
+- `isSet`
+- `isString`
+- `isStringifyJSON`
+- `typeOf`
 
 ### Example
 
 ```js
-advancedDetermine.isArray([], { empty: false });
-//=> false
+advancedDetermine.isArray([]);
+//=> false (`allowEmpty` is `false`)
+
+advancedDetermine.isArray([], { allowEmpty: true });
+//=> true
 
 advancedDetermine.isNumber(8.31, { float: true, positive: true, safe: true });
 //=> true
 
-advancedDetermine.isString("", { empty: false });
-//=> false
+advancedDetermine.isString("");
+//=> false (`allowEmpty` is `false`)
+
+advancedDetermine.isString("", { allowEmpty: true });
+//=> true
 
 advancedDetermine.isString("Hello World", { lowerCase: true });
 //=> false

@@ -2,12 +2,13 @@ export = isGenerator;
 /**
  * @function isGenerator
  * @description Determine item is type of generator or not.
- * @param {any} item Item that need to determine.
+ * @template {boolean|undefined} T
+ * @param {unknown} item Item that need to determine.
  * @param {object} [param1={}] Options.
- * @param {boolean} [param1.asynchronous] An asynchronous generator.
- * @returns {boolean} Determine result.
+ * @param {T} [param1.asynchronous] Whether an asynchronous generator.
+ * @returns {item is (T extends true ? AsyncGenerator : Generator)} Determine result.
  */
-declare function isGenerator(item: any, { asynchronous, ...aliases }?: {
-    asynchronous?: boolean;
-}): boolean;
+declare function isGenerator<T extends boolean>(item: unknown, { asynchronous, ...aliases }?: {
+    asynchronous?: T;
+}): item is T extends true ? AsyncGenerator<any, any, any> : Generator<any, any, any>;
 //# sourceMappingURL=is-generator.d.ts.map

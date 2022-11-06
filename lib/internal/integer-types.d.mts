@@ -2,9 +2,10 @@ export default integerTypes;
 /**
  * @private
  * @function integerTypes
- * @param {string} name
- * @param {boolean} [asNumber=false]
- * @returns {[bigint,bigint]|[number,number]}
+ * @template {boolean} T
+ * @param {string} name Name of the integer type.
+ * @param {T} [asNumber=false] Whether to return result as type of number.
+ * @returns {T extends true ? [number,number] : [bigint,bigint]}
  */
-declare function integerTypes(name: string, asNumber?: boolean): [bigint, bigint] | [number, number];
+declare function integerTypes<T extends boolean>(name: string, asNumber?: T): T extends true ? [number, number] : [bigint, bigint];
 //# sourceMappingURL=integer-types.d.mts.map

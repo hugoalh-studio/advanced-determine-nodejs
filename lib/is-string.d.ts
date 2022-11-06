@@ -3,23 +3,23 @@ export = isString;
  * @function isString
  * @alias isStr
  * @description Determine item is type of string or not.
- * @param {any} item Item that need to determine.
+ * @param {unknown} item Item that need to determine.
  * @param {object} [param1={}] Options.
- * @param {boolean} [param1.ascii=false] Allow only ASCII characters in the string.
- * @param {boolean} [param1.empty] An empty string.
- * @param {boolean} [param1.lowerCase] A lower case string.
+ * @param {boolean} [param1.allowEmpty=false] Whether to allow an empty string.
+ * @param {boolean} [param1.ascii] Whether an ASCII string.
+ * @param {boolean} [param1.lowerCase] Whether a lower case string.
  * @param {number} [param1.maximumLength=Infinity] Maximum length of the string.
  * @param {number} [param1.minimumLength=0] Minimum length of the string.
- * @param {boolean} [param1.multipleLine] A multiple line string.
- * @param {RegExp} [param1.pattern] Pattern.
- * @param {boolean} [param1.preTrim=false] Trim string before determine.
- * @param {boolean} [param1.singleLine] A single line string.
- * @param {boolean} [param1.upperCase] An upper case string.
- * @returns {boolean} Determine result.
+ * @param {boolean} [param1.multipleLine] Whether a multiple lines string.
+ * @param {RegExp} [param1.pattern] Whether a pattern matchable string.
+ * @param {boolean} [param1.preTrim=false] Whether to trim the string internally before determine.
+ * @param {boolean} [param1.singleLine] Whether a single line string.
+ * @param {boolean} [param1.upperCase] Whether an upper case string.
+ * @returns {item is string} Determine result.
  */
-declare function isString(item: any, { ascii, empty, lowerCase, maximumLength, minimumLength, multipleLine, pattern, preTrim, singleLine, upperCase, ...aliases }?: {
+declare function isString(item: unknown, { allowEmpty, ascii, lowerCase, maximumLength, minimumLength, multipleLine, pattern, preTrim, singleLine, upperCase, ...aliases }?: {
+    allowEmpty?: boolean;
     ascii?: boolean;
-    empty?: boolean;
     lowerCase?: boolean;
     maximumLength?: number;
     minimumLength?: number;
@@ -28,5 +28,5 @@ declare function isString(item: any, { ascii, empty, lowerCase, maximumLength, m
     preTrim?: boolean;
     singleLine?: boolean;
     upperCase?: boolean;
-}): boolean;
+}): item is string;
 //# sourceMappingURL=is-string.d.ts.map
