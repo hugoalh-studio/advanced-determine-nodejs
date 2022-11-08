@@ -2,10 +2,26 @@ export = integerTypes;
 /**
  * @access private
  * @function integerTypes
- * @template {boolean} T
  * @param {string} name Name of the integer type.
+ * @param {AsNumber} [asNumber=false] Whether to return result as type of number.
+ * @returns {ReturnType<typeof integerTypesOutput>}
+ * @throws {RangeError} Invalid integer type.
+ */
+declare function integerTypes(name: string, asNumber?: AsNumber): ReturnType<typeof integerTypesOutput>;
+declare namespace integerTypes {
+    export { AsNumber };
+}
+/**
+ * Whether to return result as type of number.
+ */
+type AsNumber = boolean;
+/**
+ * @access private
+ * @function integerTypesOutput
+ * @template {AsNumber} T
+ * @param {[bigint, bigint]} output Output.
  * @param {T} [asNumber=false] Whether to return result as type of number.
  * @returns {T extends true ? [number, number] : [bigint, bigint]}
  */
-declare function integerTypes<T extends boolean>(name: string, asNumber?: T): T extends true ? [number, number] : [bigint, bigint];
+declare function integerTypesOutput<T extends boolean>(output: [bigint, bigint], asNumber?: T): T extends true ? [number, number] : [bigint, bigint];
 //# sourceMappingURL=integer-types.d.ts.map

@@ -1,7 +1,7 @@
-export = $isPlainObject;
+export = isPlainObjectInternal;
 /**
  * @access private
- * @function $isPlainObject
+ * @function isPlainObjectInternal
  * @description Determine item is type of plain object or not.
  * @param {unknown} item Item that need to determine.
  * @param {object} [param1={}] Options.
@@ -15,7 +15,7 @@ export = $isPlainObject;
  * @param {boolean} [param1.writableEntries] Whether contain writable entries in the plain object.
  * @returns {item is object} Determine result.
  */
-declare function $isPlainObject(item: unknown, { configurableEntries, enumerableEntries, getterEntries, maximumEntries, minimumEntries, setterEntries, symbolKeys, writableEntries }?: {
+declare function isPlainObjectInternal(item: unknown, { configurableEntries, enumerableEntries, getterEntries, maximumEntries, minimumEntries, setterEntries, symbolKeys, writableEntries }?: {
     configurableEntries?: boolean;
     enumerableEntries?: boolean;
     getterEntries?: boolean;

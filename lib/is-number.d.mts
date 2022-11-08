@@ -21,7 +21,7 @@ export default isNumber;
  * @param {boolean} [param1.safe] Whether an IEEE-754 number.
  * @param {string} [param1.type] Type of the integer.
  * @param {boolean} [param1.unsafe] Whether not an IEEE-754 number.
- * @returns {item is number} Determine result.
+ * @returns {ReturnType<typeof isNumberInternal>} Determine result.
  */
 declare function isNumber(item: unknown, { even, exclusiveMaximum, exclusiveMinimum, finite, float, infinite, integer, maximum, minimum, negative, odd, positive, prime, safe, type, unsafe, ...aliases }?: {
     even?: boolean;
@@ -40,5 +40,6 @@ declare function isNumber(item: unknown, { even, exclusiveMaximum, exclusiveMini
     safe?: boolean;
     type?: string;
     unsafe?: boolean;
-}): item is number;
+}): ReturnType<typeof isNumberInternal>;
+import isNumberInternal from "./internal/is-number.mjs";
 //# sourceMappingURL=is-number.d.mts.map

@@ -19,7 +19,7 @@ export default isPlainObject;
  * @param {boolean} [param1.strict=false] Whether to determine no custom defined properties (i.e.: getters, setters, non-configurable, non-enumerable, and non-writable) in the plain object, and no symbols in the plain object keys.
  * @param {boolean} [param1.symbolKeys] Whether contain symbols in the plain object keys.
  * @param {boolean} [param1.writableEntries] Whether contain writable entries in the plain object.
- * @returns {item is object} Determine result.
+ * @returns {ReturnType<typeof isPlainObjectInternal>} Determine result.
  */
 declare function isPlainObject(item: unknown, { allowEmpty, configurableEntries, enumerableEntries, getterEntries, maximumEntries, minimumEntries, setterEntries, strict, symbolKeys, writableEntries, ...aliases }?: {
     configurableEntries?: boolean;
@@ -32,5 +32,6 @@ declare function isPlainObject(item: unknown, { allowEmpty, configurableEntries,
     strict?: boolean;
     symbolKeys?: boolean;
     writableEntries?: boolean;
-}): item is any;
+}): ReturnType<typeof isPlainObjectInternal>;
+import isPlainObjectInternal from "./internal/is-plain-object.mjs";
 //# sourceMappingURL=is-plain-object.d.mts.map

@@ -1,7 +1,7 @@
-export = $isBigInteger;
+export = isBigIntegerInternal;
 /**
  * @access private
- * @function $isBigInteger
+ * @function isBigIntegerInternal
  * @description Determine item is type of big integer or not.
  * @param {unknown} item Item that need to determine.
  * @param {object} [param1={}] Options.
@@ -18,7 +18,7 @@ export = $isBigInteger;
  * @param {boolean} [param1.unsafe] Whether not an IEEE-754 big integer.
  * @returns {item is bigint} Determine result.
  */
-declare function $isBigInteger(item: unknown, { even, exclusiveMaximum, exclusiveMinimum, maximum, minimum, negative, odd, positive, prime, safe, unsafe }?: {
+declare function isBigIntegerInternal(item: unknown, { even, exclusiveMaximum, exclusiveMinimum, maximum, minimum, negative, odd, positive, prime, safe, unsafe }?: {
     even?: boolean;
     exclusiveMaximum?: boolean;
     exclusiveMinimum?: boolean;

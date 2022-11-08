@@ -1,7 +1,7 @@
-export default $isNumber;
+export default isNumberInternal;
 /**
  * @access private
- * @function $isNumber
+ * @function isNumberInternal
  * @description Determine item is type of number or not.
  * @param {unknown} item Item that need to determine.
  * @param {object} [param1={}] Options.
@@ -22,7 +22,7 @@ export default $isNumber;
  * @param {boolean} [param1.unsafe] Whether not an IEEE-754 number.
  * @returns {item is number} Determine result.
  */
-declare function $isNumber(item: unknown, { even, exclusiveMaximum, exclusiveMinimum, finite, float, infinite, integer, maximum, minimum, negative, odd, positive, prime, safe, unsafe }?: {
+declare function isNumberInternal(item: unknown, { even, exclusiveMaximum, exclusiveMinimum, finite, float, infinite, integer, maximum, minimum, negative, odd, positive, prime, safe, unsafe }?: {
     even?: boolean;
     exclusiveMaximum?: boolean;
     exclusiveMinimum?: boolean;

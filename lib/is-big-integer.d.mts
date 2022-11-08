@@ -17,7 +17,7 @@ export default isBigInteger;
  * @param {boolean} [param1.safe] Whether an IEEE-754 big integer.
  * @param {string} [param1.type] Type of the big integer.
  * @param {boolean} [param1.unsafe] Whether not an IEEE-754 big integer.
- * @returns {item is bigint} Determine result.
+ * @returns {ReturnType<typeof isBigIntegerInternal>} Determine result.
  */
 declare function isBigInteger(item: unknown, { even, exclusiveMaximum, exclusiveMinimum, maximum, minimum, negative, odd, positive, prime, safe, type, unsafe, ...aliases }?: {
     even?: boolean;
@@ -32,5 +32,6 @@ declare function isBigInteger(item: unknown, { even, exclusiveMaximum, exclusive
     safe?: boolean;
     type?: string;
     unsafe?: boolean;
-}): item is bigint;
+}): ReturnType<typeof isBigIntegerInternal>;
+import isBigIntegerInternal from "./internal/is-big-integer.mjs";
 //# sourceMappingURL=is-big-integer.d.mts.map
