@@ -1,6 +1,6 @@
 export default ObjectMeta;
 /**
- * @private
+ * @access private
  * @class ObjectMeta
  */
 declare class ObjectMeta {

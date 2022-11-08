@@ -1,6 +1,6 @@
 export default $isNumber;
 /**
- * @private
+ * @access private
  * @function $isNumber
  * @description Determine item is type of number or not.
  * @param {unknown} item Item that need to determine.

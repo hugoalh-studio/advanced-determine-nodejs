@@ -1,6 +1,6 @@
 export default $isPlainObject;
 /**
- * @private
+ * @access private
  * @function $isPlainObject
  * @description Determine item is type of plain object or not.
  * @param {unknown} item Item that need to determine.

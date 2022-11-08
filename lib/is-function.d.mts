@@ -3,8 +3,8 @@ export default isFunction;
  * @function isFunction
  * @alias isFn
  * @description Determine item is type of function or not.
- * @template {boolean|undefined} TA
- * @template {boolean|undefined} TG
+ * @template {boolean | undefined} TA
+ * @template {boolean | undefined} TG
  * @param {unknown} item Item that need to determine.
  * @param {object} [param1={}] Options.
  * @param {TA} [param1.asynchronous] Whether an asynchronous function.

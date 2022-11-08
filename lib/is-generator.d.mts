@@ -2,7 +2,7 @@ export default isGenerator;
 /**
  * @function isGenerator
  * @description Determine item is type of generator or not.
- * @template {boolean|undefined} T
+ * @template {boolean | undefined} T
  * @param {unknown} item Item that need to determine.
  * @param {object} [param1={}] Options.
  * @param {T} [param1.asynchronous] Whether an asynchronous generator.

@@ -1,6 +1,6 @@
 export = $isBigInteger;
 /**
- * @private
+ * @access private
  * @function $isBigInteger
  * @description Determine item is type of big integer or not.
  * @param {unknown} item Item that need to determine.

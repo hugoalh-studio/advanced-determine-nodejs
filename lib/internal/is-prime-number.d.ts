@@ -1,6 +1,6 @@
 export = isPrimeNumber;
 /**
- * @private
+ * @access private
  * @function isPrimeNumber
  * @param {bigint|number} item
  * @returns {boolean}
