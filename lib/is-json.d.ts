@@ -8,7 +8,7 @@ export = isJSON;
  * @param {boolean} [param1.arrayRoot] Whether type of array as the root of the JSON.
  * @param {RegExp} [param1.keysPattern] Whether a pattern matchable JSON keys.
  * @param {number} [param1.maximumEntries=Infinity] Maximum entries of the JSON.
- * @param {number} [param1.minimumEntries=0] Minimum entries of the JSON.
+ * @param {number} [param1.minimumEntries=1] Minimum entries of the JSON.
  * @param {boolean} [param1.strict=false] Whether to determine type of array not as the root of the JSON, and no illegal namespace characters in the JSON keys.
  * @param {boolean} [param1.strictKeys=false] Whether to determine no illegal namespace characters in the JSON keys.
  * @returns {item is object} Determine result.

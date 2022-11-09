@@ -6,7 +6,7 @@ export = isSet;
  * @param {object} [param1={}] Options.
  * @param {boolean} [param1.allowEmpty=false] Whether to allow an empty set.
  * @param {number} [param1.maximumSize=Infinity] Maximum size of the set.
- * @param {number} [param1.minimumSize=0] Minimum size of the set.
+ * @param {number} [param1.minimumSize=1] Minimum size of the set.
  * @returns {item is Set} Determine result.
  */
 declare function isSet(item: unknown, { allowEmpty, maximumSize, minimumSize, ...aliases }?: {

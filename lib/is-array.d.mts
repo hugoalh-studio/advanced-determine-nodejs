@@ -11,7 +11,7 @@ export default isArray;
  * @param {number} [param1.minimumLength=1] Minimum length of the array.
  * @param {boolean} [param1.strict=false] Whether to determine no custom defined properties in the array.
  * @param {boolean} [param1.unique=false] Whether to determine all of the elements in the array are unique.
- * @returns {item is Array} Determine result.
+ * @returns {ReturnType<typeof isArrayInternal>} Determine result.
  */
 declare function isArray(item: unknown, { allowEmpty, maximumLength, minimumLength, strict, unique, ...aliases }?: {
     allowEmpty?: boolean;
@@ -19,5 +19,6 @@ declare function isArray(item: unknown, { allowEmpty, maximumLength, minimumLeng
     minimumLength?: number;
     strict?: boolean;
     unique?: boolean;
-}): item is any[];
+}): ReturnType<typeof isArrayInternal>;
+import isArrayInternal from "./internal/is-array.mjs";
 //# sourceMappingURL=is-array.d.mts.map

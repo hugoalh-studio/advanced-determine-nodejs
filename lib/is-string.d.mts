@@ -9,7 +9,7 @@ export default isString;
  * @param {boolean} [param1.ascii] Whether an ASCII string.
  * @param {boolean} [param1.lowerCase] Whether a lower case string.
  * @param {number} [param1.maximumLength=Infinity] Maximum length of the string.
- * @param {number} [param1.minimumLength=0] Minimum length of the string.
+ * @param {number} [param1.minimumLength=1] Minimum length of the string.
  * @param {boolean} [param1.multipleLine] Whether a multiple lines string.
  * @param {RegExp} [param1.pattern] Whether a pattern matchable string.
  * @param {boolean} [param1.preTrim=false] Whether to trim the string internally before determine.

@@ -14,7 +14,7 @@ export default isPlainObject;
  * @param {boolean} [param1.enumerableEntries] Whether contain enumerable entries in the plain object.
  * @param {boolean} [param1.getterEntries] Whether contain getter entries in the plain object.
  * @param {number} [param1.maximumEntries=Infinity] Maximum entries of the plain object.
- * @param {number} [param1.minimumEntries=0] Minimum entries of the plain object.
+ * @param {number} [param1.minimumEntries=1] Minimum entries of the plain object.
  * @param {boolean} [param1.setterEntries] Whether contain setter entries in the plain object.
  * @param {boolean} [param1.strict=false] Whether to determine no custom defined properties (i.e.: getters, setters, non-configurable, non-enumerable, and non-writable) in the plain object, and no symbols in the plain object keys.
  * @param {boolean} [param1.symbolKeys] Whether contain symbols in the plain object keys.
