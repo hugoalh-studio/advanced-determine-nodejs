@@ -4,6 +4,7 @@ export default areEqual;
  * @description Determine items are equal or not.
  * @param {...unknown} items Items that need to determine.
  * @returns {boolean} Determine result.
+ * @throws {ReferenceError} Argument `items` is not defined.
  */
 declare function areEqual(...items: unknown[]): boolean;
 //# sourceMappingURL=are-equal.d.mts.map

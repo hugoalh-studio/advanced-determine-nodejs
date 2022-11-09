@@ -22,6 +22,22 @@ export default isNumber;
  * @param {string} [param1.type] Type of the integer.
  * @param {boolean} [param1.unsafe] Whether not an IEEE-754 number.
  * @returns {ReturnType<typeof isNumberInternal>} Determine result.
+ * @throws {TypeError} Argument `even` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `exclusiveMaximum` is not type of boolean.
+ * @throws {TypeError} Argument `exclusiveMinimum` is not type of boolean.
+ * @throws {TypeError} Argument `finite` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `float` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `infinite` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `integer` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `maximum` is not a valid number.
+ * @throws {TypeError} Argument `minimum` is not a valid number.
+ * @throws {TypeError} Argument `negative` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `odd` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `positive` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `prime` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `safe` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `type` is not a valid integer type or type of undefined.
+ * @throws {TypeError} Argument `unsafe` is not type of boolean or undefined.
  */
 declare function isNumber(item: unknown, { even, exclusiveMaximum, exclusiveMinimum, finite, float, infinite, integer, maximum, minimum, negative, odd, positive, prime, safe, type, unsafe, ...aliases }?: {
     even?: boolean;

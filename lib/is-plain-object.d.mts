@@ -20,6 +20,16 @@ export default isPlainObject;
  * @param {boolean} [param1.symbolKeys] Whether contain symbols in the plain object keys.
  * @param {boolean} [param1.writableEntries] Whether contain writable entries in the plain object.
  * @returns {ReturnType<typeof isPlainObjectInternal>} Determine result.
+ * @throws {TypeError} Argument `configurableEntries` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `allowEmpty` is not type of boolean.
+ * @throws {TypeError} Argument `enumerableEntries` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `getterEntries` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `maximumEntries` is not a valid number.
+ * @throws {TypeError} Argument `minimumEntries` is not a valid number.
+ * @throws {TypeError} Argument `setterEntries` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `strict` is not type of boolean.
+ * @throws {TypeError} Argument `symbolKeys` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `writableEntries` is not type of boolean or undefined.
  */
 declare function isPlainObject(item: unknown, { allowEmpty, configurableEntries, enumerableEntries, getterEntries, maximumEntries, minimumEntries, setterEntries, strict, symbolKeys, writableEntries, ...aliases }?: {
     configurableEntries?: boolean;

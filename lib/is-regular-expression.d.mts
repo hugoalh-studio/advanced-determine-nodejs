@@ -14,6 +14,13 @@ export default isRegularExpression;
  * @param {boolean} [param1.sticky] Whether a sticky regular expression.
  * @param {boolean} [param1.unicode] Whether an unicode regular expression.
  * @returns {item is RegExp} Determine result.
+ * @throws {TypeError} Argument `caseInsensitive` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `dotAll` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `exactly` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `global` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `multipleLine` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `sticky` is not type of boolean or undefined.
+ * @throws {TypeError} Argument `unicode` is not type of boolean or undefined.
  */
 declare function isRegularExpression(item: unknown, { caseInsensitive, dotAll, exactly, global, multipleLine, sticky, unicode, ...aliases }?: {
     caseInsensitive?: boolean;
