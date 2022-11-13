@@ -1,1 +1,1 @@
-{"version":3,"file":"integer-types.d.mts","sourceRoot":"","sources":["integer-types.mjs"],"names":[],"mappings":";;;;uBACa,OAAO;AAgCpB;;;;;;;GAOG;AACH,oCALW,MAAM,aACN,QAAQ,GACN,WAAW,yBAAyB,CAAC,CAuDjD;AA5ED;;;;;;;GAOG;AACH,+DAJW,CAAC,MAAM,EAAE,MAAM,CAAC,sEAW1B"}
+{"version":3,"file":"integer-types.d.mts","sourceRoot":"","sources":["integer-types.mjs"],"names":[],"mappings":";;;;uBACa,OAAO;AAgCpB;;;;;;GAMG;AACH,oCAJW,MAAM,aACN,QAAQ,GACN,WAAW,yBAAyB,CAAC,CAsDjD;AA3ED;;;;;;;GAOG;AACH,+DAJW,CAAC,MAAM,EAAE,MAAM,CAAC,sEAW1B"}

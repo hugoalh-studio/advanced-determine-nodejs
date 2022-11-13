@@ -12,11 +12,6 @@ export = isArray;
  * @param {boolean} [param1.strict=false] Whether to determine no custom defined properties in the array.
  * @param {boolean} [param1.unique=false] Whether to determine all of the elements in the array are unique.
  * @returns {ReturnType<typeof isArrayInternal>} Determine result.
- * @throws {TypeError} Argument `allowEmpty` is not type of boolean.
- * @throws {TypeError} Argument `maximumLength` is not a valid number.
- * @throws {TypeError} Argument `minimumLength` is not a valid number.
- * @throws {TypeError} Argument `strict` is not type of boolean.
- * @throws {TypeError} Argument `unique` is not type of boolean.
  */
 declare function isArray(item: unknown, { allowEmpty, maximumLength, minimumLength, strict, unique, ...aliases }?: {
     allowEmpty?: boolean;

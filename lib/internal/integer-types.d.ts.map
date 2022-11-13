@@ -1,1 +1,1 @@
-{"version":3,"file":"integer-types.d.ts","sourceRoot":"","sources":["integer-types.js"],"names":[],"mappings":";AAiCA;;;;;;;GAOG;AACH,oCALW,MAAM,aACN,QAAQ,GACN,WAAW,yBAAyB,CAAC,CAuDjD;;;;;;;gBA5FY,OAAO;AAgBpB;;;;;;;GAOG;AACH,+DAJW,CAAC,MAAM,EAAE,MAAM,CAAC,sEAW1B"}
+{"version":3,"file":"integer-types.d.ts","sourceRoot":"","sources":["integer-types.js"],"names":[],"mappings":";AAiCA;;;;;;GAMG;AACH,oCAJW,MAAM,aACN,QAAQ,GACN,WAAW,yBAAyB,CAAC,CAsDjD;;;;;;;gBA3FY,OAAO;AAgBpB;;;;;;;GAOG;AACH,+DAJW,CAAC,MAAM,EAAE,MAAM,CAAC,sEAW1B"}

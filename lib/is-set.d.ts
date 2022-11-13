@@ -8,9 +8,6 @@ export = isSet;
  * @param {number} [param1.maximumSize=Infinity] Maximum size of the set.
  * @param {number} [param1.minimumSize=1] Minimum size of the set.
  * @returns {item is Set} Determine result.
- * @throws {TypeError} Argument `allowEmpty` is not type of boolean.
- * @throws {TypeError} Argument `maximumSize` is not a valid number.
- * @throws {TypeError} Argument `minimumSize` is not a valid number.
  */
 declare function isSet(item: unknown, { allowEmpty, maximumSize, minimumSize, ...aliases }?: {
     allowEmpty?: boolean;

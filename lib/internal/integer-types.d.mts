@@ -9,7 +9,6 @@ export type AsNumber = boolean;
  * @param {string} name Name of the integer type.
  * @param {AsNumber} [asNumber=false] Whether to return result as type of number.
  * @returns {ReturnType<typeof integerTypesOutput>}
- * @throws {RangeError} Invalid integer type.
  */
 declare function integerTypes(name: string, asNumber?: AsNumber): ReturnType<typeof integerTypesOutput>;
 /**

@@ -16,16 +16,6 @@ export = isString;
  * @param {boolean} [param1.singleLine] Whether a single line string.
  * @param {boolean} [param1.upperCase] Whether an upper case string.
  * @returns {item is string} Determine result.
- * @throws {TypeError} Argument `allowEmpty` is not type of boolean.
- * @throws {TypeError} Argument `ascii` is not type of boolean or undefined.
- * @throws {TypeError} Argument `lowerCase` is not type of boolean or undefined.
- * @throws {TypeError} Argument `maximumLength` is not a valid number.
- * @throws {TypeError} Argument `minimumLength` is not a valid number.
- * @throws {TypeError} Argument `multipleLine` is not type of boolean or undefined.
- * @throws {TypeError} Argument `pattern` is not type of regular expression or undefined.
- * @throws {TypeError} Argument `preTrim` is not type of boolean.
- * @throws {TypeError} Argument `singleLine` is not type of boolean or undefined.
- * @throws {TypeError} Argument `upperCase` is not type of boolean or undefined.
  */
 declare function isString(item: unknown, { allowEmpty, ascii, lowerCase, maximumLength, minimumLength, multipleLine, pattern, preTrim, singleLine, upperCase, ...aliases }?: {
     allowEmpty?: boolean;
