@@ -9,19 +9,28 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Checkout Repository"
-        uses: "actions/checkout@v3.1.0"
+        uses: "actions/checkout@v3.3.0"
+      - name: "Modify PowerShell Repository"
+        run: |
+          Set-PSRepository -Name 'PSGallery' -InstallationPolicy 'Trusted' -Verbose
+        shell: "pwsh"
+      - name: "Setup GitHub Actions PowerShell Toolkit"
+        run: |
+          Install-Module -Name 'hugoalh.GitHubActionsToolkit' -MinimumVersion '1.1.1' -Scope 'CurrentUser' -AcceptLicense -Confirm:$False -Verbose
+        shell: "pwsh"
       - name: "Get Package Meta"
         id: "get-package-meta"
         run: |
+          Import-Module -Name 'hugoalh.GitHubActionsToolkit' -Scope 'Local'
           [PSCustomObject]$PackageMeta = Get-Content -Path '.\package.json' -Raw -Encoding 'UTF8NoBOM' |
             ConvertFrom-Json -Depth 100
-          Write-Host -Object "::set-output name=name::$($PackageMeta.name)"
-          Write-Host -Object "::set-output name=version::$($PackageMeta.version)"
+          Set-GitHubActionsOutput -Name 'name' -Value $PackageMeta.name
+          Set-GitHubActionsOutput -Name 'version' -Value $PackageMeta.version
         shell: "pwsh"
       - name: "Setup NodeJS"
-        uses: "actions/setup-node@v3.5.0"
+        uses: "actions/setup-node@v3.6.0"
         with:
-          node-version: 14
+          node-version: "lts/*"
           check-latest: true
           registry-url: "https://registry.npmjs.org/"
       - name: "Publish To Tag @latest"
