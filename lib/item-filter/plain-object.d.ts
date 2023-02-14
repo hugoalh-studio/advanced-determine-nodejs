@@ -1,10 +1,7 @@
 export default PlainObjectItemFilter;
 /**
  * @class PlainObjectItemFilter
- * @alias DictionaryItemFilter
- * @alias DictItemFilter
  * @alias ObjectPlainItemFilter
- * @alias ObjPlainItemFilter
  * @description Determine item with the filter of type of plain object.
  */
 declare class PlainObjectItemFilter {

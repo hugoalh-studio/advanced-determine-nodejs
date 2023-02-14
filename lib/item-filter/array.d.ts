@@ -1,7 +1,6 @@
 export default ArrayItemFilter;
 /**
  * @class ArrayItemFilter
- * @alias ListItemFilter
  * @description Determine item with the filter of type of array.
  */
 declare class ArrayItemFilter {

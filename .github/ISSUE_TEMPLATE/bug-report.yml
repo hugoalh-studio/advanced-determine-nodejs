@@ -18,7 +18,7 @@ body:
       description: "What versions are affected? Versions must be listed as supported in the Security Policy (file: `SECURITY.md`)."
       multiple: true
       options:
-        - "v10.0.0-beta.1"
+        - "v10.0.0-beta.2"
         - "v7.2.1"
         - "v7.2.0"
         - "v7.1.5"

@@ -1,6 +1,6 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "10.0.0-beta.1",
+	"version": "10.0.0-beta.2",
 	"description": "A module to provide a better and more accurate way to determine item.",
 	"keywords": [
 		"determine",
@@ -20,6 +20,9 @@
 	"exports": {
 		".": {
 			"import": "./lib/main.js"
+		},
+		"./is": {
+			"import": "./lib/is.js"
 		},
 		"./item-filter": {
 			"import": "./lib/item-filter.js"

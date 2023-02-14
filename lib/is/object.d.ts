@@ -1,10 +1,9 @@
 export default isObject;
 /**
  * @function isObject
- * @alias isObj
- * @description Determine item is type of object or not.
+ * @description Determine item with the filter of type of object.
  * @param {unknown} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
 declare function isObject(item: unknown): boolean;
-//# sourceMappingURL=is-object.d.ts.map
+//# sourceMappingURL=object.d.ts.map

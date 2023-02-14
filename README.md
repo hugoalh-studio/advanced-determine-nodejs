@@ -65,6 +65,8 @@ import { ... } from "@hugoalh/advanced-determine";// Part / Tree-shake
   - `test`
 - `NumberItemFilter`
   - `test`
+- `ObjectItemFilter`
+  - `test`
 - `PlainObjectItemFilter`
   - `test`
 - `RegularExpressionItemFilter`
@@ -79,27 +81,45 @@ import { ... } from "@hugoalh/advanced-determine";// Part / Tree-shake
 #### Function
 
 - `areEqual`
+- `isArray`
+- `isBigInteger`
+- `isFunction`
+- `isGenerator`
+- `isJSON`
+- `isMap`
+- `isNumber`
 - `isObject`
+- `isPlainObject`
+- `isRegularExpression`
+- `isSet`
+- `isString`
+- `isStringifyJSON`
 - `typeOf`
 
 ### Example
 
 ```js
-new advancedDetermine.ArrayItemFilter().test([]);
+/* Class */new advancedDetermine.ArrayItemFilter().test([]);
+/* Func. */advancedDetermine.isArray([]);
 //=> false (`allowEmpty` is `false`)
 
-new advancedDetermine.ArrayItemFilter({ allowEmpty: true }).test([]);
+/* Class */new advancedDetermine.ArrayItemFilter({ allowEmpty: true }).test([]);
+/* Func. */advancedDetermine.isArray([], { allowEmpty: true });
 //=> true
 
-new advancedDetermine.NumberItemFilter({ float: true, positive: true, safe: true }).test(8.31);
+/* Class */new advancedDetermine.NumberItemFilter({ float: true, positive: true, safe: true }).test(8.31);
+/* Func. */advancedDetermine.isNumber(8.31, { float: true, positive: true, safe: true });
 //=> true
 
-new advancedDetermine.StringItemFilter().test("");
+/* Class */new advancedDetermine.StringItemFilter().test("");
+/* Func. */advancedDetermine.isString("");
 //=> false (`allowEmpty` is `false`)
 
-new advancedDetermine.StringItemFilter({ allowEmpty: true }).test("");
+/* Class */new advancedDetermine.StringItemFilter({ allowEmpty: true }).test("");
+/* Func. */advancedDetermine.isString("", { allowEmpty: true });
 //=> true
 
-new advancedDetermine.StringItemFilter({ lowerCase: true }).test("Hello World");
+/* Class */new advancedDetermine.StringItemFilter({ lowerCase: true }).test("Hello World");
+/* Func. */advancedDetermine.isString("Hello World", { lowerCase: true });
 //=> false
 ```
