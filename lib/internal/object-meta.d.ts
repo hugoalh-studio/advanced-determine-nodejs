@@ -1,4 +1,4 @@
-export = ObjectMeta;
+export default ObjectMeta;
 /**
  * @access private
  * @class ObjectMeta

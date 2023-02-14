@@ -1,5 +1,4 @@
 declare namespace _default {
-    export { areEqual };
     export { ArrayItemFilter };
     export { BigIntegerItemFilter };
     export { BigIntegerItemFilter as BigIntItemFilter };
@@ -7,8 +6,6 @@ declare namespace _default {
     export { PlainObjectItemFilter as DictItemFilter };
     export { FunctionItemFilter };
     export { GeneratorItemFilter };
-    export { isObject as isObj };
-    export { isObject };
     export { JSONItemFilter };
     export { StringifyJSONItemFilter as JSONStringifiedItemFilter };
     export { StringifyJSONItemFilter as JSONStringifyItemFilter };
@@ -25,15 +22,12 @@ declare namespace _default {
     export { StringifyJSONItemFilter as StringifiedJSONItemFilter };
     export { StringifyJSONItemFilter };
     export { StringItemFilter };
-    export { typeOf };
 }
 export default _default;
-import areEqual from "./are-equal.js";
 import ArrayItemFilter from "./item-filter/array.js";
 import BigIntegerItemFilter from "./item-filter/big-integer.js";
 import FunctionItemFilter from "./item-filter/function.js";
 import GeneratorItemFilter from "./item-filter/generator.js";
-import isObject from "./is-object.js";
 import JSONItemFilter from "./item-filter/json.js";
 import MapItemFilter from "./item-filter/map.js";
 import NumberItemFilter from "./item-filter/number.js";
@@ -42,6 +36,5 @@ import RegularExpressionItemFilter from "./item-filter/regular-expression.js";
 import SetItemFilter from "./item-filter/set.js";
 import StringifyJSONItemFilter from "./item-filter/stringify-json.js";
 import StringItemFilter from "./item-filter/string.js";
-import typeOf from "./type-of.js";
-export { areEqual, ArrayItemFilter as ListItemFilter, ArrayItemFilter, BigIntegerItemFilter as BigIntItemFilter, BigIntegerItemFilter, FunctionItemFilter, GeneratorItemFilter, isObject as isObj, isObject, JSONItemFilter, MapItemFilter, NumberItemFilter, PlainObjectItemFilter as DictionaryItemFilter, PlainObjectItemFilter as DictItemFilter, PlainObjectItemFilter as ObjectPlainItemFilter, PlainObjectItemFilter as ObjPlainItemFilter, PlainObjectItemFilter, RegularExpressionItemFilter as RegExItemFilter, RegularExpressionItemFilter as RegExpItemFilter, RegularExpressionItemFilter, SetItemFilter, StringifyJSONItemFilter as JSONStringifiedItemFilter, StringifyJSONItemFilter as JSONStringifyItemFilter, StringifyJSONItemFilter as StringifiedJSONItemFilter, StringifyJSONItemFilter, StringItemFilter, typeOf };
-//# sourceMappingURL=main.d.ts.map
+export { ArrayItemFilter as ListItemFilter, ArrayItemFilter, BigIntegerItemFilter as BigIntItemFilter, BigIntegerItemFilter, FunctionItemFilter, GeneratorItemFilter, JSONItemFilter, MapItemFilter, NumberItemFilter, PlainObjectItemFilter as DictionaryItemFilter, PlainObjectItemFilter as DictItemFilter, PlainObjectItemFilter as ObjectPlainItemFilter, PlainObjectItemFilter as ObjPlainItemFilter, PlainObjectItemFilter, RegularExpressionItemFilter as RegExItemFilter, RegularExpressionItemFilter as RegExpItemFilter, RegularExpressionItemFilter, SetItemFilter, StringifyJSONItemFilter as JSONStringifiedItemFilter, StringifyJSONItemFilter as JSONStringifyItemFilter, StringifyJSONItemFilter as StringifiedJSONItemFilter, StringifyJSONItemFilter, StringItemFilter };
+//# sourceMappingURL=item-filter.d.ts.map

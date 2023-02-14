@@ -17,11 +17,11 @@
 
 ## 📝 Description
 
-A NodeJS module to provide a better and more accurate way to determine item type.
+A NodeJS module to provide a better and more accurate way to determine item.
 
 ### 🌟 Feature
 
-- Better and more accurate type determine similar to TypeScript.
+- Better and more accurate determine similar to TypeScript.
 - Easier to identify empty string (`""`), empty array (`[]`), and empty object (`{}`).
 
 ## 📚 Documentation (Excerpt)
@@ -32,7 +32,7 @@ For the full documentation, please visit the [GitHub Repository Wiki](https://gi
 
 #### Install
 
-- NodeJS >= v10.13.0
+- NodeJS ^v12.20.0 \|\| ^v14.15.0 \|\| >=v16.13.0
 
 ```sh
 npm install @hugoalh/advanced-determine
@@ -40,59 +40,66 @@ npm install @hugoalh/advanced-determine
 
 #### Use
 
-##### CommonJS
-
-```js
-const advancedDetermine = require("@hugoalh/advanced-determine");
-```
-
-##### ModuleJS
-
 ```js
 /* Either */
 import * as advancedDetermine from "@hugoalh/advanced-determine";// All
-import advancedDetermine from "@hugoalh/advanced-determine";// All (>= v7.0.1)
+import advancedDetermine from "@hugoalh/advanced-determine";// All
 import { ... } from "@hugoalh/advanced-determine";// Part / Tree-shake
 ```
 
 ### API
 
+#### Class
+
+- `ArrayItemFilter`
+  - `test`
+- `BigIntegerItemFilter`
+  - `test`
+- `FunctionItemFilter`
+  - `test`
+- `GeneratorItemFilter`
+  - `test`
+- `JSONItemFilter`
+  - `test`
+- `MapItemFilter`
+  - `test`
+- `NumberItemFilter`
+  - `test`
+- `PlainObjectItemFilter`
+  - `test`
+- `RegularExpressionItemFilter`
+  - `test`
+- `SetItemFilter`
+  - `test`
+- `StringifyJSONItemFilter`
+  - `test`
+- `StringItemFilter`
+  - `test`
+
 #### Function
 
 - `areEqual`
-- `isArray`
-- `isBigInteger`
-- `isFunction`
-- `isGenerator`
-- `isJSON`
-- `isMap`
-- `isNumber`
 - `isObject`
-- `isPlainObject`
-- `isRegularExpression`
-- `isSet`
-- `isString`
-- `isStringifyJSON`
 - `typeOf`
 
 ### Example
 
 ```js
-advancedDetermine.isArray([]);
+new advancedDetermine.ArrayItemFilter().test([]);
 //=> false (`allowEmpty` is `false`)
 
-advancedDetermine.isArray([], { allowEmpty: true });
+new advancedDetermine.ArrayItemFilter({ allowEmpty: true }).test([]);
 //=> true
 
-advancedDetermine.isNumber(8.31, { float: true, positive: true, safe: true });
+new advancedDetermine.NumberItemFilter({ float: true, positive: true, safe: true }).test(8.31);
 //=> true
 
-advancedDetermine.isString("");
+new advancedDetermine.StringItemFilter().test("");
 //=> false (`allowEmpty` is `false`)
 
-advancedDetermine.isString("", { allowEmpty: true });
+new advancedDetermine.StringItemFilter({ allowEmpty: true }).test("");
 //=> true
 
-advancedDetermine.isString("Hello World", { lowerCase: true });
+new advancedDetermine.StringItemFilter({ lowerCase: true }).test("Hello World");
 //=> false
 ```
