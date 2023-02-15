@@ -19,11 +19,6 @@
 
 A NodeJS module to provide a better and more accurate way to determine item.
 
-### 🌟 Feature
-
-- Better and more accurate determine similar to TypeScript.
-- Easier to identify empty string (`""`), empty array (`[]`), and empty object (`{}`).
-
 ## 📚 Documentation (Excerpt)
 
 For the full documentation, please visit the [GitHub Repository Wiki](https://github.com/hugoalh-studio/advanced-determine-nodejs/wiki).

@@ -1,14 +1,14 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@hugoalh/undefinish': ^1.0.17
+  '@hugoalh/undefinish': ^1.0.18
   '@types/node': ^18.13.0
   eslint: ^8.34.0
   eslint-plugin-only-warn: ^1.1.0
   typescript: ^4.9.5
 
 dependencies:
-  '@hugoalh/undefinish': 1.0.17
+  '@hugoalh/undefinish': 1.0.18
 
 devDependencies:
   '@types/node': 18.13.0
@@ -35,8 +35,8 @@ packages:
       - supports-color
     dev: true
 
-  /@hugoalh/undefinish/1.0.17:
-    resolution: {integrity: sha512-2HhKczVibWZbsgr8sO0T2u0a1qjlT0yo5J5XSY0UDdghF/dIHkC7ELriuTiCldlgRd26RIhbYXh7imw4LWWCWg==}
+  /@hugoalh/undefinish/1.0.18:
+    resolution: {integrity: sha512-1UwcXF2K22a2Ajljz64vtSMR4VIZn5UrRjm30iQ8uvQDPNyW3Cig80cvP0AE1SSY5pL0NuHtoh4hESyfiTdwKQ==}
     engines: {node: '>=6.9.0'}
     dev: false
 
