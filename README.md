@@ -47,31 +47,18 @@ import { ... } from "@hugoalh/advanced-determine";// Part / Tree-shake
 #### Class
 
 - `ArrayItemFilter`
-  - `test`
 - `BigIntegerItemFilter`
-  - `test`
 - `FunctionItemFilter`
-  - `test`
 - `GeneratorItemFilter`
-  - `test`
 - `JSONItemFilter`
-  - `test`
 - `MapItemFilter`
-  - `test`
 - `NumberItemFilter`
-  - `test`
 - `ObjectItemFilter`
-  - `test`
 - `PlainObjectItemFilter`
-  - `test`
 - `RegularExpressionItemFilter`
-  - `test`
 - `SetItemFilter`
-  - `test`
 - `StringifyJSONItemFilter`
-  - `test`
 - `StringItemFilter`
-  - `test`
 
 #### Function
 
