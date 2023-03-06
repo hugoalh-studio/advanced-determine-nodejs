@@ -6,6 +6,7 @@ export default SetItemFilter;
 declare class SetItemFilter {
     /**
      * @static test
+     * @description Determine item with the filter of type of set.
      * @param {unknown} item Item that need to determine.
      * @param {object} [param1={}] Options.
      * @param {boolean} [param1.allowEmpty=false] Whether to allow an empty set.

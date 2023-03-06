@@ -6,6 +6,7 @@ export default NumberItemFilter;
 declare class NumberItemFilter {
     /**
      * @static test
+     * @description Determine item with the filter of type of number.
      * @param {unknown} item Item that need to determine.
      * @param {object} [param1={}] Options.
      * @param {boolean} [param1.even] Whether an even number.

@@ -7,6 +7,7 @@ export default BigIntegerItemFilter;
 declare class BigIntegerItemFilter {
     /**
      * @static test
+     * @description Determine item with the filter of type of big integer.
      * @param {unknown} item Item that need to determine.
      * @param {object} [param1={}] Options.
      * @param {boolean} [param1.even] Whether an even big integer.

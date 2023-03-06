@@ -6,6 +6,7 @@ export default StringItemFilter;
 declare class StringItemFilter {
     /**
      * @static test
+     * @description Determine item with the filter of type of string.
      * @param {unknown} item Item that need to determine.
      * @param {object} [param1={}] Options.
      * @param {boolean} [param1.allowEmpty=false] Whether to allow an empty string.

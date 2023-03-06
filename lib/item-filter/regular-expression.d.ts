@@ -8,6 +8,7 @@ export default RegularExpressionItemFilter;
 declare class RegularExpressionItemFilter {
     /**
      * @static test
+     * @description Determine item with the filter of type of regular expression.
      * @param {unknown} item Item that need to determine.
      * @param {object} [param1={}] Options.
      * @param {boolean} [param1.caseInsensitive] Whether a case insensitive regular expression.
