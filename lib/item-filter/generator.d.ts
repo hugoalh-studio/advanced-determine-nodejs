@@ -5,6 +5,17 @@ export default GeneratorItemFilter;
  */
 declare class GeneratorItemFilter {
     /**
+     * @static test
+     * @description Determine item with the filter of type of generator.
+     * @param {unknown} item Item that need to determine.
+     * @param {object} [param1={}] Options.
+     * @param {boolean} [param1.asynchronous] Whether an asynchronous generator.
+     * @returns {boolean} Determine result.
+     */
+    static test(item: unknown, { asynchronous, ...aliases }?: {
+        asynchronous?: boolean;
+    }): boolean;
+    /**
      * @constructor
      * @description Initialize the filter of type of generator to determine item.
      * @param {object} [param0={}] Options.
