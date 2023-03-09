@@ -38,7 +38,6 @@ npm install @hugoalh/advanced-determine
 ```js
 /* Either */
 import * as advancedDetermine from "@hugoalh/advanced-determine";// All
-import advancedDetermine from "@hugoalh/advanced-determine";// All
 import { ... } from "@hugoalh/advanced-determine";// Part / Tree-shake
 ```
 
