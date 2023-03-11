@@ -81,27 +81,27 @@ import advancedDetermine from "@hugoalh/advanced-determine";// Default Import
 ### Example
 
 ```js
-/* Class */new advancedDetermine.ArrayItemFilter().test([]);
-/* Func. */advancedDetermine.isArray([]);
+/* Class */new ArrayItemFilter().test([]);
+/* Func. */isArray([]);
 //=> false (`allowEmpty` is `false`)
 
-/* Class */new advancedDetermine.ArrayItemFilter({ allowEmpty: true }).test([]);
-/* Func. */advancedDetermine.isArray([], { allowEmpty: true });
+/* Class */new ArrayItemFilter({ allowEmpty: true }).test([]);
+/* Func. */isArray([], { allowEmpty: true });
 //=> true
 
-/* Class */new advancedDetermine.NumberItemFilter({ float: true, positive: true, safe: true }).test(8.31);
-/* Func. */advancedDetermine.isNumber(8.31, { float: true, positive: true, safe: true });
+/* Class */new NumberItemFilter({ float: true, positive: true, safe: true }).test(8.31);
+/* Func. */isNumber(8.31, { float: true, positive: true, safe: true });
 //=> true
 
-/* Class */new advancedDetermine.StringItemFilter().test("");
-/* Func. */advancedDetermine.isString("");
+/* Class */new StringItemFilter().test("");
+/* Func. */isString("");
 //=> false (`allowEmpty` is `false`)
 
-/* Class */new advancedDetermine.StringItemFilter({ allowEmpty: true }).test("");
-/* Func. */advancedDetermine.isString("", { allowEmpty: true });
+/* Class */new StringItemFilter({ allowEmpty: true }).test("");
+/* Func. */isString("", { allowEmpty: true });
 //=> true
 
-/* Class */new advancedDetermine.StringItemFilter({ lowerCase: true }).test("Hello World");
-/* Func. */advancedDetermine.isString("Hello World", { lowerCase: true });
+/* Class */new StringItemFilter({ lowerCase: true }).test("Hello World");
+/* Func. */isString("Hello World", { lowerCase: true });
 //=> false
 ```
