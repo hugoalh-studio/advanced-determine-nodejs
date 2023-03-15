@@ -1,9 +1,8 @@
-export default NumberItemFilter;
 /**
  * @class NumberItemFilter
  * @description Determine item with the filter of type of number.
  */
-declare class NumberItemFilter {
+export class NumberItemFilter {
     /**
      * @static test
      * @description Determine item with the filter of type of number.

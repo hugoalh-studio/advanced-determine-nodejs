@@ -1,4 +1,3 @@
-export default isArray;
 /**
  * @function isArray
  * @description Determine item with the filter of type of array.
@@ -11,7 +10,7 @@ export default isArray;
  * @param {boolean} [param1.unique=false] Whether to determine all of the elements in the array are unique.
  * @returns {boolean} Determine result.
  */
-declare function isArray(item: unknown, { allowEmpty, maximumLength, minimumLength, strict, unique, ...aliases }?: {
+export function isArray(item: unknown, { allowEmpty, maximumLength, minimumLength, strict, unique, ...aliases }?: {
     allowEmpty?: boolean;
     maximumLength?: number;
     minimumLength?: number;

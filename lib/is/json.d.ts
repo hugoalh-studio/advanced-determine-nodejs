@@ -1,4 +1,3 @@
-export default isJSON;
 /**
  * @function isJSON
  * @description Determine item with the filter of type of JSON.
@@ -13,7 +12,7 @@ export default isJSON;
  * @param {boolean} [param1.strictKeys=false] Whether to determine no illegal namespace characters in the JSON keys.
  * @returns {boolean} Determine result.
  */
-declare function isJSON(item: unknown, { allowEmpty, arrayRoot, keysPattern, maximumEntries, minimumEntries, strict, strictKeys, ...aliases }?: {
+export function isJSON(item: unknown, { allowEmpty, arrayRoot, keysPattern, maximumEntries, minimumEntries, strict, strictKeys, ...aliases }?: {
     allowEmpty?: boolean;
     arrayRoot?: boolean;
     keysPattern?: RegExp;

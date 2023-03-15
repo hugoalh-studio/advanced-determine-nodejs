@@ -1,9 +1,8 @@
-export default SetItemFilter;
 /**
  * @class SetItemFilter
  * @description Determine item with the filter of type of set.
  */
-declare class SetItemFilter {
+export class SetItemFilter {
     /**
      * @static test
      * @description Determine item with the filter of type of set.

@@ -1,4 +1,3 @@
-export default isPlainObject;
 /**
  * @function isPlainObject
  * @alias isObjectPlain
@@ -17,7 +16,7 @@ export default isPlainObject;
  * @param {boolean} [param1.writableEntries] Whether contain writable entries in the plain object.
  * @returns {boolean} Determine result.
  */
-declare function isPlainObject(item: unknown, { allowEmpty, configurableEntries, enumerableEntries, getterEntries, maximumEntries, minimumEntries, setterEntries, strict, symbolKeys, writableEntries, ...aliases }?: {
+export function isPlainObject(item: unknown, { allowEmpty, configurableEntries, enumerableEntries, getterEntries, maximumEntries, minimumEntries, setterEntries, strict, symbolKeys, writableEntries, ...aliases }?: {
     allowEmpty?: boolean;
     configurableEntries?: boolean;
     enumerableEntries?: boolean;

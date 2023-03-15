@@ -1,9 +1,8 @@
-export default FunctionItemFilter;
 /**
  * @class FunctionItemFilter
  * @description Determine item with the filter of type of function.
  */
-declare class FunctionItemFilter {
+export class FunctionItemFilter {
     /**
      * @static test
      * @description Determine item with the filter of type of function.

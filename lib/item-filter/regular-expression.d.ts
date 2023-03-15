@@ -1,11 +1,10 @@
-export default RegularExpressionItemFilter;
 /**
  * @class RegularExpressionItemFilter
  * @alias RegExItemFilter
  * @alias RegExpItemFilter
  * @description Determine item with the filter of type of regular expression.
  */
-declare class RegularExpressionItemFilter {
+export class RegularExpressionItemFilter {
     /**
      * @static test
      * @description Determine item with the filter of type of regular expression.

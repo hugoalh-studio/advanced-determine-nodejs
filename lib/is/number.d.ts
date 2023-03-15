@@ -1,4 +1,3 @@
-export default isNumber;
 /**
  * @function isNumber
  * @description Determine item with the filter of type of number.
@@ -22,7 +21,7 @@ export default isNumber;
  * @param {boolean} [param1.unsafe] Whether not an IEEE-754 number.
  * @returns {boolean} Determine result.
  */
-declare function isNumber(item: unknown, { even, exclusiveMaximum, exclusiveMinimum, finite, float, infinite, integer, maximum, minimum, negative, odd, positive, prime, safe, type, unsafe, ...aliases }?: {
+export function isNumber(item: unknown, { even, exclusiveMaximum, exclusiveMinimum, finite, float, infinite, integer, maximum, minimum, negative, odd, positive, prime, safe, type, unsafe, ...aliases }?: {
     even?: boolean;
     exclusiveMaximum?: boolean;
     exclusiveMinimum?: boolean;

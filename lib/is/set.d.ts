@@ -1,4 +1,3 @@
-export default isSet;
 /**
  * @function isSet
  * @description Determine item with the filter of type of set.
@@ -9,7 +8,7 @@ export default isSet;
  * @param {number} [param1.minimumSize=1] Minimum size of the set.
  * @returns {boolean} Determine result.
  */
-declare function isSet(item: unknown, { allowEmpty, maximumSize, minimumSize, ...aliases }?: {
+export function isSet(item: unknown, { allowEmpty, maximumSize, minimumSize, ...aliases }?: {
     allowEmpty?: boolean;
     maximumSize?: number;
     minimumSize?: number;

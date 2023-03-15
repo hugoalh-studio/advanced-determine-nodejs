@@ -1,9 +1,7 @@
-export default ObjectMeta;
 /**
- * @access private
  * @class ObjectMeta
  */
-declare class ObjectMeta {
+export class ObjectMeta {
     /**
      * @constructor
      * @param {object} item

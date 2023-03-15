@@ -1,4 +1,3 @@
-export default isGenerator;
 /**
  * @function isGenerator
  * @description Determine item with the filter of type of generator.
@@ -7,7 +6,7 @@ export default isGenerator;
  * @param {boolean} [param1.asynchronous] Whether an asynchronous generator.
  * @returns {boolean} Determine result.
  */
-declare function isGenerator(item: unknown, { asynchronous, ...aliases }?: {
+export function isGenerator(item: unknown, { asynchronous, ...aliases }?: {
     asynchronous?: boolean;
 }): boolean;
 //# sourceMappingURL=generator.d.ts.map

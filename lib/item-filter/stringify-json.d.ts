@@ -1,4 +1,3 @@
-export default StringifyJSONItemFilter;
 /**
  * @class StringifyJSONItemFilter
  * @alias JSONStringifiedItemFilter
@@ -6,7 +5,7 @@ export default StringifyJSONItemFilter;
  * @alias StringifiedJSONItemFilter
  * @description Determine item with the filter of type of stringify JSON.
  */
-declare class StringifyJSONItemFilter {
+export class StringifyJSONItemFilter {
     /**
      * @static test
      * @description Determine item with the filter of type of stringify JSON.

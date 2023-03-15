@@ -1,4 +1,3 @@
-export default isString;
 /**
  * @function isString
  * @description Determine item with the filter of type of string.
@@ -16,7 +15,7 @@ export default isString;
  * @param {boolean} [param1.upperCase] Whether an upper case string.
  * @returns {boolean} Determine result.
  */
-declare function isString(item: unknown, { allowEmpty, ascii, lowerCase, maximumLength, minimumLength, multipleLine, pattern, preTrim, singleLine, upperCase, ...aliases }?: {
+export function isString(item: unknown, { allowEmpty, ascii, lowerCase, maximumLength, minimumLength, multipleLine, pattern, preTrim, singleLine, upperCase, ...aliases }?: {
     allowEmpty?: boolean;
     ascii?: boolean;
     lowerCase?: boolean;

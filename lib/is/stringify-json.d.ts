@@ -1,4 +1,3 @@
-export default isStringifyJSON;
 /**
  * @function isStringifyJSON
  * @alias isJSONStringified
@@ -16,7 +15,7 @@ export default isStringifyJSON;
  * @param {boolean} [param1.strictKeys=false] Whether to determine no illegal namespace characters in the stringify JSON keys.
  * @returns {boolean} Determine result.
  */
-declare function isStringifyJSON(item: unknown, { allowEmpty, arrayRoot, keysPattern, maximumEntries, minimumEntries, strict, strictKeys, ...aliases }?: {
+export function isStringifyJSON(item: unknown, { allowEmpty, arrayRoot, keysPattern, maximumEntries, minimumEntries, strict, strictKeys, ...aliases }?: {
     allowEmpty?: boolean;
     arrayRoot?: boolean;
     keysPattern?: RegExp;

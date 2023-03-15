@@ -1,4 +1,3 @@
-export default isBigInteger;
 /**
  * @function isBigInteger
  * @alias isBigInt
@@ -19,7 +18,7 @@ export default isBigInteger;
  * @param {boolean} [param1.unsafe] Whether not an IEEE-754 big integer.
  * @returns {boolean} Determine result.
  */
-declare function isBigInteger(item: unknown, { even, exclusiveMaximum, exclusiveMinimum, maximum, minimum, negative, odd, positive, prime, safe, type, unsafe, ...aliases }?: {
+export function isBigInteger(item: unknown, { even, exclusiveMaximum, exclusiveMinimum, maximum, minimum, negative, odd, positive, prime, safe, type, unsafe, ...aliases }?: {
     even?: boolean;
     exclusiveMaximum?: boolean;
     exclusiveMinimum?: boolean;

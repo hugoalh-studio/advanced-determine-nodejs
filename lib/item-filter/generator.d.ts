@@ -1,9 +1,8 @@
-export default GeneratorItemFilter;
 /**
  * @class GeneratorItemFilter
  * @description Determine item with the filter of type of generator.
  */
-declare class GeneratorItemFilter {
+export class GeneratorItemFilter {
     /**
      * @static test
      * @description Determine item with the filter of type of generator.

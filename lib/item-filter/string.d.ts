@@ -1,9 +1,8 @@
-export default StringItemFilter;
 /**
  * @class StringItemFilter
  * @description Determine item with the filter of type of string.
  */
-declare class StringItemFilter {
+export class StringItemFilter {
     /**
      * @static test
      * @description Determine item with the filter of type of string.

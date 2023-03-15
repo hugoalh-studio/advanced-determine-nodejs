@@ -1,4 +1,3 @@
-export default isRegularExpression;
 /**
  * @function isRegularExpression
  * @alias isRegEx
@@ -15,7 +14,7 @@ export default isRegularExpression;
  * @param {boolean} [param1.unicode] Whether an unicode regular expression.
  * @returns {boolean} Determine result.
  */
-declare function isRegularExpression(item: unknown, { caseInsensitive, dotAll, exactly, global, multipleLine, sticky, unicode, ...aliases }?: {
+export function isRegularExpression(item: unknown, { caseInsensitive, dotAll, exactly, global, multipleLine, sticky, unicode, ...aliases }?: {
     caseInsensitive?: boolean;
     dotAll?: boolean;
     exactly?: boolean;

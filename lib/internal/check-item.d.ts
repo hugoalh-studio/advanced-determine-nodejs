@@ -1,12 +1,10 @@
 /**
- * @access private
  * @function checkNumber
  * @param {unknown} item
  * @returns {boolean}
  */
 export function checkNumber(item: unknown): boolean;
 /**
- * @access private
  * @function checkNumberWithMaximum
  * @param {unknown} item
  * @param {number} maximum
@@ -14,14 +12,12 @@ export function checkNumber(item: unknown): boolean;
  */
 export function checkNumberWithMaximum(item: unknown, maximum: number): boolean;
 /**
- * @access private
  * @function checkNumberIPS
  * @param {unknown} item
  * @returns {boolean}
  */
 export function checkNumberIPS(item: unknown): boolean;
 /**
- * @access private
  * @function checkNumberIPSWithMaximum
  * @param {unknown} item
  * @param {number} maximum

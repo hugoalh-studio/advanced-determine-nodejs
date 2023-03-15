@@ -1,10 +1,9 @@
-export default PlainObjectItemFilter;
 /**
  * @class PlainObjectItemFilter
  * @alias ObjectPlainItemFilter
  * @description Determine item with the filter of type of plain object.
  */
-declare class PlainObjectItemFilter {
+export class PlainObjectItemFilter {
     /**
      * @static test
      * @description Determine item with the filter of type of plain object.

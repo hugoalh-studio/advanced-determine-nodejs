@@ -1,9 +1,8 @@
-export default MapItemFilter;
 /**
  * @class MapItemFilter
  * @description Determine item with the filter of type of map.
  */
-declare class MapItemFilter {
+export class MapItemFilter {
     /**
      * @static test
      * @description Determine item with the filter of type of map.

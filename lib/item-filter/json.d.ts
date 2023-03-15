@@ -1,9 +1,8 @@
-export default JSONItemFilter;
 /**
  * @class JSONItemFilter
  * @description Determine item with the filter of type of JSON.
  */
-declare class JSONItemFilter {
+export class JSONItemFilter {
     /**
      * @static test
      * @description Determine item with the filter of type of JSON.

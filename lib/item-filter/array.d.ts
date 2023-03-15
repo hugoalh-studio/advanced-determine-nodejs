@@ -1,9 +1,8 @@
-export default ArrayItemFilter;
 /**
  * @class ArrayItemFilter
  * @description Determine item with the filter of type of array.
  */
-declare class ArrayItemFilter {
+export class ArrayItemFilter {
     /**
      * @static test
      * @description Determine item with the filter of type of array.

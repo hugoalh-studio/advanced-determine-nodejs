@@ -1,9 +1,8 @@
-export default ObjectItemFilter;
 /**
  * @class ObjectItemFilter
  * @description Determine item with the filter of type of object.
  */
-declare class ObjectItemFilter {
+export class ObjectItemFilter {
     /**
      * @static test
      * @description Determine item with the filter of type of object.

@@ -1,10 +1,9 @@
-export default BigIntegerItemFilter;
 /**
  * @class BigIntegerItemFilter
  * @alias BigIntItemFilter
  * @description Determine item with the filter of type of big integer.
  */
-declare class BigIntegerItemFilter {
+export class BigIntegerItemFilter {
     /**
      * @static test
      * @description Determine item with the filter of type of big integer.

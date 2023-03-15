@@ -1,4 +1,3 @@
-export default isFunction;
 /**
  * @function isFunction
  * @description Determine item with the filter of type of function.
@@ -8,7 +7,7 @@ export default isFunction;
  * @param {boolean} [param1.generator] Whether a generator function.
  * @returns {boolean} Determine result.
  */
-declare function isFunction(item: unknown, { asynchronous, generator, ...aliases }?: {
+export function isFunction(item: unknown, { asynchronous, generator, ...aliases }?: {
     asynchronous?: boolean;
     generator?: boolean;
 }): boolean;
