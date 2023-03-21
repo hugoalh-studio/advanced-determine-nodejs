@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@hugoalh/undefinish': ^1.0.20
-  '@types/node': ^18.15.3
+  '@types/node': ^18.15.5
   eslint: ^8.36.0
   eslint-plugin-only-warn: ^1.1.0
   typescript: ^5.0.2
@@ -11,15 +11,15 @@ dependencies:
   '@hugoalh/undefinish': 1.0.20
 
 devDependencies:
-  '@types/node': 18.15.3
+  '@types/node': 18.15.5
   eslint: 8.36.0
   eslint-plugin-only-warn: 1.1.0
   typescript: 5.0.2
 
 packages:
 
-  /@eslint-community/eslint-utils/4.2.1_eslint@8.36.0:
-    resolution: {integrity: sha512-494d1hNrghSUUYuPYcNvKZewMwSMEDaOdAq/Q0HbkAaLuElBYkz/1xFyR2SqKpMsrb7C7MtXaOLX3H8J5MKTug==}
+  /@eslint-community/eslint-utils/4.3.0_eslint@8.36.0:
+    resolution: {integrity: sha512-v3oplH6FYCULtFuCeqyuTd9D2WKO937Dxdq+GmHOLL72TTRriLxz2VLlNfkZRsvj6PKnOPAtuT6dwrs/pA5DvA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
@@ -101,8 +101,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@types/node/18.15.3:
-    resolution: {integrity: sha512-p6ua9zBxz5otCmbpb5D3U4B5Nanw6Pk3PPyX05xnxbB/fRv71N7CPmORg7uAD5P70T0xmx1pzAx/FUfa5X+3cw==}
+  /@types/node/18.15.5:
+    resolution: {integrity: sha512-Ark2WDjjZO7GmvsyFFf81MXuGTA/d6oP38anyxWOL6EREyBKAxKoFHwBhaZxCfLRLpO8JgVXwqOwSwa7jRcjew==}
     dev: true
 
   /acorn-jsx/5.3.2_acorn@8.8.2:
@@ -243,7 +243,7 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     hasBin: true
     dependencies:
-      '@eslint-community/eslint-utils': 4.2.1_eslint@8.36.0
+      '@eslint-community/eslint-utils': 4.3.0_eslint@8.36.0
       '@eslint-community/regexpp': 4.4.0
       '@eslint/eslintrc': 2.0.1
       '@eslint/js': 8.36.0
