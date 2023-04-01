@@ -1,27 +1,27 @@
 /**
  * @function checkNumber
- * @param {unknown} item
+ * @param {number} item
  * @returns {boolean}
  */
-export function checkNumber(item: unknown): boolean;
-/**
- * @function checkNumberWithMaximum
- * @param {unknown} item
- * @param {number} maximum
- * @returns {boolean}
- */
-export function checkNumberWithMaximum(item: unknown, maximum: number): boolean;
+export function checkNumber(item: number): boolean;
 /**
  * @function checkNumberIPS
- * @param {unknown} item
+ * @param {number} item
  * @returns {boolean}
  */
-export function checkNumberIPS(item: unknown): boolean;
+export function checkNumberIPS(item: number): boolean;
 /**
  * @function checkNumberIPSWithMaximum
- * @param {unknown} item
+ * @param {number} item
  * @param {number} maximum
  * @returns {boolean}
  */
-export function checkNumberIPSWithMaximum(item: unknown, maximum: number): boolean;
+export function checkNumberIPSWithMaximum(item: number, maximum: number): boolean;
+/**
+ * @function checkNumberWithMaximum
+ * @param {number} item
+ * @param {number} maximum
+ * @returns {boolean}
+ */
+export function checkNumberWithMaximum(item: number, maximum: number): boolean;
 //# sourceMappingURL=check-item.d.ts.map

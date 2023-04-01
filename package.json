@@ -1,6 +1,6 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "10.2.1",
+	"version": "10.3.0-beta.1",
 	"description": "A module to provide a better and more accurate way to determine item.",
 	"keywords": [
 		"determine",
@@ -40,7 +40,7 @@
 		"@types/node": "^18.15.11",
 		"eslint": "^8.37.0",
 		"eslint-plugin-only-warn": "^1.1.0",
-		"typescript": "^5.0.2"
+		"typescript": "^5.0.3"
 	},
 	"engines": {
 		"node": "^12.20.0 || ^14.15.0 || >=16.13.0"

@@ -8,20 +8,20 @@ export class ObjectMeta {
      */
     constructor(item: object);
     prototypes: any;
-    symbolKeys: symbol[];
+    keysSymbol: symbol[];
     descriptors: {
         [x: string]: TypedPropertyDescriptor<any>;
     } & {
         [x: string]: PropertyDescriptor;
     };
-    configurableEntries: string[];
-    enumerableEntries: string[];
-    getterEntries: string[];
-    nonAccessorEntries: string[];
-    nonConfigurableEntries: string[];
-    nonEnumerableEntries: string[];
-    nonWritableEntries: string[];
-    setterEntries: string[];
-    writableEntries: string[];
+    entriesConfigurable: string[];
+    entriesEnumerable: string[];
+    entriesGetter: string[];
+    entriesNonAccessor: string[];
+    entriesNonConfigurable: string[];
+    entriesNonEnumerable: string[];
+    entriesNonWritable: string[];
+    entriesSetter: string[];
+    entriesWritable: string[];
 }
 //# sourceMappingURL=object-meta.d.ts.map
