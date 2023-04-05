@@ -24,8 +24,6 @@ body:
         - "v10.1.1"
         - "v10.1.0"
         - "v10.0.0"
-        - "v7.2.1"
-        - "v7.2.0"
     validations:
       required: false
   - type: "textarea"
