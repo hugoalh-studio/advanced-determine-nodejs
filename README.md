@@ -23,17 +23,13 @@ A NodeJS module to provide a better and more accurate way to determine item.
 
 For the full documentation, please visit the [GitHub Repository Wiki](https://github.com/hugoalh-studio/advanced-determine-nodejs/wiki).
 
-### Getting Started
-
-#### Install
+### Target
 
 - NodeJS ^ v14.15.0 \|\| >= v16.13.0
 
 ```sh
 npm install @hugoalh/advanced-determine
 ```
-
-#### Use
 
 ```js
 /* Either */
