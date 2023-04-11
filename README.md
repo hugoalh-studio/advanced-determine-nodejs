@@ -23,23 +23,52 @@ A NodeJS module to provide a better and more accurate way to determine item.
 
 For the full documentation, please visit the [GitHub Repository Wiki](https://github.com/hugoalh-studio/advanced-determine-nodejs/wiki).
 
-### Getting Started
+### Target
 
-#### Install
+#### Deno
 
-- NodeJS ^ v12.20.0 \|\| ^ v14.15.0 \|\| >= v16.13.0
+- Deno >= v1.32.0
+
+```ts
+/* Either */
+import { ... } from "npm:@hugoalh/advanced-determine@<Version>";// [JavaScript] NPM Named Import
+import * as advancedDetermine from "npm:@hugoalh/advanced-determine@<Version>";// [JavaScript] NPM Namespace Import
+import { ... } from "https://raw.githubusercontent.com/hugoalh-studio/advanced-determine-nodejs/<Version>/mod.ts";// [TypeScript] GitHub Repository Raw Content Named Import
+import * as advancedDetermine from "https://raw.githubusercontent.com/hugoalh-studio/advanced-determine-nodejs/<Version>/mod.ts";// [TypeScript] GitHub Repository Raw Content Namespace Import
+```
+
+> **ℹ️ Note:**
+>
+> It is recommended to use import map for an easier dependencies management:
+>
+> ```jsonc
+> {
+>   "imports": {
+>     "advanced-determine/": "https://raw.githubusercontent.com/hugoalh-studio/advanced-determine-nodejs/<Version>/"// GitHub Repository Raw Content Import
+>   }
+> }
+> ```
+>
+> Thus import with:
+>
+> ```ts
+> /* Either */
+> import { ... } from "advanced-determine/mod.ts";
+> import * as advancedDetermine from "advanced-determine/mod.ts";
+> ```
+
+#### NodeJS
+
+- NodeJS ^ v14.15.0 \|\| >= v16.13.0
 
 ```sh
 npm install @hugoalh/advanced-determine
 ```
 
-#### Use
-
 ```js
 /* Either */
 import { ... } from "@hugoalh/advanced-determine";// Named Import
 import * as advancedDetermine from "@hugoalh/advanced-determine";// Namespace Import
-import advancedDetermine from "@hugoalh/advanced-determine";// Default Import
 ```
 
 ### API

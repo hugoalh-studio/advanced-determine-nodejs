@@ -5,16 +5,15 @@
 		"declaration": true,
 		"declarationMap": true,
 		"emitBOM": false,
-		"emitDeclarationOnly": true,
+		"emitDeclarationOnly": false,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
-		"target": "ESNext"
+		"outDir": "./dist",
+		"target": "ES2020"
 	},
 	"include": [
-		"./lib/is.js",
-		"./lib/item-filter.js",
-		"./lib/main.js"
+		"./src/**/*.ts"
 	]
 }

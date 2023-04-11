@@ -1,0 +1,40 @@
+{
+	"$schema": "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
+	"fmt": {
+		"options": {
+			"indentWidth": 4,
+			"semiColons": false,
+			"singleQuote": false,
+			"useTabs": true
+		}
+	},
+	"imports": {
+		"./are-equal.js": "./are-equal.ts",
+		"./array.js": "./array.ts",
+		"./big-integer.js": "./big-integer.ts",
+		"./function.js": "./function.ts",
+		"./generator.js": "./generator.ts",
+		"./internal/check-item.js": "./internal/check-item.ts",
+		"./internal/integer-types-range.js": "./internal/integer-types-range.ts",
+		"./internal/is-prime-number.js": "./internal/is-prime-number.ts",
+		"./internal/object-meta.js": "./internal/object-meta.ts",
+		"./json.js": "./json.ts",
+		"./main.js": "./main.ts",
+		"./map.js": "./map.ts",
+		"./number.js": "./number.ts",
+		"./object.js": "./object.ts",
+		"./plain-object.js": "./plain-object.ts",
+		"./regular-expression.js": "./regular-expression.ts",
+		"./set.js": "./set.ts",
+		"./string.js": "./string.ts",
+		"./stringify-json.js": "./stringify-json.ts",
+		"./type-of.js": "./type-of.ts"
+	},
+	"lint": {
+		"rules": {
+			"tags": [
+				"recommended"
+			]
+		}
+	}
+}
