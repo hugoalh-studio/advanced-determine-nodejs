@@ -26,14 +26,19 @@ For the full documentation, please visit the [GitHub Repository Wiki](https://gi
 
 #### Deno
 
+> **ℹ️ Note:** Support is in alpha stage:
+>
+> - File structure maybe change until officially support.
+> - Not support to import TypeScript until officially support.
+
 - Deno >= v1.32.0
 
 ```ts
 /* Either */
 import { ... } from "npm:@hugoalh/advanced-determine@<Version>";// [JavaScript] NPM Named Import
 import * as advancedDetermine from "npm:@hugoalh/advanced-determine@<Version>";// [JavaScript] NPM Namespace Import
-import { ... } from "https://raw.githubusercontent.com/hugoalh-studio/advanced-determine-nodejs/<Version>/deno/mod.ts";// [TypeScript] GitHub Repository Raw Content Named Import
-import * as advancedDetermine from "https://raw.githubusercontent.com/hugoalh-studio/advanced-determine-nodejs/<Version>/deno/mod.ts";// [TypeScript] GitHub Repository Raw Content Namespace Import
+import { ... } from "https://raw.githubusercontent.com/hugoalh-studio/advanced-determine-nodejs/<Version>/dist/main.js";// [JavaScript] GitHub Repository Named Import
+import * as advancedDetermine from "https://raw.githubusercontent.com/hugoalh-studio/advanced-determine-nodejs/<Version>/dist/main.js";// [JavaScript] GitHub Repository Namespace Import
 ```
 
 #### NodeJS
