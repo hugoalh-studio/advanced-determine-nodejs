@@ -36,26 +36,6 @@ import { ... } from "https://raw.githubusercontent.com/hugoalh-studio/advanced-d
 import * as advancedDetermine from "https://raw.githubusercontent.com/hugoalh-studio/advanced-determine-nodejs/<Version>/deno/mod.ts";// [TypeScript] GitHub Repository Raw Content Namespace Import
 ```
 
-> **ℹ️ Note:**
->
-> It is recommended to use import map for an easier dependencies management:
->
-> ```jsonc
-> {
->   "imports": {
->     "advanced-determine/": "https://raw.githubusercontent.com/hugoalh-studio/advanced-determine-nodejs/<Version>/deno"// GitHub Repository Raw Content Import
->   }
-> }
-> ```
->
-> Thus import with:
->
-> ```ts
-> /* Either */
-> import { ... } from "advanced-determine/mod.ts";
-> import * as advancedDetermine from "advanced-determine/mod.ts";
-> ```
-
 #### NodeJS
 
 - NodeJS ^ v14.15.0 \|\| >= v16.13.0
