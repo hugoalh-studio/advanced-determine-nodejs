@@ -28,8 +28,8 @@ For the full documentation, please visit the [GitHub Repository Wiki](https://gi
 
 > **ℹ️ Note:** Support is in alpha stage:
 >
-> - File structure maybe change until officially support.
-> - Not support to import TypeScript until officially support.
+> - File structure maybe change often until officially support.
+> - Not support to import TypeScript edition yet.
 
 - Deno >= v1.32.0
 
