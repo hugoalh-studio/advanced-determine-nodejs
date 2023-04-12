@@ -43,5 +43,5 @@ if (fsExistsSync(outputDirectoryPath)) {
 for (let inputFileName of await getDirectoryItem(inputDirectoryPath)) {
 	let inputFileContent = await fsReadFile(pathJoin(inputDirectoryPath, inputFileName), { encoding: "utf8" });
 	let outputFileContent = inputFileContent.replace(/(?<statement>import(?: .+? from)? ".+?)\.js";/gu, "$<statement>.ts\"");
-	await fsWriteFile(pathJoin(outputDirectoryPath, inputFileName), outputFileContent, { encoding: "utf8" });
+	await fsWriteFile(pathJoin(outputDirectoryPath, (inputFileName === "main.ts") ? "mod.ts" : inputFileName), outputFileContent, { encoding: "utf8" });
 }
