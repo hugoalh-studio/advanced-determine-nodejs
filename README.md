@@ -32,8 +32,8 @@ For the full documentation, please visit the [GitHub Repository Wiki](https://gi
 /* Either */
 import { ... } from "npm:@hugoalh/advanced-determine@<Version>";// [JavaScript] NPM Named Import
 import * as advancedDetermine from "npm:@hugoalh/advanced-determine@<Version>";// [JavaScript] NPM Namespace Import
-import { ... } from "https://raw.githubusercontent.com/hugoalh-studio/advanced-determine-nodejs/<Version>/mod.ts";// [TypeScript] GitHub Repository Raw Content Named Import
-import * as advancedDetermine from "https://raw.githubusercontent.com/hugoalh-studio/advanced-determine-nodejs/<Version>/mod.ts";// [TypeScript] GitHub Repository Raw Content Namespace Import
+import { ... } from "https://raw.githubusercontent.com/hugoalh-studio/advanced-determine-nodejs/<Version>/deno/mod.ts";// [TypeScript] GitHub Repository Raw Content Named Import
+import * as advancedDetermine from "https://raw.githubusercontent.com/hugoalh-studio/advanced-determine-nodejs/<Version>/deno/mod.ts";// [TypeScript] GitHub Repository Raw Content Namespace Import
 ```
 
 > **ℹ️ Note:**
@@ -43,7 +43,7 @@ import * as advancedDetermine from "https://raw.githubusercontent.com/hugoalh-st
 > ```jsonc
 > {
 >   "imports": {
->     "advanced-determine/": "https://raw.githubusercontent.com/hugoalh-studio/advanced-determine-nodejs/<Version>/"// GitHub Repository Raw Content Import
+>     "advanced-determine/": "https://raw.githubusercontent.com/hugoalh-studio/advanced-determine-nodejs/<Version>/deno"// GitHub Repository Raw Content Import
 >   }
 > }
 > ```
