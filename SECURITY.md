@@ -11,7 +11,7 @@
 > | ❌{🐛} | **No (Issue):** Not supported due to confirmed contains bugs and/or issues. |
 > | ❌{🧓} | **No (Old):** Not supported due to too old. |
 
-| **Versions** | **Status** | **Target - Deno** | **Target - NodeJS** |
+| **Versions** | **Status** | **Target - Deno \*** | **Target - NodeJS** |
 |:-:|:-:|:-:|:-:|
 | v11.0.X | L | >= v1.32.0 | ^ v14.15.0 \|\| >= v16.13.0 |
 | v10.3.X | L | *N/A* | ^ v12.20.0 \|\| ^ v14.15.0 \|\| >= v16.13.0 |
@@ -22,6 +22,8 @@
 | v7.2.X | ❌{🧓} | *N/A* | >= v10.13.0 |
 | v7.2.0 | ❌{🐛} | *N/A* | >= v10.13.0 |
 | < v7.2.0 | ❌{🐛🧓} | *N/A* | *Multiple* |
+
+**\*:** Support is in alpha stage.
 
 ## Report Vulnerability
 
