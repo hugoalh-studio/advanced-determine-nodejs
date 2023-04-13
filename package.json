@@ -34,13 +34,13 @@
 		"url": "git+https://github.com/hugoalh-studio/advanced-determine-nodejs.git"
 	},
 	"dependencies": {
-		"@hugoalh/undefinish": "^1.0.20"
+		"@hugoalh/undefinish": "^1.0.21"
 	},
 	"devDependencies": {
 		"@types/node": "^18.15.11",
-		"eslint": "^8.37.0",
+		"eslint": "^8.38.0",
 		"eslint-plugin-only-warn": "^1.1.0",
-		"typescript": "^5.0.3"
+		"typescript": "^5.0.4"
 	},
 	"engines": {
 		"node": "^12.20.0 || ^14.15.0 || >=16.13.0"
