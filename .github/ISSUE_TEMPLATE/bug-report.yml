@@ -18,8 +18,7 @@ body:
       description: "What versions are affected? Versions must be listed as supported in the Security Policy (file: `SECURITY.md`)."
       multiple: true
       options:
-        - "v11.0.0-beta.1+deno"
-        - "v11.0.0-beta.1+nodejs"
+        - "v11.0.0"
         - "v10.3.3"
         - "v10.3.2"
         - "v10.3.1"
