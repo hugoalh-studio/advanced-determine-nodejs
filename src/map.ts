@@ -1,4 +1,3 @@
-import { checkNumberIPS, checkNumberIPSWithMaximum } from "./internal/check-item.js";
 interface MapItemFilterOptions {
 	/**
 	 * @property allowEmpty
@@ -56,13 +55,13 @@ class MapItemFilter {
 		if (typeof allowEmpty !== "boolean") {
 			throw new TypeError(`Argument \`options.allowEmpty\` must be type of boolean!`);
 		}
-		if (!checkNumberIPS(size) && typeof size !== "undefined") {
+		if (!(typeof size === "number" && Number.isSafeInteger(size) && size >= 0) && typeof size !== "undefined") {
 			throw new TypeError(`Argument \`options.size\` must be type of number (integer, positive, and safe) or undefined!`);
 		}
-		if (sizeMaximum !== Infinity && !checkNumberIPS(sizeMaximum)) {
+		if (sizeMaximum !== Infinity && !(typeof sizeMaximum === "number" && Number.isSafeInteger(sizeMaximum) && sizeMaximum >= 0)) {
 			throw new TypeError(`Argument \`options.sizeMaximum\` must be \`Infinity\` or type of number (integer, positive, and safe)!`);
 		}
-		if (!checkNumberIPSWithMaximum(sizeMinimum, sizeMaximum)) {
+		if (!(typeof sizeMinimum === "number" && Number.isSafeInteger(sizeMinimum) && sizeMinimum >= 0 && sizeMinimum <= sizeMaximum)) {
 			throw new TypeError(`Argument \`options.sizeMinimum\` must be type of number (integer, positive, and safe) and <= ${sizeMaximum}!`);
 		}
 		if (typeof size === "number") {

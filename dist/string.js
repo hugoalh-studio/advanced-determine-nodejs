@@ -10,8 +10,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
 var _StringItemFilter_ascii, _StringItemFilter_lengthMaximum, _StringItemFilter_lengthMinimum, _StringItemFilter_lowerCase, _StringItemFilter_multipleLine, _StringItemFilter_pattern, _StringItemFilter_preTrim, _StringItemFilter_singleLine, _StringItemFilter_upperCase;
-import { checkNumberIPS, checkNumberIPSWithMaximum } from "./internal/check-item.js";
-const newLineRegExp = /[\n\r]/u;
+import { isStringASCII, isStringLowerCase, isStringMultipleLine, isStringSingleLine, isStringUpperCase } from "./native/string.js";
 /**
  * @class StringItemFilter
  * @description Determine item with the filter of type of string.
@@ -43,13 +42,13 @@ class StringItemFilter {
         if (typeof ascii !== "boolean" && typeof ascii !== "undefined") {
             throw new TypeError(`Argument \`options.ascii\` must be type of boolean or undefined!`);
         }
-        if (!checkNumberIPS(length) && typeof length !== "undefined") {
+        if (!(typeof length === "number" && Number.isSafeInteger(length) && length >= 0) && typeof length !== "undefined") {
             throw new TypeError(`Argument \`options.length\` must be type of number (integer, positive, and safe) or undefined!`);
         }
-        if (lengthMaximum !== Infinity && !checkNumberIPS(lengthMaximum)) {
+        if (lengthMaximum !== Infinity && !(typeof lengthMaximum === "number" && Number.isSafeInteger(lengthMaximum) && lengthMaximum >= 0)) {
             throw new TypeError(`Argument \`options.lengthMaximum\` must be \`Infinity\` or type of number (integer, positive, and safe)!`);
         }
-        if (!checkNumberIPSWithMaximum(lengthMinimum, lengthMaximum)) {
+        if (!(typeof lengthMinimum === "number" && Number.isSafeInteger(lengthMinimum) && lengthMinimum >= 0 && lengthMinimum <= lengthMaximum)) {
             throw new TypeError(`Argument \`options.lengthMinimum\` must be type of number (integer, positive, and safe) and <= ${lengthMaximum}!`);
         }
         if (typeof lowerCase !== "boolean" && typeof lowerCase !== "undefined") {
@@ -97,26 +96,19 @@ class StringItemFilter {
             return false;
         }
         let itemRaw = __classPrivateFieldGet(this, _StringItemFilter_preTrim, "f") ? item.trim() : item;
-        if (typeof __classPrivateFieldGet(this, _StringItemFilter_ascii, "f") === "boolean") {
-            for (let character of itemRaw) {
-                let charCode = character.charCodeAt(0);
-                if ((__classPrivateFieldGet(this, _StringItemFilter_ascii, "f") === false && charCode < 128) ||
-                    (__classPrivateFieldGet(this, _StringItemFilter_ascii, "f") === true && charCode > 127)) {
-                    return false;
-                }
-            }
-        }
-        if (__classPrivateFieldGet(this, _StringItemFilter_lengthMaximum, "f") < itemRaw.length ||
+        if ((__classPrivateFieldGet(this, _StringItemFilter_ascii, "f") === false && isStringASCII(itemRaw)) ||
+            (__classPrivateFieldGet(this, _StringItemFilter_ascii, "f") === true && !isStringASCII(itemRaw)) ||
+            __classPrivateFieldGet(this, _StringItemFilter_lengthMaximum, "f") < itemRaw.length ||
             itemRaw.length < __classPrivateFieldGet(this, _StringItemFilter_lengthMinimum, "f") ||
             (__classPrivateFieldGet(this, _StringItemFilter_pattern, "f") instanceof RegExp && !__classPrivateFieldGet(this, _StringItemFilter_pattern, "f").test(itemRaw)) ||
             ((__classPrivateFieldGet(this, _StringItemFilter_lowerCase, "f") === true ||
-                __classPrivateFieldGet(this, _StringItemFilter_upperCase, "f") === false) && itemRaw !== itemRaw.toLowerCase()) ||
+                __classPrivateFieldGet(this, _StringItemFilter_upperCase, "f") === false) && !isStringLowerCase(itemRaw)) ||
             ((__classPrivateFieldGet(this, _StringItemFilter_upperCase, "f") === true ||
-                __classPrivateFieldGet(this, _StringItemFilter_lowerCase, "f") === false) && itemRaw !== itemRaw.toUpperCase()) ||
+                __classPrivateFieldGet(this, _StringItemFilter_lowerCase, "f") === false) && !isStringUpperCase(itemRaw)) ||
             ((__classPrivateFieldGet(this, _StringItemFilter_multipleLine, "f") === true ||
-                __classPrivateFieldGet(this, _StringItemFilter_singleLine, "f") === false) && !newLineRegExp.test(itemRaw)) ||
+                __classPrivateFieldGet(this, _StringItemFilter_singleLine, "f") === false) && !isStringMultipleLine(itemRaw)) ||
             ((__classPrivateFieldGet(this, _StringItemFilter_singleLine, "f") === true ||
-                __classPrivateFieldGet(this, _StringItemFilter_multipleLine, "f") === false) && newLineRegExp.test(itemRaw))) {
+                __classPrivateFieldGet(this, _StringItemFilter_multipleLine, "f") === false) && !isStringSingleLine(itemRaw))) {
             return false;
         }
         return true;

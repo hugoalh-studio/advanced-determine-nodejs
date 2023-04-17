@@ -10,9 +10,8 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
 var _NumberItemFilter_even, _NumberItemFilter_finite, _NumberItemFilter_float, _NumberItemFilter_infinite, _NumberItemFilter_integer, _NumberItemFilter_maximum, _NumberItemFilter_maximumExclusive, _NumberItemFilter_minimum, _NumberItemFilter_minimumExclusive, _NumberItemFilter_negative, _NumberItemFilter_odd, _NumberItemFilter_positive, _NumberItemFilter_prime, _NumberItemFilter_safe, _NumberItemFilter_unsafe;
-import { checkNumber, checkNumberWithMaximum } from "./internal/check-item.js";
-import { integerTypesRange } from "./internal/integer-types-range.js";
-import { isPrimeNumber } from "./internal/is-prime-number.js";
+import { integralNumericTypeRange } from "./internal/integral-numeric-types.js";
+import { isNumberPrime, isNumberSafe } from "./native/number.js";
 /**
  * @class NumberItemFilter
  * @description Determine item with the filter of type of number.
@@ -63,13 +62,13 @@ class NumberItemFilter {
         if (typeof integer !== "boolean" && typeof integer !== "undefined") {
             throw new TypeError(`Argument \`options.integer\` must be type of boolean or undefined!`);
         }
-        if (!checkNumber(maximum) && typeof maximum !== "undefined") {
+        if (!(typeof maximum === "number" && !Number.isNaN(maximum)) && typeof maximum !== "undefined") {
             throw new TypeError(`Argument \`options.maximum\` must be type of number or undefined!`);
         }
         if (typeof maximumExclusive !== "boolean") {
             throw new TypeError(`Argument \`options.maximumExclusive\` must be type of boolean!`);
         }
-        if (!checkNumberWithMaximum(minimum, maximum ?? Infinity) && typeof minimum !== "undefined") {
+        if (!(typeof minimum === "number" && !Number.isNaN(minimum) && ((typeof maximum === "number") ? (minimum <= maximum) : true)) && typeof minimum !== "undefined") {
             throw new TypeError(`Argument \`options.minimum\` must be type of number${typeof maximum === "number" ? ` and <= ${maximum},` : ""} or undefined!`);
         }
         if (typeof minimumExclusive !== "boolean") {
@@ -98,9 +97,9 @@ class NumberItemFilter {
             __classPrivateFieldSet(this, _NumberItemFilter_minimumExclusive, false, "f");
             __classPrivateFieldSet(this, _NumberItemFilter_float, undefined, "f");
             __classPrivateFieldSet(this, _NumberItemFilter_integer, true, "f");
-            let [itrMinimum, itrMaximum] = integerTypesRange(type);
-            __classPrivateFieldSet(this, _NumberItemFilter_maximum, Number(itrMaximum), "f");
-            __classPrivateFieldSet(this, _NumberItemFilter_minimum, Number(itrMinimum), "f");
+            let [intrMinimum, intrMaximum] = integralNumericTypeRange(type);
+            __classPrivateFieldSet(this, _NumberItemFilter_maximum, Number(intrMaximum), "f");
+            __classPrivateFieldSet(this, _NumberItemFilter_minimum, Number(intrMinimum), "f");
         }
         else if (typeof type === "undefined") {
             __classPrivateFieldSet(this, _NumberItemFilter_maximumExclusive, maximumExclusive, "f");
@@ -132,11 +131,10 @@ class NumberItemFilter {
     test(item) {
         let itemIsFinite = Number.isFinite(item);
         let itemIsInteger = Number.isInteger(item);
-        let itemIsSafeInteger = Number.isSafeInteger(item);
         if (typeof item !== "number" ||
             Number.isNaN(item) ||
-            (__classPrivateFieldGet(this, _NumberItemFilter_even, "f") === false && itemIsSafeInteger && item % 2 === 0) ||
-            (__classPrivateFieldGet(this, _NumberItemFilter_even, "f") === true && (!itemIsSafeInteger ||
+            (__classPrivateFieldGet(this, _NumberItemFilter_even, "f") === false && itemIsInteger && item % 2 === 0) ||
+            (__classPrivateFieldGet(this, _NumberItemFilter_even, "f") === true && (!itemIsInteger ||
                 item % 2 !== 0)) ||
             (typeof __classPrivateFieldGet(this, _NumberItemFilter_maximum, "f") === "number" && __classPrivateFieldGet(this, _NumberItemFilter_maximumExclusive, "f") && __classPrivateFieldGet(this, _NumberItemFilter_maximum, "f") <= item) ||
             (typeof __classPrivateFieldGet(this, _NumberItemFilter_maximum, "f") === "number" && !__classPrivateFieldGet(this, _NumberItemFilter_maximumExclusive, "f") && __classPrivateFieldGet(this, _NumberItemFilter_maximum, "f") < item) ||
@@ -154,17 +152,16 @@ class NumberItemFilter {
                 __classPrivateFieldGet(this, _NumberItemFilter_positive, "f") === false) && item >= 0) ||
             ((__classPrivateFieldGet(this, _NumberItemFilter_positive, "f") === true ||
                 __classPrivateFieldGet(this, _NumberItemFilter_negative, "f") === false) && item < 0) ||
-            (__classPrivateFieldGet(this, _NumberItemFilter_odd, "f") === false && itemIsSafeInteger && item % 2 !== 0) ||
-            (__classPrivateFieldGet(this, _NumberItemFilter_odd, "f") === true && (!itemIsSafeInteger ||
+            (__classPrivateFieldGet(this, _NumberItemFilter_odd, "f") === false && itemIsInteger && item % 2 !== 0) ||
+            (__classPrivateFieldGet(this, _NumberItemFilter_odd, "f") === true && (!itemIsInteger ||
                 item % 2 === 0)) ||
-            (__classPrivateFieldGet(this, _NumberItemFilter_prime, "f") === false && itemIsSafeInteger && isPrimeNumber(item)) ||
-            (__classPrivateFieldGet(this, _NumberItemFilter_prime, "f") === true && (!itemIsSafeInteger ||
-                !isPrimeNumber(item))) ||
+            (__classPrivateFieldGet(this, _NumberItemFilter_prime, "f") === false && itemIsInteger && isNumberPrime(item)) ||
+            (__classPrivateFieldGet(this, _NumberItemFilter_prime, "f") === true && (!itemIsInteger ||
+                !isNumberPrime(item))) ||
             ((__classPrivateFieldGet(this, _NumberItemFilter_safe, "f") === true ||
-                __classPrivateFieldGet(this, _NumberItemFilter_unsafe, "f") === false) && (item < Number.MIN_SAFE_INTEGER ||
-                item > Number.MAX_SAFE_INTEGER)) ||
+                __classPrivateFieldGet(this, _NumberItemFilter_unsafe, "f") === false) && !isNumberSafe(item)) ||
             ((__classPrivateFieldGet(this, _NumberItemFilter_unsafe, "f") === true ||
-                __classPrivateFieldGet(this, _NumberItemFilter_safe, "f") === false) && item >= Number.MIN_SAFE_INTEGER && item <= Number.MAX_SAFE_INTEGER)) {
+                __classPrivateFieldGet(this, _NumberItemFilter_safe, "f") === false) && isNumberSafe(item))) {
             return false;
         }
         return true;

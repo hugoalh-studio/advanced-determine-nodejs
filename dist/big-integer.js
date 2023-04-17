@@ -10,10 +10,8 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
 var _BigIntegerItemFilter_even, _BigIntegerItemFilter_maximum, _BigIntegerItemFilter_maximumExclusive, _BigIntegerItemFilter_minimum, _BigIntegerItemFilter_minimumExclusive, _BigIntegerItemFilter_negative, _BigIntegerItemFilter_odd, _BigIntegerItemFilter_positive, _BigIntegerItemFilter_prime, _BigIntegerItemFilter_safe, _BigIntegerItemFilter_unsafe;
-import { integerTypesRange } from "./internal/integer-types-range.js";
-import { isPrimeNumber } from "./internal/is-prime-number.js";
-const maximumSafeInteger = BigInt(Number.MAX_SAFE_INTEGER);
-const minimumSafeInteger = BigInt(Number.MIN_SAFE_INTEGER);
+import { integralNumericTypeRange } from "./internal/integral-numeric-types.js";
+import { isBigIntegerPrime, isBigIntegerSafe } from "./native/big-integer.js";
 /**
  * @class BigIntegerItemFilter
  * @description Determine item with the filter of type of big integer.
@@ -53,7 +51,7 @@ class BigIntegerItemFilter {
         if (typeof maximumExclusive !== "boolean") {
             throw new TypeError(`Argument \`options.maximumExclusive\` must be type of boolean!`);
         }
-        if (!(typeof minimum === "bigint" && ((typeof maximum === "bigint") ? minimum <= maximum : true)) && typeof minimum !== "undefined") {
+        if (!(typeof minimum === "bigint" && ((typeof maximum === "bigint") ? (minimum <= maximum) : true)) && typeof minimum !== "undefined") {
             throw new TypeError(`Argument \`options.minimum\` must be type of big integer${typeof maximum === "bigint" ? ` and <= ${maximum}n,` : ""} or undefined!`);
         }
         if (typeof minimumExclusive !== "boolean") {
@@ -80,7 +78,7 @@ class BigIntegerItemFilter {
         if (typeof type === "string") {
             __classPrivateFieldSet(this, _BigIntegerItemFilter_maximumExclusive, false, "f");
             __classPrivateFieldSet(this, _BigIntegerItemFilter_minimumExclusive, false, "f");
-            _a = this, _b = this, [({ set value(_c) { __classPrivateFieldSet(_a, _BigIntegerItemFilter_minimum, _c, "f"); } }).value, ({ set value(_c) { __classPrivateFieldSet(_b, _BigIntegerItemFilter_maximum, _c, "f"); } }).value] = integerTypesRange(type);
+            _a = this, _b = this, [({ set value(_c) { __classPrivateFieldSet(_a, _BigIntegerItemFilter_minimum, _c, "f"); } }).value, ({ set value(_c) { __classPrivateFieldSet(_b, _BigIntegerItemFilter_maximum, _c, "f"); } }).value] = integralNumericTypeRange(type);
         }
         else if (typeof type === "undefined") {
             __classPrivateFieldSet(this, _BigIntegerItemFilter_maximumExclusive, maximumExclusive, "f");
@@ -119,13 +117,12 @@ class BigIntegerItemFilter {
                 __classPrivateFieldGet(this, _BigIntegerItemFilter_negative, "f") === false) && item < 0n) ||
             (__classPrivateFieldGet(this, _BigIntegerItemFilter_odd, "f") === false && item % 2n !== 0n) ||
             (__classPrivateFieldGet(this, _BigIntegerItemFilter_odd, "f") === true && item % 2n === 0n) ||
-            (__classPrivateFieldGet(this, _BigIntegerItemFilter_prime, "f") === false && isPrimeNumber(item)) ||
-            (__classPrivateFieldGet(this, _BigIntegerItemFilter_prime, "f") === true && !isPrimeNumber(item)) ||
+            (__classPrivateFieldGet(this, _BigIntegerItemFilter_prime, "f") === false && isBigIntegerPrime(item)) ||
+            (__classPrivateFieldGet(this, _BigIntegerItemFilter_prime, "f") === true && !isBigIntegerPrime(item)) ||
             ((__classPrivateFieldGet(this, _BigIntegerItemFilter_safe, "f") === true ||
-                __classPrivateFieldGet(this, _BigIntegerItemFilter_unsafe, "f") === false) && (maximumSafeInteger < item ||
-                item < minimumSafeInteger)) ||
+                __classPrivateFieldGet(this, _BigIntegerItemFilter_unsafe, "f") === false) && !isBigIntegerSafe(item)) ||
             ((__classPrivateFieldGet(this, _BigIntegerItemFilter_unsafe, "f") === true ||
-                __classPrivateFieldGet(this, _BigIntegerItemFilter_safe, "f") === false) && minimumSafeInteger <= item && item <= maximumSafeInteger)) {
+                __classPrivateFieldGet(this, _BigIntegerItemFilter_safe, "f") === false) && isBigIntegerSafe(item))) {
             return false;
         }
         return true;

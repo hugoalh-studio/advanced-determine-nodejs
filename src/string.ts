@@ -1,5 +1,4 @@
-import { checkNumberIPS, checkNumberIPSWithMaximum } from "./internal/check-item.js";
-const newLineRegExp = /[\n\r]/u;
+import { isStringASCII, isStringLowerCase, isStringMultipleLine, isStringSingleLine, isStringUpperCase } from "./native/string.js";
 interface StringItemFilterOptions {
 	/**
 	 * @property allowEmpty
@@ -129,13 +128,13 @@ class StringItemFilter {
 		if (typeof ascii !== "boolean" && typeof ascii !== "undefined") {
 			throw new TypeError(`Argument \`options.ascii\` must be type of boolean or undefined!`);
 		}
-		if (!checkNumberIPS(length) && typeof length !== "undefined") {
+		if (!(typeof length === "number" && Number.isSafeInteger(length) && length >= 0) && typeof length !== "undefined") {
 			throw new TypeError(`Argument \`options.length\` must be type of number (integer, positive, and safe) or undefined!`);
 		}
-		if (lengthMaximum !== Infinity && !checkNumberIPS(lengthMaximum)) {
+		if (lengthMaximum !== Infinity && !(typeof lengthMaximum === "number" && Number.isSafeInteger(lengthMaximum) && lengthMaximum >= 0)) {
 			throw new TypeError(`Argument \`options.lengthMaximum\` must be \`Infinity\` or type of number (integer, positive, and safe)!`);
 		}
-		if (!checkNumberIPSWithMaximum(lengthMinimum, lengthMaximum)) {
+		if (!(typeof lengthMinimum === "number" && Number.isSafeInteger(lengthMinimum) && lengthMinimum >= 0 && lengthMinimum <= lengthMaximum)) {
 			throw new TypeError(`Argument \`options.lengthMinimum\` must be type of number (integer, positive, and safe) and <= ${lengthMaximum}!`);
 		}
 		if (typeof lowerCase !== "boolean" && typeof lowerCase !== "undefined") {
@@ -182,37 +181,28 @@ class StringItemFilter {
 			return false;
 		}
 		let itemRaw: string = this.#preTrim ? item.trim() : item;
-		if (typeof this.#ascii === "boolean") {
-			for (let character of itemRaw) {
-				let charCode: number = character.charCodeAt(0);
-				if (
-					(this.#ascii === false && charCode < 128) ||
-					(this.#ascii === true && charCode > 127)
-				) {
-					return false;
-				}
-			}
-		}
 		if (
+			(this.#ascii === false && isStringASCII(itemRaw)) ||
+			(this.#ascii === true && !isStringASCII(itemRaw)) ||
 			this.#lengthMaximum < itemRaw.length ||
 			itemRaw.length < this.#lengthMinimum ||
 			(this.#pattern instanceof RegExp && !this.#pattern.test(itemRaw)) ||
 			((
 				this.#lowerCase === true ||
 				this.#upperCase === false
-			) && itemRaw !== itemRaw.toLowerCase()) ||
+			) && !isStringLowerCase(itemRaw)) ||
 			((
 				this.#upperCase === true ||
 				this.#lowerCase === false
-			) && itemRaw !== itemRaw.toUpperCase()) ||
+			) && !isStringUpperCase(itemRaw)) ||
 			((
 				this.#multipleLine === true ||
 				this.#singleLine === false
-			) && !newLineRegExp.test(itemRaw)) ||
+			) && !isStringMultipleLine(itemRaw)) ||
 			((
 				this.#singleLine === true ||
 				this.#multipleLine === false
-			) && newLineRegExp.test(itemRaw))
+			) && !isStringSingleLine(itemRaw))
 		) {
 			return false;
 		}

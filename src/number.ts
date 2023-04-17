@@ -1,6 +1,5 @@
-import { checkNumber, checkNumberWithMaximum } from "./internal/check-item.js";
-import { integerTypesRange } from "./internal/integer-types-range.js";
-import { isPrimeNumber } from "./internal/is-prime-number.js";
+import { integralNumericTypeRange } from "./internal/integral-numeric-types.js";
+import { isNumberPrime, isNumberSafe } from "./native/number.js";
 interface NumberItemFilterOptions {
 	/**
 	 * @property even
@@ -181,13 +180,13 @@ class NumberItemFilter {
 		if (typeof integer !== "boolean" && typeof integer !== "undefined") {
 			throw new TypeError(`Argument \`options.integer\` must be type of boolean or undefined!`);
 		}
-		if (!checkNumber(maximum) && typeof maximum !== "undefined") {
+		if (!(typeof maximum === "number" && !Number.isNaN(maximum)) && typeof maximum !== "undefined") {
 			throw new TypeError(`Argument \`options.maximum\` must be type of number or undefined!`);
 		}
 		if (typeof maximumExclusive !== "boolean") {
 			throw new TypeError(`Argument \`options.maximumExclusive\` must be type of boolean!`);
 		}
-		if (!checkNumberWithMaximum(minimum, maximum ?? Infinity) && typeof minimum !== "undefined") {
+		if (!(typeof minimum === "number" && !Number.isNaN(minimum) && ((typeof maximum === "number") ? (minimum <= maximum) : true)) && typeof minimum !== "undefined") {
 			throw new TypeError(`Argument \`options.minimum\` must be type of number${typeof maximum === "number" ? ` and <= ${maximum},` : ""} or undefined!`);
 		}
 		if (typeof minimumExclusive !== "boolean") {
@@ -216,9 +215,9 @@ class NumberItemFilter {
 			this.#minimumExclusive = false;
 			this.#float = undefined;
 			this.#integer = true;
-			let [itrMinimum, itrMaximum] = integerTypesRange(type);
-			this.#maximum = Number(itrMaximum);
-			this.#minimum = Number(itrMinimum);
+			let [intrMinimum, intrMaximum] = integralNumericTypeRange(type);
+			this.#maximum = Number(intrMaximum);
+			this.#minimum = Number(intrMinimum);
 		} else if (typeof type === "undefined") {
 			this.#maximumExclusive = maximumExclusive;
 			this.#minimumExclusive = minimumExclusive;
@@ -246,15 +245,14 @@ class NumberItemFilter {
 	 * @returns {boolean} Determine result.
 	 */
 	test(item: unknown): boolean {
-		let itemIsFinite = Number.isFinite(item);
-		let itemIsInteger = Number.isInteger(item);
-		let itemIsSafeInteger = Number.isSafeInteger(item);
+		let itemIsFinite: boolean = Number.isFinite(item);
+		let itemIsInteger: boolean = Number.isInteger(item);
 		if (
 			typeof item !== "number" ||
 			Number.isNaN(item) ||
-			(this.#even === false && itemIsSafeInteger && item % 2 === 0) ||
+			(this.#even === false && itemIsInteger && item % 2 === 0) ||
 			(this.#even === true && (
-				!itemIsSafeInteger ||
+				!itemIsInteger ||
 				item % 2 !== 0
 			)) ||
 			(typeof this.#maximum === "number" && this.#maximumExclusive && this.#maximum <= item) ||
@@ -285,29 +283,24 @@ class NumberItemFilter {
 				this.#positive === true ||
 				this.#negative === false
 			) && item < 0) ||
-			(this.#odd === false && itemIsSafeInteger && item % 2 !== 0) ||
+			(this.#odd === false && itemIsInteger && item % 2 !== 0) ||
 			(this.#odd === true && (
-				!itemIsSafeInteger ||
+				!itemIsInteger ||
 				item % 2 === 0
 			)) ||
-			(this.#prime === false && itemIsSafeInteger && isPrimeNumber(item)) ||
+			(this.#prime === false && itemIsInteger && isNumberPrime(item)) ||
 			(this.#prime === true && (
-				!itemIsSafeInteger ||
-				!isPrimeNumber(item)
+				!itemIsInteger ||
+				!isNumberPrime(item)
 			)) ||
-			(
-				(
-					this.#safe === true ||
-					this.#unsafe === false
-				) && (
-					item < Number.MIN_SAFE_INTEGER ||
-					item > Number.MAX_SAFE_INTEGER
-				)
-			) ||
+			((
+				this.#safe === true ||
+				this.#unsafe === false
+			) && !isNumberSafe(item)) ||
 			((
 				this.#unsafe === true ||
 				this.#safe === false
-			) && item >= Number.MIN_SAFE_INTEGER && item <= Number.MAX_SAFE_INTEGER)
+			) && isNumberSafe(item))
 		) {
 			return false;
 		}

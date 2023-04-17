@@ -1,4 +1,3 @@
-import { checkNumberIPS, checkNumberIPSWithMaximum } from "./internal/check-item.js";
 import { ObjectMeta } from "./internal/object-meta.js";
 import { ObjectItemFilter } from "./object.js";
 const objectFilter = new ObjectItemFilter();
@@ -135,13 +134,13 @@ class PlainObjectItemFilter {
 		if (typeof entriesConfigurable !== "boolean" && typeof entriesConfigurable !== "undefined") {
 			throw new TypeError(`Argument \`options.entriesConfigurable\` must be type of boolean or undefined!`);
 		}
-		if (!checkNumberIPS(entriesCount) && typeof entriesCount !== "undefined") {
+		if (!(typeof entriesCount === "number" && Number.isSafeInteger(entriesCount) && entriesCount >= 0) && typeof entriesCount !== "undefined") {
 			throw new TypeError(`Argument \`options.entriesCount\` must be type of number (integer, positive, and safe) or undefined!`);
 		}
-		if (entriesCountMaximum !== Infinity && !checkNumberIPS(entriesCountMaximum)) {
+		if (entriesCountMaximum !== Infinity && !(typeof entriesCountMaximum === "number" && Number.isSafeInteger(entriesCountMaximum) && entriesCountMaximum >= 0)) {
 			throw new TypeError(`Argument \`options.entriesCountMaximum\` must be \`Infinity\` or type of number (integer, positive, and safe)!`);
 		}
-		if (!checkNumberIPSWithMaximum(entriesCountMinimum, entriesCountMaximum)) {
+		if (!(typeof entriesCountMinimum === "number" && Number.isSafeInteger(entriesCountMinimum) && entriesCountMinimum >= 0 && entriesCountMinimum <= entriesCountMaximum)) {
 			throw new TypeError(`Argument \`options.entriesCountMinimum\` must be type of number (integer, positive, and safe) and <= ${entriesCountMaximum}!`);
 		}
 		if (typeof entriesEnumerable !== "boolean" && typeof entriesEnumerable !== "undefined") {
@@ -204,7 +203,7 @@ class PlainObjectItemFilter {
 		if (itemObjectMeta.prototypes !== null && itemObjectMeta.prototypes !== Object.prototype) {
 			return false;
 		}
-		let itemShadow = item;
+		let itemShadow: Object = item;
 		while (Object.getPrototypeOf(itemShadow) !== null) {
 			itemShadow = Object.getPrototypeOf(itemShadow);
 		}

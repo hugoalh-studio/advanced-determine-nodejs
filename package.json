@@ -21,11 +21,77 @@
 		".": {
 			"import": "./dist/main.js"
 		},
+		"./are-equal": {
+			"import": "./dist/are-equal.js"
+		},
+		"./array": {
+			"import": "./dist/array.js"
+		},
+		"./bigint": {
+			"import": "./dist/big-integer.js"
+		},
+		"./big-integer": {
+			"import": "./dist/big-integer.js"
+		},
+		"./function": {
+			"import": "./dist/function.js"
+		},
+		"./generator": {
+			"import": "./dist/generator.js"
+		},
 		"./is": {
 			"import": "./dist/is.js"
 		},
 		"./item-filter": {
 			"import": "./dist/item-filter.js"
+		},
+		"./json": {
+			"import": "./dist/json.js"
+		},
+		"./map": {
+			"import": "./dist/map.js"
+		},
+		"./native": {
+			"import": "./dist/native.js"
+		},
+		"./native/array": {
+			"import": "./dist/native/array.js"
+		},
+		"./native/bigint": {
+			"import": "./dist/native/big-integer.js"
+		},
+		"./native/big-integer": {
+			"import": "./dist/native/big-integer.js"
+		},
+		"./native/number": {
+			"import": "./dist/native/number.js"
+		},
+		"./native/string": {
+			"import": "./dist/native/string.js"
+		},
+		"./number": {
+			"import": "./dist/number.js"
+		},
+		"./object": {
+			"import": "./dist/object.js"
+		},
+		"./plain-object": {
+			"import": "./dist/plain-object.js"
+		},
+		"./regular-expression": {
+			"import": "./dist/regular-expression.js"
+		},
+		"./set": {
+			"import": "./dist/set.js"
+		},
+		"./string": {
+			"import": "./dist/string.js"
+		},
+		"./stringify-json": {
+			"import": "./dist/stringify-json.js"
+		},
+		"./type-of": {
+			"import": "./dist/type-of.js"
 		}
 	},
 	"types": "./dist/main.d.ts",

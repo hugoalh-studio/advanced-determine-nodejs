@@ -11,7 +11,6 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
 };
 var _JSONItemFilter_arrayRoot, _JSONItemFilter_entriesCountMaximum, _JSONItemFilter_entriesCountMinimum, _JSONItemFilter_keysPattern;
 import { ArrayItemFilter } from "./array.js";
-import { checkNumber, checkNumberIPS, checkNumberIPSWithMaximum } from "./internal/check-item.js";
 import { PlainObjectItemFilter } from "./plain-object.js";
 const jsonArrayFilter = new ArrayItemFilter({ strict: true });
 const jsonObjectFilter = new PlainObjectItemFilter({ strict: true });
@@ -27,7 +26,7 @@ function isJSONValue(item, keysPattern) {
     return (typeof item === "boolean" ||
         isJSONInternal(item, keysPattern) ||
         item === null ||
-        checkNumber(item) ||
+        (typeof item === "number" && !Number.isNaN(item)) ||
         typeof item === "string");
 }
 /**
@@ -89,13 +88,13 @@ class JSONItemFilter {
         if (typeof arrayRoot !== "boolean" && typeof arrayRoot !== "undefined") {
             throw new TypeError(`Argument \`options.arrayRoot\` must be type of boolean or undefined!`);
         }
-        if (!checkNumberIPS(entriesCount) && typeof entriesCount !== "undefined") {
+        if (!(typeof entriesCount === "number" && Number.isSafeInteger(entriesCount) && entriesCount >= 0) && typeof entriesCount !== "undefined") {
             throw new TypeError(`Argument \`options.entriesCount\` must be type of number (integer, positive, and safe) or undefined!`);
         }
-        if (entriesCountMaximum !== Infinity && !checkNumberIPS(entriesCountMaximum)) {
+        if (entriesCountMaximum !== Infinity && !(typeof entriesCountMaximum === "number" && Number.isSafeInteger(entriesCountMaximum) && entriesCountMaximum >= 0)) {
             throw new TypeError(`Argument \`options.entriesCountMaximum\` must be \`Infinity\` or type of number (integer, positive, and safe)!`);
         }
-        if (!checkNumberIPSWithMaximum(entriesCountMinimum, entriesCountMaximum)) {
+        if (!(typeof entriesCountMinimum === "number" && Number.isSafeInteger(entriesCountMinimum) && entriesCountMinimum >= 0 && entriesCountMinimum <= entriesCountMaximum)) {
             throw new TypeError(`Argument \`options.entriesCountMinimum\` must be type of number (integer, positive, and safe) and <= ${entriesCountMaximum}!`);
         }
         if (!(keysPattern instanceof RegExp) && typeof keysPattern !== "undefined") {

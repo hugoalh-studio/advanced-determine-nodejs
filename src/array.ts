@@ -1,5 +1,4 @@
-import { checkNumberIPS, checkNumberIPSWithMaximum } from "./internal/check-item.js";
-const arrayIndexRegExp = /^(?:0|[1-9]\d*)$/u;
+import { isArrayStrict, isArrayUnique } from "./native/array.js";
 interface ArrayItemFilterOptions {
 	/**
 	 * @property allowEmpty
@@ -83,13 +82,13 @@ class ArrayItemFilter {
 		if (typeof allowEmpty !== "boolean") {
 			throw new TypeError(`Argument \`options.allowEmpty\` must be type of boolean!`);
 		}
-		if (!checkNumberIPS(length) && typeof length !== "undefined") {
+		if (!(typeof length === "number" && Number.isSafeInteger(length) && length >= 0) && typeof length !== "undefined") {
 			throw new TypeError(`Argument \`options.length\` must be type of number (integer, positive, and safe) or undefined!`);
 		}
-		if (lengthMaximum !== Infinity && !checkNumberIPS(lengthMaximum)) {
+		if (lengthMaximum !== Infinity && !(typeof lengthMaximum === "number" && Number.isSafeInteger(lengthMaximum) && lengthMaximum >= 0)) {
 			throw new TypeError(`Argument \`options.lengthMaximum\` must be \`Infinity\` or type of number (integer, positive, and safe)!`);
 		}
-		if (!checkNumberIPSWithMaximum(lengthMinimum, lengthMaximum)) {
+		if (!(typeof lengthMinimum === "number" && Number.isSafeInteger(lengthMinimum) && lengthMinimum >= 0 && lengthMinimum <= lengthMaximum)) {
 			throw new TypeError(`Argument \`options.lengthMinimum\` must be type of number (integer, positive, and safe) and <= ${lengthMaximum}!`);
 		}
 		if (typeof strict !== "boolean") {
@@ -119,54 +118,12 @@ class ArrayItemFilter {
 			!Array.isArray(item) ||
 			!(item instanceof Array) ||
 			item.constructor.name !== "Array" ||
-			Object.prototype.toString.call(item) !== "[object Array]"
-		) {
-			return false;
-		}
-		if (this.#strict) {
-			let itemPrototype = Object.getPrototypeOf(item);
-			if (
-				(itemPrototype !== null && itemPrototype !== Array.prototype) ||
-				Object.getOwnPropertySymbols(item).length > 0
-			) {
-				return false;
-			}
-			let itemDescriptors = Object.getOwnPropertyDescriptors(item);
-			for (let itemPropertyKey in itemDescriptors) {
-				if (Object.prototype.hasOwnProperty.call(itemDescriptors, itemPropertyKey)) {
-					if (arrayIndexRegExp.test(itemPropertyKey) && Number(itemPropertyKey) < 4294967296) {
-						let itemPropertyDescriptor: PropertyDescriptor = itemDescriptors[itemPropertyKey];
-						if (
-							!itemPropertyDescriptor.configurable ||
-							!itemPropertyDescriptor.enumerable ||
-							typeof itemPropertyDescriptor.get !== "undefined" ||
-							typeof itemPropertyDescriptor.set !== "undefined" ||
-							!itemPropertyDescriptor.writable
-						) {
-							return false;
-						}
-					} else if (itemPropertyKey === "length") {
-						let itemPropertyDescriptor: PropertyDescriptor = itemDescriptors[itemPropertyKey] as PropertyDescriptor;
-						if (
-							itemPropertyDescriptor.configurable ||
-							itemPropertyDescriptor.enumerable ||
-							typeof itemPropertyDescriptor.get !== "undefined" ||
-							typeof itemPropertyDescriptor.set !== "undefined" ||
-							!itemPropertyDescriptor.writable
-						) {
-							return false;
-						}
-					} else {
-						return false;
-					}
-				}
-			}
-		}
-		if (
+			Object.prototype.toString.call(item) !== "[object Array]" ||
 			Object.entries(item).length !== item.length ||
 			this.#lengthMaximum < item.length ||
 			item.length < this.#lengthMinimum ||
-			(this.#unique && new Set(item).size !== item.length)
+			(this.#strict && !isArrayStrict(item)) ||
+			(this.#unique && !isArrayUnique(item))
 		) {
 			return false;
 		}
