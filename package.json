@@ -27,6 +27,9 @@
 		"./array": {
 			"import": "./lib/array.js"
 		},
+		"./bigint": {
+			"import": "./lib/big-integer.js"
+		},
 		"./big-integer": {
 			"import": "./lib/big-integer.js"
 		},
@@ -53,6 +56,9 @@
 		},
 		"./native/array": {
 			"import": "./lib/native/array.js"
+		},
+		"./native/bigint": {
+			"import": "./lib/native/big-integer.js"
 		},
 		"./native/big-integer": {
 			"import": "./lib/native/big-integer.js"

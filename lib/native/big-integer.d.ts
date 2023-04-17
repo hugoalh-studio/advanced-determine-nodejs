@@ -48,4 +48,5 @@ export function isBigIntegerPrime(item: bigint): boolean;
  * @returns {boolean} Determine result.
  */
 export function isBigIntegerSafe(item: bigint): boolean;
+export { isBigIntegerEven as isBigIntEven, isBigIntegerIntegralNumericType as isBigIntIntegralNumericType, isBigIntegerNegative as isBigIntNegative, isBigIntegerOdd as isBigIntOdd, isBigIntegerPositive as isBigIntPositive, isBigIntegerPrime as isBigIntPrime, isBigIntegerSafe as isBigIntSafe };
 //# sourceMappingURL=big-integer.d.ts.map
