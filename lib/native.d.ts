@@ -1,3 +1,35 @@
+declare namespace _default {
+    export { isArrayStrict };
+    export { isArrayUnique };
+    export { isBigIntegerEven };
+    export { isBigIntegerIntegralNumericType };
+    export { isBigIntegerNegative };
+    export { isBigIntegerOdd };
+    export { isBigIntegerPositive };
+    export { isBigIntegerPrime };
+    export { isBigIntegerSafe };
+    export { isBigIntEven };
+    export { isBigIntIntegralNumericType };
+    export { isBigIntNegative };
+    export { isBigIntOdd };
+    export { isBigIntPositive };
+    export { isBigIntPrime };
+    export { isBigIntSafe };
+    export { isNumberEven };
+    export { isNumberFloat };
+    export { isNumberIntegralNumericType };
+    export { isNumberNegative };
+    export { isNumberOdd };
+    export { isNumberPositive };
+    export { isNumberPrime };
+    export { isNumberSafe };
+    export { isStringASCII };
+    export { isStringLowerCase };
+    export { isStringMultipleLine };
+    export { isStringSingleLine };
+    export { isStringUpperCase };
+}
+export default _default;
 import { isArrayStrict } from "./native/array.js";
 import { isArrayUnique } from "./native/array.js";
 import { isBigIntegerEven } from "./native/big-integer.js";
