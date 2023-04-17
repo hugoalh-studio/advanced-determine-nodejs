@@ -7,7 +7,7 @@ import { isPrimeNumber } from "../internal/is-prime-number.js";
  * @returns {boolean} Determine result.
  */
 function isNumberEven(item: number): boolean {
-	return (item % 2 === 0);
+	return (Number.isInteger(item) && item % 2 === 0);
 }
 /**
  * @function isNumberFloat
@@ -27,7 +27,7 @@ function isNumberFloat(item: number): boolean {
  */
 function isNumberIntegralNumericType(typeName: string, item: number): boolean {
 	let [minimum, maximum] = integralNumericTypeRange(typeName);
-	return (Number(minimum) <= item && item <= Number(maximum));
+	return (Number.isInteger(item) && Number(minimum) <= item && item <= Number(maximum));
 }
 /**
  * @function isNumberNegative
@@ -45,7 +45,7 @@ function isNumberNegative(item: number): boolean {
  * @returns {boolean} Determine result.
  */
 function isNumberOdd(item: number): boolean {
-	return (item % 2 !== 0);
+	return (Number.isInteger(item) && item % 2 !== 0);
 }
 /**
  * @function isNumberPositive
