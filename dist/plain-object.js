@@ -11,6 +11,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
 };
 var _PlainObjectItemFilter_entriesConfigurable, _PlainObjectItemFilter_entriesCountMaximum, _PlainObjectItemFilter_entriesCountMinimum, _PlainObjectItemFilter_entriesEnumerable, _PlainObjectItemFilter_entriesGetter, _PlainObjectItemFilter_entriesSetter, _PlainObjectItemFilter_entriesWritable, _PlainObjectItemFilter_keysSymbol;
 import { ObjectMeta } from "./internal/object-meta.js";
+import { isObjectPlain } from "./native/plain-object.js";
 import { ObjectItemFilter } from "./object.js";
 const objectFilter = new ObjectItemFilter();
 /**
@@ -110,20 +111,11 @@ class PlainObjectItemFilter {
         if (!objectFilter.test(item) ||
             !(item instanceof Object) ||
             item.constructor.name !== "Object" ||
-            Object.prototype.toString.call(item) !== "[object Object]") {
+            Object.prototype.toString.call(item) !== "[object Object]" ||
+            !isObjectPlain(item)) {
             return false;
         }
         let itemObjectMeta = new ObjectMeta(item);
-        if (itemObjectMeta.prototypes !== null && itemObjectMeta.prototypes !== Object.prototype) {
-            return false;
-        }
-        let itemShadow = item;
-        while (Object.getPrototypeOf(itemShadow) !== null) {
-            itemShadow = Object.getPrototypeOf(itemShadow);
-        }
-        if (itemObjectMeta.prototypes !== itemShadow) {
-            return false;
-        }
         if (Object.entries(item).length !== itemObjectMeta.entriesEnumerable.length ||
             (__classPrivateFieldGet(this, _PlainObjectItemFilter_keysSymbol, "f") === false && itemObjectMeta.keysSymbol.length > 0) ||
             (__classPrivateFieldGet(this, _PlainObjectItemFilter_keysSymbol, "f") === true && itemObjectMeta.keysSymbol.length === 0) ||

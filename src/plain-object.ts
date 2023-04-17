@@ -1,4 +1,5 @@
 import { ObjectMeta } from "./internal/object-meta.js";
+import { isObjectPlain } from "./native/plain-object.js";
 import { ObjectItemFilter } from "./object.js";
 const objectFilter = new ObjectItemFilter();
 interface PlainObjectItemFilterOptions {
@@ -195,21 +196,12 @@ class PlainObjectItemFilter {
 			!objectFilter.test(item) ||
 			!(item instanceof Object) ||
 			item.constructor.name !== "Object" ||
-			Object.prototype.toString.call(item) !== "[object Object]"
+			Object.prototype.toString.call(item) !== "[object Object]" ||
+			!isObjectPlain(item)
 		) {
 			return false;
 		}
 		let itemObjectMeta: ObjectMeta = new ObjectMeta(item);
-		if (itemObjectMeta.prototypes !== null && itemObjectMeta.prototypes !== Object.prototype) {
-			return false;
-		}
-		let itemShadow: Object = item;
-		while (Object.getPrototypeOf(itemShadow) !== null) {
-			itemShadow = Object.getPrototypeOf(itemShadow);
-		}
-		if (itemObjectMeta.prototypes !== itemShadow) {
-			return false;
-		}
 		if (
 			Object.entries(item).length !== itemObjectMeta.entriesEnumerable.length ||
 			(this.#keysSymbol === false && itemObjectMeta.keysSymbol.length > 0) ||

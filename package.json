@@ -48,6 +48,12 @@
 		"./json": {
 			"import": "./dist/json.js"
 		},
+		"./json-stringified": {
+			"import": "./dist/stringify-json.js"
+		},
+		"./json-stringify": {
+			"import": "./dist/stringify-json.js"
+		},
 		"./map": {
 			"import": "./dist/map.js"
 		},
@@ -66,6 +72,12 @@
 		"./native/number": {
 			"import": "./dist/native/number.js"
 		},
+		"./native/object-plain": {
+			"import": "./dist/native/plain-object.js"
+		},
+		"./native/plain-object": {
+			"import": "./dist/native/plain-object.js"
+		},
 		"./native/string": {
 			"import": "./dist/native/string.js"
 		},
@@ -75,8 +87,17 @@
 		"./object": {
 			"import": "./dist/object.js"
 		},
+		"./object-plain": {
+			"import": "./dist/plain-object.js"
+		},
 		"./plain-object": {
 			"import": "./dist/plain-object.js"
+		},
+		"./regex": {
+			"import": "./dist/regular-expression.js"
+		},
+		"./regexp": {
+			"import": "./dist/regular-expression.js"
 		},
 		"./regular-expression": {
 			"import": "./dist/regular-expression.js"
@@ -86,6 +107,9 @@
 		},
 		"./string": {
 			"import": "./dist/string.js"
+		},
+		"./stringified-json": {
+			"import": "./dist/stringify-json.js"
 		},
 		"./stringify-json": {
 			"import": "./dist/stringify-json.js"
