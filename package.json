@@ -21,11 +21,71 @@
 		".": {
 			"import": "./lib/main.js"
 		},
+		"./are-equal": {
+			"import": "./lib/are-equal.js"
+		},
+		"./array": {
+			"import": "./lib/array.js"
+		},
+		"./big-integer": {
+			"import": "./lib/big-integer.js"
+		},
+		"./function": {
+			"import": "./lib/function.js"
+		},
+		"./generator": {
+			"import": "./lib/generator.js"
+		},
 		"./is": {
 			"import": "./lib/is.js"
 		},
 		"./item-filter": {
 			"import": "./lib/item-filter.js"
+		},
+		"./json": {
+			"import": "./lib/json.js"
+		},
+		"./map": {
+			"import": "./lib/map.js"
+		},
+		"./native": {
+			"import": "./lib/native.js"
+		},
+		"./native/array": {
+			"import": "./lib/native/array.js"
+		},
+		"./native/big-integer": {
+			"import": "./lib/native/big-integer.js"
+		},
+		"./native/number": {
+			"import": "./lib/native/number.js"
+		},
+		"./native/string": {
+			"import": "./lib/native/string.js"
+		},
+		"./number": {
+			"import": "./lib/number.js"
+		},
+		"./object": {
+			"import": "./lib/object.js"
+		},
+		"./plain-object": {
+			"import": "./lib/plain-object.js"
+		},
+		"./regular-expression": {
+			"import": "./lib/regular-expression.js"
+		},
+		"./set": {
+			"import": "./lib/set.js"
+		},
+		"./string": {
+			"import": "./lib/string.js"
+		},
+		"./stringify-json": {
+			"import": "./lib/stringify-json.js"
+		},
+		"./type-of": {
+			"import": "./lib/type-of.js"
 		}
 	},
 	"types": "./lib/main.d.ts",

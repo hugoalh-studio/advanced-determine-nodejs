@@ -1,0 +1,24 @@
+import { isArrayStrict } from "./native/array.js";
+import { isArrayUnique } from "./native/array.js";
+import { isBigIntegerEven } from "./native/big-integer.js";
+import { isBigIntegerIntegralNumericType } from "./native/big-integer.js";
+import { isBigIntegerNegative } from "./native/big-integer.js";
+import { isBigIntegerOdd } from "./native/big-integer.js";
+import { isBigIntegerPositive } from "./native/big-integer.js";
+import { isBigIntegerPrime } from "./native/big-integer.js";
+import { isBigIntegerSafe } from "./native/big-integer.js";
+import { isNumberEven } from "./native/number.js";
+import { isNumberFloat } from "./native/number.js";
+import { isNumberIntegralNumericType } from "./native/number.js";
+import { isNumberNegative } from "./native/number.js";
+import { isNumberOdd } from "./native/number.js";
+import { isNumberPositive } from "./native/number.js";
+import { isNumberPrime } from "./native/number.js";
+import { isNumberSafe } from "./native/number.js";
+import { isStringASCII } from "./native/string.js";
+import { isStringLowerCase } from "./native/string.js";
+import { isStringMultipleLine } from "./native/string.js";
+import { isStringSingleLine } from "./native/string.js";
+import { isStringUpperCase } from "./native/string.js";
+export { isArrayStrict, isArrayUnique, isBigIntegerEven, isBigIntegerIntegralNumericType, isBigIntegerNegative, isBigIntegerOdd, isBigIntegerPositive, isBigIntegerPrime, isBigIntegerSafe, isNumberEven, isNumberFloat, isNumberIntegralNumericType, isNumberNegative, isNumberOdd, isNumberPositive, isNumberPrime, isNumberSafe, isStringASCII, isStringLowerCase, isStringMultipleLine, isStringSingleLine, isStringUpperCase };
+//# sourceMappingURL=native.d.ts.map

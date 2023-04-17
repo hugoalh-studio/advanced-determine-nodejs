@@ -15,6 +15,7 @@
 	"include": [
 		"./lib/is.js",
 		"./lib/item-filter.js",
-		"./lib/main.js"
+		"./lib/main.js",
+		"./lib/native.js",
 	]
 }
