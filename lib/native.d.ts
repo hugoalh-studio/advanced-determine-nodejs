@@ -23,6 +23,7 @@ declare namespace _default {
     export { isNumberPositive };
     export { isNumberPrime };
     export { isNumberSafe };
+    export { isObjectPlain };
     export { isStringASCII };
     export { isStringLowerCase };
     export { isStringMultipleLine };
@@ -54,10 +55,11 @@ import { isNumberOdd } from "./native/number.js";
 import { isNumberPositive } from "./native/number.js";
 import { isNumberPrime } from "./native/number.js";
 import { isNumberSafe } from "./native/number.js";
+import { isObjectPlain } from "./native/plain-object.js";
 import { isStringASCII } from "./native/string.js";
 import { isStringLowerCase } from "./native/string.js";
 import { isStringMultipleLine } from "./native/string.js";
 import { isStringSingleLine } from "./native/string.js";
 import { isStringUpperCase } from "./native/string.js";
-export { isArrayStrict, isArrayUnique, isBigIntegerEven, isBigIntegerIntegralNumericType, isBigIntegerNegative, isBigIntegerOdd, isBigIntegerPositive, isBigIntegerPrime, isBigIntegerSafe, isBigIntEven, isBigIntIntegralNumericType, isBigIntNegative, isBigIntOdd, isBigIntPositive, isBigIntPrime, isBigIntSafe, isNumberEven, isNumberFloat, isNumberIntegralNumericType, isNumberNegative, isNumberOdd, isNumberPositive, isNumberPrime, isNumberSafe, isStringASCII, isStringLowerCase, isStringMultipleLine, isStringSingleLine, isStringUpperCase };
+export { isArrayStrict, isArrayUnique, isBigIntegerEven, isBigIntegerIntegralNumericType, isBigIntegerNegative, isBigIntegerOdd, isBigIntegerPositive, isBigIntegerPrime, isBigIntegerSafe, isBigIntEven, isBigIntIntegralNumericType, isBigIntNegative, isBigIntOdd, isBigIntPositive, isBigIntPrime, isBigIntSafe, isNumberEven, isNumberFloat, isNumberIntegralNumericType, isNumberNegative, isNumberOdd, isNumberPositive, isNumberPrime, isNumberSafe, isObjectPlain, isStringASCII, isStringLowerCase, isStringMultipleLine, isStringSingleLine, isStringUpperCase };
 //# sourceMappingURL=native.d.ts.map

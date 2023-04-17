@@ -66,6 +66,12 @@
 		"./native/number": {
 			"import": "./lib/native/number.js"
 		},
+		"./native/object-plain": {
+			"import": "./lib/native/plain-object.js"
+		},
+		"./native/plain-object": {
+			"import": "./lib/native/plain-object.js"
+		},
 		"./native/string": {
 			"import": "./lib/native/string.js"
 		},
