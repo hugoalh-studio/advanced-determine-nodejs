@@ -9,7 +9,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _RegularExpressionItemFilter_caseInsensitive, _RegularExpressionItemFilter_dotAll, _RegularExpressionItemFilter_exactly, _RegularExpressionItemFilter_global, _RegularExpressionItemFilter_multipleLine, _RegularExpressionItemFilter_sticky, _RegularExpressionItemFilter_unicode;
+var _RegularExpressionItemFilter_dotAll, _RegularExpressionItemFilter_exactly, _RegularExpressionItemFilter_global, _RegularExpressionItemFilter_ignoreCase, _RegularExpressionItemFilter_multipleLine, _RegularExpressionItemFilter_sticky, _RegularExpressionItemFilter_unicode;
 /**
  * @class RegularExpressionItemFilter
  * @description Determine item with the filter of type of regular expression.
@@ -21,20 +21,17 @@ class RegularExpressionItemFilter {
      * @param {RegularExpressionItemFilterOptions} [options={}] Options.
      */
     constructor(options = {}) {
-        _RegularExpressionItemFilter_caseInsensitive.set(this, void 0);
         _RegularExpressionItemFilter_dotAll.set(this, void 0);
         _RegularExpressionItemFilter_exactly.set(this, void 0);
         _RegularExpressionItemFilter_global.set(this, void 0);
+        _RegularExpressionItemFilter_ignoreCase.set(this, void 0);
         _RegularExpressionItemFilter_multipleLine.set(this, void 0);
         _RegularExpressionItemFilter_sticky.set(this, void 0);
         _RegularExpressionItemFilter_unicode.set(this, void 0);
-        let { caseInsensitive, dotAll, exactly, global, multipleLine, sticky, unicode, ...aliases } = options;
-        caseInsensitive ?? (caseInsensitive = aliases.ignoreCase);
+        let { ignoreCase, dotAll, exactly, global, multipleLine, sticky, unicode, ...aliases } = options;
         exactly ?? (exactly = aliases.exact);
+        ignoreCase ?? (ignoreCase = aliases.caseInsensitive);
         multipleLine ?? (multipleLine = aliases.multiLine ?? aliases.multiline);
-        if (typeof caseInsensitive !== "boolean" && typeof caseInsensitive !== "undefined") {
-            throw new TypeError(`Argument \`options.caseInsensitive\` must be type of boolean or undefined!`);
-        }
         if (typeof dotAll !== "boolean" && typeof dotAll !== "undefined") {
             throw new TypeError(`Argument \`options.dotAll\` must be type of boolean or undefined!`);
         }
@@ -43,6 +40,9 @@ class RegularExpressionItemFilter {
         }
         if (typeof global !== "boolean" && typeof global !== "undefined") {
             throw new TypeError(`Argument \`options.global\` must be type of boolean or undefined!`);
+        }
+        if (typeof ignoreCase !== "boolean" && typeof ignoreCase !== "undefined") {
+            throw new TypeError(`Argument \`options.ignoreCase\` must be type of boolean or undefined!`);
         }
         if (typeof multipleLine !== "boolean" && typeof multipleLine !== "undefined") {
             throw new TypeError(`Argument \`options.multipleLine\` must be type of boolean or undefined!`);
@@ -53,10 +53,10 @@ class RegularExpressionItemFilter {
         if (typeof unicode !== "boolean" && typeof unicode !== "undefined") {
             throw new TypeError(`Argument \`options.unicode\` must be type of boolean or undefined!`);
         }
-        __classPrivateFieldSet(this, _RegularExpressionItemFilter_caseInsensitive, caseInsensitive, "f");
         __classPrivateFieldSet(this, _RegularExpressionItemFilter_dotAll, dotAll, "f");
         __classPrivateFieldSet(this, _RegularExpressionItemFilter_exactly, exactly, "f");
         __classPrivateFieldSet(this, _RegularExpressionItemFilter_global, global, "f");
+        __classPrivateFieldSet(this, _RegularExpressionItemFilter_ignoreCase, ignoreCase, "f");
         __classPrivateFieldSet(this, _RegularExpressionItemFilter_multipleLine, multipleLine, "f");
         __classPrivateFieldSet(this, _RegularExpressionItemFilter_sticky, sticky, "f");
         __classPrivateFieldSet(this, _RegularExpressionItemFilter_unicode, unicode, "f");
@@ -69,8 +69,6 @@ class RegularExpressionItemFilter {
      */
     test(item) {
         if (!(item instanceof RegExp) ||
-            (__classPrivateFieldGet(this, _RegularExpressionItemFilter_caseInsensitive, "f") === false && item.ignoreCase) ||
-            (__classPrivateFieldGet(this, _RegularExpressionItemFilter_caseInsensitive, "f") === true && !item.ignoreCase) ||
             (__classPrivateFieldGet(this, _RegularExpressionItemFilter_dotAll, "f") === false && item.dotAll) ||
             (__classPrivateFieldGet(this, _RegularExpressionItemFilter_dotAll, "f") === true && !item.dotAll) ||
             (__classPrivateFieldGet(this, _RegularExpressionItemFilter_exactly, "f") === false && item.source.startsWith("^") && item.source.endsWith("$")) ||
@@ -78,6 +76,8 @@ class RegularExpressionItemFilter {
                 !item.source.endsWith("$"))) ||
             (__classPrivateFieldGet(this, _RegularExpressionItemFilter_global, "f") === false && item.global) ||
             (__classPrivateFieldGet(this, _RegularExpressionItemFilter_global, "f") === true && !item.global) ||
+            (__classPrivateFieldGet(this, _RegularExpressionItemFilter_ignoreCase, "f") === false && item.ignoreCase) ||
+            (__classPrivateFieldGet(this, _RegularExpressionItemFilter_ignoreCase, "f") === true && !item.ignoreCase) ||
             (__classPrivateFieldGet(this, _RegularExpressionItemFilter_multipleLine, "f") === false && item.multiline) ||
             (__classPrivateFieldGet(this, _RegularExpressionItemFilter_multipleLine, "f") === true && !item.multiline) ||
             (__classPrivateFieldGet(this, _RegularExpressionItemFilter_sticky, "f") === false && item.sticky) ||
@@ -99,7 +99,7 @@ class RegularExpressionItemFilter {
         return new this(options).test(item);
     }
 }
-_RegularExpressionItemFilter_caseInsensitive = new WeakMap(), _RegularExpressionItemFilter_dotAll = new WeakMap(), _RegularExpressionItemFilter_exactly = new WeakMap(), _RegularExpressionItemFilter_global = new WeakMap(), _RegularExpressionItemFilter_multipleLine = new WeakMap(), _RegularExpressionItemFilter_sticky = new WeakMap(), _RegularExpressionItemFilter_unicode = new WeakMap();
+_RegularExpressionItemFilter_dotAll = new WeakMap(), _RegularExpressionItemFilter_exactly = new WeakMap(), _RegularExpressionItemFilter_global = new WeakMap(), _RegularExpressionItemFilter_ignoreCase = new WeakMap(), _RegularExpressionItemFilter_multipleLine = new WeakMap(), _RegularExpressionItemFilter_sticky = new WeakMap(), _RegularExpressionItemFilter_unicode = new WeakMap();
 /**
  * @function isRegularExpression
  * @description Determine item with the filter of type of regular expression.

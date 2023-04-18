@@ -1,11 +1,5 @@
 interface RegularExpressionItemFilterOptions {
     /**
-     * @property caseInsensitive
-     * @description Whether a case insensitive regular expression.
-     * @default undefined
-     */
-    caseInsensitive?: boolean;
-    /**
      * @property dotAll
      * @description Whether a dot-all regular expression.
      * @default undefined
@@ -24,6 +18,12 @@ interface RegularExpressionItemFilterOptions {
      */
     global?: boolean;
     /**
+     * @property ignoreCase
+     * @description Whether a case insensitive regular expression.
+     * @default undefined
+     */
+    ignoreCase?: boolean;
+    /**
      * @property multipleLine
      * @description Whether a multiple line regular expression.
      * @default undefined
@@ -41,8 +41,8 @@ interface RegularExpressionItemFilterOptions {
      * @default undefined
      */
     unicode?: boolean;
-    /** @alias caseInsensitive */ ignoreCase?: boolean;
     /** @alias exactly */ exact?: boolean;
+    /** @alias ignoreCase */ caseInsensitive?: boolean;
     /** @alias multipleLine */ multiline?: boolean;
     /** @alias multipleLine */ multiLine?: boolean;
 }

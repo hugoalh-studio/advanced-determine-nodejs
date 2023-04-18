@@ -1,11 +1,5 @@
 interface RegularExpressionItemFilterOptions {
 	/**
-	 * @property caseInsensitive
-	 * @description Whether a case insensitive regular expression.
-	 * @default undefined
-	 */
-	caseInsensitive?: boolean;
-	/**
 	 * @property dotAll
 	 * @description Whether a dot-all regular expression.
 	 * @default undefined
@@ -24,6 +18,12 @@ interface RegularExpressionItemFilterOptions {
 	 */
 	global?: boolean;
 	/**
+	 * @property ignoreCase
+	 * @description Whether a case insensitive regular expression.
+	 * @default undefined
+	 */
+	ignoreCase?: boolean;
+	/**
 	 * @property multipleLine
 	 * @description Whether a multiple line regular expression.
 	 * @default undefined
@@ -41,8 +41,8 @@ interface RegularExpressionItemFilterOptions {
 	 * @default undefined
 	 */
 	unicode?: boolean;
-	/** @alias caseInsensitive */ignoreCase?: boolean;
 	/** @alias exactly */exact?: boolean;
+	/** @alias ignoreCase */caseInsensitive?: boolean;
 	/** @alias multipleLine */multiline?: boolean;
 	/** @alias multipleLine */multiLine?: boolean;
 }
@@ -51,10 +51,10 @@ interface RegularExpressionItemFilterOptions {
  * @description Determine item with the filter of type of regular expression.
  */
 class RegularExpressionItemFilter {
-	#caseInsensitive?: boolean;
 	#dotAll?: boolean;
 	#exactly?: boolean;
 	#global?: boolean;
+	#ignoreCase?: boolean;
 	#multipleLine?: boolean;
 	#sticky?: boolean;
 	#unicode?: boolean;
@@ -65,7 +65,7 @@ class RegularExpressionItemFilter {
 	 */
 	constructor(options: RegularExpressionItemFilterOptions = {}) {
 		let {
-			caseInsensitive,
+			ignoreCase,
 			dotAll,
 			exactly,
 			global,
@@ -74,12 +74,9 @@ class RegularExpressionItemFilter {
 			unicode,
 			...aliases
 		} = options;
-		caseInsensitive ??= aliases.ignoreCase;
 		exactly ??= aliases.exact;
+		ignoreCase ??= aliases.caseInsensitive;
 		multipleLine ??= aliases.multiLine ?? aliases.multiline;
-		if (typeof caseInsensitive !== "boolean" && typeof caseInsensitive !== "undefined") {
-			throw new TypeError(`Argument \`options.caseInsensitive\` must be type of boolean or undefined!`);
-		}
 		if (typeof dotAll !== "boolean" && typeof dotAll !== "undefined") {
 			throw new TypeError(`Argument \`options.dotAll\` must be type of boolean or undefined!`);
 		}
@@ -88,6 +85,9 @@ class RegularExpressionItemFilter {
 		}
 		if (typeof global !== "boolean" && typeof global !== "undefined") {
 			throw new TypeError(`Argument \`options.global\` must be type of boolean or undefined!`);
+		}
+		if (typeof ignoreCase !== "boolean" && typeof ignoreCase !== "undefined") {
+			throw new TypeError(`Argument \`options.ignoreCase\` must be type of boolean or undefined!`);
 		}
 		if (typeof multipleLine !== "boolean" && typeof multipleLine !== "undefined") {
 			throw new TypeError(`Argument \`options.multipleLine\` must be type of boolean or undefined!`);
@@ -98,10 +98,10 @@ class RegularExpressionItemFilter {
 		if (typeof unicode !== "boolean" && typeof unicode !== "undefined") {
 			throw new TypeError(`Argument \`options.unicode\` must be type of boolean or undefined!`);
 		}
-		this.#caseInsensitive = caseInsensitive;
 		this.#dotAll = dotAll;
 		this.#exactly = exactly;
 		this.#global = global;
+		this.#ignoreCase = ignoreCase;
 		this.#multipleLine = multipleLine;
 		this.#sticky = sticky;
 		this.#unicode = unicode;
@@ -115,8 +115,6 @@ class RegularExpressionItemFilter {
 	test(item: unknown): boolean {
 		if (
 			!(item instanceof RegExp) ||
-			(this.#caseInsensitive === false && item.ignoreCase) ||
-			(this.#caseInsensitive === true && !item.ignoreCase) ||
 			(this.#dotAll === false && item.dotAll) ||
 			(this.#dotAll === true && !item.dotAll) ||
 			(this.#exactly === false && item.source.startsWith("^") && item.source.endsWith("$")) ||
@@ -126,6 +124,8 @@ class RegularExpressionItemFilter {
 			)) ||
 			(this.#global === false && item.global) ||
 			(this.#global === true && !item.global) ||
+			(this.#ignoreCase === false && item.ignoreCase) ||
+			(this.#ignoreCase === true && !item.ignoreCase) ||
 			(this.#multipleLine === false && item.multiline) ||
 			(this.#multipleLine === true && !item.multiline) ||
 			(this.#sticky === false && item.sticky) ||
