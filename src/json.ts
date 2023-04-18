@@ -171,7 +171,7 @@ class JSONItemFilter {
 			throw new RangeError(`Argument \`options.entriesCountMinimum\` must be a number which is integer, positive, safe, and <= ${entriesCountMaximum}!`);
 		}
 		if (!(keysPattern instanceof RegExp) && typeof keysPattern !== "undefined") {
-			throw new TypeError(`Argument \`options.keysPattern\` must be type of regular expression or undefined!`);
+			throw new TypeError(`Argument \`options.keysPattern\` must be instance of regular expression, or type of undefined!`);
 		}
 		if (typeof strict !== "boolean") {
 			throw new TypeError(`Argument \`options.strict\` must be type of boolean!`);

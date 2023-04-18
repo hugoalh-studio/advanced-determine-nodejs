@@ -28,7 +28,7 @@ class RegularExpressionItemFilter {
         _RegularExpressionItemFilter_multipleLine.set(this, void 0);
         _RegularExpressionItemFilter_sticky.set(this, void 0);
         _RegularExpressionItemFilter_unicode.set(this, void 0);
-        let { ignoreCase, dotAll, exactly, global, multipleLine, sticky, unicode, ...aliases } = options;
+        let { dotAll, exactly, global, ignoreCase, multipleLine, sticky, unicode, ...aliases } = options;
         exactly ?? (exactly = aliases.exact);
         ignoreCase ?? (ignoreCase = aliases.caseInsensitive);
         multipleLine ?? (multipleLine = aliases.multiLine ?? aliases.multiline);

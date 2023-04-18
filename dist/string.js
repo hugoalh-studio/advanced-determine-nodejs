@@ -69,7 +69,7 @@ class StringItemFilter {
             throw new TypeError(`Argument \`options.multipleLine\` must be type of boolean or undefined!`);
         }
         if (!(pattern instanceof RegExp) && typeof pattern !== "undefined") {
-            throw new TypeError(`Argument \`options.pattern\` must be type of regular expression or undefined!`);
+            throw new TypeError(`Argument \`options.pattern\` must be instance of regular expression, or type of undefined!`);
         }
         if (typeof preTrim !== "boolean") {
             throw new TypeError(`Argument \`options.preTrim\` must be type of boolean!`);

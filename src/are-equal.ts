@@ -50,7 +50,7 @@ function areEqualObjectMeta(item1: object, item2: object): boolean {
  * @access private
  * @function areEqualInternal
  * @param {unknown} item1 Item 1.
- * @param {unknown} [item2] Item 2.
+ * @param {unknown} item2 Item 2.
  * @returns {boolean}
  */
 function areEqualInternal(item1: unknown, item2: unknown): boolean {

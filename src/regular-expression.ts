@@ -65,10 +65,10 @@ class RegularExpressionItemFilter {
 	 */
 	constructor(options: RegularExpressionItemFilterOptions = {}) {
 		let {
-			ignoreCase,
 			dotAll,
 			exactly,
 			global,
+			ignoreCase,
 			multipleLine,
 			sticky,
 			unicode,

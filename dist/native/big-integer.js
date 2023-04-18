@@ -1,7 +1,7 @@
 import { integralNumericTypeRange } from "../internal/integral-numeric-types.js";
 import { isPrimeNumber } from "../internal/is-prime-number.js";
-const maximumSafeInteger = BigInt(Number.MAX_SAFE_INTEGER);
-const minimumSafeInteger = BigInt(Number.MIN_SAFE_INTEGER);
+const MAX_SAFE_INTEGER = BigInt(Number.MAX_SAFE_INTEGER);
+const MIN_SAFE_INTEGER = BigInt(Number.MIN_SAFE_INTEGER);
 /**
  * @function isBigIntegerEven
  * @description Determine the big integer is even.
@@ -65,6 +65,6 @@ function isBigIntegerPrime(item) {
  * @returns {boolean} Determine result.
  */
 function isBigIntegerSafe(item) {
-    return (minimumSafeInteger <= item && item <= maximumSafeInteger);
+    return (MIN_SAFE_INTEGER <= item && item <= MAX_SAFE_INTEGER);
 }
 export { isBigIntegerEven, isBigIntegerEven as isBigIntEven, isBigIntegerIntegralNumericType, isBigIntegerIntegralNumericType as isBigIntIntegralNumericType, isBigIntegerNegative, isBigIntegerNegative as isBigIntNegative, isBigIntegerOdd, isBigIntegerOdd as isBigIntOdd, isBigIntegerPositive, isBigIntegerPositive as isBigIntPositive, isBigIntegerPrime, isBigIntegerPrime as isBigIntPrime, isBigIntegerSafe, isBigIntegerSafe as isBigIntSafe };
