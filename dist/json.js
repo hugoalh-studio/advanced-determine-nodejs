@@ -88,14 +88,25 @@ class JSONItemFilter {
         if (typeof arrayRoot !== "boolean" && typeof arrayRoot !== "undefined") {
             throw new TypeError(`Argument \`options.arrayRoot\` must be type of boolean or undefined!`);
         }
-        if (!(typeof entriesCount === "number" && Number.isSafeInteger(entriesCount) && entriesCount >= 0) && typeof entriesCount !== "undefined") {
-            throw new TypeError(`Argument \`options.entriesCount\` must be type of number (integer, positive, and safe) or undefined!`);
+        if (typeof entriesCount === "number" && !Number.isNaN(entriesCount)) {
+            if (!(Number.isSafeInteger(entriesCount) && entriesCount >= 0)) {
+                throw new RangeError(`Argument \`options.entriesCount\` must be a number which is integer, positive, and safe!`);
+            }
         }
-        if (entriesCountMaximum !== Infinity && !(typeof entriesCountMaximum === "number" && Number.isSafeInteger(entriesCountMaximum) && entriesCountMaximum >= 0)) {
-            throw new TypeError(`Argument \`options.entriesCountMaximum\` must be \`Infinity\` or type of number (integer, positive, and safe)!`);
+        else if (typeof entriesCount !== "undefined") {
+            throw new TypeError(`Argument \`options.entriesCount\` must be type of number or undefined!`);
         }
-        if (!(typeof entriesCountMinimum === "number" && Number.isSafeInteger(entriesCountMinimum) && entriesCountMinimum >= 0 && entriesCountMinimum <= entriesCountMaximum)) {
-            throw new TypeError(`Argument \`options.entriesCountMinimum\` must be type of number (integer, positive, and safe) and <= ${entriesCountMaximum}!`);
+        if (!(typeof entriesCountMaximum === "number" && !Number.isNaN(entriesCountMaximum))) {
+            throw new TypeError(`Argument \`options.entriesCountMaximum\` must be type of number!`);
+        }
+        if (entriesCountMaximum !== Infinity && !(Number.isSafeInteger(entriesCountMaximum) && entriesCountMaximum >= 0)) {
+            throw new RangeError(`Argument \`options.entriesCountMaximum\` must be \`Infinity\`, or a number which is integer, positive, and safe!`);
+        }
+        if (!(typeof entriesCountMinimum === "number" && !Number.isNaN(entriesCountMinimum))) {
+            throw new TypeError(`Argument \`options.entriesCountMinimum\` must be type of number!`);
+        }
+        if (!(Number.isSafeInteger(entriesCountMinimum) && entriesCountMinimum >= 0 && entriesCountMinimum <= entriesCountMaximum)) {
+            throw new RangeError(`Argument \`options.entriesCountMinimum\` must be a number which is integer, positive, safe, and <= ${entriesCountMaximum}!`);
         }
         if (!(keysPattern instanceof RegExp) && typeof keysPattern !== "undefined") {
             throw new TypeError(`Argument \`options.keysPattern\` must be type of regular expression or undefined!`);

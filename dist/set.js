@@ -29,14 +29,25 @@ class SetItemFilter {
         if (typeof allowEmpty !== "boolean") {
             throw new TypeError(`Argument \`options.allowEmpty\` must be type of boolean!`);
         }
-        if (!(typeof size === "number" && Number.isSafeInteger(size) && size >= 0) && typeof size !== "undefined") {
-            throw new TypeError(`Argument \`options.size\` must be type of number (integer, positive, and safe) or undefined!`);
+        if (typeof size === "number" && !Number.isNaN(size)) {
+            if (!(Number.isSafeInteger(size) && size >= 0)) {
+                throw new RangeError(`Argument \`size\` must be a number which is integer, positive, and safe!`);
+            }
         }
-        if (sizeMaximum !== Infinity && !(typeof sizeMaximum === "number" && Number.isSafeInteger(sizeMaximum) && sizeMaximum >= 0)) {
-            throw new TypeError(`Argument \`options.sizeMaximum\` must be \`Infinity\` or type of number (integer, positive, and safe)!`);
+        else if (typeof size !== "undefined") {
+            throw new TypeError(`Argument \`size\` must be type of number or undefined!`);
         }
-        if (!(typeof sizeMinimum === "number" && Number.isSafeInteger(sizeMinimum) && sizeMinimum >= 0 && sizeMinimum <= sizeMaximum)) {
-            throw new TypeError(`Argument \`options.sizeMinimum\` must be type of number (integer, positive, and safe) and <= ${sizeMaximum}!`);
+        if (!(typeof sizeMaximum === "number" && !Number.isNaN(sizeMaximum))) {
+            throw new TypeError(`Argument \`sizeMaximum\` must be type of number!`);
+        }
+        if (sizeMaximum !== Infinity && !(Number.isSafeInteger(sizeMaximum) && sizeMaximum >= 0)) {
+            throw new RangeError(`Argument \`sizeMaximum\` must be \`Infinity\`, or a number which is integer, positive, and safe!`);
+        }
+        if (!(typeof sizeMinimum === "number" && !Number.isNaN(sizeMinimum))) {
+            throw new TypeError(`Argument \`sizeMinimum\` must be type of number!`);
+        }
+        if (!(Number.isSafeInteger(sizeMinimum) && sizeMinimum >= 0 && sizeMinimum <= sizeMaximum)) {
+            throw new RangeError(`Argument \`sizeMinimum\` must be a number which is integer, positive, safe, and <= ${sizeMaximum}!`);
         }
         if (typeof size === "number") {
             __classPrivateFieldSet(this, _SetItemFilter_sizeMaximum, size, "f");

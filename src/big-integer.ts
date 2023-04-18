@@ -138,8 +138,12 @@ class BigIntegerItemFilter {
 		if (typeof maximumExclusive !== "boolean") {
 			throw new TypeError(`Argument \`options.maximumExclusive\` must be type of boolean!`);
 		}
-		if (!(typeof minimum === "bigint" && ((typeof maximum === "bigint") ? (minimum <= maximum) : true)) && typeof minimum !== "undefined") {
-			throw new TypeError(`Argument \`options.minimum\` must be type of big integer${typeof maximum === "bigint" ? ` and <= ${maximum}n,` : ""} or undefined!`);
+		if (typeof minimum === "bigint") {
+			if (typeof maximum === "bigint" && !(minimum <= maximum)) {
+				throw new RangeError(`Argument \`options.minimum\` must be a big integer <= ${maximum}n!`);
+			}
+		} else if (typeof minimum !== "undefined") {
+			throw new TypeError(`Argument \`options.minimum\` must be type of big integer or undefined!`);
 		}
 		if (typeof minimumExclusive !== "boolean") {
 			throw new TypeError(`Argument \`options.minimumExclusive\` must be type of boolean!`);

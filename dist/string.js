@@ -42,14 +42,25 @@ class StringItemFilter {
         if (typeof ascii !== "boolean" && typeof ascii !== "undefined") {
             throw new TypeError(`Argument \`options.ascii\` must be type of boolean or undefined!`);
         }
-        if (!(typeof length === "number" && Number.isSafeInteger(length) && length >= 0) && typeof length !== "undefined") {
-            throw new TypeError(`Argument \`options.length\` must be type of number (integer, positive, and safe) or undefined!`);
+        if (typeof length === "number" && !Number.isNaN(length)) {
+            if (!(Number.isSafeInteger(length) && length >= 0)) {
+                throw new RangeError(`Argument \`options.length\` must be a number which is integer, positive, and safe!`);
+            }
         }
-        if (lengthMaximum !== Infinity && !(typeof lengthMaximum === "number" && Number.isSafeInteger(lengthMaximum) && lengthMaximum >= 0)) {
-            throw new TypeError(`Argument \`options.lengthMaximum\` must be \`Infinity\` or type of number (integer, positive, and safe)!`);
+        else if (typeof length !== "undefined") {
+            throw new TypeError(`Argument \`options.length\` must be type of number or undefined!`);
         }
-        if (!(typeof lengthMinimum === "number" && Number.isSafeInteger(lengthMinimum) && lengthMinimum >= 0 && lengthMinimum <= lengthMaximum)) {
-            throw new TypeError(`Argument \`options.lengthMinimum\` must be type of number (integer, positive, and safe) and <= ${lengthMaximum}!`);
+        if (!(typeof lengthMaximum === "number" && !Number.isNaN(lengthMaximum))) {
+            throw new TypeError(`Argument \`options.lengthMaximum\` must be type of number!`);
+        }
+        if (lengthMaximum !== Infinity && !(Number.isSafeInteger(lengthMaximum) && lengthMaximum >= 0)) {
+            throw new RangeError(`Argument \`options.lengthMaximum\` must be \`Infinity\`, or a number which is integer, positive, and safe!`);
+        }
+        if (!(typeof lengthMinimum === "number" && !Number.isNaN(lengthMinimum))) {
+            throw new TypeError(`Argument \`options.lengthMinimum\` must be type of number!`);
+        }
+        if (!(Number.isSafeInteger(lengthMinimum) && lengthMinimum >= 0 && lengthMinimum <= lengthMaximum)) {
+            throw new RangeError(`Argument \`options.lengthMinimum\` must be a number which is integer, positive, safe, and <= ${lengthMaximum}!`);
         }
         if (typeof lowerCase !== "boolean" && typeof lowerCase !== "undefined") {
             throw new TypeError(`Argument \`options.lowerCase\` must be type of boolean or undefined!`);

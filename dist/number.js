@@ -68,8 +68,13 @@ class NumberItemFilter {
         if (typeof maximumExclusive !== "boolean") {
             throw new TypeError(`Argument \`options.maximumExclusive\` must be type of boolean!`);
         }
-        if (!(typeof minimum === "number" && !Number.isNaN(minimum) && ((typeof maximum === "number") ? (minimum <= maximum) : true)) && typeof minimum !== "undefined") {
-            throw new TypeError(`Argument \`options.minimum\` must be type of number${typeof maximum === "number" ? ` and <= ${maximum},` : ""} or undefined!`);
+        if (typeof minimum === "number" && !Number.isNaN(minimum)) {
+            if (typeof maximum === "number" && !(minimum <= maximum)) {
+                throw new RangeError(`Argument \`options.minimum\` must be a number <= ${maximum}!`);
+            }
+        }
+        else if (typeof minimum !== "undefined") {
+            throw new TypeError(`Argument \`options.minimum\` must be type of number or undefined!`);
         }
         if (typeof minimumExclusive !== "boolean") {
             throw new TypeError(`Argument \`options.minimumExclusive\` must be type of boolean!`);
