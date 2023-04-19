@@ -144,7 +144,7 @@ class JSONItemFilter {
 		entriesCount ??= aliases.entries;
 		entriesCountMaximum ??= aliases.entriesMaximum ?? aliases.entriesCountMax ?? aliases.entriesMax ?? aliases.maximumEntries ?? aliases.maxEntries ?? Infinity;
 		entriesCountMinimum ??= aliases.entriesMinimum ?? aliases.entriesCountMin ?? aliases.entriesMin ?? aliases.minimumEntries ?? aliases.minEntries ?? 1;
-		strictKeys ??= aliases.keysStrict;
+		strictKeys ??= aliases.keysStrict ?? false;
 		if (typeof allowEmpty !== "boolean") {
 			throw new TypeError(`Argument \`options.allowEmpty\` must be type of boolean!`);
 		}
