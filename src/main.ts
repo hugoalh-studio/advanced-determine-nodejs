@@ -13,7 +13,7 @@ import { isRegEx, isRegExp, isRegularExpression, RegExItemFilter, RegExpItemFilt
 import { isSet, SetItemFilter, type SetItemFilterOptions } from "./set.js";
 import { isString, StringItemFilter, type StringItemFilterOptions } from "./string.js";
 import { isJSONStringified, isJSONStringify, isStringifiedJSON, isStringifyJSON, JSONStringifiedItemFilter, JSONStringifyItemFilter, StringifiedJSONItemFilter, StringifyJSONItemFilter, type JSONStringifiedItemFilterOptions, type JSONStringifyItemFilterOptions, type StringifiedJSONItemFilterOptions, type StringifyJSONItemFilterOptions } from "./stringify-json.js";
-import { typeOf } from "./type-of.js";
+import { typeOf, type AdvancedTypeOf } from "./type-of.js";
 export {
 	areEqual,
 	ArrayItemFilter,
@@ -58,6 +58,7 @@ export {
 	StringifyJSONItemFilter,
 	StringItemFilter,
 	typeOf,
+	type AdvancedTypeOf,
 	type ArrayItemFilterOptions,
 	type BigIntegerItemFilterOptions,
 	type BigIntItemFilterOptions,

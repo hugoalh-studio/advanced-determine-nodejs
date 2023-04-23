@@ -1,6 +1,6 @@
 import { notDeepStrictEqual } from "node:assert";
 import { ObjectMeta } from "./internal/object-meta.js";
-import { typeOf } from "./type-of.js";
+import { typeOf, type AdvancedTypeOf } from "./type-of.js";
 /**
  * @access private
  * @function areEqualObjectMeta
@@ -57,8 +57,8 @@ function areEqualInternal(item1: unknown, item2: unknown): boolean {
 	if (item1 === item2) {
 		return true;
 	}
-	let item1TypeOf: string = typeOf(item1);
-	let item2TypeOf: string = typeOf(item2);
+	let item1TypeOf: AdvancedTypeOf = typeOf(item1);
+	let item2TypeOf: AdvancedTypeOf = typeOf(item2);
 	if (
 		item1TypeOf !== item2TypeOf ||
 		item1TypeOf === "bigint" ||
