@@ -42,8 +42,6 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";// Namespace Im
 
 - `ArrayItemFilter`
 - `BigIntegerItemFilter`
-- `FunctionItemFilter`
-- `GeneratorItemFilter`
 - `JSONItemFilter`
 - `MapItemFilter`
 - `NumberItemFilter`
@@ -51,7 +49,6 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";// Namespace Im
 - `PlainObjectItemFilter`
 - `RegularExpressionItemFilter`
 - `SetItemFilter`
-- `StringifyJSONItemFilter`
 - `StringItemFilter`
 
 #### Function
@@ -59,8 +56,6 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";// Namespace Im
 - `areEqual`
 - `isArray`
 - `isBigInteger`
-- `isFunction`
-- `isGenerator`
 - `isJSON`
 - `isMap`
 - `isNumber`
