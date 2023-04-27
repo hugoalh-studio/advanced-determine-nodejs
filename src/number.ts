@@ -166,53 +166,53 @@ class NumberItemFilter {
 		negative ??= aliases.ngt ?? aliases.nega;
 		positive ??= aliases.pst ?? aliases.posi;
 		if (typeof even !== "boolean" && typeof even !== "undefined") {
-			throw new TypeError(`Argument \`options.even\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`even\` must be type of boolean or undefined!`);
 		}
 		if (typeof finite !== "boolean" && typeof finite !== "undefined") {
-			throw new TypeError(`Argument \`options.finite\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`finite\` must be type of boolean or undefined!`);
 		}
 		if (typeof float !== "boolean" && typeof float !== "undefined") {
-			throw new TypeError(`Argument \`options.float\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`float\` must be type of boolean or undefined!`);
 		}
 		if (typeof infinite !== "boolean" && typeof infinite !== "undefined") {
-			throw new TypeError(`Argument \`options.infinite\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`infinite\` must be type of boolean or undefined!`);
 		}
 		if (typeof integer !== "boolean" && typeof integer !== "undefined") {
-			throw new TypeError(`Argument \`options.integer\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`integer\` must be type of boolean or undefined!`);
 		}
 		if (!(typeof maximum === "number" && !Number.isNaN(maximum)) && typeof maximum !== "undefined") {
-			throw new TypeError(`Argument \`options.maximum\` must be type of number or undefined!`);
+			throw new TypeError(`Filter argument \`maximum\` must be type of number or undefined!`);
 		}
 		if (typeof maximumExclusive !== "boolean") {
-			throw new TypeError(`Argument \`options.maximumExclusive\` must be type of boolean!`);
+			throw new TypeError(`Filter argument \`maximumExclusive\` must be type of boolean!`);
 		}
 		if (typeof minimum === "number" && !Number.isNaN(minimum)) {
 			if (typeof maximum === "number" && !(minimum <= maximum)) {
-				throw new RangeError(`Argument \`options.minimum\` must be a number <= ${maximum}!`);
+				throw new RangeError(`Filter argument \`minimum\` must be a number <= ${maximum}!`);
 			}
 		} else if (typeof minimum !== "undefined") {
-			throw new TypeError(`Argument \`options.minimum\` must be type of number or undefined!`);
+			throw new TypeError(`Filter argument \`minimum\` must be type of number or undefined!`);
 		}
 		if (typeof minimumExclusive !== "boolean") {
-			throw new TypeError(`Argument \`options.minimumExclusive\` must be type of boolean!`);
+			throw new TypeError(`Filter argument \`minimumExclusive\` must be type of boolean!`);
 		}
 		if (typeof negative !== "boolean" && typeof negative !== "undefined") {
-			throw new TypeError(`Argument \`options.negative\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`negative\` must be type of boolean or undefined!`);
 		}
 		if (typeof odd !== "boolean" && typeof odd !== "undefined") {
-			throw new TypeError(`Argument \`options.odd\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`odd\` must be type of boolean or undefined!`);
 		}
 		if (typeof positive !== "boolean" && typeof positive !== "undefined") {
-			throw new TypeError(`Argument \`options.positive\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`positive\` must be type of boolean or undefined!`);
 		}
 		if (typeof prime !== "boolean" && typeof prime !== "undefined") {
-			throw new TypeError(`Argument \`options.prime\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`prime\` must be type of boolean or undefined!`);
 		}
 		if (typeof safe !== "boolean" && typeof safe !== "undefined") {
-			throw new TypeError(`Argument \`options.safe\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`safe\` must be type of boolean or undefined!`);
 		}
 		if (typeof unsafe !== "boolean" && typeof unsafe !== "undefined") {
-			throw new TypeError(`Argument \`options.unsafe\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`unsafe\` must be type of boolean or undefined!`);
 		}
 		if (typeof type === "string") {
 			this.#maximumExclusive = false;
@@ -230,7 +230,7 @@ class NumberItemFilter {
 			this.#maximum = maximum;
 			this.#minimum = minimum;
 		} else {
-			throw new TypeError(`Argument \`options.type\` must be type of string or undefined!`);
+			throw new TypeError(`Filter argument \`type\` must be type of string or undefined!`);
 		}
 		this.#even = even;
 		this.#finite = finite;

@@ -1,6 +1,6 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "11.1.1",
+	"version": "11.1.2",
 	"description": "A module to provide a better and more accurate way to determine item.",
 	"keywords": [
 		"determine",
@@ -68,6 +68,12 @@
 		},
 		"./native/big-integer": {
 			"import": "./dist/native/big-integer.js"
+		},
+		"./native/function": {
+			"import": "./dist/native/function.js"
+		},
+		"./native/generator": {
+			"import": "./dist/native/generator.js"
 		},
 		"./native/number": {
 			"import": "./dist/native/number.js"

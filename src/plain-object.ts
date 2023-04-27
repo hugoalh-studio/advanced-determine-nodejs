@@ -130,47 +130,47 @@ class PlainObjectItemFilter {
 		entriesWritable ??= aliases.writableEntries;
 		keysSymbol ??= aliases.symbolKeys;
 		if (typeof allowEmpty !== "boolean") {
-			throw new TypeError(`Argument \`options.allowEmpty\` must be type of boolean!`);
+			throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
 		}
 		if (typeof entriesConfigurable !== "boolean" && typeof entriesConfigurable !== "undefined") {
-			throw new TypeError(`Argument \`options.entriesConfigurable\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`entriesConfigurable\` must be type of boolean or undefined!`);
 		}
 		if (typeof entriesCount === "number" && !Number.isNaN(entriesCount)) {
 			if (!(Number.isSafeInteger(entriesCount) && entriesCount >= 0)) {
-				throw new RangeError(`Argument \`options.entriesCount\` must be a number which is integer, positive, and safe!`);
+				throw new RangeError(`Filter argument \`entriesCount\` must be a number which is integer, positive, and safe!`);
 			}
 		} else if (typeof entriesCount !== "undefined") {
-			throw new TypeError(`Argument \`options.entriesCount\` must be type of number or undefined!`);
+			throw new TypeError(`Filter argument \`entriesCount\` must be type of number or undefined!`);
 		}
 		if (!(typeof entriesCountMaximum === "number" && !Number.isNaN(entriesCountMaximum))) {
-			throw new TypeError(`Argument \`options.entriesCountMaximum\` must be type of number!`);
+			throw new TypeError(`Filter argument \`entriesCountMaximum\` must be type of number!`);
 		}
 		if (entriesCountMaximum !== Infinity && !(Number.isSafeInteger(entriesCountMaximum) && entriesCountMaximum >= 0)) {
-			throw new RangeError(`Argument \`options.entriesCountMaximum\` must be \`Infinity\`, or a number which is integer, positive, and safe!`);
+			throw new RangeError(`Filter argument \`entriesCountMaximum\` must be \`Infinity\`, or a number which is integer, positive, and safe!`);
 		}
 		if (!(typeof entriesCountMinimum === "number" && !Number.isNaN(entriesCountMinimum))) {
-			throw new TypeError(`Argument \`options.entriesCountMinimum\` must be type of number!`);
+			throw new TypeError(`Filter argument \`entriesCountMinimum\` must be type of number!`);
 		}
 		if (!(Number.isSafeInteger(entriesCountMinimum) && entriesCountMinimum >= 0 && entriesCountMinimum <= entriesCountMaximum)) {
-			throw new RangeError(`Argument \`options.entriesCountMinimum\` must be a number which is integer, positive, safe, and <= ${entriesCountMaximum}!`);
+			throw new RangeError(`Filter argument \`entriesCountMinimum\` must be a number which is integer, positive, safe, and <= ${entriesCountMaximum}!`);
 		}
 		if (typeof entriesEnumerable !== "boolean" && typeof entriesEnumerable !== "undefined") {
-			throw new TypeError(`Argument \`options.entriesEnumerable\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`entriesEnumerable\` must be type of boolean or undefined!`);
 		}
 		if (typeof entriesGetter !== "boolean" && typeof entriesGetter !== "undefined") {
-			throw new TypeError(`Argument \`options.entriesGetter\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`entriesGetter\` must be type of boolean or undefined!`);
 		}
 		if (typeof entriesSetter !== "boolean" && typeof entriesSetter !== "undefined") {
-			throw new TypeError(`Argument \`options.entriesSetter\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`entriesSetter\` must be type of boolean or undefined!`);
 		}
 		if (typeof entriesWritable !== "boolean" && typeof entriesWritable !== "undefined") {
-			throw new TypeError(`Argument \`options.entriesWritable\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`entriesWritable\` must be type of boolean or undefined!`);
 		}
 		if (typeof keysSymbol !== "boolean" && typeof keysSymbol !== "undefined") {
-			throw new TypeError(`Argument \`options.keysSymbol\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`keysSymbol\` must be type of boolean or undefined!`);
 		}
 		if (typeof strict !== "boolean") {
-			throw new TypeError(`Argument \`options.strict\` must be type of boolean!`);
+			throw new TypeError(`Filter argument \`strict\` must be type of boolean!`);
 		}
 		if (typeof entriesCount === "number") {
 			this.#entriesCountMaximum = entriesCount;

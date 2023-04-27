@@ -37,48 +37,48 @@ class StringItemFilter {
         lengthMinimum ?? (lengthMinimum = aliases.lengthMin ?? aliases.charactersMinimum ?? aliases.charactersMin ?? aliases.minimumLength ?? aliases.minLength ?? aliases.minimumCharacters ?? aliases.minCharacters ?? 1);
         multipleLine ?? (multipleLine = aliases.multiLine ?? aliases.multiline);
         if (typeof allowEmpty !== "boolean") {
-            throw new TypeError(`Argument \`options.allowEmpty\` must be type of boolean!`);
+            throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
         }
         if (typeof ascii !== "boolean" && typeof ascii !== "undefined") {
-            throw new TypeError(`Argument \`options.ascii\` must be type of boolean or undefined!`);
+            throw new TypeError(`Filter argument \`ascii\` must be type of boolean or undefined!`);
         }
         if (typeof length === "number" && !Number.isNaN(length)) {
             if (!(Number.isSafeInteger(length) && length >= 0)) {
-                throw new RangeError(`Argument \`options.length\` must be a number which is integer, positive, and safe!`);
+                throw new RangeError(`Filter argument \`length\` must be a number which is integer, positive, and safe!`);
             }
         }
         else if (typeof length !== "undefined") {
-            throw new TypeError(`Argument \`options.length\` must be type of number or undefined!`);
+            throw new TypeError(`Filter argument \`length\` must be type of number or undefined!`);
         }
         if (!(typeof lengthMaximum === "number" && !Number.isNaN(lengthMaximum))) {
-            throw new TypeError(`Argument \`options.lengthMaximum\` must be type of number!`);
+            throw new TypeError(`Filter argument \`lengthMaximum\` must be type of number!`);
         }
         if (lengthMaximum !== Infinity && !(Number.isSafeInteger(lengthMaximum) && lengthMaximum >= 0)) {
-            throw new RangeError(`Argument \`options.lengthMaximum\` must be \`Infinity\`, or a number which is integer, positive, and safe!`);
+            throw new RangeError(`Filter argument \`lengthMaximum\` must be \`Infinity\`, or a number which is integer, positive, and safe!`);
         }
         if (!(typeof lengthMinimum === "number" && !Number.isNaN(lengthMinimum))) {
-            throw new TypeError(`Argument \`options.lengthMinimum\` must be type of number!`);
+            throw new TypeError(`Filter argument \`lengthMinimum\` must be type of number!`);
         }
         if (!(Number.isSafeInteger(lengthMinimum) && lengthMinimum >= 0 && lengthMinimum <= lengthMaximum)) {
-            throw new RangeError(`Argument \`options.lengthMinimum\` must be a number which is integer, positive, safe, and <= ${lengthMaximum}!`);
+            throw new RangeError(`Filter argument \`lengthMinimum\` must be a number which is integer, positive, safe, and <= ${lengthMaximum}!`);
         }
         if (typeof lowerCase !== "boolean" && typeof lowerCase !== "undefined") {
-            throw new TypeError(`Argument \`options.lowerCase\` must be type of boolean or undefined!`);
+            throw new TypeError(`Filter argument \`lowerCase\` must be type of boolean or undefined!`);
         }
         if (typeof multipleLine !== "boolean" && typeof multipleLine !== "undefined") {
-            throw new TypeError(`Argument \`options.multipleLine\` must be type of boolean or undefined!`);
+            throw new TypeError(`Filter argument \`multipleLine\` must be type of boolean or undefined!`);
         }
         if (!(pattern instanceof RegExp) && typeof pattern !== "undefined") {
-            throw new TypeError(`Argument \`options.pattern\` must be instance of regular expression, or type of undefined!`);
+            throw new TypeError(`Filter argument \`pattern\` must be instance of regular expression, or type of undefined!`);
         }
         if (typeof preTrim !== "boolean") {
-            throw new TypeError(`Argument \`options.preTrim\` must be type of boolean!`);
+            throw new TypeError(`Filter argument \`preTrim\` must be type of boolean!`);
         }
         if (typeof singleLine !== "boolean" && typeof singleLine !== "undefined") {
-            throw new TypeError(`Argument \`options.singleLine\` must be type of boolean or undefined!`);
+            throw new TypeError(`Filter argument \`singleLine\` must be type of boolean or undefined!`);
         }
         if (typeof upperCase !== "boolean" && typeof upperCase !== "undefined") {
-            throw new TypeError(`Argument \`options.upperCase\` must be type of boolean or undefined!`);
+            throw new TypeError(`Filter argument \`upperCase\` must be type of boolean or undefined!`);
         }
         if (typeof length === "number") {
             __classPrivateFieldSet(this, _StringItemFilter_lengthMaximum, length, "f");

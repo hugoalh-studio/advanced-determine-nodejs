@@ -14,12 +14,14 @@ import { types } from "node:util";
 /**
  * @class FunctionItemFilter
  * @description Determine item with the filter of type of function.
+ * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isSyncGeneratorFunction`, `native.isAsyncFunction`, and/or `native.isSyncFunction` instead.
  */
 class FunctionItemFilter {
     /**
      * @constructor
      * @description Initialize the filter of type of function to determine item.
      * @param {FunctionItemFilterOptions} [options={}] Options.
+     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isSyncGeneratorFunction`, `native.isAsyncFunction`, and/or `native.isSyncFunction` instead.
      */
     constructor(options = {}) {
         _FunctionItemFilter_asynchronous.set(this, void 0);
@@ -29,10 +31,10 @@ class FunctionItemFilter {
         let { asynchronous, generator, ...aliases } = options;
         asynchronous ?? (asynchronous = aliases.async);
         if (typeof asynchronous !== "boolean" && typeof asynchronous !== "undefined") {
-            throw new TypeError(`Argument \`options.asynchronous\` must be type of boolean or undefined!`);
+            throw new TypeError(`Filter argument \`asynchronous\` must be type of boolean or undefined!`);
         }
         if (typeof generator !== "boolean" && typeof generator !== "undefined") {
-            throw new TypeError(`Argument \`options.generator\` must be type of boolean or undefined!`);
+            throw new TypeError(`Filter argument \`generator\` must be type of boolean or undefined!`);
         }
         let constructorNameRegExpPattern = `${(asynchronous === false) ? "" : "(?:Async)"}${(typeof asynchronous === "undefined") ? "?" : ""}${(generator === false) ? "" : "(?:Generator)"}${(typeof generator === "undefined") ? "?" : ""}Function`;
         __classPrivateFieldSet(this, _FunctionItemFilter_asynchronous, asynchronous, "f");
@@ -45,6 +47,7 @@ class FunctionItemFilter {
      * @description Determine item with the configured filter of type of function.
      * @param {unknown} item Item that need to determine.
      * @returns {boolean} Determine result.
+     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isSyncGeneratorFunction`, `native.isAsyncFunction`, and/or `native.isSyncFunction` instead.
      */
     test(item) {
         if (typeof item !== "function" ||
@@ -64,6 +67,7 @@ class FunctionItemFilter {
      * @param {unknown} item Item that need to determine.
      * @param {FunctionItemFilterOptions} [options={}] Options.
      * @returns {boolean} Determine result.
+     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isSyncGeneratorFunction`, `native.isAsyncFunction`, and/or `native.isSyncFunction` instead.
      */
     static test(item, options = {}) {
         return new this(options).test(item);
@@ -76,6 +80,7 @@ _FunctionItemFilter_asynchronous = new WeakMap(), _FunctionItemFilter_constructo
  * @param {unknown} item Item that need to determine.
  * @param {FunctionItemFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
+ * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isSyncGeneratorFunction`, `native.isAsyncFunction`, and/or `native.isSyncFunction` instead.
  */
 function isFunction(item, options = {}) {
     return new FunctionItemFilter(options).test(item);

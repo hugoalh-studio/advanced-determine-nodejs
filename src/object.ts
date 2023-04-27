@@ -41,13 +41,13 @@ class ObjectItemFilter {
 		} = options;
 		allowRegExp ??= aliases.allowRegularExpression ?? false;
 		if (typeof allowArray !== "boolean") {
-			throw new TypeError(`Argument \`options.allowArray\` must be type of boolean!`);
+			throw new TypeError(`Filter argument \`allowArray\` must be type of boolean!`);
 		}
 		if (typeof allowNull !== "boolean") {
-			throw new TypeError(`Argument \`options.allowNull\` must be type of boolean!`);
+			throw new TypeError(`Filter argument \`allowNull\` must be type of boolean!`);
 		}
 		if (typeof allowRegExp !== "boolean") {
-			throw new TypeError(`Argument \`options.allowRegExp\` must be type of boolean!`);
+			throw new TypeError(`Filter argument \`allowRegExp\` must be type of boolean!`);
 		}
 		this.#allowArray = allowArray;
 		this.#allowNull = allowNull;
