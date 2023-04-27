@@ -1,6 +1,7 @@
 /**
  * @class FunctionItemFilter
  * @description Determine item with the filter of type of function.
+ * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isSyncGeneratorFunction`, `native.isAsyncFunction`, and/or `native.isSyncFunction` instead.
  */
 export class FunctionItemFilter {
     /**
@@ -11,6 +12,7 @@ export class FunctionItemFilter {
      * @param {boolean} [param1.asynchronous] Whether an asynchronous function.
      * @param {boolean} [param1.generator] Whether a generator function.
      * @returns {boolean} Determine result.
+     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isSyncGeneratorFunction`, `native.isAsyncFunction`, and/or `native.isSyncFunction` instead.
      */
     static test(item: unknown, { asynchronous, generator, ...aliases }?: {
         asynchronous?: boolean;
@@ -22,6 +24,7 @@ export class FunctionItemFilter {
      * @param {object} [param0={}] Options.
      * @param {boolean} [param0.asynchronous] Whether an asynchronous function.
      * @param {boolean} [param0.generator] Whether a generator function.
+     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isSyncGeneratorFunction`, `native.isAsyncFunction`, and/or `native.isSyncFunction` instead.
      */
     constructor({ asynchronous, generator, ...aliases }?: {
         asynchronous?: boolean;
@@ -32,6 +35,7 @@ export class FunctionItemFilter {
      * @description Determine item with the configured filter of type of function.
      * @param {unknown} item Item that need to determine.
      * @returns {boolean} Determine result.
+     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isSyncGeneratorFunction`, `native.isAsyncFunction`, and/or `native.isSyncFunction` instead.
      */
     test(item: unknown): boolean;
     #private;
@@ -44,6 +48,7 @@ export class FunctionItemFilter {
  * @param {boolean} [param1.asynchronous] Whether an asynchronous function.
  * @param {boolean} [param1.generator] Whether a generator function.
  * @returns {boolean} Determine result.
+ * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isSyncGeneratorFunction`, `native.isAsyncFunction`, and/or `native.isSyncFunction` instead.
  */
 export function isFunction(item: unknown, { asynchronous, generator, ...aliases }?: {
     asynchronous?: boolean;

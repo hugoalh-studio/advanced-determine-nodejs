@@ -1,6 +1,12 @@
 declare namespace _default {
     export { isArrayStrict };
     export { isArrayUnique };
+    export { isAsyncFunction };
+    export { isAsyncGenerator };
+    export { isAsyncGeneratorFunction };
+    export { isAsynchronousFunction };
+    export { isAsynchronousGenerator };
+    export { isAsynchronousGeneratorFunction };
     export { isBigIntegerEven };
     export { isBigIntegerIntegralNumericType };
     export { isBigIntegerNegative };
@@ -29,10 +35,22 @@ declare namespace _default {
     export { isStringMultipleLine };
     export { isStringSingleLine };
     export { isStringUpperCase };
+    export { isSyncFunction };
+    export { isSyncGenerator };
+    export { isSyncGeneratorFunction };
+    export { isSynchronousFunction };
+    export { isSynchronousGenerator };
+    export { isSynchronousGeneratorFunction };
 }
 export default _default;
 import { isArrayStrict } from "./native/array.js";
 import { isArrayUnique } from "./native/array.js";
+import { isAsyncFunction } from "./native/function.js";
+import { isAsyncGenerator } from "./native/generator.js";
+import { isAsyncGeneratorFunction } from "./native/function.js";
+import { isAsynchronousFunction } from "./native/function.js";
+import { isAsynchronousGenerator } from "./native/generator.js";
+import { isAsynchronousGeneratorFunction } from "./native/function.js";
 import { isBigIntegerEven } from "./native/big-integer.js";
 import { isBigIntegerIntegralNumericType } from "./native/big-integer.js";
 import { isBigIntegerNegative } from "./native/big-integer.js";
@@ -61,5 +79,11 @@ import { isStringLowerCase } from "./native/string.js";
 import { isStringMultipleLine } from "./native/string.js";
 import { isStringSingleLine } from "./native/string.js";
 import { isStringUpperCase } from "./native/string.js";
-export { isArrayStrict, isArrayUnique, isBigIntegerEven, isBigIntegerIntegralNumericType, isBigIntegerNegative, isBigIntegerOdd, isBigIntegerPositive, isBigIntegerPrime, isBigIntegerSafe, isBigIntEven, isBigIntIntegralNumericType, isBigIntNegative, isBigIntOdd, isBigIntPositive, isBigIntPrime, isBigIntSafe, isNumberEven, isNumberFloat, isNumberIntegralNumericType, isNumberNegative, isNumberOdd, isNumberPositive, isNumberPrime, isNumberSafe, isObjectPlain, isStringASCII, isStringLowerCase, isStringMultipleLine, isStringSingleLine, isStringUpperCase };
+import { isSyncFunction } from "./native/function.js";
+import { isSyncGenerator } from "./native/generator.js";
+import { isSyncGeneratorFunction } from "./native/function.js";
+import { isSynchronousFunction } from "./native/function.js";
+import { isSynchronousGenerator } from "./native/generator.js";
+import { isSynchronousGeneratorFunction } from "./native/function.js";
+export { isArrayStrict, isArrayUnique, isAsyncFunction, isAsyncGenerator, isAsyncGeneratorFunction, isAsynchronousFunction, isAsynchronousGenerator, isAsynchronousGeneratorFunction, isBigIntegerEven, isBigIntegerIntegralNumericType, isBigIntegerNegative, isBigIntegerOdd, isBigIntegerPositive, isBigIntegerPrime, isBigIntegerSafe, isBigIntEven, isBigIntIntegralNumericType, isBigIntNegative, isBigIntOdd, isBigIntPositive, isBigIntPrime, isBigIntSafe, isNumberEven, isNumberFloat, isNumberIntegralNumericType, isNumberNegative, isNumberOdd, isNumberPositive, isNumberPrime, isNumberSafe, isObjectPlain, isStringASCII, isStringLowerCase, isStringMultipleLine, isStringSingleLine, isStringUpperCase, isSyncFunction, isSyncGenerator, isSyncGeneratorFunction, isSynchronousFunction, isSynchronousGenerator, isSynchronousGeneratorFunction };
 //# sourceMappingURL=native.d.ts.map

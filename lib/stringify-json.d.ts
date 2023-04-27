@@ -26,6 +26,7 @@ export function isStringifyJSON(item: unknown, { allowEmpty, arrayRoot, entriesC
 /**
  * @class StringifyJSONItemFilter
  * @description Determine item with the filter of type of stringify JSON.
+ * @deprecated Replaced by class `JSONItemFilter` with method `testStringify`.
  */
 export class StringifyJSONItemFilter {
     /**
@@ -42,6 +43,7 @@ export class StringifyJSONItemFilter {
      * @param {boolean} [param1.strict=false] Whether to determine type of array not as the root of the stringify JSON, and no illegal namespace characters in the stringify JSON keys.
      * @param {boolean} [param1.strictKeys=false] Whether to determine no illegal namespace characters in the stringify JSON keys.
      * @returns {boolean} Determine result.
+     * @deprecated Replaced by class `JSONItemFilter` with method `testStringify`.
      */
     static test(item: unknown, { allowEmpty, arrayRoot, entriesCount, entriesCountMaximum, entriesCountMinimum, keysPattern, strict, strictKeys, ...aliases }?: {
         allowEmpty?: boolean;
@@ -65,6 +67,7 @@ export class StringifyJSONItemFilter {
      * @param {RegExp} [param0.keysPattern] Whether a pattern matchable stringify JSON keys.
      * @param {boolean} [param0.strict=false] Whether to determine type of array not as the root of the stringify JSON, and no illegal namespace characters in the stringify JSON keys.
      * @param {boolean} [param0.strictKeys=false] Whether to determine no illegal namespace characters in the stringify JSON keys.
+     * @deprecated Replaced by class `JSONItemFilter` with method `testStringify`.
      */
     constructor({ allowEmpty, arrayRoot, entriesCount, entriesCountMaximum, entriesCountMinimum, keysPattern, strict, strictKeys, ...aliases }?: {
         allowEmpty?: boolean;
@@ -81,6 +84,7 @@ export class StringifyJSONItemFilter {
      * @description Determine item with the configured filter of type of stringify JSON.
      * @param {unknown} item Item that need to determine.
      * @returns {boolean} Determine result.
+     * @deprecated Replaced by class `JSONItemFilter` with method `testStringify`.
      */
     test(item: unknown): boolean;
     #private;
