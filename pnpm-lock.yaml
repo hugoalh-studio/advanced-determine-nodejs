@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@hugoalh/undefinish': ^1.0.21
-  '@types/node': ^18.15.13
+  '@types/node': ^18.16.1
   eslint: ^8.39.0
   eslint-plugin-only-warn: ^1.1.0
   typescript: ^5.0.4
@@ -11,7 +11,7 @@ dependencies:
   '@hugoalh/undefinish': 1.0.21
 
 devDependencies:
-  '@types/node': 18.15.13
+  '@types/node': 18.16.1
   eslint: 8.39.0
   eslint-plugin-only-warn: 1.1.0
   typescript: 5.0.4
@@ -101,8 +101,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@types/node/18.15.13:
-    resolution: {integrity: sha512-N+0kuo9KgrUQ1Sn/ifDXsvg0TTleP7rIy4zOBGECxAljqvqfqpTfzx0Q1NUedOixRMBfe2Whhb056a42cWs26Q==}
+  /@types/node/18.16.1:
+    resolution: {integrity: sha512-DZxSZWXxFfOlx7k7Rv4LAyiMroaxa3Ly/7OOzZO8cBNho0YzAi4qlbrx8W27JGqG57IgR/6J7r+nOJWw6kcvZA==}
     dev: true
 
   /acorn-jsx/5.3.2_acorn@8.8.2:

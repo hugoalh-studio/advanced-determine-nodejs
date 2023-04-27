@@ -127,7 +127,7 @@
 		"@hugoalh/undefinish": "^1.0.21"
 	},
 	"devDependencies": {
-		"@types/node": "^18.15.13",
+		"@types/node": "^18.16.1",
 		"eslint": "^8.39.0",
 		"eslint-plugin-only-warn": "^1.1.0",
 		"typescript": "^5.0.4"
