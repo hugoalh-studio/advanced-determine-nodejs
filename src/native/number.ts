@@ -63,7 +63,7 @@ function isNumberPositive(item: number): boolean {
  * @returns {boolean} Determine result.
  */
 function isNumberPrime(item: number): boolean {
-	return isPrimeNumber(item);
+	return (Number.isInteger(item) && isPrimeNumber(item));
 }
 /**
  * @function isNumberSafe
