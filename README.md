@@ -43,8 +43,6 @@ import advancedDetermine from "@hugoalh/advanced-determine";// Default Import
 
 - `ArrayItemFilter`
 - `BigIntegerItemFilter`
-- `FunctionItemFilter`
-- `GeneratorItemFilter`
 - `JSONItemFilter`
 - `MapItemFilter`
 - `NumberItemFilter`
@@ -52,7 +50,6 @@ import advancedDetermine from "@hugoalh/advanced-determine";// Default Import
 - `PlainObjectItemFilter`
 - `RegularExpressionItemFilter`
 - `SetItemFilter`
-- `StringifyJSONItemFilter`
 - `StringItemFilter`
 
 #### Function
@@ -60,8 +57,6 @@ import advancedDetermine from "@hugoalh/advanced-determine";// Default Import
 - `areEqual`
 - `isArray`
 - `isBigInteger`
-- `isFunction`
-- `isGenerator`
 - `isJSON`
 - `isMap`
 - `isNumber`
