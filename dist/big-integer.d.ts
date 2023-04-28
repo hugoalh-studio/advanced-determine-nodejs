@@ -204,10 +204,10 @@ declare class BigIntegerItemFilter {
     /**
      * @method maximum
      * @description Maximum of the big integer.
-     * @param {bigint} [value]
+     * @param {bigint | undefined} [value]
      * @returns {this}
      */
-    maximum(value?: bigint): this;
+    maximum(value?: bigint | undefined): this;
     /**
      * @method maximumExclusive
      * @description Whether to exclusive maximum of the big integer.
@@ -218,10 +218,10 @@ declare class BigIntegerItemFilter {
     /**
      * @method minimum
      * @description Minimum of the big integer.
-     * @param {bigint} [value]
+     * @param {bigint | undefined} [value]
      * @returns {this}
      */
-    minimum(value?: bigint): this;
+    minimum(value?: bigint | undefined): this;
     /**
      * @method minimumExclusive
      * @description Whether to exclusive minimum of the big integer.
@@ -250,11 +250,11 @@ declare class BigIntegerItemFilter {
      * @returns {this}
      */
     sign(value: MathematicsSignEnumKeysType): this;
-    /** @alias maximum */ max: (value?: bigint) => this;
+    /** @alias maximum */ max: (value?: bigint | undefined) => this;
     /** @alias maximumExclusive */ exclusiveMax: (value?: boolean) => this;
     /** @alias maximumExclusive */ exclusiveMaximum: (value?: boolean) => this;
     /** @alias maximumExclusive */ maxExclusive: (value?: boolean) => this;
-    /** @alias minimum */ min: (value?: bigint) => this;
+    /** @alias minimum */ min: (value?: bigint | undefined) => this;
     /** @alias minimumExclusive */ exclusiveMin: (value?: boolean) => this;
     /** @alias minimumExclusive */ exclusiveMinimum: (value?: boolean) => this;
     /** @alias minimumExclusive */ minExclusive: (value?: boolean) => this;

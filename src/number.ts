@@ -365,10 +365,10 @@ class NumberItemFilter {
 	/**
 	 * @method maximum
 	 * @description Maximum of the number.
-	 * @param {number} [value]
+	 * @param {number | undefined} [value]
 	 * @returns {this}
 	 */
-	maximum(value?: number): this {
+	maximum(value?: number | undefined): this {
 		if (!(typeof value === "number" && !Number.isNaN(value))) {
 			if (typeof this.#minimum === "number" && !(this.#minimum <= value)) {
 				throw new RangeError(`Filter argument \`maximum\` must be a number which is >= ${this.#minimum}!`);
@@ -395,10 +395,10 @@ class NumberItemFilter {
 	/**
 	 * @method minimum
 	 * @description Minimum of the number.
-	 * @param {number} [value]
+	 * @param {number | undefined} [value]
 	 * @returns {this}
 	 */
-	minimum(value?: number): this {
+	minimum(value?: number | undefined): this {
 		if (!(typeof value === "number" && !Number.isNaN(value))) {
 			if (typeof this.#maximum === "number" && !(value <= this.#maximum)) {
 				throw new RangeError(`Filter argument \`minimum\` must be a number which is <= ${this.#maximum}!`);

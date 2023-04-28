@@ -160,7 +160,7 @@ class NumberItemFilter {
     /**
      * @method maximum
      * @description Maximum of the number.
-     * @param {number} [value]
+     * @param {number | undefined} [value]
      * @returns {this}
      */
     maximum(value) {
@@ -191,7 +191,7 @@ class NumberItemFilter {
     /**
      * @method minimum
      * @description Minimum of the number.
-     * @param {number} [value]
+     * @param {number | undefined} [value]
      * @returns {this}
      */
     minimum(value) {

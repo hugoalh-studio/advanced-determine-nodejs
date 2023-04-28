@@ -276,10 +276,10 @@ class BigIntegerItemFilter {
 	/**
 	 * @method maximum
 	 * @description Maximum of the big integer.
-	 * @param {bigint} [value]
+	 * @param {bigint | undefined} [value]
 	 * @returns {this}
 	 */
-	maximum(value?: bigint): this {
+	maximum(value?: bigint | undefined): this {
 		if (typeof value === "bigint") {
 			if (typeof this.#minimum === "bigint" && !(this.#minimum <= value)) {
 				throw new RangeError(`Filter argument \`maximum\` must be a big integer which is >= ${this.#minimum}!`);
@@ -306,10 +306,10 @@ class BigIntegerItemFilter {
 	/**
 	 * @method minimum
 	 * @description Minimum of the big integer.
-	 * @param {bigint} [value]
+	 * @param {bigint | undefined} [value]
 	 * @returns {this}
 	 */
-	minimum(value?: bigint): this {
+	minimum(value?: bigint | undefined): this {
 		if (typeof value === "bigint") {
 			if (typeof this.#maximum === "bigint" && !(value <= this.#maximum)) {
 				throw new RangeError(`Filter argument \`minimum\` must be a big integer which is <= ${this.#maximum}!`);

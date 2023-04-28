@@ -134,7 +134,7 @@ class BigIntegerItemFilter {
     /**
      * @method maximum
      * @description Maximum of the big integer.
-     * @param {bigint} [value]
+     * @param {bigint | undefined} [value]
      * @returns {this}
      */
     maximum(value) {
@@ -165,7 +165,7 @@ class BigIntegerItemFilter {
     /**
      * @method minimum
      * @description Minimum of the big integer.
-     * @param {bigint} [value]
+     * @param {bigint | undefined} [value]
      * @returns {this}
      */
     minimum(value) {

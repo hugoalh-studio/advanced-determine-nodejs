@@ -273,10 +273,10 @@ declare class NumberItemFilter {
     /**
      * @method maximum
      * @description Maximum of the number.
-     * @param {number} [value]
+     * @param {number | undefined} [value]
      * @returns {this}
      */
-    maximum(value?: number): this;
+    maximum(value?: number | undefined): this;
     /**
      * @method maximumExclusive
      * @description Whether to exclusive maximum of the number.
@@ -287,10 +287,10 @@ declare class NumberItemFilter {
     /**
      * @method minimum
      * @description Minimum of the number.
-     * @param {number} [value]
+     * @param {number | undefined} [value]
      * @returns {this}
      */
-    minimum(value?: number): this;
+    minimum(value?: number | undefined): this;
     /**
      * @method minimumExclusive
      * @description Whether to exclusive minimum of the number.
@@ -326,11 +326,11 @@ declare class NumberItemFilter {
      * @returns {this}
      */
     sign(value: MathematicsSignEnumKeysType): this;
-    /** @alias maximum */ max: (value?: number) => this;
+    /** @alias maximum */ max: (value?: number | undefined) => this;
     /** @alias maximumExclusive */ exclusiveMax: (value?: boolean) => this;
     /** @alias maximumExclusive */ exclusiveMaximum: (value?: boolean) => this;
     /** @alias maximumExclusive */ maxExclusive: (value?: boolean) => this;
-    /** @alias minimum */ min: (value?: number) => this;
+    /** @alias minimum */ min: (value?: number | undefined) => this;
     /** @alias minimumExclusive */ exclusiveMin: (value?: boolean) => this;
     /** @alias minimumExclusive */ exclusiveMinimum: (value?: boolean) => this;
     /** @alias minimumExclusive */ minExclusive: (value?: boolean) => this;
