@@ -70,27 +70,55 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";// Namespace Im
 ### Example
 
 ```js
-/* Class */new ArrayItemFilter().test([]);
-/* Func. */isArray([]);
+/* Either */
+new ArrayItemFilter().test([]);
+ArrayItemFilter.test([]);
+isArray([]);
 //=> false (`allowEmpty` is `false`)
+```
 
-/* Class */new ArrayItemFilter({ allowEmpty: true }).test([]);
-/* Func. */isArray([], { allowEmpty: true });
+```js
+/* Either */
+new ArrayItemFilter({ allowEmpty: true }).test([]);
+new ArrayItemFilter().allowEmpty().test([]);
+ArrayItemFilter.test([], { allowEmpty: true });
+isArray([], { allowEmpty: true });
 //=> true
+```
 
-/* Class */new NumberItemFilter({ float: true, positive: true, safe: true }).test(8.31);
-/* Func. */isNumber(8.31, { float: true, positive: true, safe: true });
+```js
+/* Either */
+new NumberItemFilter({ ieee754: "safe", numericType: "float", sign: "positive" }).test(8.31);
+new NumberItemFilter().ieee754("safe").numericType("float").sign("positive").test(8.31);
+new NumberItemFilter().safe().float().positive().test(8.31);
+NumberItemFilter.test(8.31, { ieee754: "safe", numericType: "float", sign: "positive" });
+isNumber(8.31, { ieee754: "safe", numericType: "float", sign: "positive" });
 //=> true
+```
 
-/* Class */new StringItemFilter().test("");
-/* Func. */isString("");
+```js
+/* Either */
+new StringItemFilter().test("");
+StringItemFilter.test("");
+isString("");
 //=> false (`allowEmpty` is `false`)
+```
 
-/* Class */new StringItemFilter({ allowEmpty: true }).test("");
-/* Func. */isString("", { allowEmpty: true });
+```js
+/* Either */
+new StringItemFilter({ allowEmpty: true }).test("");
+new StringItemFilter().allowEmpty().test("");
+StringItemFilter.test("", { allowEmpty: true });
+isString("", { allowEmpty: true });
 //=> true
+```
 
-/* Class */new StringItemFilter({ lowerCase: true }).test("Hello World");
-/* Func. */isString("Hello World", { lowerCase: true });
+```js
+/* Either */
+new StringItemFilter({ case: "lower" }).test("Hello World");
+new StringItemFilter().case("lower").test("Hello World");
+new StringItemFilter().lowerCase().test("Hello World");
+StringItemFilter.test("Hello World", { case: "lower" });
+isString("Hello World", { case: "lower" });
 //=> false
 ```
