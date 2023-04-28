@@ -1,5 +1,4 @@
-import { integralNumericTypeRange } from "../internal/integral-numeric-types.js";
-import { isPrimeNumber } from "../internal/is-prime-number.js";
+import { integralNumericTypeRange, isPrimeNumeric } from "../internal/numeric.js";
 /**
  * @function isNumberEven
  * @description Determine the number is even.
@@ -21,7 +20,7 @@ function isNumberFloat(item) {
 /**
  * @function isNumberIntegralNumericType
  * @description Determine the number is match the specified integral numeric type.
- * @param {string} typeName Name of the integral numeric type.
+ * @param {IntegralNumericTypeEnumKeysType} typeName Name of the integral numeric type.
  * @param {number} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
@@ -63,7 +62,7 @@ function isNumberPositive(item) {
  * @returns {boolean} Determine result.
  */
 function isNumberPrime(item) {
-    return (Number.isInteger(item) && isPrimeNumber(item));
+    return (Number.isInteger(item) && isPrimeNumeric(item));
 }
 /**
  * @function isNumberSafe

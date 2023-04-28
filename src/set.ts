@@ -1,4 +1,18 @@
-interface SetItemFilterOptions {
+interface SetItemFilterOptionsBase {
+	/**
+	 * @property sizeMaximum
+	 * @description Maximum size of the set.
+	 * @default Infinity
+	 */
+	sizeMaximum: number;
+	/**
+	 * @property sizeMinimum
+	 * @description Minimum size of the set.
+	 * @default 1
+	 */
+	sizeMinimum: number;
+}
+interface SetItemFilterOptions extends Partial<SetItemFilterOptionsBase> {
 	/**
 	 * @property allowEmpty
 	 * @description Whether to allow an empty set.
@@ -11,18 +25,6 @@ interface SetItemFilterOptions {
 	 * @default undefined
 	 */
 	size?: number;
-	/**
-	 * @property sizeMaximum
-	 * @description Maximum size of the set.
-	 * @default Infinity
-	 */
-	sizeMaximum?: number;
-	/**
-	 * @property sizeMinimum
-	 * @description Minimum size of the set.
-	 * @default 1
-	 */
-	sizeMinimum?: number;
 	/** @alias sizeMaximum */sizeMax?: number;
 	/** @alias sizeMaximum */maximumSize?: number;
 	/** @alias sizeMaximum */maxSize?: number;
@@ -35,53 +37,114 @@ interface SetItemFilterOptions {
  * @description Determine item with the filter of type of set.
  */
 class SetItemFilter {
-	#sizeMaximum: number;
-	#sizeMinimum: number;
+	#sizeMaximum = Infinity;
+	#sizeMinimum = 1;
 	/**
 	 * @constructor
 	 * @description Initialize the filter of type of set to determine item.
-	 * @param {SetItemFilterOptions} [options={}] Options.
+	 * @param {SetItemFilter | SetItemFilterOptions} [options] Options.
 	 */
-	constructor(options: SetItemFilterOptions = {}) {
-		let {
-			allowEmpty = false,
-			size,
-			sizeMaximum,
-			sizeMinimum,
-			...aliases
-		} = options;
-		sizeMaximum ??= aliases.sizeMax ?? aliases.maximumSize ?? aliases.maxSize ?? Infinity;
-		sizeMinimum ??= aliases.sizeMin ?? aliases.minimumSize ?? aliases.minSize ?? 1;
-		if (typeof allowEmpty !== "boolean") {
-			throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
-		}
-		if (typeof size === "number" && !Number.isNaN(size)) {
-			if (!(Number.isSafeInteger(size) && size >= 0)) {
-				throw new RangeError(`Filter argument \`size\` must be a number which is integer, positive, and safe!`);
+	constructor(options?: SetItemFilter | SetItemFilterOptions) {
+		if (options instanceof SetItemFilter) {
+			this.#sizeMaximum = options.#sizeMaximum;
+			this.#sizeMinimum = options.#sizeMinimum;
+		} else if (typeof options !== "undefined") {
+			options.sizeMaximum ??= options.sizeMax ?? options.maximumSize ?? options.maxSize;
+			options.sizeMinimum ??= options.sizeMin ?? options.minimumSize ?? options.minSize;
+			for (let option of ["sizeMaximum", "sizeMinimum", "allowEmpty", "size"]) {
+				if (typeof options[option] !== "undefined") {
+					this[option](options[option]);
+				}
 			}
-		} else if (typeof size !== "undefined") {
-			throw new TypeError(`Filter argument \`size\` must be type of number or undefined!`);
-		}
-		if (!(typeof sizeMaximum === "number" && !Number.isNaN(sizeMaximum))) {
-			throw new TypeError(`Filter argument \`sizeMaximum\` must be type of number!`);
-		}
-		if (sizeMaximum !== Infinity && !(Number.isSafeInteger(sizeMaximum) && sizeMaximum >= 0)) {
-			throw new RangeError(`Filter argument \`sizeMaximum\` must be \`Infinity\`, or a number which is integer, positive, and safe!`);
-		}
-		if (!(typeof sizeMinimum === "number" && !Number.isNaN(sizeMinimum))) {
-			throw new TypeError(`Filter argument \`sizeMinimum\` must be type of number!`);
-		}
-		if (!(Number.isSafeInteger(sizeMinimum) && sizeMinimum >= 0 && sizeMinimum <= sizeMaximum)) {
-			throw new RangeError(`Filter argument \`sizeMinimum\` must be a number which is integer, positive, safe, and <= ${sizeMaximum}!`);
-		}
-		if (typeof size === "number") {
-			this.#sizeMaximum = size;
-			this.#sizeMinimum = size;
-		} else {
-			this.#sizeMaximum = sizeMaximum;
-			this.#sizeMinimum = allowEmpty ? 0 : sizeMinimum;
 		}
 	}
+	/**
+	 * @method clone
+	 * @description Clone this filter for reuse.
+	 * @returns {SetItemFilter}
+	 */
+	get clone(): SetItemFilter {
+		return new SetItemFilter(this);
+	}
+	/**
+	 * @method status
+	 * @description Status of this filter.
+	 * @returns {SetItemFilterOptionsBase}
+	 */
+	get status(): SetItemFilterOptionsBase {
+		return {
+			sizeMaximum: this.#sizeMaximum,
+			sizeMinimum: this.#sizeMinimum
+		};
+	}
+	/**
+	 * @method allowEmpty
+	 * @description Whether to allow an empty set.
+	 * @param {boolean} [value=true]
+	 * @returns {this}
+	 */
+	allowEmpty(value = true): this {
+		if (typeof value !== "boolean") {
+			throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
+		}
+		this.#sizeMinimum = value ? 0 : 1;
+		return this;
+	}
+	/**
+	 * @method size
+	 * @description Size of the set.
+	 * @param {number} value
+	 * @returns {this}
+	 */
+	size(value: number): this {
+		if (!(typeof value === "number" && !Number.isNaN(value))) {
+			throw new TypeError(`Filter argument \`size\` must be type of number!`);
+		}
+		if (!(Number.isSafeInteger(value) && value >= 0)) {
+			throw new RangeError(`Filter argument \`size\` must be a number which is integer, positive, and safe!`);
+		}
+		this.#sizeMaximum = value;
+		this.#sizeMinimum = value;
+		return this;
+	}
+	/**
+	 * @method sizeMaximum
+	 * @description Maximum size of the set.
+	 * @param {number} value
+	 * @returns {this}
+	 */
+	sizeMaximum(value: number): this {
+		if (!(typeof value === "number" && !Number.isNaN(value))) {
+			throw new TypeError(`Filter argument \`sizeMaximum\` must be type of number!`);
+		}
+		if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= this.#sizeMinimum)) {
+			throw new RangeError(`Filter argument \`sizeMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${this.#sizeMinimum}!`);
+		}
+		this.#sizeMaximum = value;
+		return this;
+	}
+	/**
+	 * @method sizeMinimum
+	 * @description Minimum size of the set.
+	 * @param {number} value
+	 * @returns {this}
+	 */
+	sizeMinimum(value: number): this {
+		if (!(typeof value === "number" && !Number.isNaN(value))) {
+			throw new TypeError(`Filter argument \`sizeMinimum\` must be type of number!`);
+		}
+		if (!(Number.isSafeInteger(value) && value >= 0 && value <= this.#sizeMaximum)) {
+			throw new RangeError(`Filter argument \`sizeMinimum\` must be a number which is integer, positive, safe, and <= ${this.#sizeMaximum}!`);
+		}
+		this.#sizeMinimum = value;
+		return this;
+	}
+	/** @alias sizeMaximum */sizeMax = this.sizeMaximum;
+	/** @alias sizeMaximum */maximumSize = this.sizeMaximum;
+	/** @alias sizeMaximum */maxSize = this.sizeMaximum;
+	/** @alias sizeMinimum */sizeMin = this.sizeMinimum;
+	/** @alias sizeMinimum */minimumSize = this.sizeMinimum;
+	/** @alias sizeMinimum */minSize = this.sizeMinimum;
 	/**
 	 * @method test
 	 * @description Determine item with the configured filter of type of set.
@@ -122,5 +185,6 @@ function isSet(item: unknown, options: SetItemFilterOptions = {}): boolean {
 export {
 	isSet,
 	SetItemFilter,
-	type SetItemFilterOptions
+	type SetItemFilterOptions,
+	type SetItemFilterOptionsBase
 };

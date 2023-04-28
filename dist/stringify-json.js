@@ -20,7 +20,7 @@ class StringifyJSONItemFilter {
     /**
      * @constructor
      * @description Initialize the filter of type of stringify JSON to determine item.
-     * @param {StringifyJSONItemFilterOptions} [options={}] Options.
+     * @param {JSONItemFilterOptions} [options={}] Options.
      * @deprecated Replaced by class `JSONItemFilter` with method `testStringify`.
      */
     constructor(options = {}) {
@@ -51,7 +51,7 @@ class StringifyJSONItemFilter {
      * @static test
      * @description Determine item with the filter of type of stringify JSON.
      * @param {unknown} item Item that need to determine.
-     * @param {StringifyJSONItemFilterOptions} [options={}] Options.
+     * @param {JSONItemFilterOptions} [options={}] Options.
      * @returns {boolean} Determine result.
      * @deprecated Replaced by class `JSONItemFilter` with method `testStringify`.
      */
@@ -64,10 +64,10 @@ _StringifyJSONItemFilter_jsonItemFilterWrapper = new WeakMap();
  * @function isStringifyJSON
  * @description Determine item with the filter of type of stringify JSON.
  * @param {unknown} item Item that need to determine.
- * @param {StringifyJSONItemFilterOptions} [options={}] Options.
+ * @param {JSONItemFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
  */
 function isStringifyJSON(item, options = {}) {
-    return new StringifyJSONItemFilter(options).test(item);
+    return new JSONItemFilter(options).testStringify(item);
 }
 export { isStringifyJSON, isStringifyJSON as isJSONStringified, isStringifyJSON as isJSONStringify, isStringifyJSON as isStringifiedJSON, StringifyJSONItemFilter, StringifyJSONItemFilter as JSONStringifiedItemFilter, StringifyJSONItemFilter as JSONStringifyItemFilter, StringifyJSONItemFilter as StringifiedJSONItemFilter };

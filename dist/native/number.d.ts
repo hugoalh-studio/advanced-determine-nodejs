@@ -1,3 +1,4 @@
+import { type IntegralNumericTypeEnumKeysType } from "../internal/enum.js";
 /**
  * @function isNumberEven
  * @description Determine the number is even.
@@ -15,11 +16,11 @@ declare function isNumberFloat(item: number): boolean;
 /**
  * @function isNumberIntegralNumericType
  * @description Determine the number is match the specified integral numeric type.
- * @param {string} typeName Name of the integral numeric type.
+ * @param {IntegralNumericTypeEnumKeysType} typeName Name of the integral numeric type.
  * @param {number} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
-declare function isNumberIntegralNumericType(typeName: string, item: number): boolean;
+declare function isNumberIntegralNumericType(typeName: IntegralNumericTypeEnumKeysType, item: number): boolean;
 /**
  * @function isNumberNegative
  * @description Determine the number is negative.

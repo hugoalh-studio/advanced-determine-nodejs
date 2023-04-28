@@ -1,3 +1,4 @@
+import { type IntegralNumericTypeEnumKeysType } from "../internal/enum.js";
 /**
  * @function isBigIntegerEven
  * @description Determine the big integer is even.
@@ -8,11 +9,11 @@ declare function isBigIntegerEven(item: bigint): boolean;
 /**
  * @function isBigIntegerIntegralNumericType
  * @description Determine the big integer is match the specified integral numeric type.
- * @param {string} typeName Name of the integral numeric type.
+ * @param {IntegralNumericTypeEnumKeysType} typeName Name of the integral numeric type.
  * @param {bigint} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
-declare function isBigIntegerIntegralNumericType(typeName: string, item: bigint): boolean;
+declare function isBigIntegerIntegralNumericType(typeName: IntegralNumericTypeEnumKeysType, item: bigint): boolean;
 /**
  * @function isBigIntegerNegative
  * @description Determine the big integer is negative.

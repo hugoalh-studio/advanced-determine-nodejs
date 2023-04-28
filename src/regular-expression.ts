@@ -1,4 +1,4 @@
-interface RegularExpressionItemFilterOptions {
+interface RegularExpressionItemFilterOptionsBase {
 	/**
 	 * @property dotAll
 	 * @description Whether a dot-all regular expression.
@@ -41,6 +41,8 @@ interface RegularExpressionItemFilterOptions {
 	 * @default undefined
 	 */
 	unicode?: boolean;
+}
+interface RegularExpressionItemFilterOptions extends Partial<RegularExpressionItemFilterOptionsBase> {
 	/** @alias exactly */exact?: boolean;
 	/** @alias ignoreCase */caseInsensitive?: boolean;
 	/** @alias multipleLine */multiline?: boolean;
@@ -61,51 +63,147 @@ class RegularExpressionItemFilter {
 	/**
 	 * @constructor
 	 * @description Initialize the filter of type of regular expression to determine item.
-	 * @param {RegularExpressionItemFilterOptions} [options={}] Options.
+	 * @param {RegularExpressionItemFilter | RegularExpressionItemFilterOptions} [options] Options.
 	 */
-	constructor(options: RegularExpressionItemFilterOptions = {}) {
-		let {
-			dotAll,
-			exactly,
-			global,
-			ignoreCase,
-			multipleLine,
-			sticky,
-			unicode,
-			...aliases
-		} = options;
-		exactly ??= aliases.exact;
-		ignoreCase ??= aliases.caseInsensitive;
-		multipleLine ??= aliases.multiLine ?? aliases.multiline;
-		if (typeof dotAll !== "boolean" && typeof dotAll !== "undefined") {
-			throw new TypeError(`Filter argument \`dotAll\` must be type of boolean or undefined!`);
+	constructor(options?: RegularExpressionItemFilter | RegularExpressionItemFilterOptions) {
+		if (options instanceof RegularExpressionItemFilter) {
+			this.#dotAll = options.#dotAll;
+			this.#exactly = options.#exactly;
+			this.#global = options.#global;
+			this.#ignoreCase = options.#ignoreCase;
+			this.#multipleLine = options.#multipleLine;
+			this.#sticky = options.#sticky;
+			this.#unicode = options.#unicode;
+		} else if (typeof options !== "undefined") {
+			options.exactly ??= options.exact;
+			options.ignoreCase ??= options.caseInsensitive;
+			options.multipleLine ??= options.multiLine ?? options.multiline;
+			for (let option of ["dotAll", "exactly", "global", "ignoreCase", "multipleLine", "sticky", "unicode"]) {
+				if (typeof option !== "undefined") {
+					this[option](options[option]);
+				}
+			}
 		}
-		if (typeof exactly !== "boolean" && typeof exactly !== "undefined") {
-			throw new TypeError(`Filter argument \`exactly\` must be type of boolean or undefined!`);
-		}
-		if (typeof global !== "boolean" && typeof global !== "undefined") {
-			throw new TypeError(`Filter argument \`global\` must be type of boolean or undefined!`);
-		}
-		if (typeof ignoreCase !== "boolean" && typeof ignoreCase !== "undefined") {
-			throw new TypeError(`Filter argument \`ignoreCase\` must be type of boolean or undefined!`);
-		}
-		if (typeof multipleLine !== "boolean" && typeof multipleLine !== "undefined") {
-			throw new TypeError(`Filter argument \`multipleLine\` must be type of boolean or undefined!`);
-		}
-		if (typeof sticky !== "boolean" && typeof sticky !== "undefined") {
-			throw new TypeError(`Filter argument \`sticky\` must be type of boolean or undefined!`);
-		}
-		if (typeof unicode !== "boolean" && typeof unicode !== "undefined") {
-			throw new TypeError(`Filter argument \`unicode\` must be type of boolean or undefined!`);
-		}
-		this.#dotAll = dotAll;
-		this.#exactly = exactly;
-		this.#global = global;
-		this.#ignoreCase = ignoreCase;
-		this.#multipleLine = multipleLine;
-		this.#sticky = sticky;
-		this.#unicode = unicode;
 	}
+	/**
+	 * @method clone
+	 * @description Clone this filter for reuse.
+	 * @returns {RegularExpressionItemFilter}
+	 */
+	get clone(): RegularExpressionItemFilter {
+		return new RegularExpressionItemFilter(this);
+	}
+	/**
+	 * @method status
+	 * @description Status of this filter.
+	 * @returns {RegularExpressionItemFilterOptionsBase}
+	 */
+	get status(): RegularExpressionItemFilterOptionsBase {
+		return {
+			dotAll: this.#dotAll,
+			exactly: this.#exactly,
+			global: this.#global,
+			ignoreCase: this.#ignoreCase,
+			multipleLine: this.#multipleLine,
+			sticky: this.#sticky,
+			unicode: this.#unicode
+		};
+	}
+	/**
+	 * @method dotAll
+	 * @description Whether a dot-all regular expression.
+	 * @param {boolean} [value]
+	 * @returns {this}
+	 */
+	dotAll(value?: boolean): this {
+		if (typeof value !== "boolean" && typeof value !== "undefined") {
+			throw new TypeError(`Filter argument \`dotAll\` must be type of string or undefined!`);
+		}
+		this.#dotAll = value;
+		return this;
+	}
+	/**
+	 * @method exactly
+	 * @description Whether an exactly regular expression.
+	 * @param {boolean} [value]
+	 * @returns {this}
+	 */
+	exactly(value?: boolean): this {
+		if (typeof value !== "boolean" && typeof value !== "undefined") {
+			throw new TypeError(`Filter argument \`exactly\` must be type of string or undefined!`);
+		}
+		this.#exactly = value;
+		return this;
+	}
+	/**
+	 * @method global
+	 * @description Whether a global regular expression.
+	 * @param {boolean} [value]
+	 * @returns {this}
+	 */
+	global(value?: boolean): this {
+		if (typeof value !== "boolean" && typeof value !== "undefined") {
+			throw new TypeError(`Filter argument \`global\` must be type of string or undefined!`);
+		}
+		this.#global = value;
+		return this;
+	}
+	/**
+	 * @method ignoreCase
+	 * @description Whether a case insensitive regular expression.
+	 * @param {boolean} [value]
+	 * @returns {this}
+	 */
+	ignoreCase(value?: boolean): this {
+		if (typeof value !== "boolean" && typeof value !== "undefined") {
+			throw new TypeError(`Filter argument \`ignoreCase\` must be type of string or undefined!`);
+		}
+		this.#ignoreCase = value;
+		return this;
+	}
+	/**
+	 * @method multipleLine
+	 * @description Whether a multiple line regular expression.
+	 * @param {boolean} [value]
+	 * @returns {this}
+	 */
+	multipleLine(value?: boolean): this {
+		if (typeof value !== "boolean" && typeof value !== "undefined") {
+			throw new TypeError(`Filter argument \`multipleLine\` must be type of string or undefined!`);
+		}
+		this.#multipleLine = value;
+		return this;
+	}
+	/**
+	 * @method sticky
+	 * @description Whether a sticky regular expression.
+	 * @param {boolean} [value]
+	 * @returns {this}
+	 */
+	sticky(value?: boolean): this {
+		if (typeof value !== "boolean" && typeof value !== "undefined") {
+			throw new TypeError(`Filter argument \`sticky\` must be type of string or undefined!`);
+		}
+		this.#sticky = value;
+		return this;
+	}
+	/**
+	 * @method unicode
+	 * @description Whether an unicode regular expression.
+	 * @param {boolean} [value]
+	 * @returns {this}
+	 */
+	unicode(value?: boolean): this {
+		if (typeof value !== "boolean" && typeof value !== "undefined") {
+			throw new TypeError(`Filter argument \`unicode\` must be type of string or undefined!`);
+		}
+		this.#unicode = value;
+		return this;
+	}
+	/** @alias exactly */exact = this.exactly;
+	/** @alias ignoreCase */caseInsensitive = this.ignoreCase;
+	/** @alias multipleLine */multiline = this.multipleLine;
+	/** @alias multipleLine */multiLine = this.multipleLine;
 	/**
 	 * @method test
 	 * @description Determine item with the configured filter of type of regular expression.
@@ -167,5 +265,8 @@ export {
 	RegularExpressionItemFilter as RegExpItemFilter,
 	type RegularExpressionItemFilterOptions,
 	type RegularExpressionItemFilterOptions as RegExItemFilterOptions,
-	type RegularExpressionItemFilterOptions as RegExpItemFilterOptions
+	type RegularExpressionItemFilterOptions as RegExpItemFilterOptions,
+	type RegularExpressionItemFilterOptionsBase,
+	type RegularExpressionItemFilterOptionsBase as RegExItemFilterOptionsBase,
+	type RegularExpressionItemFilterOptionsBase as RegExpItemFilterOptionsBase
 };

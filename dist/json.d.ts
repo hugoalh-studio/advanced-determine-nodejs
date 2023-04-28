@@ -1,4 +1,31 @@
-interface JSONItemFilterOptions {
+import { type JSONRootTypeEnumKeysType, type JSONRootTypeEnumValuesType } from "./internal/enum.js";
+interface JSONItemFilterOptionsBase {
+    /**
+     * @property entriesCountMaximum
+     * @description Maximum entries count of the JSON.
+     * @default Infinity
+     */
+    entriesCountMaximum: number;
+    /**
+     * @property entriesCountMinimum
+     * @description Minimum entries count of the JSON.
+     * @default 1
+     */
+    entriesCountMinimum: number;
+    /**
+     * @property keysPattern
+     * @description Whether a pattern matchable JSON keys.
+     * @default undefined
+     */
+    keysPattern?: RegExp;
+    /**
+     * @property rootType
+     * @description Root type of the JSON.
+     * @default "any"
+     */
+    rootType: JSONRootTypeEnumValuesType;
+}
+interface JSONItemFilterOptions extends Partial<Omit<JSONItemFilterOptionsBase, "rootType">> {
     /**
      * @property allowEmpty
      * @description Whether to allow an empty JSON.
@@ -6,35 +33,23 @@ interface JSONItemFilterOptions {
      */
     allowEmpty?: boolean;
     /**
-     * @property arrayRoot
-     * @description Whether type of array as the root of the JSON.
-     * @default undefined
-     */
-    arrayRoot?: boolean;
-    /**
      * @property entriesCount
-     * @description Entries of the JSON.
+     * @description Entries count of the JSON.
      * @default undefined
      */
     entriesCount?: number;
-    /**
-     * @property entriesCountMaximum
-     * @description Maximum entries of the JSON.
-     * @default Infinity
-     */
-    entriesCountMaximum?: number;
-    /**
-     * @property entriesCountMinimum
-     * @description Minimum entries of the JSON.
-     * @default 1
-     */
-    entriesCountMinimum?: number;
     /**
      * @property keysPattern
      * @description Whether a pattern matchable JSON keys.
      * @default undefined
      */
     keysPattern?: RegExp;
+    /**
+     * @property rootType
+     * @description Root type of the JSON.
+     * @default "any"
+     */
+    rootType?: JSONRootTypeEnumKeysType;
     /**
      * @property strict
      * @description Whether to determine type of array not as the root of the JSON, and no illegal namespace characters in the JSON keys.
@@ -47,18 +62,45 @@ interface JSONItemFilterOptions {
      * @default false
      */
     strictKeys?: boolean;
-    /** @alias entriesCount */ entries?: number;
     /** @alias entriesCountMaximum */ entriesCountMax?: number;
-    /** @alias entriesCountMaximum */ entriesMax?: number;
-    /** @alias entriesCountMaximum */ entriesMaximum?: number;
     /** @alias entriesCountMaximum */ maxEntries?: number;
     /** @alias entriesCountMaximum */ maximumEntries?: number;
     /** @alias entriesCountMinimum */ entriesCountMin?: number;
-    /** @alias entriesCountMinimum */ entriesMin?: number;
-    /** @alias entriesCountMinimum */ entriesMinimum?: number;
     /** @alias entriesCountMinimum */ minEntries?: number;
     /** @alias entriesCountMinimum */ minimumEntries?: number;
     /** @alias strictKeys */ keysStrict?: boolean;
+    /**
+     * @property arrayRoot
+     * @description Whether type of array as the root of the JSON.
+     * @default undefined
+     * @deprecated Replaced by property `rootType`.
+     */
+    arrayRoot?: boolean;
+    /**
+     * @alias entries
+     * @deprecated Replaced by property `entriesCount`.
+     */
+    entries?: number;
+    /**
+     * @alias entriesMax
+     * @deprecated Replaced by property `entriesCountMaximum`.
+     */
+    entriesMax?: number;
+    /**
+     * @alias entriesMax
+     * @deprecated Replaced by property `entriesCountMaximum`.
+     */
+    entriesMaximum?: number;
+    /**
+     * @alias entriesMin
+     * @deprecated Replaced by property `entriesCountMinimum`.
+     */
+    entriesMin?: number;
+    /**
+     * @alias entriesMin
+     * @deprecated Replaced by property `entriesCountMinimum`.
+     */
+    entriesMinimum?: number;
 }
 /**
  * @class JSONItemFilter
@@ -69,9 +111,84 @@ declare class JSONItemFilter {
     /**
      * @constructor
      * @description Initialize the filter of type of JSON to determine item.
-     * @param {JSONItemFilterOptions} [options={}] Options.
+     * @param {JSONItemFilter | JSONItemFilterOptions} [options] Options.
      */
-    constructor(options?: JSONItemFilterOptions);
+    constructor(options?: JSONItemFilter | JSONItemFilterOptions);
+    /**
+     * @method clone
+     * @description Clone this filter for reuse.
+     * @returns {JSONItemFilter}
+     */
+    get clone(): JSONItemFilter;
+    /**
+     * @method status
+     * @description Status of this filter.
+     * @returns {JSONItemFilterOptionsBase}
+     */
+    get status(): JSONItemFilterOptionsBase;
+    /**
+     * @method allowEmpty
+     * @description Whether to allow an empty JSON.
+     * @param {boolean} [value=true]
+     * @returns {this}
+     */
+    allowEmpty(value?: boolean): this;
+    /**
+     * @method entriesCount
+     * @description Entries count of the JSON.
+     * @param {number} value
+     * @returns {this}
+     */
+    entriesCount(value: number): this;
+    /**
+     * @method entriesCountMaximum
+     * @description Maximum entries count of the JSON.
+     * @param {number} value
+     * @returns {this}
+     */
+    entriesCountMaximum(value: number): this;
+    /**
+     * @method entriesCountMinimum
+     * @description Minimum entries count of the JSON.
+     * @param {number} value
+     * @returns {this}
+     */
+    entriesCountMinimum(value: number): this;
+    /**
+     * @method keysPattern
+     * @description Whether a pattern matchable JSON keys.
+     * @param {RegExp} [value]
+     * @returns {this}
+     */
+    keysPattern(value?: RegExp): this;
+    /**
+     * @method rootType
+     * @description Root type of the JSON.
+     * @param {JSONRootTypeEnumKeysType} value
+     * @returns {this}
+     */
+    rootType(value: JSONRootTypeEnumKeysType): this;
+    /**
+     * @method strict
+     * @description Whether to determine type of array not as the root of the JSON, and no illegal namespace characters in the JSON keys.
+     * @param {boolean} [value=true]
+     * @returns {this}
+     */
+    strict(value?: boolean): this;
+    /**
+     * @method strictKeys
+     * @description Whether to determine no illegal namespace characters in the JSON keys.
+     * @param {boolean} [value=true]
+     * @returns {this}
+     */
+    strictKeys(value?: boolean): this;
+    /** @alias entriesCountMaximum */ entriesCountMax: (value: number) => this;
+    /** @alias entriesCountMaximum */ maxEntries: (value: number) => this;
+    /** @alias entriesCountMaximum */ maximumEntries: (value: number) => this;
+    /** @alias entriesCountMinimum */ entriesCountMin: (value: number) => this;
+    /** @alias entriesCountMinimum */ minEntries: (value: number) => this;
+    /** @alias entriesCountMinimum */ minimumEntries: (value: number) => this;
+    /** @alias strictKeys */ keysStrict: (value?: boolean) => this;
     /**
      * @method test
      * @description Determine item with the configured filter of type of JSON.
@@ -99,7 +216,7 @@ declare class JSONItemFilter {
     static test(item: unknown, options?: JSONItemFilterOptions): boolean;
     /**
      * @static testStringify
-     * @description Determine item with the filter of type of JSON.
+     * @description Determine item with the filter of type of stringify JSON.
      * @param {unknown} item Item that need to determine.
      * @param {JSONItemFilterOptions} [options={}] Options.
      * @returns {boolean} Determine result.
@@ -125,5 +242,5 @@ declare function isJSON(item: unknown, options?: JSONItemFilterOptions): boolean
  * @returns {boolean} Determine result.
  */
 declare function isStringifyJSON(item: unknown, options?: JSONItemFilterOptions): boolean;
-export { isJSON, isStringifyJSON, isStringifyJSON as isJSONStringified, isStringifyJSON as isJSONStringify, isStringifyJSON as isStringifiedJSON, JSONItemFilter, type JSONItemFilterOptions };
+export { isJSON, isStringifyJSON, isStringifyJSON as isJSONStringified, isStringifyJSON as isJSONStringify, isStringifyJSON as isStringifiedJSON, JSONItemFilter, type JSONItemFilterOptions, type JSONItemFilterOptionsBase };
 //# sourceMappingURL=json.d.ts.map

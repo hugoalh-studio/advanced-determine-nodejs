@@ -1,13 +1,13 @@
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
 var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
     if (kind === "m") throw new TypeError("Private method is not writable");
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
-};
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
 var _MapItemFilter_sizeMaximum, _MapItemFilter_sizeMinimum;
 /**
@@ -18,45 +18,111 @@ class MapItemFilter {
     /**
      * @constructor
      * @description Initialize the filter of type of map to determine item.
-     * @param {MapItemFilterOptions} [options={}] Options.
+     * @param {MapItemFilter | MapItemFilterOptions} [options] Options.
      */
-    constructor(options = {}) {
-        _MapItemFilter_sizeMaximum.set(this, void 0);
-        _MapItemFilter_sizeMinimum.set(this, void 0);
-        let { allowEmpty = false, size, sizeMaximum, sizeMinimum, ...aliases } = options;
-        sizeMaximum ?? (sizeMaximum = aliases.sizeMax ?? aliases.maximumSize ?? aliases.maxSize ?? Infinity);
-        sizeMinimum ?? (sizeMinimum = aliases.sizeMin ?? aliases.minimumSize ?? aliases.minSize ?? 1);
-        if (typeof allowEmpty !== "boolean") {
-            throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
+    constructor(options) {
+        _MapItemFilter_sizeMaximum.set(this, Infinity);
+        _MapItemFilter_sizeMinimum.set(this, 1);
+        /** @alias sizeMaximum */ this.sizeMax = this.sizeMaximum;
+        /** @alias sizeMaximum */ this.maximumSize = this.sizeMaximum;
+        /** @alias sizeMaximum */ this.maxSize = this.sizeMaximum;
+        /** @alias sizeMinimum */ this.sizeMin = this.sizeMinimum;
+        /** @alias sizeMinimum */ this.minimumSize = this.sizeMinimum;
+        /** @alias sizeMinimum */ this.minSize = this.sizeMinimum;
+        if (options instanceof MapItemFilter) {
+            __classPrivateFieldSet(this, _MapItemFilter_sizeMaximum, __classPrivateFieldGet(options, _MapItemFilter_sizeMaximum, "f"), "f");
+            __classPrivateFieldSet(this, _MapItemFilter_sizeMinimum, __classPrivateFieldGet(options, _MapItemFilter_sizeMinimum, "f"), "f");
         }
-        if (typeof size === "number" && !Number.isNaN(size)) {
-            if (!(Number.isSafeInteger(size) && size >= 0)) {
-                throw new RangeError(`Filter argument \`size\` must be a number which is integer, positive, and safe!`);
+        else if (typeof options !== "undefined") {
+            options.sizeMaximum ?? (options.sizeMaximum = options.sizeMax ?? options.maximumSize ?? options.maxSize);
+            options.sizeMinimum ?? (options.sizeMinimum = options.sizeMin ?? options.minimumSize ?? options.minSize);
+            for (let option of ["sizeMaximum", "sizeMinimum", "allowEmpty", "size"]) {
+                if (typeof options[option] !== "undefined") {
+                    this[option](options[option]);
+                }
             }
         }
-        else if (typeof size !== "undefined") {
-            throw new TypeError(`Filter argument \`size\` must be type of number or undefined!`);
+    }
+    /**
+     * @method clone
+     * @description Clone this filter for reuse.
+     * @returns {MapItemFilter}
+     */
+    get clone() {
+        return new MapItemFilter(this);
+    }
+    /**
+     * @method status
+     * @description Status of this filter.
+     * @returns {MapItemFilterOptionsBase}
+     */
+    get status() {
+        return {
+            sizeMaximum: __classPrivateFieldGet(this, _MapItemFilter_sizeMaximum, "f"),
+            sizeMinimum: __classPrivateFieldGet(this, _MapItemFilter_sizeMinimum, "f")
+        };
+    }
+    /**
+     * @method allowEmpty
+     * @description Whether to allow an empty map.
+     * @param {boolean} [value=true]
+     * @returns {this}
+     */
+    allowEmpty(value = true) {
+        if (typeof value !== "boolean") {
+            throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
         }
-        if (!(typeof sizeMaximum === "number" && !Number.isNaN(sizeMaximum))) {
+        __classPrivateFieldSet(this, _MapItemFilter_sizeMinimum, value ? 0 : 1, "f");
+        return this;
+    }
+    /**
+     * @method size
+     * @description Size of the map.
+     * @param {number} value
+     * @returns {this}
+     */
+    size(value) {
+        if (!(typeof value === "number" && !Number.isNaN(value))) {
+            throw new TypeError(`Filter argument \`size\` must be type of number!`);
+        }
+        if (!(Number.isSafeInteger(value) && value >= 0)) {
+            throw new RangeError(`Filter argument \`size\` must be a number which is integer, positive, and safe!`);
+        }
+        __classPrivateFieldSet(this, _MapItemFilter_sizeMaximum, value, "f");
+        __classPrivateFieldSet(this, _MapItemFilter_sizeMinimum, value, "f");
+        return this;
+    }
+    /**
+     * @method sizeMaximum
+     * @description Maximum size of the map.
+     * @param {number} value
+     * @returns {this}
+     */
+    sizeMaximum(value) {
+        if (!(typeof value === "number" && !Number.isNaN(value))) {
             throw new TypeError(`Filter argument \`sizeMaximum\` must be type of number!`);
         }
-        if (sizeMaximum !== Infinity && !(Number.isSafeInteger(sizeMaximum) && sizeMaximum >= 0)) {
-            throw new RangeError(`Filter argument \`sizeMaximum\` must be \`Infinity\`, or a number which is integer, positive, and safe!`);
+        if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= __classPrivateFieldGet(this, _MapItemFilter_sizeMinimum, "f"))) {
+            throw new RangeError(`Filter argument \`sizeMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _MapItemFilter_sizeMinimum, "f")}!`);
         }
-        if (!(typeof sizeMinimum === "number" && !Number.isNaN(sizeMinimum))) {
+        __classPrivateFieldSet(this, _MapItemFilter_sizeMaximum, value, "f");
+        return this;
+    }
+    /**
+     * @method sizeMinimum
+     * @description Minimum size of the map.
+     * @param {number} value
+     * @returns {this}
+     */
+    sizeMinimum(value) {
+        if (!(typeof value === "number" && !Number.isNaN(value))) {
             throw new TypeError(`Filter argument \`sizeMinimum\` must be type of number!`);
         }
-        if (!(Number.isSafeInteger(sizeMinimum) && sizeMinimum >= 0 && sizeMinimum <= sizeMaximum)) {
-            throw new RangeError(`Filter argument \`sizeMinimum\` must be a number which is integer, positive, safe, and <= ${sizeMaximum}!`);
+        if (!(Number.isSafeInteger(value) && value >= 0 && value <= __classPrivateFieldGet(this, _MapItemFilter_sizeMaximum, "f"))) {
+            throw new RangeError(`Filter argument \`sizeMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _MapItemFilter_sizeMaximum, "f")}!`);
         }
-        if (typeof size === "number") {
-            __classPrivateFieldSet(this, _MapItemFilter_sizeMaximum, size, "f");
-            __classPrivateFieldSet(this, _MapItemFilter_sizeMinimum, size, "f");
-        }
-        else {
-            __classPrivateFieldSet(this, _MapItemFilter_sizeMaximum, sizeMaximum, "f");
-            __classPrivateFieldSet(this, _MapItemFilter_sizeMinimum, allowEmpty ? 0 : sizeMinimum, "f");
-        }
+        __classPrivateFieldSet(this, _MapItemFilter_sizeMinimum, value, "f");
+        return this;
     }
     /**
      * @method test

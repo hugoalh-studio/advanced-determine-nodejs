@@ -1,4 +1,4 @@
-interface RegularExpressionItemFilterOptions {
+interface RegularExpressionItemFilterOptionsBase {
     /**
      * @property dotAll
      * @description Whether a dot-all regular expression.
@@ -41,6 +41,8 @@ interface RegularExpressionItemFilterOptions {
      * @default undefined
      */
     unicode?: boolean;
+}
+interface RegularExpressionItemFilterOptions extends Partial<RegularExpressionItemFilterOptionsBase> {
     /** @alias exactly */ exact?: boolean;
     /** @alias ignoreCase */ caseInsensitive?: boolean;
     /** @alias multipleLine */ multiline?: boolean;
@@ -55,9 +57,74 @@ declare class RegularExpressionItemFilter {
     /**
      * @constructor
      * @description Initialize the filter of type of regular expression to determine item.
-     * @param {RegularExpressionItemFilterOptions} [options={}] Options.
+     * @param {RegularExpressionItemFilter | RegularExpressionItemFilterOptions} [options] Options.
      */
-    constructor(options?: RegularExpressionItemFilterOptions);
+    constructor(options?: RegularExpressionItemFilter | RegularExpressionItemFilterOptions);
+    /**
+     * @method clone
+     * @description Clone this filter for reuse.
+     * @returns {RegularExpressionItemFilter}
+     */
+    get clone(): RegularExpressionItemFilter;
+    /**
+     * @method status
+     * @description Status of this filter.
+     * @returns {RegularExpressionItemFilterOptionsBase}
+     */
+    get status(): RegularExpressionItemFilterOptionsBase;
+    /**
+     * @method dotAll
+     * @description Whether a dot-all regular expression.
+     * @param {boolean} [value]
+     * @returns {this}
+     */
+    dotAll(value?: boolean): this;
+    /**
+     * @method exactly
+     * @description Whether an exactly regular expression.
+     * @param {boolean} [value]
+     * @returns {this}
+     */
+    exactly(value?: boolean): this;
+    /**
+     * @method global
+     * @description Whether a global regular expression.
+     * @param {boolean} [value]
+     * @returns {this}
+     */
+    global(value?: boolean): this;
+    /**
+     * @method ignoreCase
+     * @description Whether a case insensitive regular expression.
+     * @param {boolean} [value]
+     * @returns {this}
+     */
+    ignoreCase(value?: boolean): this;
+    /**
+     * @method multipleLine
+     * @description Whether a multiple line regular expression.
+     * @param {boolean} [value]
+     * @returns {this}
+     */
+    multipleLine(value?: boolean): this;
+    /**
+     * @method sticky
+     * @description Whether a sticky regular expression.
+     * @param {boolean} [value]
+     * @returns {this}
+     */
+    sticky(value?: boolean): this;
+    /**
+     * @method unicode
+     * @description Whether an unicode regular expression.
+     * @param {boolean} [value]
+     * @returns {this}
+     */
+    unicode(value?: boolean): this;
+    /** @alias exactly */ exact: (value?: boolean) => this;
+    /** @alias ignoreCase */ caseInsensitive: (value?: boolean) => this;
+    /** @alias multipleLine */ multiline: (value?: boolean) => this;
+    /** @alias multipleLine */ multiLine: (value?: boolean) => this;
     /**
      * @method test
      * @description Determine item with the configured filter of type of regular expression.
@@ -82,5 +149,5 @@ declare class RegularExpressionItemFilter {
  * @returns {boolean} Determine result.
  */
 declare function isRegularExpression(item: unknown, options?: RegularExpressionItemFilterOptions): boolean;
-export { isRegularExpression, isRegularExpression as isRegEx, isRegularExpression as isRegExp, RegularExpressionItemFilter, RegularExpressionItemFilter as RegExItemFilter, RegularExpressionItemFilter as RegExpItemFilter, type RegularExpressionItemFilterOptions, type RegularExpressionItemFilterOptions as RegExItemFilterOptions, type RegularExpressionItemFilterOptions as RegExpItemFilterOptions };
+export { isRegularExpression, isRegularExpression as isRegEx, isRegularExpression as isRegExp, RegularExpressionItemFilter, RegularExpressionItemFilter as RegExItemFilter, RegularExpressionItemFilter as RegExpItemFilter, type RegularExpressionItemFilterOptions, type RegularExpressionItemFilterOptions as RegExItemFilterOptions, type RegularExpressionItemFilterOptions as RegExpItemFilterOptions, type RegularExpressionItemFilterOptionsBase, type RegularExpressionItemFilterOptionsBase as RegExItemFilterOptionsBase, type RegularExpressionItemFilterOptionsBase as RegExpItemFilterOptionsBase };
 //# sourceMappingURL=regular-expression.d.ts.map

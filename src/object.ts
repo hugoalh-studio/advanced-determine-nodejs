@@ -1,22 +1,24 @@
-interface ObjectItemFilterOptions {
+interface ObjectItemFilterOptionsBase {
 	/**
 	 * @property allowArray
 	 * @description Whether to allow `Array` object.
 	 * @default false
 	 */
-	allowArray?: boolean;
+	allowArray: boolean;
 	/**
 	 * @property allowNull
 	 * @description Whether to allow `null` object.
 	 * @default false
 	 */
-	allowNull?: boolean;
+	allowNull: boolean;
 	/**
 	 * @property allowRegExp
 	 * @description Whether to allow `RegExp` object.
 	 * @default false
 	 */
-	allowRegExp?: boolean;
+	allowRegExp: boolean;
+}
+interface ObjectItemFilterOptions extends Partial<ObjectItemFilterOptionsBase> {
 	/** @alias allowRegExp */allowRegularExpression?: boolean;
 }
 /**
@@ -24,35 +26,88 @@ interface ObjectItemFilterOptions {
  * @description Determine item with the filter of type of object.
  */
 class ObjectItemFilter {
-	#allowArray: boolean;
-	#allowNull: boolean;
-	#allowRegExp: boolean;
+	#allowArray = false;
+	#allowNull = false;
+	#allowRegExp = false;
 	/**
 	 * @constructor
 	 * @description Initialize the filter of type of object to determine item.
-	 * @param {ObjectItemFilterOptions} [options={}] Options.
+	 * @param {ObjectItemFilter | ObjectItemFilterOptions} [options] Options.
 	 */
-	constructor(options: ObjectItemFilterOptions = {}) {
-		let {
-			allowArray = false,
-			allowNull = false,
-			allowRegExp,
-			...aliases
-		} = options;
-		allowRegExp ??= aliases.allowRegularExpression ?? false;
-		if (typeof allowArray !== "boolean") {
+	constructor(options?: ObjectItemFilter | ObjectItemFilterOptions) {
+		if (options instanceof ObjectItemFilter) {
+			this.#allowArray = options.#allowArray;
+			this.#allowNull = options.#allowNull;
+			this.#allowRegExp = options.#allowRegExp;
+		} else if (typeof options !== "undefined") {
+			options.allowRegExp ??= options.allowRegularExpression;
+			for (let option of ["allowArray", "allowNull", "allowRegExp"]) {
+				if (typeof options[option] !== "undefined") {
+					this[option](options[option]);
+				}
+			}
+		}
+	}
+	/**
+	 * @method clone
+	 * @description Clone this filter for reuse.
+	 * @returns {ObjectItemFilter}
+	 */
+	get clone(): ObjectItemFilter {
+		return new ObjectItemFilter(this);
+	}
+	/**
+	 * @method status
+	 * @description Status of this filter.
+	 * @returns {ObjectItemFilterOptionsBase}
+	 */
+	get status(): ObjectItemFilterOptionsBase {
+		return {
+			allowArray: this.#allowArray,
+			allowNull: this.#allowNull,
+			allowRegExp: this.#allowRegExp
+		};
+	}
+	/**
+	 * @method allowArray
+	 * @description Whether to allow `Array` object.
+	 * @param {boolean} [value=true]
+	 * @returns {this}
+	 */
+	allowArray(value = true): this {
+		if (typeof value !== "boolean") {
 			throw new TypeError(`Filter argument \`allowArray\` must be type of boolean!`);
 		}
-		if (typeof allowNull !== "boolean") {
+		this.#allowArray = value;
+		return this;
+	}
+	/**
+	 * @method allowNull
+	 * @description Whether to allow `null` object.
+	 * @param {boolean} [value=true]
+	 * @returns {this}
+	 */
+	allowNull(value = true): this {
+		if (typeof value !== "boolean") {
 			throw new TypeError(`Filter argument \`allowNull\` must be type of boolean!`);
 		}
-		if (typeof allowRegExp !== "boolean") {
+		this.#allowNull = value;
+		return this;
+	}
+	/**
+	 * @method allowRegExp
+	 * @description Whether to allow `RegExp` object.
+	 * @param {boolean} [value=true]
+	 * @returns {this}
+	 */
+	allowRegExp(value = true): this {
+		if (typeof value !== "boolean") {
 			throw new TypeError(`Filter argument \`allowRegExp\` must be type of boolean!`);
 		}
-		this.#allowArray = allowArray;
-		this.#allowNull = allowNull;
-		this.#allowRegExp = allowRegExp;
+		this.#allowRegExp = value;
+		return this;
 	}
+	/** @alias allowRegExp */allowRegularExpression = this.allowRegExp;
 	/**
 	 * @method test
 	 * @param {unknown} item Item that need to determine.
@@ -93,5 +148,6 @@ function isObject(item: unknown, options: ObjectItemFilterOptions = {}): boolean
 export {
 	isObject,
 	ObjectItemFilter,
-	type ObjectItemFilterOptions
+	type ObjectItemFilterOptions,
+	type ObjectItemFilterOptionsBase
 };

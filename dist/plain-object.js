@@ -1,13 +1,13 @@
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
 var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
     if (kind === "m") throw new TypeError("Private method is not writable");
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
-};
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
 var _PlainObjectItemFilter_entriesConfigurable, _PlainObjectItemFilter_entriesCountMaximum, _PlainObjectItemFilter_entriesCountMinimum, _PlainObjectItemFilter_entriesEnumerable, _PlainObjectItemFilter_entriesGetter, _PlainObjectItemFilter_entriesSetter, _PlainObjectItemFilter_entriesWritable, _PlainObjectItemFilter_keysSymbol;
 import { ObjectMeta } from "./internal/object-meta.js";
@@ -22,80 +22,232 @@ class PlainObjectItemFilter {
     /**
      * @constructor
      * @description Initialize the filter of type of plain object to determine item.
-     * @param {PlainObjectItemFilterOptions} [options={}] Options.
+     * @param {PlainObjectItemFilter | PlainObjectItemFilterOptions} [options] Options.
     */
-    constructor(options = {}) {
+    constructor(options) {
         _PlainObjectItemFilter_entriesConfigurable.set(this, void 0);
-        _PlainObjectItemFilter_entriesCountMaximum.set(this, void 0);
-        _PlainObjectItemFilter_entriesCountMinimum.set(this, void 0);
+        _PlainObjectItemFilter_entriesCountMaximum.set(this, Infinity);
+        _PlainObjectItemFilter_entriesCountMinimum.set(this, 1);
         _PlainObjectItemFilter_entriesEnumerable.set(this, void 0);
         _PlainObjectItemFilter_entriesGetter.set(this, void 0);
         _PlainObjectItemFilter_entriesSetter.set(this, void 0);
         _PlainObjectItemFilter_entriesWritable.set(this, void 0);
         _PlainObjectItemFilter_keysSymbol.set(this, void 0);
-        let { allowEmpty = false, entriesConfigurable, entriesCount, entriesCountMaximum, entriesCountMinimum, entriesEnumerable, entriesGetter, entriesSetter, entriesWritable, keysSymbol, strict = false, ...aliases } = options;
-        entriesConfigurable ?? (entriesConfigurable = aliases.configurableEntries);
-        entriesCount ?? (entriesCount = aliases.entries);
-        entriesCountMaximum ?? (entriesCountMaximum = aliases.entriesMaximum ?? aliases.entriesCountMax ?? aliases.entriesMax ?? aliases.maximumEntries ?? aliases.maxEntries ?? Infinity);
-        entriesCountMinimum ?? (entriesCountMinimum = aliases.entriesMinimum ?? aliases.entriesCountMin ?? aliases.entriesMin ?? aliases.minimumEntries ?? aliases.minEntries ?? 1);
-        entriesEnumerable ?? (entriesEnumerable = aliases.enumerableEntries);
-        entriesGetter ?? (entriesGetter = aliases.getterEntries);
-        entriesSetter ?? (entriesSetter = aliases.setterEntries);
-        entriesWritable ?? (entriesWritable = aliases.writableEntries);
-        keysSymbol ?? (keysSymbol = aliases.symbolKeys);
-        if (typeof allowEmpty !== "boolean") {
-            throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
+        /** @alias entriesConfigurable */ this.configurableEntries = this.entriesConfigurable;
+        /** @alias entriesCountMaximum */ this.entriesCountMax = this.entriesCountMaximum;
+        /** @alias entriesCountMaximum */ this.maximumEntries = this.entriesCountMaximum;
+        /** @alias entriesCountMaximum */ this.maxEntries = this.entriesCountMaximum;
+        /** @alias entriesCountMinimum */ this.entriesCountMin = this.entriesCountMinimum;
+        /** @alias entriesCountMinimum */ this.minimumEntries = this.entriesCountMinimum;
+        /** @alias entriesCountMinimum */ this.minEntries = this.entriesCountMinimum;
+        /** @alias entriesEnumerable */ this.enumerableEntries = this.entriesEnumerable;
+        /** @alias entriesGetter */ this.getterEntries = this.entriesGetter;
+        /** @alias entriesSetter */ this.setterEntries = this.entriesSetter;
+        /** @alias entriesWritable */ this.writableEntries = this.entriesWritable;
+        /** @alias keysSymbol */ this.symbolKeys = this.keysSymbol;
+        if (options instanceof PlainObjectItemFilter) {
+            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesConfigurable, __classPrivateFieldGet(options, _PlainObjectItemFilter_entriesConfigurable, "f"), "f");
+            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesCountMaximum, __classPrivateFieldGet(options, _PlainObjectItemFilter_entriesCountMaximum, "f"), "f");
+            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesCountMinimum, __classPrivateFieldGet(options, _PlainObjectItemFilter_entriesCountMinimum, "f"), "f");
+            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesEnumerable, __classPrivateFieldGet(options, _PlainObjectItemFilter_entriesEnumerable, "f"), "f");
+            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesGetter, __classPrivateFieldGet(options, _PlainObjectItemFilter_entriesGetter, "f"), "f");
+            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesSetter, __classPrivateFieldGet(options, _PlainObjectItemFilter_entriesSetter, "f"), "f");
+            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesWritable, __classPrivateFieldGet(options, _PlainObjectItemFilter_entriesWritable, "f"), "f");
+            __classPrivateFieldSet(this, _PlainObjectItemFilter_keysSymbol, __classPrivateFieldGet(options, _PlainObjectItemFilter_keysSymbol, "f"), "f");
         }
-        if (typeof entriesConfigurable !== "boolean" && typeof entriesConfigurable !== "undefined") {
-            throw new TypeError(`Filter argument \`entriesConfigurable\` must be type of boolean or undefined!`);
-        }
-        if (typeof entriesCount === "number" && !Number.isNaN(entriesCount)) {
-            if (!(Number.isSafeInteger(entriesCount) && entriesCount >= 0)) {
-                throw new RangeError(`Filter argument \`entriesCount\` must be a number which is integer, positive, and safe!`);
+        else if (typeof options !== "undefined") {
+            options.entriesConfigurable ?? (options.entriesConfigurable = options.configurableEntries);
+            options.entriesCount ?? (options.entriesCount = options.entries);
+            options.entriesCountMaximum ?? (options.entriesCountMaximum = options.entriesCountMax ?? options.entriesMaximum ?? options.entriesMax ?? options.maximumEntries ?? options.maxEntries);
+            options.entriesCountMinimum ?? (options.entriesCountMinimum = options.entriesCountMin ?? options.entriesMinimum ?? options.entriesMin ?? options.minimumEntries ?? options.minEntries);
+            options.entriesEnumerable ?? (options.entriesEnumerable = options.enumerableEntries);
+            options.entriesGetter ?? (options.entriesGetter = options.getterEntries);
+            options.entriesSetter ?? (options.entriesSetter = options.setterEntries);
+            options.entriesWritable ?? (options.entriesWritable = options.writableEntries);
+            options.keysSymbol ?? (options.keysSymbol = options.symbolKeys);
+            for (let option of ["entriesConfigurable", "entriesCountMaximum", "entriesCountMinimum", "entriesEnumerable", "entriesGetter", "entriesSetter", "entriesWritable", "keysSymbol", "allowEmpty", "entriesCount", "strict"]) {
+                if (typeof options[option] !== "undefined") {
+                    this[option](options[option]);
+                }
             }
         }
-        else if (typeof entriesCount !== "undefined") {
-            throw new TypeError(`Filter argument \`entriesCount\` must be type of number or undefined!`);
+    }
+    /**
+     * @method clone
+     * @description Clone this filter for reuse.
+     * @returns {PlainObjectItemFilter}
+     */
+    get clone() {
+        return new PlainObjectItemFilter(this);
+    }
+    /**
+     * @method status
+     * @description Status of this filter.
+     * @returns {PlainObjectItemFilterOptionsBase}
+     */
+    get status() {
+        return {
+            entriesConfigurable: __classPrivateFieldGet(this, _PlainObjectItemFilter_entriesConfigurable, "f"),
+            entriesCountMaximum: __classPrivateFieldGet(this, _PlainObjectItemFilter_entriesCountMaximum, "f"),
+            entriesCountMinimum: __classPrivateFieldGet(this, _PlainObjectItemFilter_entriesCountMinimum, "f"),
+            entriesEnumerable: __classPrivateFieldGet(this, _PlainObjectItemFilter_entriesEnumerable, "f"),
+            entriesGetter: __classPrivateFieldGet(this, _PlainObjectItemFilter_entriesGetter, "f"),
+            entriesSetter: __classPrivateFieldGet(this, _PlainObjectItemFilter_entriesSetter, "f"),
+            entriesWritable: __classPrivateFieldGet(this, _PlainObjectItemFilter_entriesWritable, "f"),
+            keysSymbol: __classPrivateFieldGet(this, _PlainObjectItemFilter_keysSymbol, "f")
+        };
+    }
+    /**
+     * @method allowEmpty
+     * @description Whether to allow an empty plain object.
+     * @param {boolean} [value=true]
+     * @returns {this}
+     */
+    allowEmpty(value = true) {
+        if (typeof value !== "boolean") {
+            throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
         }
-        if (!(typeof entriesCountMaximum === "number" && !Number.isNaN(entriesCountMaximum))) {
+        __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesCountMinimum, value ? 0 : 1, "f");
+        return this;
+    }
+    /**
+     * @method entriesConfigurable
+     * @description Whether contain configurable entries in the plain object.
+     * @param {boolean} [value]
+     * @returns {this}
+     */
+    entriesConfigurable(value) {
+        if (typeof value !== "boolean" && typeof value !== "undefined") {
+            throw new TypeError(`Filter argument \`entriesConfigurable\` must be type of boolean or undefined!`);
+        }
+        __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesConfigurable, value, "f");
+        return this;
+    }
+    /**
+     * @method entriesCount
+     * @description Entries count of the plain object.
+     * @param {number} value
+     * @returns {this}
+     */
+    entriesCount(value) {
+        if (!(typeof value === "number" && !Number.isNaN(value))) {
+            throw new TypeError(`Filter argument \`entriesCount\` must be type of number!`);
+        }
+        if (!(Number.isSafeInteger(value) && value >= 0)) {
+            throw new RangeError(`Filter argument \`entriesCount\` must be a number which is integer, positive, and safe!`);
+        }
+        __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesCountMaximum, value, "f");
+        __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesCountMinimum, value, "f");
+        return this;
+    }
+    /**
+     * @method entriesCountMaximum
+     * @description Maximum entries count of the plain object.
+     * @param {number} value
+     * @returns {this}
+     */
+    entriesCountMaximum(value) {
+        if (!(typeof value === "number" && !Number.isNaN(value))) {
             throw new TypeError(`Filter argument \`entriesCountMaximum\` must be type of number!`);
         }
-        if (entriesCountMaximum !== Infinity && !(Number.isSafeInteger(entriesCountMaximum) && entriesCountMaximum >= 0)) {
-            throw new RangeError(`Filter argument \`entriesCountMaximum\` must be \`Infinity\`, or a number which is integer, positive, and safe!`);
+        if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= __classPrivateFieldGet(this, _PlainObjectItemFilter_entriesCountMinimum, "f"))) {
+            throw new RangeError(`Filter argument \`entriesCountMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _PlainObjectItemFilter_entriesCountMinimum, "f")}!`);
         }
-        if (!(typeof entriesCountMinimum === "number" && !Number.isNaN(entriesCountMinimum))) {
+        __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesCountMaximum, value, "f");
+        return this;
+    }
+    /**
+     * @method entriesCountMinimum
+     * @description Minimum entries count of the plain object.
+     * @param {number} value
+     * @returns {this}
+     */
+    entriesCountMinimum(value) {
+        if (!(typeof value === "number" && !Number.isNaN(value))) {
             throw new TypeError(`Filter argument \`entriesCountMinimum\` must be type of number!`);
         }
-        if (!(Number.isSafeInteger(entriesCountMinimum) && entriesCountMinimum >= 0 && entriesCountMinimum <= entriesCountMaximum)) {
-            throw new RangeError(`Filter argument \`entriesCountMinimum\` must be a number which is integer, positive, safe, and <= ${entriesCountMaximum}!`);
+        if (!(Number.isSafeInteger(value) && value >= 0 && value <= __classPrivateFieldGet(this, _PlainObjectItemFilter_entriesCountMaximum, "f"))) {
+            throw new RangeError(`Filter argument \`entriesCountMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _PlainObjectItemFilter_entriesCountMaximum, "f")}!`);
         }
-        if (typeof entriesEnumerable !== "boolean" && typeof entriesEnumerable !== "undefined") {
+        __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesCountMinimum, value, "f");
+        return this;
+    }
+    /**
+     * @method entriesEnumerable
+     * @description Whether contain enumerable entries in the plain object.
+     * @param {boolean} [value]
+     * @returns {this}
+     */
+    entriesEnumerable(value) {
+        if (typeof value !== "boolean" && typeof value !== "undefined") {
             throw new TypeError(`Filter argument \`entriesEnumerable\` must be type of boolean or undefined!`);
         }
-        if (typeof entriesGetter !== "boolean" && typeof entriesGetter !== "undefined") {
+        __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesEnumerable, value, "f");
+        return this;
+    }
+    /**
+     * @method entriesGetter
+     * @description Whether contain getter entries in the plain object.
+     * @param {boolean} [value]
+     * @returns {this}
+     */
+    entriesGetter(value) {
+        if (typeof value !== "boolean" && typeof value !== "undefined") {
             throw new TypeError(`Filter argument \`entriesGetter\` must be type of boolean or undefined!`);
         }
-        if (typeof entriesSetter !== "boolean" && typeof entriesSetter !== "undefined") {
+        __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesGetter, value, "f");
+        return this;
+    }
+    /**
+     * @method entriesSetter
+     * @description Whether contain setter entries in the plain object.
+     * @param {boolean} [value]
+     * @returns {this}
+     */
+    entriesSetter(value) {
+        if (typeof value !== "boolean" && typeof value !== "undefined") {
             throw new TypeError(`Filter argument \`entriesSetter\` must be type of boolean or undefined!`);
         }
-        if (typeof entriesWritable !== "boolean" && typeof entriesWritable !== "undefined") {
+        __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesSetter, value, "f");
+        return this;
+    }
+    /**
+     * @method entriesWritable
+     * @description Whether contain writable entries in the plain object.
+     * @param {boolean} [value]
+     * @returns {this}
+     */
+    entriesWritable(value) {
+        if (typeof value !== "boolean" && typeof value !== "undefined") {
             throw new TypeError(`Filter argument \`entriesWritable\` must be type of boolean or undefined!`);
         }
-        if (typeof keysSymbol !== "boolean" && typeof keysSymbol !== "undefined") {
+        __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesWritable, value, "f");
+        return this;
+    }
+    /**
+     * @method keysSymbol
+     * @description Whether contain symbols in the plain object keys.
+     * @param {boolean} [value]
+     * @returns {this}
+     */
+    keysSymbol(value) {
+        if (typeof value !== "boolean" && typeof value !== "undefined") {
             throw new TypeError(`Filter argument \`keysSymbol\` must be type of boolean or undefined!`);
         }
-        if (typeof strict !== "boolean") {
+        __classPrivateFieldSet(this, _PlainObjectItemFilter_keysSymbol, value, "f");
+        return this;
+    }
+    /**
+     * @method strict
+     * @description Whether to determine no custom defined properties (i.e.: getters, setters, non-configurable, non-enumerable, and non-writable) in the plain object, and no symbols in the plain object keys.
+     * @param {boolean} [value=true]
+     * @returns {this}
+     */
+    strict(value = true) {
+        if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`strict\` must be type of boolean!`);
         }
-        if (typeof entriesCount === "number") {
-            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesCountMaximum, entriesCount, "f");
-            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesCountMinimum, entriesCount, "f");
-        }
-        else {
-            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesCountMaximum, entriesCountMaximum, "f");
-            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesCountMinimum, allowEmpty ? 0 : entriesCountMinimum, "f");
-        }
-        if (strict) {
+        if (value) {
             __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesConfigurable, true, "f");
             __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesEnumerable, true, "f");
             __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesGetter, false, "f");
@@ -104,13 +256,14 @@ class PlainObjectItemFilter {
             __classPrivateFieldSet(this, _PlainObjectItemFilter_keysSymbol, false, "f");
         }
         else {
-            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesConfigurable, entriesConfigurable, "f");
-            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesEnumerable, entriesEnumerable, "f");
-            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesGetter, entriesGetter, "f");
-            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesSetter, entriesSetter, "f");
-            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesWritable, entriesWritable, "f");
-            __classPrivateFieldSet(this, _PlainObjectItemFilter_keysSymbol, keysSymbol, "f");
+            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesConfigurable, undefined, "f");
+            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesEnumerable, undefined, "f");
+            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesGetter, undefined, "f");
+            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesSetter, undefined, "f");
+            __classPrivateFieldSet(this, _PlainObjectItemFilter_entriesWritable, undefined, "f");
+            __classPrivateFieldSet(this, _PlainObjectItemFilter_keysSymbol, undefined, "f");
         }
+        return this;
     }
     /**
      * @method test

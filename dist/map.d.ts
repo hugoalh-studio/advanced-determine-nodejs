@@ -1,4 +1,18 @@
-interface MapItemFilterOptions {
+interface MapItemFilterOptionsBase {
+    /**
+     * @property sizeMaximum
+     * @description Maximum size of the map.
+     * @default Infinity
+     */
+    sizeMaximum: number;
+    /**
+     * @property sizeMinimum
+     * @description Minimum size of the map.
+     * @default 1
+     */
+    sizeMinimum: number;
+}
+interface MapItemFilterOptions extends Partial<MapItemFilterOptionsBase> {
     /**
      * @property allowEmpty
      * @description Whether to allow an empty map.
@@ -11,18 +25,6 @@ interface MapItemFilterOptions {
      * @default undefined
      */
     size?: number;
-    /**
-     * @property sizeMaximum
-     * @description Maximum size of the map.
-     * @default Infinity
-     */
-    sizeMaximum?: number;
-    /**
-     * @property sizeMinimum
-     * @description Minimum size of the map.
-     * @default 1
-     */
-    sizeMinimum?: number;
     /** @alias sizeMaximum */ sizeMax?: number;
     /** @alias sizeMaximum */ maximumSize?: number;
     /** @alias sizeMaximum */ maxSize?: number;
@@ -39,9 +41,55 @@ declare class MapItemFilter {
     /**
      * @constructor
      * @description Initialize the filter of type of map to determine item.
-     * @param {MapItemFilterOptions} [options={}] Options.
+     * @param {MapItemFilter | MapItemFilterOptions} [options] Options.
      */
-    constructor(options?: MapItemFilterOptions);
+    constructor(options?: MapItemFilter | MapItemFilterOptions);
+    /**
+     * @method clone
+     * @description Clone this filter for reuse.
+     * @returns {MapItemFilter}
+     */
+    get clone(): MapItemFilter;
+    /**
+     * @method status
+     * @description Status of this filter.
+     * @returns {MapItemFilterOptionsBase}
+     */
+    get status(): MapItemFilterOptionsBase;
+    /**
+     * @method allowEmpty
+     * @description Whether to allow an empty map.
+     * @param {boolean} [value=true]
+     * @returns {this}
+     */
+    allowEmpty(value?: boolean): this;
+    /**
+     * @method size
+     * @description Size of the map.
+     * @param {number} value
+     * @returns {this}
+     */
+    size(value: number): this;
+    /**
+     * @method sizeMaximum
+     * @description Maximum size of the map.
+     * @param {number} value
+     * @returns {this}
+     */
+    sizeMaximum(value: number): this;
+    /**
+     * @method sizeMinimum
+     * @description Minimum size of the map.
+     * @param {number} value
+     * @returns {this}
+     */
+    sizeMinimum(value: number): this;
+    /** @alias sizeMaximum */ sizeMax: (value: number) => this;
+    /** @alias sizeMaximum */ maximumSize: (value: number) => this;
+    /** @alias sizeMaximum */ maxSize: (value: number) => this;
+    /** @alias sizeMinimum */ sizeMin: (value: number) => this;
+    /** @alias sizeMinimum */ minimumSize: (value: number) => this;
+    /** @alias sizeMinimum */ minSize: (value: number) => this;
     /**
      * @method test
      * @description Determine item with the configured filter of type of map.
@@ -66,5 +114,5 @@ declare class MapItemFilter {
  * @returns {boolean} Determine result.
  */
 declare function isMap(item: unknown, options?: MapItemFilterOptions): boolean;
-export { isMap, MapItemFilter, type MapItemFilterOptions };
+export { isMap, MapItemFilter, type MapItemFilterOptions, type MapItemFilterOptionsBase };
 //# sourceMappingURL=map.d.ts.map

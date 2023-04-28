@@ -1,11 +1,6 @@
+import { enumResolve, StringCaseEnum, StringLineEnum, type StringCaseEnumKeysType, type StringCaseEnumValuesType, type StringLineEnumKeysType, type StringLineEnumValuesType } from "./internal/enum.js";
 import { isStringASCII, isStringLowerCase, isStringMultipleLine, isStringSingleLine, isStringUpperCase } from "./native/string.js";
-interface StringItemFilterOptions {
-	/**
-	 * @property allowEmpty
-	 * @description Whether to allow an empty string.
-	 * @default false
-	 */
-	allowEmpty?: boolean;
+interface StringItemFilterOptionsBase {
 	/**
 	 * @property ascii
 	 * @description Whether an ASCII string.
@@ -13,35 +8,29 @@ interface StringItemFilterOptions {
 	 */
 	ascii?: boolean;
 	/**
-	 * @property length
-	 * @description Length of the string.
-	 * @default undefined
+	 * @property case
+	 * @description Case of the string.
+	 * @default "any"
 	 */
-	length?: number;
+	case: StringCaseEnumValuesType;
 	/**
 	 * @property lengthMaximum
 	 * @description Maximum length of the string.
 	 * @default Infinity
 	 */
-	lengthMaximum?: number;
+	lengthMaximum: number;
 	/**
 	 * @property lengthMinimum
 	 * @description Minimum length of the string.
 	 * @default 1
 	 */
-	lengthMinimum?: number;
+	lengthMinimum: number;
 	/**
-	 * @property lowerCase
-	 * @description Whether a lower case string.
-	 * @default undefined
+	 * @property line
+	 * @description Line of the string.
+	 * @default "any"
 	 */
-	lowerCase?: boolean;
-	/**
-	 * @property multipleLine
-	 * @description Whether a multiple line string.
-	 * @default undefined
-	 */
-	multipleLine?: boolean;
+	line: StringLineEnumValuesType;
 	/**
 	 * @property pattern
 	 * @description Whether a pattern matchable string.
@@ -54,18 +43,32 @@ interface StringItemFilterOptions {
 	 * @default false
 	 */
 	preTrim?: boolean;
+}
+interface StringItemFilterOptions extends Partial<Omit<StringItemFilterOptionsBase, "case" | "line">> {
 	/**
-	 * @property singleLine
-	 * @description Whether a single line string.
+	 * @property allowEmpty
+	 * @description Whether to allow an empty string.
+	 * @default false
+	 */
+	allowEmpty?: boolean;
+	/**
+	 * @property case
+	 * @description Case of the string.
+	 * @default "any"
+	 */
+	case?: StringCaseEnumKeysType;
+	/**
+	 * @property length
+	 * @description Length of the string.
 	 * @default undefined
 	 */
-	singleLine?: boolean;
+	length?: number;
 	/**
-	 * @property upperCase
-	 * @description Whether an upper case string.
-	 * @default undefined
+	 * @property line
+	 * @description Line of the string.
+	 * @default "any"
 	 */
-	upperCase?: boolean;
+	line?: StringLineEnumKeysType;
 	/** @alias length */characters?: number;
 	/** @alias lengthMaximum */charactersMax?: number;
 	/** @alias lengthMaximum */charactersMaximum?: number;
@@ -81,8 +84,44 @@ interface StringItemFilterOptions {
 	/** @alias lengthMinimum */minimumCharacters?: number;
 	/** @alias lengthMinimum */minimumLength?: number;
 	/** @alias lengthMinimum */minLength?: number;
-	/** @alias multipleLine */multiline?: boolean;
-	/** @alias multipleLine */multiLine?: boolean;
+	/**
+	 * @property lowerCase
+	 * @description Whether a lower case string.
+	 * @default undefined
+	 * @deprecated Replaced by property `case` with value `"lower"`.
+	 */
+	lowerCase?: boolean;
+	/**
+	 * @property multipleLine
+	 * @description Whether a multiple line string.
+	 * @deprecated Replaced by property `line` with value `"multiple"`.
+	 * @default undefined
+	 */
+	multipleLine?: boolean;
+	/**
+	 * @property singleLine
+	 * @description Whether a single line string.
+	 * @default undefined
+	 * @deprecated Replaced by property `line` with value `"single"`.
+	 */
+	singleLine?: boolean;
+	/**
+	 * @property upperCase
+	 * @description Whether an upper case string.
+	 * @default undefined
+	 * @deprecated Replaced by property `case` with value `"upper"`.
+	 */
+	upperCase?: boolean;
+	/**
+	 * @alias multipleLine
+	 * @deprecated Replaced by property `line` with value `"multiple"`.
+	 */
+	multiline?: boolean;
+	/**
+	 * @alias multipleLine
+	 * @deprecated Replaced by property `line` with value `"multiple"`.
+	 */
+	multiLine?: boolean;
 }
 /**
  * @class StringItemFilter
@@ -90,95 +129,250 @@ interface StringItemFilterOptions {
  */
 class StringItemFilter {
 	#ascii?: boolean;
-	#lengthMaximum: number;
-	#lengthMinimum: number;
-	#lowerCase?: boolean;
-	#multipleLine?: boolean;
+	#case: StringCaseEnumValuesType = "any";
+	#lengthMaximum = Infinity;
+	#lengthMinimum = 1;
+	#line: StringLineEnumValuesType = "any";
 	#pattern?: RegExp;
 	#preTrim: boolean;
-	#singleLine?: boolean;
-	#upperCase?: boolean;
 	/**
 	 * @constructor
 	 * @description Initialize the filter of type of string to determine item.
-	 * @param {StringItemFilterOptions} [options={}] Options
+	 * @param {StringItemFilter | StringItemFilterOptions} [options] Options
 	 */
-	constructor(options: StringItemFilterOptions = {}) {
-		let {
-			allowEmpty = false,
-			ascii,
-			length,
-			lengthMaximum,
-			lengthMinimum,
-			lowerCase,
-			multipleLine,
-			pattern,
-			preTrim = false,
-			singleLine,
-			upperCase,
-			...aliases
-		} = options;
-		length ??= aliases.characters;
-		lengthMaximum ??= aliases.lengthMax ?? aliases.charactersMaximum ?? aliases.charactersMax ?? aliases.maximumLength ?? aliases.maxLength ?? aliases.maximumCharacters ?? aliases.maxCharacters ?? Infinity;
-		lengthMinimum ??= aliases.lengthMin ?? aliases.charactersMinimum ?? aliases.charactersMin ?? aliases.minimumLength ?? aliases.minLength ?? aliases.minimumCharacters ?? aliases.minCharacters ?? 1;
-		multipleLine ??= aliases.multiLine ?? aliases.multiline;
-		if (typeof allowEmpty !== "boolean") {
+	constructor(options?: StringItemFilter | StringItemFilterOptions) {
+		if (options instanceof StringItemFilter) {
+			this.#ascii = options.#ascii;
+			this.#case = options.#case;
+			this.#lengthMaximum = options.#lengthMaximum;
+			this.#lengthMinimum = options.#lengthMinimum;
+			this.#line = options.#line;
+			this.#pattern = options.#pattern;
+			this.#preTrim = options.#preTrim;
+		} else if (typeof options !== "undefined") {
+			options.length ??= options.characters;
+			options.lengthMaximum ??= options.lengthMax ?? options.charactersMaximum ?? options.charactersMax ?? options.maximumLength ?? options.maxLength ?? options.maximumCharacters ?? options.maxCharacters;
+			options.lengthMinimum ??= options.lengthMin ?? options.charactersMinimum ?? options.charactersMin ?? options.minimumLength ?? options.minLength ?? options.minimumCharacters ?? options.minCharacters;
+			options.multipleLine ??= options.multiLine ?? options.multiline;
+			for (let option of ["lowerCase", "multipleLine", "singleLine", "upperCase"]) {
+				if (options[option] === true) {
+					this[option]();
+				}
+			}
+			for (let option of ["ascii", "case", "lengthMaximum", "lengthMinimum", "line", "pattern", "preTrim", "allowEmpty", "length"]) {
+				if (typeof options[option] !== "undefined") {
+					this[option](options[option]);
+				}
+			}
+		}
+	}
+	/**
+	 * @method clone
+	 * @description Clone this filter for reuse.
+	 * @returns {StringItemFilter}
+	 */
+	get clone(): StringItemFilter {
+		return new StringItemFilter(this);
+	}
+	/**
+	 * @method status
+	 * @description Status of this filter.
+	 * @returns {StringItemFilterOptionsBase}
+	 */
+	get status(): StringItemFilterOptionsBase {
+		return {
+			ascii: this.#ascii,
+			case: this.#case,
+			lengthMaximum: this.#lengthMaximum,
+			lengthMinimum: this.#lengthMinimum,
+			line: this.#line,
+			pattern: this.#pattern,
+			preTrim: this.#preTrim
+		};
+	}
+	/**
+	 * @method allowEmpty
+	 * @description Whether to allow an empty string.
+	 * @param {boolean} [value=true]
+	 * @returns {this}
+	 */
+	allowEmpty(value = true): this {
+		if (typeof value !== "boolean") {
 			throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
 		}
-		if (typeof ascii !== "boolean" && typeof ascii !== "undefined") {
+		this.#lengthMinimum = value ? 0 : 1;
+		return this;
+	}
+	/**
+	 * @method ascii
+	 * @description Whether an ASCII string.
+	 * @param {boolean} [value]
+	 * @returns {this}
+	 */
+	ascii(value?: boolean): this {
+		if (typeof value !== "boolean" && typeof value !== "undefined") {
 			throw new TypeError(`Filter argument \`ascii\` must be type of boolean or undefined!`);
 		}
-		if (typeof length === "number" && !Number.isNaN(length)) {
-			if (!(Number.isSafeInteger(length) && length >= 0)) {
-				throw new RangeError(`Filter argument \`length\` must be a number which is integer, positive, and safe!`);
-			}
-		} else if (typeof length !== "undefined") {
-			throw new TypeError(`Filter argument \`length\` must be type of number or undefined!`);
+		this.#ascii = value;
+		return this;
+	}
+	/**
+	 * @method case
+	 * @description Case of the string.
+	 * @param {StringCaseEnumKeysType} value
+	 * @returns {this}
+	 */
+	case(value: StringCaseEnumKeysType): this {
+		if (typeof value !== "string") {
+			throw new TypeError(`Filter argument \`case\` must be type of string!`);
 		}
-		if (!(typeof lengthMaximum === "number" && !Number.isNaN(lengthMaximum))) {
+		let valueResolve: StringCaseEnumValuesType | undefined = enumResolve<StringCaseEnumKeysType, StringCaseEnumValuesType>(StringCaseEnum, value);
+		if (typeof valueResolve !== "string") {
+			throw new RangeError(`Filter argument \`case\` must be match either of these values: "${Object.keys(StringCaseEnum).sort().join("\", \"")}"`);
+		}
+		this.#case = valueResolve;
+		return this;
+	}
+	/**
+	 * @method length
+	 * @description Length of the string.
+	 * @param {number} value
+	 * @returns {this}
+	 */
+	length(value: number): this {
+		if (!(typeof value === "number" && !Number.isNaN(value))) {
+			throw new TypeError(`Filter argument \`length\` must be type of number!`);
+		}
+		if (!(Number.isSafeInteger(value) && value >= 0)) {
+			throw new RangeError(`Filter argument \`length\` must be a number which is integer, positive, and safe!`);
+		}
+		this.#lengthMaximum = value;
+		this.#lengthMinimum = value;
+		return this;
+	}
+	/**
+	 * @method lengthMaximum
+	 * @description Maximum length of the string.
+	 * @param {number} value
+	 * @returns {this}
+	 */
+	lengthMaximum(value: number): this {
+		if (!(typeof value === "number" && !Number.isNaN(value))) {
 			throw new TypeError(`Filter argument \`lengthMaximum\` must be type of number!`);
 		}
-		if (lengthMaximum !== Infinity && !(Number.isSafeInteger(lengthMaximum) && lengthMaximum >= 0)) {
-			throw new RangeError(`Filter argument \`lengthMaximum\` must be \`Infinity\`, or a number which is integer, positive, and safe!`);
+		if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= this.#lengthMinimum)) {
+			throw new RangeError(`Filter argument \`lengthMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${this.#lengthMinimum}!`);
 		}
-		if (!(typeof lengthMinimum === "number" && !Number.isNaN(lengthMinimum))) {
+		this.#lengthMaximum = value;
+		return this;
+	}
+	/**
+	 * @method lengthMinimum
+	 * @description Minimum length of the string.
+	 * @param {number} value
+	 * @returns {this}
+	 */
+	lengthMinimum(value: number): this {
+		if (!(typeof value === "number" && !Number.isNaN(value))) {
 			throw new TypeError(`Filter argument \`lengthMinimum\` must be type of number!`);
 		}
-		if (!(Number.isSafeInteger(lengthMinimum) && lengthMinimum >= 0 && lengthMinimum <= lengthMaximum)) {
-			throw new RangeError(`Filter argument \`lengthMinimum\` must be a number which is integer, positive, safe, and <= ${lengthMaximum}!`);
+		if (!(Number.isSafeInteger(value) && value >= 0 && value <= this.#lengthMaximum)) {
+			throw new RangeError(`Filter argument \`lengthMinimum\` must be a number which is integer, positive, safe, and <= ${this.#lengthMaximum}!`);
 		}
-		if (typeof lowerCase !== "boolean" && typeof lowerCase !== "undefined") {
-			throw new TypeError(`Filter argument \`lowerCase\` must be type of boolean or undefined!`);
+		this.#lengthMinimum = value;
+		return this;
+	}
+	/**
+	 * @method line
+	 * @description Line of the string.
+	 * @param {StringLineEnumKeysType} value
+	 * @returns {this}
+	 */
+	line(value: StringLineEnumKeysType): this {
+		if (typeof value !== "string") {
+			throw new TypeError(`Filter argument \`line\` must be type of string!`);
 		}
-		if (typeof multipleLine !== "boolean" && typeof multipleLine !== "undefined") {
-			throw new TypeError(`Filter argument \`multipleLine\` must be type of boolean or undefined!`);
+		let valueResolve: StringLineEnumValuesType | undefined = enumResolve<StringLineEnumKeysType, StringLineEnumValuesType>(StringLineEnum, value);
+		if (typeof valueResolve !== "string") {
+			throw new RangeError(`Filter argument \`line\` must be match either of these values: "${Object.keys(StringLineEnum).sort().join("\", \"")}"`);
 		}
-		if (!(pattern instanceof RegExp) && typeof pattern !== "undefined") {
+		this.#line = valueResolve;
+		return this;
+	}
+	/**
+	 * @method pattern
+	 * @description Whether a pattern matchable string.
+	 * @param {RegExp} [value]
+	 * @returns {this}
+	 */
+	pattern(value?: RegExp): this {
+		if (!(value instanceof RegExp) && typeof value !== "undefined") {
 			throw new TypeError(`Filter argument \`pattern\` must be instance of regular expression, or type of undefined!`);
 		}
-		if (typeof preTrim !== "boolean") {
+		this.#pattern = value;
+		return this;
+	}
+	/**
+	 * @method preTrim
+	 * @description Whether to trim the string internally before determine.
+	 * @param {boolean} [value=true]
+	 * @returns {this}
+	 */
+	preTrim(value = true): this {
+		if (typeof value !== "boolean") {
 			throw new TypeError(`Filter argument \`preTrim\` must be type of boolean!`);
 		}
-		if (typeof singleLine !== "boolean" && typeof singleLine !== "undefined") {
-			throw new TypeError(`Filter argument \`singleLine\` must be type of boolean or undefined!`);
-		}
-		if (typeof upperCase !== "boolean" && typeof upperCase !== "undefined") {
-			throw new TypeError(`Filter argument \`upperCase\` must be type of boolean or undefined!`);
-		}
-		if (typeof length === "number") {
-			this.#lengthMaximum = length;
-			this.#lengthMinimum = length;
-		} else {
-			this.#lengthMaximum = lengthMaximum;
-			this.#lengthMinimum = allowEmpty ? 0 : lengthMinimum;
-		}
-		this.#ascii = ascii;
-		this.#lowerCase = lowerCase;
-		this.#multipleLine = multipleLine;
-		this.#pattern = pattern;
-		this.#preTrim = preTrim;
-		this.#singleLine = singleLine;
-		this.#upperCase = upperCase;
+		this.#preTrim = value;
+		return this;
+	}
+	/** @alias length */characters = this.length;
+	/** @alias lengthMaximum */charactersMax = this.lengthMaximum;
+	/** @alias lengthMaximum */charactersMaximum = this.lengthMaximum;
+	/** @alias lengthMaximum */lengthMax = this.lengthMaximum;
+	/** @alias lengthMaximum */maxCharacters = this.lengthMaximum;
+	/** @alias lengthMaximum */maximumCharacters = this.lengthMaximum;
+	/** @alias lengthMaximum */maximumLength = this.lengthMaximum;
+	/** @alias lengthMaximum */maxLength = this.lengthMaximum;
+	/** @alias lengthMinimum */charactersMin = this.lengthMinimum;
+	/** @alias lengthMinimum */charactersMinimum = this.lengthMinimum;
+	/** @alias lengthMinimum */lengthMin = this.lengthMinimum;
+	/** @alias lengthMinimum */minCharacters = this.lengthMinimum;
+	/** @alias lengthMinimum */minimumCharacters = this.lengthMinimum;
+	/** @alias lengthMinimum */minimumLength = this.lengthMinimum;
+	/** @alias lengthMinimum */minLength = this.lengthMinimum;
+	/**
+	 * @method lowerCase
+	 * @description Set to allow a lower case string.
+	 * @returns {this}
+	 */
+	lowerCase() {
+		return this.case("lower");
+	}
+	/**
+	 * @method multipleLine
+	 * @description Set to allow a multiple line string.
+	 * @returns {this}
+	 */
+	multipleLine() {
+		return this.line("multiple");
+	}
+	/**
+	 * @method singleLine
+	 * @description Set to allow a single line string.
+	 * @returns {this}
+	 */
+	singleLine() {
+		return this.line("single");
+	}
+	/** @alias multipleLine */multiline = this.multipleLine;
+	/** @alias multipleLine */multiLine = this.multipleLine;
+	/**
+	 * @method upperCase
+	 * @description Set to allow an upper case string.
+	 * @returns {this}
+	 */
+	upperCase() {
+		return this.case("upper");
 	}
 	/**
 	 * @method test
@@ -194,25 +388,13 @@ class StringItemFilter {
 		if (
 			(this.#ascii === false && isStringASCII(itemRaw)) ||
 			(this.#ascii === true && !isStringASCII(itemRaw)) ||
+			(this.#case === "lower" && !isStringLowerCase(itemRaw)) ||
+			(this.#case === "upper" && !isStringUpperCase(itemRaw)) ||
 			this.#lengthMaximum < itemRaw.length ||
 			itemRaw.length < this.#lengthMinimum ||
 			(this.#pattern instanceof RegExp && !this.#pattern.test(itemRaw)) ||
-			((
-				this.#lowerCase === true ||
-				this.#upperCase === false
-			) && !isStringLowerCase(itemRaw)) ||
-			((
-				this.#upperCase === true ||
-				this.#lowerCase === false
-			) && !isStringUpperCase(itemRaw)) ||
-			((
-				this.#multipleLine === true ||
-				this.#singleLine === false
-			) && !isStringMultipleLine(itemRaw)) ||
-			((
-				this.#singleLine === true ||
-				this.#multipleLine === false
-			) && !isStringSingleLine(itemRaw))
+			(this.#line === "multiple" && !isStringMultipleLine(itemRaw)) ||
+			(this.#line === "single" && !isStringSingleLine(itemRaw))
 		) {
 			return false;
 		}
@@ -242,5 +424,6 @@ function isString(item: unknown, options: StringItemFilterOptions = {}): boolean
 export {
 	isString,
 	StringItemFilter,
-	type StringItemFilterOptions
+	type StringItemFilterOptions,
+	type StringItemFilterOptionsBase
 };

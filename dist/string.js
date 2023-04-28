@@ -1,15 +1,16 @@
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
 var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
     if (kind === "m") throw new TypeError("Private method is not writable");
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-};
-var _StringItemFilter_ascii, _StringItemFilter_lengthMaximum, _StringItemFilter_lengthMinimum, _StringItemFilter_lowerCase, _StringItemFilter_multipleLine, _StringItemFilter_pattern, _StringItemFilter_preTrim, _StringItemFilter_singleLine, _StringItemFilter_upperCase;
+var _StringItemFilter_ascii, _StringItemFilter_case, _StringItemFilter_lengthMaximum, _StringItemFilter_lengthMinimum, _StringItemFilter_line, _StringItemFilter_pattern, _StringItemFilter_preTrim;
+import { enumResolve, StringCaseEnum, StringLineEnum } from "./internal/enum.js";
 import { isStringASCII, isStringLowerCase, isStringMultipleLine, isStringSingleLine, isStringUpperCase } from "./native/string.js";
 /**
  * @class StringItemFilter
@@ -19,82 +20,249 @@ class StringItemFilter {
     /**
      * @constructor
      * @description Initialize the filter of type of string to determine item.
-     * @param {StringItemFilterOptions} [options={}] Options
+     * @param {StringItemFilter | StringItemFilterOptions} [options] Options
      */
-    constructor(options = {}) {
+    constructor(options) {
         _StringItemFilter_ascii.set(this, void 0);
-        _StringItemFilter_lengthMaximum.set(this, void 0);
-        _StringItemFilter_lengthMinimum.set(this, void 0);
-        _StringItemFilter_lowerCase.set(this, void 0);
-        _StringItemFilter_multipleLine.set(this, void 0);
+        _StringItemFilter_case.set(this, "any");
+        _StringItemFilter_lengthMaximum.set(this, Infinity);
+        _StringItemFilter_lengthMinimum.set(this, 1);
+        _StringItemFilter_line.set(this, "any");
         _StringItemFilter_pattern.set(this, void 0);
         _StringItemFilter_preTrim.set(this, void 0);
-        _StringItemFilter_singleLine.set(this, void 0);
-        _StringItemFilter_upperCase.set(this, void 0);
-        let { allowEmpty = false, ascii, length, lengthMaximum, lengthMinimum, lowerCase, multipleLine, pattern, preTrim = false, singleLine, upperCase, ...aliases } = options;
-        length ?? (length = aliases.characters);
-        lengthMaximum ?? (lengthMaximum = aliases.lengthMax ?? aliases.charactersMaximum ?? aliases.charactersMax ?? aliases.maximumLength ?? aliases.maxLength ?? aliases.maximumCharacters ?? aliases.maxCharacters ?? Infinity);
-        lengthMinimum ?? (lengthMinimum = aliases.lengthMin ?? aliases.charactersMinimum ?? aliases.charactersMin ?? aliases.minimumLength ?? aliases.minLength ?? aliases.minimumCharacters ?? aliases.minCharacters ?? 1);
-        multipleLine ?? (multipleLine = aliases.multiLine ?? aliases.multiline);
-        if (typeof allowEmpty !== "boolean") {
-            throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
+        /** @alias length */ this.characters = this.length;
+        /** @alias lengthMaximum */ this.charactersMax = this.lengthMaximum;
+        /** @alias lengthMaximum */ this.charactersMaximum = this.lengthMaximum;
+        /** @alias lengthMaximum */ this.lengthMax = this.lengthMaximum;
+        /** @alias lengthMaximum */ this.maxCharacters = this.lengthMaximum;
+        /** @alias lengthMaximum */ this.maximumCharacters = this.lengthMaximum;
+        /** @alias lengthMaximum */ this.maximumLength = this.lengthMaximum;
+        /** @alias lengthMaximum */ this.maxLength = this.lengthMaximum;
+        /** @alias lengthMinimum */ this.charactersMin = this.lengthMinimum;
+        /** @alias lengthMinimum */ this.charactersMinimum = this.lengthMinimum;
+        /** @alias lengthMinimum */ this.lengthMin = this.lengthMinimum;
+        /** @alias lengthMinimum */ this.minCharacters = this.lengthMinimum;
+        /** @alias lengthMinimum */ this.minimumCharacters = this.lengthMinimum;
+        /** @alias lengthMinimum */ this.minimumLength = this.lengthMinimum;
+        /** @alias lengthMinimum */ this.minLength = this.lengthMinimum;
+        /** @alias multipleLine */ this.multiline = this.multipleLine;
+        /** @alias multipleLine */ this.multiLine = this.multipleLine;
+        if (options instanceof StringItemFilter) {
+            __classPrivateFieldSet(this, _StringItemFilter_ascii, __classPrivateFieldGet(options, _StringItemFilter_ascii, "f"), "f");
+            __classPrivateFieldSet(this, _StringItemFilter_case, __classPrivateFieldGet(options, _StringItemFilter_case, "f"), "f");
+            __classPrivateFieldSet(this, _StringItemFilter_lengthMaximum, __classPrivateFieldGet(options, _StringItemFilter_lengthMaximum, "f"), "f");
+            __classPrivateFieldSet(this, _StringItemFilter_lengthMinimum, __classPrivateFieldGet(options, _StringItemFilter_lengthMinimum, "f"), "f");
+            __classPrivateFieldSet(this, _StringItemFilter_line, __classPrivateFieldGet(options, _StringItemFilter_line, "f"), "f");
+            __classPrivateFieldSet(this, _StringItemFilter_pattern, __classPrivateFieldGet(options, _StringItemFilter_pattern, "f"), "f");
+            __classPrivateFieldSet(this, _StringItemFilter_preTrim, __classPrivateFieldGet(options, _StringItemFilter_preTrim, "f"), "f");
         }
-        if (typeof ascii !== "boolean" && typeof ascii !== "undefined") {
-            throw new TypeError(`Filter argument \`ascii\` must be type of boolean or undefined!`);
-        }
-        if (typeof length === "number" && !Number.isNaN(length)) {
-            if (!(Number.isSafeInteger(length) && length >= 0)) {
-                throw new RangeError(`Filter argument \`length\` must be a number which is integer, positive, and safe!`);
+        else if (typeof options !== "undefined") {
+            options.length ?? (options.length = options.characters);
+            options.lengthMaximum ?? (options.lengthMaximum = options.lengthMax ?? options.charactersMaximum ?? options.charactersMax ?? options.maximumLength ?? options.maxLength ?? options.maximumCharacters ?? options.maxCharacters);
+            options.lengthMinimum ?? (options.lengthMinimum = options.lengthMin ?? options.charactersMinimum ?? options.charactersMin ?? options.minimumLength ?? options.minLength ?? options.minimumCharacters ?? options.minCharacters);
+            options.multipleLine ?? (options.multipleLine = options.multiLine ?? options.multiline);
+            for (let option of ["lowerCase", "multipleLine", "singleLine", "upperCase"]) {
+                if (options[option] === true) {
+                    this[option]();
+                }
+            }
+            for (let option of ["ascii", "case", "lengthMaximum", "lengthMinimum", "line", "pattern", "preTrim", "allowEmpty", "length"]) {
+                if (typeof options[option] !== "undefined") {
+                    this[option](options[option]);
+                }
             }
         }
-        else if (typeof length !== "undefined") {
-            throw new TypeError(`Filter argument \`length\` must be type of number or undefined!`);
+    }
+    /**
+     * @method clone
+     * @description Clone this filter for reuse.
+     * @returns {StringItemFilter}
+     */
+    get clone() {
+        return new StringItemFilter(this);
+    }
+    /**
+     * @method status
+     * @description Status of this filter.
+     * @returns {StringItemFilterOptionsBase}
+     */
+    get status() {
+        return {
+            ascii: __classPrivateFieldGet(this, _StringItemFilter_ascii, "f"),
+            case: __classPrivateFieldGet(this, _StringItemFilter_case, "f"),
+            lengthMaximum: __classPrivateFieldGet(this, _StringItemFilter_lengthMaximum, "f"),
+            lengthMinimum: __classPrivateFieldGet(this, _StringItemFilter_lengthMinimum, "f"),
+            line: __classPrivateFieldGet(this, _StringItemFilter_line, "f"),
+            pattern: __classPrivateFieldGet(this, _StringItemFilter_pattern, "f"),
+            preTrim: __classPrivateFieldGet(this, _StringItemFilter_preTrim, "f")
+        };
+    }
+    /**
+     * @method allowEmpty
+     * @description Whether to allow an empty string.
+     * @param {boolean} [value=true]
+     * @returns {this}
+     */
+    allowEmpty(value = true) {
+        if (typeof value !== "boolean") {
+            throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
         }
-        if (!(typeof lengthMaximum === "number" && !Number.isNaN(lengthMaximum))) {
+        __classPrivateFieldSet(this, _StringItemFilter_lengthMinimum, value ? 0 : 1, "f");
+        return this;
+    }
+    /**
+     * @method ascii
+     * @description Whether an ASCII string.
+     * @param {boolean} [value]
+     * @returns {this}
+     */
+    ascii(value) {
+        if (typeof value !== "boolean" && typeof value !== "undefined") {
+            throw new TypeError(`Filter argument \`ascii\` must be type of boolean or undefined!`);
+        }
+        __classPrivateFieldSet(this, _StringItemFilter_ascii, value, "f");
+        return this;
+    }
+    /**
+     * @method case
+     * @description Case of the string.
+     * @param {StringCaseEnumKeysType} value
+     * @returns {this}
+     */
+    case(value) {
+        if (typeof value !== "string") {
+            throw new TypeError(`Filter argument \`case\` must be type of string!`);
+        }
+        let valueResolve = enumResolve(StringCaseEnum, value);
+        if (typeof valueResolve !== "string") {
+            throw new RangeError(`Filter argument \`case\` must be match either of these values: "${Object.keys(StringCaseEnum).sort().join("\", \"")}"`);
+        }
+        __classPrivateFieldSet(this, _StringItemFilter_case, valueResolve, "f");
+        return this;
+    }
+    /**
+     * @method length
+     * @description Length of the string.
+     * @param {number} value
+     * @returns {this}
+     */
+    length(value) {
+        if (!(typeof value === "number" && !Number.isNaN(value))) {
+            throw new TypeError(`Filter argument \`length\` must be type of number!`);
+        }
+        if (!(Number.isSafeInteger(value) && value >= 0)) {
+            throw new RangeError(`Filter argument \`length\` must be a number which is integer, positive, and safe!`);
+        }
+        __classPrivateFieldSet(this, _StringItemFilter_lengthMaximum, value, "f");
+        __classPrivateFieldSet(this, _StringItemFilter_lengthMinimum, value, "f");
+        return this;
+    }
+    /**
+     * @method lengthMaximum
+     * @description Maximum length of the string.
+     * @param {number} value
+     * @returns {this}
+     */
+    lengthMaximum(value) {
+        if (!(typeof value === "number" && !Number.isNaN(value))) {
             throw new TypeError(`Filter argument \`lengthMaximum\` must be type of number!`);
         }
-        if (lengthMaximum !== Infinity && !(Number.isSafeInteger(lengthMaximum) && lengthMaximum >= 0)) {
-            throw new RangeError(`Filter argument \`lengthMaximum\` must be \`Infinity\`, or a number which is integer, positive, and safe!`);
+        if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= __classPrivateFieldGet(this, _StringItemFilter_lengthMinimum, "f"))) {
+            throw new RangeError(`Filter argument \`lengthMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _StringItemFilter_lengthMinimum, "f")}!`);
         }
-        if (!(typeof lengthMinimum === "number" && !Number.isNaN(lengthMinimum))) {
+        __classPrivateFieldSet(this, _StringItemFilter_lengthMaximum, value, "f");
+        return this;
+    }
+    /**
+     * @method lengthMinimum
+     * @description Minimum length of the string.
+     * @param {number} value
+     * @returns {this}
+     */
+    lengthMinimum(value) {
+        if (!(typeof value === "number" && !Number.isNaN(value))) {
             throw new TypeError(`Filter argument \`lengthMinimum\` must be type of number!`);
         }
-        if (!(Number.isSafeInteger(lengthMinimum) && lengthMinimum >= 0 && lengthMinimum <= lengthMaximum)) {
-            throw new RangeError(`Filter argument \`lengthMinimum\` must be a number which is integer, positive, safe, and <= ${lengthMaximum}!`);
+        if (!(Number.isSafeInteger(value) && value >= 0 && value <= __classPrivateFieldGet(this, _StringItemFilter_lengthMaximum, "f"))) {
+            throw new RangeError(`Filter argument \`lengthMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _StringItemFilter_lengthMaximum, "f")}!`);
         }
-        if (typeof lowerCase !== "boolean" && typeof lowerCase !== "undefined") {
-            throw new TypeError(`Filter argument \`lowerCase\` must be type of boolean or undefined!`);
+        __classPrivateFieldSet(this, _StringItemFilter_lengthMinimum, value, "f");
+        return this;
+    }
+    /**
+     * @method line
+     * @description Line of the string.
+     * @param {StringLineEnumKeysType} value
+     * @returns {this}
+     */
+    line(value) {
+        if (typeof value !== "string") {
+            throw new TypeError(`Filter argument \`line\` must be type of string!`);
         }
-        if (typeof multipleLine !== "boolean" && typeof multipleLine !== "undefined") {
-            throw new TypeError(`Filter argument \`multipleLine\` must be type of boolean or undefined!`);
+        let valueResolve = enumResolve(StringLineEnum, value);
+        if (typeof valueResolve !== "string") {
+            throw new RangeError(`Filter argument \`line\` must be match either of these values: "${Object.keys(StringLineEnum).sort().join("\", \"")}"`);
         }
-        if (!(pattern instanceof RegExp) && typeof pattern !== "undefined") {
+        __classPrivateFieldSet(this, _StringItemFilter_line, valueResolve, "f");
+        return this;
+    }
+    /**
+     * @method pattern
+     * @description Whether a pattern matchable string.
+     * @param {RegExp} [value]
+     * @returns {this}
+     */
+    pattern(value) {
+        if (!(value instanceof RegExp) && typeof value !== "undefined") {
             throw new TypeError(`Filter argument \`pattern\` must be instance of regular expression, or type of undefined!`);
         }
-        if (typeof preTrim !== "boolean") {
+        __classPrivateFieldSet(this, _StringItemFilter_pattern, value, "f");
+        return this;
+    }
+    /**
+     * @method preTrim
+     * @description Whether to trim the string internally before determine.
+     * @param {boolean} [value=true]
+     * @returns {this}
+     */
+    preTrim(value = true) {
+        if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`preTrim\` must be type of boolean!`);
         }
-        if (typeof singleLine !== "boolean" && typeof singleLine !== "undefined") {
-            throw new TypeError(`Filter argument \`singleLine\` must be type of boolean or undefined!`);
-        }
-        if (typeof upperCase !== "boolean" && typeof upperCase !== "undefined") {
-            throw new TypeError(`Filter argument \`upperCase\` must be type of boolean or undefined!`);
-        }
-        if (typeof length === "number") {
-            __classPrivateFieldSet(this, _StringItemFilter_lengthMaximum, length, "f");
-            __classPrivateFieldSet(this, _StringItemFilter_lengthMinimum, length, "f");
-        }
-        else {
-            __classPrivateFieldSet(this, _StringItemFilter_lengthMaximum, lengthMaximum, "f");
-            __classPrivateFieldSet(this, _StringItemFilter_lengthMinimum, allowEmpty ? 0 : lengthMinimum, "f");
-        }
-        __classPrivateFieldSet(this, _StringItemFilter_ascii, ascii, "f");
-        __classPrivateFieldSet(this, _StringItemFilter_lowerCase, lowerCase, "f");
-        __classPrivateFieldSet(this, _StringItemFilter_multipleLine, multipleLine, "f");
-        __classPrivateFieldSet(this, _StringItemFilter_pattern, pattern, "f");
-        __classPrivateFieldSet(this, _StringItemFilter_preTrim, preTrim, "f");
-        __classPrivateFieldSet(this, _StringItemFilter_singleLine, singleLine, "f");
-        __classPrivateFieldSet(this, _StringItemFilter_upperCase, upperCase, "f");
+        __classPrivateFieldSet(this, _StringItemFilter_preTrim, value, "f");
+        return this;
+    }
+    /**
+     * @method lowerCase
+     * @description Set to allow a lower case string.
+     * @returns {this}
+     */
+    lowerCase() {
+        return this.case("lower");
+    }
+    /**
+     * @method multipleLine
+     * @description Set to allow a multiple line string.
+     * @returns {this}
+     */
+    multipleLine() {
+        return this.line("multiple");
+    }
+    /**
+     * @method singleLine
+     * @description Set to allow a single line string.
+     * @returns {this}
+     */
+    singleLine() {
+        return this.line("single");
+    }
+    /**
+     * @method upperCase
+     * @description Set to allow an upper case string.
+     * @returns {this}
+     */
+    upperCase() {
+        return this.case("upper");
     }
     /**
      * @method test
@@ -109,17 +277,13 @@ class StringItemFilter {
         let itemRaw = __classPrivateFieldGet(this, _StringItemFilter_preTrim, "f") ? item.trim() : item;
         if ((__classPrivateFieldGet(this, _StringItemFilter_ascii, "f") === false && isStringASCII(itemRaw)) ||
             (__classPrivateFieldGet(this, _StringItemFilter_ascii, "f") === true && !isStringASCII(itemRaw)) ||
+            (__classPrivateFieldGet(this, _StringItemFilter_case, "f") === "lower" && !isStringLowerCase(itemRaw)) ||
+            (__classPrivateFieldGet(this, _StringItemFilter_case, "f") === "upper" && !isStringUpperCase(itemRaw)) ||
             __classPrivateFieldGet(this, _StringItemFilter_lengthMaximum, "f") < itemRaw.length ||
             itemRaw.length < __classPrivateFieldGet(this, _StringItemFilter_lengthMinimum, "f") ||
             (__classPrivateFieldGet(this, _StringItemFilter_pattern, "f") instanceof RegExp && !__classPrivateFieldGet(this, _StringItemFilter_pattern, "f").test(itemRaw)) ||
-            ((__classPrivateFieldGet(this, _StringItemFilter_lowerCase, "f") === true ||
-                __classPrivateFieldGet(this, _StringItemFilter_upperCase, "f") === false) && !isStringLowerCase(itemRaw)) ||
-            ((__classPrivateFieldGet(this, _StringItemFilter_upperCase, "f") === true ||
-                __classPrivateFieldGet(this, _StringItemFilter_lowerCase, "f") === false) && !isStringUpperCase(itemRaw)) ||
-            ((__classPrivateFieldGet(this, _StringItemFilter_multipleLine, "f") === true ||
-                __classPrivateFieldGet(this, _StringItemFilter_singleLine, "f") === false) && !isStringMultipleLine(itemRaw)) ||
-            ((__classPrivateFieldGet(this, _StringItemFilter_singleLine, "f") === true ||
-                __classPrivateFieldGet(this, _StringItemFilter_multipleLine, "f") === false) && !isStringSingleLine(itemRaw))) {
+            (__classPrivateFieldGet(this, _StringItemFilter_line, "f") === "multiple" && !isStringMultipleLine(itemRaw)) ||
+            (__classPrivateFieldGet(this, _StringItemFilter_line, "f") === "single" && !isStringSingleLine(itemRaw))) {
             return false;
         }
         return true;
@@ -135,7 +299,7 @@ class StringItemFilter {
         return new this(options).test(item);
     }
 }
-_StringItemFilter_ascii = new WeakMap(), _StringItemFilter_lengthMaximum = new WeakMap(), _StringItemFilter_lengthMinimum = new WeakMap(), _StringItemFilter_lowerCase = new WeakMap(), _StringItemFilter_multipleLine = new WeakMap(), _StringItemFilter_pattern = new WeakMap(), _StringItemFilter_preTrim = new WeakMap(), _StringItemFilter_singleLine = new WeakMap(), _StringItemFilter_upperCase = new WeakMap();
+_StringItemFilter_ascii = new WeakMap(), _StringItemFilter_case = new WeakMap(), _StringItemFilter_lengthMaximum = new WeakMap(), _StringItemFilter_lengthMinimum = new WeakMap(), _StringItemFilter_line = new WeakMap(), _StringItemFilter_pattern = new WeakMap(), _StringItemFilter_preTrim = new WeakMap();
 /**
  * @function isString
  * @description Determine item with the filter of type of string.

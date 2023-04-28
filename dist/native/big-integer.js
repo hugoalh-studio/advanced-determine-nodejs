@@ -1,5 +1,4 @@
-import { integralNumericTypeRange } from "../internal/integral-numeric-types.js";
-import { isPrimeNumber } from "../internal/is-prime-number.js";
+import { integralNumericTypeRange, isPrimeNumeric } from "../internal/numeric.js";
 const MAX_SAFE_INTEGER = BigInt(Number.MAX_SAFE_INTEGER);
 const MIN_SAFE_INTEGER = BigInt(Number.MIN_SAFE_INTEGER);
 /**
@@ -14,7 +13,7 @@ function isBigIntegerEven(item) {
 /**
  * @function isBigIntegerIntegralNumericType
  * @description Determine the big integer is match the specified integral numeric type.
- * @param {string} typeName Name of the integral numeric type.
+ * @param {IntegralNumericTypeEnumKeysType} typeName Name of the integral numeric type.
  * @param {bigint} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
@@ -56,7 +55,7 @@ function isBigIntegerPositive(item) {
  * @returns {boolean} Determine result.
  */
 function isBigIntegerPrime(item) {
-    return isPrimeNumber(item);
+    return isPrimeNumeric(item);
 }
 /**
  * @function isBigIntegerSafe
