@@ -88,4 +88,3 @@ import { StringifyJSONItemFilter } from "./stringify-json.js";
 import { StringItemFilter } from "./string.js";
 import { typeOf } from "./type-of.js";
 export { areEqual, ArrayItemFilter, BigIntegerItemFilter, BigIntItemFilter, FunctionItemFilter, GeneratorItemFilter, isArray, isBigInt, isBigInteger, isFunction, isGenerator, isJSON, isJSONStringified, isJSONStringify, isMap, isNumber, isObject, isObjectPlain, isPlainObject, isRegEx, isRegExp, isRegularExpression, isSet, isString, isStringifiedJSON, isStringifyJSON, JSONItemFilter, JSONStringifiedItemFilter, JSONStringifyItemFilter, MapItemFilter, native, NumberItemFilter, ObjectItemFilter, ObjectPlainItemFilter, PlainObjectItemFilter, RegExItemFilter, RegExpItemFilter, RegularExpressionItemFilter, SetItemFilter, StringifiedJSONItemFilter, StringifyJSONItemFilter, StringItemFilter, typeOf };
-//# sourceMappingURL=main.d.ts.map

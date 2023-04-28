@@ -123,4 +123,3 @@ export class JSONItemFilter {
     /** @alias testStringify */ testStringified: (item: unknown) => boolean;
     #private;
 }
-//# sourceMappingURL=json.d.ts.map

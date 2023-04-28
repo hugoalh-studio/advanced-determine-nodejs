@@ -13,4 +13,3 @@ export function isAsyncGenerator(item: unknown): item is AsyncGenerator<unknown,
  */
 export function isSyncGenerator(item: unknown): item is Generator<unknown, unknown, unknown>;
 export { isAsyncGenerator as isAsynchronousGenerator, isSyncGenerator as isSynchronousGenerator };
-//# sourceMappingURL=generator.d.ts.map

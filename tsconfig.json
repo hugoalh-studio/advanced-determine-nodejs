@@ -3,7 +3,7 @@
 	"compilerOptions": {
 		"allowJs": true,
 		"declaration": true,
-		"declarationMap": true,
+		"declarationMap": false,
 		"emitBOM": false,
 		"emitDeclarationOnly": true,
 		"esModuleInterop": true,

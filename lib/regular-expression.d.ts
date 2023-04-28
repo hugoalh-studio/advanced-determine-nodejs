@@ -80,4 +80,3 @@ export class RegularExpressionItemFilter {
     #private;
 }
 export { isRegularExpression as isRegEx, isRegularExpression as isRegExp, RegularExpressionItemFilter as RegExItemFilter, RegularExpressionItemFilter as RegExpItemFilter };
-//# sourceMappingURL=regular-expression.d.ts.map

@@ -48,4 +48,3 @@ export class GeneratorItemFilter {
 export function isGenerator(item: unknown, { asynchronous, ...aliases }?: {
     asynchronous?: boolean;
 }): boolean;
-//# sourceMappingURL=generator.d.ts.map

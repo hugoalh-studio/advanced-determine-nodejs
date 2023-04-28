@@ -5,4 +5,3 @@
  * @returns {boolean} Determine result.
  */
 export function areEqual(...items: unknown[]): boolean;
-//# sourceMappingURL=are-equal.d.ts.map

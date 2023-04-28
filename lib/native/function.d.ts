@@ -27,4 +27,3 @@ export function isSyncFunction(item: unknown): item is (...parameters: unknown[]
  */
 export function isSyncGeneratorFunction(item: unknown): item is GeneratorFunction;
 export { isAsyncFunction as isAsynchronousFunction, isAsyncGeneratorFunction as isAsynchronousGeneratorFunction, isSyncFunction as isSynchronousFunction, isSyncGeneratorFunction as isSynchronousGeneratorFunction };
-//# sourceMappingURL=function.d.ts.map

@@ -5,4 +5,3 @@
  * @returns {boolean} Determine result.
  */
 export function isObjectPlain(item: object): boolean;
-//# sourceMappingURL=plain-object.d.ts.map

@@ -42,4 +42,3 @@ import { isString } from "./string.js";
 import { isStringifiedJSON } from "./stringify-json.js";
 import { isStringifyJSON } from "./stringify-json.js";
 export { isArray, isBigInt, isBigInteger, isFunction, isGenerator, isJSON, isJSONStringified, isJSONStringify, isMap, isNumber, isObject, isObjectPlain, isPlainObject, isRegEx, isRegExp, isRegularExpression, isSet, isString, isStringifiedJSON, isStringifyJSON };
-//# sourceMappingURL=is.d.ts.map

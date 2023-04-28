@@ -33,4 +33,3 @@ export function isStringSingleLine(item: string): boolean;
  * @returns {boolean} Determine result.
  */
 export function isStringUpperCase(item: string): boolean;
-//# sourceMappingURL=string.d.ts.map

@@ -104,4 +104,3 @@ export class PlainObjectItemFilter {
     #private;
 }
 export { isPlainObject as isObjectPlain, PlainObjectItemFilter as ObjectPlainItemFilter };
-//# sourceMappingURL=plain-object.d.ts.map

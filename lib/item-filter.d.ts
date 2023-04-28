@@ -42,4 +42,3 @@ import { StringifiedJSONItemFilter } from "./stringify-json.js";
 import { StringifyJSONItemFilter } from "./stringify-json.js";
 import { StringItemFilter } from "./string.js";
 export { ArrayItemFilter, BigIntegerItemFilter, BigIntItemFilter, FunctionItemFilter, GeneratorItemFilter, JSONItemFilter, JSONStringifiedItemFilter, JSONStringifyItemFilter, MapItemFilter, NumberItemFilter, ObjectItemFilter, ObjectPlainItemFilter, PlainObjectItemFilter, RegExItemFilter, RegExpItemFilter, RegularExpressionItemFilter, SetItemFilter, StringifiedJSONItemFilter, StringifyJSONItemFilter, StringItemFilter };
-//# sourceMappingURL=item-filter.d.ts.map

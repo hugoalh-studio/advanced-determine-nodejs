@@ -24,4 +24,3 @@ export class ObjectMeta {
     entriesSetter: string[];
     entriesWritable: string[];
 }
-//# sourceMappingURL=object-meta.d.ts.map

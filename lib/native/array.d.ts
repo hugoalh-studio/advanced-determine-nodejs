@@ -12,4 +12,3 @@ export function isArrayStrict(item: unknown[]): boolean;
  * @returns {boolean} Determine result.
  */
 export function isArrayUnique(item: unknown[]): boolean;
-//# sourceMappingURL=array.d.ts.map

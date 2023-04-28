@@ -54,4 +54,3 @@ export function isFunction(item: unknown, { asynchronous, generator, ...aliases 
     asynchronous?: boolean;
     generator?: boolean;
 }): boolean;
-//# sourceMappingURL=function.d.ts.map

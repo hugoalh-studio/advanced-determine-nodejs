@@ -55,4 +55,3 @@ export function isNumberPrime(item: number): boolean;
  * @returns {boolean} Determine result.
  */
 export function isNumberSafe(item: number): boolean;
-//# sourceMappingURL=number.d.ts.map

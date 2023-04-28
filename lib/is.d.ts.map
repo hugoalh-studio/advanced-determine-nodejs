@@ -1,1 +1,0 @@
-{"version":3,"file":"is.d.ts","sourceRoot":"","sources":["is.js"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;wBAAwB,YAAY;yBACG,kBAAkB;6BAAlB,kBAAkB;2BAC9B,eAAe;4BACd,gBAAgB;uBACrB,WAAW;kCAQqD,qBAAqB;gCAArB,qBAAqB;sBAPtF,UAAU;yBACP,aAAa;yBACb,aAAa;8BACO,mBAAmB;8BAAnB,mBAAmB;wBACT,yBAAyB;yBAAzB,yBAAyB;oCAAzB,yBAAyB;sBAC1D,UAAU;yBACP,aAAa;kCACiD,qBAAqB;gCAArB,qBAAqB"}

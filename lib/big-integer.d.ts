@@ -110,4 +110,3 @@ export function isBigInteger(item: unknown, { even, maximum, maximumExclusive, m
     unsafe?: boolean;
 }): boolean;
 export { BigIntegerItemFilter as BigIntItemFilter, isBigInteger as isBigInt };
-//# sourceMappingURL=big-integer.d.ts.map
