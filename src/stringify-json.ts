@@ -64,6 +64,7 @@ interface StringifyJSONItemFilterOptions {
 /**
  * @class StringifyJSONItemFilter
  * @description Determine item with the filter of type of stringify JSON.
+ * @deprecated Replaced by class `JSONItemFilter` with method `testStringify`.
  */
 class StringifyJSONItemFilter {
 	#jsonItemFilterWrapper: JSONItemFilter;
@@ -71,6 +72,7 @@ class StringifyJSONItemFilter {
 	 * @constructor
 	 * @description Initialize the filter of type of stringify JSON to determine item.
 	 * @param {StringifyJSONItemFilterOptions} [options={}] Options.
+	 * @deprecated Replaced by class `JSONItemFilter` with method `testStringify`.
 	 */
 	constructor(options: StringifyJSONItemFilterOptions = {}) {
 		this.#jsonItemFilterWrapper = new JSONItemFilter(options);
@@ -80,6 +82,7 @@ class StringifyJSONItemFilter {
 	 * @description Determine item with the configured filter of type of stringify JSON.
 	 * @param {unknown} item Item that need to determine.
 	 * @returns {boolean} Determine result.
+	 * @deprecated Replaced by class `JSONItemFilter` with method `testStringify`.
 	 */
 	test(item: unknown): boolean {
 		if (typeof item !== "string") {
@@ -99,6 +102,7 @@ class StringifyJSONItemFilter {
 	 * @param {unknown} item Item that need to determine.
 	 * @param {StringifyJSONItemFilterOptions} [options={}] Options.
 	 * @returns {boolean} Determine result.
+	 * @deprecated Replaced by class `JSONItemFilter` with method `testStringify`.
 	 */
 	static test(item: unknown, options: StringifyJSONItemFilterOptions = {}): boolean {
 		return new this(options).test(item);

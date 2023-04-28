@@ -3,7 +3,7 @@ import { ArrayItemFilter, isArray, type ArrayItemFilterOptions } from "./array.j
 import { BigIntegerItemFilter, BigIntItemFilter, isBigInt, isBigInteger, type BigIntegerItemFilterOptions, type BigIntItemFilterOptions } from "./big-integer.js";
 import { FunctionItemFilter, isFunction, type FunctionItemFilterOptions } from "./function.js";
 import { GeneratorItemFilter, isGenerator, type GeneratorItemFilterOptions } from "./generator.js";
-import { isJSON, JSONItemFilter, type JSONItemFilterOptions } from "./json.js";
+import { isJSON, isJSONStringified, isJSONStringify, isStringifiedJSON, isStringifyJSON, JSONItemFilter, type JSONItemFilterOptions } from "./json.js";
 import { isMap, MapItemFilter, type MapItemFilterOptions } from "./map.js";
 import * as native from "./native.js";
 import { isNumber, NumberItemFilter, type NumberItemFilterOptions } from "./number.js";
@@ -12,7 +12,7 @@ import { isObjectPlain, isPlainObject, ObjectPlainItemFilter, PlainObjectItemFil
 import { isRegEx, isRegExp, isRegularExpression, RegExItemFilter, RegExpItemFilter, RegularExpressionItemFilter, type RegExItemFilterOptions, type RegExpItemFilterOptions, type RegularExpressionItemFilterOptions } from "./regular-expression.js";
 import { isSet, SetItemFilter, type SetItemFilterOptions } from "./set.js";
 import { isString, StringItemFilter, type StringItemFilterOptions } from "./string.js";
-import { isJSONStringified, isJSONStringify, isStringifiedJSON, isStringifyJSON, JSONStringifiedItemFilter, JSONStringifyItemFilter, StringifiedJSONItemFilter, StringifyJSONItemFilter, type JSONStringifiedItemFilterOptions, type JSONStringifyItemFilterOptions, type StringifiedJSONItemFilterOptions, type StringifyJSONItemFilterOptions } from "./stringify-json.js";
+import { JSONStringifiedItemFilter, JSONStringifyItemFilter, StringifiedJSONItemFilter, StringifyJSONItemFilter, type JSONStringifiedItemFilterOptions, type JSONStringifyItemFilterOptions, type StringifiedJSONItemFilterOptions, type StringifyJSONItemFilterOptions } from "./stringify-json.js";
 import { typeOf, type AdvancedTypeOf } from "./type-of.js";
 export { areEqual, ArrayItemFilter, BigIntegerItemFilter, BigIntItemFilter, FunctionItemFilter, GeneratorItemFilter, isArray, isBigInt, isBigInteger, isFunction, isGenerator, isJSON, isJSONStringified, isJSONStringify, isMap, isNumber, isObject, isObjectPlain, isPlainObject, isRegEx, isRegExp, isRegularExpression, isSet, isString, isStringifiedJSON, isStringifyJSON, JSONItemFilter, JSONStringifiedItemFilter, JSONStringifyItemFilter, MapItemFilter, native, NumberItemFilter, ObjectItemFilter, ObjectPlainItemFilter, PlainObjectItemFilter, RegExItemFilter, RegExpItemFilter, RegularExpressionItemFilter, SetItemFilter, StringifiedJSONItemFilter, StringifyJSONItemFilter, StringItemFilter, typeOf, type AdvancedTypeOf, type ArrayItemFilterOptions, type BigIntegerItemFilterOptions, type BigIntItemFilterOptions, type FunctionItemFilterOptions, type GeneratorItemFilterOptions, type JSONItemFilterOptions, type JSONStringifiedItemFilterOptions, type JSONStringifyItemFilterOptions, type MapItemFilterOptions, type NumberItemFilterOptions, type ObjectItemFilterOptions, type ObjectPlainItemFilterOptions, type PlainObjectItemFilterOptions, type RegExItemFilterOptions, type RegExpItemFilterOptions, type RegularExpressionItemFilterOptions, type SetItemFilterOptions, type StringifiedJSONItemFilterOptions, type StringifyJSONItemFilterOptions, type StringItemFilterOptions };
 //# sourceMappingURL=main.d.ts.map

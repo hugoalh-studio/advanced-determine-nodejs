@@ -80,6 +80,16 @@ declare class JSONItemFilter {
      */
     test(item: unknown): boolean;
     /**
+     * @method testStringify
+     * @description Determine item with the configured filter of type of stringify JSON.
+     * @param {unknown} item Item that need to determine.
+     * @returns {boolean} Determine result.
+     */
+    testStringify(item: unknown): boolean;
+    /** @alias testStringify */ stringifiedTest: (item: unknown) => boolean;
+    /** @alias testStringify */ stringifyTest: (item: unknown) => boolean;
+    /** @alias testStringify */ testStringified: (item: unknown) => boolean;
+    /**
      * @static test
      * @description Determine item with the filter of type of JSON.
      * @param {unknown} item Item that need to determine.
@@ -87,6 +97,17 @@ declare class JSONItemFilter {
      * @returns {boolean} Determine result.
      */
     static test(item: unknown, options?: JSONItemFilterOptions): boolean;
+    /**
+     * @static testStringify
+     * @description Determine item with the filter of type of JSON.
+     * @param {unknown} item Item that need to determine.
+     * @param {JSONItemFilterOptions} [options={}] Options.
+     * @returns {boolean} Determine result.
+     */
+    static testStringify(item: unknown, options?: JSONItemFilterOptions): boolean;
+    /** @alias testStringify */ static stringifiedTest: typeof JSONItemFilter.testStringify;
+    /** @alias testStringify */ static stringifyTest: typeof JSONItemFilter.testStringify;
+    /** @alias testStringify */ static testStringified: typeof JSONItemFilter.testStringify;
 }
 /**
  * @function isJSON
@@ -96,5 +117,13 @@ declare class JSONItemFilter {
  * @returns {boolean} Determine result.
  */
 declare function isJSON(item: unknown, options?: JSONItemFilterOptions): boolean;
-export { isJSON, JSONItemFilter, type JSONItemFilterOptions };
+/**
+ * @function isStringifyJSON
+ * @description Determine item with the filter of type of stringify JSON.
+ * @param {unknown} item Item that need to determine.
+ * @param {JSONItemFilterOptions} [options={}] Options.
+ * @returns {boolean} Determine result.
+ */
+declare function isStringifyJSON(item: unknown, options?: JSONItemFilterOptions): boolean;
+export { isJSON, isStringifyJSON, isStringifyJSON as isJSONStringified, isStringifyJSON as isJSONStringify, isStringifyJSON as isStringifiedJSON, JSONItemFilter, type JSONItemFilterOptions };
 //# sourceMappingURL=json.d.ts.map

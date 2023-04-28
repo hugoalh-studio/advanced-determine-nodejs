@@ -9,7 +9,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _JSONItemFilter_arrayRoot, _JSONItemFilter_entriesCountMaximum, _JSONItemFilter_entriesCountMinimum, _JSONItemFilter_keysPattern;
+var _a, _JSONItemFilter_arrayRoot, _JSONItemFilter_entriesCountMaximum, _JSONItemFilter_entriesCountMinimum, _JSONItemFilter_keysPattern;
 import { ArrayItemFilter } from "./array.js";
 import { PlainObjectItemFilter } from "./plain-object.js";
 const jsonArrayFilter = new ArrayItemFilter({
@@ -83,6 +83,9 @@ class JSONItemFilter {
         _JSONItemFilter_entriesCountMaximum.set(this, void 0);
         _JSONItemFilter_entriesCountMinimum.set(this, void 0);
         _JSONItemFilter_keysPattern.set(this, void 0);
+        /** @alias testStringify */ this.stringifiedTest = this.testStringify;
+        /** @alias testStringify */ this.stringifyTest = this.testStringify;
+        /** @alias testStringify */ this.testStringified = this.testStringify;
         let { allowEmpty = false, arrayRoot, entriesCount, entriesCountMaximum, entriesCountMinimum, keysPattern, strict = false, strictKeys, ...aliases } = options;
         entriesCount ?? (entriesCount = aliases.entries);
         entriesCountMaximum ?? (entriesCountMaximum = aliases.entriesMaximum ?? aliases.entriesCountMax ?? aliases.entriesMax ?? aliases.maximumEntries ?? aliases.maxEntries ?? Infinity);
@@ -152,6 +155,25 @@ class JSONItemFilter {
         return true;
     }
     /**
+     * @method testStringify
+     * @description Determine item with the configured filter of type of stringify JSON.
+     * @param {unknown} item Item that need to determine.
+     * @returns {boolean} Determine result.
+     */
+    testStringify(item) {
+        if (typeof item !== "string") {
+            return false;
+        }
+        let itemParse;
+        try {
+            itemParse = JSON.parse(item);
+        }
+        catch {
+            return false;
+        }
+        return this.test(itemParse);
+    }
+    /**
      * @static test
      * @description Determine item with the filter of type of JSON.
      * @param {unknown} item Item that need to determine.
@@ -161,8 +183,21 @@ class JSONItemFilter {
     static test(item, options = {}) {
         return new this(options).test(item);
     }
+    /**
+     * @static testStringify
+     * @description Determine item with the filter of type of JSON.
+     * @param {unknown} item Item that need to determine.
+     * @param {JSONItemFilterOptions} [options={}] Options.
+     * @returns {boolean} Determine result.
+     */
+    static testStringify(item, options = {}) {
+        return new this(options).testStringify(item);
+    }
 }
-_JSONItemFilter_arrayRoot = new WeakMap(), _JSONItemFilter_entriesCountMaximum = new WeakMap(), _JSONItemFilter_entriesCountMinimum = new WeakMap(), _JSONItemFilter_keysPattern = new WeakMap();
+_a = JSONItemFilter, _JSONItemFilter_arrayRoot = new WeakMap(), _JSONItemFilter_entriesCountMaximum = new WeakMap(), _JSONItemFilter_entriesCountMinimum = new WeakMap(), _JSONItemFilter_keysPattern = new WeakMap();
+/** @alias testStringify */ JSONItemFilter.stringifiedTest = _a.testStringify;
+/** @alias testStringify */ JSONItemFilter.stringifyTest = _a.testStringify;
+/** @alias testStringify */ JSONItemFilter.testStringified = _a.testStringify;
 /**
  * @function isJSON
  * @description Determine item with the filter of type of JSON.
@@ -173,4 +208,14 @@ _JSONItemFilter_arrayRoot = new WeakMap(), _JSONItemFilter_entriesCountMaximum =
 function isJSON(item, options = {}) {
     return new JSONItemFilter(options).test(item);
 }
-export { isJSON, JSONItemFilter };
+/**
+ * @function isStringifyJSON
+ * @description Determine item with the filter of type of stringify JSON.
+ * @param {unknown} item Item that need to determine.
+ * @param {JSONItemFilterOptions} [options={}] Options.
+ * @returns {boolean} Determine result.
+ */
+function isStringifyJSON(item, options = {}) {
+    return new JSONItemFilter(options).testStringify(item);
+}
+export { isJSON, isStringifyJSON, isStringifyJSON as isJSONStringified, isStringifyJSON as isJSONStringify, isStringifyJSON as isStringifiedJSON, JSONItemFilter };
