@@ -42,8 +42,6 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";// Namespace Im
 
 - `ArrayItemFilter`
 - `BigIntegerItemFilter`
-- `FunctionItemFilter`
-- `GeneratorItemFilter`
 - `JSONItemFilter`
 - `MapItemFilter`
 - `NumberItemFilter`
@@ -51,7 +49,6 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";// Namespace Im
 - `PlainObjectItemFilter`
 - `RegularExpressionItemFilter`
 - `SetItemFilter`
-- `StringifyJSONItemFilter`
 - `StringItemFilter`
 
 #### Function
@@ -59,8 +56,6 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";// Namespace Im
 - `areEqual`
 - `isArray`
 - `isBigInteger`
-- `isFunction`
-- `isGenerator`
 - `isJSON`
 - `isMap`
 - `isNumber`
@@ -75,27 +70,49 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";// Namespace Im
 ### Example
 
 ```js
-/* Class */new ArrayItemFilter().test([]);
-/* Func. */isArray([]);
+/* Either */
+new ArrayItemFilter().test([]);
+ArrayItemFilter.test([]);
+isArray([]);
 //=> false (`allowEmpty` is `false`)
+```
 
-/* Class */new ArrayItemFilter({ allowEmpty: true }).test([]);
-/* Func. */isArray([], { allowEmpty: true });
+```js
+/* Either */
+new ArrayItemFilter({ allowEmpty: true }).test([]);
+ArrayItemFilter.test([], { allowEmpty: true });
+isArray([], { allowEmpty: true });
 //=> true
+```
 
-/* Class */new NumberItemFilter({ float: true, positive: true, safe: true }).test(8.31);
-/* Func. */isNumber(8.31, { float: true, positive: true, safe: true });
+```js
+/* Either */
+new NumberItemFilter({ float: true, positive: true, safe: true }).test(8.31);
+NumberItemFilter.test(8.31, { float: true, positive: true, safe: true });
+isNumber(8.31, { float: true, positive: true, safe: true });
 //=> true
+```
 
-/* Class */new StringItemFilter().test("");
-/* Func. */isString("");
+```js
+/* Either */
+new StringItemFilter().test("");
+StringItemFilter.test("");
+isString("");
 //=> false (`allowEmpty` is `false`)
+```
 
-/* Class */new StringItemFilter({ allowEmpty: true }).test("");
-/* Func. */isString("", { allowEmpty: true });
+```js
+/* Either */
+new StringItemFilter({ allowEmpty: true }).test("");
+StringItemFilter.test("", { allowEmpty: true });
+isString("", { allowEmpty: true });
 //=> true
+```
 
-/* Class */new StringItemFilter({ lowerCase: true }).test("Hello World");
-/* Func. */isString("Hello World", { lowerCase: true });
+```js
+/* Either */
+new StringItemFilter({ lowerCase: true }).test("Hello World");
+StringItemFilter.test("Hello World", { lowerCase: true });
+isString("Hello World", { lowerCase: true });
 //=> false
 ```

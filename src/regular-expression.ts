@@ -78,25 +78,25 @@ class RegularExpressionItemFilter {
 		ignoreCase ??= aliases.caseInsensitive;
 		multipleLine ??= aliases.multiLine ?? aliases.multiline;
 		if (typeof dotAll !== "boolean" && typeof dotAll !== "undefined") {
-			throw new TypeError(`Argument \`options.dotAll\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`dotAll\` must be type of boolean or undefined!`);
 		}
 		if (typeof exactly !== "boolean" && typeof exactly !== "undefined") {
-			throw new TypeError(`Argument \`options.exactly\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`exactly\` must be type of boolean or undefined!`);
 		}
 		if (typeof global !== "boolean" && typeof global !== "undefined") {
-			throw new TypeError(`Argument \`options.global\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`global\` must be type of boolean or undefined!`);
 		}
 		if (typeof ignoreCase !== "boolean" && typeof ignoreCase !== "undefined") {
-			throw new TypeError(`Argument \`options.ignoreCase\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`ignoreCase\` must be type of boolean or undefined!`);
 		}
 		if (typeof multipleLine !== "boolean" && typeof multipleLine !== "undefined") {
-			throw new TypeError(`Argument \`options.multipleLine\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`multipleLine\` must be type of boolean or undefined!`);
 		}
 		if (typeof sticky !== "boolean" && typeof sticky !== "undefined") {
-			throw new TypeError(`Argument \`options.sticky\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`sticky\` must be type of boolean or undefined!`);
 		}
 		if (typeof unicode !== "boolean" && typeof unicode !== "undefined") {
-			throw new TypeError(`Argument \`options.unicode\` must be type of boolean or undefined!`);
+			throw new TypeError(`Filter argument \`unicode\` must be type of boolean or undefined!`);
 		}
 		this.#dotAll = dotAll;
 		this.#exactly = exactly;

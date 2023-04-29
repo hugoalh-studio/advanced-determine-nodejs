@@ -16,6 +16,7 @@ interface FunctionItemFilterOptions {
 /**
  * @class FunctionItemFilter
  * @description Determine item with the filter of type of function.
+ * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isAsyncFunction`, `native.isSyncGeneratorFunction`, and/or `native.isSyncFunction` instead.
  */
 declare class FunctionItemFilter {
     #private;
@@ -23,6 +24,7 @@ declare class FunctionItemFilter {
      * @constructor
      * @description Initialize the filter of type of function to determine item.
      * @param {FunctionItemFilterOptions} [options={}] Options.
+     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isAsyncFunction`, `native.isSyncGeneratorFunction`, and/or `native.isSyncFunction` instead.
      */
     constructor(options?: FunctionItemFilterOptions);
     /**
@@ -30,6 +32,7 @@ declare class FunctionItemFilter {
      * @description Determine item with the configured filter of type of function.
      * @param {unknown} item Item that need to determine.
      * @returns {boolean} Determine result.
+     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isAsyncFunction`, `native.isSyncGeneratorFunction`, and/or `native.isSyncFunction` instead.
      */
     test(item: unknown): boolean;
     /**
@@ -38,6 +41,7 @@ declare class FunctionItemFilter {
      * @param {unknown} item Item that need to determine.
      * @param {FunctionItemFilterOptions} [options={}] Options.
      * @returns {boolean} Determine result.
+     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isAsyncFunction`, `native.isSyncGeneratorFunction`, and/or `native.isSyncFunction` instead.
      */
     static test(item: unknown, options?: FunctionItemFilterOptions): boolean;
 }
@@ -47,6 +51,7 @@ declare class FunctionItemFilter {
  * @param {unknown} item Item that need to determine.
  * @param {FunctionItemFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
+ * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isAsyncFunction`, `native.isSyncGeneratorFunction`, and/or `native.isSyncFunction` instead.
  */
 declare function isFunction(item: unknown, options?: FunctionItemFilterOptions): boolean;
 export { FunctionItemFilter, isFunction, type FunctionItemFilterOptions };

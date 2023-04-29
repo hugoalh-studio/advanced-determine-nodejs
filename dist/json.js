@@ -9,12 +9,18 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _JSONItemFilter_arrayRoot, _JSONItemFilter_entriesCountMaximum, _JSONItemFilter_entriesCountMinimum, _JSONItemFilter_keysPattern;
+var _a, _JSONItemFilter_arrayRoot, _JSONItemFilter_entriesCountMaximum, _JSONItemFilter_entriesCountMinimum, _JSONItemFilter_keysPattern;
 import { ArrayItemFilter } from "./array.js";
 import { PlainObjectItemFilter } from "./plain-object.js";
-const jsonArrayFilter = new ArrayItemFilter({ strict: true });
-const jsonObjectFilter = new PlainObjectItemFilter({ strict: true });
-const jsonLegalKeysPatternRegExp = /^[$_a-z][$\d_a-z]*$/u;
+const jsonArrayFilter = new ArrayItemFilter({
+    allowEmpty: true,
+    strict: true
+});
+const jsonObjectFilter = new PlainObjectItemFilter({
+    allowEmpty: true,
+    strict: true
+});
+const jsonLegalKeysPatternRegExp = /^[$_A-Za-z][$\d_A-Za-z]*$/u;
 /**
  * @access private
  * @function isJSONValue
@@ -77,45 +83,48 @@ class JSONItemFilter {
         _JSONItemFilter_entriesCountMaximum.set(this, void 0);
         _JSONItemFilter_entriesCountMinimum.set(this, void 0);
         _JSONItemFilter_keysPattern.set(this, void 0);
+        /** @alias testStringify */ this.stringifiedTest = this.testStringify;
+        /** @alias testStringify */ this.stringifyTest = this.testStringify;
+        /** @alias testStringify */ this.testStringified = this.testStringify;
         let { allowEmpty = false, arrayRoot, entriesCount, entriesCountMaximum, entriesCountMinimum, keysPattern, strict = false, strictKeys, ...aliases } = options;
         entriesCount ?? (entriesCount = aliases.entries);
         entriesCountMaximum ?? (entriesCountMaximum = aliases.entriesMaximum ?? aliases.entriesCountMax ?? aliases.entriesMax ?? aliases.maximumEntries ?? aliases.maxEntries ?? Infinity);
         entriesCountMinimum ?? (entriesCountMinimum = aliases.entriesMinimum ?? aliases.entriesCountMin ?? aliases.entriesMin ?? aliases.minimumEntries ?? aliases.minEntries ?? 1);
         strictKeys ?? (strictKeys = aliases.keysStrict ?? false);
         if (typeof allowEmpty !== "boolean") {
-            throw new TypeError(`Argument \`options.allowEmpty\` must be type of boolean!`);
+            throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
         }
         if (typeof arrayRoot !== "boolean" && typeof arrayRoot !== "undefined") {
-            throw new TypeError(`Argument \`options.arrayRoot\` must be type of boolean or undefined!`);
+            throw new TypeError(`Filter argument \`arrayRoot\` must be type of boolean or undefined!`);
         }
         if (typeof entriesCount === "number" && !Number.isNaN(entriesCount)) {
             if (!(Number.isSafeInteger(entriesCount) && entriesCount >= 0)) {
-                throw new RangeError(`Argument \`options.entriesCount\` must be a number which is integer, positive, and safe!`);
+                throw new RangeError(`Filter argument \`entriesCount\` must be a number which is integer, positive, and safe!`);
             }
         }
         else if (typeof entriesCount !== "undefined") {
-            throw new TypeError(`Argument \`options.entriesCount\` must be type of number or undefined!`);
+            throw new TypeError(`Filter argument \`entriesCount\` must be type of number or undefined!`);
         }
         if (!(typeof entriesCountMaximum === "number" && !Number.isNaN(entriesCountMaximum))) {
-            throw new TypeError(`Argument \`options.entriesCountMaximum\` must be type of number!`);
+            throw new TypeError(`Filter argument \`entriesCountMaximum\` must be type of number!`);
         }
         if (entriesCountMaximum !== Infinity && !(Number.isSafeInteger(entriesCountMaximum) && entriesCountMaximum >= 0)) {
-            throw new RangeError(`Argument \`options.entriesCountMaximum\` must be \`Infinity\`, or a number which is integer, positive, and safe!`);
+            throw new RangeError(`Filter argument \`entriesCountMaximum\` must be \`Infinity\`, or a number which is integer, positive, and safe!`);
         }
         if (!(typeof entriesCountMinimum === "number" && !Number.isNaN(entriesCountMinimum))) {
-            throw new TypeError(`Argument \`options.entriesCountMinimum\` must be type of number!`);
+            throw new TypeError(`Filter argument \`entriesCountMinimum\` must be type of number!`);
         }
         if (!(Number.isSafeInteger(entriesCountMinimum) && entriesCountMinimum >= 0 && entriesCountMinimum <= entriesCountMaximum)) {
-            throw new RangeError(`Argument \`options.entriesCountMinimum\` must be a number which is integer, positive, safe, and <= ${entriesCountMaximum}!`);
+            throw new RangeError(`Filter argument \`entriesCountMinimum\` must be a number which is integer, positive, safe, and <= ${entriesCountMaximum}!`);
         }
         if (!(keysPattern instanceof RegExp) && typeof keysPattern !== "undefined") {
-            throw new TypeError(`Argument \`options.keysPattern\` must be instance of regular expression, or type of undefined!`);
+            throw new TypeError(`Filter argument \`keysPattern\` must be instance of regular expression, or type of undefined!`);
         }
         if (typeof strict !== "boolean") {
-            throw new TypeError(`Argument \`options.strict\` must be type of boolean!`);
+            throw new TypeError(`Filter argument \`strict\` must be type of boolean!`);
         }
         if (typeof strictKeys !== "boolean") {
-            throw new TypeError(`Argument \`options.strictKeys\` must be type of boolean!`);
+            throw new TypeError(`Filter argument \`strictKeys\` must be type of boolean!`);
         }
         if (typeof entriesCount === "number") {
             __classPrivateFieldSet(this, _JSONItemFilter_entriesCountMaximum, entriesCount, "f");
@@ -146,6 +155,25 @@ class JSONItemFilter {
         return true;
     }
     /**
+     * @method testStringify
+     * @description Determine item with the configured filter of type of stringify JSON.
+     * @param {unknown} item Item that need to determine.
+     * @returns {boolean} Determine result.
+     */
+    testStringify(item) {
+        if (typeof item !== "string") {
+            return false;
+        }
+        let itemParse;
+        try {
+            itemParse = JSON.parse(item);
+        }
+        catch {
+            return false;
+        }
+        return this.test(itemParse);
+    }
+    /**
      * @static test
      * @description Determine item with the filter of type of JSON.
      * @param {unknown} item Item that need to determine.
@@ -155,8 +183,21 @@ class JSONItemFilter {
     static test(item, options = {}) {
         return new this(options).test(item);
     }
+    /**
+     * @static testStringify
+     * @description Determine item with the filter of type of stringify JSON.
+     * @param {unknown} item Item that need to determine.
+     * @param {JSONItemFilterOptions} [options={}] Options.
+     * @returns {boolean} Determine result.
+     */
+    static testStringify(item, options = {}) {
+        return new this(options).testStringify(item);
+    }
 }
-_JSONItemFilter_arrayRoot = new WeakMap(), _JSONItemFilter_entriesCountMaximum = new WeakMap(), _JSONItemFilter_entriesCountMinimum = new WeakMap(), _JSONItemFilter_keysPattern = new WeakMap();
+_a = JSONItemFilter, _JSONItemFilter_arrayRoot = new WeakMap(), _JSONItemFilter_entriesCountMaximum = new WeakMap(), _JSONItemFilter_entriesCountMinimum = new WeakMap(), _JSONItemFilter_keysPattern = new WeakMap();
+/** @alias testStringify */ JSONItemFilter.stringifiedTest = _a.testStringify;
+/** @alias testStringify */ JSONItemFilter.stringifyTest = _a.testStringify;
+/** @alias testStringify */ JSONItemFilter.testStringified = _a.testStringify;
 /**
  * @function isJSON
  * @description Determine item with the filter of type of JSON.
@@ -167,4 +208,14 @@ _JSONItemFilter_arrayRoot = new WeakMap(), _JSONItemFilter_entriesCountMaximum =
 function isJSON(item, options = {}) {
     return new JSONItemFilter(options).test(item);
 }
-export { isJSON, JSONItemFilter };
+/**
+ * @function isStringifyJSON
+ * @description Determine item with the filter of type of stringify JSON.
+ * @param {unknown} item Item that need to determine.
+ * @param {JSONItemFilterOptions} [options={}] Options.
+ * @returns {boolean} Determine result.
+ */
+function isStringifyJSON(item, options = {}) {
+    return new JSONItemFilter(options).testStringify(item);
+}
+export { isJSON, isStringifyJSON, isStringifyJSON as isJSONStringified, isStringifyJSON as isJSONStringify, isStringifyJSON as isStringifiedJSON, JSONItemFilter };

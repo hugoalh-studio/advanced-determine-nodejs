@@ -80,32 +80,32 @@ class ArrayItemFilter {
 		lengthMaximum ??= aliases.lengthMax ?? aliases.elementsMaximum ?? aliases.elementsMax ?? aliases.maximumLength ?? aliases.maxLength ?? aliases.maximumElements ?? aliases.maxElements ?? Infinity;
 		lengthMinimum ??= aliases.lengthMin ?? aliases.elementsMinimum ?? aliases.elementsMin ?? aliases.minimumLength ?? aliases.minLength ?? aliases.minimumElements ?? aliases.minElements ?? 1;
 		if (typeof allowEmpty !== "boolean") {
-			throw new TypeError(`Argument \`options.allowEmpty\` must be type of boolean!`);
+			throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
 		}
 		if (typeof length === "number" && !Number.isNaN(length)) {
 			if (!(Number.isSafeInteger(length) && length >= 0)) {
-				throw new RangeError(`Argument \`options.length\` must be a number which is integer, positive, and safe!`);
+				throw new RangeError(`Filter argument \`length\` must be a number which is integer, positive, and safe!`);
 			}
 		} else if (typeof length !== "undefined") {
-			throw new TypeError(`Argument \`options.length\` must be type of number or undefined!`);
+			throw new TypeError(`Filter argument \`length\` must be type of number or undefined!`);
 		}
 		if (!(typeof lengthMaximum === "number" && !Number.isNaN(lengthMaximum))) {
-			throw new TypeError(`Argument \`options.lengthMaximum\` must be type of number!`);
+			throw new TypeError(`Filter argument \`lengthMaximum\` must be type of number!`);
 		}
 		if (lengthMaximum !== Infinity && !(Number.isSafeInteger(lengthMaximum) && lengthMaximum >= 0)) {
-			throw new RangeError(`Argument \`options.lengthMaximum\` must be \`Infinity\`, or a number which is integer, positive, and safe!`);
+			throw new RangeError(`Filter argument \`lengthMaximum\` must be \`Infinity\`, or a number which is integer, positive, and safe!`);
 		}
 		if (!(typeof lengthMinimum === "number" && !Number.isNaN(lengthMinimum))) {
-			throw new TypeError(`Argument \`options.lengthMinimum\` must be type of number!`);
+			throw new TypeError(`Filter argument \`lengthMinimum\` must be type of number!`);
 		}
 		if (!(Number.isSafeInteger(lengthMinimum) && lengthMinimum >= 0 && lengthMinimum <= lengthMaximum)) {
-			throw new RangeError(`Argument \`options.lengthMinimum\` must be a number which is integer, positive, safe, and <= ${lengthMaximum}!`);
+			throw new RangeError(`Filter argument \`lengthMinimum\` must be a number which is integer, positive, safe, and <= ${lengthMaximum}!`);
 		}
 		if (typeof strict !== "boolean") {
-			throw new TypeError(`Argument \`options.strict\` must be type of boolean!`);
+			throw new TypeError(`Filter argument \`strict\` must be type of boolean!`);
 		}
 		if (typeof unique !== "boolean") {
-			throw new TypeError(`Argument \`options.unique\` must be type of boolean!`);
+			throw new TypeError(`Filter argument \`unique\` must be type of boolean!`);
 		}
 		if (typeof length === "number") {
 			this.#lengthMaximum = length;

@@ -27,27 +27,27 @@ class MapItemFilter {
         sizeMaximum ?? (sizeMaximum = aliases.sizeMax ?? aliases.maximumSize ?? aliases.maxSize ?? Infinity);
         sizeMinimum ?? (sizeMinimum = aliases.sizeMin ?? aliases.minimumSize ?? aliases.minSize ?? 1);
         if (typeof allowEmpty !== "boolean") {
-            throw new TypeError(`Argument \`options.allowEmpty\` must be type of boolean!`);
+            throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
         }
         if (typeof size === "number" && !Number.isNaN(size)) {
             if (!(Number.isSafeInteger(size) && size >= 0)) {
-                throw new RangeError(`Argument \`options.size\` must be a number which is integer, positive, and safe!`);
+                throw new RangeError(`Filter argument \`size\` must be a number which is integer, positive, and safe!`);
             }
         }
         else if (typeof size !== "undefined") {
-            throw new TypeError(`Argument \`options.size\` must be type of number or undefined!`);
+            throw new TypeError(`Filter argument \`size\` must be type of number or undefined!`);
         }
         if (!(typeof sizeMaximum === "number" && !Number.isNaN(sizeMaximum))) {
-            throw new TypeError(`Argument \`options.sizeMaximum\` must be type of number!`);
+            throw new TypeError(`Filter argument \`sizeMaximum\` must be type of number!`);
         }
         if (sizeMaximum !== Infinity && !(Number.isSafeInteger(sizeMaximum) && sizeMaximum >= 0)) {
-            throw new RangeError(`Argument \`options.sizeMaximum\` must be \`Infinity\`, or a number which is integer, positive, and safe!`);
+            throw new RangeError(`Filter argument \`sizeMaximum\` must be \`Infinity\`, or a number which is integer, positive, and safe!`);
         }
         if (!(typeof sizeMinimum === "number" && !Number.isNaN(sizeMinimum))) {
-            throw new TypeError(`Argument \`options.sizeMinimum\` must be type of number!`);
+            throw new TypeError(`Filter argument \`sizeMinimum\` must be type of number!`);
         }
         if (!(Number.isSafeInteger(sizeMinimum) && sizeMinimum >= 0 && sizeMinimum <= sizeMaximum)) {
-            throw new RangeError(`Argument \`options.sizeMinimum\` must be a number which is integer, positive, safe, and <= ${sizeMaximum}!`);
+            throw new RangeError(`Filter argument \`sizeMinimum\` must be a number which is integer, positive, safe, and <= ${sizeMaximum}!`);
         }
         if (typeof size === "number") {
             __classPrivateFieldSet(this, _MapItemFilter_sizeMaximum, size, "f");

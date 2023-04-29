@@ -2,7 +2,7 @@ import { isArray, type ArrayItemFilterOptions } from "./array.js";
 import { isBigInt, isBigInteger, type BigIntegerItemFilterOptions, type BigIntItemFilterOptions } from "./big-integer.js";
 import { isFunction, type FunctionItemFilterOptions } from "./function.js";
 import { isGenerator, type GeneratorItemFilterOptions } from "./generator.js";
-import { isJSON, type JSONItemFilterOptions } from "./json.js";
+import { isJSON, isJSONStringified, isJSONStringify, isStringifiedJSON, isStringifyJSON, type JSONItemFilterOptions } from "./json.js";
 import { isMap, type MapItemFilterOptions } from "./map.js";
 import { isNumber, type NumberItemFilterOptions } from "./number.js";
 import { isObject, type ObjectItemFilterOptions } from "./object.js";
@@ -10,7 +10,7 @@ import { isObjectPlain, isPlainObject, type ObjectPlainItemFilterOptions, type P
 import { isRegEx, isRegExp, isRegularExpression, type RegExItemFilterOptions, type RegExpItemFilterOptions, type RegularExpressionItemFilterOptions } from "./regular-expression.js";
 import { isSet, type SetItemFilterOptions } from "./set.js";
 import { isString, type StringItemFilterOptions } from "./string.js";
-import { isJSONStringified, isJSONStringify, isStringifiedJSON, isStringifyJSON, type JSONStringifiedItemFilterOptions, type JSONStringifyItemFilterOptions, type StringifiedJSONItemFilterOptions, type StringifyJSONItemFilterOptions } from "./stringify-json.js";
+import { type JSONStringifiedItemFilterOptions, type JSONStringifyItemFilterOptions, type StringifiedJSONItemFilterOptions, type StringifyJSONItemFilterOptions } from "./stringify-json.js";
 export {
 	isArray,
 	isBigInt,

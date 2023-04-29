@@ -10,6 +10,7 @@ interface GeneratorItemFilterOptions {
 /**
  * @class GeneratorItemFilter
  * @description Determine item with the filter of type of generator.
+ * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
  */
 declare class GeneratorItemFilter {
     #private;
@@ -17,6 +18,7 @@ declare class GeneratorItemFilter {
      * @constructor
      * @description Initialize the filter of type of generator to determine item.
      * @param {GeneratorItemFilterOptions} [options={}] Options.
+     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
      */
     constructor(options?: GeneratorItemFilterOptions);
     /**
@@ -24,6 +26,7 @@ declare class GeneratorItemFilter {
      * @description Determine item with the configured filter of type of generator.
      * @param {unknown} item Item that need to determine.
      * @returns {boolean} Determine result.
+     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
      */
     test(item: unknown): boolean;
     /**
@@ -32,6 +35,7 @@ declare class GeneratorItemFilter {
      * @param {unknown} item Item that need to determine.
      * @param {GeneratorItemFilterOptions} [options={}] Options.
      * @returns {boolean} Determine result.
+     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
      */
     static test(item: unknown, options?: GeneratorItemFilterOptions): boolean;
 }
@@ -41,6 +45,7 @@ declare class GeneratorItemFilter {
  * @param {unknown} item Item that need to determine.
  * @param {GeneratorItemFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
+ * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
  */
 declare function isGenerator(item: unknown, options?: GeneratorItemFilterOptions): boolean;
 export { GeneratorItemFilter, isGenerator, type GeneratorItemFilterOptions };

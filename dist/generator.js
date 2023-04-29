@@ -16,19 +16,21 @@ const objectFilter = new ObjectItemFilter();
 /**
  * @class GeneratorItemFilter
  * @description Determine item with the filter of type of generator.
+ * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
  */
 class GeneratorItemFilter {
     /**
      * @constructor
      * @description Initialize the filter of type of generator to determine item.
      * @param {GeneratorItemFilterOptions} [options={}] Options.
+     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
      */
     constructor(options = {}) {
         _GeneratorItemFilter_objectStringRegExp.set(this, void 0);
         let { asynchronous, ...aliases } = options;
         asynchronous ?? (asynchronous = aliases.async);
         if (typeof asynchronous !== "boolean" && typeof asynchronous !== "undefined") {
-            throw new TypeError(`Argument \`options.asynchronous\` must be type of boolean or undefined!`);
+            throw new TypeError(`Filter argument \`asynchronous\` must be type of boolean or undefined!`);
         }
         __classPrivateFieldSet(this, _GeneratorItemFilter_objectStringRegExp, new RegExp(`^\\[object ${(asynchronous === false) ? "" : "(?:Async)"}${(typeof asynchronous === "undefined") ? "?" : ""}Generator\\]$`, "u"), "f");
     }
@@ -37,6 +39,7 @@ class GeneratorItemFilter {
      * @description Determine item with the configured filter of type of generator.
      * @param {unknown} item Item that need to determine.
      * @returns {boolean} Determine result.
+     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
      */
     test(item) {
         if (!objectFilter.test(item) ||
@@ -55,6 +58,7 @@ class GeneratorItemFilter {
      * @param {unknown} item Item that need to determine.
      * @param {GeneratorItemFilterOptions} [options={}] Options.
      * @returns {boolean} Determine result.
+     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
      */
     static test(item, options = {}) {
         return new this(options).test(item);
@@ -67,6 +71,7 @@ _GeneratorItemFilter_objectStringRegExp = new WeakMap();
  * @param {unknown} item Item that need to determine.
  * @param {GeneratorItemFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
+ * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
  */
 function isGenerator(item, options = {}) {
     return new GeneratorItemFilter(options).test(item);

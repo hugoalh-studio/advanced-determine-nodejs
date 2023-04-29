@@ -64,7 +64,7 @@ function isBigIntegerPrime(item: bigint): boolean {
  * @param {bigint} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
-function isBigIntegerSafe(item: bigint):boolean {
+function isBigIntegerSafe(item: bigint): boolean {
 	return (MIN_SAFE_INTEGER <= item && item <= MAX_SAFE_INTEGER);
 }
 export {

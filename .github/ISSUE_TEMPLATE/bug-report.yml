@@ -18,9 +18,12 @@ body:
       description: "What versions are affected? Versions must be listed as supported in the Security Policy (file: `SECURITY.md`)."
       multiple: true
       options:
+        - "v11.2.0-beta.1"
+        - "v11.1.2"
         - "v11.1.1"
         - "v11.1.0"
         - "v11.0.0"
+        - "v10.4.2"
         - "v10.4.1"
         - "v10.4.0"
         - "v10.3.3"
