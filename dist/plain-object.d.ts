@@ -57,7 +57,7 @@ interface PlainObjectItemFilterOptions extends Partial<PlainObjectItemFilterOpti
     allowEmpty?: boolean;
     /**
      * @property entriesCount
-     * @description Entries of the plain object.
+     * @description Entries count of the plain object.
      * @default undefined
      */
     entriesCount?: number;
