@@ -222,15 +222,15 @@ class BigIntegerItemFilter {
 	/**
 	 * @method clone
 	 * @description Clone this filter for reuse.
-	 * @returns {BigIntegerItemFilter}
+	 * @returns {BigIntegerItemFilter} Another instance of this filter.
 	 */
 	get clone(): BigIntegerItemFilter {
 		return new BigIntegerItemFilter(this);
 	}
 	/**
 	 * @method status
-	 * @description Status of this filter.
-	 * @returns {BigIntegerItemFilterOptionsBase}
+	 * @description Get the status of this filter.
+	 * @returns {BigIntegerItemFilterOptionsBase} Status of this filter.
 	 */
 	get status(): BigIntegerItemFilterOptionsBase {
 		return {

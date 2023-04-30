@@ -61,15 +61,15 @@ class ArrayItemFilter {
     /**
      * @method clone
      * @description Clone this filter for reuse.
-     * @returns {ArrayItemFilter}
+     * @returns {ArrayItemFilter} Another instance of this filter.
      */
     get clone() {
         return new ArrayItemFilter(this);
     }
     /**
      * @method status
-     * @description Status of this filter.
-     * @returns {ArrayItemFilterOptionsBase}
+     * @description Get the status of this filter.
+     * @returns {ArrayItemFilterOptionsBase} Status of this filter.
      */
     get status() {
         return {

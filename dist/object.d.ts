@@ -36,13 +36,13 @@ declare class ObjectItemFilter {
     /**
      * @method clone
      * @description Clone this filter for reuse.
-     * @returns {ObjectItemFilter}
+     * @returns {ObjectItemFilter} Another instance of this filter.
      */
     get clone(): ObjectItemFilter;
     /**
      * @method status
-     * @description Status of this filter.
-     * @returns {ObjectItemFilterOptionsBase}
+     * @description Get the status of this filter.
+     * @returns {ObjectItemFilterOptionsBase} Status of this filter.
      */
     get status(): ObjectItemFilterOptionsBase;
     /**

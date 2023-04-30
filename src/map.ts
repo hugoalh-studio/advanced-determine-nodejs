@@ -61,15 +61,15 @@ class MapItemFilter {
 	/**
 	 * @method clone
 	 * @description Clone this filter for reuse.
-	 * @returns {MapItemFilter}
+	 * @returns {MapItemFilter} Another instance of this filter.
 	 */
 	get clone(): MapItemFilter {
 		return new MapItemFilter(this);
 	}
 	/**
 	 * @method status
-	 * @description Status of this filter.
-	 * @returns {MapItemFilterOptionsBase}
+	 * @description Get the status of this filter.
+	 * @returns {MapItemFilterOptionsBase} Status of this filter.
 	 */
 	get status(): MapItemFilterOptionsBase {
 		return {

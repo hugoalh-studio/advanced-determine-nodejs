@@ -76,15 +76,15 @@ class StringItemFilter {
     /**
      * @method clone
      * @description Clone this filter for reuse.
-     * @returns {StringItemFilter}
+     * @returns {StringItemFilter} Another instance of this filter.
      */
     get clone() {
         return new StringItemFilter(this);
     }
     /**
      * @method status
-     * @description Status of this filter.
-     * @returns {StringItemFilterOptionsBase}
+     * @description Get the status of this filter.
+     * @returns {StringItemFilterOptionsBase} Status of this filter.
      */
     get status() {
         return {

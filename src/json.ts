@@ -198,15 +198,15 @@ class JSONItemFilter {
 	/**
 	 * @method clone
 	 * @description Clone this filter for reuse.
-	 * @returns {JSONItemFilter}
+	 * @returns {JSONItemFilter} Another instance of this filter.
 	 */
 	get clone(): JSONItemFilter {
 		return new JSONItemFilter(this);
 	}
 	/**
 	 * @method status
-	 * @description Status of this filter.
-	 * @returns {JSONItemFilterOptionsBase}
+	 * @description Get the status of this filter.
+	 * @returns {JSONItemFilterOptionsBase} Status of this filter.
 	 */
 	get status(): JSONItemFilterOptionsBase {
 		return {

@@ -88,15 +88,15 @@ class RegularExpressionItemFilter {
 	/**
 	 * @method clone
 	 * @description Clone this filter for reuse.
-	 * @returns {RegularExpressionItemFilter}
+	 * @returns {RegularExpressionItemFilter} Another instance of this filter.
 	 */
 	get clone(): RegularExpressionItemFilter {
 		return new RegularExpressionItemFilter(this);
 	}
 	/**
 	 * @method status
-	 * @description Status of this filter.
-	 * @returns {RegularExpressionItemFilterOptionsBase}
+	 * @description Get the status of this filter.
+	 * @returns {RegularExpressionItemFilterOptionsBase} Status of this filter.
 	 */
 	get status(): RegularExpressionItemFilterOptionsBase {
 		return {

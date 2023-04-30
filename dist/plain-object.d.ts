@@ -120,13 +120,13 @@ declare class PlainObjectItemFilter {
     /**
      * @method clone
      * @description Clone this filter for reuse.
-     * @returns {PlainObjectItemFilter}
+     * @returns {PlainObjectItemFilter} Another instance of this filter.
      */
     get clone(): PlainObjectItemFilter;
     /**
      * @method status
-     * @description Status of this filter.
-     * @returns {PlainObjectItemFilterOptionsBase}
+     * @description Get the status of this filter.
+     * @returns {PlainObjectItemFilterOptionsBase} Status of this filter.
      */
     get status(): PlainObjectItemFilterOptionsBase;
     /**

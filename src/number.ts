@@ -290,15 +290,15 @@ class NumberItemFilter {
 	/**
 	 * @method clone
 	 * @description Clone this filter for reuse.
-	 * @returns {NumberItemFilter}
+	 * @returns {NumberItemFilter} Another instance of this filter.
 	 */
 	get clone(): NumberItemFilter {
 		return new NumberItemFilter(this);
 	}
 	/**
 	 * @method status
-	 * @description Status of this filter.
-	 * @returns {NumberItemFilterOptionsBase}
+	 * @description Get the status of this filter.
+	 * @returns {NumberItemFilterOptionsBase} Status of this filter.
 	 */
 	get status(): NumberItemFilterOptionsBase {
 		return {

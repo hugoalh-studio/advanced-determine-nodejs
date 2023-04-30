@@ -47,13 +47,13 @@ declare class SetItemFilter {
     /**
      * @method clone
      * @description Clone this filter for reuse.
-     * @returns {SetItemFilter}
+     * @returns {SetItemFilter} Another instance of this filter.
      */
     get clone(): SetItemFilter;
     /**
      * @method status
-     * @description Status of this filter.
-     * @returns {SetItemFilterOptionsBase}
+     * @description Get the status of this filter.
+     * @returns {SetItemFilterOptionsBase} Status of this filter.
      */
     get status(): SetItemFilterOptionsBase;
     /**
