@@ -44,12 +44,6 @@ interface JSONItemFilterOptions extends Partial<Omit<JSONItemFilterOptionsBase, 
 	 */
 	entriesCount?: number;
 	/**
-	 * @property keysPattern
-	 * @description Whether a pattern matchable JSON keys.
-	 * @default undefined
-	 */
-	keysPattern?: RegExp;
-	/**
 	 * @property rootType
 	 * @description Root type of the JSON.
 	 * @default "any"
