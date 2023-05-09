@@ -75,56 +75,56 @@ declare class RegularExpressionItemFilter {
     /**
      * @method dotAll
      * @description Whether a dot-all regular expression.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
-    dotAll(value?: boolean): this;
+    dotAll(value?: boolean | undefined): this;
     /**
      * @method exactly
      * @description Whether an exactly regular expression.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
-    exactly(value?: boolean): this;
+    exactly(value?: boolean | undefined): this;
     /**
      * @method global
      * @description Whether a global regular expression.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
-    global(value?: boolean): this;
+    global(value?: boolean | undefined): this;
     /**
      * @method ignoreCase
      * @description Whether a case insensitive regular expression.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
-    ignoreCase(value?: boolean): this;
+    ignoreCase(value?: boolean | undefined): this;
     /**
      * @method multipleLine
      * @description Whether a multiple line regular expression.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
-    multipleLine(value?: boolean): this;
+    multipleLine(value?: boolean | undefined): this;
     /**
      * @method sticky
      * @description Whether a sticky regular expression.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
-    sticky(value?: boolean): this;
+    sticky(value?: boolean | undefined): this;
     /**
      * @method unicode
      * @description Whether an unicode regular expression.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
-    unicode(value?: boolean): this;
-    /** @alias exactly */ exact: (value?: boolean) => this;
-    /** @alias ignoreCase */ caseInsensitive: (value?: boolean) => this;
-    /** @alias multipleLine */ multiline: (value?: boolean) => this;
-    /** @alias multipleLine */ multiLine: (value?: boolean) => this;
+    unicode(value?: boolean | undefined): this;
+    /** @alias exactly */ exact: (value?: boolean | undefined) => this;
+    /** @alias ignoreCase */ caseInsensitive: (value?: boolean | undefined) => this;
+    /** @alias multipleLine */ multiline: (value?: boolean | undefined) => this;
+    /** @alias multipleLine */ multiLine: (value?: boolean | undefined) => this;
     /**
      * @method test
      * @description Determine item with the configured filter of type of regular expression.

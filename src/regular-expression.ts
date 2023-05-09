@@ -112,10 +112,10 @@ class RegularExpressionItemFilter {
 	/**
 	 * @method dotAll
 	 * @description Whether a dot-all regular expression.
-	 * @param {boolean} [value]
+	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
-	dotAll(value?: boolean): this {
+	dotAll(value?: boolean | undefined): this {
 		if (typeof value !== "boolean" && typeof value !== "undefined") {
 			throw new TypeError(`Filter argument \`dotAll\` must be type of string or undefined!`);
 		}
@@ -125,10 +125,10 @@ class RegularExpressionItemFilter {
 	/**
 	 * @method exactly
 	 * @description Whether an exactly regular expression.
-	 * @param {boolean} [value]
+	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
-	exactly(value?: boolean): this {
+	exactly(value?: boolean | undefined): this {
 		if (typeof value !== "boolean" && typeof value !== "undefined") {
 			throw new TypeError(`Filter argument \`exactly\` must be type of string or undefined!`);
 		}
@@ -138,10 +138,10 @@ class RegularExpressionItemFilter {
 	/**
 	 * @method global
 	 * @description Whether a global regular expression.
-	 * @param {boolean} [value]
+	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
-	global(value?: boolean): this {
+	global(value?: boolean | undefined): this {
 		if (typeof value !== "boolean" && typeof value !== "undefined") {
 			throw new TypeError(`Filter argument \`global\` must be type of string or undefined!`);
 		}
@@ -151,10 +151,10 @@ class RegularExpressionItemFilter {
 	/**
 	 * @method ignoreCase
 	 * @description Whether a case insensitive regular expression.
-	 * @param {boolean} [value]
+	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
-	ignoreCase(value?: boolean): this {
+	ignoreCase(value?: boolean | undefined): this {
 		if (typeof value !== "boolean" && typeof value !== "undefined") {
 			throw new TypeError(`Filter argument \`ignoreCase\` must be type of string or undefined!`);
 		}
@@ -164,10 +164,10 @@ class RegularExpressionItemFilter {
 	/**
 	 * @method multipleLine
 	 * @description Whether a multiple line regular expression.
-	 * @param {boolean} [value]
+	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
-	multipleLine(value?: boolean): this {
+	multipleLine(value?: boolean | undefined): this {
 		if (typeof value !== "boolean" && typeof value !== "undefined") {
 			throw new TypeError(`Filter argument \`multipleLine\` must be type of string or undefined!`);
 		}
@@ -177,10 +177,10 @@ class RegularExpressionItemFilter {
 	/**
 	 * @method sticky
 	 * @description Whether a sticky regular expression.
-	 * @param {boolean} [value]
+	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
-	sticky(value?: boolean): this {
+	sticky(value?: boolean | undefined): this {
 		if (typeof value !== "boolean" && typeof value !== "undefined") {
 			throw new TypeError(`Filter argument \`sticky\` must be type of string or undefined!`);
 		}
@@ -190,10 +190,10 @@ class RegularExpressionItemFilter {
 	/**
 	 * @method unicode
 	 * @description Whether an unicode regular expression.
-	 * @param {boolean} [value]
+	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
-	unicode(value?: boolean): this {
+	unicode(value?: boolean | undefined): this {
 		if (typeof value !== "boolean" && typeof value !== "undefined") {
 			throw new TypeError(`Filter argument \`unicode\` must be type of string or undefined!`);
 		}

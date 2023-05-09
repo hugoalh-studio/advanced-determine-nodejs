@@ -206,10 +206,10 @@ class StringItemFilter {
 	/**
 	 * @method ascii
 	 * @description Whether an ASCII string.
-	 * @param {boolean} [value]
+	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
-	ascii(value?: boolean): this {
+	ascii(value?: boolean | undefined): this {
 		if (typeof value !== "boolean" && typeof value !== "undefined") {
 			throw new TypeError(`Filter argument \`ascii\` must be type of boolean or undefined!`);
 		}
@@ -302,10 +302,10 @@ class StringItemFilter {
 	/**
 	 * @method pattern
 	 * @description Whether a pattern matchable string.
-	 * @param {RegExp} [value]
+	 * @param {RegExp | undefined} [value]
 	 * @returns {this}
 	 */
-	pattern(value?: RegExp): this {
+	pattern(value?: RegExp | undefined): this {
 		if (!(value instanceof RegExp) && typeof value !== "undefined") {
 			throw new TypeError(`Filter argument \`pattern\` must be instance of regular expression, or type of undefined!`);
 		}

@@ -79,7 +79,7 @@ class RegularExpressionItemFilter {
     /**
      * @method dotAll
      * @description Whether a dot-all regular expression.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
     dotAll(value) {
@@ -92,7 +92,7 @@ class RegularExpressionItemFilter {
     /**
      * @method exactly
      * @description Whether an exactly regular expression.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
     exactly(value) {
@@ -105,7 +105,7 @@ class RegularExpressionItemFilter {
     /**
      * @method global
      * @description Whether a global regular expression.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
     global(value) {
@@ -118,7 +118,7 @@ class RegularExpressionItemFilter {
     /**
      * @method ignoreCase
      * @description Whether a case insensitive regular expression.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
     ignoreCase(value) {
@@ -131,7 +131,7 @@ class RegularExpressionItemFilter {
     /**
      * @method multipleLine
      * @description Whether a multiple line regular expression.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
     multipleLine(value) {
@@ -144,7 +144,7 @@ class RegularExpressionItemFilter {
     /**
      * @method sticky
      * @description Whether a sticky regular expression.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
     sticky(value) {
@@ -157,7 +157,7 @@ class RegularExpressionItemFilter {
     /**
      * @method unicode
      * @description Whether an unicode regular expression.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
     unicode(value) {

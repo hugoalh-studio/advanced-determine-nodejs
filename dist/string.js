@@ -113,7 +113,7 @@ class StringItemFilter {
     /**
      * @method ascii
      * @description Whether an ASCII string.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
     ascii(value) {
@@ -209,7 +209,7 @@ class StringItemFilter {
     /**
      * @method pattern
      * @description Whether a pattern matchable string.
-     * @param {RegExp} [value]
+     * @param {RegExp | undefined} [value]
      * @returns {this}
      */
     pattern(value) {

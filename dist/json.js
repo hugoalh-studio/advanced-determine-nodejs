@@ -198,7 +198,7 @@ class JSONItemFilter {
     /**
      * @method keysPattern
      * @description Whether a pattern matchable JSON keys.
-     * @param {RegExp} [value]
+     * @param {RegExp | undefined} [value]
      * @returns {this}
      */
     keysPattern(value) {

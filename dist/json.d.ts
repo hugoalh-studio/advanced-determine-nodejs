@@ -151,10 +151,10 @@ declare class JSONItemFilter {
     /**
      * @method keysPattern
      * @description Whether a pattern matchable JSON keys.
-     * @param {RegExp} [value]
+     * @param {RegExp | undefined} [value]
      * @returns {this}
      */
-    keysPattern(value?: RegExp): this;
+    keysPattern(value?: RegExp | undefined): this;
     /**
      * @method rootType
      * @description Root type of the JSON.

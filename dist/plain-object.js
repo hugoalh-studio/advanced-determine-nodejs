@@ -113,7 +113,7 @@ class PlainObjectItemFilter {
     /**
      * @method entriesConfigurable
      * @description Whether contain configurable entries in the plain object.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
     entriesConfigurable(value) {
@@ -175,7 +175,7 @@ class PlainObjectItemFilter {
     /**
      * @method entriesEnumerable
      * @description Whether contain enumerable entries in the plain object.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
     entriesEnumerable(value) {
@@ -188,7 +188,7 @@ class PlainObjectItemFilter {
     /**
      * @method entriesGetter
      * @description Whether contain getter entries in the plain object.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
     entriesGetter(value) {
@@ -201,7 +201,7 @@ class PlainObjectItemFilter {
     /**
      * @method entriesSetter
      * @description Whether contain setter entries in the plain object.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
     entriesSetter(value) {
@@ -214,7 +214,7 @@ class PlainObjectItemFilter {
     /**
      * @method entriesWritable
      * @description Whether contain writable entries in the plain object.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
     entriesWritable(value) {
@@ -227,7 +227,7 @@ class PlainObjectItemFilter {
     /**
      * @method keysSymbol
      * @description Whether contain symbols in the plain object keys.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
     keysSymbol(value) {

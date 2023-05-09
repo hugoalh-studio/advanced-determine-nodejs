@@ -156,10 +156,10 @@ declare class StringItemFilter {
     /**
      * @method ascii
      * @description Whether an ASCII string.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
-    ascii(value?: boolean): this;
+    ascii(value?: boolean | undefined): this;
     /**
      * @method case
      * @description Case of the string.
@@ -198,10 +198,10 @@ declare class StringItemFilter {
     /**
      * @method pattern
      * @description Whether a pattern matchable string.
-     * @param {RegExp} [value]
+     * @param {RegExp | undefined} [value]
      * @returns {this}
      */
-    pattern(value?: RegExp): this;
+    pattern(value?: RegExp | undefined): this;
     /**
      * @method preTrim
      * @description Whether to trim the string internally before determine.

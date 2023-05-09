@@ -195,10 +195,10 @@ class PlainObjectItemFilter {
 	/**
 	 * @method entriesConfigurable
 	 * @description Whether contain configurable entries in the plain object.
-	 * @param {boolean} [value]
+	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
-	entriesConfigurable(value?: boolean): this {
+	entriesConfigurable(value?: boolean | undefined): this {
 		if (typeof value !== "boolean" && typeof value !== "undefined") {
 			throw new TypeError(`Filter argument \`entriesConfigurable\` must be type of boolean or undefined!`);
 		}
@@ -257,10 +257,10 @@ class PlainObjectItemFilter {
 	/**
 	 * @method entriesEnumerable
 	 * @description Whether contain enumerable entries in the plain object.
-	 * @param {boolean} [value]
+	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
-	entriesEnumerable(value?: boolean): this {
+	entriesEnumerable(value?: boolean | undefined): this {
 		if (typeof value !== "boolean" && typeof value !== "undefined") {
 			throw new TypeError(`Filter argument \`entriesEnumerable\` must be type of boolean or undefined!`);
 		}
@@ -270,10 +270,10 @@ class PlainObjectItemFilter {
 	/**
 	 * @method entriesGetter
 	 * @description Whether contain getter entries in the plain object.
-	 * @param {boolean} [value]
+	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
-	entriesGetter(value?: boolean): this {
+	entriesGetter(value?: boolean | undefined): this {
 		if (typeof value !== "boolean" && typeof value !== "undefined") {
 			throw new TypeError(`Filter argument \`entriesGetter\` must be type of boolean or undefined!`);
 		}
@@ -283,10 +283,10 @@ class PlainObjectItemFilter {
 	/**
 	 * @method entriesSetter
 	 * @description Whether contain setter entries in the plain object.
-	 * @param {boolean} [value]
+	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
-	entriesSetter(value?: boolean): this {
+	entriesSetter(value?: boolean | undefined): this {
 		if (typeof value !== "boolean" && typeof value !== "undefined") {
 			throw new TypeError(`Filter argument \`entriesSetter\` must be type of boolean or undefined!`);
 		}
@@ -296,10 +296,10 @@ class PlainObjectItemFilter {
 	/**
 	 * @method entriesWritable
 	 * @description Whether contain writable entries in the plain object.
-	 * @param {boolean} [value]
+	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
-	entriesWritable(value?: boolean): this {
+	entriesWritable(value?: boolean | undefined): this {
 		if (typeof value !== "boolean" && typeof value !== "undefined") {
 			throw new TypeError(`Filter argument \`entriesWritable\` must be type of boolean or undefined!`);
 		}
@@ -309,10 +309,10 @@ class PlainObjectItemFilter {
 	/**
 	 * @method keysSymbol
 	 * @description Whether contain symbols in the plain object keys.
-	 * @param {boolean} [value]
+	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
-	keysSymbol(value?: boolean): this {
+	keysSymbol(value?: boolean | undefined): this {
 		if (typeof value !== "boolean" && typeof value !== "undefined") {
 			throw new TypeError(`Filter argument \`keysSymbol\` must be type of boolean or undefined!`);
 		}

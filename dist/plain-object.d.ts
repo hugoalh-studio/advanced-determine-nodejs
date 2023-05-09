@@ -139,10 +139,10 @@ declare class PlainObjectItemFilter {
     /**
      * @method entriesConfigurable
      * @description Whether contain configurable entries in the plain object.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
-    entriesConfigurable(value?: boolean): this;
+    entriesConfigurable(value?: boolean | undefined): this;
     /**
      * @method entriesCount
      * @description Entries count of the plain object.
@@ -167,38 +167,38 @@ declare class PlainObjectItemFilter {
     /**
      * @method entriesEnumerable
      * @description Whether contain enumerable entries in the plain object.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
-    entriesEnumerable(value?: boolean): this;
+    entriesEnumerable(value?: boolean | undefined): this;
     /**
      * @method entriesGetter
      * @description Whether contain getter entries in the plain object.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
-    entriesGetter(value?: boolean): this;
+    entriesGetter(value?: boolean | undefined): this;
     /**
      * @method entriesSetter
      * @description Whether contain setter entries in the plain object.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
-    entriesSetter(value?: boolean): this;
+    entriesSetter(value?: boolean | undefined): this;
     /**
      * @method entriesWritable
      * @description Whether contain writable entries in the plain object.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
-    entriesWritable(value?: boolean): this;
+    entriesWritable(value?: boolean | undefined): this;
     /**
      * @method keysSymbol
      * @description Whether contain symbols in the plain object keys.
-     * @param {boolean} [value]
+     * @param {boolean | undefined} [value]
      * @returns {this}
      */
-    keysSymbol(value?: boolean): this;
+    keysSymbol(value?: boolean | undefined): this;
     /**
      * @method strict
      * @description Whether to determine no custom defined properties (i.e.: getters, setters, non-configurable, non-enumerable, and non-writable) in the plain object, and no symbols in the plain object keys.
@@ -206,18 +206,18 @@ declare class PlainObjectItemFilter {
      * @returns {this}
      */
     strict(value?: boolean): this;
-    /** @alias entriesConfigurable */ configurableEntries: (value?: boolean) => this;
+    /** @alias entriesConfigurable */ configurableEntries: (value?: boolean | undefined) => this;
     /** @alias entriesCountMaximum */ entriesCountMax: (value: number) => this;
     /** @alias entriesCountMaximum */ maximumEntries: (value: number) => this;
     /** @alias entriesCountMaximum */ maxEntries: (value: number) => this;
     /** @alias entriesCountMinimum */ entriesCountMin: (value: number) => this;
     /** @alias entriesCountMinimum */ minimumEntries: (value: number) => this;
     /** @alias entriesCountMinimum */ minEntries: (value: number) => this;
-    /** @alias entriesEnumerable */ enumerableEntries: (value?: boolean) => this;
-    /** @alias entriesGetter */ getterEntries: (value?: boolean) => this;
-    /** @alias entriesSetter */ setterEntries: (value?: boolean) => this;
-    /** @alias entriesWritable */ writableEntries: (value?: boolean) => this;
-    /** @alias keysSymbol */ symbolKeys: (value?: boolean) => this;
+    /** @alias entriesEnumerable */ enumerableEntries: (value?: boolean | undefined) => this;
+    /** @alias entriesGetter */ getterEntries: (value?: boolean | undefined) => this;
+    /** @alias entriesSetter */ setterEntries: (value?: boolean | undefined) => this;
+    /** @alias entriesWritable */ writableEntries: (value?: boolean | undefined) => this;
+    /** @alias keysSymbol */ symbolKeys: (value?: boolean | undefined) => this;
     /**
      * @method test
      * @description Determine item with the configured filter of type of plain object.

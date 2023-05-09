@@ -275,10 +275,10 @@ class JSONItemFilter {
 	/**
 	 * @method keysPattern
 	 * @description Whether a pattern matchable JSON keys.
-	 * @param {RegExp} [value]
+	 * @param {RegExp | undefined} [value]
 	 * @returns {this}
 	 */
-	keysPattern(value?: RegExp): this {
+	keysPattern(value?: RegExp | undefined): this {
 		if (!(value instanceof RegExp) && typeof value !== "undefined") {
 			throw new TypeError(`Filter argument \`keysPattern\` must be instance of regular expression, or type of undefined!`);
 		}
