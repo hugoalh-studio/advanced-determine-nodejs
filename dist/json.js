@@ -11,7 +11,7 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
 };
 var _a, _JSONItemFilter_entriesCountMaximum, _JSONItemFilter_entriesCountMinimum, _JSONItemFilter_keysPattern, _JSONItemFilter_rootType;
 import { ArrayItemFilter } from "./array.js";
-import { enumResolve, JSONRootTypeEnum } from "./internal/enum.js";
+import { enumResolver, JSONRootTypeEnum } from "./internal/enum.js";
 import { PlainObjectItemFilter } from "./plain-object.js";
 const jsonArrayFilter = new ArrayItemFilter().allowEmpty().strict();
 const jsonObjectFilter = new PlainObjectItemFilter().allowEmpty().strict();
@@ -218,7 +218,7 @@ class JSONItemFilter {
         if (typeof value !== "string") {
             throw new TypeError(`Filter argument \`rootType\` must be type of string!`);
         }
-        let valueResolve = enumResolve(JSONRootTypeEnum, value);
+        let valueResolve = enumResolver(JSONRootTypeEnum, value);
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`rootType\` must be match either of these values: "${Object.keys(JSONRootTypeEnum).sort().join("\", \"")}"`);
         }

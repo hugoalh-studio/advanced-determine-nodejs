@@ -1,4 +1,4 @@
-import { enumResolve, StringCaseEnum, StringLineEnum, type StringCaseEnumKeysType, type StringCaseEnumValuesType, type StringLineEnumKeysType, type StringLineEnumValuesType } from "./internal/enum.js";
+import { enumResolver, StringCaseEnum, StringLineEnum, type StringCaseEnumKeysType, type StringCaseEnumValuesType, type StringLineEnumKeysType, type StringLineEnumValuesType } from "./internal/enum.js";
 import { isStringASCII, isStringLowerCase, isStringMultipleLine, isStringSingleLine, isStringUpperCase } from "./native/string.js";
 interface StringItemFilterOptionsBase {
 	/**
@@ -226,7 +226,7 @@ class StringItemFilter {
 		if (typeof value !== "string") {
 			throw new TypeError(`Filter argument \`case\` must be type of string!`);
 		}
-		let valueResolve: StringCaseEnumValuesType | undefined = enumResolve<StringCaseEnumKeysType, StringCaseEnumValuesType>(StringCaseEnum, value);
+		let valueResolve: StringCaseEnumValuesType | undefined = enumResolver<StringCaseEnumKeysType, StringCaseEnumValuesType>(StringCaseEnum, value);
 		if (typeof valueResolve !== "string") {
 			throw new RangeError(`Filter argument \`case\` must be match either of these values: "${Object.keys(StringCaseEnum).sort().join("\", \"")}"`);
 		}
@@ -292,7 +292,7 @@ class StringItemFilter {
 		if (typeof value !== "string") {
 			throw new TypeError(`Filter argument \`line\` must be type of string!`);
 		}
-		let valueResolve: StringLineEnumValuesType | undefined = enumResolve<StringLineEnumKeysType, StringLineEnumValuesType>(StringLineEnum, value);
+		let valueResolve: StringLineEnumValuesType | undefined = enumResolver<StringLineEnumKeysType, StringLineEnumValuesType>(StringLineEnum, value);
 		if (typeof valueResolve !== "string") {
 			throw new RangeError(`Filter argument \`line\` must be match either of these values: "${Object.keys(StringLineEnum).sort().join("\", \"")}"`);
 		}

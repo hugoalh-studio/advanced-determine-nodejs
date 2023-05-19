@@ -1,4 +1,4 @@
-import { enumResolve, IntegralNumericTypeEnum } from "./enum.js";
+import { enumResolver, IntegralNumericTypeEnum } from "./enum.js";
 /**
  * @access private
  * @function bigIntegerSquareRoot
@@ -40,7 +40,7 @@ function integralNumericTypeRangeUIntBase(base) {
  * @returns {[bigint, bigint]}
  */
 function integralNumericTypeRange(name) {
-    switch (enumResolve(IntegralNumericTypeEnum, name)) {
+    switch (enumResolver(IntegralNumericTypeEnum, name)) {
         case "int8":
             return integralNumericTypeRangeIntBase(8n);
         case "int16":

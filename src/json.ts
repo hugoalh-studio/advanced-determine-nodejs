@@ -1,5 +1,5 @@
 import { ArrayItemFilter } from "./array.js";
-import { enumResolve, JSONRootTypeEnum, type JSONRootTypeEnumKeysType, type JSONRootTypeEnumValuesType } from "./internal/enum.js";
+import { enumResolver, JSONRootTypeEnum, type JSONRootTypeEnumKeysType, type JSONRootTypeEnumValuesType } from "./internal/enum.js";
 import { PlainObjectItemFilter } from "./plain-object.js";
 const jsonArrayFilter: ArrayItemFilter = new ArrayItemFilter().allowEmpty().strict();
 const jsonObjectFilter: PlainObjectItemFilter = new PlainObjectItemFilter().allowEmpty().strict();
@@ -295,7 +295,7 @@ class JSONItemFilter {
 		if (typeof value !== "string") {
 			throw new TypeError(`Filter argument \`rootType\` must be type of string!`);
 		}
-		let valueResolve: JSONRootTypeEnumValuesType | undefined = enumResolve<JSONRootTypeEnumKeysType, JSONRootTypeEnumValuesType>(JSONRootTypeEnum, value);
+		let valueResolve: JSONRootTypeEnumValuesType | undefined = enumResolver<JSONRootTypeEnumKeysType, JSONRootTypeEnumValuesType>(JSONRootTypeEnum, value);
 		if (typeof valueResolve !== "string") {
 			throw new RangeError(`Filter argument \`rootType\` must be match either of these values: "${Object.keys(JSONRootTypeEnum).sort().join("\", \"")}"`);
 		}

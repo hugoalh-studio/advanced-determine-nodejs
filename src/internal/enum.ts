@@ -1,13 +1,13 @@
 type EnumCase<T extends string> = T | Capitalize<T> | Uncapitalize<T>;
 /**
- * @function enumResolve
+ * @function enumResolver
  * @template {unknown} K
  * @template {unknown} V
  * @param {Readonly<{ [x: string]: string; }>} e
  * @param {K} k
  * @returns {V | undefined}
  */
-function enumResolve<K, V>(e: Readonly<{ [x: string]: string; }>, k: K): V | undefined {
+function enumResolver<K, V>(e: Readonly<{ [x: string]: string; }>, k: K): V | undefined {
 	for (let [eKey, eValue] of Object.entries(e)) {
 		if (
 			k === eKey ||
@@ -124,7 +124,7 @@ const StringLineEnum = Object.freeze({
 type StringLineEnumKeysType = EnumCase<keyof typeof StringLineEnum>;
 type StringLineEnumValuesType = (typeof StringLineEnum)[keyof typeof StringLineEnum];
 export {
-	enumResolve,
+	enumResolver,
 	IEEE754Enum,
 	IntegralNumericTypeEnum,
 	JSONRootTypeEnum,

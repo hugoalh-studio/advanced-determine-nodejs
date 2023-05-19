@@ -10,7 +10,7 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
 var _NumberItemFilter_finiteness, _NumberItemFilter_ieee754, _NumberItemFilter_maximum, _NumberItemFilter_maximumExclusive, _NumberItemFilter_minimum, _NumberItemFilter_minimumExclusive, _NumberItemFilter_numericType, _NumberItemFilter_parity, _NumberItemFilter_primality, _NumberItemFilter_sign;
-import { enumResolve, IEEE754Enum, MathematicsFinitenessEnum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, NumericTypeEnum } from "./internal/enum.js";
+import { enumResolver, IEEE754Enum, MathematicsFinitenessEnum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, NumericTypeEnum } from "./internal/enum.js";
 import { integralNumericTypeRange } from "./internal/numeric.js";
 import { isNumberEven, isNumberFloat, isNumberNegative, isNumberOdd, isNumberPositive, isNumberPrime, isNumberSafe } from "./native/number.js";
 /**
@@ -119,7 +119,7 @@ class NumberItemFilter {
         if (typeof value !== "string") {
             throw new TypeError(`Filter argument \`finiteness\` must be type of string!`);
         }
-        let valueResolve = enumResolve(MathematicsFinitenessEnum, value);
+        let valueResolve = enumResolver(MathematicsFinitenessEnum, value);
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`finiteness\` must be match either of these values: "${Object.keys(MathematicsFinitenessEnum).sort().join("\", \"")}"`);
         }
@@ -136,7 +136,7 @@ class NumberItemFilter {
         if (typeof value !== "string") {
             throw new TypeError(`Filter argument \`ieee754\` must be type of string!`);
         }
-        let valueResolve = enumResolve(IEEE754Enum, value);
+        let valueResolve = enumResolver(IEEE754Enum, value);
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`ieee754\` must be match either of these values: "${Object.keys(IEEE754Enum).sort().join("\", \"")}"`);
         }
@@ -229,7 +229,7 @@ class NumberItemFilter {
         if (typeof value !== "string") {
             throw new TypeError(`Filter argument \`numericType\` must be type of string!`);
         }
-        let valueResolve = enumResolve(NumericTypeEnum, value);
+        let valueResolve = enumResolver(NumericTypeEnum, value);
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`numericType\` must be match either of these values: "${Object.keys(NumericTypeEnum).sort().join("\", \"")}"`);
         }
@@ -246,7 +246,7 @@ class NumberItemFilter {
         if (typeof value !== "string") {
             throw new TypeError(`Filter argument \`parity\` must be type of string!`);
         }
-        let valueResolve = enumResolve(MathematicsParityEnum, value);
+        let valueResolve = enumResolver(MathematicsParityEnum, value);
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`parity\` must be match either of these values: "${Object.keys(MathematicsParityEnum).sort().join("\", \"")}"`);
         }
@@ -263,7 +263,7 @@ class NumberItemFilter {
         if (typeof value !== "string") {
             throw new TypeError(`Filter argument \`primality\` must be type of string!`);
         }
-        let valueResolve = enumResolve(MathematicsPrimalityEnum, value);
+        let valueResolve = enumResolver(MathematicsPrimalityEnum, value);
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`primality\` must be match either of these values: "${Object.keys(MathematicsPrimalityEnum).sort().join("\", \"")}"`);
         }
@@ -280,7 +280,7 @@ class NumberItemFilter {
         if (typeof value !== "string") {
             throw new TypeError(`Filter argument \`sign\` must be type of string!`);
         }
-        let valueResolve = enumResolve(MathematicsSignEnum, value);
+        let valueResolve = enumResolver(MathematicsSignEnum, value);
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`sign\` must be match either of these values: "${Object.keys(MathematicsSignEnum).sort().join("\", \"")}"`);
         }

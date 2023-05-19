@@ -1,12 +1,12 @@
 /**
- * @function enumResolve
+ * @function enumResolver
  * @template {unknown} K
  * @template {unknown} V
  * @param {Readonly<{ [x: string]: string; }>} e
  * @param {K} k
  * @returns {V | undefined}
  */
-function enumResolve(e, k) {
+function enumResolver(e, k) {
     for (let [eKey, eValue] of Object.entries(e)) {
         if (k === eKey ||
             k === `${eKey.slice(0, 1).toLowerCase()}${eKey.slice(1)}` ||
@@ -100,4 +100,4 @@ const StringLineEnum = Object.freeze({
     Singleline: "single",
     SingleLine: "single"
 });
-export { enumResolve, IEEE754Enum, IntegralNumericTypeEnum, JSONRootTypeEnum, MathematicsFinitenessEnum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, NumericTypeEnum, StringCaseEnum, StringLineEnum };
+export { enumResolver, IEEE754Enum, IntegralNumericTypeEnum, JSONRootTypeEnum, MathematicsFinitenessEnum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, NumericTypeEnum, StringCaseEnum, StringLineEnum };

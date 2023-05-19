@@ -1,4 +1,4 @@
-import { enumResolve, IEEE754Enum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, type IEEE754EnumKeysType, type IEEE754EnumValuesType, type IntegralNumericTypeEnumKeysType, type MathematicsParityEnumKeysType, type MathematicsParityEnumValuesType, type MathematicsPrimalityEnumKeysType, type MathematicsPrimalityEnumValuesType, type MathematicsSignEnumKeysType, type MathematicsSignEnumValuesType } from "./internal/enum.js";
+import { enumResolver, IEEE754Enum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, type IEEE754EnumKeysType, type IEEE754EnumValuesType, type IntegralNumericTypeEnumKeysType, type MathematicsParityEnumKeysType, type MathematicsParityEnumValuesType, type MathematicsPrimalityEnumKeysType, type MathematicsPrimalityEnumValuesType, type MathematicsSignEnumKeysType, type MathematicsSignEnumValuesType } from "./internal/enum.js";
 import { integralNumericTypeRange } from "./internal/numeric.js";
 import { isBigIntegerEven, isBigIntegerNegative, isBigIntegerOdd, isBigIntegerPositive, isBigIntegerPrime, isBigIntegerSafe } from "./native/big-integer.js";
 interface BigIntegerItemFilterOptionsBase {
@@ -254,7 +254,7 @@ class BigIntegerItemFilter {
 		if (typeof value !== "string") {
 			throw new TypeError(`Filter argument \`ieee754\` must be type of string!`);
 		}
-		let valueResolve: IEEE754EnumValuesType | undefined = enumResolve<IEEE754EnumKeysType, IEEE754EnumValuesType>(IEEE754Enum, value);
+		let valueResolve: IEEE754EnumValuesType | undefined = enumResolver<IEEE754EnumKeysType, IEEE754EnumValuesType>(IEEE754Enum, value);
 		if (typeof valueResolve !== "string") {
 			throw new RangeError(`Filter argument \`ieee754\` must be match either of these values: "${Object.keys(IEEE754Enum).sort().join("\", \"")}"`);
 		}
@@ -343,7 +343,7 @@ class BigIntegerItemFilter {
 		if (typeof value !== "string") {
 			throw new TypeError(`Filter argument \`parity\` must be type of string!`);
 		}
-		let valueResolve: MathematicsParityEnumValuesType | undefined = enumResolve<MathematicsParityEnumKeysType, MathematicsParityEnumValuesType>(MathematicsParityEnum, value);
+		let valueResolve: MathematicsParityEnumValuesType | undefined = enumResolver<MathematicsParityEnumKeysType, MathematicsParityEnumValuesType>(MathematicsParityEnum, value);
 		if (typeof valueResolve !== "string") {
 			throw new RangeError(`Filter argument \`parity\` must be match either of these values: "${Object.keys(MathematicsParityEnum).sort().join("\", \"")}"`);
 		}
@@ -360,7 +360,7 @@ class BigIntegerItemFilter {
 		if (typeof value !== "string") {
 			throw new TypeError(`Filter argument \`primality\` must be type of string!`);
 		}
-		let valueResolve: MathematicsPrimalityEnumValuesType | undefined = enumResolve<MathematicsPrimalityEnumKeysType, MathematicsPrimalityEnumValuesType>(MathematicsPrimalityEnum, value);
+		let valueResolve: MathematicsPrimalityEnumValuesType | undefined = enumResolver<MathematicsPrimalityEnumKeysType, MathematicsPrimalityEnumValuesType>(MathematicsPrimalityEnum, value);
 		if (typeof valueResolve !== "string") {
 			throw new RangeError(`Filter argument \`primality\` must be match either of these values: "${Object.keys(MathematicsPrimalityEnum).sort().join("\", \"")}"`);
 		}
@@ -377,7 +377,7 @@ class BigIntegerItemFilter {
 		if (typeof value !== "string") {
 			throw new TypeError(`Filter argument \`sign\` must be type of string!`);
 		}
-		let valueResolve: MathematicsSignEnumValuesType | undefined = enumResolve<MathematicsSignEnumKeysType, MathematicsSignEnumValuesType>(MathematicsSignEnum, value);
+		let valueResolve: MathematicsSignEnumValuesType | undefined = enumResolver<MathematicsSignEnumKeysType, MathematicsSignEnumValuesType>(MathematicsSignEnum, value);
 		if (typeof valueResolve !== "string") {
 			throw new RangeError(`Filter argument \`sign\` must be match either of these values: "${Object.keys(MathematicsSignEnum).sort().join("\", \"")}"`);
 		}

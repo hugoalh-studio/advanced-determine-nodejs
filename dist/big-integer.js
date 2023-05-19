@@ -10,7 +10,7 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
 var _BigIntegerItemFilter_ieee754, _BigIntegerItemFilter_maximum, _BigIntegerItemFilter_maximumExclusive, _BigIntegerItemFilter_minimum, _BigIntegerItemFilter_minimumExclusive, _BigIntegerItemFilter_parity, _BigIntegerItemFilter_primality, _BigIntegerItemFilter_sign;
-import { enumResolve, IEEE754Enum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum } from "./internal/enum.js";
+import { enumResolver, IEEE754Enum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum } from "./internal/enum.js";
 import { integralNumericTypeRange } from "./internal/numeric.js";
 import { isBigIntegerEven, isBigIntegerNegative, isBigIntegerOdd, isBigIntegerPositive, isBigIntegerPrime, isBigIntegerSafe } from "./native/big-integer.js";
 /**
@@ -111,7 +111,7 @@ class BigIntegerItemFilter {
         if (typeof value !== "string") {
             throw new TypeError(`Filter argument \`ieee754\` must be type of string!`);
         }
-        let valueResolve = enumResolve(IEEE754Enum, value);
+        let valueResolve = enumResolver(IEEE754Enum, value);
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`ieee754\` must be match either of these values: "${Object.keys(IEEE754Enum).sort().join("\", \"")}"`);
         }
@@ -203,7 +203,7 @@ class BigIntegerItemFilter {
         if (typeof value !== "string") {
             throw new TypeError(`Filter argument \`parity\` must be type of string!`);
         }
-        let valueResolve = enumResolve(MathematicsParityEnum, value);
+        let valueResolve = enumResolver(MathematicsParityEnum, value);
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`parity\` must be match either of these values: "${Object.keys(MathematicsParityEnum).sort().join("\", \"")}"`);
         }
@@ -220,7 +220,7 @@ class BigIntegerItemFilter {
         if (typeof value !== "string") {
             throw new TypeError(`Filter argument \`primality\` must be type of string!`);
         }
-        let valueResolve = enumResolve(MathematicsPrimalityEnum, value);
+        let valueResolve = enumResolver(MathematicsPrimalityEnum, value);
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`primality\` must be match either of these values: "${Object.keys(MathematicsPrimalityEnum).sort().join("\", \"")}"`);
         }
@@ -237,7 +237,7 @@ class BigIntegerItemFilter {
         if (typeof value !== "string") {
             throw new TypeError(`Filter argument \`sign\` must be type of string!`);
         }
-        let valueResolve = enumResolve(MathematicsSignEnum, value);
+        let valueResolve = enumResolver(MathematicsSignEnum, value);
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`sign\` must be match either of these values: "${Object.keys(MathematicsSignEnum).sort().join("\", \"")}"`);
         }

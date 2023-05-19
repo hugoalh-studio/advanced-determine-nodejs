@@ -10,7 +10,7 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
 var _StringItemFilter_ascii, _StringItemFilter_case, _StringItemFilter_lengthMaximum, _StringItemFilter_lengthMinimum, _StringItemFilter_line, _StringItemFilter_pattern, _StringItemFilter_preTrim;
-import { enumResolve, StringCaseEnum, StringLineEnum } from "./internal/enum.js";
+import { enumResolver, StringCaseEnum, StringLineEnum } from "./internal/enum.js";
 import { isStringASCII, isStringLowerCase, isStringMultipleLine, isStringSingleLine, isStringUpperCase } from "./native/string.js";
 /**
  * @class StringItemFilter
@@ -133,7 +133,7 @@ class StringItemFilter {
         if (typeof value !== "string") {
             throw new TypeError(`Filter argument \`case\` must be type of string!`);
         }
-        let valueResolve = enumResolve(StringCaseEnum, value);
+        let valueResolve = enumResolver(StringCaseEnum, value);
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`case\` must be match either of these values: "${Object.keys(StringCaseEnum).sort().join("\", \"")}"`);
         }
@@ -199,7 +199,7 @@ class StringItemFilter {
         if (typeof value !== "string") {
             throw new TypeError(`Filter argument \`line\` must be type of string!`);
         }
-        let valueResolve = enumResolve(StringLineEnum, value);
+        let valueResolve = enumResolver(StringLineEnum, value);
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`line\` must be match either of these values: "${Object.keys(StringLineEnum).sort().join("\", \"")}"`);
         }

@@ -1,13 +1,13 @@
 type EnumCase<T extends string> = T | Capitalize<T> | Uncapitalize<T>;
 /**
- * @function enumResolve
+ * @function enumResolver
  * @template {unknown} K
  * @template {unknown} V
  * @param {Readonly<{ [x: string]: string; }>} e
  * @param {K} k
  * @returns {V | undefined}
  */
-declare function enumResolve<K, V>(e: Readonly<{
+declare function enumResolver<K, V>(e: Readonly<{
     [x: string]: string;
 }>, k: K): V | undefined;
 declare const IEEE754Enum: Readonly<{
@@ -114,5 +114,5 @@ declare const StringLineEnum: Readonly<{
 }>;
 type StringLineEnumKeysType = EnumCase<keyof typeof StringLineEnum>;
 type StringLineEnumValuesType = (typeof StringLineEnum)[keyof typeof StringLineEnum];
-export { enumResolve, IEEE754Enum, IntegralNumericTypeEnum, JSONRootTypeEnum, MathematicsFinitenessEnum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, NumericTypeEnum, StringCaseEnum, StringLineEnum, type EnumCase, type IEEE754EnumKeysType, type IEEE754EnumValuesType, type IntegralNumericTypeEnumKeysType, type IntegralNumericTypeEnumValuesType, type JSONRootTypeEnumKeysType, type JSONRootTypeEnumValuesType, type MathematicsFinitenessEnumKeysType, type MathematicsFinitenessEnumValuesType, type MathematicsParityEnumKeysType, type MathematicsParityEnumValuesType, type MathematicsPrimalityEnumKeysType, type MathematicsPrimalityEnumValuesType, type MathematicsSignEnumKeysType, type MathematicsSignEnumValuesType, type NumericTypeEnumKeysType, type NumericTypeEnumValuesType, type StringCaseEnumKeysType, type StringCaseEnumValuesType, type StringLineEnumKeysType, type StringLineEnumValuesType };
+export { enumResolver, IEEE754Enum, IntegralNumericTypeEnum, JSONRootTypeEnum, MathematicsFinitenessEnum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, NumericTypeEnum, StringCaseEnum, StringLineEnum, type EnumCase, type IEEE754EnumKeysType, type IEEE754EnumValuesType, type IntegralNumericTypeEnumKeysType, type IntegralNumericTypeEnumValuesType, type JSONRootTypeEnumKeysType, type JSONRootTypeEnumValuesType, type MathematicsFinitenessEnumKeysType, type MathematicsFinitenessEnumValuesType, type MathematicsParityEnumKeysType, type MathematicsParityEnumValuesType, type MathematicsPrimalityEnumKeysType, type MathematicsPrimalityEnumValuesType, type MathematicsSignEnumKeysType, type MathematicsSignEnumValuesType, type NumericTypeEnumKeysType, type NumericTypeEnumValuesType, type StringCaseEnumKeysType, type StringCaseEnumValuesType, type StringLineEnumKeysType, type StringLineEnumValuesType };
 //# sourceMappingURL=enum.d.ts.map
