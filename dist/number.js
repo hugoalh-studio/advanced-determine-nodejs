@@ -1,15 +1,3 @@
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-};
-var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
-    if (kind === "m") throw new TypeError("Private method is not writable");
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
-    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
-};
-var _NumberItemFilter_finiteness, _NumberItemFilter_ieee754, _NumberItemFilter_maximum, _NumberItemFilter_maximumExclusive, _NumberItemFilter_minimum, _NumberItemFilter_minimumExclusive, _NumberItemFilter_numericType, _NumberItemFilter_parity, _NumberItemFilter_primality, _NumberItemFilter_sign;
 import { enumResolver, IEEE754Enum, MathematicsFinitenessEnum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, NumericTypeEnum } from "./internal/enum.js";
 import { integralNumericTypeRange } from "./internal/numeric.js";
 import { isNumberEven, isNumberFloat, isNumberNegative, isNumberOdd, isNumberPositive, isNumberPrime, isNumberSafe } from "./native/number.js";
@@ -18,63 +6,39 @@ import { isNumberEven, isNumberFloat, isNumberNegative, isNumberOdd, isNumberPos
  * @description Determine item with the filter of type of number.
  */
 class NumberItemFilter {
+    #finiteness = "any";
+    #ieee754 = "any";
+    #maximum;
+    #maximumExclusive = false;
+    #minimum;
+    #minimumExclusive = false;
+    #numericType = "any";
+    #parity = "any";
+    #primality = "any";
+    #sign = "any";
     /**
      * @constructor
      * @description Initialize the filter of type of number to determine item.
      * @param {NumberItemFilter | NumberItemFilterOptions} [options] Options.
      */
     constructor(options) {
-        _NumberItemFilter_finiteness.set(this, "any");
-        _NumberItemFilter_ieee754.set(this, "any");
-        _NumberItemFilter_maximum.set(this, void 0);
-        _NumberItemFilter_maximumExclusive.set(this, false);
-        _NumberItemFilter_minimum.set(this, void 0);
-        _NumberItemFilter_minimumExclusive.set(this, false);
-        _NumberItemFilter_numericType.set(this, "any");
-        _NumberItemFilter_parity.set(this, "any");
-        _NumberItemFilter_primality.set(this, "any");
-        _NumberItemFilter_sign.set(this, "any");
-        /** @alias maximum */ this.max = this.maximum;
-        /** @alias maximumExclusive */ this.exclusiveMax = this.maximumExclusive;
-        /** @alias maximumExclusive */ this.exclusiveMaximum = this.maximumExclusive;
-        /** @alias maximumExclusive */ this.maxExclusive = this.maximumExclusive;
-        /** @alias minimum */ this.min = this.minimum;
-        /** @alias minimumExclusive */ this.exclusiveMin = this.minimumExclusive;
-        /** @alias minimumExclusive */ this.exclusiveMinimum = this.minimumExclusive;
-        /** @alias minimumExclusive */ this.minExclusive = this.minimumExclusive;
         if (options instanceof NumberItemFilter) {
-            __classPrivateFieldSet(this, _NumberItemFilter_finiteness, __classPrivateFieldGet(options, _NumberItemFilter_finiteness, "f"), "f");
-            __classPrivateFieldSet(this, _NumberItemFilter_ieee754, __classPrivateFieldGet(options, _NumberItemFilter_ieee754, "f"), "f");
-            __classPrivateFieldSet(this, _NumberItemFilter_maximum, __classPrivateFieldGet(options, _NumberItemFilter_maximum, "f"), "f");
-            __classPrivateFieldSet(this, _NumberItemFilter_maximumExclusive, __classPrivateFieldGet(options, _NumberItemFilter_maximumExclusive, "f"), "f");
-            __classPrivateFieldSet(this, _NumberItemFilter_minimum, __classPrivateFieldGet(options, _NumberItemFilter_minimum, "f"), "f");
-            __classPrivateFieldSet(this, _NumberItemFilter_minimumExclusive, __classPrivateFieldGet(options, _NumberItemFilter_minimumExclusive, "f"), "f");
-            __classPrivateFieldSet(this, _NumberItemFilter_numericType, __classPrivateFieldGet(options, _NumberItemFilter_numericType, "f"), "f");
-            __classPrivateFieldSet(this, _NumberItemFilter_parity, __classPrivateFieldGet(options, _NumberItemFilter_parity, "f"), "f");
-            __classPrivateFieldSet(this, _NumberItemFilter_primality, __classPrivateFieldGet(options, _NumberItemFilter_primality, "f"), "f");
-            __classPrivateFieldSet(this, _NumberItemFilter_sign, __classPrivateFieldGet(options, _NumberItemFilter_sign, "f"), "f");
+            this.#finiteness = options.#finiteness;
+            this.#ieee754 = options.#ieee754;
+            this.#maximum = options.#maximum;
+            this.#maximumExclusive = options.#maximumExclusive;
+            this.#minimum = options.#minimum;
+            this.#minimumExclusive = options.#minimumExclusive;
+            this.#numericType = options.#numericType;
+            this.#parity = options.#parity;
+            this.#primality = options.#primality;
+            this.#sign = options.#sign;
         }
         else if (typeof options !== "undefined") {
-            options.float ?? (options.float = options.flt);
-            options.integer ?? (options.integer = options.int);
-            options.integralNumericType ?? (options.integralNumericType = options.type);
-            options.maximum ?? (options.maximum = options.max);
-            options.maximumExclusive ?? (options.maximumExclusive = options.maxExclusive ?? options.exclusiveMaximum ?? options.exclusiveMax);
-            options.minimum ?? (options.minimum = options.min);
-            options.minimumExclusive ?? (options.minimumExclusive = options.minExclusive ?? options.exclusiveMinimum ?? options.exclusiveMin);
-            options.negative ?? (options.negative = options.ngt ?? options.nega);
-            options.positive ?? (options.positive = options.pst ?? options.posi);
-            for (let option of ["even", "finite", "float", "infinite", "integer", "negative", "odd", "positive", "safe", "unsafe"]) {
-                if (options[option] === true) {
-                    this[option]();
-                }
-            }
-            if (options.prime === false) {
-                this.composite();
-            }
-            if (options.prime === true) {
-                this.prime();
-            }
+            options.maximum ??= options.max;
+            options.maximumExclusive ??= options.maxExclusive ?? options.exclusiveMaximum ?? options.exclusiveMax;
+            options.minimum ??= options.min;
+            options.minimumExclusive ??= options.minExclusive ?? options.exclusiveMinimum ?? options.exclusiveMin;
             for (let option of ["finiteness", "ieee754", "maximum", "maximumExclusive", "minimum", "minimumExclusive", "numericType", "parity", "primality", "sign", "integralNumericType"]) {
                 if (typeof options[option] !== "undefined") {
                     this[option](options[option]);
@@ -97,16 +61,16 @@ class NumberItemFilter {
      */
     get status() {
         return {
-            finiteness: __classPrivateFieldGet(this, _NumberItemFilter_finiteness, "f"),
-            ieee754: __classPrivateFieldGet(this, _NumberItemFilter_ieee754, "f"),
-            maximum: __classPrivateFieldGet(this, _NumberItemFilter_maximum, "f"),
-            maximumExclusive: __classPrivateFieldGet(this, _NumberItemFilter_maximumExclusive, "f"),
-            minimum: __classPrivateFieldGet(this, _NumberItemFilter_minimum, "f"),
-            minimumExclusive: __classPrivateFieldGet(this, _NumberItemFilter_minimumExclusive, "f"),
-            numericType: __classPrivateFieldGet(this, _NumberItemFilter_numericType, "f"),
-            parity: __classPrivateFieldGet(this, _NumberItemFilter_parity, "f"),
-            primality: __classPrivateFieldGet(this, _NumberItemFilter_primality, "f"),
-            sign: __classPrivateFieldGet(this, _NumberItemFilter_sign, "f")
+            finiteness: this.#finiteness,
+            ieee754: this.#ieee754,
+            maximum: this.#maximum,
+            maximumExclusive: this.#maximumExclusive,
+            minimum: this.#minimum,
+            minimumExclusive: this.#minimumExclusive,
+            numericType: this.#numericType,
+            parity: this.#parity,
+            primality: this.#primality,
+            sign: this.#sign
         };
     }
     /**
@@ -123,7 +87,7 @@ class NumberItemFilter {
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`finiteness\` must be match either of these values: "${Object.keys(MathematicsFinitenessEnum).sort().join("\", \"")}"`);
         }
-        __classPrivateFieldSet(this, _NumberItemFilter_finiteness, valueResolve, "f");
+        this.#finiteness = valueResolve;
         return this;
     }
     /**
@@ -140,7 +104,7 @@ class NumberItemFilter {
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`ieee754\` must be match either of these values: "${Object.keys(IEEE754Enum).sort().join("\", \"")}"`);
         }
-        __classPrivateFieldSet(this, _NumberItemFilter_ieee754, valueResolve, "f");
+        this.#ieee754 = valueResolve;
         return this;
     }
     /**
@@ -151,10 +115,10 @@ class NumberItemFilter {
      */
     integralNumericType(value) {
         let [intrMin, intrMax] = integralNumericTypeRange(value);
-        __classPrivateFieldSet(this, _NumberItemFilter_maximum, Number(intrMax), "f");
-        __classPrivateFieldSet(this, _NumberItemFilter_minimum, Number(intrMin), "f");
-        __classPrivateFieldSet(this, _NumberItemFilter_maximumExclusive, false, "f");
-        __classPrivateFieldSet(this, _NumberItemFilter_minimumExclusive, false, "f");
+        this.#maximum = Number(intrMax);
+        this.#minimum = Number(intrMin);
+        this.#maximumExclusive = false;
+        this.#minimumExclusive = false;
         return this;
     }
     /**
@@ -165,14 +129,14 @@ class NumberItemFilter {
      */
     maximum(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            if (typeof __classPrivateFieldGet(this, _NumberItemFilter_minimum, "f") === "number" && !(__classPrivateFieldGet(this, _NumberItemFilter_minimum, "f") <= value)) {
-                throw new RangeError(`Filter argument \`maximum\` must be a number which is >= ${__classPrivateFieldGet(this, _NumberItemFilter_minimum, "f")}!`);
+            if (typeof this.#minimum === "number" && !(this.#minimum <= value)) {
+                throw new RangeError(`Filter argument \`maximum\` must be a number which is >= ${this.#minimum}!`);
             }
         }
         else if (typeof value !== "undefined") {
             throw new TypeError(`Filter argument \`maximum\` must be type of number or undefined!`);
         }
-        __classPrivateFieldSet(this, _NumberItemFilter_maximum, value, "f");
+        this.#maximum = value;
         return this;
     }
     /**
@@ -185,7 +149,7 @@ class NumberItemFilter {
         if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`maximumExclusive\` must be type of boolean!`);
         }
-        __classPrivateFieldSet(this, _NumberItemFilter_maximumExclusive, value, "f");
+        this.#maximumExclusive = value;
         return this;
     }
     /**
@@ -196,14 +160,14 @@ class NumberItemFilter {
      */
     minimum(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            if (typeof __classPrivateFieldGet(this, _NumberItemFilter_maximum, "f") === "number" && !(value <= __classPrivateFieldGet(this, _NumberItemFilter_maximum, "f"))) {
-                throw new RangeError(`Filter argument \`minimum\` must be a number which is <= ${__classPrivateFieldGet(this, _NumberItemFilter_maximum, "f")}!`);
+            if (typeof this.#maximum === "number" && !(value <= this.#maximum)) {
+                throw new RangeError(`Filter argument \`minimum\` must be a number which is <= ${this.#maximum}!`);
             }
         }
         else if (typeof value !== "undefined") {
             throw new TypeError(`Filter argument \`minimum\` must be type of number or undefined!`);
         }
-        __classPrivateFieldSet(this, _NumberItemFilter_minimum, value, "f");
+        this.#minimum = value;
         return this;
     }
     /**
@@ -216,7 +180,7 @@ class NumberItemFilter {
         if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`minimumExclusive\` must be type of boolean!`);
         }
-        __classPrivateFieldSet(this, _NumberItemFilter_minimumExclusive, value, "f");
+        this.#minimumExclusive = value;
         return this;
     }
     /**
@@ -233,7 +197,7 @@ class NumberItemFilter {
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`numericType\` must be match either of these values: "${Object.keys(NumericTypeEnum).sort().join("\", \"")}"`);
         }
-        __classPrivateFieldSet(this, _NumberItemFilter_numericType, valueResolve, "f");
+        this.#numericType = valueResolve;
         return this;
     }
     /**
@@ -250,7 +214,7 @@ class NumberItemFilter {
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`parity\` must be match either of these values: "${Object.keys(MathematicsParityEnum).sort().join("\", \"")}"`);
         }
-        __classPrivateFieldSet(this, _NumberItemFilter_parity, valueResolve, "f");
+        this.#parity = valueResolve;
         return this;
     }
     /**
@@ -267,7 +231,7 @@ class NumberItemFilter {
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`primality\` must be match either of these values: "${Object.keys(MathematicsPrimalityEnum).sort().join("\", \"")}"`);
         }
-        __classPrivateFieldSet(this, _NumberItemFilter_primality, valueResolve, "f");
+        this.#primality = valueResolve;
         return this;
     }
     /**
@@ -284,9 +248,17 @@ class NumberItemFilter {
         if (typeof valueResolve !== "string") {
             throw new RangeError(`Filter argument \`sign\` must be match either of these values: "${Object.keys(MathematicsSignEnum).sort().join("\", \"")}"`);
         }
-        __classPrivateFieldSet(this, _NumberItemFilter_sign, valueResolve, "f");
+        this.#sign = valueResolve;
         return this;
     }
+    /** @alias maximum */ max = this.maximum;
+    /** @alias maximumExclusive */ exclusiveMax = this.maximumExclusive;
+    /** @alias maximumExclusive */ exclusiveMaximum = this.maximumExclusive;
+    /** @alias maximumExclusive */ maxExclusive = this.maximumExclusive;
+    /** @alias minimum */ min = this.minimum;
+    /** @alias minimumExclusive */ exclusiveMin = this.minimumExclusive;
+    /** @alias minimumExclusive */ exclusiveMinimum = this.minimumExclusive;
+    /** @alias minimumExclusive */ minExclusive = this.minimumExclusive;
     /**
      * @method composite
      * @description Set to allow a composite number.
@@ -392,22 +364,22 @@ class NumberItemFilter {
     test(item) {
         if (typeof item !== "number" ||
             Number.isNaN(item) ||
-            (__classPrivateFieldGet(this, _NumberItemFilter_finiteness, "f") === "finite" && !Number.isFinite(item)) ||
-            (__classPrivateFieldGet(this, _NumberItemFilter_finiteness, "f") === "infinite" && Number.isFinite(item)) ||
-            (__classPrivateFieldGet(this, _NumberItemFilter_ieee754, "f") === "safe" && !isNumberSafe(item)) ||
-            (__classPrivateFieldGet(this, _NumberItemFilter_ieee754, "f") === "unsafe" && isNumberSafe(item)) ||
-            (typeof __classPrivateFieldGet(this, _NumberItemFilter_maximum, "f") === "number" && __classPrivateFieldGet(this, _NumberItemFilter_maximumExclusive, "f") && !(item < __classPrivateFieldGet(this, _NumberItemFilter_maximum, "f"))) ||
-            (typeof __classPrivateFieldGet(this, _NumberItemFilter_maximum, "f") === "number" && !__classPrivateFieldGet(this, _NumberItemFilter_maximumExclusive, "f") && !(item <= __classPrivateFieldGet(this, _NumberItemFilter_maximum, "f"))) ||
-            (typeof __classPrivateFieldGet(this, _NumberItemFilter_minimum, "f") === "number" && __classPrivateFieldGet(this, _NumberItemFilter_minimumExclusive, "f") && !(__classPrivateFieldGet(this, _NumberItemFilter_minimum, "f") < item)) ||
-            (typeof __classPrivateFieldGet(this, _NumberItemFilter_minimum, "f") === "number" && !__classPrivateFieldGet(this, _NumberItemFilter_minimumExclusive, "f") && !(__classPrivateFieldGet(this, _NumberItemFilter_minimum, "f") <= item)) ||
-            (__classPrivateFieldGet(this, _NumberItemFilter_numericType, "f") === "float" && !isNumberFloat(item)) ||
-            (__classPrivateFieldGet(this, _NumberItemFilter_numericType, "f") === "integer" && !Number.isInteger(item)) ||
-            (__classPrivateFieldGet(this, _NumberItemFilter_parity, "f") === "even" && !isNumberEven(item)) ||
-            (__classPrivateFieldGet(this, _NumberItemFilter_parity, "f") === "odd" && !isNumberOdd(item)) ||
-            (__classPrivateFieldGet(this, _NumberItemFilter_primality, "f") === "composite" && isNumberPrime(item)) ||
-            (__classPrivateFieldGet(this, _NumberItemFilter_primality, "f") === "prime" && !isNumberPrime(item)) ||
-            (__classPrivateFieldGet(this, _NumberItemFilter_sign, "f") === "negative" && !isNumberNegative(item)) ||
-            (__classPrivateFieldGet(this, _NumberItemFilter_sign, "f") === "positive" && !isNumberPositive(item))) {
+            (this.#finiteness === "finite" && !Number.isFinite(item)) ||
+            (this.#finiteness === "infinite" && Number.isFinite(item)) ||
+            (this.#ieee754 === "safe" && !isNumberSafe(item)) ||
+            (this.#ieee754 === "unsafe" && isNumberSafe(item)) ||
+            (typeof this.#maximum === "number" && this.#maximumExclusive && !(item < this.#maximum)) ||
+            (typeof this.#maximum === "number" && !this.#maximumExclusive && !(item <= this.#maximum)) ||
+            (typeof this.#minimum === "number" && this.#minimumExclusive && !(this.#minimum < item)) ||
+            (typeof this.#minimum === "number" && !this.#minimumExclusive && !(this.#minimum <= item)) ||
+            (this.#numericType === "float" && !isNumberFloat(item)) ||
+            (this.#numericType === "integer" && !Number.isInteger(item)) ||
+            (this.#parity === "even" && !isNumberEven(item)) ||
+            (this.#parity === "odd" && !isNumberOdd(item)) ||
+            (this.#primality === "composite" && isNumberPrime(item)) ||
+            (this.#primality === "prime" && !isNumberPrime(item)) ||
+            (this.#sign === "negative" && !isNumberNegative(item)) ||
+            (this.#sign === "positive" && !isNumberPositive(item))) {
             return false;
         }
         return true;
@@ -423,7 +395,6 @@ class NumberItemFilter {
         return new this(options).test(item);
     }
 }
-_NumberItemFilter_finiteness = new WeakMap(), _NumberItemFilter_ieee754 = new WeakMap(), _NumberItemFilter_maximum = new WeakMap(), _NumberItemFilter_maximumExclusive = new WeakMap(), _NumberItemFilter_minimum = new WeakMap(), _NumberItemFilter_minimumExclusive = new WeakMap(), _NumberItemFilter_numericType = new WeakMap(), _NumberItemFilter_parity = new WeakMap(), _NumberItemFilter_primality = new WeakMap(), _NumberItemFilter_sign = new WeakMap();
 /**
  * @function isNumber
  * @description Determine item with the filter of type of number.

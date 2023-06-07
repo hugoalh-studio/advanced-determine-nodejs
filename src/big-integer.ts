@@ -90,80 +90,6 @@ interface BigIntegerItemFilterOptions extends Partial<Omit<BigIntegerItemFilterO
 	/** @alias minimumExclusive */exclusiveMin?: boolean;
 	/** @alias minimumExclusive */exclusiveMinimum?: boolean;
 	/** @alias minimumExclusive */minExclusive?: boolean;
-	/**
-	 * @property even
-	 * @description Whether an even big integer.
-	 * @default undefined
-	 * @deprecated Replaced by property `parity` with value `"even"`.
-	 */
-	even?: boolean;
-	/**
-	 * @property negative
-	 * @description Whether a negative big integer.
-	 * @default undefined
-	 * @deprecated Replaced by property `sign` with value `"negative"`.
-	 */
-	negative?: boolean;
-	/**
-	 * @property odd
-	 * @description Whether an odd big integer.
-	 * @default undefined
-	 * @deprecated Replaced by property `parity` with value `"odd"`.
-	 */
-	odd?: boolean;
-	/**
-	 * @property positive
-	 * @description Whether a positive big integer.
-	 * @default undefined
-	 * @deprecated Replaced by property `sign` with value `"positive"`.
-	 */
-	positive?: boolean;
-	/**
-	 * @property prime
-	 * @description Whether a prime big integer.
-	 * @default undefined
-	 * @deprecated Replaced by property `primality`.
-	 */
-	prime?: boolean;
-	/**
-	 * @property safe
-	 * @description Whether an IEEE-754 safe big integer.
-	 * @default undefined
-	 * @deprecated Replaced by property `ieee754` with value `"safe"`.
-	 */
-	safe?: boolean;
-	/**
-	 * @property unsafe
-	 * @description Whether not an IEEE-754 safe big integer.
-	 * @default undefined
-	 * @deprecated Replaced by property `ieee754` with value `"unsafe"`.
-	 */
-	unsafe?: boolean;
-	/**
-	 * @alias negative
-	 * @deprecated Replaced by property `sign` with value `"negative"`.
-	 */
-	nega?: boolean;
-	/**
-	 * @alias negative
-	 * @deprecated Replaced by property `sign` with value `"negative"`.
-	 */
-	ngt?: boolean;
-	/**
-	 * @alias positive
-	 * @deprecated Replaced by property `sign` with value `"positive"`.
-	 */
-	posi?: boolean;
-	/**
-	 * @alias positive
-	 * @deprecated Replaced by property `sign` with value `"positive"`.
-	 */
-	pst?: boolean;
-	/**
-	 * @alias integralNumericType
-	 * @deprecated Replaced by property `integralNumericType`.
-	 */
-	type?: IntegralNumericTypeEnumKeysType;
 }
 /**
  * @class BigIntegerItemFilter
@@ -194,24 +120,10 @@ class BigIntegerItemFilter {
 			this.#primality = options.#primality;
 			this.#sign = options.#sign;
 		} else if (typeof options !== "undefined") {
-			options.integralNumericType ??= options.type;
 			options.maximum ??= options.max;
 			options.maximumExclusive ??= options.maxExclusive ?? options.exclusiveMaximum ?? options.exclusiveMax;
 			options.minimum ??= options.min;
 			options.minimumExclusive ??= options.minExclusive ?? options.exclusiveMinimum ?? options.exclusiveMin;
-			options.negative ??= options.ngt ?? options.nega;
-			options.positive ??= options.pst ?? options.posi;
-			for (let option of ["even", "negative", "odd", "positive", "safe", "unsafe"]) {
-				if (options[option] === true) {
-					this[option]();
-				}
-			}
-			if (options.prime === false) {
-				this.composite();
-			}
-			if (options.prime === true) {
-				this.prime();
-			}
 			for (let option of ["ieee754", "maximum", "maximumExclusive", "minimum", "minimumExclusive", "parity", "primality", "sign", "integralNumericType"]) {
 				if (typeof options[option] !== "undefined") {
 					this[option](options[option]);

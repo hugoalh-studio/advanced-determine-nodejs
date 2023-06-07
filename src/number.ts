@@ -114,118 +114,6 @@ interface NumberItemFilterOptions extends Partial<Omit<NumberItemFilterOptionsBa
 	/** @alias minimumExclusive */exclusiveMin?: boolean;
 	/** @alias minimumExclusive */exclusiveMinimum?: boolean;
 	/** @alias minimumExclusive */minExclusive?: boolean;
-	/**
-	 * @property even
-	 * @description Whether an even number.
-	 * @default undefined
-	 * @deprecated Replaced by property `parity` with value `"even"`.
-	 */
-	even?: boolean;
-	/**
-	 * @property finite
-	 * @description Whether a finite number.
-	 * @default undefined
-	 * @deprecated Replaced by property `finiteness` with value `"finite"`.
-	 */
-	finite?: boolean;
-	/**
-	 * @property float
-	 * @description Whether a float number.
-	 * @default undefined
-	 * @deprecated Replaced by property `numericType` with value `"float"`.
-	 */
-	float?: boolean;
-	/**
-	 * @property infinite
-	 * @description Whether an infinite number.
-	 * @default undefined
-	 * @deprecated Replaced by property `finiteness` with value `"infinite"`.
-	 */
-	infinite?: boolean;
-	/**
-	 * @property integer
-	 * @description Whether an integer number.
-	 * @default undefined
-	 * @deprecated Replaced by property `numericType` with value `"integer"`.
-	 */
-	integer?: boolean;
-	/**
-	 * @property negative
-	 * @description Whether a negative number.
-	 * @default undefined
-	 * @deprecated Replaced by property `sign` with value `"negative"`.
-	 */
-	negative?: boolean;
-	/**
-	 * @property odd
-	 * @description Whether an odd number.
-	 * @default undefined
-	 * @deprecated Replaced by property `parity` with value `"odd"`.
-	 */
-	odd?: boolean;
-	/**
-	 * @property positive
-	 * @description Whether a positive number.
-	 * @default undefined
-	 * @deprecated Replaced by property `sign` with value `"positive"`.
-	 */
-	positive?: boolean;
-	/**
-	 * @property prime
-	 * @description Whether a prime number.
-	 * @default undefined
-	 * @deprecated Replaced by property `primality`.
-	 */
-	prime?: boolean;
-	/**
-	 * @property safe
-	 * @description Whether an IEEE-754 safe number.
-	 * @default undefined
-	 * @deprecated Replaced by property `ieee754` with value `"safe"`.
-	 */
-	safe?: boolean;
-	/**
-	 * @property unsafe
-	 * @description Whether not an IEEE-754 safe number.
-	 * @deprecated Replaced by property `ieee754` with value `"unsafe"`.
-	 * @default undefined
-	 */
-	unsafe?: boolean;
-	/**
-	 * @alias float
-	 * @deprecated Replaced by property `numericType` with value `"float"`.
-	 */
-	flt?: boolean;
-	/**
-	 * @alias integer
-	 * @deprecated Replaced by property `numericType` with value `"integer"`.
-	 */
-	int?: boolean;
-	/**
-	 * @alias negative
-	 * @deprecated Replaced by property `sign` with value `"negative"`.
-	 */
-	nega?: boolean;
-	/**
-	 * @alias negative
-	 * @deprecated Replaced by property `sign` with value `"negative"`.
-	 */
-	ngt?: boolean;
-	/**
-	 * @alias positive
-	 * @deprecated Replaced by property `sign` with value `"positive"`.
-	 */
-	posi?: boolean;
-	/**
-	 * @alias positive
-	 * @deprecated Replaced by property `sign` with value `"positive"`.
-	 */
-	pst?: boolean;
-	/**
-	 * @alias integralNumericType
-	 * @deprecated Replaced by property `integralNumericType`.
-	 */
-	type?: IntegralNumericTypeEnumKeysType;
 }
 /**
  * @class NumberItemFilter
@@ -260,26 +148,10 @@ class NumberItemFilter {
 			this.#primality = options.#primality;
 			this.#sign = options.#sign;
 		} else if (typeof options !== "undefined") {
-			options.float ??= options.flt;
-			options.integer ??= options.int;
-			options.integralNumericType ??= options.type;
 			options.maximum ??= options.max;
 			options.maximumExclusive ??= options.maxExclusive ?? options.exclusiveMaximum ?? options.exclusiveMax;
 			options.minimum ??= options.min;
 			options.minimumExclusive ??= options.minExclusive ?? options.exclusiveMinimum ?? options.exclusiveMin;
-			options.negative ??= options.ngt ?? options.nega;
-			options.positive ??= options.pst ?? options.posi;
-			for (let option of ["even", "finite", "float", "infinite", "integer", "negative", "odd", "positive", "safe", "unsafe"]) {
-				if (options[option] === true) {
-					this[option]();
-				}
-			}
-			if (options.prime === false) {
-				this.composite();
-			}
-			if (options.prime === true) {
-				this.prime();
-			}
 			for (let option of ["finiteness", "ieee754", "maximum", "maximumExclusive", "minimum", "minimumExclusive", "numericType", "parity", "primality", "sign", "integralNumericType"]) {
 				if (typeof options[option] !== "undefined") {
 					this[option](options[option]);

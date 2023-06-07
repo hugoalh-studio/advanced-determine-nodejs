@@ -68,38 +68,6 @@ interface JSONItemFilterOptions extends Partial<Omit<JSONItemFilterOptionsBase, 
 	/** @alias entriesCountMinimum */minEntries?: number;
 	/** @alias entriesCountMinimum */minimumEntries?: number;
 	/** @alias strictKeys */keysStrict?: boolean;
-	/**
-	 * @property arrayRoot
-	 * @description Whether type of array as the root of the JSON.
-	 * @default undefined
-	 * @deprecated Replaced by property `rootType`.
-	 */
-	arrayRoot?: boolean;
-	/**
-	 * @alias entries
-	 * @deprecated Replaced by property `entriesCount`.
-	 */
-	entries?: number;
-	/**
-	 * @alias entriesMax
-	 * @deprecated Replaced by property `entriesCountMaximum`.
-	 */
-	entriesMax?: number;
-	/**
-	 * @alias entriesMax
-	 * @deprecated Replaced by property `entriesCountMaximum`.
-	 */
-	entriesMaximum?: number;
-	/**
-	 * @alias entriesMin
-	 * @deprecated Replaced by property `entriesCountMinimum`.
-	 */
-	entriesMin?: number;
-	/**
-	 * @alias entriesMin
-	 * @deprecated Replaced by property `entriesCountMinimum`.
-	 */
-	entriesMinimum?: number;
 }
 /**
  * @access private
@@ -172,16 +140,9 @@ class JSONItemFilter {
 			this.#keysPattern = options.#keysPattern;
 			this.#rootType = options.#rootType;
 		} else if (typeof options !== "undefined") {
-			options.entriesCount ??= options.entries;
-			options.entriesCountMaximum ??= options.entriesCountMax ?? options.entriesMaximum ?? options.entriesMax ?? options.maximumEntries ?? options.maxEntries;
-			options.entriesCountMinimum ??= options.entriesCountMin ?? options.entriesMinimum ?? options.entriesMin ?? options.minimumEntries ?? options.minEntries;
+			options.entriesCountMaximum ??= options.entriesCountMax ?? options.maximumEntries ?? options.maxEntries;
+			options.entriesCountMinimum ??= options.entriesCountMin ?? options.minimumEntries ?? options.minEntries;
 			options.strictKeys ??= options.keysStrict ?? false;
-			if (options.arrayRoot === false) {
-				this.rootType("object");
-			}
-			if (options.arrayRoot === true) {
-				this.rootType("array");
-			}
 			for (let option of ["entriesCountMaximum", "entriesCountMinimum", "keysPattern", "rootType", "strictKeys", "allowEmpty", "entriesCount", "strict"]) {
 				if (typeof options[option] !== "undefined") {
 					this[option](options[option]);

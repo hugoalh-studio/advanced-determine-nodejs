@@ -63,38 +63,6 @@ interface JSONItemFilterOptions extends Partial<Omit<JSONItemFilterOptionsBase, 
     /** @alias entriesCountMinimum */ minEntries?: number;
     /** @alias entriesCountMinimum */ minimumEntries?: number;
     /** @alias strictKeys */ keysStrict?: boolean;
-    /**
-     * @property arrayRoot
-     * @description Whether type of array as the root of the JSON.
-     * @default undefined
-     * @deprecated Replaced by property `rootType`.
-     */
-    arrayRoot?: boolean;
-    /**
-     * @alias entries
-     * @deprecated Replaced by property `entriesCount`.
-     */
-    entries?: number;
-    /**
-     * @alias entriesMax
-     * @deprecated Replaced by property `entriesCountMaximum`.
-     */
-    entriesMax?: number;
-    /**
-     * @alias entriesMax
-     * @deprecated Replaced by property `entriesCountMaximum`.
-     */
-    entriesMaximum?: number;
-    /**
-     * @alias entriesMin
-     * @deprecated Replaced by property `entriesCountMinimum`.
-     */
-    entriesMin?: number;
-    /**
-     * @alias entriesMin
-     * @deprecated Replaced by property `entriesCountMinimum`.
-     */
-    entriesMinimum?: number;
 }
 /**
  * @class JSONItemFilter

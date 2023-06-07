@@ -1,37 +1,24 @@
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-};
-var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
-    if (kind === "m") throw new TypeError("Private method is not writable");
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
-    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
-};
-var _ObjectItemFilter_allowArray, _ObjectItemFilter_allowNull, _ObjectItemFilter_allowRegExp;
 /**
  * @class ObjectItemFilter
  * @description Determine item with the filter of type of object.
  */
 class ObjectItemFilter {
+    #allowArray = false;
+    #allowNull = false;
+    #allowRegExp = false;
     /**
      * @constructor
      * @description Initialize the filter of type of object to determine item.
      * @param {ObjectItemFilter | ObjectItemFilterOptions} [options] Options.
      */
     constructor(options) {
-        _ObjectItemFilter_allowArray.set(this, false);
-        _ObjectItemFilter_allowNull.set(this, false);
-        _ObjectItemFilter_allowRegExp.set(this, false);
-        /** @alias allowRegExp */ this.allowRegularExpression = this.allowRegExp;
         if (options instanceof ObjectItemFilter) {
-            __classPrivateFieldSet(this, _ObjectItemFilter_allowArray, __classPrivateFieldGet(options, _ObjectItemFilter_allowArray, "f"), "f");
-            __classPrivateFieldSet(this, _ObjectItemFilter_allowNull, __classPrivateFieldGet(options, _ObjectItemFilter_allowNull, "f"), "f");
-            __classPrivateFieldSet(this, _ObjectItemFilter_allowRegExp, __classPrivateFieldGet(options, _ObjectItemFilter_allowRegExp, "f"), "f");
+            this.#allowArray = options.#allowArray;
+            this.#allowNull = options.#allowNull;
+            this.#allowRegExp = options.#allowRegExp;
         }
         else if (typeof options !== "undefined") {
-            options.allowRegExp ?? (options.allowRegExp = options.allowRegularExpression);
+            options.allowRegExp ??= options.allowRegularExpression;
             for (let option of ["allowArray", "allowNull", "allowRegExp"]) {
                 if (typeof options[option] !== "undefined") {
                     this[option](options[option]);
@@ -54,9 +41,9 @@ class ObjectItemFilter {
      */
     get status() {
         return {
-            allowArray: __classPrivateFieldGet(this, _ObjectItemFilter_allowArray, "f"),
-            allowNull: __classPrivateFieldGet(this, _ObjectItemFilter_allowNull, "f"),
-            allowRegExp: __classPrivateFieldGet(this, _ObjectItemFilter_allowRegExp, "f")
+            allowArray: this.#allowArray,
+            allowNull: this.#allowNull,
+            allowRegExp: this.#allowRegExp
         };
     }
     /**
@@ -69,7 +56,7 @@ class ObjectItemFilter {
         if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`allowArray\` must be type of boolean!`);
         }
-        __classPrivateFieldSet(this, _ObjectItemFilter_allowArray, value, "f");
+        this.#allowArray = value;
         return this;
     }
     /**
@@ -82,7 +69,7 @@ class ObjectItemFilter {
         if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`allowNull\` must be type of boolean!`);
         }
-        __classPrivateFieldSet(this, _ObjectItemFilter_allowNull, value, "f");
+        this.#allowNull = value;
         return this;
     }
     /**
@@ -95,9 +82,10 @@ class ObjectItemFilter {
         if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`allowRegExp\` must be type of boolean!`);
         }
-        __classPrivateFieldSet(this, _ObjectItemFilter_allowRegExp, value, "f");
+        this.#allowRegExp = value;
         return this;
     }
+    /** @alias allowRegExp */ allowRegularExpression = this.allowRegExp;
     /**
      * @method test
      * @param {unknown} item Item that need to determine.
@@ -105,9 +93,9 @@ class ObjectItemFilter {
      */
     test(item) {
         if (typeof item !== "object" ||
-            (!__classPrivateFieldGet(this, _ObjectItemFilter_allowArray, "f") && Array.isArray(item)) ||
-            (!__classPrivateFieldGet(this, _ObjectItemFilter_allowNull, "f") && item === null) ||
-            (!__classPrivateFieldGet(this, _ObjectItemFilter_allowRegExp, "f") && item instanceof RegExp)) {
+            (!this.#allowArray && Array.isArray(item)) ||
+            (!this.#allowNull && item === null) ||
+            (!this.#allowRegExp && item instanceof RegExp)) {
             return false;
         }
         return true;
@@ -123,7 +111,6 @@ class ObjectItemFilter {
         return new this(options).test(item);
     }
 }
-_ObjectItemFilter_allowArray = new WeakMap(), _ObjectItemFilter_allowNull = new WeakMap(), _ObjectItemFilter_allowRegExp = new WeakMap();
 /**
  * @function isObject
  * @description Determine item with the filter of type of object.

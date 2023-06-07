@@ -82,32 +82,7 @@ interface PlainObjectItemFilterOptions extends Partial<PlainObjectItemFilterOpti
 	/** @alias entriesGetter */getterEntries?: boolean;
 	/** @alias entriesSetter */setterEntries?: boolean;
 	/** @alias entriesWritable */writableEntries?: boolean;
-	/** @alias keysSymbol */symbolKeys?: boolean;
-	/**
-	 * @alias entriesCount
-	 * @deprecated Replaced by property `entriesCount`.
-	 */
-	entries?: number;
-	/**
-	 * @alias entriesCountMaximum
-	 * @deprecated Replaced by property `entriesCountMaximum`.
-	 */
-	entriesMaximum?: number;
-	/**
-	 * @alias entriesCountMaximum
-	 * @deprecated Replaced by property `entriesCountMaximum`.
-	 */
-	entriesMax?: number;
-	/**
-	 * @alias entriesCountMinimum
-	 * @deprecated Replaced by property `entriesCountMinimum`.
-	 */
-	entriesMinimum?: number;
-	/**
-	 * @alias entriesCountMinimum
-	 * @deprecated Replaced by property `entriesCountMinimum`.
-	 */
-	entriesMin?: number;
+	/** @alias keysSymbol */symbolKeys?: boolean
 }
 /**
  * @class PlainObjectItemFilter
@@ -139,9 +114,8 @@ class PlainObjectItemFilter {
 			this.#keysSymbol = options.#keysSymbol;
 		} else if (typeof options !== "undefined") {
 			options.entriesConfigurable ??= options.configurableEntries;
-			options.entriesCount ??= options.entries;
-			options.entriesCountMaximum ??= options.entriesCountMax ?? options.entriesMaximum ?? options.entriesMax ?? options.maximumEntries ?? options.maxEntries;
-			options.entriesCountMinimum ??= options.entriesCountMin ?? options.entriesMinimum ?? options.entriesMin ?? options.minimumEntries ?? options.minEntries;
+			options.entriesCountMaximum ??= options.entriesCountMax ?? options.maximumEntries ?? options.maxEntries;
+			options.entriesCountMinimum ??= options.entriesCountMin ?? options.minimumEntries ?? options.minEntries;
 			options.entriesEnumerable ??= options.enumerableEntries;
 			options.entriesGetter ??= options.getterEntries;
 			options.entriesSetter ??= options.setterEntries;

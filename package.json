@@ -1,6 +1,6 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "11.2.0",
+	"version": "12.0.0-beta.1",
 	"description": "A module to provide a better and more accurate way to determine item.",
 	"keywords": [
 		"determine",
@@ -33,12 +33,6 @@
 		"./big-integer": {
 			"import": "./dist/big-integer.js"
 		},
-		"./function": {
-			"import": "./dist/function.js"
-		},
-		"./generator": {
-			"import": "./dist/generator.js"
-		},
 		"./is": {
 			"import": "./dist/is.js"
 		},
@@ -47,12 +41,6 @@
 		},
 		"./json": {
 			"import": "./dist/json.js"
-		},
-		"./json-stringified": {
-			"import": "./dist/stringify-json.js"
-		},
-		"./json-stringify": {
-			"import": "./dist/stringify-json.js"
 		},
 		"./map": {
 			"import": "./dist/map.js"
@@ -114,12 +102,6 @@
 		"./string": {
 			"import": "./dist/string.js"
 		},
-		"./stringified-json": {
-			"import": "./dist/stringify-json.js"
-		},
-		"./stringify-json": {
-			"import": "./dist/stringify-json.js"
-		},
 		"./type-of": {
 			"import": "./dist/type-of.js"
 		}
@@ -138,7 +120,7 @@
 		"typescript": "^5.1.3"
 	},
 	"engines": {
-		"node": "^14.15.0 || >=16.13.0"
+		"node": ">=16.13.0"
 	},
 	"private": false
 }

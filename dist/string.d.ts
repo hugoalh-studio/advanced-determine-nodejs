@@ -83,44 +83,6 @@ interface StringItemFilterOptions extends Partial<Omit<StringItemFilterOptionsBa
     /** @alias lengthMinimum */ minimumCharacters?: number;
     /** @alias lengthMinimum */ minimumLength?: number;
     /** @alias lengthMinimum */ minLength?: number;
-    /**
-     * @property lowerCase
-     * @description Whether a lower case string.
-     * @default undefined
-     * @deprecated Replaced by property `case` with value `"lower"`.
-     */
-    lowerCase?: boolean;
-    /**
-     * @property multipleLine
-     * @description Whether a multiple line string.
-     * @deprecated Replaced by property `line` with value `"multiple"`.
-     * @default undefined
-     */
-    multipleLine?: boolean;
-    /**
-     * @property singleLine
-     * @description Whether a single line string.
-     * @default undefined
-     * @deprecated Replaced by property `line` with value `"single"`.
-     */
-    singleLine?: boolean;
-    /**
-     * @property upperCase
-     * @description Whether an upper case string.
-     * @default undefined
-     * @deprecated Replaced by property `case` with value `"upper"`.
-     */
-    upperCase?: boolean;
-    /**
-     * @alias multipleLine
-     * @deprecated Replaced by property `line` with value `"multiple"`.
-     */
-    multiline?: boolean;
-    /**
-     * @alias multipleLine
-     * @deprecated Replaced by property `line` with value `"multiple"`.
-     */
-    multiLine?: boolean;
 }
 /**
  * @class StringItemFilter

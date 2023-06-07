@@ -1,8 +1,6 @@
 import { areEqual } from "./are-equal.js";
 import { ArrayItemFilter, isArray } from "./array.js";
 import { BigIntegerItemFilter, BigIntItemFilter, isBigInt, isBigInteger } from "./big-integer.js";
-import { FunctionItemFilter, isFunction } from "./function.js";
-import { GeneratorItemFilter, isGenerator } from "./generator.js";
 import { isJSON, isJSONStringified, isJSONStringify, isStringifiedJSON, isStringifyJSON, JSONItemFilter } from "./json.js";
 import { isMap, MapItemFilter } from "./map.js";
 import * as native from "./native.js";
@@ -12,6 +10,5 @@ import { isObjectPlain, isPlainObject, ObjectPlainItemFilter, PlainObjectItemFil
 import { isRegEx, isRegExp, isRegularExpression, RegExItemFilter, RegExpItemFilter, RegularExpressionItemFilter } from "./regular-expression.js";
 import { isSet, SetItemFilter } from "./set.js";
 import { isString, StringItemFilter } from "./string.js";
-import { JSONStringifiedItemFilter, JSONStringifyItemFilter, StringifiedJSONItemFilter, StringifyJSONItemFilter } from "./stringify-json.js";
 import { typeOf } from "./type-of.js";
-export { areEqual, ArrayItemFilter, BigIntegerItemFilter, BigIntItemFilter, FunctionItemFilter, GeneratorItemFilter, isArray, isBigInt, isBigInteger, isFunction, isGenerator, isJSON, isJSONStringified, isJSONStringify, isMap, isNumber, isObject, isObjectPlain, isPlainObject, isRegEx, isRegExp, isRegularExpression, isSet, isString, isStringifiedJSON, isStringifyJSON, JSONItemFilter, JSONStringifiedItemFilter, JSONStringifyItemFilter, MapItemFilter, native, NumberItemFilter, ObjectItemFilter, ObjectPlainItemFilter, PlainObjectItemFilter, RegExItemFilter, RegExpItemFilter, RegularExpressionItemFilter, SetItemFilter, StringifiedJSONItemFilter, StringifyJSONItemFilter, StringItemFilter, typeOf };
+export { areEqual, ArrayItemFilter, BigIntegerItemFilter, BigIntItemFilter, isArray, isBigInt, isBigInteger, isJSON, isJSONStringified, isJSONStringify, isMap, isNumber, isObject, isObjectPlain, isPlainObject, isRegEx, isRegExp, isRegularExpression, isSet, isString, isStringifiedJSON, isStringifyJSON, JSONItemFilter, MapItemFilter, native, NumberItemFilter, ObjectItemFilter, ObjectPlainItemFilter, PlainObjectItemFilter, RegExItemFilter, RegExpItemFilter, RegularExpressionItemFilter, SetItemFilter, StringItemFilter, typeOf };

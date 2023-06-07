@@ -79,31 +79,6 @@ interface PlainObjectItemFilterOptions extends Partial<PlainObjectItemFilterOpti
     /** @alias entriesSetter */ setterEntries?: boolean;
     /** @alias entriesWritable */ writableEntries?: boolean;
     /** @alias keysSymbol */ symbolKeys?: boolean;
-    /**
-     * @alias entriesCount
-     * @deprecated Replaced by property `entriesCount`.
-     */
-    entries?: number;
-    /**
-     * @alias entriesCountMaximum
-     * @deprecated Replaced by property `entriesCountMaximum`.
-     */
-    entriesMaximum?: number;
-    /**
-     * @alias entriesCountMaximum
-     * @deprecated Replaced by property `entriesCountMaximum`.
-     */
-    entriesMax?: number;
-    /**
-     * @alias entriesCountMinimum
-     * @deprecated Replaced by property `entriesCountMinimum`.
-     */
-    entriesMinimum?: number;
-    /**
-     * @alias entriesCountMinimum
-     * @deprecated Replaced by property `entriesCountMinimum`.
-     */
-    entriesMin?: number;
 }
 /**
  * @class PlainObjectItemFilter

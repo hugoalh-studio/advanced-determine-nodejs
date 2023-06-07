@@ -15,7 +15,7 @@ function isArrayStrict(item: unknown[]): boolean {
 	}
 	let itemDescriptors = Object.getOwnPropertyDescriptors(item);
 	for (let itemPropertyKey in itemDescriptors) {
-		if (Object.prototype.hasOwnProperty.call(itemDescriptors, itemPropertyKey)) {
+		if (Object.hasOwn(itemDescriptors, itemPropertyKey)) {
 			if (arrayIndexRegExp.test(itemPropertyKey) && Number(itemPropertyKey) < 4294967296) {
 				let itemPropertyDescriptor: PropertyDescriptor = itemDescriptors[itemPropertyKey];
 				if (

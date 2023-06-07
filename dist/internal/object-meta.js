@@ -2,6 +2,18 @@
  * @class ObjectMeta
  */
 class ObjectMeta {
+    prototypes;
+    keysSymbol;
+    descriptors;
+    entriesConfigurable;
+    entriesEnumerable;
+    entriesGetter;
+    entriesNonAccessor;
+    entriesNonConfigurable;
+    entriesNonEnumerable;
+    entriesNonWritable;
+    entriesSetter;
+    entriesWritable;
     /**
      * @constructor
      * @param {object} item
@@ -20,7 +32,7 @@ class ObjectMeta {
         this.entriesSetter = [];
         this.entriesWritable = [];
         for (let descriptor in this.descriptors) {
-            if (Object.prototype.hasOwnProperty.call(this.descriptors, descriptor)) {
+            if (Object.hasOwn(this.descriptors, descriptor)) {
                 let descriptorProperties = this.descriptors[descriptor];
                 if (descriptorProperties.configurable) {
                     this.entriesConfigurable.push(descriptor);
