@@ -1,1 +1,1 @@
-{"version":3,"file":"are-equal.d.ts","sourceRoot":"","sources":["../src/are-equal.ts"],"names":[],"mappings":"AAsJA;;;;;GAKG;AACH,iBAAS,QAAQ,CAAC,GAAG,KAAK,EAAE,OAAO,EAAE,GAAG,OAAO,CAU9C;AACD,OAAO,EACN,QAAQ,EACR,CAAC"}
+{"version":3,"file":"are-equal.d.ts","sourceRoot":"","sources":["../src/are-equal.ts"],"names":[],"mappings":"AACA;;;;;;GAMG;AACH,iBAAS,QAAQ,CAAC,CAAC,EAAE,OAAO,EAAE,CAAC,CAAC,EAAE,OAAO,GAAG,OAAO,CAOlD;AACD,OAAO,EACN,QAAQ,EACR,CAAC"}

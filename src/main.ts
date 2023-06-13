@@ -10,7 +10,6 @@ import { isObjectPlain, isPlainObject, ObjectPlainItemFilter, PlainObjectItemFil
 import { isRegEx, isRegExp, isRegularExpression, RegExItemFilter, RegExpItemFilter, RegularExpressionItemFilter, type RegExItemFilterOptions, type RegExItemFilterOptionsBase, type RegExpItemFilterOptions, type RegExpItemFilterOptionsBase, type RegularExpressionItemFilterOptions, type RegularExpressionItemFilterOptionsBase } from "./regular-expression.js";
 import { isSet, SetItemFilter, type SetItemFilterOptions, type SetItemFilterOptionsBase } from "./set.js";
 import { isString, StringItemFilter, type StringItemFilterOptions, type StringItemFilterOptionsBase } from "./string.js";
-import { typeOf, type AdvancedTypeOf } from "./type-of.js";
 export {
 	areEqual,
 	ArrayItemFilter,
@@ -46,8 +45,6 @@ export {
 	RegularExpressionItemFilter,
 	SetItemFilter,
 	StringItemFilter,
-	typeOf,
-	type AdvancedTypeOf,
 	type ArrayItemFilterOptions,
 	type ArrayItemFilterOptionsBase,
 	type BigIntegerItemFilterOptions,

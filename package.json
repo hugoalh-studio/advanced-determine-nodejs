@@ -101,9 +101,6 @@
 		},
 		"./string": {
 			"import": "./dist/string.js"
-		},
-		"./type-of": {
-			"import": "./dist/type-of.js"
 		}
 	},
 	"types": "./dist/main.d.ts",

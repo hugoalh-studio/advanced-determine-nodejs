@@ -1,9 +1,10 @@
 /**
  * @function areEqual
  * @description Determine items are equal or not.
- * @param {...unknown} items Items that need to determine.
+ * @param {unknown} a
+ * @param {unknown} [b]
  * @returns {boolean} Determine result.
  */
-declare function areEqual(...items: unknown[]): boolean;
+declare function areEqual(a: unknown, b?: unknown): boolean;
 export { areEqual };
 //# sourceMappingURL=are-equal.d.ts.map

@@ -65,7 +65,6 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";// Namespace Im
 - `isSet`
 - `isString`
 - `isStringifyJSON`
-- `typeOf`
 
 ### Example
 
