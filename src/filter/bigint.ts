@@ -1,73 +1,7 @@
-import { enumResolver, IEEE754Enum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, type IEEE754EnumKeysType, type IEEE754EnumValuesType, type IntegralNumericTypeEnumKeysType, type MathematicsParityEnumKeysType, type MathematicsParityEnumValuesType, type MathematicsPrimalityEnumKeysType, type MathematicsPrimalityEnumValuesType, type MathematicsSignEnumKeysType, type MathematicsSignEnumValuesType } from "./internal/enum.js";
-import { integralNumericTypeRange, isPrimeNumeric } from "./internal/numeric.js";
-const MAX_SAFE_INTEGER = BigInt(Number.MAX_SAFE_INTEGER);
-const MIN_SAFE_INTEGER = BigInt(Number.MIN_SAFE_INTEGER);
-/**
- * @function isBigIntegerEven
- * @description Determine the big integer is even.
- * @param {bigint} item Item that need to determine.
- * @returns {boolean} Determine result.
- */
-function isBigIntegerEven(item: bigint): boolean {
-	return (item % 2n === 0n);
-}
-/**
- * @function isBigIntegerIntegralNumericType
- * @description Determine the big integer is match the specified integral numeric type.
- * @param {IntegralNumericTypeEnumKeysType} typeName Name of the integral numeric type.
- * @param {bigint} item Item that need to determine.
- * @returns {boolean} Determine result.
- */
-function isBigIntegerIntegralNumericType(typeName: IntegralNumericTypeEnumKeysType, item: bigint): boolean {
-	let [minimum, maximum] = integralNumericTypeRange(typeName);
-	return (minimum <= item && item <= maximum);
-}
-/**
- * @function isBigIntegerNegative
- * @description Determine the big integer is negative.
- * @param {bigint} item Item that need to determine.
- * @returns {boolean} Determine result.
- */
-function isBigIntegerNegative(item: bigint): boolean {
-	return (item < 0n);
-}
-/**
- * @function isBigIntegerOdd
- * @description Determine the big integer is odd.
- * @param {bigint} item Item that need to determine.
- * @returns {boolean} Determine result.
- */
-function isBigIntegerOdd(item: bigint): boolean {
-	return (item % 2n !== 0n);
-}
-/**
- * @function isBigIntegerPositive
- * @description Determine the big integer is positive.
- * @param {bigint} item Item that need to determine.
- * @returns {boolean} Determine result.
- */
-function isBigIntegerPositive(item: bigint): boolean {
-	return (item >= 0n);
-}
-/**
- * @function isBigIntegerPrime
- * @description Determine the big integer is prime.
- * @param {bigint} item Item that need to determine.
- * @returns {boolean} Determine result.
- */
-function isBigIntegerPrime(item: bigint): boolean {
-	return isPrimeNumeric(item);
-}
-/**
- * @function isBigIntegerSafe
- * @description Determine the big integer is safe with IEEE-754.
- * @param {bigint} item Item that need to determine.
- * @returns {boolean} Determine result.
- */
-function isBigIntegerSafe(item: bigint): boolean {
-	return (MIN_SAFE_INTEGER <= item && item <= MAX_SAFE_INTEGER);
-}
-interface BigIntegerItemFilterOptionsBase {
+import { isBigIntEven, isBigIntNegative, isBigIntOdd, isBigIntPositive, isBigIntPrime, isBigIntSafe } from "../bigint.js";
+import { enumResolver, IEEE754Enum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, type IEEE754EnumKeysType, type IEEE754EnumValuesType, type IntegralNumericTypeEnumKeysType, type MathematicsParityEnumKeysType, type MathematicsParityEnumValuesType, type MathematicsPrimalityEnumKeysType, type MathematicsPrimalityEnumValuesType, type MathematicsSignEnumKeysType, type MathematicsSignEnumValuesType } from "../internal/enum.js";
+import { integralNumericTypeRange } from "../internal/numeric.js";
+interface BigIntFilterStatus {
 	/**
 	 * @property ieee754
 	 * @description IEEE-754 safe mode of the big integer.
@@ -117,7 +51,7 @@ interface BigIntegerItemFilterOptionsBase {
 	 */
 	sign: MathematicsSignEnumValuesType;
 }
-interface BigIntegerItemFilterOptions extends Partial<Omit<BigIntegerItemFilterOptionsBase, "ieee754" | "parity" | "primality" | "sign">> {
+interface BigIntFilterOptions extends Partial<Omit<BigIntFilterStatus, "ieee754" | "parity" | "primality" | "sign">> {
 	/**
 	 * @property ieee754
 	 * @description IEEE-754 mode of the big integer.
@@ -158,10 +92,10 @@ interface BigIntegerItemFilterOptions extends Partial<Omit<BigIntegerItemFilterO
 	/** @alias minimumExclusive */minExclusive?: boolean;
 }
 /**
- * @class BigIntegerItemFilter
+ * @class BigIntFilter
  * @description Determine item with the filter of type of big integer.
  */
-class BigIntegerItemFilter {
+class BigIntFilter {
 	#ieee754: IEEE754EnumValuesType = "any";
 	#maximum?: bigint;
 	#maximumExclusive = false;
@@ -173,10 +107,10 @@ class BigIntegerItemFilter {
 	/**
 	 * @constructor
 	 * @description Initialize the filter of type of big integer to determine item.
-	 * @param {BigIntegerItemFilter | BigIntegerItemFilterOptions} [options] Options.
+	 * @param {BigIntFilter | BigIntFilterOptions} [options] Options.
 	 */
-	constructor(options?: BigIntegerItemFilter | BigIntegerItemFilterOptions) {
-		if (options instanceof BigIntegerItemFilter) {
+	constructor(options?: BigIntFilter | BigIntFilterOptions) {
+		if (options instanceof BigIntFilter) {
 			this.#ieee754 = options.#ieee754;
 			this.#maximum = options.#maximum;
 			this.#maximumExclusive = options.#maximumExclusive;
@@ -200,17 +134,17 @@ class BigIntegerItemFilter {
 	/**
 	 * @method clone
 	 * @description Clone this filter for reuse.
-	 * @returns {BigIntegerItemFilter} Another instance of this filter.
+	 * @returns {BigIntFilter} Another instance of this filter.
 	 */
-	get clone(): BigIntegerItemFilter {
-		return new BigIntegerItemFilter(this);
+	get clone(): BigIntFilter {
+		return new BigIntFilter(this);
 	}
 	/**
 	 * @method status
 	 * @description Get the status of this filter.
-	 * @returns {BigIntegerItemFilterOptionsBase} Status of this filter.
+	 * @returns {BigIntFilterStatus} Status of this filter.
 	 */
-	get status(): BigIntegerItemFilterOptionsBase {
+	get status(): BigIntFilterStatus {
 		return {
 			ieee754: this.#ieee754,
 			maximum: this.#maximum,
@@ -443,18 +377,18 @@ class BigIntegerItemFilter {
 	test(item: unknown): boolean {
 		if (
 			typeof item !== "bigint" ||
-			(this.#ieee754 === "safe" && !isBigIntegerSafe(item)) ||
-			(this.#ieee754 === "unsafe" && isBigIntegerSafe(item)) ||
+			(this.#ieee754 === "safe" && !isBigIntSafe(item)) ||
+			(this.#ieee754 === "unsafe" && isBigIntSafe(item)) ||
 			(typeof this.#maximum === "bigint" && this.#maximumExclusive && !(item < this.#maximum)) ||
 			(typeof this.#maximum === "bigint" && !this.#maximumExclusive && !(item <= this.#maximum)) ||
 			(typeof this.#minimum === "bigint" && this.#minimumExclusive && !(this.#minimum < item)) ||
 			(typeof this.#minimum === "bigint" && !this.#minimumExclusive && !(this.#minimum <= item)) ||
-			(this.#parity === "even" && !isBigIntegerEven(item)) ||
-			(this.#parity === "odd" && !isBigIntegerOdd(item)) ||
-			(this.#primality === "composite" && isBigIntegerPrime(item)) ||
-			(this.#primality === "prime" && !isBigIntegerPrime(item)) ||
-			(this.#sign === "negative" && !isBigIntegerNegative(item)) ||
-			(this.#sign === "positive" && !isBigIntegerPositive(item))
+			(this.#parity === "even" && !isBigIntEven(item)) ||
+			(this.#parity === "odd" && !isBigIntOdd(item)) ||
+			(this.#primality === "composite" && isBigIntPrime(item)) ||
+			(this.#primality === "prime" && !isBigIntPrime(item)) ||
+			(this.#sign === "negative" && !isBigIntNegative(item)) ||
+			(this.#sign === "positive" && !isBigIntPositive(item))
 		) {
 			return false;
 		}
@@ -464,44 +398,30 @@ class BigIntegerItemFilter {
 	 * @static test
 	 * @description Determine item with the filter of type of big integer.
 	 * @param {unknown} item Item that need to determine.
-	 * @param {BigIntegerItemFilterOptions} [options={}] Options.
+	 * @param {BigIntFilterOptions} [options={}] Options.
 	 * @returns {boolean} Determine result.
 	 */
-	static test(item: unknown, options: BigIntegerItemFilterOptions = {}): boolean {
+	static test(item: unknown, options: BigIntFilterOptions = {}): boolean {
 		return new this(options).test(item);
 	}
 }
 /**
- * @function isBigInteger
+ * @function filterBigInt
  * @description Determine item with the filter of type of big integer.
  * @param {unknown} item Item that need to determine.
- * @param {BigIntegerItemFilterOptions} [options={}] Options.
+ * @param {BigIntFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
  */
-function isBigInteger(item: unknown, options: BigIntegerItemFilterOptions = {}): boolean {
-	return new BigIntegerItemFilter(options).test(item);
+function filterBigInt(item: unknown, options: BigIntFilterOptions = {}): boolean {
+	return new BigIntFilter(options).test(item);
 }
 export {
-	BigIntegerItemFilter,
-	BigIntegerItemFilter as BigIntItemFilter,
-	isBigInteger,
-	isBigInteger as isBigInt,
-	isBigIntegerEven,
-	isBigIntegerEven as isBigIntEven,
-	isBigIntegerIntegralNumericType,
-	isBigIntegerIntegralNumericType as isBigIntIntegralNumericType,
-	isBigIntegerNegative,
-	isBigIntegerNegative as isBigIntNegative,
-	isBigIntegerOdd,
-	isBigIntegerOdd as isBigIntOdd,
-	isBigIntegerPositive,
-	isBigIntegerPositive as isBigIntPositive,
-	isBigIntegerPrime,
-	isBigIntegerPrime as isBigIntPrime,
-	isBigIntegerSafe,
-	isBigIntegerSafe as isBigIntSafe,
-	type BigIntegerItemFilterOptions,
-	type BigIntegerItemFilterOptions as BigIntItemFilterOptions,
-	type BigIntegerItemFilterOptionsBase,
-	type BigIntegerItemFilterOptionsBase as BigIntItemFilterOptionsBase
+	BigIntFilter,
+	BigIntFilter as BigIntegerFilter,
+	filterBigInt,
+	filterBigInt as filterBigInteger,
+	type BigIntFilterOptions,
+	type BigIntFilterOptions as BigIntegerFilterOptions,
+	type BigIntFilterStatus,
+	type BigIntFilterStatus as BigIntegerFilterStatus
 };

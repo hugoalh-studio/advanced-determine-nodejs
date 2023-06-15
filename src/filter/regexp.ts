@@ -267,6 +267,6 @@ export {
 	type RegExpFilterOptions as RegExFilterOptions,
 	type RegExpFilterOptions as RegularExpressionFilterOptions,
 	type RegExpFilterStatus,
-	type RegExpFilterStatus as RegExItemFilterStatus,
+	type RegExpFilterStatus as RegExFilterStatus,
 	type RegExpFilterStatus as RegularExpressionFilterStatus
 };
