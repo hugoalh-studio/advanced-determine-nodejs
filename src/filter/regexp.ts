@@ -1,58 +1,58 @@
-interface RegularExpressionItemFilterOptionsBase {
+interface RegExpFilterStatus {
 	/**
 	 * @property dotAll
-	 * @description Whether a dot-all regular expression.
+	 * @description Whether a dot-all `RegExp`.
 	 * @default undefined
 	 */
 	dotAll?: boolean;
 	/**
 	 * @property exactly
-	 * @description Whether an exactly regular expression.
+	 * @description Whether an exactly `RegExp`.
 	 * @default undefined
 	 */
 	exactly?: boolean;
 	/**
 	 * @property global
-	 * @description Whether a global regular expression.
+	 * @description Whether a global `RegExp`.
 	 * @default undefined
 	 */
 	global?: boolean;
 	/**
 	 * @property ignoreCase
-	 * @description Whether a case insensitive regular expression.
+	 * @description Whether a case insensitive `RegExp`.
 	 * @default undefined
 	 */
 	ignoreCase?: boolean;
 	/**
 	 * @property multipleLine
-	 * @description Whether a multiple line regular expression.
+	 * @description Whether a multiple line `RegExp`.
 	 * @default undefined
 	 */
 	multipleLine?: boolean;
 	/**
 	 * @property sticky
-	 * @description Whether a sticky regular expression.
+	 * @description Whether a sticky `RegExp`.
 	 * @default undefined
 	 */
 	sticky?: boolean;
 	/**
 	 * @property unicode
-	 * @description Whether an unicode regular expression.
+	 * @description Whether an unicode `RegExp`.
 	 * @default undefined
 	 */
 	unicode?: boolean;
 }
-interface RegularExpressionItemFilterOptions extends Partial<RegularExpressionItemFilterOptionsBase> {
+interface RegExpFilterOptions extends Partial<RegExpFilterStatus> {
 	/** @alias exactly */exact?: boolean;
 	/** @alias ignoreCase */caseInsensitive?: boolean;
 	/** @alias multipleLine */multiline?: boolean;
 	/** @alias multipleLine */multiLine?: boolean;
 }
 /**
- * @class RegularExpressionItemFilter
- * @description Determine item with the filter of type of regular expression.
+ * @class RegExpFilter
+ * @description Filter for `RegExp`.
  */
-class RegularExpressionItemFilter {
+class RegExpFilter {
 	#dotAll?: boolean;
 	#exactly?: boolean;
 	#global?: boolean;
@@ -62,11 +62,11 @@ class RegularExpressionItemFilter {
 	#unicode?: boolean;
 	/**
 	 * @constructor
-	 * @description Initialize the filter of type of regular expression to determine item.
-	 * @param {RegularExpressionItemFilter | RegularExpressionItemFilterOptions} [options] Options.
+	 * @description Initialize the `RegExp` filter.
+	 * @param {RegExpFilter | RegExpFilterOptions} [options] Options.
 	 */
-	constructor(options?: RegularExpressionItemFilter | RegularExpressionItemFilterOptions) {
-		if (options instanceof RegularExpressionItemFilter) {
+	constructor(options?: RegExpFilter | RegExpFilterOptions) {
+		if (options instanceof RegExpFilter) {
 			this.#dotAll = options.#dotAll;
 			this.#exactly = options.#exactly;
 			this.#global = options.#global;
@@ -87,18 +87,18 @@ class RegularExpressionItemFilter {
 	}
 	/**
 	 * @method clone
-	 * @description Clone this filter for reuse.
-	 * @returns {RegularExpressionItemFilter} Another instance of this filter.
+	 * @description Clone this `RegExp` filter for reuse.
+	 * @returns {RegExpFilter} Another instance of this `RegExp` filter.
 	 */
-	get clone(): RegularExpressionItemFilter {
-		return new RegularExpressionItemFilter(this);
+	get clone(): RegExpFilter {
+		return new RegExpFilter(this);
 	}
 	/**
 	 * @method status
-	 * @description Get the status of this filter.
-	 * @returns {RegularExpressionItemFilterOptionsBase} Status of this filter.
+	 * @description Get the status of this `RegExp` filter.
+	 * @returns {RegExpFilterStatus} Status of this `RegExp` filter.
 	 */
-	get status(): RegularExpressionItemFilterOptionsBase {
+	get status(): RegExpFilterStatus {
 		return {
 			dotAll: this.#dotAll,
 			exactly: this.#exactly,
@@ -111,7 +111,7 @@ class RegularExpressionItemFilter {
 	}
 	/**
 	 * @method dotAll
-	 * @description Whether a dot-all regular expression.
+	 * @description Whether a dot-all `RegExp`.
 	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
@@ -124,7 +124,7 @@ class RegularExpressionItemFilter {
 	}
 	/**
 	 * @method exactly
-	 * @description Whether an exactly regular expression.
+	 * @description Whether an exactly `RegExp`.
 	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
@@ -137,7 +137,7 @@ class RegularExpressionItemFilter {
 	}
 	/**
 	 * @method global
-	 * @description Whether a global regular expression.
+	 * @description Whether a global `RegExp`.
 	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
@@ -150,7 +150,7 @@ class RegularExpressionItemFilter {
 	}
 	/**
 	 * @method ignoreCase
-	 * @description Whether a case insensitive regular expression.
+	 * @description Whether a case insensitive `RegExp`.
 	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
@@ -163,7 +163,7 @@ class RegularExpressionItemFilter {
 	}
 	/**
 	 * @method multipleLine
-	 * @description Whether a multiple line regular expression.
+	 * @description Whether a multiple line `RegExp`.
 	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
@@ -176,7 +176,7 @@ class RegularExpressionItemFilter {
 	}
 	/**
 	 * @method sticky
-	 * @description Whether a sticky regular expression.
+	 * @description Whether a sticky `RegExp`.
 	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
@@ -189,7 +189,7 @@ class RegularExpressionItemFilter {
 	}
 	/**
 	 * @method unicode
-	 * @description Whether an unicode regular expression.
+	 * @description Whether an unicode `RegExp`.
 	 * @param {boolean | undefined} [value]
 	 * @returns {this}
 	 */
@@ -206,7 +206,7 @@ class RegularExpressionItemFilter {
 	/** @alias multipleLine */multiLine = this.multipleLine;
 	/**
 	 * @method test
-	 * @description Determine item with the configured filter of type of regular expression.
+	 * @description Determine item with the configured `RegExp` filter.
 	 * @param {unknown} item Item that need to determine.
 	 * @returns {boolean} Determine result.
 	 */
@@ -237,36 +237,36 @@ class RegularExpressionItemFilter {
 	}
 	/**
 	 * @static test
-	 * @description Determine item with the filter of type of regular expression.
+	 * @description Determine item with the `RegExp` filter.
 	 * @param {unknown} item Item that need to determine.
-	 * @param {RegularExpressionItemFilterOptions} [options={}] Options.
+	 * @param {RegExpFilterOptions} [options={}] Options.
 	 * @returns {boolean} Determine result.
 	 */
-	static test(item: unknown, options: RegularExpressionItemFilterOptions = {}): boolean {
+	static test(item: unknown, options: RegExpFilterOptions = {}): boolean {
 		return new this(options).test(item);
 	}
 }
 /**
- * @function isRegularExpression
- * @description Determine item with the filter of type of regular expression.
+ * @function filterRegExp
+ * @description Determine item with the `RegExp` filter.
  * @param {unknown} item Item that need to determine.
- * @param {RegularExpressionItemFilterOptions} [options={}] Options.
+ * @param {RegExpFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
  */
-function isRegularExpression(item: unknown, options: RegularExpressionItemFilterOptions = {}): boolean {
-	return new RegularExpressionItemFilter(options).test(item);
+function filterRegExp(item: unknown, options: RegExpFilterOptions = {}): boolean {
+	return new RegExpFilter(options).test(item);
 }
 export {
-	isRegularExpression,
-	isRegularExpression as isRegEx,
-	isRegularExpression as isRegExp,
-	RegularExpressionItemFilter,
-	RegularExpressionItemFilter as RegExItemFilter,
-	RegularExpressionItemFilter as RegExpItemFilter,
-	type RegularExpressionItemFilterOptions,
-	type RegularExpressionItemFilterOptions as RegExItemFilterOptions,
-	type RegularExpressionItemFilterOptions as RegExpItemFilterOptions,
-	type RegularExpressionItemFilterOptionsBase,
-	type RegularExpressionItemFilterOptionsBase as RegExItemFilterOptionsBase,
-	type RegularExpressionItemFilterOptionsBase as RegExpItemFilterOptionsBase
+	filterRegExp,
+	filterRegExp as filterRegEx,
+	filterRegExp as filterRegularExpression,
+	RegExpFilter,
+	RegExpFilter as RegExFilter,
+	RegExpFilter as RegularExpressionFilter,
+	type RegExpFilterOptions,
+	type RegExpFilterOptions as RegExFilterOptions,
+	type RegExpFilterOptions as RegularExpressionFilterOptions,
+	type RegExpFilterStatus,
+	type RegExpFilterStatus as RegExItemFilterStatus,
+	type RegExpFilterStatus as RegularExpressionFilterStatus
 };

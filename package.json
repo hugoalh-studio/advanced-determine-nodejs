@@ -1,7 +1,7 @@
 {
 	"name": "@hugoalh/advanced-determine",
 	"version": "12.0.0-beta.1",
-	"description": "A module to provide a better and more accurate way to determine item.",
+	"description": "A module to provide advanced method to determine item.",
 	"keywords": [
 		"determine",
 		"item-check",
@@ -18,90 +18,7 @@
 	"type": "module",
 	"main": "./dist/main.js",
 	"exports": {
-		".": {
-			"import": "./dist/main.js"
-		},
-		"./are-equal": {
-			"import": "./dist/are-equal.js"
-		},
-		"./array": {
-			"import": "./dist/array.js"
-		},
-		"./bigint": {
-			"import": "./dist/big-integer.js"
-		},
-		"./big-integer": {
-			"import": "./dist/big-integer.js"
-		},
-		"./is": {
-			"import": "./dist/is.js"
-		},
-		"./item-filter": {
-			"import": "./dist/item-filter.js"
-		},
-		"./json": {
-			"import": "./dist/json.js"
-		},
-		"./map": {
-			"import": "./dist/map.js"
-		},
-		"./native": {
-			"import": "./dist/native.js"
-		},
-		"./native/array": {
-			"import": "./dist/native/array.js"
-		},
-		"./native/bigint": {
-			"import": "./dist/native/big-integer.js"
-		},
-		"./native/big-integer": {
-			"import": "./dist/native/big-integer.js"
-		},
-		"./native/function": {
-			"import": "./dist/native/function.js"
-		},
-		"./native/generator": {
-			"import": "./dist/native/generator.js"
-		},
-		"./native/number": {
-			"import": "./dist/native/number.js"
-		},
-		"./native/object-plain": {
-			"import": "./dist/native/plain-object.js"
-		},
-		"./native/plain-object": {
-			"import": "./dist/native/plain-object.js"
-		},
-		"./native/string": {
-			"import": "./dist/native/string.js"
-		},
-		"./number": {
-			"import": "./dist/number.js"
-		},
-		"./object": {
-			"import": "./dist/object.js"
-		},
-		"./object-plain": {
-			"import": "./dist/plain-object.js"
-		},
-		"./plain-object": {
-			"import": "./dist/plain-object.js"
-		},
-		"./regex": {
-			"import": "./dist/regular-expression.js"
-		},
-		"./regexp": {
-			"import": "./dist/regular-expression.js"
-		},
-		"./regular-expression": {
-			"import": "./dist/regular-expression.js"
-		},
-		"./set": {
-			"import": "./dist/set.js"
-		},
-		"./string": {
-			"import": "./dist/string.js"
-		}
+		"import": "./dist/main.js"
 	},
 	"types": "./dist/main.d.ts",
 	"repository": {
@@ -117,7 +34,7 @@
 		"typescript": "^5.1.3"
 	},
 	"engines": {
-		"node": ">=16.13.0"
+		"node": "^14.15.0 || >=16.13.0"
 	},
 	"private": false
 }

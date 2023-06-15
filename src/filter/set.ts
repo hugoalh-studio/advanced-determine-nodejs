@@ -1,27 +1,27 @@
-interface SetItemFilterOptionsBase {
+interface SetFilterStatus {
 	/**
 	 * @property sizeMaximum
-	 * @description Maximum size of the set.
+	 * @description Maximum size of the `Set`.
 	 * @default Infinity
 	 */
 	sizeMaximum: number;
 	/**
 	 * @property sizeMinimum
-	 * @description Minimum size of the set.
+	 * @description Minimum size of the `Set`.
 	 * @default 1
 	 */
 	sizeMinimum: number;
 }
-interface SetItemFilterOptions extends Partial<SetItemFilterOptionsBase> {
+interface SetFilterOptions extends Partial<SetFilterStatus> {
 	/**
 	 * @property allowEmpty
-	 * @description Whether to allow an empty set.
+	 * @description Whether to allow an empty `Set`.
 	 * @default false
 	 */
 	allowEmpty?: boolean;
 	/**
 	 * @property size
-	 * @description Size of the set.
+	 * @description Size of the `Set`.
 	 * @default undefined
 	 */
 	size?: number;
@@ -33,19 +33,19 @@ interface SetItemFilterOptions extends Partial<SetItemFilterOptionsBase> {
 	/** @alias sizeMinimum */minSize?: number;
 }
 /**
- * @class SetItemFilter
- * @description Determine item with the filter of type of set.
+ * @class SetFilter
+ * @description Filter for `Set`.
  */
-class SetItemFilter {
+class SetFilter {
 	#sizeMaximum = Infinity;
 	#sizeMinimum = 1;
 	/**
 	 * @constructor
-	 * @description Initialize the filter of type of set to determine item.
-	 * @param {SetItemFilter | SetItemFilterOptions} [options] Options.
+	 * @description Initialize the `Set` filter.
+	 * @param {SetFilter | SetFilterOptions} [options] Options.
 	 */
-	constructor(options?: SetItemFilter | SetItemFilterOptions) {
-		if (options instanceof SetItemFilter) {
+	constructor(options?: SetFilter | SetFilterOptions) {
+		if (options instanceof SetFilter) {
 			this.#sizeMaximum = options.#sizeMaximum;
 			this.#sizeMinimum = options.#sizeMinimum;
 		} else if (typeof options !== "undefined") {
@@ -60,18 +60,18 @@ class SetItemFilter {
 	}
 	/**
 	 * @method clone
-	 * @description Clone this filter for reuse.
-	 * @returns {SetItemFilter} Another instance of this filter.
+	 * @description Clone this `Set` filter for reuse.
+	 * @returns {SetFilter} Another instance of this `Set` filter.
 	 */
-	get clone(): SetItemFilter {
-		return new SetItemFilter(this);
+	get clone(): SetFilter {
+		return new SetFilter(this);
 	}
 	/**
 	 * @method status
-	 * @description Get the status of this filter.
-	 * @returns {SetItemFilterOptionsBase} Status of this filter.
+	 * @description Get the status of this `Set` filter.
+	 * @returns {SetFilterStatus} Status of this `Set` filter.
 	 */
-	get status(): SetItemFilterOptionsBase {
+	get status(): SetFilterStatus {
 		return {
 			sizeMaximum: this.#sizeMaximum,
 			sizeMinimum: this.#sizeMinimum
@@ -79,7 +79,7 @@ class SetItemFilter {
 	}
 	/**
 	 * @method allowEmpty
-	 * @description Whether to allow an empty set.
+	 * @description Whether to allow an empty `Set`.
 	 * @param {boolean} [value=true]
 	 * @returns {this}
 	 */
@@ -92,7 +92,7 @@ class SetItemFilter {
 	}
 	/**
 	 * @method size
-	 * @description Size of the set.
+	 * @description Size of the `Set`.
 	 * @param {number} value
 	 * @returns {this}
 	 */
@@ -109,7 +109,7 @@ class SetItemFilter {
 	}
 	/**
 	 * @method sizeMaximum
-	 * @description Maximum size of the set.
+	 * @description Maximum size of the `Set`.
 	 * @param {number} value
 	 * @returns {this}
 	 */
@@ -125,7 +125,7 @@ class SetItemFilter {
 	}
 	/**
 	 * @method sizeMinimum
-	 * @description Minimum size of the set.
+	 * @description Minimum size of the `Set`.
 	 * @param {number} value
 	 * @returns {this}
 	 */
@@ -147,7 +147,7 @@ class SetItemFilter {
 	/** @alias sizeMinimum */minSize = this.sizeMinimum;
 	/**
 	 * @method test
-	 * @description Determine item with the configured filter of type of set.
+	 * @description Determine item with the configured `Set` filter.
 	 * @param {unknown} item Item that need to determine.
 	 * @returns {boolean} Determine result.
 	 */
@@ -163,28 +163,28 @@ class SetItemFilter {
 	}
 	/**
 	 * @static test
-	 * @description Determine item with the filter of type of set.
+	 * @description Determine item with the `Set` filter.
 	 * @param {unknown} item Item that need to determine.
-	 * @param {SetItemFilterOptions} [options={}] Options.
+	 * @param {SetFilterOptions} [options={}] Options.
 	 * @returns {boolean} Determine result.
 	 */
-	static test(item: unknown, options: SetItemFilterOptions = {}): boolean {
+	static test(item: unknown, options: SetFilterOptions = {}): boolean {
 		return new this(options).test(item);
 	}
 }
 /**
- * @function isSet
- * @description Determine item with the filter of type of set.
+ * @function filterSet
+ * @description Determine item with the `Set` filter.
  * @param {unknown} item Item that need to determine.
- * @param {SetItemFilterOptions} [options={}] Options.
+ * @param {SetFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
  */
-function isSet(item: unknown, options: SetItemFilterOptions = {}): boolean {
-	return new SetItemFilter(options).test(item);
+function filterSet(item: unknown, options: SetFilterOptions = {}): boolean {
+	return new SetFilter(options).test(item);
 }
 export {
-	isSet,
-	SetItemFilter,
-	type SetItemFilterOptions,
-	type SetItemFilterOptionsBase
+	filterSet,
+	SetFilter,
+	type SetFilterOptions,
+	type SetFilterStatus
 };

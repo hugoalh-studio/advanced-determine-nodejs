@@ -1,27 +1,27 @@
-interface MapItemFilterOptionsBase {
+interface MapFilterStatus {
 	/**
 	 * @property sizeMaximum
-	 * @description Maximum size of the map.
+	 * @description Maximum size of the `Map`.
 	 * @default Infinity
 	 */
 	sizeMaximum: number;
 	/**
 	 * @property sizeMinimum
-	 * @description Minimum size of the map.
+	 * @description Minimum size of the `Map`.
 	 * @default 1
 	 */
 	sizeMinimum: number;
 }
-interface MapItemFilterOptions extends Partial<MapItemFilterOptionsBase> {
+interface MapFilterOptions extends Partial<MapFilterStatus> {
 	/**
 	 * @property allowEmpty
-	 * @description Whether to allow an empty map.
+	 * @description Whether to allow an empty `Map`.
 	 * @default false
 	 */
 	allowEmpty?: boolean;
 	/**
 	 * @property size
-	 * @description Size of the map.
+	 * @description Size of the `Map`.
 	 * @default undefined
 	 */
 	size?: number;
@@ -33,19 +33,19 @@ interface MapItemFilterOptions extends Partial<MapItemFilterOptionsBase> {
 	/** @alias sizeMinimum */minSize?: number;
 }
 /**
- * @class MapItemFilter
- * @description Determine item with the filter of type of map.
+ * @class MapFilter
+ * @description Filter for `Map`.
  */
-class MapItemFilter {
+class MapFilter {
 	#sizeMaximum = Infinity;
 	#sizeMinimum = 1;
 	/**
 	 * @constructor
-	 * @description Initialize the filter of type of map to determine item.
-	 * @param {MapItemFilter | MapItemFilterOptions} [options] Options.
+	 * @description Initialize the `Map` filter.
+	 * @param {MapFilter | MapFilterOptions} [options] Options.
 	 */
-	constructor(options?: MapItemFilter | MapItemFilterOptions) {
-		if (options instanceof MapItemFilter) {
+	constructor(options?: MapFilter | MapFilterOptions) {
+		if (options instanceof MapFilter) {
 			this.#sizeMaximum = options.#sizeMaximum;
 			this.#sizeMinimum = options.#sizeMinimum;
 		} else if (typeof options !== "undefined") {
@@ -60,18 +60,18 @@ class MapItemFilter {
 	}
 	/**
 	 * @method clone
-	 * @description Clone this filter for reuse.
-	 * @returns {MapItemFilter} Another instance of this filter.
+	 * @description Clone this `Map` filter for reuse.
+	 * @returns {MapFilter} Another instance of this `Map` filter.
 	 */
-	get clone(): MapItemFilter {
-		return new MapItemFilter(this);
+	get clone(): MapFilter {
+		return new MapFilter(this);
 	}
 	/**
 	 * @method status
-	 * @description Get the status of this filter.
-	 * @returns {MapItemFilterOptionsBase} Status of this filter.
+	 * @description Get the status of this `Map` filter.
+	 * @returns {MapFilterStatus} Status of this `Map` filter.
 	 */
-	get status(): MapItemFilterOptionsBase {
+	get status(): MapFilterStatus {
 		return {
 			sizeMaximum: this.#sizeMaximum,
 			sizeMinimum: this.#sizeMinimum
@@ -79,7 +79,7 @@ class MapItemFilter {
 	}
 	/**
 	 * @method allowEmpty
-	 * @description Whether to allow an empty map.
+	 * @description Whether to allow an empty `Map`.
 	 * @param {boolean} [value=true]
 	 * @returns {this}
 	 */
@@ -92,7 +92,7 @@ class MapItemFilter {
 	}
 	/**
 	 * @method size
-	 * @description Size of the map.
+	 * @description Size of the `Map`.
 	 * @param {number} value
 	 * @returns {this}
 	 */
@@ -109,7 +109,7 @@ class MapItemFilter {
 	}
 	/**
 	 * @method sizeMaximum
-	 * @description Maximum size of the map.
+	 * @description Maximum size of the `Map`.
 	 * @param {number} value
 	 * @returns {this}
 	 */
@@ -125,7 +125,7 @@ class MapItemFilter {
 	}
 	/**
 	 * @method sizeMinimum
-	 * @description Minimum size of the map.
+	 * @description Minimum size of the `Map`.
 	 * @param {number} value
 	 * @returns {this}
 	 */
@@ -147,7 +147,7 @@ class MapItemFilter {
 	/** @alias sizeMinimum */minSize = this.sizeMinimum;
 	/**
 	 * @method test
-	 * @description Determine item with the configured filter of type of map.
+	 * @description Determine item with the configured `Map` filter.
 	 * @param {unknown} item Item that need to determine.
 	 * @returns {boolean} Determine result.
 	 */
@@ -163,28 +163,28 @@ class MapItemFilter {
 	}
 	/**
 	 * @static test
-	 * @description Determine item with the filter of type of map.
+	 * @description Determine item with the `Map` filter.
 	 * @param {unknown} item Item that need to determine.
-	 * @param {MapItemFilterOptions} [options={}] Options.
+	 * @param {MapFilterOptions} [options={}] Options.
 	 * @returns {boolean} Determine result.
 	 */
-	static test(item: unknown, options: MapItemFilterOptions = {}): boolean {
+	static test(item: unknown, options: MapFilterOptions = {}): boolean {
 		return new this(options).test(item);
 	}
 }
 /**
- * @function isMap
- * @description Determine item with the filter of type of map.
+ * @function filterMap
+ * @description Determine item with the `Map` filter.
  * @param {unknown} item Item that need to determine.
- * @param {MapItemFilterOptions} [options={}] Options.
+ * @param {MapFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
  */
-function isMap(item: unknown, options: MapItemFilterOptions = {}): boolean {
-	return new MapItemFilter(options).test(item);
+function filterMap(item: unknown, options: MapFilterOptions = {}): boolean {
+	return new MapFilter(options).test(item);
 }
 export {
-	isMap,
-	MapItemFilter,
-	type MapItemFilterOptions,
-	type MapItemFilterOptionsBase
+	filterMap,
+	MapFilter,
+	type MapFilterOptions,
+	type MapFilterStatus
 };
