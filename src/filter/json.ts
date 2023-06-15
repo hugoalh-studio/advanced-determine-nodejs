@@ -1,10 +1,10 @@
-import { ArrayItemFilter } from "./array.js";
-import { enumResolver, JSONRootTypeEnum, type JSONRootTypeEnumKeysType, type JSONRootTypeEnumValuesType } from "./internal/enum.js";
-import { PlainObjectItemFilter } from "./plain-object.js";
-const jsonArrayFilter: ArrayItemFilter = new ArrayItemFilter().allowEmpty().strict();
-const jsonObjectFilter: PlainObjectItemFilter = new PlainObjectItemFilter().allowEmpty().strict();
+import { ArrayFilter } from "./array.js";
+import { ObjectFilter } from "./object.js";
+import { enumResolver, JSONRootTypeEnum, type JSONRootTypeEnumKeysType, type JSONRootTypeEnumValuesType } from "../internal/enum.js";
+const jsonArrayFilter: ArrayFilter = new ArrayFilter().allowEmpty().strict();
+const jsonObjectFilter: ObjectFilter = new ObjectFilter().allowEmpty().plain().strict();
 const jsonLegalKeysPatternRegExp = /^[$_A-Za-z][$\d_A-Za-z]*$/u;
-interface JSONItemFilterOptionsBase {
+interface JSONFilterStatus {
 	/**
 	 * @property entriesCountMaximum
 	 * @description Maximum entries count of the JSON.
@@ -30,7 +30,7 @@ interface JSONItemFilterOptionsBase {
 	 */
 	rootType: JSONRootTypeEnumValuesType;
 }
-interface JSONItemFilterOptions extends Partial<Omit<JSONItemFilterOptionsBase, "rootType">> {
+interface JSONFilterOptions extends Partial<Omit<JSONFilterStatus, "rootType">> {
 	/**
 	 * @property allowEmpty
 	 * @description Whether to allow an empty JSON.
@@ -120,10 +120,10 @@ function isJSONInternal(item: unknown, keysPattern?: RegExp): boolean {
 	return false;
 }
 /**
- * @class JSONItemFilter
+ * @class JSONFilter
  * @description Determine item with the filter of type of JSON.
  */
-class JSONItemFilter {
+class JSONFilter {
 	#entriesCountMaximum = Infinity;
 	#entriesCountMinimum = 1;
 	#keysPattern?: RegExp;
@@ -131,10 +131,10 @@ class JSONItemFilter {
 	/**
 	 * @constructor
 	 * @description Initialize the filter of type of JSON to determine item.
-	 * @param {JSONItemFilter | JSONItemFilterOptions} [options] Options.
+	 * @param {JSONFilter | JSONFilterOptions} [options] Options.
 	 */
-	constructor(options?: JSONItemFilter | JSONItemFilterOptions) {
-		if (options instanceof JSONItemFilter) {
+	constructor(options?: JSONFilter | JSONFilterOptions) {
+		if (options instanceof JSONFilter) {
 			this.#entriesCountMaximum = options.#entriesCountMaximum;
 			this.#entriesCountMinimum = options.#entriesCountMinimum;
 			this.#keysPattern = options.#keysPattern;
@@ -153,17 +153,17 @@ class JSONItemFilter {
 	/**
 	 * @method clone
 	 * @description Clone this filter for reuse.
-	 * @returns {JSONItemFilter} Another instance of this filter.
+	 * @returns {JSONFilter} Another instance of this filter.
 	 */
-	get clone(): JSONItemFilter {
-		return new JSONItemFilter(this);
+	get clone(): JSONFilter {
+		return new JSONFilter(this);
 	}
 	/**
 	 * @method status
 	 * @description Get the status of this filter.
-	 * @returns {JSONItemFilterOptionsBase} Status of this filter.
+	 * @returns {JSONFilterStatus} Status of this filter.
 	 */
-	get status(): JSONItemFilterOptionsBase {
+	get status(): JSONFilterStatus {
 		return {
 			entriesCountMaximum: this.#entriesCountMaximum,
 			entriesCountMinimum: this.#entriesCountMinimum,
@@ -258,7 +258,7 @@ class JSONItemFilter {
 		}
 		let valueResolve: JSONRootTypeEnumValuesType | undefined = enumResolver<JSONRootTypeEnumKeysType, JSONRootTypeEnumValuesType>(JSONRootTypeEnum, value);
 		if (typeof valueResolve !== "string") {
-			throw new RangeError(`Filter argument \`rootType\` must be match either of these values: "${Object.keys(JSONRootTypeEnum).sort().join("\", \"")}"`);
+			throw new RangeError(`Filter argument \`rootType\` must be either of these values: "${Object.keys(JSONRootTypeEnum).sort().join("\", \"")}"`);
 		}
 		this.#rootType = valueResolve;
 		return this;
@@ -346,20 +346,20 @@ class JSONItemFilter {
 	 * @static test
 	 * @description Determine item with the filter of type of JSON.
 	 * @param {unknown} item Item that need to determine.
-	 * @param {JSONItemFilterOptions} [options={}] Options.
+	 * @param {JSONFilterOptions} [options={}] Options.
 	 * @returns {boolean} Determine result.
 	 */
-	static test(item: unknown, options: JSONItemFilterOptions = {}): boolean {
+	static test(item: unknown, options: JSONFilterOptions = {}): boolean {
 		return new this(options).test(item);
 	}
 	/**
 	 * @static testStringify
 	 * @description Determine item with the filter of type of stringify JSON.
 	 * @param {unknown} item Item that need to determine.
-	 * @param {JSONItemFilterOptions} [options={}] Options.
+	 * @param {JSONFilterOptions} [options={}] Options.
 	 * @returns {boolean} Determine result.
 	 */
-	static testStringify(item: unknown, options: JSONItemFilterOptions = {}): boolean {
+	static testStringify(item: unknown, options: JSONFilterOptions = {}): boolean {
 		return new this(options).testStringify(item);
 	}
 	/** @alias testStringify */static stringifiedTest = this.testStringify;
@@ -367,32 +367,32 @@ class JSONItemFilter {
 	/** @alias testStringify */static testStringified = this.testStringify;
 }
 /**
- * @function isJSON
+ * @function filterJSON
  * @description Determine item with the filter of type of JSON.
  * @param {unknown} item Item that need to determine.
- * @param {JSONItemFilterOptions} [options={}] Options.
+ * @param {JSONFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
  */
-function isJSON(item: unknown, options: JSONItemFilterOptions = {}): boolean {
-	return new JSONItemFilter(options).test(item);
+function filterJSON(item: unknown, options: JSONFilterOptions = {}): boolean {
+	return new JSONFilter(options).test(item);
 }
 /**
- * @function isStringifyJSON
+ * @function filterStringifyJSON
  * @description Determine item with the filter of type of stringify JSON.
  * @param {unknown} item Item that need to determine.
- * @param {JSONItemFilterOptions} [options={}] Options.
+ * @param {JSONFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
  */
-function isStringifyJSON(item: unknown, options: JSONItemFilterOptions = {}): boolean {
-	return new JSONItemFilter(options).testStringify(item);
+function filterStringifyJSON(item: unknown, options: JSONFilterOptions = {}): boolean {
+	return new JSONFilter(options).testStringify(item);
 }
 export {
-	isJSON,
-	isStringifyJSON,
-	isStringifyJSON as isJSONStringified,
-	isStringifyJSON as isJSONStringify,
-	isStringifyJSON as isStringifiedJSON,
-	JSONItemFilter,
-	type JSONItemFilterOptions,
-	type JSONItemFilterOptionsBase
+	filterJSON as isJSON,
+	filterStringifyJSON as isStringifyJSON,
+	filterStringifyJSON as isJSONStringified,
+	filterStringifyJSON as isJSONStringify,
+	filterStringifyJSON as isStringifiedJSON,
+	JSONFilter as JSONItemFilter,
+	type JSONFilterOptions as JSONItemFilterOptions,
+	type JSONFilterStatus as JSONItemFilterOptionsBase
 };

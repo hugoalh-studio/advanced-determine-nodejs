@@ -64,7 +64,7 @@ function integralNumericTypeRange(name: IntegralNumericTypeEnumKeysType): [bigin
 		case "uint128":
 			return integralNumericTypeRangeUIntBase(128n);
 		default:
-			throw new RangeError(`\`${name}\` is not a valid integral numeric type! Must be match either of these values: "${Object.keys(IntegralNumericTypeEnum).sort().join("\", \"")}"`);
+			throw new RangeError(`\`${name}\` is not a valid integral numeric type! Must be either of these values: "${Object.keys(IntegralNumericTypeEnum).sort().join("\", \"")}"`);
 	}
 }
 /**

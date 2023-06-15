@@ -1,4 +1,4 @@
-import { isObjectPlain } from "./native/plain-object.js";
+import { isObjectPlain } from "../object.js";
 import { ObjectItemFilter } from "./object.js";
 /**
  * @access private

@@ -1,90 +1,6 @@
-import { enumResolver, IEEE754Enum, MathematicsFinitenessEnum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, NumericTypeEnum, type IEEE754EnumKeysType, type IEEE754EnumValuesType, type IntegralNumericTypeEnumKeysType, type MathematicsFinitenessEnumKeysType, type MathematicsFinitenessEnumValuesType, type MathematicsParityEnumKeysType, type MathematicsParityEnumValuesType, type MathematicsPrimalityEnumKeysType, type MathematicsPrimalityEnumValuesType, type MathematicsSignEnumKeysType, type MathematicsSignEnumValuesType, type NumericTypeEnumKeysType, type NumericTypeEnumValuesType } from "./internal/enum.js";
-import { integralNumericTypeRange, isPrimeNumeric } from "./internal/numeric.js";
-/**
- * @function isNumberEven
- * @description Determine the number is even.
- * @param {number} item Item that need to determine.
- * @returns {boolean} Determine result.
- */
-function isNumberEven(item: number): boolean {
-	return (Number.isInteger(item) && item % 2 === 0);
-}
-/**
- * @function isNumberFloat
- * @description Determine the number is float.
- * @param {number} item Item that need to determine.
- * @returns {boolean} Determine result.
- */
-function isNumberFloat(item: number): boolean {
-	return (item % 1 !== 0);
-}
-/**
- * @function isNumberIntegralNumericType
- * @description Determine the number is match the specified integral numeric type.
- * @param {IntegralNumericTypeEnumKeysType} typeName Name of the integral numeric type.
- * @param {number} item Item that need to determine.
- * @returns {boolean} Determine result.
- */
-function isNumberIntegralNumericType(typeName: IntegralNumericTypeEnumKeysType, item: number): boolean {
-	let [minimum, maximum] = integralNumericTypeRange(typeName);
-	return (Number.isInteger(item) && Number(minimum) <= item && item <= Number(maximum));
-}
-/**
- * @function isNumberNegative
- * @description Determine the number is negative.
- * @param {number} item Item that need to determine.
- * @returns {boolean} Determine result.
- */
-function isNumberNegative(item: number): boolean {
-	return (item < 0);
-}
-/**
- * @function isNumberOdd
- * @description Determine the number is odd.
- * @param {number} item Item that need to determine.
- * @returns {boolean} Determine result.
- */
-function isNumberOdd(item: number): boolean {
-	return (Number.isInteger(item) && item % 2 !== 0);
-}
-/**
- * @function isNumberPositive
- * @description Determine the number is positive.
- * @param {number} item Item that need to determine.
- * @returns {boolean} Determine result.
- */
-function isNumberPositive(item: number): boolean {
-	return (item >= 0);
-}
-/**
- * @function isNumberPrime
- * @description Determine the number is prime.
- * @param {number} item Item that need to determine.
- * @returns {boolean} Determine result.
- */
-function isNumberPrime(item: number): boolean {
-	return (Number.isInteger(item) && isPrimeNumeric(item));
-}
-/**
- * @function isNumberSafe
- * @description Determine the number is safe with IEEE-754.
- * @param {number} item Item that need to determine.
- * @returns {boolean} Determine result.
- */
-function isNumberSafe(item: number): boolean {
-	return (Number.MIN_SAFE_INTEGER <= item && item <= Number.MAX_SAFE_INTEGER);
-}
-export {
-	isNumberEven,
-	isNumberFloat,
-	isNumberIntegralNumericType,
-	isNumberNegative,
-	isNumberOdd,
-	isNumberPositive,
-	isNumberPrime,
-	isNumberSafe
-};
-interface NumberItemFilterOptionsBase {
+import { enumResolver, IEEE754Enum, MathematicsFinitenessEnum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, NumericTypeEnum, type IEEE754EnumKeysType, type IEEE754EnumValuesType, type IntegralNumericTypeEnumKeysType, type MathematicsFinitenessEnumKeysType, type MathematicsFinitenessEnumValuesType, type MathematicsParityEnumKeysType, type MathematicsParityEnumValuesType, type MathematicsPrimalityEnumKeysType, type MathematicsPrimalityEnumValuesType, type MathematicsSignEnumKeysType, type MathematicsSignEnumValuesType, type NumericTypeEnumKeysType, type NumericTypeEnumValuesType } from "../internal/enum.js";
+import { integralNumericTypeRange } from "../internal/numeric.js";
+interface NumberFilterStatus {
 	/**
 	 * @property finiteness
 	 * @description Finiteness of the number.
@@ -146,7 +62,7 @@ interface NumberItemFilterOptionsBase {
 	 */
 	sign: MathematicsSignEnumValuesType;
 }
-interface NumberItemFilterOptions extends Partial<Omit<NumberItemFilterOptionsBase, "finiteness" | "ieee754" | "numericType" | "parity" | "primality" | "sign">> {
+interface NumberFilterOptions extends Partial<Omit<NumberFilterStatus, "finiteness" | "ieee754" | "numericType" | "parity" | "primality" | "sign">> {
 	/**
 	 * @property finiteness
 	 * @description Finiteness of the number.
@@ -199,10 +115,10 @@ interface NumberItemFilterOptions extends Partial<Omit<NumberItemFilterOptionsBa
 	/** @alias minimumExclusive */minExclusive?: boolean;
 }
 /**
- * @class NumberItemFilter
+ * @class NumberFilter
  * @description Determine item with the filter of type of number.
  */
-class NumberItemFilter {
+class NumberFilter {
 	#finiteness: MathematicsFinitenessEnumValuesType = "any";
 	#ieee754: IEEE754EnumValuesType = "any";
 	#maximum?: number;
@@ -216,10 +132,10 @@ class NumberItemFilter {
 	/**
 	 * @constructor
 	 * @description Initialize the filter of type of number to determine item.
-	 * @param {NumberItemFilter | NumberItemFilterOptions} [options] Options.
+	 * @param {NumberFilter | NumberFilterOptions} [options] Options.
 	 */
-	constructor(options?: NumberItemFilter | NumberItemFilterOptions) {
-		if (options instanceof NumberItemFilter) {
+	constructor(options?: NumberFilter | NumberFilterOptions) {
+		if (options instanceof NumberFilter) {
 			this.#finiteness = options.#finiteness;
 			this.#ieee754 = options.#ieee754;
 			this.#maximum = options.#maximum;
@@ -245,17 +161,17 @@ class NumberItemFilter {
 	/**
 	 * @method clone
 	 * @description Clone this filter for reuse.
-	 * @returns {NumberItemFilter} Another instance of this filter.
+	 * @returns {NumberFilter} Another instance of this filter.
 	 */
-	get clone(): NumberItemFilter {
-		return new NumberItemFilter(this);
+	get clone(): NumberFilter {
+		return new NumberFilter(this);
 	}
 	/**
 	 * @method status
 	 * @description Get the status of this filter.
-	 * @returns {NumberItemFilterOptionsBase} Status of this filter.
+	 * @returns {NumberFilterStatus} Status of this filter.
 	 */
-	get status(): NumberItemFilterOptionsBase {
+	get status(): NumberFilterStatus {
 		return {
 			finiteness: this.#finiteness,
 			ieee754: this.#ieee754,
@@ -281,7 +197,7 @@ class NumberItemFilter {
 		}
 		let valueResolve: MathematicsFinitenessEnumValuesType | undefined = enumResolver<MathematicsFinitenessEnumKeysType, MathematicsFinitenessEnumValuesType>(MathematicsFinitenessEnum, value);
 		if (typeof valueResolve !== "string") {
-			throw new RangeError(`Filter argument \`finiteness\` must be match either of these values: "${Object.keys(MathematicsFinitenessEnum).sort().join("\", \"")}"`);
+			throw new RangeError(`Filter argument \`finiteness\` must be either of these values: "${Object.keys(MathematicsFinitenessEnum).sort().join("\", \"")}"`);
 		}
 		this.#finiteness = valueResolve;
 		return this;
@@ -298,7 +214,7 @@ class NumberItemFilter {
 		}
 		let valueResolve: IEEE754EnumValuesType | undefined = enumResolver<IEEE754EnumKeysType, IEEE754EnumValuesType>(IEEE754Enum, value);
 		if (typeof valueResolve !== "string") {
-			throw new RangeError(`Filter argument \`ieee754\` must be match either of these values: "${Object.keys(IEEE754Enum).sort().join("\", \"")}"`);
+			throw new RangeError(`Filter argument \`ieee754\` must be either of these values: "${Object.keys(IEEE754Enum).sort().join("\", \"")}"`);
 		}
 		this.#ieee754 = valueResolve;
 		return this;
@@ -389,7 +305,7 @@ class NumberItemFilter {
 		}
 		let valueResolve: NumericTypeEnumValuesType | undefined = enumResolver<NumericTypeEnumKeysType, NumericTypeEnumValuesType>(NumericTypeEnum, value);
 		if (typeof valueResolve !== "string") {
-			throw new RangeError(`Filter argument \`numericType\` must be match either of these values: "${Object.keys(NumericTypeEnum).sort().join("\", \"")}"`);
+			throw new RangeError(`Filter argument \`numericType\` must be either of these values: "${Object.keys(NumericTypeEnum).sort().join("\", \"")}"`);
 		}
 		this.#numericType = valueResolve;
 		return this;
@@ -406,7 +322,7 @@ class NumberItemFilter {
 		}
 		let valueResolve: MathematicsParityEnumValuesType | undefined = enumResolver<MathematicsParityEnumKeysType, MathematicsParityEnumValuesType>(MathematicsParityEnum, value);
 		if (typeof valueResolve !== "string") {
-			throw new RangeError(`Filter argument \`parity\` must be match either of these values: "${Object.keys(MathematicsParityEnum).sort().join("\", \"")}"`);
+			throw new RangeError(`Filter argument \`parity\` must be either of these values: "${Object.keys(MathematicsParityEnum).sort().join("\", \"")}"`);
 		}
 		this.#parity = valueResolve;
 		return this;
@@ -423,7 +339,7 @@ class NumberItemFilter {
 		}
 		let valueResolve: MathematicsPrimalityEnumValuesType | undefined = enumResolver<MathematicsPrimalityEnumKeysType, MathematicsPrimalityEnumValuesType>(MathematicsPrimalityEnum, value);
 		if (typeof valueResolve !== "string") {
-			throw new RangeError(`Filter argument \`primality\` must be match either of these values: "${Object.keys(MathematicsPrimalityEnum).sort().join("\", \"")}"`);
+			throw new RangeError(`Filter argument \`primality\` must be either of these values: "${Object.keys(MathematicsPrimalityEnum).sort().join("\", \"")}"`);
 		}
 		this.#primality = valueResolve;
 		return this;
@@ -440,7 +356,7 @@ class NumberItemFilter {
 		}
 		let valueResolve: MathematicsSignEnumValuesType | undefined = enumResolver<MathematicsSignEnumKeysType, MathematicsSignEnumValuesType>(MathematicsSignEnum, value);
 		if (typeof valueResolve !== "string") {
-			throw new RangeError(`Filter argument \`sign\` must be match either of these values: "${Object.keys(MathematicsSignEnum).sort().join("\", \"")}"`);
+			throw new RangeError(`Filter argument \`sign\` must be either of these values: "${Object.keys(MathematicsSignEnum).sort().join("\", \"")}"`);
 		}
 		this.#sign = valueResolve;
 		return this;
@@ -584,26 +500,26 @@ class NumberItemFilter {
 	 * @static test
 	 * @description Determine item with the filter of type of number.
 	 * @param {unknown} item Item that need to determine.
-	 * @param {NumberItemFilterOptions} [options={}] Options.
+	 * @param {NumberFilterOptions} [options={}] Options.
 	 * @returns {boolean} Determine result.
 	 */
-	static test(item: unknown, options: NumberItemFilterOptions = {}): boolean {
+	static test(item: unknown, options: NumberFilterOptions = {}): boolean {
 		return new this(options).test(item);
 	}
 }
 /**
- * @function isNumber
+ * @function filterNumber
  * @description Determine item with the filter of type of number.
  * @param {unknown} item Item that need to determine.
- * @param {NumberItemFilterOptions} [options={}] Options
+ * @param {NumberFilterOptions} [options={}] Options
  * @returns {boolean} Determine result.
  */
-function isNumber(item: unknown, options: NumberItemFilterOptions = {}): boolean {
-	return new NumberItemFilter(options).test(item);
+function filterNumber(item: unknown, options: NumberFilterOptions = {}): boolean {
+	return new NumberFilter(options).test(item);
 }
 export {
-	isNumber,
-	NumberItemFilter,
-	type NumberItemFilterOptions,
-	type NumberItemFilterOptionsBase
+	filterNumber as isNumber,
+	NumberFilter as NumberItemFilter,
+	type NumberFilterOptions as NumberItemFilterOptions,
+	type NumberFilterStatus as NumberItemFilterOptionsBase
 };

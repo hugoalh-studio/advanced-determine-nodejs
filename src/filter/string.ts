@@ -184,7 +184,7 @@ class StringFilter {
 		}
 		let valueResolve: StringCaseEnumValuesType | undefined = enumResolver<StringCaseEnumKeysType, StringCaseEnumValuesType>(StringCaseEnum, value);
 		if (typeof valueResolve !== "string") {
-			throw new RangeError(`Filter argument \`case\` must be match either of these values: "${Object.keys(StringCaseEnum).sort().join("\", \"")}"`);
+			throw new RangeError(`Filter argument \`case\` must be either of these values: "${Object.keys(StringCaseEnum).sort().join("\", \"")}"`);
 		}
 		this.#case = valueResolve;
 		return this;
@@ -250,7 +250,7 @@ class StringFilter {
 		}
 		let valueResolve: StringLineEnumValuesType | undefined = enumResolver<StringLineEnumKeysType, StringLineEnumValuesType>(StringLineEnum, value);
 		if (typeof valueResolve !== "string") {
-			throw new RangeError(`Filter argument \`line\` must be match either of these values: "${Object.keys(StringLineEnum).sort().join("\", \"")}"`);
+			throw new RangeError(`Filter argument \`line\` must be either of these values: "${Object.keys(StringLineEnum).sort().join("\", \"")}"`);
 		}
 		this.#line = valueResolve;
 		return this;
