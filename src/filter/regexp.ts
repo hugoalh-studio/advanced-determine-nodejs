@@ -1,65 +1,108 @@
+import { enumResolver, ThreePhaseConditionEnum, type ThreePhaseConditionEnumKeysType, type ThreePhaseConditionEnumValuesType } from "../internal/enum.js";
 interface RegExpFilterStatus {
 	/**
 	 * @property dotAll
 	 * @description Whether a dot-all `RegExp`.
-	 * @default undefined
+	 * @default "neutral"
 	 */
-	dotAll?: boolean;
+	dotAll: ThreePhaseConditionEnumValuesType;
 	/**
 	 * @property exactly
 	 * @description Whether an exactly `RegExp`.
-	 * @default undefined
+	 * @default "neutral"
 	 */
-	exactly?: boolean;
+	exactly: ThreePhaseConditionEnumValuesType;
 	/**
 	 * @property global
 	 * @description Whether a global `RegExp`.
-	 * @default undefined
+	 * @default "neutral"
 	 */
-	global?: boolean;
+	global: ThreePhaseConditionEnumValuesType;
 	/**
 	 * @property ignoreCase
 	 * @description Whether a case insensitive `RegExp`.
-	 * @default undefined
+	 * @default "neutral"
 	 */
-	ignoreCase?: boolean;
+	ignoreCase: ThreePhaseConditionEnumValuesType;
 	/**
 	 * @property multipleLine
 	 * @description Whether a multiple line `RegExp`.
-	 * @default undefined
+	 * @default "neutral"
 	 */
-	multipleLine?: boolean;
+	multipleLine: ThreePhaseConditionEnumValuesType;
 	/**
 	 * @property sticky
 	 * @description Whether a sticky `RegExp`.
-	 * @default undefined
+	 * @default "neutral"
 	 */
-	sticky?: boolean;
+	sticky: ThreePhaseConditionEnumValuesType;
 	/**
 	 * @property unicode
 	 * @description Whether an unicode `RegExp`.
-	 * @default undefined
+	 * @default "neutral"
 	 */
-	unicode?: boolean;
+	unicode: ThreePhaseConditionEnumValuesType;
 }
-interface RegExpFilterOptions extends Partial<RegExpFilterStatus> {
-	/** @alias exactly */exact?: boolean;
-	/** @alias ignoreCase */caseInsensitive?: boolean;
-	/** @alias multipleLine */multiline?: boolean;
-	/** @alias multipleLine */multiLine?: boolean;
+interface RegExpFilterOptions extends Partial<Omit<RegExpFilterStatus, "dotAll" | "exactly" | "global" | "ignoreCase" | "multipleLine" | "sticky" | "unicode">> {
+	/**
+	 * @property dotAll
+	 * @description Whether a dot-all `RegExp`.
+	 * @default "neutral"
+	 */
+	dotAll?: ThreePhaseConditionEnumKeysType;
+	/**
+	 * @property exactly
+	 * @description Whether an exactly `RegExp`.
+	 * @default "neutral"
+	 */
+	exactly?: ThreePhaseConditionEnumKeysType;
+	/**
+	 * @property global
+	 * @description Whether a global `RegExp`.
+	 * @default "neutral"
+	 */
+	global?: ThreePhaseConditionEnumKeysType;
+	/**
+	 * @property ignoreCase
+	 * @description Whether a case insensitive `RegExp`.
+	 * @default "neutral"
+	 */
+	ignoreCase?: ThreePhaseConditionEnumKeysType;
+	/**
+	 * @property multipleLine
+	 * @description Whether a multiple line `RegExp`.
+	 * @default "neutral"
+	 */
+	multipleLine?: ThreePhaseConditionEnumKeysType;
+	/**
+	 * @property sticky
+	 * @description Whether a sticky `RegExp`.
+	 * @default "neutral"
+	 */
+	sticky?: ThreePhaseConditionEnumKeysType;
+	/**
+	 * @property unicode
+	 * @description Whether an unicode `RegExp`.
+	 * @default "neutral"
+	 */
+	unicode?: ThreePhaseConditionEnumKeysType;
+	/** @alias exactly */exact?: ThreePhaseConditionEnumKeysType;
+	/** @alias ignoreCase */caseInsensitive?: ThreePhaseConditionEnumKeysType;
+	/** @alias multipleLine */multiline?: ThreePhaseConditionEnumKeysType;
+	/** @alias multipleLine */multiLine?: ThreePhaseConditionEnumKeysType;
 }
 /**
  * @class RegExpFilter
  * @description Filter for `RegExp`.
  */
 class RegExpFilter {
-	#dotAll?: boolean;
-	#exactly?: boolean;
-	#global?: boolean;
-	#ignoreCase?: boolean;
-	#multipleLine?: boolean;
-	#sticky?: boolean;
-	#unicode?: boolean;
+	#dotAll: ThreePhaseConditionEnumValuesType = "neutral";
+	#exactly: ThreePhaseConditionEnumValuesType = "neutral";
+	#global: ThreePhaseConditionEnumValuesType = "neutral";
+	#ignoreCase: ThreePhaseConditionEnumValuesType = "neutral";
+	#multipleLine: ThreePhaseConditionEnumValuesType = "neutral";
+	#sticky: ThreePhaseConditionEnumValuesType = "neutral";
+	#unicode: ThreePhaseConditionEnumValuesType = "neutral";
 	/**
 	 * @constructor
 	 * @description Initialize the `RegExp` filter.
@@ -112,92 +155,120 @@ class RegExpFilter {
 	/**
 	 * @method dotAll
 	 * @description Whether a dot-all `RegExp`.
-	 * @param {boolean | undefined} [value]
+	 * @param {ThreePhaseConditionEnumKeysType} value
 	 * @returns {this}
 	 */
-	dotAll(value?: boolean | undefined): this {
-		if (typeof value !== "boolean" && typeof value !== "undefined") {
-			throw new TypeError(`Filter argument \`dotAll\` must be type of string or undefined!`);
+	dotAll(value: ThreePhaseConditionEnumKeysType): this {
+		if (typeof value !== "string") {
+			throw new TypeError(`Filter argument \`dotAll\` must be type of string!`);
 		}
-		this.#dotAll = value;
+		let valueResolve: ThreePhaseConditionEnumValuesType | undefined = enumResolver<ThreePhaseConditionEnumKeysType, ThreePhaseConditionEnumValuesType>(ThreePhaseConditionEnum, value);
+		if (typeof valueResolve !== "string") {
+			throw new RangeError(`Filter argument \`dotAll\` must be either of these values: "${Object.keys(ThreePhaseConditionEnum).sort().join("\", \"")}"`);
+		}
+		this.#dotAll = valueResolve;
 		return this;
 	}
 	/**
 	 * @method exactly
 	 * @description Whether an exactly `RegExp`.
-	 * @param {boolean | undefined} [value]
+	 * @param {ThreePhaseConditionEnumKeysType} value
 	 * @returns {this}
 	 */
-	exactly(value?: boolean | undefined): this {
-		if (typeof value !== "boolean" && typeof value !== "undefined") {
-			throw new TypeError(`Filter argument \`exactly\` must be type of string or undefined!`);
+	exactly(value: ThreePhaseConditionEnumKeysType): this {
+		if (typeof value !== "string") {
+			throw new TypeError(`Filter argument \`exactly\` must be type of string!`);
 		}
-		this.#exactly = value;
+		let valueResolve: ThreePhaseConditionEnumValuesType | undefined = enumResolver<ThreePhaseConditionEnumKeysType, ThreePhaseConditionEnumValuesType>(ThreePhaseConditionEnum, value);
+		if (typeof valueResolve !== "string") {
+			throw new RangeError(`Filter argument \`exactly\` must be either of these values: "${Object.keys(ThreePhaseConditionEnum).sort().join("\", \"")}"`);
+		}
+		this.#exactly = valueResolve;
 		return this;
 	}
 	/**
 	 * @method global
 	 * @description Whether a global `RegExp`.
-	 * @param {boolean | undefined} [value]
+	 * @param {ThreePhaseConditionEnumKeysType} value
 	 * @returns {this}
 	 */
-	global(value?: boolean | undefined): this {
-		if (typeof value !== "boolean" && typeof value !== "undefined") {
-			throw new TypeError(`Filter argument \`global\` must be type of string or undefined!`);
+	global(value: ThreePhaseConditionEnumKeysType): this {
+		if (typeof value !== "string") {
+			throw new TypeError(`Filter argument \`global\` must be type of string!`);
 		}
-		this.#global = value;
+		let valueResolve: ThreePhaseConditionEnumValuesType | undefined = enumResolver<ThreePhaseConditionEnumKeysType, ThreePhaseConditionEnumValuesType>(ThreePhaseConditionEnum, value);
+		if (typeof valueResolve !== "string") {
+			throw new RangeError(`Filter argument \`global\` must be either of these values: "${Object.keys(ThreePhaseConditionEnum).sort().join("\", \"")}"`);
+		}
+		this.#global = valueResolve;
 		return this;
 	}
 	/**
 	 * @method ignoreCase
 	 * @description Whether a case insensitive `RegExp`.
-	 * @param {boolean | undefined} [value]
+	 * @param {ThreePhaseConditionEnumKeysType} value
 	 * @returns {this}
 	 */
-	ignoreCase(value?: boolean | undefined): this {
-		if (typeof value !== "boolean" && typeof value !== "undefined") {
-			throw new TypeError(`Filter argument \`ignoreCase\` must be type of string or undefined!`);
+	ignoreCase(value: ThreePhaseConditionEnumKeysType): this {
+		if (typeof value !== "string") {
+			throw new TypeError(`Filter argument \`ignoreCase\` must be type of string!`);
 		}
-		this.#ignoreCase = value;
+		let valueResolve: ThreePhaseConditionEnumValuesType | undefined = enumResolver<ThreePhaseConditionEnumKeysType, ThreePhaseConditionEnumValuesType>(ThreePhaseConditionEnum, value);
+		if (typeof valueResolve !== "string") {
+			throw new RangeError(`Filter argument \`ignoreCase\` must be either of these values: "${Object.keys(ThreePhaseConditionEnum).sort().join("\", \"")}"`);
+		}
+		this.#ignoreCase = valueResolve;
 		return this;
 	}
 	/**
 	 * @method multipleLine
 	 * @description Whether a multiple line `RegExp`.
-	 * @param {boolean | undefined} [value]
+	 * @param {ThreePhaseConditionEnumKeysType} value
 	 * @returns {this}
 	 */
-	multipleLine(value?: boolean | undefined): this {
-		if (typeof value !== "boolean" && typeof value !== "undefined") {
-			throw new TypeError(`Filter argument \`multipleLine\` must be type of string or undefined!`);
+	multipleLine(value: ThreePhaseConditionEnumKeysType): this {
+		if (typeof value !== "string") {
+			throw new TypeError(`Filter argument \`multipleLine\` must be type of string!`);
 		}
-		this.#multipleLine = value;
+		let valueResolve: ThreePhaseConditionEnumValuesType | undefined = enumResolver<ThreePhaseConditionEnumKeysType, ThreePhaseConditionEnumValuesType>(ThreePhaseConditionEnum, value);
+		if (typeof valueResolve !== "string") {
+			throw new RangeError(`Filter argument \`multipleLine\` must be either of these values: "${Object.keys(ThreePhaseConditionEnum).sort().join("\", \"")}"`);
+		}
+		this.#multipleLine = valueResolve;
 		return this;
 	}
 	/**
 	 * @method sticky
 	 * @description Whether a sticky `RegExp`.
-	 * @param {boolean | undefined} [value]
+	 * @param {ThreePhaseConditionEnumKeysType} value
 	 * @returns {this}
 	 */
-	sticky(value?: boolean | undefined): this {
-		if (typeof value !== "boolean" && typeof value !== "undefined") {
-			throw new TypeError(`Filter argument \`sticky\` must be type of string or undefined!`);
+	sticky(value: ThreePhaseConditionEnumKeysType): this {
+		if (typeof value !== "string") {
+			throw new TypeError(`Filter argument \`sticky\` must be type of string!`);
 		}
-		this.#sticky = value;
+		let valueResolve: ThreePhaseConditionEnumValuesType | undefined = enumResolver<ThreePhaseConditionEnumKeysType, ThreePhaseConditionEnumValuesType>(ThreePhaseConditionEnum, value);
+		if (typeof valueResolve !== "string") {
+			throw new RangeError(`Filter argument \`sticky\` must be either of these values: "${Object.keys(ThreePhaseConditionEnum).sort().join("\", \"")}"`);
+		}
+		this.#sticky = valueResolve;
 		return this;
 	}
 	/**
 	 * @method unicode
 	 * @description Whether an unicode `RegExp`.
-	 * @param {boolean | undefined} [value]
+	 * @param {ThreePhaseConditionEnumKeysType} value
 	 * @returns {this}
 	 */
-	unicode(value?: boolean | undefined): this {
-		if (typeof value !== "boolean" && typeof value !== "undefined") {
-			throw new TypeError(`Filter argument \`unicode\` must be type of string or undefined!`);
+	unicode(value: ThreePhaseConditionEnumKeysType): this {
+		if (typeof value !== "string") {
+			throw new TypeError(`Filter argument \`unicode\` must be type of string!`);
 		}
-		this.#unicode = value;
+		let valueResolve: ThreePhaseConditionEnumValuesType | undefined = enumResolver<ThreePhaseConditionEnumKeysType, ThreePhaseConditionEnumValuesType>(ThreePhaseConditionEnum, value);
+		if (typeof valueResolve !== "string") {
+			throw new RangeError(`Filter argument \`unicode\` must be either of these values: "${Object.keys(ThreePhaseConditionEnum).sort().join("\", \"")}"`);
+		}
+		this.#unicode = valueResolve;
 		return this;
 	}
 	/** @alias exactly */exact = this.exactly;
@@ -213,23 +284,23 @@ class RegExpFilter {
 	test(item: unknown): boolean {
 		if (
 			!(item instanceof RegExp) ||
-			(this.#dotAll === false && item.dotAll) ||
-			(this.#dotAll === true && !item.dotAll) ||
-			(this.#exactly === false && item.source.startsWith("^") && item.source.endsWith("$")) ||
-			(this.#exactly === true && (
+			(this.#dotAll === "false" && item.dotAll) ||
+			(this.#dotAll === "true" && !item.dotAll) ||
+			(this.#exactly === "false" && item.source.startsWith("^") && item.source.endsWith("$")) ||
+			(this.#exactly === "true" && (
 				!item.source.startsWith("^") ||
 				!item.source.endsWith("$")
 			)) ||
-			(this.#global === false && item.global) ||
-			(this.#global === true && !item.global) ||
-			(this.#ignoreCase === false && item.ignoreCase) ||
-			(this.#ignoreCase === true && !item.ignoreCase) ||
-			(this.#multipleLine === false && item.multiline) ||
-			(this.#multipleLine === true && !item.multiline) ||
-			(this.#sticky === false && item.sticky) ||
-			(this.#sticky === true && !item.sticky) ||
-			(this.#unicode === false && item.unicode) ||
-			(this.#unicode === true && !item.unicode)
+			(this.#global === "false" && item.global) ||
+			(this.#global === "true" && !item.global) ||
+			(this.#ignoreCase === "false" && item.ignoreCase) ||
+			(this.#ignoreCase === "true" && !item.ignoreCase) ||
+			(this.#multipleLine === "false" && item.multiline) ||
+			(this.#multipleLine === "true" && !item.multiline) ||
+			(this.#sticky === "false" && item.sticky) ||
+			(this.#sticky === "true" && !item.sticky) ||
+			(this.#unicode === "false" && item.unicode) ||
+			(this.#unicode === "true" && !item.unicode)
 		) {
 			return false;
 		}

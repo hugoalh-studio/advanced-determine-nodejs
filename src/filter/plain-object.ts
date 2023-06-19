@@ -82,7 +82,7 @@ interface PlainObjectItemFilterOptions extends Partial<PlainObjectItemFilterOpti
 	/** @alias entriesGetter */getterEntries?: boolean;
 	/** @alias entriesSetter */setterEntries?: boolean;
 	/** @alias entriesWritable */writableEntries?: boolean;
-	/** @alias keysSymbol */symbolKeys?: boolean
+	/** @alias keysSymbol */symbolKeys?: boolean;
 }
 /**
  * @class PlainObjectItemFilter

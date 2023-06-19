@@ -1,4 +1,3 @@
-import { areEqual } from "./are-equal.js";
 import { isArrayStrict, isArrayUnique, isArrayUniqueReference } from "./array.js";
 import { isBigIntegerEven, isBigIntegerIntegralNumericType, isBigIntegerNegative, isBigIntegerOdd, isBigIntegerPositive, isBigIntegerPrime, isBigIntegerSafe, isBigIntEven, isBigIntIntegralNumericType, isBigIntNegative, isBigIntOdd, isBigIntPositive, isBigIntPrime, isBigIntSafe } from "./bigint.js";
 import { isAsyncFunction, isAsyncGeneratorFunction, isAsynchronousFunction, isAsynchronousGeneratorFunction, isSyncFunction, isSyncGeneratorFunction, isSynchronousFunction, isSynchronousGeneratorFunction } from "./function.js";
@@ -7,7 +6,6 @@ import { isNumberEven, isNumberFloat, isNumberIntegralNumericType, isNumberNegat
 import { isObjectPlain } from "./object.js";
 import { isStringASCII, isStringLowerCase, isStringMultipleLine, isStringSingleLine, isStringUpperCase } from "./string.js";
 export {
-	areEqual,
 	isArrayStrict,
 	isArrayUnique,
 	isArrayUniqueReference,

@@ -1,12 +1,12 @@
-import { enumResolver, StringCaseEnum, StringLineEnum, type StringCaseEnumKeysType, type StringCaseEnumValuesType, type StringLineEnumKeysType, type StringLineEnumValuesType } from "../internal/enum.js";
+import { enumResolver, StringCaseEnum, StringLineEnum, ThreePhaseConditionEnum, type StringCaseEnumKeysType, type StringCaseEnumValuesType, type StringLineEnumKeysType, type StringLineEnumValuesType, type ThreePhaseConditionEnumKeysType, type ThreePhaseConditionEnumValuesType } from "../internal/enum.js";
 import { isStringASCII, isStringLowerCase, isStringMultipleLine, isStringSingleLine, isStringUpperCase } from "../string.js";
 interface StringFilterStatus {
 	/**
 	 * @property ascii
 	 * @description Whether an ASCII string.
-	 * @default undefined
+	 * @default "neutral"
 	 */
-	ascii?: boolean;
+	ascii: ThreePhaseConditionEnumValuesType;
 	/**
 	 * @property case
 	 * @description Case of the string.
@@ -44,13 +44,19 @@ interface StringFilterStatus {
 	 */
 	preTrim?: boolean;
 }
-interface StringFilterOptions extends Partial<Omit<StringFilterStatus, "case" | "line">> {
+interface StringFilterOptions extends Partial<Omit<StringFilterStatus, "ascii" | "case" | "line">> {
 	/**
 	 * @property allowEmpty
 	 * @description Whether to allow an empty string.
 	 * @default false
 	 */
 	allowEmpty?: boolean;
+	/**
+	 * @property ascii
+	 * @description Whether an ASCII string.
+	 * @default "neutral"
+	 */
+	ascii?: ThreePhaseConditionEnumKeysType;
 	/**
 	 * @property case
 	 * @description Case of the string.
@@ -90,7 +96,7 @@ interface StringFilterOptions extends Partial<Omit<StringFilterStatus, "case" | 
  * @description Filter for string.
  */
 class StringFilter {
-	#ascii?: boolean;
+	#ascii: ThreePhaseConditionEnumValuesType = "neutral";
 	#case: StringCaseEnumValuesType = "any";
 	#lengthMaximum = Infinity;
 	#lengthMinimum = 1;
@@ -162,14 +168,18 @@ class StringFilter {
 	/**
 	 * @method ascii
 	 * @description Whether an ASCII string.
-	 * @param {boolean | undefined} [value]
+	 * @param {ThreePhaseConditionEnumKeysType} value
 	 * @returns {this}
 	 */
-	ascii(value?: boolean | undefined): this {
-		if (typeof value !== "boolean" && typeof value !== "undefined") {
-			throw new TypeError(`Filter argument \`ascii\` must be type of boolean or undefined!`);
+	ascii(value: ThreePhaseConditionEnumKeysType): this {
+		if (typeof value !== "string") {
+			throw new TypeError(`Filter argument \`ascii\` must be type of string!`);
 		}
-		this.#ascii = value;
+		let valueResolve: ThreePhaseConditionEnumValuesType | undefined = enumResolver<ThreePhaseConditionEnumKeysType, ThreePhaseConditionEnumValuesType>(ThreePhaseConditionEnum, value);
+		if (typeof valueResolve !== "string") {
+			throw new RangeError(`Filter argument \`ascii\` must be either of these values: "${Object.keys(ThreePhaseConditionEnum).sort().join("\", \"")}"`);
+		}
+		this.#ascii = valueResolve;
 		return this;
 	}
 	/**
@@ -342,8 +352,8 @@ class StringFilter {
 		}
 		let itemRaw: string = this.#preTrim ? item.trim() : item;
 		if (
-			(this.#ascii === false && isStringASCII(itemRaw)) ||
-			(this.#ascii === true && !isStringASCII(itemRaw)) ||
+			(this.#ascii === "false" && isStringASCII(itemRaw)) ||
+			(this.#ascii === "true" && !isStringASCII(itemRaw)) ||
 			(this.#case === "lower" && !isStringLowerCase(itemRaw)) ||
 			(this.#case === "upper" && !isStringUpperCase(itemRaw)) ||
 			this.#lengthMaximum < itemRaw.length ||
