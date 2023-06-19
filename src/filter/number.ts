@@ -1,3 +1,4 @@
+import { isNumberEven, isNumberFloat, isNumberNegative, isNumberOdd, isNumberPositive, isNumberPrime, isNumberSafe } from "../number.js";
 import { enumResolver, IEEE754Enum, MathematicsFinitenessEnum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, NumericTypeEnum, type IEEE754EnumKeysType, type IEEE754EnumValuesType, type IntegralNumericTypeEnumKeysType, type MathematicsFinitenessEnumKeysType, type MathematicsFinitenessEnumValuesType, type MathematicsParityEnumKeysType, type MathematicsParityEnumValuesType, type MathematicsPrimalityEnumKeysType, type MathematicsPrimalityEnumValuesType, type MathematicsSignEnumKeysType, type MathematicsSignEnumValuesType, type NumericTypeEnumKeysType, type NumericTypeEnumValuesType } from "../internal/enum.js";
 import { integralNumericTypeRange } from "../internal/numeric.js";
 interface NumberFilterStatus {
@@ -116,7 +117,7 @@ interface NumberFilterOptions extends Partial<Omit<NumberFilterStatus, "finitene
 }
 /**
  * @class NumberFilter
- * @description Determine item with the filter of type of number.
+ * @description Filter for number.
  */
 class NumberFilter {
 	#finiteness: MathematicsFinitenessEnumValuesType = "any";
@@ -131,7 +132,7 @@ class NumberFilter {
 	#sign: MathematicsSignEnumValuesType = "any";
 	/**
 	 * @constructor
-	 * @description Initialize the filter of type of number to determine item.
+	 * @description Initialize the number filter.
 	 * @param {NumberFilter | NumberFilterOptions} [options] Options.
 	 */
 	constructor(options?: NumberFilter | NumberFilterOptions) {
@@ -160,16 +161,16 @@ class NumberFilter {
 	}
 	/**
 	 * @method clone
-	 * @description Clone this filter for reuse.
-	 * @returns {NumberFilter} Another instance of this filter.
+	 * @description Clone this number filter for reuse.
+	 * @returns {NumberFilter} Another instance of this number filter.
 	 */
 	get clone(): NumberFilter {
 		return new NumberFilter(this);
 	}
 	/**
 	 * @method status
-	 * @description Get the status of this filter.
-	 * @returns {NumberFilterStatus} Status of this filter.
+	 * @description Get the status of this number filter.
+	 * @returns {NumberFilterStatus} Status of this number filter.
 	 */
 	get status(): NumberFilterStatus {
 		return {
@@ -467,7 +468,7 @@ class NumberFilter {
 	}
 	/**
 	 * @method test
-	 * @description Determine item with the configured filter of type of number.
+	 * @description Determine item with the configured number filter.
 	 * @param {unknown} item Item that need to determine.
 	 * @returns {boolean} Determine result.
 	 */
@@ -498,7 +499,7 @@ class NumberFilter {
 	}
 	/**
 	 * @static test
-	 * @description Determine item with the filter of type of number.
+	 * @description Determine item with the number filter.
 	 * @param {unknown} item Item that need to determine.
 	 * @param {NumberFilterOptions} [options={}] Options.
 	 * @returns {boolean} Determine result.
@@ -509,7 +510,7 @@ class NumberFilter {
 }
 /**
  * @function filterNumber
- * @description Determine item with the filter of type of number.
+ * @description Determine item with the number filter.
  * @param {unknown} item Item that need to determine.
  * @param {NumberFilterOptions} [options={}] Options
  * @returns {boolean} Determine result.
@@ -518,8 +519,8 @@ function filterNumber(item: unknown, options: NumberFilterOptions = {}): boolean
 	return new NumberFilter(options).test(item);
 }
 export {
-	filterNumber as isNumber,
-	NumberFilter as NumberItemFilter,
-	type NumberFilterOptions as NumberItemFilterOptions,
-	type NumberFilterStatus as NumberItemFilterOptionsBase
+	filterNumber,
+	NumberFilter,
+	type NumberFilterOptions,
+	type NumberFilterStatus
 };

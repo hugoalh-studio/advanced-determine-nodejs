@@ -21,9 +21,9 @@ function isAsyncGeneratorFunction(item: unknown): item is AsyncGeneratorFunction
  * @function isSyncFunction
  * @description Whether the item is a synchronous function. This only reports back what the JavaScript engine is seeing; In particular, the return value may not match the original source code if a transpilation tool was used.
  * @param {unknown} item Item that need to determine.
- * @returns {item is (...parameters: unknown[]) => unknown} Determine result.
+ * @returns {item is (...parameters: unknown[]) => Exclude<unknown, Promise<unknown>>} Determine result.
  */
-function isSyncFunction(item: unknown): item is (...parameters: unknown[]) => unknown {
+function isSyncFunction(item: unknown): item is (...parameters: unknown[]) => Exclude<unknown, Promise<unknown>> {
 	return (typeof item === "function" && !types.isAsyncFunction(item) && !types.isGeneratorFunction(item) && Object.prototype.toString.call(item) === "[object Function]");
 }
 /**

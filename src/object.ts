@@ -5,14 +5,15 @@
  * @returns {boolean} Determine result.
  */
 function isObjectPlain(item: object): boolean {
-	if (Object.getPrototypeOf(item) !== null && Object.getPrototypeOf(item) !== Object.prototype) {
+	let itemPrototype: unknown = Object.getPrototypeOf(item);
+	if (itemPrototype !== null && itemPrototype !== Object.prototype) {
 		return false;
 	}
 	let itemShadow: object = item;
 	while (Object.getPrototypeOf(itemShadow) !== null) {
 		itemShadow = Object.getPrototypeOf(itemShadow);
 	}
-	if (Object.getPrototypeOf(item) !== itemShadow) {
+	if (itemPrototype !== itemShadow) {
 		return false;
 	}
 	return true;

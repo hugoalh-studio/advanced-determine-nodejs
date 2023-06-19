@@ -387,12 +387,12 @@ function filterStringifyJSON(item: unknown, options: JSONFilterOptions = {}): bo
 	return new JSONFilter(options).testStringify(item);
 }
 export {
-	filterJSON as isJSON,
+	filterJSON,
 	filterStringifyJSON as isStringifyJSON,
 	filterStringifyJSON as isJSONStringified,
 	filterStringifyJSON as isJSONStringify,
 	filterStringifyJSON as isStringifiedJSON,
-	JSONFilter as JSONItemFilter,
-	type JSONFilterOptions as JSONItemFilterOptions,
-	type JSONFilterStatus as JSONItemFilterOptionsBase
+	JSONFilter,
+	type JSONFilterOptions,
+	type JSONFilterStatus
 };

@@ -52,23 +52,12 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";// Namespace Im
 
 #### Function
 
-- `areEqual`
 - `isArrayStrict`
 - `isArrayUnique`
 - `isArrayUniqueReference`
 - `isAsyncFunction`
 - `isAsyncGenerator`
 - `isAsyncGeneratorFunction`
-- `isAsynchronousFunction`
-- `isAsynchronousGenerator`
-- `isAsynchronousGeneratorFunction`
-- `isBigIntegerEven`
-- `isBigIntegerIntegralNumericType`
-- `isBigIntegerNegative`
-- `isBigIntegerOdd`
-- `isBigIntegerPositive`
-- `isBigIntegerPrime`
-- `isBigIntegerSafe`
 - `isBigIntEven`
 - `isBigIntIntegralNumericType`
 - `isBigIntNegative`
@@ -93,9 +82,6 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";// Namespace Im
 - `isSyncFunction`
 - `isSyncGenerator`
 - `isSyncGeneratorFunction`
-- `isSynchronousFunction`
-- `isSynchronousGenerator`
-- `isSynchronousGeneratorFunction`
 
 ### Example
 

@@ -93,7 +93,7 @@ interface BigIntFilterOptions extends Partial<Omit<BigIntFilterStatus, "ieee754"
 }
 /**
  * @class BigIntFilter
- * @description Determine item with the filter of type of big integer.
+ * @description Filter for big integer.
  */
 class BigIntFilter {
 	#ieee754: IEEE754EnumValuesType = "any";
@@ -106,7 +106,7 @@ class BigIntFilter {
 	#sign: MathematicsSignEnumValuesType = "any";
 	/**
 	 * @constructor
-	 * @description Initialize the filter of type of big integer to determine item.
+	 * @description Initialize the big integer filter.
 	 * @param {BigIntFilter | BigIntFilterOptions} [options] Options.
 	 */
 	constructor(options?: BigIntFilter | BigIntFilterOptions) {
@@ -133,16 +133,16 @@ class BigIntFilter {
 	}
 	/**
 	 * @method clone
-	 * @description Clone this filter for reuse.
-	 * @returns {BigIntFilter} Another instance of this filter.
+	 * @description Clone this big integer filter for reuse.
+	 * @returns {BigIntFilter} Another instance of this big integer filter.
 	 */
 	get clone(): BigIntFilter {
 		return new BigIntFilter(this);
 	}
 	/**
 	 * @method status
-	 * @description Get the status of this filter.
-	 * @returns {BigIntFilterStatus} Status of this filter.
+	 * @description Get the status of this big integer filter.
+	 * @returns {BigIntFilterStatus} Status of this big integer filter.
 	 */
 	get status(): BigIntFilterStatus {
 		return {
@@ -370,7 +370,7 @@ class BigIntFilter {
 	}
 	/**
 	 * @method test
-	 * @description Determine item with the configured filter of type of big integer.
+	 * @description Determine item with the configured big integer filter.
 	 * @param {unknown} item Item that need to determine.
 	 * @returns {boolean} Determine result.
 	 */
@@ -396,7 +396,7 @@ class BigIntFilter {
 	}
 	/**
 	 * @static test
-	 * @description Determine item with the filter of type of big integer.
+	 * @description Determine item with the big integer filter.
 	 * @param {unknown} item Item that need to determine.
 	 * @param {BigIntFilterOptions} [options={}] Options.
 	 * @returns {boolean} Determine result.
@@ -407,7 +407,7 @@ class BigIntFilter {
 }
 /**
  * @function filterBigInt
- * @description Determine item with the filter of type of big integer.
+ * @description Determine item with the big integer filter.
  * @param {unknown} item Item that need to determine.
  * @param {BigIntFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.

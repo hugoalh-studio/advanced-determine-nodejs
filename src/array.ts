@@ -1,4 +1,4 @@
-import { areEqual } from "./are-equal.js";
+import equal from "@hugoalh/equal";
 const arrayIndexRegExp = /^(?:0|[1-9]\d*)$/u;
 /**
  * @function isArrayStrict
@@ -70,7 +70,7 @@ function isArrayUnique(item: unknown[]): boolean {
 			if (indexA === indexB) {
 				continue;
 			}
-			if (areEqual(item[indexA], item[indexB])) {
+			if (equal(item[indexA], item[indexB])) {
 				return false;
 			}
 		}
