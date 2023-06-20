@@ -1,84 +1,25 @@
 import { types } from "node:util";
-import { ObjectItemFilter } from "./object.js";
-const objectFilter = new ObjectItemFilter();
-interface GeneratorItemFilterOptions {
-	/**
-	 * @property asynchronous
-	 * @description Whether an asynchronous generator.
-	 * @default undefined
-	 */
-	asynchronous?: boolean;
-	/** @alias asynchronous */async?: boolean;
-}
 /**
- * @class GeneratorItemFilter
- * @description Determine item with the filter of type of generator.
- * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
- */
-class GeneratorItemFilter {
-	#objectStringRegExp: RegExp;
-	/**
-	 * @constructor
-	 * @description Initialize the filter of type of generator to determine item.
-	 * @param {GeneratorItemFilterOptions} [options={}] Options.
-	 * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
-	 */
-	constructor(options: GeneratorItemFilterOptions = {}) {
-		let {
-			asynchronous,
-			...aliases
-		} = options;
-		asynchronous ??= aliases.async;
-		if (typeof asynchronous !== "boolean" && typeof asynchronous !== "undefined") {
-			throw new TypeError(`Filter argument \`asynchronous\` must be type of boolean or undefined!`);
-		}
-		this.#objectStringRegExp = new RegExp(`^\\[object ${(asynchronous === false) ? "" : "(?:Async)"}${(typeof asynchronous === "undefined") ? "?" : ""}Generator\\]$`, "u");
-	}
-	/**
-	 * @method test
-	 * @description Determine item with the configured filter of type of generator.
-	 * @param {unknown} item Item that need to determine.
-	 * @returns {boolean} Determine result.
-	 * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
-	 */
-	test(item: unknown): boolean {
-		if (
-			!objectFilter.test(item) ||
-			!types.isGeneratorObject(item) ||
-			!this.#objectStringRegExp.test(Object.prototype.toString.call(item)) ||
-			typeof item.next !== "function" ||
-			typeof item.return !== "function" ||
-			typeof item.throw !== "function"
-		) {
-			return false;
-		}
-		return true;
-	}
-	/**
-	 * @static test
-	 * @description Determine item with the filter of type of generator.
-	 * @param {unknown} item Item that need to determine.
-	 * @param {GeneratorItemFilterOptions} [options={}] Options.
-	 * @returns {boolean} Determine result.
-	 * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
-	 */
-	static test(item: unknown, options: GeneratorItemFilterOptions = {}): boolean {
-		return new this(options).test(item);
-	}
-}
-/**
- * @function isGenerator
- * @description Determine item with the filter of type of generator.
+ * @function isAsyncGenerator
+ * @description Whether the item is an asynchronous generator. This only reports back what the JavaScript engine is seeing; In particular, the return value may not match the original source code if a transpilation tool was used.
  * @param {unknown} item Item that need to determine.
- * @param {GeneratorItemFilterOptions} [options={}] Options.
- * @returns {boolean} Determine result.
- * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
+ * @returns {item is AsyncGenerator<unknown, unknown, unknown>} Determine result.
  */
-function isGenerator(item: unknown, options: GeneratorItemFilterOptions = {}): boolean {
-	return new GeneratorItemFilter(options).test(item);
+function isAsyncGenerator(item: unknown): item is AsyncGenerator<unknown, unknown, unknown> {
+	return (types.isGeneratorObject(item) && Object.prototype.toString.call(item) === "[object AsyncGenerator]");
+}
+/**
+ * @function isSyncGenerator
+ * @description Whether the item is a synchronous generator. This only reports back what the JavaScript engine is seeing; In particular, the return value may not match the original source code if a transpilation tool was used.
+ * @param {unknown} item Item that need to determine.
+ * @returns {item is Generator<unknown, unknown, unknown>} Determine result.
+ */
+function isSyncGenerator(item: unknown): item is Generator<unknown, unknown, unknown> {
+	return (types.isGeneratorObject(item) && Object.prototype.toString.call(item) === "[object Generator]");
 }
 export {
-	GeneratorItemFilter,
-	isGenerator,
-	type GeneratorItemFilterOptions
+	isAsyncGenerator,
+	isAsyncGenerator as isAsynchronousGenerator,
+	isSyncGenerator,
+	isSyncGenerator as isSynchronousGenerator
 };

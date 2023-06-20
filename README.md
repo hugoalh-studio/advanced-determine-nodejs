@@ -16,7 +16,7 @@
 
 ## 📝 Description
 
-A NodeJS module to provide a better and more accurate way to determine item.
+A NodeJS module to provide advanced method to determine item.
 
 ## 📚 Documentation (Excerpt)
 
@@ -40,85 +40,101 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";// Namespace Im
 
 #### Class
 
-- `ArrayItemFilter`
-- `BigIntegerItemFilter`
-- `JSONItemFilter`
-- `MapItemFilter`
-- `NumberItemFilter`
-- `ObjectItemFilter`
-- `PlainObjectItemFilter`
-- `RegularExpressionItemFilter`
-- `SetItemFilter`
-- `StringItemFilter`
+- `ArrayFilter`
+- `BigIntFilter`
+- `JSONFilter`
+- `MapFilter`
+- `NumberFilter`
+- `ObjectFilter`
+- `RegExpFilter`
+- `SetFilter`
+- `StringFilter`
 
 #### Function
 
-- `areEqual`
-- `isArray`
-- `isBigInteger`
-- `isJSON`
-- `isMap`
-- `isNumber`
-- `isObject`
-- `isPlainObject`
-- `isRegularExpression`
-- `isSet`
-- `isString`
-- `isStringifyJSON`
-- `typeOf`
+- `isArrayStrict`
+- `isArrayUnique`
+- `isArrayUniqueReference`
+- `isAsyncFunction`
+- `isAsyncGenerator`
+- `isAsyncGeneratorFunction`
+- `isBigIntEven`
+- `isBigIntIntegralNumericType`
+- `isBigIntNegative`
+- `isBigIntOdd`
+- `isBigIntPositive`
+- `isBigIntPrime`
+- `isBigIntSafe`
+- `isNumberEven`
+- `isNumberFloat`
+- `isNumberIntegralNumericType`
+- `isNumberNegative`
+- `isNumberOdd`
+- `isNumberPositive`
+- `isNumberPrime`
+- `isNumberSafe`
+- `isObjectPlain`
+- `isStringASCII`
+- `isStringLowerCase`
+- `isStringMultipleLine`
+- `isStringSingleLine`
+- `isStringUpperCase`
+- `isSyncFunction`
+- `isSyncGenerator`
+- `isSyncGeneratorFunction`
 
 ### Example
 
 ```js
 /* Either */
-new ArrayItemFilter().test([]);
-ArrayItemFilter.test([]);
-isArray([]);
+new ArrayFilter().test([]);
+ArrayFilter.test([]);
+filterArray([]);
 //=> false (`allowEmpty` is `false`)
 ```
 
 ```js
 /* Either */
-new ArrayItemFilter({ allowEmpty: true }).test([]);
-new ArrayItemFilter().allowEmpty().test([]);
-ArrayItemFilter.test([], { allowEmpty: true });
-isArray([], { allowEmpty: true });
+new ArrayFilter({ allowEmpty: true }).test([]);
+new ArrayFilter().allowEmpty().test([]);
+ArrayFilter.test([], { allowEmpty: true });
+filterArray([], { allowEmpty: true });
 //=> true
 ```
 
 ```js
 /* Either */
-new NumberItemFilter({ ieee754: "safe", numericType: "float", sign: "positive" }).test(8.31);
-new NumberItemFilter().ieee754("safe").numericType("float").sign("positive").test(8.31);
-new NumberItemFilter().safe().float().positive().test(8.31);
-NumberItemFilter.test(8.31, { ieee754: "safe", numericType: "float", sign: "positive" });
-isNumber(8.31, { ieee754: "safe", numericType: "float", sign: "positive" });
+new NumberFilter({ ieee754: "safe", numericType: "float", sign: "positive" }).test(8.31);
+new NumberFilter().ieee754("safe").numericType("float").sign("positive").test(8.31);
+new NumberFilter().safe().float().positive().test(8.31);
+NumberFilter.test(8.31, { ieee754: "safe", numericType: "float", sign: "positive" });
+filterNumber(8.31, { ieee754: "safe", numericType: "float", sign: "positive" });
 //=> true
 ```
 
 ```js
 /* Either */
-new StringItemFilter().test("");
-StringItemFilter.test("");
-isString("");
+new StringFilter().test("");
+StringFilter.test("");
+filterString("");
 //=> false (`allowEmpty` is `false`)
 ```
 
 ```js
 /* Either */
-new StringItemFilter({ allowEmpty: true }).test("");
-new StringItemFilter().allowEmpty().test("");
-StringItemFilter.test("", { allowEmpty: true });
-isString("", { allowEmpty: true });
+new StringFilter({ allowEmpty: true }).test("");
+new StringFilter().allowEmpty().test("");
+StringFilter.test("", { allowEmpty: true });
+filterString("", { allowEmpty: true });
 //=> true
 ```
 
 ```js
 /* Either */
-new StringItemFilter({ case: "lower" }).test("Hello World");
-new StringItemFilter().case("lower").test("Hello World");
-new StringItemFilter().lowerCase().test("Hello World");
-StringItemFilter.test("Hello World", { case: "lower" });
-isString("Hello World", { case: "lower" });
+new StringFilter({ case: "lower" }).test("Hello World");
+new StringFilter().case("lower").test("Hello World");
+new StringFilter().lowerCase().test("Hello World");
+StringFilter.test("Hello World", { case: "lower" });
+filterString("Hello World", { case: "lower" });
 //=> false
 ```

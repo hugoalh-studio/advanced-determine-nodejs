@@ -100,4 +100,19 @@ const StringLineEnum = Object.freeze({
     Singleline: "single",
     SingleLine: "single"
 });
-export { enumResolver, IEEE754Enum, IntegralNumericTypeEnum, JSONRootTypeEnum, MathematicsFinitenessEnum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, NumericTypeEnum, StringCaseEnum, StringLineEnum };
+const ThreePhaseConditionEnum = Object.freeze({
+    Allow: "true",
+    Deny: "false",
+    Exclude: "false",
+    Exclusive: "false",
+    False: "false",
+    Include: "true",
+    Inclusive: "true",
+    Neutral: "neutral",
+    None: "neutral",
+    Null: "neutral",
+    True: "true",
+    Undefine: "neutral",
+    Undefined: "neutral"
+});
+export { enumResolver, IEEE754Enum, IntegralNumericTypeEnum, JSONRootTypeEnum, MathematicsFinitenessEnum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, NumericTypeEnum, StringCaseEnum, StringLineEnum, ThreePhaseConditionEnum };

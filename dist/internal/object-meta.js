@@ -1,6 +1,3 @@
-/**
- * @class ObjectMeta
- */
 class ObjectMeta {
     /**
      * @constructor

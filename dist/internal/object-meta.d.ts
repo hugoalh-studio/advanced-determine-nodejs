@@ -1,8 +1,5 @@
-/**
- * @class ObjectMeta
- */
 declare class ObjectMeta {
-    prototypes: any;
+    prototypes: unknown;
     keysSymbol: symbol[];
     descriptors: object & {
         [x: string]: PropertyDescriptor;

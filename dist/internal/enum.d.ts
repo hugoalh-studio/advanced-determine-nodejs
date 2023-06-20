@@ -114,5 +114,22 @@ declare const StringLineEnum: Readonly<{
 }>;
 type StringLineEnumKeysType = EnumCase<keyof typeof StringLineEnum>;
 type StringLineEnumValuesType = (typeof StringLineEnum)[keyof typeof StringLineEnum];
-export { enumResolver, IEEE754Enum, IntegralNumericTypeEnum, JSONRootTypeEnum, MathematicsFinitenessEnum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, NumericTypeEnum, StringCaseEnum, StringLineEnum, type EnumCase, type IEEE754EnumKeysType, type IEEE754EnumValuesType, type IntegralNumericTypeEnumKeysType, type IntegralNumericTypeEnumValuesType, type JSONRootTypeEnumKeysType, type JSONRootTypeEnumValuesType, type MathematicsFinitenessEnumKeysType, type MathematicsFinitenessEnumValuesType, type MathematicsParityEnumKeysType, type MathematicsParityEnumValuesType, type MathematicsPrimalityEnumKeysType, type MathematicsPrimalityEnumValuesType, type MathematicsSignEnumKeysType, type MathematicsSignEnumValuesType, type NumericTypeEnumKeysType, type NumericTypeEnumValuesType, type StringCaseEnumKeysType, type StringCaseEnumValuesType, type StringLineEnumKeysType, type StringLineEnumValuesType };
+declare const ThreePhaseConditionEnum: Readonly<{
+    Allow: "true";
+    Deny: "false";
+    Exclude: "false";
+    Exclusive: "false";
+    False: "false";
+    Include: "true";
+    Inclusive: "true";
+    Neutral: "neutral";
+    None: "neutral";
+    Null: "neutral";
+    True: "true";
+    Undefine: "neutral";
+    Undefined: "neutral";
+}>;
+type ThreePhaseConditionEnumKeysType = EnumCase<keyof typeof ThreePhaseConditionEnum>;
+type ThreePhaseConditionEnumValuesType = (typeof ThreePhaseConditionEnum)[keyof typeof ThreePhaseConditionEnum];
+export { enumResolver, IEEE754Enum, IntegralNumericTypeEnum, JSONRootTypeEnum, MathematicsFinitenessEnum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, NumericTypeEnum, StringCaseEnum, StringLineEnum, ThreePhaseConditionEnum, type EnumCase, type IEEE754EnumKeysType, type IEEE754EnumValuesType, type IntegralNumericTypeEnumKeysType, type IntegralNumericTypeEnumValuesType, type JSONRootTypeEnumKeysType, type JSONRootTypeEnumValuesType, type MathematicsFinitenessEnumKeysType, type MathematicsFinitenessEnumValuesType, type MathematicsParityEnumKeysType, type MathematicsParityEnumValuesType, type MathematicsPrimalityEnumKeysType, type MathematicsPrimalityEnumValuesType, type MathematicsSignEnumKeysType, type MathematicsSignEnumValuesType, type NumericTypeEnumKeysType, type NumericTypeEnumValuesType, type StringCaseEnumKeysType, type StringCaseEnumValuesType, type StringLineEnumKeysType, type StringLineEnumValuesType, type ThreePhaseConditionEnumKeysType, type ThreePhaseConditionEnumValuesType };
 //# sourceMappingURL=enum.d.ts.map

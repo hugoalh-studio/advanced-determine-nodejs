@@ -1,58 +1,30 @@
-interface FunctionItemFilterOptions {
-    /**
-     * @property asynchronous
-     * @description Whether an asynchronous function.
-     * @default undefined
-     */
-    asynchronous?: boolean;
-    /**
-     * @property generator
-     * @description Whether a generator function.
-     * @default undefined
-     */
-    generator?: boolean;
-    /** @alias asynchronous */ async?: boolean;
-}
 /**
- * @class FunctionItemFilter
- * @description Determine item with the filter of type of function.
- * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isAsyncFunction`, `native.isSyncGeneratorFunction`, and/or `native.isSyncFunction` instead.
- */
-declare class FunctionItemFilter {
-    #private;
-    /**
-     * @constructor
-     * @description Initialize the filter of type of function to determine item.
-     * @param {FunctionItemFilterOptions} [options={}] Options.
-     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isAsyncFunction`, `native.isSyncGeneratorFunction`, and/or `native.isSyncFunction` instead.
-     */
-    constructor(options?: FunctionItemFilterOptions);
-    /**
-     * @method test
-     * @description Determine item with the configured filter of type of function.
-     * @param {unknown} item Item that need to determine.
-     * @returns {boolean} Determine result.
-     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isAsyncFunction`, `native.isSyncGeneratorFunction`, and/or `native.isSyncFunction` instead.
-     */
-    test(item: unknown): boolean;
-    /**
-     * @static test
-     * @description Determine item with the filter of type of function.
-     * @param {unknown} item Item that need to determine.
-     * @param {FunctionItemFilterOptions} [options={}] Options.
-     * @returns {boolean} Determine result.
-     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isAsyncFunction`, `native.isSyncGeneratorFunction`, and/or `native.isSyncFunction` instead.
-     */
-    static test(item: unknown, options?: FunctionItemFilterOptions): boolean;
-}
-/**
- * @function isFunction
- * @description Determine item with the filter of type of function.
+ * @function isAsyncFunction
+ * @description Whether the item is an asynchronous function. This only reports back what the JavaScript engine is seeing; In particular, the return value may not match the original source code if a transpilation tool was used.
  * @param {unknown} item Item that need to determine.
- * @param {FunctionItemFilterOptions} [options={}] Options.
- * @returns {boolean} Determine result.
- * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGeneratorFunction`, `native.isAsyncFunction`, `native.isSyncGeneratorFunction`, and/or `native.isSyncFunction` instead.
+ * @returns {item is (...parameters: unknown[]) => Promise<unknown>} Determine result.
  */
-declare function isFunction(item: unknown, options?: FunctionItemFilterOptions): boolean;
-export { FunctionItemFilter, isFunction, type FunctionItemFilterOptions };
+declare function isAsyncFunction(item: unknown): item is (...parameters: unknown[]) => Promise<unknown>;
+/**
+ * @function isAsyncGeneratorFunction
+ * @description Whether the item is an asynchronous generator function. This only reports back what the JavaScript engine is seeing; In particular, the return value may not match the original source code if a transpilation tool was used.
+ * @param {unknown} item Item that need to determine.
+ * @returns {item is AsyncGeneratorFunction} Determine result.
+ */
+declare function isAsyncGeneratorFunction(item: unknown): item is AsyncGeneratorFunction;
+/**
+ * @function isSyncFunction
+ * @description Whether the item is a synchronous function. This only reports back what the JavaScript engine is seeing; In particular, the return value may not match the original source code if a transpilation tool was used.
+ * @param {unknown} item Item that need to determine.
+ * @returns {item is (...parameters: unknown[]) => Exclude<unknown, Promise<unknown>>} Determine result.
+ */
+declare function isSyncFunction(item: unknown): item is (...parameters: unknown[]) => Exclude<unknown, Promise<unknown>>;
+/**
+ * @function isSyncGeneratorFunction
+ * @description Whether the item is a synchronous generator function. This only reports back what the JavaScript engine is seeing; In particular, the return value may not match the original source code if a transpilation tool was used.
+ * @param {unknown} item Item that need to determine.
+ * @returns {item is GeneratorFunction} Determine result.
+ */
+declare function isSyncGeneratorFunction(item: unknown): item is GeneratorFunction;
+export { isAsyncFunction, isAsyncFunction as isAsynchronousFunction, isAsyncGeneratorFunction, isAsyncGeneratorFunction as isAsynchronousGeneratorFunction, isSyncFunction, isSyncFunction as isSynchronousFunction, isSyncGeneratorFunction, isSyncGeneratorFunction as isSynchronousGeneratorFunction };
 //# sourceMappingURL=function.d.ts.map

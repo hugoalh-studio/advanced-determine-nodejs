@@ -123,6 +123,23 @@ const StringLineEnum = Object.freeze({
 });
 type StringLineEnumKeysType = EnumCase<keyof typeof StringLineEnum>;
 type StringLineEnumValuesType = (typeof StringLineEnum)[keyof typeof StringLineEnum];
+const ThreePhaseConditionEnum = Object.freeze({
+	Allow: "true",
+	Deny: "false",
+	Exclude: "false",
+	Exclusive: "false",
+	False: "false",
+	Include: "true",
+	Inclusive: "true",
+	Neutral: "neutral",
+	None: "neutral",
+	Null: "neutral",
+	True: "true",
+	Undefine: "neutral",
+	Undefined: "neutral"
+});
+type ThreePhaseConditionEnumKeysType = EnumCase<keyof typeof ThreePhaseConditionEnum>;
+type ThreePhaseConditionEnumValuesType = (typeof ThreePhaseConditionEnum)[keyof typeof ThreePhaseConditionEnum];
 export {
 	enumResolver,
 	IEEE754Enum,
@@ -135,6 +152,7 @@ export {
 	NumericTypeEnum,
 	StringCaseEnum,
 	StringLineEnum,
+	ThreePhaseConditionEnum,
 	type EnumCase,
 	type IEEE754EnumKeysType,
 	type IEEE754EnumValuesType,
@@ -155,5 +173,7 @@ export {
 	type StringCaseEnumKeysType,
 	type StringCaseEnumValuesType,
 	type StringLineEnumKeysType,
-	type StringLineEnumValuesType
+	type StringLineEnumValuesType,
+	type ThreePhaseConditionEnumKeysType,
+	type ThreePhaseConditionEnumValuesType
 };

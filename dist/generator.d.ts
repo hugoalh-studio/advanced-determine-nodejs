@@ -1,52 +1,16 @@
-interface GeneratorItemFilterOptions {
-    /**
-     * @property asynchronous
-     * @description Whether an asynchronous generator.
-     * @default undefined
-     */
-    asynchronous?: boolean;
-    /** @alias asynchronous */ async?: boolean;
-}
 /**
- * @class GeneratorItemFilter
- * @description Determine item with the filter of type of generator.
- * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
- */
-declare class GeneratorItemFilter {
-    #private;
-    /**
-     * @constructor
-     * @description Initialize the filter of type of generator to determine item.
-     * @param {GeneratorItemFilterOptions} [options={}] Options.
-     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
-     */
-    constructor(options?: GeneratorItemFilterOptions);
-    /**
-     * @method test
-     * @description Determine item with the configured filter of type of generator.
-     * @param {unknown} item Item that need to determine.
-     * @returns {boolean} Determine result.
-     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
-     */
-    test(item: unknown): boolean;
-    /**
-     * @static test
-     * @description Determine item with the filter of type of generator.
-     * @param {unknown} item Item that need to determine.
-     * @param {GeneratorItemFilterOptions} [options={}] Options.
-     * @returns {boolean} Determine result.
-     * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
-     */
-    static test(item: unknown, options?: GeneratorItemFilterOptions): boolean;
-}
-/**
- * @function isGenerator
- * @description Determine item with the filter of type of generator.
+ * @function isAsyncGenerator
+ * @description Whether the item is an asynchronous generator. This only reports back what the JavaScript engine is seeing; In particular, the return value may not match the original source code if a transpilation tool was used.
  * @param {unknown} item Item that need to determine.
- * @param {GeneratorItemFilterOptions} [options={}] Options.
- * @returns {boolean} Determine result.
- * @deprecated This cannot return correct type on TypeScript, use functions `native.isAsyncGenerator`, and/or `native.isSyncGenerator` instead.
+ * @returns {item is AsyncGenerator<unknown, unknown, unknown>} Determine result.
  */
-declare function isGenerator(item: unknown, options?: GeneratorItemFilterOptions): boolean;
-export { GeneratorItemFilter, isGenerator, type GeneratorItemFilterOptions };
+declare function isAsyncGenerator(item: unknown): item is AsyncGenerator<unknown, unknown, unknown>;
+/**
+ * @function isSyncGenerator
+ * @description Whether the item is a synchronous generator. This only reports back what the JavaScript engine is seeing; In particular, the return value may not match the original source code if a transpilation tool was used.
+ * @param {unknown} item Item that need to determine.
+ * @returns {item is Generator<unknown, unknown, unknown>} Determine result.
+ */
+declare function isSyncGenerator(item: unknown): item is Generator<unknown, unknown, unknown>;
+export { isAsyncGenerator, isAsyncGenerator as isAsynchronousGenerator, isSyncGenerator, isSyncGenerator as isSynchronousGenerator };
 //# sourceMappingURL=generator.d.ts.map
