@@ -18,7 +18,75 @@
 	"type": "module",
 	"main": "./dist/main.js",
 	"exports": {
-		"import": "./dist/main.js"
+		".": {
+			"import": "./dist/main.js"
+		},
+		"./filter": {
+			"import": "./dist/filter.js"
+		},
+		"./filter/array": {
+			"import": "./dist/filter/array.js"
+		},
+		"./filter/bigint": {
+			"import": "./dist/filter/bigint.js"
+		},
+		"./filter/big-integer": {
+			"import": "./dist/filter/bigint.js"
+		},
+		"./filter/json": {
+			"import": "./dist/filter/json.js"
+		},
+		"./filter/map": {
+			"import": "./dist/filter/map.js"
+		},
+		"./filter/number": {
+			"import": "./dist/filter/number.js"
+		},
+		"./filter/object": {
+			"import": "./dist/filter/object.js"
+		},
+		"./filter/regex": {
+			"import": "./dist/filter/regexp.js"
+		},
+		"./filter/regexp": {
+			"import": "./dist/filter/regexp.js"
+		},
+		"./filter/regular-expression": {
+			"import": "./dist/filter/regexp.js"
+		},
+		"./filter/set": {
+			"import": "./dist/filter/set.js"
+		},
+		"./filter/string": {
+			"import": "./dist/filter/string.js"
+		},
+		"./native": {
+			"import": "./dist/native.js"
+		},
+		"./native/array": {
+			"import": "./dist/native/array.js"
+		},
+		"./native/bigint": {
+			"import": "./dist/native/bigint.js"
+		},
+		"./native/big-integer": {
+			"import": "./dist/native/bigint.js"
+		},
+		"./native/function": {
+			"import": "./dist/native/function.js"
+		},
+		"./native/generator": {
+			"import": "./dist/native/generator.js"
+		},
+		"./native/number": {
+			"import": "./dist/native/number.js"
+		},
+		"./native/object": {
+			"import": "./dist/native/object.js"
+		},
+		"./native/string": {
+			"import": "./dist/native/string.js"
+		}
 	},
 	"types": "./dist/main.d.ts",
 	"repository": {
