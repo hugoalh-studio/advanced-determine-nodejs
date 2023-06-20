@@ -6,7 +6,7 @@ const newLineRegExp = /[\n\r]/u;
  * @returns {boolean} Determine result.
  */
 function isStringASCII(item: string): boolean {
-	for (let character of item) {
+	for (let character of item.split("")) {
 		if (character.charCodeAt(0) >= 128) {
 			return false;
 		}

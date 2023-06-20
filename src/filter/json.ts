@@ -2,7 +2,7 @@ import { ArrayFilter } from "./array.js";
 import { ObjectFilter } from "./object.js";
 import { enumResolver, JSONRootTypeEnum, type JSONRootTypeEnumKeysType, type JSONRootTypeEnumValuesType } from "../internal/enum.js";
 const jsonArrayFilter: ArrayFilter = new ArrayFilter().allowEmpty().strict();
-const jsonObjectFilter: ObjectFilter = new ObjectFilter().allowEmpty().plain().strict();
+const jsonObjectFilter: ObjectFilter = new ObjectFilter().allowEmpty().plain();
 const jsonLegalKeysPatternRegExp = /^[$_A-Za-z][$\d_A-Za-z]*$/u;
 interface JSONFilterStatus {
 	/**
@@ -121,7 +121,7 @@ function isJSONInternal(item: unknown, keysPattern?: RegExp): boolean {
 }
 /**
  * @class JSONFilter
- * @description Determine item with the filter of type of JSON.
+ * @description Filter for JSON.
  */
 class JSONFilter {
 	#entriesCountMaximum = Infinity;
@@ -130,7 +130,7 @@ class JSONFilter {
 	#rootType: JSONRootTypeEnumValuesType = "any";
 	/**
 	 * @constructor
-	 * @description Initialize the filter of type of JSON to determine item.
+	 * @description Initialize the JSON filter.
 	 * @param {JSONFilter | JSONFilterOptions} [options] Options.
 	 */
 	constructor(options?: JSONFilter | JSONFilterOptions) {
@@ -152,16 +152,16 @@ class JSONFilter {
 	}
 	/**
 	 * @method clone
-	 * @description Clone this filter for reuse.
-	 * @returns {JSONFilter} Another instance of this filter.
+	 * @description Clone this JSON filter for reuse.
+	 * @returns {JSONFilter} Another instance of this JSON filter.
 	 */
 	get clone(): JSONFilter {
 		return new JSONFilter(this);
 	}
 	/**
 	 * @method status
-	 * @description Get the status of this filter.
-	 * @returns {JSONFilterStatus} Status of this filter.
+	 * @description Get the status of this JSON filter.
+	 * @returns {JSONFilterStatus} Status of this JSON filter.
 	 */
 	get status(): JSONFilterStatus {
 		return {
@@ -304,7 +304,7 @@ class JSONFilter {
 	/** @alias strictKeys */keysStrict = this.strictKeys;
 	/**
 	 * @method test
-	 * @description Determine item with the configured filter of type of JSON.
+	 * @description Determine item with the configured JSON filter.
 	 * @param {unknown} item Item that need to determine.
 	 * @returns {boolean} Determine result.
 	 */
@@ -323,7 +323,7 @@ class JSONFilter {
 	}
 	/**
 	 * @method testStringify
-	 * @description Determine item with the configured filter of type of stringify JSON.
+	 * @description Determine stringify item with the configured JSON filter.
 	 * @param {unknown} item Item that need to determine.
 	 * @returns {boolean} Determine result.
 	 */
@@ -344,7 +344,7 @@ class JSONFilter {
 	/** @alias testStringify */testStringified = this.testStringify;
 	/**
 	 * @static test
-	 * @description Determine item with the filter of type of JSON.
+	 * @description Determine item with the JSON filter.
 	 * @param {unknown} item Item that need to determine.
 	 * @param {JSONFilterOptions} [options={}] Options.
 	 * @returns {boolean} Determine result.
@@ -354,7 +354,7 @@ class JSONFilter {
 	}
 	/**
 	 * @static testStringify
-	 * @description Determine item with the filter of type of stringify JSON.
+	 * @description Determine stringify item with the JSON filter.
 	 * @param {unknown} item Item that need to determine.
 	 * @param {JSONFilterOptions} [options={}] Options.
 	 * @returns {boolean} Determine result.
@@ -368,7 +368,7 @@ class JSONFilter {
 }
 /**
  * @function filterJSON
- * @description Determine item with the filter of type of JSON.
+ * @description Determine item with the JSON filter.
  * @param {unknown} item Item that need to determine.
  * @param {JSONFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
@@ -378,7 +378,7 @@ function filterJSON(item: unknown, options: JSONFilterOptions = {}): boolean {
 }
 /**
  * @function filterStringifyJSON
- * @description Determine item with the filter of type of stringify JSON.
+ * @description Determine stringify item with the JSON filter.
  * @param {unknown} item Item that need to determine.
  * @param {JSONFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
@@ -388,10 +388,10 @@ function filterStringifyJSON(item: unknown, options: JSONFilterOptions = {}): bo
 }
 export {
 	filterJSON,
-	filterStringifyJSON as isStringifyJSON,
-	filterStringifyJSON as isJSONStringified,
-	filterStringifyJSON as isJSONStringify,
-	filterStringifyJSON as isStringifiedJSON,
+	filterStringifyJSON,
+	filterStringifyJSON as filterJSONStringified,
+	filterStringifyJSON as filterJSONStringify,
+	filterStringifyJSON as filterStringifiedJSON,
 	JSONFilter,
 	type JSONFilterOptions,
 	type JSONFilterStatus

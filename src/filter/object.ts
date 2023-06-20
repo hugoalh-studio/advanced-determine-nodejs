@@ -1,4 +1,5 @@
 import { enumResolver, ThreePhaseConditionEnum, type ThreePhaseConditionEnumKeysType, type ThreePhaseConditionEnumValuesType } from "../internal/enum.js";
+import { ObjectMeta } from "../internal/object-meta.js";
 interface ObjectFilterStatus {
 	/**
 	 * @property allowArray
@@ -470,6 +471,28 @@ class ObjectFilter {
 			(!this.#allowArray && Array.isArray(item)) ||
 			(!this.#allowNull && item === null) ||
 			(!this.#allowRegExp && item instanceof RegExp)
+		) {
+			return false;
+		}
+		let itemObjectMeta: ObjectMeta = new ObjectMeta(item);
+		if (
+			Object.entries(item).length !== itemObjectMeta.entriesEnumerable.length ||
+			(this.#keysSymbol === "false" && itemObjectMeta.keysSymbol.length > 0) ||
+			(this.#keysSymbol === "true" && itemObjectMeta.keysSymbol.length === 0) ||
+			this.#entriesCountMaximum < itemObjectMeta.entriesGetter.length + itemObjectMeta.entriesNonAccessor.length + itemObjectMeta.entriesSetter.length + itemObjectMeta.keysSymbol.length ||
+			itemObjectMeta.entriesGetter.length + itemObjectMeta.entriesNonAccessor.length + itemObjectMeta.entriesSetter.length + itemObjectMeta.keysSymbol.length < this.#entriesCountMinimum ||
+			(this.#entriesConfigurable === "false" && itemObjectMeta.entriesConfigurable.length > 0) ||
+			(this.#entriesConfigurable === "true" && itemObjectMeta.entriesNonConfigurable.length > 0) ||
+			(this.#entriesEnumerable === "false" && itemObjectMeta.entriesEnumerable.length > 0) ||
+			(this.#entriesEnumerable === "true" && itemObjectMeta.entriesNonEnumerable.length > 0) ||
+			(this.#entriesGetter === "false" && itemObjectMeta.entriesGetter.length > 0) ||
+			(this.#entriesSetter === "false" && itemObjectMeta.entriesSetter.length > 0) ||
+			((
+				this.#entriesGetter === "true" ||
+				this.#entriesSetter === "true"
+			) && itemObjectMeta.entriesNonAccessor.length > 0) ||
+			(this.#entriesWritable === "false" && itemObjectMeta.entriesWritable.length > 0) ||
+			(this.#entriesWritable === "true" && itemObjectMeta.entriesNonWritable.length > 0)
 		) {
 			return false;
 		}

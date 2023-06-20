@@ -106,7 +106,7 @@ class StringFilter {
 	/**
 	 * @constructor
 	 * @description Initialize the string filter.
-	 * @param {StringFilter | StringFilterOptions} [options] Options
+	 * @param {StringFilter | StringFilterOptions} [options] Options.
 	 */
 	constructor(options?: StringFilter | StringFilterOptions) {
 		if (options instanceof StringFilter) {

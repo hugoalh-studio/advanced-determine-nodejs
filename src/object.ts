@@ -27,7 +27,6 @@ function isObjectPlain(item: object): boolean {
 	let itemObjectMeta: ObjectMeta = new ObjectMeta(item);
 	if (
 		Object.entries(item).length !== itemObjectMeta.entriesEnumerable.length ||
-		itemObjectMeta.keysSymbol.length > 0 ||
 		itemObjectMeta.entriesConfigurable.length + itemObjectMeta.entriesNonConfigurable.length !== itemObjectMeta.entriesEnumerable.length + itemObjectMeta.entriesNonEnumerable.length ||
 		itemObjectMeta.entriesEnumerable.length + itemObjectMeta.entriesNonEnumerable.length !== itemObjectMeta.entriesGetter.length + itemObjectMeta.entriesNonAccessor.length + itemObjectMeta.entriesSetter.length ||
 		itemObjectMeta.entriesGetter.length + itemObjectMeta.entriesNonAccessor.length + itemObjectMeta.entriesSetter.length !== itemObjectMeta.entriesNonWritable.length + itemObjectMeta.entriesWritable.length ||
@@ -36,7 +35,8 @@ function isObjectPlain(item: object): boolean {
 		itemObjectMeta.entriesNonEnumerable.length > 0 ||
 		itemObjectMeta.entriesGetter.length > 0 ||
 		itemObjectMeta.entriesSetter.length > 0 ||
-		itemObjectMeta.entriesNonWritable.length > 0
+		itemObjectMeta.entriesNonWritable.length > 0 ||
+		itemObjectMeta.keysSymbol.length > 0
 	) {
 		return false;
 	}

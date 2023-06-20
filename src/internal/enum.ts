@@ -124,16 +124,19 @@ const StringLineEnum = Object.freeze({
 type StringLineEnumKeysType = EnumCase<keyof typeof StringLineEnum>;
 type StringLineEnumValuesType = (typeof StringLineEnum)[keyof typeof StringLineEnum];
 const ThreePhaseConditionEnum = Object.freeze({
-	Neutral: "neutral",
-	None: "neutral",
-	Undefine: "neutral",
-	Undefined: "neutral",
 	Allow: "true",
 	Deny: "false",
 	Exclude: "false",
+	Exclusive: "false",
 	False: "false",
 	Include: "true",
-	True: "true"
+	Inclusive: "true",
+	Neutral: "neutral",
+	None: "neutral",
+	Null: "neutral",
+	True: "true",
+	Undefine: "neutral",
+	Undefined: "neutral"
 });
 type ThreePhaseConditionEnumKeysType = EnumCase<keyof typeof ThreePhaseConditionEnum>;
 type ThreePhaseConditionEnumValuesType = (typeof ThreePhaseConditionEnum)[keyof typeof ThreePhaseConditionEnum];

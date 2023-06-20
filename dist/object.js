@@ -1,124 +1,41 @@
+import { ObjectMeta } from "./internal/object-meta.js";
 /**
- * @class ObjectItemFilter
- * @description Determine item with the filter of type of object.
- */
-class ObjectItemFilter {
-    #allowArray = false;
-    #allowNull = false;
-    #allowRegExp = false;
-    /**
-     * @constructor
-     * @description Initialize the filter of type of object to determine item.
-     * @param {ObjectItemFilter | ObjectItemFilterOptions} [options] Options.
-     */
-    constructor(options) {
-        if (options instanceof ObjectItemFilter) {
-            this.#allowArray = options.#allowArray;
-            this.#allowNull = options.#allowNull;
-            this.#allowRegExp = options.#allowRegExp;
-        }
-        else if (typeof options !== "undefined") {
-            options.allowRegExp ??= options.allowRegularExpression;
-            for (let option of ["allowArray", "allowNull", "allowRegExp"]) {
-                if (typeof options[option] !== "undefined") {
-                    this[option](options[option]);
-                }
-            }
-        }
-    }
-    /**
-     * @method clone
-     * @description Clone this filter for reuse.
-     * @returns {ObjectItemFilter} Another instance of this filter.
-     */
-    get clone() {
-        return new ObjectItemFilter(this);
-    }
-    /**
-     * @method status
-     * @description Get the status of this filter.
-     * @returns {ObjectItemFilterOptionsBase} Status of this filter.
-     */
-    get status() {
-        return {
-            allowArray: this.#allowArray,
-            allowNull: this.#allowNull,
-            allowRegExp: this.#allowRegExp
-        };
-    }
-    /**
-     * @method allowArray
-     * @description Whether to allow `Array` object.
-     * @param {boolean} [value=true]
-     * @returns {this}
-     */
-    allowArray(value = true) {
-        if (typeof value !== "boolean") {
-            throw new TypeError(`Filter argument \`allowArray\` must be type of boolean!`);
-        }
-        this.#allowArray = value;
-        return this;
-    }
-    /**
-     * @method allowNull
-     * @description Whether to allow `null` object.
-     * @param {boolean} [value=true]
-     * @returns {this}
-     */
-    allowNull(value = true) {
-        if (typeof value !== "boolean") {
-            throw new TypeError(`Filter argument \`allowNull\` must be type of boolean!`);
-        }
-        this.#allowNull = value;
-        return this;
-    }
-    /**
-     * @method allowRegExp
-     * @description Whether to allow `RegExp` object.
-     * @param {boolean} [value=true]
-     * @returns {this}
-     */
-    allowRegExp(value = true) {
-        if (typeof value !== "boolean") {
-            throw new TypeError(`Filter argument \`allowRegExp\` must be type of boolean!`);
-        }
-        this.#allowRegExp = value;
-        return this;
-    }
-    /** @alias allowRegExp */ allowRegularExpression = this.allowRegExp;
-    /**
-     * @method test
-     * @param {unknown} item Item that need to determine.
-     * @returns {boolean} Determine result.
-     */
-    test(item) {
-        if (typeof item !== "object" ||
-            (!this.#allowArray && Array.isArray(item)) ||
-            (!this.#allowNull && item === null) ||
-            (!this.#allowRegExp && item instanceof RegExp)) {
-            return false;
-        }
-        return true;
-    }
-    /**
-     * @static test
-     * @description Determine item with the filter of type of object.
-     * @param {unknown} item Item that need to determine.
-     * @param {ObjectItemFilterOptions} [options={}] Options.
-     * @returns {boolean} Determine result.
-     */
-    static test(item, options = {}) {
-        return new this(options).test(item);
-    }
-}
-/**
- * @function isObject
- * @description Determine item with the filter of type of object.
- * @param {unknown} item Item that need to determine.
- * @param {ObjectItemFilterOptions} [options={}] Options.
+ * @function isObjectPlain
+ * @description Whether the object is plain.
+ * @param {object} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
-function isObject(item, options = {}) {
-    return new ObjectItemFilter(options).test(item);
+function isObjectPlain(item) {
+    if (!(item instanceof Object) ||
+        item.constructor.name !== "Object" ||
+        Object.prototype.toString.call(item) !== "[object Object]") {
+        return false;
+    }
+    let itemPrototype = Object.getPrototypeOf(item);
+    if (itemPrototype !== null && itemPrototype !== Object.prototype) {
+        return false;
+    }
+    let itemShadow = item;
+    while (Object.getPrototypeOf(itemShadow) !== null) {
+        itemShadow = Object.getPrototypeOf(itemShadow);
+    }
+    if (itemPrototype !== itemShadow) {
+        return false;
+    }
+    let itemObjectMeta = new ObjectMeta(item);
+    if (Object.entries(item).length !== itemObjectMeta.entriesEnumerable.length ||
+        itemObjectMeta.entriesConfigurable.length + itemObjectMeta.entriesNonConfigurable.length !== itemObjectMeta.entriesEnumerable.length + itemObjectMeta.entriesNonEnumerable.length ||
+        itemObjectMeta.entriesEnumerable.length + itemObjectMeta.entriesNonEnumerable.length !== itemObjectMeta.entriesGetter.length + itemObjectMeta.entriesNonAccessor.length + itemObjectMeta.entriesSetter.length ||
+        itemObjectMeta.entriesGetter.length + itemObjectMeta.entriesNonAccessor.length + itemObjectMeta.entriesSetter.length !== itemObjectMeta.entriesNonWritable.length + itemObjectMeta.entriesWritable.length ||
+        itemObjectMeta.entriesConfigurable.length + itemObjectMeta.entriesNonConfigurable.length !== itemObjectMeta.entriesNonWritable.length + itemObjectMeta.entriesWritable.length ||
+        itemObjectMeta.entriesNonConfigurable.length > 0 ||
+        itemObjectMeta.entriesNonEnumerable.length > 0 ||
+        itemObjectMeta.entriesGetter.length > 0 ||
+        itemObjectMeta.entriesSetter.length > 0 ||
+        itemObjectMeta.entriesNonWritable.length > 0 ||
+        itemObjectMeta.keysSymbol.length > 0) {
+        return false;
+    }
+    return true;
 }
-export { isObject, ObjectItemFilter };
+export { isObjectPlain };
