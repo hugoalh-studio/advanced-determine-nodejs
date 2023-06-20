@@ -11,6 +11,7 @@ import { filterSet, SetFilter, type SetFilterOptions, type SetFilterStatus } fro
 import { filterString, StringFilter, type StringFilterOptions, type StringFilterStatus } from "./filter/string.js";
 import { isAsyncFunction, isAsyncGeneratorFunction, isAsynchronousFunction, isAsynchronousGeneratorFunction, isSyncFunction, isSyncGeneratorFunction, isSynchronousFunction, isSynchronousGeneratorFunction } from "./function.js";
 import { isAsyncGenerator, isAsynchronousGenerator, isSyncGenerator, isSynchronousGenerator } from "./generator.js";
+import {type IEEE754EnumKeysType, type IEEE754EnumValuesType, type IntegralNumericTypeEnumKeysType, type IntegralNumericTypeEnumValuesType, type JSONRootTypeEnumKeysType, type JSONRootTypeEnumValuesType, type MathematicsFinitenessEnumKeysType, type MathematicsFinitenessEnumValuesType, type MathematicsParityEnumKeysType, type MathematicsParityEnumValuesType, type MathematicsPrimalityEnumKeysType, type MathematicsPrimalityEnumValuesType, type MathematicsSignEnumKeysType, type MathematicsSignEnumValuesType, type NumericTypeEnumKeysType, type NumericTypeEnumValuesType, type StringCaseEnumKeysType, type StringCaseEnumValuesType, type StringLineEnumKeysType, type StringLineEnumValuesType, type ThreePhaseConditionEnumKeysType, type ThreePhaseConditionEnumValuesType} from "./internal/enum.js";
 import { isNumberEven, isNumberFloat, isNumberIntegralNumericType, isNumberNegative, isNumberOdd, isNumberPositive, isNumberPrime, isNumberSafe } from "./number.js";
 import { isObjectPlain } from "./object.js";
 import { isStringASCII, isStringLowerCase, isStringMultipleLine, isStringSingleLine, isStringUpperCase } from "./string.js";
@@ -92,12 +93,28 @@ export {
 	type BigIntegerFilterStatus,
 	type BigIntFilterOptions,
 	type BigIntFilterStatus,
+	type IEEE754EnumKeysType,
+	type IEEE754EnumValuesType,
+	type IntegralNumericTypeEnumKeysType,
+	type IntegralNumericTypeEnumValuesType,
 	type JSONFilterOptions,
 	type JSONFilterStatus,
+	type JSONRootTypeEnumKeysType,
+	type JSONRootTypeEnumValuesType,
 	type MapFilterOptions,
 	type MapFilterStatus,
+	type MathematicsFinitenessEnumKeysType,
+	type MathematicsFinitenessEnumValuesType,
+	type MathematicsParityEnumKeysType,
+	type MathematicsParityEnumValuesType,
+	type MathematicsPrimalityEnumKeysType,
+	type MathematicsPrimalityEnumValuesType,
+	type MathematicsSignEnumKeysType,
+	type MathematicsSignEnumValuesType,
 	type NumberFilterOptions,
 	type NumberFilterStatus,
+	type NumericTypeEnumKeysType,
+	type NumericTypeEnumValuesType,
 	type ObjectFilterOptions,
 	type ObjectFilterStatus,
 	type RegExFilterOptions,
@@ -108,6 +125,12 @@ export {
 	type RegularExpressionFilterStatus,
 	type SetFilterOptions,
 	type SetFilterStatus,
+	type StringCaseEnumKeysType,
+	type StringCaseEnumValuesType,
 	type StringFilterOptions,
-	type StringFilterStatus
+	type StringFilterStatus,
+	type StringLineEnumKeysType,
+	type StringLineEnumValuesType,
+	type ThreePhaseConditionEnumKeysType,
+	type ThreePhaseConditionEnumValuesType
 };
