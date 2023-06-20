@@ -164,7 +164,7 @@ class NumberItemFilter {
      * @returns {this}
      */
     maximum(value) {
-        if (!(typeof value === "number" && !Number.isNaN(value))) {
+        if (typeof value === "number" && !Number.isNaN(value)) {
             if (typeof __classPrivateFieldGet(this, _NumberItemFilter_minimum, "f") === "number" && !(__classPrivateFieldGet(this, _NumberItemFilter_minimum, "f") <= value)) {
                 throw new RangeError(`Filter argument \`maximum\` must be a number which is >= ${__classPrivateFieldGet(this, _NumberItemFilter_minimum, "f")}!`);
             }
@@ -195,7 +195,7 @@ class NumberItemFilter {
      * @returns {this}
      */
     minimum(value) {
-        if (!(typeof value === "number" && !Number.isNaN(value))) {
+        if (typeof value === "number" && !Number.isNaN(value)) {
             if (typeof __classPrivateFieldGet(this, _NumberItemFilter_maximum, "f") === "number" && !(value <= __classPrivateFieldGet(this, _NumberItemFilter_maximum, "f"))) {
                 throw new RangeError(`Filter argument \`minimum\` must be a number which is <= ${__classPrivateFieldGet(this, _NumberItemFilter_maximum, "f")}!`);
             }
