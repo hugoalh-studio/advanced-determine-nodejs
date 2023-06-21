@@ -102,7 +102,7 @@ class StringFilter {
 	#lengthMinimum = 1;
 	#line: StringLineEnumValuesType = "any";
 	#pattern?: RegExp;
-	#preTrim: boolean;
+	#preTrim = false;
 	/**
 	 * @constructor
 	 * @description Initialize the string filter.
