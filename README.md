@@ -18,6 +18,10 @@
 
 A NodeJS module to provide advanced method to determine item.
 
+> **🔗 Other Edition:**
+>
+> - [Deno](https://github.com/hugoalh-studio/advanced-determine-deno)
+
 ## 📚 Documentation (Excerpt)
 
 For the full documentation, please visit the [GitHub Repository Wiki](https://github.com/hugoalh-studio/advanced-determine-nodejs/wiki).
