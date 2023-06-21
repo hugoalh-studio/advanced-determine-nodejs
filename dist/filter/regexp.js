@@ -47,7 +47,7 @@ class RegExpFilter {
             options.ignoreCase ?? (options.ignoreCase = options.caseInsensitive);
             options.multipleLine ?? (options.multipleLine = options.multiLine ?? options.multiline);
             for (let option of ["dotAll", "exactly", "global", "ignoreCase", "multipleLine", "sticky", "unicode"]) {
-                if (typeof option !== "undefined") {
+                if (typeof options[option] !== "undefined") {
                     this[option](options[option]);
                 }
             }
