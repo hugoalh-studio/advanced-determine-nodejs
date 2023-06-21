@@ -134,7 +134,7 @@ class StringItemFilter {
 	#lengthMinimum = 1;
 	#line: StringLineEnumValuesType = "any";
 	#pattern?: RegExp;
-	#preTrim: boolean;
+	#preTrim = false;
 	/**
 	 * @constructor
 	 * @description Initialize the filter of type of string to determine item.

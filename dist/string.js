@@ -29,7 +29,7 @@ class StringItemFilter {
         _StringItemFilter_lengthMinimum.set(this, 1);
         _StringItemFilter_line.set(this, "any");
         _StringItemFilter_pattern.set(this, void 0);
-        _StringItemFilter_preTrim.set(this, void 0);
+        _StringItemFilter_preTrim.set(this, false);
         /** @alias length */ this.characters = this.length;
         /** @alias lengthMaximum */ this.charactersMax = this.lengthMaximum;
         /** @alias lengthMaximum */ this.charactersMaximum = this.lengthMaximum;
