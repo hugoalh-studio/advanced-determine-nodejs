@@ -21,7 +21,9 @@ function enumResolver<I, O>(enumObject: Readonly<{ [x: string]: string; }>, inpu
 			return (enumObjectValue as O);
 		}
 	}
-	throw new RangeError(`\`${input}\` is not a valid value for filter argument \`${paramName}\`! Must be either of these values: "${Object.keys(enumObject).sort().join("\", \"")}"`);
+	throw new RangeError(`\`${input}\` is not a valid value for filter argument \`${paramName}\`! Must be either of these values: "${Array.from(new Set(Object.keys(enumObject).flatMap((value: string): string[] => {
+		return [value, `${value.slice(0, 1).toLowerCase()}${value.slice(1)}`, `${value.slice(0, 1).toUpperCase()}${value.slice(1)}`];
+	})).values()).sort().join("\", \"")}"`);
 }
 const IEEE754Enum = Object.freeze({
 	Any: "any",
