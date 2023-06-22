@@ -9,7 +9,7 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
-var _BigIntFilter_ieee754, _BigIntFilter_maximum, _BigIntFilter_maximumExclusive, _BigIntFilter_minimum, _BigIntFilter_minimumExclusive, _BigIntFilter_parity, _BigIntFilter_primality, _BigIntFilter_sign;
+var _BigIntFilter_status;
 import { isBigIntEven, isBigIntNegative, isBigIntOdd, isBigIntPositive, isBigIntPrime, isBigIntSafe } from "../bigint.js";
 import { enumResolver, IEEE754Enum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum } from "../internal/enum.js";
 import { integralNumericTypeRange } from "../internal/numeric.js";
@@ -24,14 +24,16 @@ class BigIntFilter {
      * @param {BigIntFilter | BigIntFilterOptions} [options] Options.
      */
     constructor(options) {
-        _BigIntFilter_ieee754.set(this, "any");
-        _BigIntFilter_maximum.set(this, void 0);
-        _BigIntFilter_maximumExclusive.set(this, false);
-        _BigIntFilter_minimum.set(this, void 0);
-        _BigIntFilter_minimumExclusive.set(this, false);
-        _BigIntFilter_parity.set(this, "any");
-        _BigIntFilter_primality.set(this, "any");
-        _BigIntFilter_sign.set(this, "any");
+        _BigIntFilter_status.set(this, {
+            ieee754: "any",
+            maximum: undefined,
+            maximumExclusive: false,
+            minimum: undefined,
+            minimumExclusive: false,
+            parity: "any",
+            primality: "any",
+            sign: "any"
+        });
         /** @alias maximum */ this.max = this.maximum;
         /** @alias maximumExclusive */ this.exclusiveMax = this.maximumExclusive;
         /** @alias maximumExclusive */ this.exclusiveMaximum = this.maximumExclusive;
@@ -41,14 +43,7 @@ class BigIntFilter {
         /** @alias minimumExclusive */ this.exclusiveMinimum = this.minimumExclusive;
         /** @alias minimumExclusive */ this.minExclusive = this.minimumExclusive;
         if (options instanceof BigIntFilter) {
-            __classPrivateFieldSet(this, _BigIntFilter_ieee754, __classPrivateFieldGet(options, _BigIntFilter_ieee754, "f"), "f");
-            __classPrivateFieldSet(this, _BigIntFilter_maximum, __classPrivateFieldGet(options, _BigIntFilter_maximum, "f"), "f");
-            __classPrivateFieldSet(this, _BigIntFilter_maximumExclusive, __classPrivateFieldGet(options, _BigIntFilter_maximumExclusive, "f"), "f");
-            __classPrivateFieldSet(this, _BigIntFilter_minimum, __classPrivateFieldGet(options, _BigIntFilter_minimum, "f"), "f");
-            __classPrivateFieldSet(this, _BigIntFilter_minimumExclusive, __classPrivateFieldGet(options, _BigIntFilter_minimumExclusive, "f"), "f");
-            __classPrivateFieldSet(this, _BigIntFilter_parity, __classPrivateFieldGet(options, _BigIntFilter_parity, "f"), "f");
-            __classPrivateFieldSet(this, _BigIntFilter_primality, __classPrivateFieldGet(options, _BigIntFilter_primality, "f"), "f");
-            __classPrivateFieldSet(this, _BigIntFilter_sign, __classPrivateFieldGet(options, _BigIntFilter_sign, "f"), "f");
+            __classPrivateFieldSet(this, _BigIntFilter_status, { ...__classPrivateFieldGet(options, _BigIntFilter_status, "f") }, "f");
         }
         else if (typeof options !== "undefined") {
             options.maximum ?? (options.maximum = options.max);
@@ -76,16 +71,7 @@ class BigIntFilter {
      * @returns {BigIntFilterStatus} Status of this big integer filter.
      */
     get status() {
-        return {
-            ieee754: __classPrivateFieldGet(this, _BigIntFilter_ieee754, "f"),
-            maximum: __classPrivateFieldGet(this, _BigIntFilter_maximum, "f"),
-            maximumExclusive: __classPrivateFieldGet(this, _BigIntFilter_maximumExclusive, "f"),
-            minimum: __classPrivateFieldGet(this, _BigIntFilter_minimum, "f"),
-            minimumExclusive: __classPrivateFieldGet(this, _BigIntFilter_minimumExclusive, "f"),
-            parity: __classPrivateFieldGet(this, _BigIntFilter_parity, "f"),
-            primality: __classPrivateFieldGet(this, _BigIntFilter_primality, "f"),
-            sign: __classPrivateFieldGet(this, _BigIntFilter_sign, "f")
-        };
+        return { ...__classPrivateFieldGet(this, _BigIntFilter_status, "f") };
     }
     /**
      * @method ieee754
@@ -94,14 +80,7 @@ class BigIntFilter {
      * @returns {this}
      */
     ieee754(value) {
-        if (typeof value !== "string") {
-            throw new TypeError(`Filter argument \`ieee754\` must be type of string!`);
-        }
-        let valueResolve = enumResolver(IEEE754Enum, value);
-        if (typeof valueResolve !== "string") {
-            throw new RangeError(`Filter argument \`ieee754\` must be either of these values: "${Object.keys(IEEE754Enum).sort().join("\", \"")}"`);
-        }
-        __classPrivateFieldSet(this, _BigIntFilter_ieee754, valueResolve, "f");
+        __classPrivateFieldGet(this, _BigIntFilter_status, "f").ieee754 = enumResolver(IEEE754Enum, value, "ieee754");
         return this;
     }
     /**
@@ -111,10 +90,9 @@ class BigIntFilter {
      * @returns {this}
      */
     integralNumericType(value) {
-        var _a, _b;
-        _a = this, _b = this, [({ set value(_c) { __classPrivateFieldSet(_a, _BigIntFilter_minimum, _c, "f"); } }).value, ({ set value(_c) { __classPrivateFieldSet(_b, _BigIntFilter_maximum, _c, "f"); } }).value] = integralNumericTypeRange(value);
-        __classPrivateFieldSet(this, _BigIntFilter_maximumExclusive, false, "f");
-        __classPrivateFieldSet(this, _BigIntFilter_minimumExclusive, false, "f");
+        [__classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum, __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum] = integralNumericTypeRange(value);
+        __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximumExclusive = false;
+        __classPrivateFieldGet(this, _BigIntFilter_status, "f").minimumExclusive = false;
         return this;
     }
     /**
@@ -125,14 +103,14 @@ class BigIntFilter {
      */
     maximum(value) {
         if (typeof value === "bigint") {
-            if (typeof __classPrivateFieldGet(this, _BigIntFilter_minimum, "f") === "bigint" && !(__classPrivateFieldGet(this, _BigIntFilter_minimum, "f") <= value)) {
-                throw new RangeError(`Filter argument \`maximum\` must be a big integer which is >= ${__classPrivateFieldGet(this, _BigIntFilter_minimum, "f")}!`);
+            if (typeof __classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum === "bigint" && !(__classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum <= value)) {
+                throw new RangeError(`Filter argument \`maximum\` must be a big integer which is >= ${__classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum}!`);
             }
         }
         else if (typeof value !== "undefined") {
             throw new TypeError(`Filter argument \`maximum\` must be type of big integer or undefined!`);
         }
-        __classPrivateFieldSet(this, _BigIntFilter_maximum, value, "f");
+        __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum = value;
         return this;
     }
     /**
@@ -145,7 +123,7 @@ class BigIntFilter {
         if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`maximumExclusive\` must be type of boolean!`);
         }
-        __classPrivateFieldSet(this, _BigIntFilter_maximumExclusive, value, "f");
+        __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximumExclusive = value;
         return this;
     }
     /**
@@ -156,14 +134,14 @@ class BigIntFilter {
      */
     minimum(value) {
         if (typeof value === "bigint") {
-            if (typeof __classPrivateFieldGet(this, _BigIntFilter_maximum, "f") === "bigint" && !(value <= __classPrivateFieldGet(this, _BigIntFilter_maximum, "f"))) {
-                throw new RangeError(`Filter argument \`minimum\` must be a big integer which is <= ${__classPrivateFieldGet(this, _BigIntFilter_maximum, "f")}!`);
+            if (typeof __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum === "bigint" && !(value <= __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum)) {
+                throw new RangeError(`Filter argument \`minimum\` must be a big integer which is <= ${__classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum}!`);
             }
         }
         else if (typeof value !== "undefined") {
             throw new TypeError(`Filter argument \`minimum\` must be type of big integer or undefined!`);
         }
-        __classPrivateFieldSet(this, _BigIntFilter_minimum, value, "f");
+        __classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum = value;
         return this;
     }
     /**
@@ -176,7 +154,7 @@ class BigIntFilter {
         if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`minimumExclusive\` must be type of boolean!`);
         }
-        __classPrivateFieldSet(this, _BigIntFilter_minimumExclusive, value, "f");
+        __classPrivateFieldGet(this, _BigIntFilter_status, "f").minimumExclusive = value;
         return this;
     }
     /**
@@ -186,14 +164,7 @@ class BigIntFilter {
      * @returns {this}
      */
     parity(value) {
-        if (typeof value !== "string") {
-            throw new TypeError(`Filter argument \`parity\` must be type of string!`);
-        }
-        let valueResolve = enumResolver(MathematicsParityEnum, value);
-        if (typeof valueResolve !== "string") {
-            throw new RangeError(`Filter argument \`parity\` must be either of these values: "${Object.keys(MathematicsParityEnum).sort().join("\", \"")}"`);
-        }
-        __classPrivateFieldSet(this, _BigIntFilter_parity, valueResolve, "f");
+        __classPrivateFieldGet(this, _BigIntFilter_status, "f").parity = enumResolver(MathematicsParityEnum, value, "parity");
         return this;
     }
     /**
@@ -203,14 +174,7 @@ class BigIntFilter {
      * @returns {this}
      */
     primality(value) {
-        if (typeof value !== "string") {
-            throw new TypeError(`Filter argument \`primality\` must be type of string!`);
-        }
-        let valueResolve = enumResolver(MathematicsPrimalityEnum, value);
-        if (typeof valueResolve !== "string") {
-            throw new RangeError(`Filter argument \`primality\` must be either of these values: "${Object.keys(MathematicsPrimalityEnum).sort().join("\", \"")}"`);
-        }
-        __classPrivateFieldSet(this, _BigIntFilter_primality, valueResolve, "f");
+        __classPrivateFieldGet(this, _BigIntFilter_status, "f").primality = enumResolver(MathematicsPrimalityEnum, value, "primality");
         return this;
     }
     /**
@@ -220,14 +184,7 @@ class BigIntFilter {
      * @returns {this}
      */
     sign(value) {
-        if (typeof value !== "string") {
-            throw new TypeError(`Filter argument \`sign\` must be type of string!`);
-        }
-        let valueResolve = enumResolver(MathematicsSignEnum, value);
-        if (typeof valueResolve !== "string") {
-            throw new RangeError(`Filter argument \`sign\` must be either of these values: "${Object.keys(MathematicsSignEnum).sort().join("\", \"")}"`);
-        }
-        __classPrivateFieldSet(this, _BigIntFilter_sign, valueResolve, "f");
+        __classPrivateFieldGet(this, _BigIntFilter_status, "f").sign = enumResolver(MathematicsSignEnum, value, "sign");
         return this;
     }
     /**
@@ -302,18 +259,18 @@ class BigIntFilter {
      */
     test(item) {
         if (typeof item !== "bigint" ||
-            (__classPrivateFieldGet(this, _BigIntFilter_ieee754, "f") === "safe" && !isBigIntSafe(item)) ||
-            (__classPrivateFieldGet(this, _BigIntFilter_ieee754, "f") === "unsafe" && isBigIntSafe(item)) ||
-            (typeof __classPrivateFieldGet(this, _BigIntFilter_maximum, "f") === "bigint" && __classPrivateFieldGet(this, _BigIntFilter_maximumExclusive, "f") && !(item < __classPrivateFieldGet(this, _BigIntFilter_maximum, "f"))) ||
-            (typeof __classPrivateFieldGet(this, _BigIntFilter_maximum, "f") === "bigint" && !__classPrivateFieldGet(this, _BigIntFilter_maximumExclusive, "f") && !(item <= __classPrivateFieldGet(this, _BigIntFilter_maximum, "f"))) ||
-            (typeof __classPrivateFieldGet(this, _BigIntFilter_minimum, "f") === "bigint" && __classPrivateFieldGet(this, _BigIntFilter_minimumExclusive, "f") && !(__classPrivateFieldGet(this, _BigIntFilter_minimum, "f") < item)) ||
-            (typeof __classPrivateFieldGet(this, _BigIntFilter_minimum, "f") === "bigint" && !__classPrivateFieldGet(this, _BigIntFilter_minimumExclusive, "f") && !(__classPrivateFieldGet(this, _BigIntFilter_minimum, "f") <= item)) ||
-            (__classPrivateFieldGet(this, _BigIntFilter_parity, "f") === "even" && !isBigIntEven(item)) ||
-            (__classPrivateFieldGet(this, _BigIntFilter_parity, "f") === "odd" && !isBigIntOdd(item)) ||
-            (__classPrivateFieldGet(this, _BigIntFilter_primality, "f") === "composite" && isBigIntPrime(item)) ||
-            (__classPrivateFieldGet(this, _BigIntFilter_primality, "f") === "prime" && !isBigIntPrime(item)) ||
-            (__classPrivateFieldGet(this, _BigIntFilter_sign, "f") === "negative" && !isBigIntNegative(item)) ||
-            (__classPrivateFieldGet(this, _BigIntFilter_sign, "f") === "positive" && !isBigIntPositive(item))) {
+            (__classPrivateFieldGet(this, _BigIntFilter_status, "f").ieee754 === "safe" && !isBigIntSafe(item)) ||
+            (__classPrivateFieldGet(this, _BigIntFilter_status, "f").ieee754 === "unsafe" && isBigIntSafe(item)) ||
+            (typeof __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum === "bigint" && __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximumExclusive && !(item < __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum)) ||
+            (typeof __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum === "bigint" && !__classPrivateFieldGet(this, _BigIntFilter_status, "f").maximumExclusive && !(item <= __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum)) ||
+            (typeof __classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum === "bigint" && __classPrivateFieldGet(this, _BigIntFilter_status, "f").minimumExclusive && !(__classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum < item)) ||
+            (typeof __classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum === "bigint" && !__classPrivateFieldGet(this, _BigIntFilter_status, "f").minimumExclusive && !(__classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum <= item)) ||
+            (__classPrivateFieldGet(this, _BigIntFilter_status, "f").parity === "even" && !isBigIntEven(item)) ||
+            (__classPrivateFieldGet(this, _BigIntFilter_status, "f").parity === "odd" && !isBigIntOdd(item)) ||
+            (__classPrivateFieldGet(this, _BigIntFilter_status, "f").primality === "composite" && isBigIntPrime(item)) ||
+            (__classPrivateFieldGet(this, _BigIntFilter_status, "f").primality === "prime" && !isBigIntPrime(item)) ||
+            (__classPrivateFieldGet(this, _BigIntFilter_status, "f").sign === "negative" && !isBigIntNegative(item)) ||
+            (__classPrivateFieldGet(this, _BigIntFilter_status, "f").sign === "positive" && !isBigIntPositive(item))) {
             return false;
         }
         return true;
@@ -329,7 +286,7 @@ class BigIntFilter {
         return new this(options).test(item);
     }
 }
-_BigIntFilter_ieee754 = new WeakMap(), _BigIntFilter_maximum = new WeakMap(), _BigIntFilter_maximumExclusive = new WeakMap(), _BigIntFilter_minimum = new WeakMap(), _BigIntFilter_minimumExclusive = new WeakMap(), _BigIntFilter_parity = new WeakMap(), _BigIntFilter_primality = new WeakMap(), _BigIntFilter_sign = new WeakMap();
+_BigIntFilter_status = new WeakMap();
 /**
  * @function filterBigInt
  * @description Determine item with the big integer filter.

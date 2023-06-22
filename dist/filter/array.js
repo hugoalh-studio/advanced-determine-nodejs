@@ -9,7 +9,7 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
-var _ArrayFilter_lengthMaximum, _ArrayFilter_lengthMinimum, _ArrayFilter_strict, _ArrayFilter_unique;
+var _ArrayFilter_status;
 import { isArrayStrict, isArrayUnique } from "../array.js";
 /**
  * @class ArrayFilter
@@ -22,10 +22,12 @@ class ArrayFilter {
      * @param {ArrayFilter | ArrayFilterOptions} [options] Options.
      */
     constructor(options) {
-        _ArrayFilter_lengthMaximum.set(this, Infinity);
-        _ArrayFilter_lengthMinimum.set(this, 1);
-        _ArrayFilter_strict.set(this, false);
-        _ArrayFilter_unique.set(this, false);
+        _ArrayFilter_status.set(this, {
+            lengthMaximum: Infinity,
+            lengthMinimum: 1,
+            strict: false,
+            unique: false
+        });
         /** @alias length */ this.elements = this.length;
         /** @alias lengthMaximum */ this.elementsMax = this.lengthMaximum;
         /** @alias lengthMaximum */ this.elementsMaximum = this.lengthMaximum;
@@ -42,10 +44,7 @@ class ArrayFilter {
         /** @alias lengthMinimum */ this.minimumLength = this.lengthMinimum;
         /** @alias lengthMinimum */ this.minLength = this.lengthMinimum;
         if (options instanceof ArrayFilter) {
-            __classPrivateFieldSet(this, _ArrayFilter_lengthMaximum, __classPrivateFieldGet(options, _ArrayFilter_lengthMaximum, "f"), "f");
-            __classPrivateFieldSet(this, _ArrayFilter_lengthMinimum, __classPrivateFieldGet(options, _ArrayFilter_lengthMinimum, "f"), "f");
-            __classPrivateFieldSet(this, _ArrayFilter_strict, __classPrivateFieldGet(options, _ArrayFilter_strict, "f"), "f");
-            __classPrivateFieldSet(this, _ArrayFilter_unique, __classPrivateFieldGet(options, _ArrayFilter_unique, "f"), "f");
+            __classPrivateFieldSet(this, _ArrayFilter_status, { ...__classPrivateFieldGet(options, _ArrayFilter_status, "f") }, "f");
         }
         else if (typeof options !== "undefined") {
             options.length ?? (options.length = options.elements);
@@ -72,12 +71,7 @@ class ArrayFilter {
      * @returns {ArrayFilterStatus} Status of this array filter.
      */
     get status() {
-        return {
-            lengthMaximum: __classPrivateFieldGet(this, _ArrayFilter_lengthMaximum, "f"),
-            lengthMinimum: __classPrivateFieldGet(this, _ArrayFilter_lengthMinimum, "f"),
-            strict: __classPrivateFieldGet(this, _ArrayFilter_strict, "f"),
-            unique: __classPrivateFieldGet(this, _ArrayFilter_unique, "f")
-        };
+        return { ...__classPrivateFieldGet(this, _ArrayFilter_status, "f") };
     }
     /**
      * @method allowEmpty
@@ -89,7 +83,7 @@ class ArrayFilter {
         if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
         }
-        __classPrivateFieldSet(this, _ArrayFilter_lengthMinimum, value ? 0 : 1, "f");
+        __classPrivateFieldGet(this, _ArrayFilter_status, "f").lengthMinimum = value ? 0 : 1;
         return this;
     }
     /**
@@ -105,8 +99,8 @@ class ArrayFilter {
         if (!(Number.isSafeInteger(value) && value >= 0)) {
             throw new RangeError(`Filter argument \`length\` must be a number which is integer, positive, and safe!`);
         }
-        __classPrivateFieldSet(this, _ArrayFilter_lengthMaximum, value, "f");
-        __classPrivateFieldSet(this, _ArrayFilter_lengthMinimum, value, "f");
+        __classPrivateFieldGet(this, _ArrayFilter_status, "f").lengthMaximum = value;
+        __classPrivateFieldGet(this, _ArrayFilter_status, "f").lengthMinimum = value;
         return this;
     }
     /**
@@ -119,10 +113,10 @@ class ArrayFilter {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
             throw new TypeError(`Filter argument \`lengthMaximum\` must be type of number!`);
         }
-        if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= __classPrivateFieldGet(this, _ArrayFilter_lengthMinimum, "f"))) {
-            throw new RangeError(`Filter argument \`lengthMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _ArrayFilter_lengthMinimum, "f")}!`);
+        if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= __classPrivateFieldGet(this, _ArrayFilter_status, "f").lengthMinimum)) {
+            throw new RangeError(`Filter argument \`lengthMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _ArrayFilter_status, "f").lengthMinimum}!`);
         }
-        __classPrivateFieldSet(this, _ArrayFilter_lengthMaximum, value, "f");
+        __classPrivateFieldGet(this, _ArrayFilter_status, "f").lengthMaximum = value;
         return this;
     }
     /**
@@ -135,10 +129,10 @@ class ArrayFilter {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
             throw new TypeError(`Filter argument \`lengthMinimum\` must be type of number!`);
         }
-        if (!(Number.isSafeInteger(value) && value >= 0 && value <= __classPrivateFieldGet(this, _ArrayFilter_lengthMaximum, "f"))) {
-            throw new RangeError(`Filter argument \`lengthMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _ArrayFilter_lengthMaximum, "f")}!`);
+        if (!(Number.isSafeInteger(value) && value >= 0 && value <= __classPrivateFieldGet(this, _ArrayFilter_status, "f").lengthMaximum)) {
+            throw new RangeError(`Filter argument \`lengthMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _ArrayFilter_status, "f").lengthMaximum}!`);
         }
-        __classPrivateFieldSet(this, _ArrayFilter_lengthMinimum, value, "f");
+        __classPrivateFieldGet(this, _ArrayFilter_status, "f").lengthMinimum = value;
         return this;
     }
     /**
@@ -151,7 +145,7 @@ class ArrayFilter {
         if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`strict\` must be type of boolean!`);
         }
-        __classPrivateFieldSet(this, _ArrayFilter_strict, value, "f");
+        __classPrivateFieldGet(this, _ArrayFilter_status, "f").strict = value;
         return this;
     }
     /**
@@ -164,7 +158,7 @@ class ArrayFilter {
         if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`unique\` must be type of boolean!`);
         }
-        __classPrivateFieldSet(this, _ArrayFilter_unique, value, "f");
+        __classPrivateFieldGet(this, _ArrayFilter_status, "f").unique = value;
         return this;
     }
     /**
@@ -179,10 +173,10 @@ class ArrayFilter {
             item.constructor.name !== "Array" ||
             Object.prototype.toString.call(item) !== "[object Array]" ||
             Object.entries(item).length !== item.length ||
-            __classPrivateFieldGet(this, _ArrayFilter_lengthMaximum, "f") < item.length ||
-            item.length < __classPrivateFieldGet(this, _ArrayFilter_lengthMinimum, "f") ||
-            (__classPrivateFieldGet(this, _ArrayFilter_strict, "f") && !isArrayStrict(item)) ||
-            (__classPrivateFieldGet(this, _ArrayFilter_unique, "f") && !isArrayUnique(item))) {
+            __classPrivateFieldGet(this, _ArrayFilter_status, "f").lengthMaximum < item.length ||
+            item.length < __classPrivateFieldGet(this, _ArrayFilter_status, "f").lengthMinimum ||
+            (__classPrivateFieldGet(this, _ArrayFilter_status, "f").strict && !isArrayStrict(item)) ||
+            (__classPrivateFieldGet(this, _ArrayFilter_status, "f").unique && !isArrayUnique(item))) {
             return false;
         }
         return true;
@@ -198,7 +192,7 @@ class ArrayFilter {
         return new this(options).test(item);
     }
 }
-_ArrayFilter_lengthMaximum = new WeakMap(), _ArrayFilter_lengthMinimum = new WeakMap(), _ArrayFilter_strict = new WeakMap(), _ArrayFilter_unique = new WeakMap();
+_ArrayFilter_status = new WeakMap();
 /**
  * @function filterArray
  * @description Determine item with the array filter.

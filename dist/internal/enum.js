@@ -1,20 +1,24 @@
 /**
  * @function enumResolver
- * @template {unknown} K
- * @template {unknown} V
- * @param {Readonly<{ [x: string]: string; }>} e
- * @param {K} k
- * @returns {V | undefined}
+ * @template {unknown} I
+ * @template {unknown} O
+ * @param {Readonly<{ [x: string]: string; }>} enumObject
+ * @param {I} input
+ * @param {string} paramName
+ * @returns {O}
  */
-function enumResolver(e, k) {
-    for (let [eKey, eValue] of Object.entries(e)) {
-        if (k === eKey ||
-            k === `${eKey.slice(0, 1).toLowerCase()}${eKey.slice(1)}` ||
-            k === `${eKey.slice(0, 1).toUpperCase()}${eKey.slice(1)}`) {
-            return eValue;
+function enumResolver(enumObject, input, paramName) {
+    if (typeof input !== "string") {
+        throw new TypeError(`Filter argument \`${paramName}\` must be type of string!`);
+    }
+    for (let [enumObjectKey, enumObjectValue] of Object.entries(enumObject)) {
+        if (input === enumObjectKey ||
+            input === `${enumObjectKey.slice(0, 1).toLowerCase()}${enumObjectKey.slice(1)}` ||
+            input === `${enumObjectKey.slice(0, 1).toUpperCase()}${enumObjectKey.slice(1)}`) {
+            return enumObjectValue;
         }
     }
-    return undefined;
+    throw new RangeError(`\`${input}\` is not a valid value for filter argument \`${paramName}\`! Must be either of these values: "${Object.keys(enumObject).sort().join("\", \"")}"`);
 }
 const IEEE754Enum = Object.freeze({
     Any: "any",

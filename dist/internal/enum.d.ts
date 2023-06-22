@@ -1,15 +1,16 @@
 type EnumCase<T extends string> = T | Capitalize<T> | Uncapitalize<T>;
 /**
  * @function enumResolver
- * @template {unknown} K
- * @template {unknown} V
- * @param {Readonly<{ [x: string]: string; }>} e
- * @param {K} k
- * @returns {V | undefined}
+ * @template {unknown} I
+ * @template {unknown} O
+ * @param {Readonly<{ [x: string]: string; }>} enumObject
+ * @param {I} input
+ * @param {string} paramName
+ * @returns {O}
  */
-declare function enumResolver<K, V>(e: Readonly<{
+declare function enumResolver<I, O>(enumObject: Readonly<{
     [x: string]: string;
-}>, k: K): V | undefined;
+}>, input: I, paramName: string): O;
 declare const IEEE754Enum: Readonly<{
     Any: "any";
     Safe: "safe";

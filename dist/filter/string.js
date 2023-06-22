@@ -9,7 +9,7 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
-var _StringFilter_ascii, _StringFilter_case, _StringFilter_lengthMaximum, _StringFilter_lengthMinimum, _StringFilter_line, _StringFilter_pattern, _StringFilter_preTrim;
+var _StringFilter_status;
 import { enumResolver, StringCaseEnum, StringLineEnum, ThreePhaseConditionEnum } from "../internal/enum.js";
 import { isStringASCII, isStringLowerCase, isStringMultipleLine, isStringSingleLine, isStringUpperCase } from "../string.js";
 /**
@@ -23,13 +23,15 @@ class StringFilter {
      * @param {StringFilter | StringFilterOptions} [options] Options.
      */
     constructor(options) {
-        _StringFilter_ascii.set(this, "neutral");
-        _StringFilter_case.set(this, "any");
-        _StringFilter_lengthMaximum.set(this, Infinity);
-        _StringFilter_lengthMinimum.set(this, 1);
-        _StringFilter_line.set(this, "any");
-        _StringFilter_pattern.set(this, void 0);
-        _StringFilter_preTrim.set(this, false);
+        _StringFilter_status.set(this, {
+            ascii: "neutral",
+            case: "any",
+            lengthMaximum: Infinity,
+            lengthMinimum: 1,
+            line: "any",
+            pattern: undefined,
+            preTrim: false
+        });
         /** @alias length */ this.characters = this.length;
         /** @alias lengthMaximum */ this.charactersMax = this.lengthMaximum;
         /** @alias lengthMaximum */ this.charactersMaximum = this.lengthMaximum;
@@ -48,13 +50,7 @@ class StringFilter {
         /** @alias multipleLine */ this.multiline = this.multipleLine;
         /** @alias multipleLine */ this.multiLine = this.multipleLine;
         if (options instanceof StringFilter) {
-            __classPrivateFieldSet(this, _StringFilter_ascii, __classPrivateFieldGet(options, _StringFilter_ascii, "f"), "f");
-            __classPrivateFieldSet(this, _StringFilter_case, __classPrivateFieldGet(options, _StringFilter_case, "f"), "f");
-            __classPrivateFieldSet(this, _StringFilter_lengthMaximum, __classPrivateFieldGet(options, _StringFilter_lengthMaximum, "f"), "f");
-            __classPrivateFieldSet(this, _StringFilter_lengthMinimum, __classPrivateFieldGet(options, _StringFilter_lengthMinimum, "f"), "f");
-            __classPrivateFieldSet(this, _StringFilter_line, __classPrivateFieldGet(options, _StringFilter_line, "f"), "f");
-            __classPrivateFieldSet(this, _StringFilter_pattern, __classPrivateFieldGet(options, _StringFilter_pattern, "f"), "f");
-            __classPrivateFieldSet(this, _StringFilter_preTrim, __classPrivateFieldGet(options, _StringFilter_preTrim, "f"), "f");
+            __classPrivateFieldSet(this, _StringFilter_status, { ...__classPrivateFieldGet(options, _StringFilter_status, "f") }, "f");
         }
         else if (typeof options !== "undefined") {
             options.length ?? (options.length = options.characters);
@@ -81,15 +77,7 @@ class StringFilter {
      * @returns {StringFilterStatus} Status of this string filter.
      */
     get status() {
-        return {
-            ascii: __classPrivateFieldGet(this, _StringFilter_ascii, "f"),
-            case: __classPrivateFieldGet(this, _StringFilter_case, "f"),
-            lengthMaximum: __classPrivateFieldGet(this, _StringFilter_lengthMaximum, "f"),
-            lengthMinimum: __classPrivateFieldGet(this, _StringFilter_lengthMinimum, "f"),
-            line: __classPrivateFieldGet(this, _StringFilter_line, "f"),
-            pattern: __classPrivateFieldGet(this, _StringFilter_pattern, "f"),
-            preTrim: __classPrivateFieldGet(this, _StringFilter_preTrim, "f")
-        };
+        return { ...__classPrivateFieldGet(this, _StringFilter_status, "f") };
     }
     /**
      * @method allowEmpty
@@ -101,7 +89,7 @@ class StringFilter {
         if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
         }
-        __classPrivateFieldSet(this, _StringFilter_lengthMinimum, value ? 0 : 1, "f");
+        __classPrivateFieldGet(this, _StringFilter_status, "f").lengthMinimum = value ? 0 : 1;
         return this;
     }
     /**
@@ -111,14 +99,7 @@ class StringFilter {
      * @returns {this}
      */
     ascii(value) {
-        if (typeof value !== "string") {
-            throw new TypeError(`Filter argument \`ascii\` must be type of string!`);
-        }
-        let valueResolve = enumResolver(ThreePhaseConditionEnum, value);
-        if (typeof valueResolve !== "string") {
-            throw new RangeError(`Filter argument \`ascii\` must be either of these values: "${Object.keys(ThreePhaseConditionEnum).sort().join("\", \"")}"`);
-        }
-        __classPrivateFieldSet(this, _StringFilter_ascii, valueResolve, "f");
+        __classPrivateFieldGet(this, _StringFilter_status, "f").ascii = enumResolver(ThreePhaseConditionEnum, value, "ascii");
         return this;
     }
     /**
@@ -128,14 +109,7 @@ class StringFilter {
      * @returns {this}
      */
     case(value) {
-        if (typeof value !== "string") {
-            throw new TypeError(`Filter argument \`case\` must be type of string!`);
-        }
-        let valueResolve = enumResolver(StringCaseEnum, value);
-        if (typeof valueResolve !== "string") {
-            throw new RangeError(`Filter argument \`case\` must be either of these values: "${Object.keys(StringCaseEnum).sort().join("\", \"")}"`);
-        }
-        __classPrivateFieldSet(this, _StringFilter_case, valueResolve, "f");
+        __classPrivateFieldGet(this, _StringFilter_status, "f").case = enumResolver(StringCaseEnum, value, "case");
         return this;
     }
     /**
@@ -151,8 +125,8 @@ class StringFilter {
         if (!(Number.isSafeInteger(value) && value >= 0)) {
             throw new RangeError(`Filter argument \`length\` must be a number which is integer, positive, and safe!`);
         }
-        __classPrivateFieldSet(this, _StringFilter_lengthMaximum, value, "f");
-        __classPrivateFieldSet(this, _StringFilter_lengthMinimum, value, "f");
+        __classPrivateFieldGet(this, _StringFilter_status, "f").lengthMaximum = value;
+        __classPrivateFieldGet(this, _StringFilter_status, "f").lengthMinimum = value;
         return this;
     }
     /**
@@ -165,10 +139,10 @@ class StringFilter {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
             throw new TypeError(`Filter argument \`lengthMaximum\` must be type of number!`);
         }
-        if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= __classPrivateFieldGet(this, _StringFilter_lengthMinimum, "f"))) {
-            throw new RangeError(`Filter argument \`lengthMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _StringFilter_lengthMinimum, "f")}!`);
+        if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= __classPrivateFieldGet(this, _StringFilter_status, "f").lengthMinimum)) {
+            throw new RangeError(`Filter argument \`lengthMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _StringFilter_status, "f").lengthMinimum}!`);
         }
-        __classPrivateFieldSet(this, _StringFilter_lengthMaximum, value, "f");
+        __classPrivateFieldGet(this, _StringFilter_status, "f").lengthMaximum = value;
         return this;
     }
     /**
@@ -181,10 +155,10 @@ class StringFilter {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
             throw new TypeError(`Filter argument \`lengthMinimum\` must be type of number!`);
         }
-        if (!(Number.isSafeInteger(value) && value >= 0 && value <= __classPrivateFieldGet(this, _StringFilter_lengthMaximum, "f"))) {
-            throw new RangeError(`Filter argument \`lengthMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _StringFilter_lengthMaximum, "f")}!`);
+        if (!(Number.isSafeInteger(value) && value >= 0 && value <= __classPrivateFieldGet(this, _StringFilter_status, "f").lengthMaximum)) {
+            throw new RangeError(`Filter argument \`lengthMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _StringFilter_status, "f").lengthMaximum}!`);
         }
-        __classPrivateFieldSet(this, _StringFilter_lengthMinimum, value, "f");
+        __classPrivateFieldGet(this, _StringFilter_status, "f").lengthMinimum = value;
         return this;
     }
     /**
@@ -194,14 +168,7 @@ class StringFilter {
      * @returns {this}
      */
     line(value) {
-        if (typeof value !== "string") {
-            throw new TypeError(`Filter argument \`line\` must be type of string!`);
-        }
-        let valueResolve = enumResolver(StringLineEnum, value);
-        if (typeof valueResolve !== "string") {
-            throw new RangeError(`Filter argument \`line\` must be either of these values: "${Object.keys(StringLineEnum).sort().join("\", \"")}"`);
-        }
-        __classPrivateFieldSet(this, _StringFilter_line, valueResolve, "f");
+        __classPrivateFieldGet(this, _StringFilter_status, "f").line = enumResolver(StringLineEnum, value, "line");
         return this;
     }
     /**
@@ -214,7 +181,7 @@ class StringFilter {
         if (!(value instanceof RegExp) && typeof value !== "undefined") {
             throw new TypeError(`Filter argument \`pattern\` must be instance of regular expression, or type of undefined!`);
         }
-        __classPrivateFieldSet(this, _StringFilter_pattern, value, "f");
+        __classPrivateFieldGet(this, _StringFilter_status, "f").pattern = value;
         return this;
     }
     /**
@@ -227,7 +194,7 @@ class StringFilter {
         if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`preTrim\` must be type of boolean!`);
         }
-        __classPrivateFieldSet(this, _StringFilter_preTrim, value, "f");
+        __classPrivateFieldGet(this, _StringFilter_status, "f").preTrim = value;
         return this;
     }
     /**
@@ -272,16 +239,16 @@ class StringFilter {
         if (typeof item !== "string") {
             return false;
         }
-        let itemRaw = __classPrivateFieldGet(this, _StringFilter_preTrim, "f") ? item.trim() : item;
-        if ((__classPrivateFieldGet(this, _StringFilter_ascii, "f") === "false" && isStringASCII(itemRaw)) ||
-            (__classPrivateFieldGet(this, _StringFilter_ascii, "f") === "true" && !isStringASCII(itemRaw)) ||
-            (__classPrivateFieldGet(this, _StringFilter_case, "f") === "lower" && !isStringLowerCase(itemRaw)) ||
-            (__classPrivateFieldGet(this, _StringFilter_case, "f") === "upper" && !isStringUpperCase(itemRaw)) ||
-            __classPrivateFieldGet(this, _StringFilter_lengthMaximum, "f") < itemRaw.length ||
-            itemRaw.length < __classPrivateFieldGet(this, _StringFilter_lengthMinimum, "f") ||
-            (__classPrivateFieldGet(this, _StringFilter_pattern, "f") instanceof RegExp && !__classPrivateFieldGet(this, _StringFilter_pattern, "f").test(itemRaw)) ||
-            (__classPrivateFieldGet(this, _StringFilter_line, "f") === "multiple" && !isStringMultipleLine(itemRaw)) ||
-            (__classPrivateFieldGet(this, _StringFilter_line, "f") === "single" && !isStringSingleLine(itemRaw))) {
+        let itemRaw = __classPrivateFieldGet(this, _StringFilter_status, "f").preTrim ? item.trim() : item;
+        if ((__classPrivateFieldGet(this, _StringFilter_status, "f").ascii === "false" && isStringASCII(itemRaw)) ||
+            (__classPrivateFieldGet(this, _StringFilter_status, "f").ascii === "true" && !isStringASCII(itemRaw)) ||
+            (__classPrivateFieldGet(this, _StringFilter_status, "f").case === "lower" && !isStringLowerCase(itemRaw)) ||
+            (__classPrivateFieldGet(this, _StringFilter_status, "f").case === "upper" && !isStringUpperCase(itemRaw)) ||
+            __classPrivateFieldGet(this, _StringFilter_status, "f").lengthMaximum < itemRaw.length ||
+            itemRaw.length < __classPrivateFieldGet(this, _StringFilter_status, "f").lengthMinimum ||
+            (__classPrivateFieldGet(this, _StringFilter_status, "f").pattern instanceof RegExp && !__classPrivateFieldGet(this, _StringFilter_status, "f").pattern.test(itemRaw)) ||
+            (__classPrivateFieldGet(this, _StringFilter_status, "f").line === "multiple" && !isStringMultipleLine(itemRaw)) ||
+            (__classPrivateFieldGet(this, _StringFilter_status, "f").line === "single" && !isStringSingleLine(itemRaw))) {
             return false;
         }
         return true;
@@ -297,7 +264,7 @@ class StringFilter {
         return new this(options).test(item);
     }
 }
-_StringFilter_ascii = new WeakMap(), _StringFilter_case = new WeakMap(), _StringFilter_lengthMaximum = new WeakMap(), _StringFilter_lengthMinimum = new WeakMap(), _StringFilter_line = new WeakMap(), _StringFilter_pattern = new WeakMap(), _StringFilter_preTrim = new WeakMap();
+_StringFilter_status = new WeakMap();
 /**
  * @function filterString
  * @description Determine item with the string filter.

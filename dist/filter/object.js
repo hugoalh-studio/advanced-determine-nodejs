@@ -9,7 +9,7 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
-var _ObjectFilter_allowArray, _ObjectFilter_allowNull, _ObjectFilter_allowRegExp, _ObjectFilter_entriesConfigurable, _ObjectFilter_entriesCountMaximum, _ObjectFilter_entriesCountMinimum, _ObjectFilter_entriesEnumerable, _ObjectFilter_entriesGetter, _ObjectFilter_entriesSetter, _ObjectFilter_entriesWritable, _ObjectFilter_keysSymbol;
+var _ObjectFilter_status;
 import { enumResolver, ThreePhaseConditionEnum } from "../internal/enum.js";
 import { ObjectMeta } from "../internal/object-meta.js";
 /**
@@ -23,17 +23,19 @@ class ObjectFilter {
      * @param {ObjectFilter | ObjectFilterOptions} [options] Options.
      */
     constructor(options) {
-        _ObjectFilter_allowArray.set(this, false);
-        _ObjectFilter_allowNull.set(this, false);
-        _ObjectFilter_allowRegExp.set(this, false);
-        _ObjectFilter_entriesConfigurable.set(this, "neutral");
-        _ObjectFilter_entriesCountMaximum.set(this, Infinity);
-        _ObjectFilter_entriesCountMinimum.set(this, 1);
-        _ObjectFilter_entriesEnumerable.set(this, "neutral");
-        _ObjectFilter_entriesGetter.set(this, "neutral");
-        _ObjectFilter_entriesSetter.set(this, "neutral");
-        _ObjectFilter_entriesWritable.set(this, "neutral");
-        _ObjectFilter_keysSymbol.set(this, "neutral");
+        _ObjectFilter_status.set(this, {
+            allowArray: false,
+            allowNull: false,
+            allowRegExp: false,
+            entriesConfigurable: "neutral",
+            entriesCountMaximum: Infinity,
+            entriesCountMinimum: 1,
+            entriesEnumerable: "neutral",
+            entriesGetter: "neutral",
+            entriesSetter: "neutral",
+            entriesWritable: "neutral",
+            keysSymbol: "neutral"
+        });
         /** @alias allowRegExp */ this.allowRegularExpression = this.allowRegExp;
         /** @alias entriesConfigurable */ this.configurableEntries = this.entriesConfigurable;
         /** @alias entriesCountMaximum */ this.entriesCountMax = this.entriesCountMaximum;
@@ -48,17 +50,7 @@ class ObjectFilter {
         /** @alias entriesWritable */ this.writableEntries = this.entriesWritable;
         /** @alias keysSymbol */ this.symbolKeys = this.keysSymbol;
         if (options instanceof ObjectFilter) {
-            __classPrivateFieldSet(this, _ObjectFilter_allowArray, __classPrivateFieldGet(options, _ObjectFilter_allowArray, "f"), "f");
-            __classPrivateFieldSet(this, _ObjectFilter_allowNull, __classPrivateFieldGet(options, _ObjectFilter_allowNull, "f"), "f");
-            __classPrivateFieldSet(this, _ObjectFilter_allowRegExp, __classPrivateFieldGet(options, _ObjectFilter_allowRegExp, "f"), "f");
-            __classPrivateFieldSet(this, _ObjectFilter_entriesConfigurable, __classPrivateFieldGet(options, _ObjectFilter_entriesConfigurable, "f"), "f");
-            __classPrivateFieldSet(this, _ObjectFilter_entriesCountMaximum, __classPrivateFieldGet(options, _ObjectFilter_entriesCountMaximum, "f"), "f");
-            __classPrivateFieldSet(this, _ObjectFilter_entriesCountMinimum, __classPrivateFieldGet(options, _ObjectFilter_entriesCountMinimum, "f"), "f");
-            __classPrivateFieldSet(this, _ObjectFilter_entriesEnumerable, __classPrivateFieldGet(options, _ObjectFilter_entriesEnumerable, "f"), "f");
-            __classPrivateFieldSet(this, _ObjectFilter_entriesGetter, __classPrivateFieldGet(options, _ObjectFilter_entriesGetter, "f"), "f");
-            __classPrivateFieldSet(this, _ObjectFilter_entriesSetter, __classPrivateFieldGet(options, _ObjectFilter_entriesSetter, "f"), "f");
-            __classPrivateFieldSet(this, _ObjectFilter_entriesWritable, __classPrivateFieldGet(options, _ObjectFilter_entriesWritable, "f"), "f");
-            __classPrivateFieldSet(this, _ObjectFilter_keysSymbol, __classPrivateFieldGet(options, _ObjectFilter_keysSymbol, "f"), "f");
+            __classPrivateFieldSet(this, _ObjectFilter_status, { ...__classPrivateFieldGet(options, _ObjectFilter_status, "f") }, "f");
         }
         else if (typeof options !== "undefined") {
             options.allowRegExp ?? (options.allowRegExp = options.allowRegularExpression);
@@ -91,19 +83,7 @@ class ObjectFilter {
      * @returns {ObjectFilterStatus} Status of this object filter.
      */
     get status() {
-        return {
-            allowArray: __classPrivateFieldGet(this, _ObjectFilter_allowArray, "f"),
-            allowNull: __classPrivateFieldGet(this, _ObjectFilter_allowNull, "f"),
-            allowRegExp: __classPrivateFieldGet(this, _ObjectFilter_allowRegExp, "f"),
-            entriesConfigurable: __classPrivateFieldGet(this, _ObjectFilter_entriesConfigurable, "f"),
-            entriesCountMaximum: __classPrivateFieldGet(this, _ObjectFilter_entriesCountMaximum, "f"),
-            entriesCountMinimum: __classPrivateFieldGet(this, _ObjectFilter_entriesCountMinimum, "f"),
-            entriesEnumerable: __classPrivateFieldGet(this, _ObjectFilter_entriesEnumerable, "f"),
-            entriesGetter: __classPrivateFieldGet(this, _ObjectFilter_entriesGetter, "f"),
-            entriesSetter: __classPrivateFieldGet(this, _ObjectFilter_entriesSetter, "f"),
-            entriesWritable: __classPrivateFieldGet(this, _ObjectFilter_entriesWritable, "f"),
-            keysSymbol: __classPrivateFieldGet(this, _ObjectFilter_keysSymbol, "f")
-        };
+        return { ...__classPrivateFieldGet(this, _ObjectFilter_status, "f") };
     }
     /**
      * @method allowArray
@@ -115,7 +95,7 @@ class ObjectFilter {
         if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`allowArray\` must be type of boolean!`);
         }
-        __classPrivateFieldSet(this, _ObjectFilter_allowArray, value, "f");
+        __classPrivateFieldGet(this, _ObjectFilter_status, "f").allowArray = value;
         return this;
     }
     /**
@@ -128,7 +108,7 @@ class ObjectFilter {
         if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
         }
-        __classPrivateFieldSet(this, _ObjectFilter_entriesCountMinimum, value ? 0 : 1, "f");
+        __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMinimum = value ? 0 : 1;
         return this;
     }
     /**
@@ -141,7 +121,7 @@ class ObjectFilter {
         if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`allowNull\` must be type of boolean!`);
         }
-        __classPrivateFieldSet(this, _ObjectFilter_allowNull, value, "f");
+        __classPrivateFieldGet(this, _ObjectFilter_status, "f").allowNull = value;
         return this;
     }
     /**
@@ -154,7 +134,7 @@ class ObjectFilter {
         if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`allowRegExp\` must be type of boolean!`);
         }
-        __classPrivateFieldSet(this, _ObjectFilter_allowRegExp, value, "f");
+        __classPrivateFieldGet(this, _ObjectFilter_status, "f").allowRegExp = value;
         return this;
     }
     /**
@@ -164,14 +144,7 @@ class ObjectFilter {
      * @returns {this}
      */
     entriesConfigurable(value) {
-        if (typeof value !== "string") {
-            throw new TypeError(`Filter argument \`entriesConfigurable\` must be type of string!`);
-        }
-        let valueResolve = enumResolver(ThreePhaseConditionEnum, value);
-        if (typeof valueResolve !== "string") {
-            throw new RangeError(`Filter argument \`entriesConfigurable\` must be either of these values: "${Object.keys(ThreePhaseConditionEnum).sort().join("\", \"")}"`);
-        }
-        __classPrivateFieldSet(this, _ObjectFilter_entriesConfigurable, valueResolve, "f");
+        __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesConfigurable = enumResolver(ThreePhaseConditionEnum, value, "entriesConfigurable");
         return this;
     }
     /**
@@ -187,8 +160,8 @@ class ObjectFilter {
         if (!(Number.isSafeInteger(value) && value >= 0)) {
             throw new RangeError(`Filter argument \`entriesCount\` must be a number which is integer, positive, and safe!`);
         }
-        __classPrivateFieldSet(this, _ObjectFilter_entriesCountMaximum, value, "f");
-        __classPrivateFieldSet(this, _ObjectFilter_entriesCountMinimum, value, "f");
+        __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMaximum = value;
+        __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMinimum = value;
         return this;
     }
     /**
@@ -201,10 +174,10 @@ class ObjectFilter {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
             throw new TypeError(`Filter argument \`entriesCountMaximum\` must be type of number!`);
         }
-        if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= __classPrivateFieldGet(this, _ObjectFilter_entriesCountMinimum, "f"))) {
-            throw new RangeError(`Filter argument \`entriesCountMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _ObjectFilter_entriesCountMinimum, "f")}!`);
+        if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMinimum)) {
+            throw new RangeError(`Filter argument \`entriesCountMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMinimum}!`);
         }
-        __classPrivateFieldSet(this, _ObjectFilter_entriesCountMaximum, value, "f");
+        __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMaximum = value;
         return this;
     }
     /**
@@ -217,10 +190,10 @@ class ObjectFilter {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
             throw new TypeError(`Filter argument \`entriesCountMinimum\` must be type of number!`);
         }
-        if (!(Number.isSafeInteger(value) && value >= 0 && value <= __classPrivateFieldGet(this, _ObjectFilter_entriesCountMaximum, "f"))) {
-            throw new RangeError(`Filter argument \`entriesCountMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _ObjectFilter_entriesCountMaximum, "f")}!`);
+        if (!(Number.isSafeInteger(value) && value >= 0 && value <= __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMaximum)) {
+            throw new RangeError(`Filter argument \`entriesCountMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMaximum}!`);
         }
-        __classPrivateFieldSet(this, _ObjectFilter_entriesCountMinimum, value, "f");
+        __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMinimum = value;
         return this;
     }
     /**
@@ -230,14 +203,7 @@ class ObjectFilter {
      * @returns {this}
      */
     entriesEnumerable(value) {
-        if (typeof value !== "string") {
-            throw new TypeError(`Filter argument \`entriesEnumerable\` must be type of string!`);
-        }
-        let valueResolve = enumResolver(ThreePhaseConditionEnum, value);
-        if (typeof valueResolve !== "string") {
-            throw new RangeError(`Filter argument \`entriesEnumerable\` must be either of these values: "${Object.keys(ThreePhaseConditionEnum).sort().join("\", \"")}"`);
-        }
-        __classPrivateFieldSet(this, _ObjectFilter_entriesEnumerable, valueResolve, "f");
+        __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesEnumerable = enumResolver(ThreePhaseConditionEnum, value, "entriesEnumerable");
         return this;
     }
     /**
@@ -247,14 +213,7 @@ class ObjectFilter {
      * @returns {this}
      */
     entriesGetter(value) {
-        if (typeof value !== "string") {
-            throw new TypeError(`Filter argument \`entriesGetter\` must be type of string!`);
-        }
-        let valueResolve = enumResolver(ThreePhaseConditionEnum, value);
-        if (typeof valueResolve !== "string") {
-            throw new RangeError(`Filter argument \`entriesGetter\` must be either of these values: "${Object.keys(ThreePhaseConditionEnum).sort().join("\", \"")}"`);
-        }
-        __classPrivateFieldSet(this, _ObjectFilter_entriesGetter, valueResolve, "f");
+        __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesGetter = enumResolver(ThreePhaseConditionEnum, value, "entriesGetter");
         return this;
     }
     /**
@@ -264,14 +223,7 @@ class ObjectFilter {
      * @returns {this}
      */
     entriesSetter(value) {
-        if (typeof value !== "string") {
-            throw new TypeError(`Filter argument \`entriesSetter\` must be type of string!`);
-        }
-        let valueResolve = enumResolver(ThreePhaseConditionEnum, value);
-        if (typeof valueResolve !== "string") {
-            throw new RangeError(`Filter argument \`entriesSetter\` must be either of these values: "${Object.keys(ThreePhaseConditionEnum).sort().join("\", \"")}"`);
-        }
-        __classPrivateFieldSet(this, _ObjectFilter_entriesSetter, valueResolve, "f");
+        __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesSetter = enumResolver(ThreePhaseConditionEnum, value, "entriesSetter");
         return this;
     }
     /**
@@ -281,14 +233,7 @@ class ObjectFilter {
      * @returns {this}
      */
     entriesWritable(value) {
-        if (typeof value !== "string") {
-            throw new TypeError(`Filter argument \`entriesWritable\` must be type of string!`);
-        }
-        let valueResolve = enumResolver(ThreePhaseConditionEnum, value);
-        if (typeof valueResolve !== "string") {
-            throw new RangeError(`Filter argument \`entriesWritable\` must be either of these values: "${Object.keys(ThreePhaseConditionEnum).sort().join("\", \"")}"`);
-        }
-        __classPrivateFieldSet(this, _ObjectFilter_entriesWritable, valueResolve, "f");
+        __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesWritable = enumResolver(ThreePhaseConditionEnum, value, "entriesWritable");
         return this;
     }
     /**
@@ -298,14 +243,7 @@ class ObjectFilter {
      * @returns {this}
      */
     keysSymbol(value) {
-        if (typeof value !== "string") {
-            throw new TypeError(`Filter argument \`keysSymbol\` must be type of string!`);
-        }
-        let valueResolve = enumResolver(ThreePhaseConditionEnum, value);
-        if (typeof valueResolve !== "string") {
-            throw new RangeError(`Filter argument \`keysSymbol\` must be either of these values: "${Object.keys(ThreePhaseConditionEnum).sort().join("\", \"")}"`);
-        }
-        __classPrivateFieldSet(this, _ObjectFilter_keysSymbol, valueResolve, "f");
+        __classPrivateFieldGet(this, _ObjectFilter_status, "f").keysSymbol = enumResolver(ThreePhaseConditionEnum, value, "keysSymbol");
         return this;
     }
     /**
@@ -319,20 +257,20 @@ class ObjectFilter {
             throw new TypeError(`Filter argument \`plain\` must be type of boolean!`);
         }
         if (value) {
-            __classPrivateFieldSet(this, _ObjectFilter_entriesConfigurable, "true", "f");
-            __classPrivateFieldSet(this, _ObjectFilter_entriesEnumerable, "true", "f");
-            __classPrivateFieldSet(this, _ObjectFilter_entriesGetter, "false", "f");
-            __classPrivateFieldSet(this, _ObjectFilter_entriesSetter, "false", "f");
-            __classPrivateFieldSet(this, _ObjectFilter_entriesWritable, "true", "f");
-            __classPrivateFieldSet(this, _ObjectFilter_keysSymbol, "false", "f");
+            __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesConfigurable = "true";
+            __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesEnumerable = "true";
+            __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesGetter = "false";
+            __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesSetter = "false";
+            __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesWritable = "true";
+            __classPrivateFieldGet(this, _ObjectFilter_status, "f").keysSymbol = "false";
         }
         else {
-            __classPrivateFieldSet(this, _ObjectFilter_entriesConfigurable, "neutral", "f");
-            __classPrivateFieldSet(this, _ObjectFilter_entriesEnumerable, "neutral", "f");
-            __classPrivateFieldSet(this, _ObjectFilter_entriesGetter, "neutral", "f");
-            __classPrivateFieldSet(this, _ObjectFilter_entriesSetter, "neutral", "f");
-            __classPrivateFieldSet(this, _ObjectFilter_entriesWritable, "neutral", "f");
-            __classPrivateFieldSet(this, _ObjectFilter_keysSymbol, "neutral", "f");
+            __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesConfigurable = "neutral";
+            __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesEnumerable = "neutral";
+            __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesGetter = "neutral";
+            __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesSetter = "neutral";
+            __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesWritable = "neutral";
+            __classPrivateFieldGet(this, _ObjectFilter_status, "f").keysSymbol = "neutral";
         }
         return this;
     }
@@ -344,27 +282,27 @@ class ObjectFilter {
      */
     test(item) {
         if (typeof item !== "object" ||
-            (!__classPrivateFieldGet(this, _ObjectFilter_allowArray, "f") && Array.isArray(item)) ||
-            (!__classPrivateFieldGet(this, _ObjectFilter_allowNull, "f") && item === null) ||
-            (!__classPrivateFieldGet(this, _ObjectFilter_allowRegExp, "f") && item instanceof RegExp)) {
+            (!__classPrivateFieldGet(this, _ObjectFilter_status, "f").allowArray && Array.isArray(item)) ||
+            (!__classPrivateFieldGet(this, _ObjectFilter_status, "f").allowNull && item === null) ||
+            (!__classPrivateFieldGet(this, _ObjectFilter_status, "f").allowRegExp && item instanceof RegExp)) {
             return false;
         }
         let itemObjectMeta = new ObjectMeta(item);
         if (Object.entries(item).length !== itemObjectMeta.entriesEnumerable.length ||
-            (__classPrivateFieldGet(this, _ObjectFilter_keysSymbol, "f") === "false" && itemObjectMeta.keysSymbol.length > 0) ||
-            (__classPrivateFieldGet(this, _ObjectFilter_keysSymbol, "f") === "true" && itemObjectMeta.keysSymbol.length === 0) ||
-            __classPrivateFieldGet(this, _ObjectFilter_entriesCountMaximum, "f") < itemObjectMeta.entriesGetter.length + itemObjectMeta.entriesNonAccessor.length + itemObjectMeta.entriesSetter.length + itemObjectMeta.keysSymbol.length ||
-            itemObjectMeta.entriesGetter.length + itemObjectMeta.entriesNonAccessor.length + itemObjectMeta.entriesSetter.length + itemObjectMeta.keysSymbol.length < __classPrivateFieldGet(this, _ObjectFilter_entriesCountMinimum, "f") ||
-            (__classPrivateFieldGet(this, _ObjectFilter_entriesConfigurable, "f") === "false" && itemObjectMeta.entriesConfigurable.length > 0) ||
-            (__classPrivateFieldGet(this, _ObjectFilter_entriesConfigurable, "f") === "true" && itemObjectMeta.entriesNonConfigurable.length > 0) ||
-            (__classPrivateFieldGet(this, _ObjectFilter_entriesEnumerable, "f") === "false" && itemObjectMeta.entriesEnumerable.length > 0) ||
-            (__classPrivateFieldGet(this, _ObjectFilter_entriesEnumerable, "f") === "true" && itemObjectMeta.entriesNonEnumerable.length > 0) ||
-            (__classPrivateFieldGet(this, _ObjectFilter_entriesGetter, "f") === "false" && itemObjectMeta.entriesGetter.length > 0) ||
-            (__classPrivateFieldGet(this, _ObjectFilter_entriesSetter, "f") === "false" && itemObjectMeta.entriesSetter.length > 0) ||
-            ((__classPrivateFieldGet(this, _ObjectFilter_entriesGetter, "f") === "true" ||
-                __classPrivateFieldGet(this, _ObjectFilter_entriesSetter, "f") === "true") && itemObjectMeta.entriesNonAccessor.length > 0) ||
-            (__classPrivateFieldGet(this, _ObjectFilter_entriesWritable, "f") === "false" && itemObjectMeta.entriesWritable.length > 0) ||
-            (__classPrivateFieldGet(this, _ObjectFilter_entriesWritable, "f") === "true" && itemObjectMeta.entriesNonWritable.length > 0)) {
+            (__classPrivateFieldGet(this, _ObjectFilter_status, "f").keysSymbol === "false" && itemObjectMeta.keysSymbol.length > 0) ||
+            (__classPrivateFieldGet(this, _ObjectFilter_status, "f").keysSymbol === "true" && itemObjectMeta.keysSymbol.length === 0) ||
+            __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMaximum < itemObjectMeta.entriesGetter.length + itemObjectMeta.entriesNonAccessor.length + itemObjectMeta.entriesSetter.length + itemObjectMeta.keysSymbol.length ||
+            itemObjectMeta.entriesGetter.length + itemObjectMeta.entriesNonAccessor.length + itemObjectMeta.entriesSetter.length + itemObjectMeta.keysSymbol.length < __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMinimum ||
+            (__classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesConfigurable === "false" && itemObjectMeta.entriesConfigurable.length > 0) ||
+            (__classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesConfigurable === "true" && itemObjectMeta.entriesNonConfigurable.length > 0) ||
+            (__classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesEnumerable === "false" && itemObjectMeta.entriesEnumerable.length > 0) ||
+            (__classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesEnumerable === "true" && itemObjectMeta.entriesNonEnumerable.length > 0) ||
+            (__classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesGetter === "false" && itemObjectMeta.entriesGetter.length > 0) ||
+            (__classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesSetter === "false" && itemObjectMeta.entriesSetter.length > 0) ||
+            ((__classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesGetter === "true" ||
+                __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesSetter === "true") && itemObjectMeta.entriesNonAccessor.length > 0) ||
+            (__classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesWritable === "false" && itemObjectMeta.entriesWritable.length > 0) ||
+            (__classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesWritable === "true" && itemObjectMeta.entriesNonWritable.length > 0)) {
             return false;
         }
         return true;
@@ -380,7 +318,7 @@ class ObjectFilter {
         return new this(options).test(item);
     }
 }
-_ObjectFilter_allowArray = new WeakMap(), _ObjectFilter_allowNull = new WeakMap(), _ObjectFilter_allowRegExp = new WeakMap(), _ObjectFilter_entriesConfigurable = new WeakMap(), _ObjectFilter_entriesCountMaximum = new WeakMap(), _ObjectFilter_entriesCountMinimum = new WeakMap(), _ObjectFilter_entriesEnumerable = new WeakMap(), _ObjectFilter_entriesGetter = new WeakMap(), _ObjectFilter_entriesSetter = new WeakMap(), _ObjectFilter_entriesWritable = new WeakMap(), _ObjectFilter_keysSymbol = new WeakMap();
+_ObjectFilter_status = new WeakMap();
 /**
  * @function filterObject
  * @description Determine item with the object filter.

@@ -42,7 +42,11 @@ function integralNumericTypeRangeUIntBase(base: bigint): [bigint, bigint] {
  * @returns {[bigint, bigint]}
  */
 function integralNumericTypeRange(name: IntegralNumericTypeEnumKeysType): [bigint, bigint] {
-	switch (enumResolver<IntegralNumericTypeEnumKeysType, IntegralNumericTypeEnumValuesType>(IntegralNumericTypeEnum, name)) {
+	let nameResolve: IntegralNumericTypeEnumValuesType | undefined;
+	try {
+		nameResolve = enumResolver<IntegralNumericTypeEnumKeysType, IntegralNumericTypeEnumValuesType>(IntegralNumericTypeEnum, name, "");
+	} catch { }
+	switch (nameResolve) {
 		case "int8":
 			return integralNumericTypeRangeIntBase(8n);
 		case "int16":

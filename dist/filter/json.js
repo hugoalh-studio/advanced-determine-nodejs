@@ -9,7 +9,7 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
-var _a, _JSONFilter_entriesCountMaximum, _JSONFilter_entriesCountMinimum, _JSONFilter_keysPattern, _JSONFilter_rootType;
+var _a, _JSONFilter_status;
 import { ArrayFilter } from "./array.js";
 import { ObjectFilter } from "./object.js";
 import { enumResolver, JSONRootTypeEnum } from "../internal/enum.js";
@@ -74,10 +74,12 @@ class JSONFilter {
      * @param {JSONFilter | JSONFilterOptions} [options] Options.
      */
     constructor(options) {
-        _JSONFilter_entriesCountMaximum.set(this, Infinity);
-        _JSONFilter_entriesCountMinimum.set(this, 1);
-        _JSONFilter_keysPattern.set(this, void 0);
-        _JSONFilter_rootType.set(this, "any");
+        _JSONFilter_status.set(this, {
+            entriesCountMaximum: Infinity,
+            entriesCountMinimum: 1,
+            keysPattern: undefined,
+            rootType: "any"
+        });
         /** @alias entriesCountMaximum */ this.entriesCountMax = this.entriesCountMaximum;
         /** @alias entriesCountMaximum */ this.maxEntries = this.entriesCountMaximum;
         /** @alias entriesCountMaximum */ this.maximumEntries = this.entriesCountMaximum;
@@ -89,10 +91,7 @@ class JSONFilter {
         /** @alias testStringify */ this.stringifyTest = this.testStringify;
         /** @alias testStringify */ this.testStringified = this.testStringify;
         if (options instanceof JSONFilter) {
-            __classPrivateFieldSet(this, _JSONFilter_entriesCountMaximum, __classPrivateFieldGet(options, _JSONFilter_entriesCountMaximum, "f"), "f");
-            __classPrivateFieldSet(this, _JSONFilter_entriesCountMinimum, __classPrivateFieldGet(options, _JSONFilter_entriesCountMinimum, "f"), "f");
-            __classPrivateFieldSet(this, _JSONFilter_keysPattern, __classPrivateFieldGet(options, _JSONFilter_keysPattern, "f"), "f");
-            __classPrivateFieldSet(this, _JSONFilter_rootType, __classPrivateFieldGet(options, _JSONFilter_rootType, "f"), "f");
+            __classPrivateFieldSet(this, _JSONFilter_status, { ...__classPrivateFieldGet(options, _JSONFilter_status, "f") }, "f");
         }
         else if (typeof options !== "undefined") {
             options.entriesCountMaximum ?? (options.entriesCountMaximum = options.entriesCountMax ?? options.maximumEntries ?? options.maxEntries);
@@ -119,12 +118,7 @@ class JSONFilter {
      * @returns {JSONFilterStatus} Status of this JSON filter.
      */
     get status() {
-        return {
-            entriesCountMaximum: __classPrivateFieldGet(this, _JSONFilter_entriesCountMaximum, "f"),
-            entriesCountMinimum: __classPrivateFieldGet(this, _JSONFilter_entriesCountMinimum, "f"),
-            keysPattern: __classPrivateFieldGet(this, _JSONFilter_keysPattern, "f"),
-            rootType: __classPrivateFieldGet(this, _JSONFilter_rootType, "f")
-        };
+        return { ...__classPrivateFieldGet(this, _JSONFilter_status, "f") };
     }
     /**
      * @method allowEmpty
@@ -136,7 +130,7 @@ class JSONFilter {
         if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
         }
-        __classPrivateFieldSet(this, _JSONFilter_entriesCountMinimum, value ? 0 : 1, "f");
+        __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMinimum = value ? 0 : 1;
         return this;
     }
     /**
@@ -152,8 +146,8 @@ class JSONFilter {
         if (!(Number.isSafeInteger(value) && value >= 0)) {
             throw new RangeError(`Filter argument \`entriesCount\` must be a number which is integer, positive, and safe!`);
         }
-        __classPrivateFieldSet(this, _JSONFilter_entriesCountMaximum, value, "f");
-        __classPrivateFieldSet(this, _JSONFilter_entriesCountMinimum, value, "f");
+        __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMaximum = value;
+        __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMinimum = value;
         return this;
     }
     /**
@@ -166,10 +160,10 @@ class JSONFilter {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
             throw new TypeError(`Filter argument \`entriesCountMaximum\` must be type of number!`);
         }
-        if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= __classPrivateFieldGet(this, _JSONFilter_entriesCountMinimum, "f"))) {
-            throw new RangeError(`Filter argument \`entriesCountMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _JSONFilter_entriesCountMinimum, "f")}!`);
+        if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMinimum)) {
+            throw new RangeError(`Filter argument \`entriesCountMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMinimum}!`);
         }
-        __classPrivateFieldSet(this, _JSONFilter_entriesCountMaximum, value, "f");
+        __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMaximum = value;
         return this;
     }
     /**
@@ -182,10 +176,10 @@ class JSONFilter {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
             throw new TypeError(`Filter argument \`entriesCountMinimum\` must be type of number!`);
         }
-        if (!(Number.isSafeInteger(value) && value >= 0 && value <= __classPrivateFieldGet(this, _JSONFilter_entriesCountMaximum, "f"))) {
-            throw new RangeError(`Filter argument \`entriesCountMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _JSONFilter_entriesCountMaximum, "f")}!`);
+        if (!(Number.isSafeInteger(value) && value >= 0 && value <= __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMaximum)) {
+            throw new RangeError(`Filter argument \`entriesCountMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMaximum}!`);
         }
-        __classPrivateFieldSet(this, _JSONFilter_entriesCountMinimum, value, "f");
+        __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMinimum = value;
         return this;
     }
     /**
@@ -198,7 +192,7 @@ class JSONFilter {
         if (!(value instanceof RegExp) && typeof value !== "undefined") {
             throw new TypeError(`Filter argument \`keysPattern\` must be instance of regular expression, or type of undefined!`);
         }
-        __classPrivateFieldSet(this, _JSONFilter_keysPattern, value, "f");
+        __classPrivateFieldGet(this, _JSONFilter_status, "f").keysPattern = value;
         return this;
     }
     /**
@@ -208,14 +202,7 @@ class JSONFilter {
      * @returns {this}
      */
     rootType(value) {
-        if (typeof value !== "string") {
-            throw new TypeError(`Filter argument \`rootType\` must be type of string!`);
-        }
-        let valueResolve = enumResolver(JSONRootTypeEnum, value);
-        if (typeof valueResolve !== "string") {
-            throw new RangeError(`Filter argument \`rootType\` must be either of these values: "${Object.keys(JSONRootTypeEnum).sort().join("\", \"")}"`);
-        }
-        __classPrivateFieldSet(this, _JSONFilter_rootType, valueResolve, "f");
+        __classPrivateFieldGet(this, _JSONFilter_status, "f").rootType = enumResolver(JSONRootTypeEnum, value, "rootType");
         return this;
     }
     /**
@@ -229,12 +216,12 @@ class JSONFilter {
             throw new TypeError(`Filter argument \`strict\` must be type of boolean!`);
         }
         if (value) {
-            __classPrivateFieldSet(this, _JSONFilter_keysPattern, jsonLegalKeysPatternRegExp, "f");
-            __classPrivateFieldSet(this, _JSONFilter_rootType, "object", "f");
+            __classPrivateFieldGet(this, _JSONFilter_status, "f").keysPattern = jsonLegalKeysPatternRegExp;
+            __classPrivateFieldGet(this, _JSONFilter_status, "f").rootType = "object";
         }
         else {
-            __classPrivateFieldSet(this, _JSONFilter_keysPattern, undefined, "f");
-            __classPrivateFieldSet(this, _JSONFilter_rootType, "any", "f");
+            __classPrivateFieldGet(this, _JSONFilter_status, "f").keysPattern = undefined;
+            __classPrivateFieldGet(this, _JSONFilter_status, "f").rootType = "any";
         }
         return this;
     }
@@ -248,7 +235,7 @@ class JSONFilter {
         if (typeof value !== "boolean") {
             throw new TypeError(`Filter argument \`strictKeys\` must be type of boolean!`);
         }
-        __classPrivateFieldSet(this, _JSONFilter_keysPattern, value ? jsonLegalKeysPatternRegExp : undefined, "f");
+        __classPrivateFieldGet(this, _JSONFilter_status, "f").keysPattern = value ? jsonLegalKeysPatternRegExp : undefined;
         return this;
     }
     /**
@@ -259,11 +246,11 @@ class JSONFilter {
      */
     test(item) {
         let itemEntriesCount = Object.entries(item).length;
-        if (!isJSONInternal(item, __classPrivateFieldGet(this, _JSONFilter_keysPattern, "f")) ||
-            (__classPrivateFieldGet(this, _JSONFilter_rootType, "f") === "array" && !Array.isArray(item)) ||
-            (__classPrivateFieldGet(this, _JSONFilter_rootType, "f") === "object" && Array.isArray(item)) ||
-            __classPrivateFieldGet(this, _JSONFilter_entriesCountMaximum, "f") < itemEntriesCount ||
-            itemEntriesCount < __classPrivateFieldGet(this, _JSONFilter_entriesCountMinimum, "f")) {
+        if (!isJSONInternal(item, __classPrivateFieldGet(this, _JSONFilter_status, "f").keysPattern) ||
+            (__classPrivateFieldGet(this, _JSONFilter_status, "f").rootType === "array" && !Array.isArray(item)) ||
+            (__classPrivateFieldGet(this, _JSONFilter_status, "f").rootType === "object" && Array.isArray(item)) ||
+            __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMaximum < itemEntriesCount ||
+            itemEntriesCount < __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMinimum) {
             return false;
         }
         return true;
@@ -308,7 +295,7 @@ class JSONFilter {
         return new this(options).testStringify(item);
     }
 }
-_a = JSONFilter, _JSONFilter_entriesCountMaximum = new WeakMap(), _JSONFilter_entriesCountMinimum = new WeakMap(), _JSONFilter_keysPattern = new WeakMap(), _JSONFilter_rootType = new WeakMap();
+_a = JSONFilter, _JSONFilter_status = new WeakMap();
 /** @alias testStringify */ JSONFilter.stringifiedTest = _a.testStringify;
 /** @alias testStringify */ JSONFilter.stringifyTest = _a.testStringify;
 /** @alias testStringify */ JSONFilter.testStringified = _a.testStringify;
