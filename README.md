@@ -89,56 +89,51 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";// Namespace Im
 
 ### Example
 
-```js
-/* Either */
-new ArrayFilter().test([]);
-ArrayFilter.test([]);
-filterArray([]);
-//=> false (`allowEmpty` is `false`)
-```
-
-```js
-/* Either */
-new ArrayFilter({ allowEmpty: true }).test([]);
-new ArrayFilter().allowEmpty().test([]);
-ArrayFilter.test([], { allowEmpty: true });
-filterArray([], { allowEmpty: true });
-//=> true
-```
-
-```js
-/* Either */
-new NumberFilter({ ieee754: "safe", numericType: "float", sign: "positive" }).test(8.31);
-new NumberFilter().ieee754("safe").numericType("float").sign("positive").test(8.31);
-new NumberFilter().safe().float().positive().test(8.31);
-NumberFilter.test(8.31, { ieee754: "safe", numericType: "float", sign: "positive" });
-filterNumber(8.31, { ieee754: "safe", numericType: "float", sign: "positive" });
-//=> true
-```
-
-```js
-/* Either */
-new StringFilter().test("");
-StringFilter.test("");
-filterString("");
-//=> false (`allowEmpty` is `false`)
-```
-
-```js
-/* Either */
-new StringFilter({ allowEmpty: true }).test("");
-new StringFilter().allowEmpty().test("");
-StringFilter.test("", { allowEmpty: true });
-filterString("", { allowEmpty: true });
-//=> true
-```
-
-```js
-/* Either */
-new StringFilter({ case: "lower" }).test("Hello World");
-new StringFilter().case("lower").test("Hello World");
-new StringFilter().lowerCase().test("Hello World");
-StringFilter.test("Hello World", { case: "lower" });
-filterString("Hello World", { case: "lower" });
-//=> false
-```
+- ```js
+  /* Either */
+  new ArrayFilter().test([]);
+  ArrayFilter.test([]);
+  filterArray([]);
+  //=> false (`allowEmpty` is `false`)
+  ```
+- ```js
+  /* Either */
+  new ArrayFilter({ allowEmpty: true }).test([]);
+  new ArrayFilter().allowEmpty().test([]);
+  ArrayFilter.test([], { allowEmpty: true });
+  filterArray([], { allowEmpty: true });
+  //=> true
+  ```
+- ```js
+  /* Either */
+  new NumberFilter({ ieee754: "safe", numericType: "float", sign: "positive" }).test(8.31);
+  new NumberFilter().ieee754("safe").numericType("float").sign("positive").test(8.31);
+  new NumberFilter().safe().float().positive().test(8.31);
+  NumberFilter.test(8.31, { ieee754: "safe", numericType: "float", sign: "positive" });
+  filterNumber(8.31, { ieee754: "safe", numericType: "float", sign: "positive" });
+  //=> true
+  ```
+- ```js
+  /* Either */
+  new StringFilter().test("");
+  StringFilter.test("");
+  filterString("");
+  //=> false (`allowEmpty` is `false`)
+  ```
+- ```js
+  /* Either */
+  new StringFilter({ allowEmpty: true }).test("");
+  new StringFilter().allowEmpty().test("");
+  StringFilter.test("", { allowEmpty: true });
+  filterString("", { allowEmpty: true });
+  //=> true
+  ```
+- ```js
+  /* Either */
+  new StringFilter({ case: "lower" }).test("Hello World");
+  new StringFilter().case("lower").test("Hello World");
+  new StringFilter().lowerCase().test("Hello World");
+  StringFilter.test("Hello World", { case: "lower" });
+  filterString("Hello World", { case: "lower" });
+  //=> false
+  ```
