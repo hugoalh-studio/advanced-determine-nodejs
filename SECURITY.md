@@ -5,7 +5,7 @@
 > | **Legend** | **Description** |
 > |:-:|:--|
 > | L | **LTS:** Long term supported. |
-> | ✔ | **Active / Current:** Currently supported. |
+> | ✔️ | **Active / Current:** Currently supported. |
 > | 👎{🐛} | **Partially (Issue):** Partially supported due to confirmed contains bugs and/or issues. |
 > | 👎{🧓} | **Partially (Old):** Partially supported due to deprecated by newer versions. |
 > | ❌{🐛} | **No (Issue):** Not supported due to confirmed contains bugs and/or issues. |
@@ -14,7 +14,7 @@
 | **Versions** | **Status** | **Target - NodeJS** |
 |:-:|:-:|:-:|
 | v12.0.X | L | ^ v14.15.0 \|\| >= v16.13.0 |
-| v11.2.X | ✔ | ^ v14.15.0 \|\| >= v16.13.0 |
+| v11.2.X | ✔️ | ^ v14.15.0 \|\| >= v16.13.0 |
 | v11.1.X | 👎{🧓} | ^ v14.15.0 \|\| >= v16.13.0 |
 | v11.0.0 \~ v11.1.1 | ❌{🐛} | ^ v14.15.0 \|\| >= v16.13.0 |
 | v10.4.X | 👎{🧓} | ^ v12.20.0 \|\| ^ v14.15.0 \|\| >= v16.13.0 |
