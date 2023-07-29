@@ -13,13 +13,11 @@ var _ObjectFilter_status;
 import { enumResolver, ThreePhaseConditionEnum } from "../internal/enum.js";
 import { ObjectMeta } from "../internal/object-meta.js";
 /**
- * @class ObjectFilter
- * @description Filter for object.
+ * Filter for object.
  */
-class ObjectFilter {
+export class ObjectFilter {
     /**
-     * @constructor
-     * @description Initialize the object filter.
+     * Initialize the object filter.
      * @param {ObjectFilter | ObjectFilterOptions} [options] Options.
      */
     constructor(options) {
@@ -70,24 +68,21 @@ class ObjectFilter {
         }
     }
     /**
-     * @method clone
-     * @description Clone this object filter for reuse.
+     * Clone this object filter for reuse.
      * @returns {ObjectFilter} Another instance of this object filter.
      */
     get clone() {
         return new ObjectFilter(this);
     }
     /**
-     * @method status
-     * @description Get the status of this object filter.
+     * Get the status of this object filter.
      * @returns {ObjectFilterStatus} Status of this object filter.
      */
     get status() {
         return { ...__classPrivateFieldGet(this, _ObjectFilter_status, "f") };
     }
     /**
-     * @method allowArray
-     * @description Whether to allow `Array` object.
+     * Whether to allow `Array` object.
      * @param {boolean} [value=true]
      * @returns {this}
      */
@@ -99,8 +94,7 @@ class ObjectFilter {
         return this;
     }
     /**
-     * @method allowEmpty
-     * @description Whether to allow an empty object.
+     * Whether to allow an empty object.
      * @param {boolean} [value=true]
      * @returns {this}
      */
@@ -112,8 +106,7 @@ class ObjectFilter {
         return this;
     }
     /**
-     * @method allowNull
-     * @description Whether to allow `null` object.
+     * Whether to allow `null` object.
      * @param {boolean} [value=true]
      * @returns {this}
      */
@@ -125,8 +118,7 @@ class ObjectFilter {
         return this;
     }
     /**
-     * @method allowRegExp
-     * @description Whether to allow `RegExp` object.
+     * Whether to allow `RegExp` object.
      * @param {boolean} [value=true]
      * @returns {this}
      */
@@ -138,8 +130,7 @@ class ObjectFilter {
         return this;
     }
     /**
-     * @method entriesConfigurable
-     * @description Whether contain configurable entries in the object.
+     * Whether contain configurable entries in the object.
      * @param {ThreePhaseConditionEnumKeysType} value
      * @returns {this}
      */
@@ -148,8 +139,7 @@ class ObjectFilter {
         return this;
     }
     /**
-     * @method entriesCount
-     * @description Entries count of the object.
+     * Entries count of the object.
      * @param {number} value
      * @returns {this}
      */
@@ -165,8 +155,7 @@ class ObjectFilter {
         return this;
     }
     /**
-     * @method entriesCountMaximum
-     * @description Maximum entries count of the object.
+     * Maximum entries count of the object.
      * @param {number} value
      * @returns {this}
      */
@@ -181,8 +170,7 @@ class ObjectFilter {
         return this;
     }
     /**
-     * @method entriesCountMinimum
-     * @description Minimum entries count of the object.
+     * Minimum entries count of the object.
      * @param {number} value
      * @returns {this}
      */
@@ -197,8 +185,7 @@ class ObjectFilter {
         return this;
     }
     /**
-     * @method entriesEnumerable
-     * @description Whether contain enumerable entries in the object.
+     * Whether contain enumerable entries in the object.
      * @param {ThreePhaseConditionEnumKeysType} value
      * @returns {this}
      */
@@ -207,8 +194,7 @@ class ObjectFilter {
         return this;
     }
     /**
-     * @method entriesGetter
-     * @description Whether contain getter entries in the object.
+     * Whether contain getter entries in the object.
      * @param {ThreePhaseConditionEnumKeysType} value
      * @returns {this}
      */
@@ -217,8 +203,7 @@ class ObjectFilter {
         return this;
     }
     /**
-     * @method entriesSetter
-     * @description Whether contain setter entries in the object.
+     * Whether contain setter entries in the object.
      * @param {ThreePhaseConditionEnumKeysType} value
      * @returns {this}
      */
@@ -227,8 +212,7 @@ class ObjectFilter {
         return this;
     }
     /**
-     * @method entriesWritable
-     * @description Whether contain writable entries in the object.
+     * Whether contain writable entries in the object.
      * @param {ThreePhaseConditionEnumKeysType} value
      * @returns {this}
      */
@@ -237,8 +221,7 @@ class ObjectFilter {
         return this;
     }
     /**
-     * @method keysSymbol
-     * @description Whether contain symbols in the object keys.
+     * Whether contain symbols in the object keys.
      * @param {ThreePhaseConditionEnumKeysType} value
      * @returns {this}
      */
@@ -247,8 +230,7 @@ class ObjectFilter {
         return this;
     }
     /**
-     * @method plain
-     * @description Whether to not allow getters, setters, non-configurable, non-enumerable, and non-writable in the object, and not allow symbols in the object keys.
+     * Whether to not allow getters, setters, non-configurable, non-enumerable, and non-writable in the object, and not allow symbols in the object keys.
      * @param {boolean} [value=true]
      * @returns {this}
      */
@@ -275,8 +257,7 @@ class ObjectFilter {
         return this;
     }
     /**
-     * @method test
-     * @description Determine item with the configured object filter.
+     * Determine item with the configured object filter.
      * @param {unknown} item Item that need to determine.
      * @returns {boolean} Determine result.
      */
@@ -308,8 +289,7 @@ class ObjectFilter {
         return true;
     }
     /**
-     * @static test
-     * @description Determine item with the object filter.
+     * Determine item with the object filter.
      * @param {unknown} item Item that need to determine.
      * @param {ObjectFilterOptions} [options={}] Options.
      * @returns {boolean} Determine result.
@@ -320,13 +300,11 @@ class ObjectFilter {
 }
 _ObjectFilter_status = new WeakMap();
 /**
- * @function filterObject
- * @description Determine item with the object filter.
+ * Determine item with the object filter.
  * @param {unknown} item Item that need to determine.
  * @param {ObjectFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
  */
-function filterObject(item, options = {}) {
+export function filterObject(item, options = {}) {
     return new ObjectFilter(options).test(item);
 }
-export { filterObject, ObjectFilter };

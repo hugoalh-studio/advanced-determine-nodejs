@@ -12,13 +12,11 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
 var _ArrayFilter_status;
 import { isArrayStrict, isArrayUnique } from "../array.js";
 /**
- * @class ArrayFilter
- * @description Filter for array.
+ * Filter for array.
  */
-class ArrayFilter {
+export class ArrayFilter {
     /**
-     * @constructor
-     * @description Initialize the array filter.
+     * Initialize the array filter.
      * @param {ArrayFilter | ArrayFilterOptions} [options] Options.
      */
     constructor(options) {
@@ -58,24 +56,21 @@ class ArrayFilter {
         }
     }
     /**
-     * @method clone
-     * @description Clone this array filter for reuse.
+     * Clone this array filter for reuse.
      * @returns {ArrayFilter} Another instance of this array filter.
      */
     get clone() {
         return new ArrayFilter(this);
     }
     /**
-     * @method status
-     * @description Get the status of this array filter.
+     * Get the status of this array filter.
      * @returns {ArrayFilterStatus} Status of this array filter.
      */
     get status() {
         return { ...__classPrivateFieldGet(this, _ArrayFilter_status, "f") };
     }
     /**
-     * @method allowEmpty
-     * @description Whether to allow an empty array.
+     * Whether to allow an empty array.
      * @param {boolean} [value=true]
      * @returns {this}
      */
@@ -87,8 +82,7 @@ class ArrayFilter {
         return this;
     }
     /**
-     * @method length
-     * @description Length of the array.
+     * Length of the array.
      * @param {number} value
      * @returns {this}
      */
@@ -104,8 +98,7 @@ class ArrayFilter {
         return this;
     }
     /**
-     * @method lengthMaximum
-     * @description Maximum length of the array.
+     * Maximum length of the array.
      * @param {number} value
      * @returns {this}
      */
@@ -120,8 +113,7 @@ class ArrayFilter {
         return this;
     }
     /**
-     * @method lengthMinimum
-     * @description Minimum length of the array.
+     * Minimum length of the array.
      * @param {number} value
      * @returns {this}
      */
@@ -136,8 +128,7 @@ class ArrayFilter {
         return this;
     }
     /**
-     * @method strict
-     * @description Whether to determine no custom defined properties in the array.
+     * Whether to determine no custom defined properties in the array.
      * @param {boolean} [value=true]
      * @returns {this}
      */
@@ -149,8 +140,7 @@ class ArrayFilter {
         return this;
     }
     /**
-     * @method unique
-     * @description Whether to determine all of the elements in the array are unique.
+     * Whether to determine all of the elements in the array are unique.
      * @param {boolean} [value=true]
      * @returns {this}
      */
@@ -162,8 +152,7 @@ class ArrayFilter {
         return this;
     }
     /**
-     * @method test
-     * @description Determine item with the configured array filter.
+     * Determine item with the configured array filter.
      * @param {unknown} item Item that need to determine.
      * @returns {boolean} Determine result.
      */
@@ -182,8 +171,7 @@ class ArrayFilter {
         return true;
     }
     /**
-     * @static test
-     * @description Determine item with the array filter.
+     * Determine item with the array filter.
      * @param {unknown} item Item that need to determine.
      * @param {ArrayFilterOptions} [options={}] Options.
      * @returns {boolean} Determine result.
@@ -194,13 +182,11 @@ class ArrayFilter {
 }
 _ArrayFilter_status = new WeakMap();
 /**
- * @function filterArray
- * @description Determine item with the array filter.
+ * Determine item with the array filter.
  * @param {unknown} item Item that need to determine.
  * @param {ArrayFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
  */
-function filterArray(item, options = {}) {
+export function filterArray(item, options = {}) {
     return new ArrayFilter(options).test(item);
 }
-export { ArrayFilter, filterArray };

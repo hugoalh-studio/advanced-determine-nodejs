@@ -14,13 +14,11 @@ import { isBigIntEven, isBigIntNegative, isBigIntOdd, isBigIntPositive, isBigInt
 import { enumResolver, IEEE754Enum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum } from "../internal/enum.js";
 import { integralNumericTypeRange } from "../internal/numeric.js";
 /**
- * @class BigIntFilter
- * @description Filter for big integer.
+ * Filter for big integer.
  */
-class BigIntFilter {
+export class BigIntFilter {
     /**
-     * @constructor
-     * @description Initialize the big integer filter.
+     * Initialize the big integer filter.
      * @param {BigIntFilter | BigIntFilterOptions} [options] Options.
      */
     constructor(options) {
@@ -58,24 +56,21 @@ class BigIntFilter {
         }
     }
     /**
-     * @method clone
-     * @description Clone this big integer filter for reuse.
+     * Clone this big integer filter for reuse.
      * @returns {BigIntFilter} Another instance of this big integer filter.
      */
     get clone() {
         return new BigIntFilter(this);
     }
     /**
-     * @method status
-     * @description Get the status of this big integer filter.
+     * Get the status of this big integer filter.
      * @returns {BigIntFilterStatus} Status of this big integer filter.
      */
     get status() {
         return { ...__classPrivateFieldGet(this, _BigIntFilter_status, "f") };
     }
     /**
-     * @method ieee754
-     * @description IEEE-754 safe mode of the big integer.
+     * IEEE-754 safe mode of the big integer.
      * @param {IEEE754EnumKeysType} value
      * @returns {this}
      */
@@ -84,8 +79,7 @@ class BigIntFilter {
         return this;
     }
     /**
-     * @method integralNumericType
-     * @description Integral numeric type of the big integer.
+     * Integral numeric type of the big integer.
      * @param {IntegralNumericTypeEnumKeysType} value
      * @returns {this}
      */
@@ -96,8 +90,7 @@ class BigIntFilter {
         return this;
     }
     /**
-     * @method maximum
-     * @description Maximum of the big integer.
+     * Maximum of the big integer.
      * @param {bigint | undefined} [value]
      * @returns {this}
      */
@@ -114,8 +107,7 @@ class BigIntFilter {
         return this;
     }
     /**
-     * @method maximumExclusive
-     * @description Whether to exclusive maximum of the big integer.
+     * Whether to exclusive maximum of the big integer.
      * @param {boolean} [value=true]
      * @returns {this}
      */
@@ -127,8 +119,7 @@ class BigIntFilter {
         return this;
     }
     /**
-     * @method minimum
-     * @description Minimum of the big integer.
+     * Minimum of the big integer.
      * @param {bigint | undefined} [value]
      * @returns {this}
      */
@@ -145,8 +136,7 @@ class BigIntFilter {
         return this;
     }
     /**
-     * @method minimumExclusive
-     * @description Whether to exclusive minimum of the big integer.
+     * Whether to exclusive minimum of the big integer.
      * @param {boolean} [value=true]
      * @returns {this}
      */
@@ -158,8 +148,7 @@ class BigIntFilter {
         return this;
     }
     /**
-     * @method parity
-     * @description Parity of the big integer.
+     * Parity of the big integer.
      * @param {MathematicsParityEnumKeysType} value
      * @returns {this}
      */
@@ -168,8 +157,7 @@ class BigIntFilter {
         return this;
     }
     /**
-     * @method primality
-     * @description Primality of the big integer.
+     * Primality of the big integer.
      * @param {MathematicsPrimalityEnumKeysType} value
      * @returns {this}
      */
@@ -178,8 +166,7 @@ class BigIntFilter {
         return this;
     }
     /**
-     * @method sign
-     * @description Sign of the big integer.
+     * Sign of the big integer.
      * @param {MathematicsSignEnumKeysType} value
      * @returns {this}
      */
@@ -188,72 +175,63 @@ class BigIntFilter {
         return this;
     }
     /**
-     * @method composite
-     * @description Set to allow a composite big integer.
+     * Set to allow a composite big integer.
      * @returns {this}
      */
     composite() {
         return this.primality("composite");
     }
     /**
-     * @method even
-     * @description Set to allow an even big integer.
+     * Set to allow an even big integer.
      * @returns {this}
      */
     even() {
         return this.parity("even");
     }
     /**
-     * @method negative
-     * @description Set to allow a negative big integer.
+     * Set to allow a negative big integer.
      * @returns {this}
      */
     negative() {
         return this.sign("negative");
     }
     /**
-     * @method odd
-     * @description Set to allow an odd big integer.
+     * Set to allow an odd big integer.
      * @returns {this}
      */
     odd() {
         return this.parity("odd");
     }
     /**
-     * @method positive
-     * @description Set to allow a positive big integer.
+     * Set to allow a positive big integer.
      * @returns {this}
      */
     positive() {
         return this.sign("positive");
     }
     /**
-     * @method prime
-     * @description Set to allow a prime big integer.
+     * Set to allow a prime big integer.
      * @returns {this}
      */
     prime() {
         return this.primality("prime");
     }
     /**
-     * @method safe
-     * @description Set to allow an IEEE-754 safe big integer.
+     * Set to allow an IEEE-754 safe big integer.
      * @returns {this}
      */
     safe() {
         return this.ieee754("safe");
     }
     /**
-     * @method unsafe
-     * @description Set to allow an IEEE-754 unsafe big integer.
+     * Set to allow an IEEE-754 unsafe big integer.
      * @returns {this}
      */
     unsafe() {
         return this.ieee754("unsafe");
     }
     /**
-     * @method test
-     * @description Determine item with the configured big integer filter.
+     * Determine item with the configured big integer filter.
      * @param {unknown} item Item that need to determine.
      * @returns {boolean} Determine result.
      */
@@ -276,8 +254,7 @@ class BigIntFilter {
         return true;
     }
     /**
-     * @static test
-     * @description Determine item with the big integer filter.
+     * Determine item with the big integer filter.
      * @param {unknown} item Item that need to determine.
      * @param {BigIntFilterOptions} [options={}] Options.
      * @returns {boolean} Determine result.
@@ -288,13 +265,12 @@ class BigIntFilter {
 }
 _BigIntFilter_status = new WeakMap();
 /**
- * @function filterBigInt
- * @description Determine item with the big integer filter.
+ * Determine item with the big integer filter.
  * @param {unknown} item Item that need to determine.
  * @param {BigIntFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
  */
-function filterBigInt(item, options = {}) {
+export function filterBigInt(item, options = {}) {
     return new BigIntFilter(options).test(item);
 }
-export { BigIntFilter, BigIntFilter as BigIntegerFilter, filterBigInt, filterBigInt as filterBigInteger };
+export { BigIntFilter as BigIntegerFilter, filterBigInt as filterBigInteger };

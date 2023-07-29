@@ -1,9 +1,7 @@
 /**
- * @function isObjectPlain
- * @description Whether the object is plain.
+ * Determine whether the object is plain.
  * @param {object} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
-declare function isObjectPlain(item: object): boolean;
-export { isObjectPlain };
+export declare function isObjectPlain(item: object): boolean;
 //# sourceMappingURL=object.d.ts.map

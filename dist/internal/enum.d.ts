@@ -1,6 +1,5 @@
-type EnumCase<T extends string> = T | Capitalize<T> | Uncapitalize<T>;
+export type EnumCase<T extends string> = T | Capitalize<T> | Uncapitalize<T>;
 /**
- * @function enumResolver
  * @template {unknown} I
  * @template {unknown} O
  * @param {Readonly<{ [x: string]: string; }>} enumObject
@@ -8,17 +7,17 @@ type EnumCase<T extends string> = T | Capitalize<T> | Uncapitalize<T>;
  * @param {string} paramName
  * @returns {O}
  */
-declare function enumResolver<I, O>(enumObject: Readonly<{
+export declare function enumResolver<I, O>(enumObject: Readonly<{
     [x: string]: string;
 }>, input: I, paramName: string): O;
-declare const IEEE754Enum: Readonly<{
+export declare const IEEE754Enum: Readonly<{
     Any: "any";
     Safe: "safe";
     Unsafe: "unsafe";
 }>;
-type IEEE754EnumKeysType = EnumCase<keyof typeof IEEE754Enum>;
-type IEEE754EnumValuesType = (typeof IEEE754Enum)[keyof typeof IEEE754Enum];
-declare const IntegralNumericTypeEnum: Readonly<{
+export type IEEE754EnumKeysType = EnumCase<keyof typeof IEEE754Enum>;
+export type IEEE754EnumValuesType = (typeof IEEE754Enum)[keyof typeof IEEE754Enum];
+export declare const IntegralNumericTypeEnum: Readonly<{
     Byte: "uint8";
     Char: "int8";
     Int8: "int8";
@@ -46,52 +45,52 @@ declare const IntegralNumericTypeEnum: Readonly<{
     Ushort: "uint16";
     UShort: "uint16";
 }>;
-type IntegralNumericTypeEnumKeysType = EnumCase<keyof typeof IntegralNumericTypeEnum>;
-type IntegralNumericTypeEnumValuesType = (typeof IntegralNumericTypeEnum)[keyof typeof IntegralNumericTypeEnum];
-declare const JSONRootTypeEnum: Readonly<{
+export type IntegralNumericTypeEnumKeysType = EnumCase<keyof typeof IntegralNumericTypeEnum>;
+export type IntegralNumericTypeEnumValuesType = (typeof IntegralNumericTypeEnum)[keyof typeof IntegralNumericTypeEnum];
+export declare const JSONRootTypeEnum: Readonly<{
     Any: "any";
     Array: "array";
     Object: "object";
 }>;
-type JSONRootTypeEnumKeysType = EnumCase<keyof typeof JSONRootTypeEnum>;
-type JSONRootTypeEnumValuesType = (typeof JSONRootTypeEnum)[keyof typeof JSONRootTypeEnum];
-declare const MathematicsFinitenessEnum: Readonly<{
+export type JSONRootTypeEnumKeysType = EnumCase<keyof typeof JSONRootTypeEnum>;
+export type JSONRootTypeEnumValuesType = (typeof JSONRootTypeEnum)[keyof typeof JSONRootTypeEnum];
+export declare const MathematicsFinitenessEnum: Readonly<{
     Any: "any";
     Finite: "finite";
     Infinite: "infinite";
 }>;
-type MathematicsFinitenessEnumKeysType = EnumCase<keyof typeof MathematicsFinitenessEnum>;
-type MathematicsFinitenessEnumValuesType = (typeof MathematicsFinitenessEnum)[keyof typeof MathematicsFinitenessEnum];
-declare const MathematicsParityEnum: Readonly<{
+export type MathematicsFinitenessEnumKeysType = EnumCase<keyof typeof MathematicsFinitenessEnum>;
+export type MathematicsFinitenessEnumValuesType = (typeof MathematicsFinitenessEnum)[keyof typeof MathematicsFinitenessEnum];
+export declare const MathematicsParityEnum: Readonly<{
     Any: "any";
     Even: "even";
     Odd: "odd";
 }>;
-type MathematicsParityEnumKeysType = EnumCase<keyof typeof MathematicsParityEnum>;
-type MathematicsParityEnumValuesType = (typeof MathematicsParityEnum)[keyof typeof MathematicsParityEnum];
-declare const MathematicsPrimalityEnum: Readonly<{
+export type MathematicsParityEnumKeysType = EnumCase<keyof typeof MathematicsParityEnum>;
+export type MathematicsParityEnumValuesType = (typeof MathematicsParityEnum)[keyof typeof MathematicsParityEnum];
+export declare const MathematicsPrimalityEnum: Readonly<{
     Any: "any";
     Composite: "composite";
     Prime: "prime";
 }>;
-type MathematicsPrimalityEnumKeysType = EnumCase<keyof typeof MathematicsPrimalityEnum>;
-type MathematicsPrimalityEnumValuesType = (typeof MathematicsPrimalityEnum)[keyof typeof MathematicsPrimalityEnum];
-declare const MathematicsSignEnum: Readonly<{
+export type MathematicsPrimalityEnumKeysType = EnumCase<keyof typeof MathematicsPrimalityEnum>;
+export type MathematicsPrimalityEnumValuesType = (typeof MathematicsPrimalityEnum)[keyof typeof MathematicsPrimalityEnum];
+export declare const MathematicsSignEnum: Readonly<{
     Any: "any";
     Negative: "negative";
     Positive: "positive";
 }>;
-type MathematicsSignEnumKeysType = EnumCase<keyof typeof MathematicsSignEnum>;
-type MathematicsSignEnumValuesType = (typeof MathematicsSignEnum)[keyof typeof MathematicsSignEnum];
-declare const NumericTypeEnum: Readonly<{
+export type MathematicsSignEnumKeysType = EnumCase<keyof typeof MathematicsSignEnum>;
+export type MathematicsSignEnumValuesType = (typeof MathematicsSignEnum)[keyof typeof MathematicsSignEnum];
+export declare const NumericTypeEnum: Readonly<{
     Any: "any";
     Float: "float";
     Int: "integer";
     Integer: "integer";
 }>;
-type NumericTypeEnumKeysType = EnumCase<keyof typeof NumericTypeEnum>;
-type NumericTypeEnumValuesType = (typeof NumericTypeEnum)[keyof typeof NumericTypeEnum];
-declare const StringCaseEnum: Readonly<{
+export type NumericTypeEnumKeysType = EnumCase<keyof typeof NumericTypeEnum>;
+export type NumericTypeEnumValuesType = (typeof NumericTypeEnum)[keyof typeof NumericTypeEnum];
+export declare const StringCaseEnum: Readonly<{
     Any: "any";
     Lower: "lower";
     Lowercase: "lower";
@@ -100,9 +99,9 @@ declare const StringCaseEnum: Readonly<{
     Uppercase: "upper";
     UpperCase: "upper";
 }>;
-type StringCaseEnumKeysType = EnumCase<keyof typeof StringCaseEnum>;
-type StringCaseEnumValuesType = (typeof StringCaseEnum)[keyof typeof StringCaseEnum];
-declare const StringLineEnum: Readonly<{
+export type StringCaseEnumKeysType = EnumCase<keyof typeof StringCaseEnum>;
+export type StringCaseEnumValuesType = (typeof StringCaseEnum)[keyof typeof StringCaseEnum];
+export declare const StringLineEnum: Readonly<{
     Any: "any";
     Multiline: "multiple";
     MultiLine: "multiple";
@@ -113,9 +112,9 @@ declare const StringLineEnum: Readonly<{
     Singleline: "single";
     SingleLine: "single";
 }>;
-type StringLineEnumKeysType = EnumCase<keyof typeof StringLineEnum>;
-type StringLineEnumValuesType = (typeof StringLineEnum)[keyof typeof StringLineEnum];
-declare const ThreePhaseConditionEnum: Readonly<{
+export type StringLineEnumKeysType = EnumCase<keyof typeof StringLineEnum>;
+export type StringLineEnumValuesType = (typeof StringLineEnum)[keyof typeof StringLineEnum];
+export declare const ThreePhaseConditionEnum: Readonly<{
     Allow: "true";
     Deny: "false";
     Exclude: "false";
@@ -130,7 +129,6 @@ declare const ThreePhaseConditionEnum: Readonly<{
     Undefine: "neutral";
     Undefined: "neutral";
 }>;
-type ThreePhaseConditionEnumKeysType = EnumCase<keyof typeof ThreePhaseConditionEnum>;
-type ThreePhaseConditionEnumValuesType = (typeof ThreePhaseConditionEnum)[keyof typeof ThreePhaseConditionEnum];
-export { enumResolver, IEEE754Enum, IntegralNumericTypeEnum, JSONRootTypeEnum, MathematicsFinitenessEnum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, NumericTypeEnum, StringCaseEnum, StringLineEnum, ThreePhaseConditionEnum, type EnumCase, type IEEE754EnumKeysType, type IEEE754EnumValuesType, type IntegralNumericTypeEnumKeysType, type IntegralNumericTypeEnumValuesType, type JSONRootTypeEnumKeysType, type JSONRootTypeEnumValuesType, type MathematicsFinitenessEnumKeysType, type MathematicsFinitenessEnumValuesType, type MathematicsParityEnumKeysType, type MathematicsParityEnumValuesType, type MathematicsPrimalityEnumKeysType, type MathematicsPrimalityEnumValuesType, type MathematicsSignEnumKeysType, type MathematicsSignEnumValuesType, type NumericTypeEnumKeysType, type NumericTypeEnumValuesType, type StringCaseEnumKeysType, type StringCaseEnumValuesType, type StringLineEnumKeysType, type StringLineEnumValuesType, type ThreePhaseConditionEnumKeysType, type ThreePhaseConditionEnumValuesType };
+export type ThreePhaseConditionEnumKeysType = EnumCase<keyof typeof ThreePhaseConditionEnum>;
+export type ThreePhaseConditionEnumValuesType = (typeof ThreePhaseConditionEnum)[keyof typeof ThreePhaseConditionEnum];
 //# sourceMappingURL=enum.d.ts.map

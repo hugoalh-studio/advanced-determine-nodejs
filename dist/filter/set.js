@@ -11,13 +11,11 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
 };
 var _SetFilter_status;
 /**
- * @class SetFilter
- * @description Filter for `Set`.
+ * Filter for `Set`.
  */
-class SetFilter {
+export class SetFilter {
     /**
-     * @constructor
-     * @description Initialize the `Set` filter.
+     * Initialize the `Set` filter.
      * @param {SetFilter | SetFilterOptions} [options] Options.
      */
     constructor(options) {
@@ -45,24 +43,21 @@ class SetFilter {
         }
     }
     /**
-     * @method clone
-     * @description Clone this `Set` filter for reuse.
+     * Clone this `Set` filter for reuse.
      * @returns {SetFilter} Another instance of this `Set` filter.
      */
     get clone() {
         return new SetFilter(this);
     }
     /**
-     * @method status
-     * @description Get the status of this `Set` filter.
+     * Get the status of this `Set` filter.
      * @returns {SetFilterStatus} Status of this `Set` filter.
      */
     get status() {
         return { ...__classPrivateFieldGet(this, _SetFilter_status, "f") };
     }
     /**
-     * @method allowEmpty
-     * @description Whether to allow an empty `Set`.
+     * Whether to allow an empty `Set`.
      * @param {boolean} [value=true]
      * @returns {this}
      */
@@ -74,8 +69,7 @@ class SetFilter {
         return this;
     }
     /**
-     * @method size
-     * @description Size of the `Set`.
+     * Size of the `Set`.
      * @param {number} value
      * @returns {this}
      */
@@ -91,8 +85,7 @@ class SetFilter {
         return this;
     }
     /**
-     * @method sizeMaximum
-     * @description Maximum size of the `Set`.
+     * Maximum size of the `Set`.
      * @param {number} value
      * @returns {this}
      */
@@ -107,8 +100,7 @@ class SetFilter {
         return this;
     }
     /**
-     * @method sizeMinimum
-     * @description Minimum size of the `Set`.
+     * Minimum size of the `Set`.
      * @param {number} value
      * @returns {this}
      */
@@ -123,8 +115,7 @@ class SetFilter {
         return this;
     }
     /**
-     * @method test
-     * @description Determine item with the configured `Set` filter.
+     * Determine item with the configured `Set` filter.
      * @param {unknown} item Item that need to determine.
      * @returns {boolean} Determine result.
      */
@@ -137,8 +128,7 @@ class SetFilter {
         return true;
     }
     /**
-     * @static test
-     * @description Determine item with the `Set` filter.
+     * Determine item with the `Set` filter.
      * @param {unknown} item Item that need to determine.
      * @param {SetFilterOptions} [options={}] Options.
      * @returns {boolean} Determine result.
@@ -149,13 +139,11 @@ class SetFilter {
 }
 _SetFilter_status = new WeakMap();
 /**
- * @function filterSet
- * @description Determine item with the `Set` filter.
+ * Determine item with the `Set` filter.
  * @param {unknown} item Item that need to determine.
  * @param {SetFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
  */
-function filterSet(item, options = {}) {
+export function filterSet(item, options = {}) {
     return new SetFilter(options).test(item);
 }
-export { filterSet, SetFilter };

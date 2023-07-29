@@ -1,11 +1,10 @@
 import { ObjectMeta } from "./internal/object-meta.js";
 /**
- * @function isObjectPlain
- * @description Whether the object is plain.
+ * Determine whether the object is plain.
  * @param {object} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
-function isObjectPlain(item) {
+export function isObjectPlain(item) {
     if (!(item instanceof Object) ||
         item.constructor.name !== "Object" ||
         Object.prototype.toString.call(item) !== "[object Object]") {
@@ -38,4 +37,3 @@ function isObjectPlain(item) {
     }
     return true;
 }
-export { isObjectPlain };

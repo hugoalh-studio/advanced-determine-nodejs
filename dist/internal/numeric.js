@@ -1,7 +1,6 @@
 import { enumResolver, IntegralNumericTypeEnum } from "./enum.js";
 /**
  * @access private
- * @function bigIntegerSquareRoot
  * @param {bigint} n
  * @param {bigint} [x0=1n]
  * @returns {bigint}
@@ -17,7 +16,6 @@ function bigIntegerSquareRoot(n, x0 = 1n) {
 }
 /**
  * @access private
- * @function integralNumericTypeRangeIntBase
  * @param {bigint} base
  * @returns {[bigint, bigint]}
  */
@@ -27,7 +25,6 @@ function integralNumericTypeRangeIntBase(base) {
 }
 /**
  * @access private
- * @function integralNumericTypeRangeUIntBase
  * @param {bigint} base
  * @returns {[bigint, bigint]}
  */
@@ -35,11 +32,10 @@ function integralNumericTypeRangeUIntBase(base) {
     return [0n, (2n ** base) - 1n];
 }
 /**
- * @function integralNumericTypeRange
  * @param {IntegralNumericTypeEnumKeysType} name
  * @returns {[bigint, bigint]}
  */
-function integralNumericTypeRange(name) {
+export function integralNumericTypeRange(name) {
     let nameResolve;
     try {
         nameResolve = enumResolver(IntegralNumericTypeEnum, name, "");
@@ -73,11 +69,10 @@ function integralNumericTypeRange(name) {
     }
 }
 /**
- * @function isPrimeNumeric
  * @param {bigint | number} item
  * @returns {boolean}
  */
-function isPrimeNumeric(item) {
+export function isPrimeNumeric(item) {
     let itemRaw = (typeof item === "bigint") ? item : BigInt(item);
     if (itemRaw === 2n ||
         itemRaw === 3n ||
@@ -99,4 +94,3 @@ function isPrimeNumeric(item) {
     }
     return true;
 }
-export { integralNumericTypeRange, isPrimeNumeric };

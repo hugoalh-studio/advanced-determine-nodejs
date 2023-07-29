@@ -1,4 +1,4 @@
-declare class ObjectMeta {
+export declare class ObjectMeta {
     prototypes: unknown;
     keysSymbol: symbol[];
     descriptors: object & {
@@ -14,10 +14,8 @@ declare class ObjectMeta {
     entriesSetter: string[];
     entriesWritable: string[];
     /**
-     * @constructor
      * @param {object} item
      */
     constructor(item: object);
 }
-export { ObjectMeta };
 //# sourceMappingURL=object-meta.d.ts.map

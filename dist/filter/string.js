@@ -13,13 +13,11 @@ var _StringFilter_status;
 import { enumResolver, StringCaseEnum, StringLineEnum, ThreePhaseConditionEnum } from "../internal/enum.js";
 import { isStringASCII, isStringLowerCase, isStringMultipleLine, isStringSingleLine, isStringUpperCase } from "../string.js";
 /**
- * @class StringFilter
- * @description Filter for string.
+ * Filter for string.
  */
-class StringFilter {
+export class StringFilter {
     /**
-     * @constructor
-     * @description Initialize the string filter.
+     * Initialize the string filter.
      * @param {StringFilter | StringFilterOptions} [options] Options.
      */
     constructor(options) {
@@ -64,24 +62,21 @@ class StringFilter {
         }
     }
     /**
-     * @method clone
-     * @description Clone this string filter for reuse.
+     * Clone this string filter for reuse.
      * @returns {StringFilter} Another instance of this string filter.
      */
     get clone() {
         return new StringFilter(this);
     }
     /**
-     * @method status
-     * @description Get the status of this string filter.
+     * Get the status of this string filter.
      * @returns {StringFilterStatus} Status of this string filter.
      */
     get status() {
         return { ...__classPrivateFieldGet(this, _StringFilter_status, "f") };
     }
     /**
-     * @method allowEmpty
-     * @description Whether to allow an empty string.
+     * Whether to allow an empty string.
      * @param {boolean} [value=true]
      * @returns {this}
      */
@@ -93,8 +88,7 @@ class StringFilter {
         return this;
     }
     /**
-     * @method ascii
-     * @description Whether an ASCII string.
+     * Whether an ASCII string.
      * @param {ThreePhaseConditionEnumKeysType} value
      * @returns {this}
      */
@@ -103,8 +97,7 @@ class StringFilter {
         return this;
     }
     /**
-     * @method case
-     * @description Case of the string.
+     * Case of the string.
      * @param {StringCaseEnumKeysType} value
      * @returns {this}
      */
@@ -113,8 +106,7 @@ class StringFilter {
         return this;
     }
     /**
-     * @method length
-     * @description Length of the string.
+     * Length of the string.
      * @param {number} value
      * @returns {this}
      */
@@ -130,8 +122,7 @@ class StringFilter {
         return this;
     }
     /**
-     * @method lengthMaximum
-     * @description Maximum length of the string.
+     * Maximum length of the string.
      * @param {number} value
      * @returns {this}
      */
@@ -146,8 +137,7 @@ class StringFilter {
         return this;
     }
     /**
-     * @method lengthMinimum
-     * @description Minimum length of the string.
+     * Minimum length of the string.
      * @param {number} value
      * @returns {this}
      */
@@ -162,8 +152,7 @@ class StringFilter {
         return this;
     }
     /**
-     * @method line
-     * @description Line of the string.
+     * Line of the string.
      * @param {StringLineEnumKeysType} value
      * @returns {this}
      */
@@ -172,8 +161,7 @@ class StringFilter {
         return this;
     }
     /**
-     * @method pattern
-     * @description Whether a pattern matchable string.
+     * Whether a pattern matchable string.
      * @param {RegExp | undefined} [value]
      * @returns {this}
      */
@@ -185,8 +173,7 @@ class StringFilter {
         return this;
     }
     /**
-     * @method preTrim
-     * @description Whether to trim the string internally before determine.
+     * Whether to trim the string internally before determine.
      * @param {boolean} [value=true]
      * @returns {this}
      */
@@ -198,40 +185,35 @@ class StringFilter {
         return this;
     }
     /**
-     * @method lowerCase
-     * @description Set to allow a lower case string.
+     * Set to allow a lower case string.
      * @returns {this}
      */
     lowerCase() {
         return this.case("lower");
     }
     /**
-     * @method multipleLine
-     * @description Set to allow a multiple line string.
+     * Set to allow a multiple line string.
      * @returns {this}
      */
     multipleLine() {
         return this.line("multiple");
     }
     /**
-     * @method singleLine
-     * @description Set to allow a single line string.
+     * Set to allow a single line string.
      * @returns {this}
      */
     singleLine() {
         return this.line("single");
     }
     /**
-     * @method upperCase
-     * @description Set to allow an upper case string.
+     * Set to allow an upper case string.
      * @returns {this}
      */
     upperCase() {
         return this.case("upper");
     }
     /**
-     * @method test
-     * @description Determine item with the configured string filter.
+     * Determine item with the configured string filter.
      * @param {unknown} item Item that need to determine.
      * @returns {boolean} Determine result.
      */
@@ -254,8 +236,7 @@ class StringFilter {
         return true;
     }
     /**
-     * @static test
-     * @description Determine item with the string filter.
+     * Determine item with the string filter.
      * @param {unknown} item Item that need to determine.
      * @param {StringFilterOptions} [options={}] Options.
      * @returns {boolean} Determine result.
@@ -266,13 +247,11 @@ class StringFilter {
 }
 _StringFilter_status = new WeakMap();
 /**
- * @function filterString
- * @description Determine item with the string filter.
+ * Determine item with the string filter.
  * @param {unknown} item Item that need to determine.
  * @param {StringFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
  */
-function filterString(item, options = {}) {
+export function filterString(item, options = {}) {
     return new StringFilter(options).test(item);
 }
-export { filterString, StringFilter };

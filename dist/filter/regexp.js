@@ -12,13 +12,11 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
 var _RegExpFilter_status;
 import { enumResolver, ThreePhaseConditionEnum } from "../internal/enum.js";
 /**
- * @class RegExpFilter
- * @description Filter for `RegExp`.
+ * Filter for `RegExp`.
  */
-class RegExpFilter {
+export class RegExpFilter {
     /**
-     * @constructor
-     * @description Initialize the `RegExp` filter.
+     * Initialize the `RegExp` filter.
      * @param {RegExpFilter | RegExpFilterOptions} [options] Options.
      */
     constructor(options) {
@@ -50,24 +48,21 @@ class RegExpFilter {
         }
     }
     /**
-     * @method clone
-     * @description Clone this `RegExp` filter for reuse.
+     * Clone this `RegExp` filter for reuse.
      * @returns {RegExpFilter} Another instance of this `RegExp` filter.
      */
     get clone() {
         return new RegExpFilter(this);
     }
     /**
-     * @method status
-     * @description Get the status of this `RegExp` filter.
+     * Get the status of this `RegExp` filter.
      * @returns {RegExpFilterStatus} Status of this `RegExp` filter.
      */
     get status() {
         return { ...__classPrivateFieldGet(this, _RegExpFilter_status, "f") };
     }
     /**
-     * @method dotAll
-     * @description Whether a dot-all `RegExp`.
+     * Whether a dot-all `RegExp`.
      * @param {ThreePhaseConditionEnumKeysType} value
      * @returns {this}
      */
@@ -76,8 +71,7 @@ class RegExpFilter {
         return this;
     }
     /**
-     * @method exactly
-     * @description Whether an exactly `RegExp`.
+     * Whether an exactly `RegExp`.
      * @param {ThreePhaseConditionEnumKeysType} value
      * @returns {this}
      */
@@ -86,8 +80,7 @@ class RegExpFilter {
         return this;
     }
     /**
-     * @method global
-     * @description Whether a global `RegExp`.
+     * Whether a global `RegExp`.
      * @param {ThreePhaseConditionEnumKeysType} value
      * @returns {this}
      */
@@ -96,8 +89,7 @@ class RegExpFilter {
         return this;
     }
     /**
-     * @method ignoreCase
-     * @description Whether a case insensitive `RegExp`.
+     * Whether a case insensitive `RegExp`.
      * @param {ThreePhaseConditionEnumKeysType} value
      * @returns {this}
      */
@@ -106,8 +98,7 @@ class RegExpFilter {
         return this;
     }
     /**
-     * @method multipleLine
-     * @description Whether a multiple line `RegExp`.
+     * Whether a multiple line `RegExp`.
      * @param {ThreePhaseConditionEnumKeysType} value
      * @returns {this}
      */
@@ -116,8 +107,7 @@ class RegExpFilter {
         return this;
     }
     /**
-     * @method sticky
-     * @description Whether a sticky `RegExp`.
+     * Whether a sticky `RegExp`.
      * @param {ThreePhaseConditionEnumKeysType} value
      * @returns {this}
      */
@@ -126,8 +116,7 @@ class RegExpFilter {
         return this;
     }
     /**
-     * @method unicode
-     * @description Whether an unicode `RegExp`.
+     * Whether an unicode `RegExp`.
      * @param {ThreePhaseConditionEnumKeysType} value
      * @returns {this}
      */
@@ -136,8 +125,7 @@ class RegExpFilter {
         return this;
     }
     /**
-     * @method test
-     * @description Determine item with the configured `RegExp` filter.
+     * Determine item with the configured `RegExp` filter.
      * @param {unknown} item Item that need to determine.
      * @returns {boolean} Determine result.
      */
@@ -163,8 +151,7 @@ class RegExpFilter {
         return true;
     }
     /**
-     * @static test
-     * @description Determine item with the `RegExp` filter.
+     * Determine item with the `RegExp` filter.
      * @param {unknown} item Item that need to determine.
      * @param {RegExpFilterOptions} [options={}] Options.
      * @returns {boolean} Determine result.
@@ -175,13 +162,12 @@ class RegExpFilter {
 }
 _RegExpFilter_status = new WeakMap();
 /**
- * @function filterRegExp
- * @description Determine item with the `RegExp` filter.
+ * Determine item with the `RegExp` filter.
  * @param {unknown} item Item that need to determine.
  * @param {RegExpFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
  */
-function filterRegExp(item, options = {}) {
+export function filterRegExp(item, options = {}) {
     return new RegExpFilter(options).test(item);
 }
-export { filterRegExp, filterRegExp as filterRegEx, filterRegExp as filterRegularExpression, RegExpFilter, RegExpFilter as RegExFilter, RegExpFilter as RegularExpressionFilter };
+export { filterRegExp as filterRegEx, filterRegExp as filterRegularExpression, RegExpFilter as RegExFilter, RegExpFilter as RegularExpressionFilter };

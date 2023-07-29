@@ -1,5 +1,4 @@
 /**
- * @function enumResolver
  * @template {unknown} I
  * @template {unknown} O
  * @param {Readonly<{ [x: string]: string; }>} enumObject
@@ -7,7 +6,7 @@
  * @param {string} paramName
  * @returns {O}
  */
-function enumResolver(enumObject, input, paramName) {
+export function enumResolver(enumObject, input, paramName) {
     if (typeof input !== "string") {
         throw new TypeError(`Filter argument \`${paramName}\` must be type of string!`);
     }
@@ -22,12 +21,12 @@ function enumResolver(enumObject, input, paramName) {
         return [value, `${value.slice(0, 1).toLowerCase()}${value.slice(1)}`, `${value.slice(0, 1).toUpperCase()}${value.slice(1)}`];
     })).values()).sort().join("\", \"")}"`);
 }
-const IEEE754Enum = Object.freeze({
+export const IEEE754Enum = Object.freeze({
     Any: "any",
     Safe: "safe",
     Unsafe: "unsafe"
 });
-const IntegralNumericTypeEnum = Object.freeze({
+export const IntegralNumericTypeEnum = Object.freeze({
     Byte: "uint8",
     Char: "int8",
     Int8: "int8",
@@ -55,38 +54,38 @@ const IntegralNumericTypeEnum = Object.freeze({
     Ushort: "uint16",
     UShort: "uint16"
 });
-const JSONRootTypeEnum = Object.freeze({
+export const JSONRootTypeEnum = Object.freeze({
     Any: "any",
     Array: "array",
     Object: "object"
 });
-const MathematicsFinitenessEnum = Object.freeze({
+export const MathematicsFinitenessEnum = Object.freeze({
     Any: "any",
     Finite: "finite",
     Infinite: "infinite"
 });
-const MathematicsParityEnum = Object.freeze({
+export const MathematicsParityEnum = Object.freeze({
     Any: "any",
     Even: "even",
     Odd: "odd"
 });
-const MathematicsPrimalityEnum = Object.freeze({
+export const MathematicsPrimalityEnum = Object.freeze({
     Any: "any",
     Composite: "composite",
     Prime: "prime"
 });
-const MathematicsSignEnum = Object.freeze({
+export const MathematicsSignEnum = Object.freeze({
     Any: "any",
     Negative: "negative",
     Positive: "positive"
 });
-const NumericTypeEnum = Object.freeze({
+export const NumericTypeEnum = Object.freeze({
     Any: "any",
     Float: "float",
     Int: "integer",
     Integer: "integer"
 });
-const StringCaseEnum = Object.freeze({
+export const StringCaseEnum = Object.freeze({
     Any: "any",
     Lower: "lower",
     Lowercase: "lower",
@@ -95,7 +94,7 @@ const StringCaseEnum = Object.freeze({
     Uppercase: "upper",
     UpperCase: "upper"
 });
-const StringLineEnum = Object.freeze({
+export const StringLineEnum = Object.freeze({
     Any: "any",
     Multiline: "multiple",
     MultiLine: "multiple",
@@ -106,7 +105,7 @@ const StringLineEnum = Object.freeze({
     Singleline: "single",
     SingleLine: "single"
 });
-const ThreePhaseConditionEnum = Object.freeze({
+export const ThreePhaseConditionEnum = Object.freeze({
     Allow: "true",
     Deny: "false",
     Exclude: "false",
@@ -121,4 +120,3 @@ const ThreePhaseConditionEnum = Object.freeze({
     Undefine: "neutral",
     Undefined: "neutral"
 });
-export { enumResolver, IEEE754Enum, IntegralNumericTypeEnum, JSONRootTypeEnum, MathematicsFinitenessEnum, MathematicsParityEnum, MathematicsPrimalityEnum, MathematicsSignEnum, NumericTypeEnum, StringCaseEnum, StringLineEnum, ThreePhaseConditionEnum };

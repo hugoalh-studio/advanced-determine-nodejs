@@ -1,12 +1,11 @@
 import equal from "@hugoalh/equal";
 const arrayIndexRegExp = /^(?:0|[1-9]\d*)$/u;
 /**
- * @function isArrayStrict
- * @description Whether the array is not contain custom defined properties.
+ * Determine whether the array is not contain custom defined properties.
  * @param {unknown[]} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
-function isArrayStrict(item) {
+export function isArrayStrict(item) {
     let itemPrototype = Object.getPrototypeOf(item);
     if ((itemPrototype !== null && itemPrototype !== Array.prototype) ||
         Object.getOwnPropertySymbols(item).length > 0) {
@@ -43,21 +42,19 @@ function isArrayStrict(item) {
     return true;
 }
 /**
- * @function isArrayUniqueReference
- * @description Whether the array is contain unique references.
+ * Determine whether the array is contain unique references.
  * @param {unknown[]} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
-function isArrayUniqueReference(item) {
+export function isArrayUniqueReference(item) {
     return (new Set(item).size === item.length);
 }
 /**
- * @function isArrayUnique
- * @description Whether the array is contain unique elements.
+ * Determine whether the array is contain unique elements.
  * @param {unknown[]} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
-function isArrayUnique(item) {
+export function isArrayUnique(item) {
     if (!isArrayUniqueReference(item)) {
         return false;
     }
@@ -73,4 +70,3 @@ function isArrayUnique(item) {
     }
     return true;
 }
-export { isArrayStrict, isArrayUnique, isArrayUniqueReference };

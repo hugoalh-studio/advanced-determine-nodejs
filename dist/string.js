@@ -1,11 +1,10 @@
 const newLineRegExp = /[\n\r]/u;
 /**
- * @function isStringASCII
- * @description Whether the string is ASCII.
+ * Determine whether the string is ASCII.
  * @param {string} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
-function isStringASCII(item) {
+export function isStringASCII(item) {
     for (let character of item.split("")) {
         if (character.charCodeAt(0) >= 128) {
             return false;
@@ -14,39 +13,34 @@ function isStringASCII(item) {
     return true;
 }
 /**
- * @function isStringLowerCase
- * @description Whether the string is lower case.
+ * Determine whether the string is lower case.
  * @param {string} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
-function isStringLowerCase(item) {
+export function isStringLowerCase(item) {
     return (item === item.toLowerCase());
 }
 /**
- * @function isStringMultipleLine
- * @description Whether the string is multiple line.
+ * Determine whether the string is multiple line.
  * @param {string} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
-function isStringMultipleLine(item) {
+export function isStringMultipleLine(item) {
     return newLineRegExp.test(item);
 }
 /**
- * @function isStringSingleLine
- * @description Whether the string is single line.
+ * Determine whether the string is single line.
  * @param {string} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
-function isStringSingleLine(item) {
+export function isStringSingleLine(item) {
     return !newLineRegExp.test(item);
 }
 /**
- * @function isStringUpperCase
- * @description Whether the string is upper case.
+ * Determine whether the string is upper case.
  * @param {string} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
-function isStringUpperCase(item) {
+export function isStringUpperCase(item) {
     return (item === item.toUpperCase());
 }
-export { isStringASCII, isStringLowerCase, isStringMultipleLine, isStringSingleLine, isStringUpperCase };

@@ -11,13 +11,11 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
 };
 var _MapFilter_status;
 /**
- * @class MapFilter
- * @description Filter for `Map`.
+ * Filter for `Map`.
  */
-class MapFilter {
+export class MapFilter {
     /**
-     * @constructor
-     * @description Initialize the `Map` filter.
+     * Initialize the `Map` filter.
      * @param {MapFilter | MapFilterOptions} [options] Options.
      */
     constructor(options) {
@@ -45,24 +43,21 @@ class MapFilter {
         }
     }
     /**
-     * @method clone
-     * @description Clone this `Map` filter for reuse.
+     * Clone this `Map` filter for reuse.
      * @returns {MapFilter} Another instance of this `Map` filter.
      */
     get clone() {
         return new MapFilter(this);
     }
     /**
-     * @method status
-     * @description Get the status of this `Map` filter.
+     * Get the status of this `Map` filter.
      * @returns {MapFilterStatus} Status of this `Map` filter.
      */
     get status() {
         return { ...__classPrivateFieldGet(this, _MapFilter_status, "f") };
     }
     /**
-     * @method allowEmpty
-     * @description Whether to allow an empty `Map`.
+     * Whether to allow an empty `Map`.
      * @param {boolean} [value=true]
      * @returns {this}
      */
@@ -74,8 +69,7 @@ class MapFilter {
         return this;
     }
     /**
-     * @method size
-     * @description Size of the `Map`.
+     * Size of the `Map`.
      * @param {number} value
      * @returns {this}
      */
@@ -91,8 +85,7 @@ class MapFilter {
         return this;
     }
     /**
-     * @method sizeMaximum
-     * @description Maximum size of the `Map`.
+     * Maximum size of the `Map`.
      * @param {number} value
      * @returns {this}
      */
@@ -107,8 +100,7 @@ class MapFilter {
         return this;
     }
     /**
-     * @method sizeMinimum
-     * @description Minimum size of the `Map`.
+     * Minimum size of the `Map`.
      * @param {number} value
      * @returns {this}
      */
@@ -123,8 +115,7 @@ class MapFilter {
         return this;
     }
     /**
-     * @method test
-     * @description Determine item with the configured `Map` filter.
+     * Determine item with the configured `Map` filter.
      * @param {unknown} item Item that need to determine.
      * @returns {boolean} Determine result.
      */
@@ -137,8 +128,7 @@ class MapFilter {
         return true;
     }
     /**
-     * @static test
-     * @description Determine item with the `Map` filter.
+     * Determine item with the `Map` filter.
      * @param {unknown} item Item that need to determine.
      * @param {MapFilterOptions} [options={}] Options.
      * @returns {boolean} Determine result.
@@ -149,13 +139,11 @@ class MapFilter {
 }
 _MapFilter_status = new WeakMap();
 /**
- * @function filterMap
- * @description Determine item with the `Map` filter.
+ * Determine item with the `Map` filter.
  * @param {unknown} item Item that need to determine.
  * @param {MapFilterOptions} [options={}] Options.
  * @returns {boolean} Determine result.
  */
-function filterMap(item, options = {}) {
+export function filterMap(item, options = {}) {
     return new MapFilter(options).test(item);
 }
-export { filterMap, MapFilter };

@@ -1,6 +1,5 @@
-class ObjectMeta {
+export class ObjectMeta {
     /**
-     * @constructor
      * @param {object} item
      */
     constructor(item) {
@@ -50,4 +49,3 @@ class ObjectMeta {
         }
     }
 }
-export { ObjectMeta };
