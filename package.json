@@ -94,7 +94,7 @@
 		"url": "git+https://github.com/hugoalh-studio/advanced-determine-nodejs.git"
 	},
 	"dependencies": {
-		"@hugoalh/equal": "^1.0.1"
+		"@hugoalh/equal": "^1.0.2"
 	},
 	"devDependencies": {
 		"@types/node": "^20.4.5",
