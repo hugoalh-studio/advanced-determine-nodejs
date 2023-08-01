@@ -94,12 +94,12 @@
 		"url": "git+https://github.com/hugoalh-studio/advanced-determine-nodejs.git"
 	},
 	"dependencies": {
-		"@hugoalh/equal": "^1.0.1"
+		"@hugoalh/equal": "^1.0.2"
 	},
 	"devDependencies": {
 		"@types/node": "^20.4.5",
-		"@typescript-eslint/eslint-plugin": "^6.2.0",
-		"@typescript-eslint/parser": "^6.2.0",
+		"@typescript-eslint/eslint-plugin": "^6.2.1",
+		"@typescript-eslint/parser": "^6.2.1",
 		"eslint": "^8.46.0",
 		"eslint-plugin-only-warn": "^1.1.0",
 		"typescript": "^5.1.6"
