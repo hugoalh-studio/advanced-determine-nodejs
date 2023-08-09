@@ -1,4 +1,4 @@
-import equal from "@hugoalh/equal";
+import uniqueArray from "@hugoalh/unique-array";
 const arrayIndexRegExp = /^(?:0|[1-9]\d*)$/u;
 /**
  * Determine whether the array is not contain custom defined properties.
@@ -55,18 +55,5 @@ export function isArrayUniqueReference(item) {
  * @returns {boolean} Determine result.
  */
 export function isArrayUnique(item) {
-    if (!isArrayUniqueReference(item)) {
-        return false;
-    }
-    for (let indexA = 0; indexA < item.length; indexA++) {
-        for (let indexB = 0; indexB < item.length; indexB++) {
-            if (indexA === indexB) {
-                continue;
-            }
-            if (equal(item[indexA], item[indexB])) {
-                return false;
-            }
-        }
-    }
-    return true;
+    return (uniqueArray(item).length === item.length);
 }
