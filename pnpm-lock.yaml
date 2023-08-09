@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@hugoalh/unique-array': ^3.0.3
+  '@hugoalh/unique-array': ^3.0.4
   '@types/node': ^20.4.9
   '@typescript-eslint/eslint-plugin': ^6.3.0
   '@typescript-eslint/parser': ^6.3.0
@@ -10,7 +10,7 @@ specifiers:
   typescript: ^5.1.6
 
 dependencies:
-  '@hugoalh/unique-array': 3.0.3
+  '@hugoalh/unique-array': 3.0.4
 
 devDependencies:
   '@types/node': 20.4.9
@@ -69,8 +69,8 @@ packages:
     engines: {node: ^12.20.0 || ^14.15.0 || >=16.13.0}
     dev: false
 
-  /@hugoalh/unique-array/3.0.3:
-    resolution: {integrity: sha512-16ghxHAjsySOyFhA0GB4D07qn8oM3Whw9Noni7yPmCGzYVcmRr3AZRtpHonelOvoEtMDtv2VexT41XstiI2N2w==}
+  /@hugoalh/unique-array/3.0.4:
+    resolution: {integrity: sha512-lEf9fw0QEgHjYTOU5f+qti9s4iDhZUExYGwgjH7NZdyOcEukkIyHQc6W4XsJqQz841z6U8aG3MpDaSXo7RoffQ==}
     engines: {node: ^12.20.0 || ^14.15.0 || >=16.13.0}
     dependencies:
       '@hugoalh/equal': 1.0.4
