@@ -1,4 +1,5 @@
 # yaml-language-server: $schema=https://json.schemastore.org/eslintrc.json
+# ESLint v8.47.0
 env:
   amd: false
   applescript: false
@@ -29,7 +30,7 @@ env:
   webextensions: true
   worker: true
 extends:
-  - "eslint:all"
+  - "eslint:recommended"
   - "plugin:@typescript-eslint/recommended"
 parser: "@typescript-eslint/parser"
 parserOptions:
@@ -62,22 +63,53 @@ plugins:
   - "@typescript-eslint"
   - "only-warn"
 rules:
-  accessor-pairs: "off"
-  array-bracket-newline: "off"
-  array-element-newline:
+  array-callback-return:
     - "warn"
-    - "consistent"
+    - allowImplicit: true
+      checkForEach: true
+  no-cond-assign:
+    - "warn"
+    - "always"
+  no-constant-binary-expression:
+    - "warn"
+  no-constructor-return:
+    - "warn"
+  no-duplicate-imports:
+    - "warn"
+  no-new-native-nonconstructor:
+    - "warn"
+  no-promise-executor-return:
+    - "warn"
+  no-self-compare:
+    - "warn"
+  no-unmodified-loop-condition:
+    - "warn"
+  no-unreachable-loop:
+    - "warn"
+  no-unused-private-class-members:
+    - "warn"
+  no-use-before-define:
+    - "warn"
+  require-atomic-updates:
+    - "warn"
+  use-isnan:
+    - "warn"
+    - enforceForSwitchCase: true
+      enforceForIndexOf: true
   arrow-body-style:
     - "warn"
     - "always"
-  brace-style:
+  class-methods-use-this:
     - "warn"
-    - "1tbs"
-    - allowSingleLine: false
-  capitalized-comments: "off"
-  complexity: "off"
-  dot-location: "off"
-  dot-notation: "off"
+  curly:
+    - "warn"
+    - "all"
+  default-case:
+    - "warn"
+  default-case-last:
+    - "warn"
+  default-param-last:
+    - "warn"
   eqeqeq:
     - "warn"
     - "always"
@@ -88,6 +120,166 @@ rules:
     - "warn"
     - "declaration"
     - allowArrowFunctions: true
+  grouped-accessor-pairs:
+    - "warn"
+  guard-for-in:
+    - "warn"
+  new-cap:
+    - "warn"
+    - newIsCap: true
+      capIsNew: false
+      properties: true
+  no-array-constructor:
+    - "warn"
+  no-caller:
+    - "warn"
+  no-confusing-arrow:
+    - "warn"
+  no-div-regex:
+    - "warn"
+  no-else-return:
+    - "warn"
+  no-empty-function:
+    - "warn"
+  no-empty-static-block:
+    - "warn"
+  no-eq-null:
+    - "warn"
+  no-eval:
+    - "warn"
+  no-extend-native:
+    - "warn"
+  no-extra-bind:
+    - "warn"
+  no-extra-label:
+    - "warn"
+  no-floating-decimal:
+    - "warn"
+  no-implicit-coercion:
+    - "warn"
+  no-invalid-this:
+    - "warn"
+  no-iterator:
+    - "warn"
+  no-label-var:
+    - "warn"
+  no-lone-blocks:
+    - "warn"
+  no-loop-func:
+    - "warn"
+  no-mixed-operators:
+    - "warn"
+  no-multi-assign:
+    - "warn"
+  no-multi-str:
+    - "warn"
+  no-negated-condition:
+    - "warn"
+  no-nested-ternary:
+    - "warn"
+  no-new:
+    - "warn"
+  no-new-func:
+    - "warn"
+  no-new-object:
+    - "warn"
+  no-new-wrappers:
+    - "warn"
+  no-octal-escape:
+    - "warn"
+  no-param-reassign:
+    - "warn"
+  no-proto:
+    - "warn"
+  no-regex-spaces:
+    - "warn"
+  no-return-assign:
+    - "warn"
+    - "always"
+  no-script-url:
+    - "warn"
+  no-sequences:
+    - "warn"
+  no-shadow:
+    - "warn"
+    - builtinGlobals: true
+      hoist: "all"
+      ignoreOnInitialization: false
+  no-unneeded-ternary:
+    - "warn"
+    - defaultAssignment: true
+  no-unused-expressions:
+    - "warn"
+    - allowShortCircuit: false
+      allowTernary: false
+      allowTaggedTemplates: true
+      enforceForJSX: false
+  no-useless-call:
+    - "warn"
+  no-useless-computed-key:
+    - "warn"
+  no-useless-concat:
+    - "warn"
+  no-useless-constructor:
+    - "warn"
+  no-useless-rename:
+    - "warn"
+  no-useless-return:
+    - "warn"
+  no-void:
+    - "warn"
+  one-var-declaration-per-line:
+    - "warn"
+    - "always"
+  prefer-const:
+    - "warn"
+  prefer-named-capture-group:
+    - "warn"
+  prefer-numeric-literals:
+    - "warn"
+  prefer-object-has-own:
+    - "warn"
+  prefer-object-spread:
+    - "warn"
+  prefer-regex-literals:
+    - "warn"
+    - disallowRedundantWrapping: true
+  prefer-rest-params:
+    - "warn"
+  prefer-spread:
+    - "warn"
+  prefer-template:
+    - "warn"
+  radix:
+    - "warn"
+  require-await:
+    - "warn"
+  require-unicode-regexp:
+    - "warn"
+  strict:
+    - "warn"
+    - "never"
+  yoda:
+    - "warn"
+    - "never"
+    - exceptRange: true
+
+
+
+# TODO: Layout & Formatting
+  accessor-pairs: "off"
+  array-bracket-newline: "off"
+  array-element-newline:
+    - "warn"
+    - "consistent"
+  brace-style:
+    - "warn"
+    - "1tbs"
+    - allowSingleLine: false
+  capitalized-comments: "off"
+  complexity: "off"
+  dot-location: "off"
+  dot-notation: "off"
   function-call-argument-newline:
     - "warn"
     - "consistent"
@@ -98,7 +290,6 @@ rules:
     - "warn"
     - before: false
       after: true
-  guard-for-in: "off"
   id-length:
     - "warn"
     - max: 80
@@ -132,7 +323,6 @@ rules:
   multiline-ternary:
     - "warn"
     - "always-multiline"
-  new-cap: "off"
   no-alert: "off"
   no-bitwise: "off"
   no-case-declarations: "off"
@@ -151,11 +341,6 @@ rules:
   no-inline-comments: "off"
   no-labels: "off"
   no-magic-numbers: "off"
-  no-mixed-operators:
-    - "warn"
-    - allowSamePrecedence: true
-  no-new: "off"
-  no-param-reassign: "off"
   no-plusplus:
     - "warn"
     - allowForLoopAfterthoughts: true
@@ -165,7 +350,6 @@ rules:
   no-ternary: "off"
   no-undefined: "off"
   no-var: "off"
-  no-void: "off"
   object-curly-newline:
     - "warn"
     - consistent: true
@@ -176,7 +360,6 @@ rules:
   object-shorthand:
     - "warn"
     - "consistent-as-needed"
-  one-var-declaration-per-line: "off"
   one-var: "off"
   padded-blocks:
     - "warn"
@@ -184,10 +367,8 @@ rules:
   prefer-arrow-callback:
     - "warn"
     - allowNamedFunctions: true
-  prefer-const: "off"
   prefer-destructuring: "off"
   prefer-exponentiation-operator: "off"
-  prefer-rest-params: "off"
   quote-props:
     - "warn"
     - "consistent"
