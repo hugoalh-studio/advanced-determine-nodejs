@@ -21,12 +21,12 @@ export interface MapFilterOptions extends Partial<MapFilterStatus> {
      * @default undefined
      */
     size?: number;
-    /** @alias sizeMaximum */ sizeMax?: MapFilterStatus["sizeMaximum"];
-    /** @alias sizeMaximum */ maximumSize?: MapFilterStatus["sizeMaximum"];
-    /** @alias sizeMaximum */ maxSize?: MapFilterStatus["sizeMaximum"];
-    /** @alias sizeMinimum */ sizeMin?: MapFilterStatus["sizeMinimum"];
-    /** @alias sizeMinimum */ minimumSize?: MapFilterStatus["sizeMinimum"];
-    /** @alias sizeMinimum */ minSize?: MapFilterStatus["sizeMinimum"];
+    /** @alias sizeMaximum */ sizeMax?: this["sizeMaximum"];
+    /** @alias sizeMaximum */ maximumSize?: this["sizeMaximum"];
+    /** @alias sizeMaximum */ maxSize?: this["sizeMaximum"];
+    /** @alias sizeMinimum */ sizeMin?: this["sizeMinimum"];
+    /** @alias sizeMinimum */ minimumSize?: this["sizeMinimum"];
+    /** @alias sizeMinimum */ minSize?: this["sizeMinimum"];
 }
 /**
  * Filter for `Map`.

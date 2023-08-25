@@ -15,9 +15,9 @@ export class ObjectMeta {
         this.entriesNonWritable = [];
         this.entriesSetter = [];
         this.entriesWritable = [];
-        for (let descriptor in this.descriptors) {
+        for (const descriptor in this.descriptors) {
             if (Object.prototype.hasOwnProperty.call(this.descriptors, descriptor)) {
-                let descriptorProperties = this.descriptors[descriptor];
+                const descriptorProperties = this.descriptors[descriptor];
                 if (descriptorProperties.configurable) {
                     this.entriesConfigurable.push(descriptor);
                 }

@@ -10,10 +10,8 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
 var _a, _JSONFilter_status;
-import { ArrayFilter } from "./array.js";
 import { ObjectFilter } from "./object.js";
 import { enumResolver, JSONRootTypeEnum } from "../internal/enum.js";
-const jsonArrayFilter = new ArrayFilter().allowEmpty().strict();
 const jsonObjectFilter = new ObjectFilter().allowEmpty().plain();
 const jsonLegalKeysPatternRegExp = /^[$_A-Za-z][$\d_A-Za-z]*$/u;
 /**
@@ -23,21 +21,31 @@ const jsonLegalKeysPatternRegExp = /^[$_A-Za-z][$\d_A-Za-z]*$/u;
  * @returns {boolean}
  */
 function isJSONValue(item, keysPattern) {
-    return (typeof item === "boolean" ||
-        isJSONInternal(item, keysPattern) ||
-        item === null ||
-        (typeof item === "number" && !Number.isNaN(item)) ||
-        typeof item === "string");
+    if (typeof item === "bigint" ||
+        typeof item === "function" ||
+        typeof item === "symbol" ||
+        typeof item === "undefined") {
+        return false;
+    }
+    if (typeof item === "boolean" ||
+        typeof item === "string" ||
+        item === null) {
+        return true;
+    }
+    if (typeof item === "number") {
+        return !Number.isNaN(item);
+    }
+    return isJSONObject(item, keysPattern);
 }
 /**
  * @access private
- * @param {unknown} item Item that need to determine.
+ * @param {object} item Item that need to determine.
  * @param {RegExp} [keysPattern] Whether a pattern matchable JSON keys.
  * @returns {boolean}
  */
-function isJSONInternal(item, keysPattern) {
-    if (jsonArrayFilter.test(item)) {
-        for (let itemElement of item) {
+function isJSONObject(item, keysPattern) {
+    if (Array.isArray(item)) {
+        for (const itemElement of item) {
             if (!isJSONValue(itemElement, keysPattern)) {
                 return false;
             }
@@ -51,9 +59,9 @@ function isJSONInternal(item, keysPattern) {
         catch {
             return false;
         }
-        for (let itemKey of Object.keys(item)) {
-            if ((keysPattern instanceof RegExp && !keysPattern.test(itemKey)) ||
-                !isJSONValue(item[itemKey], keysPattern)) {
+        for (const [key, value] of Object.entries(item)) {
+            if ((keysPattern instanceof RegExp && !keysPattern.test(key)) ||
+                !isJSONValue(value, keysPattern)) {
                 return false;
             }
         }
@@ -86,15 +94,17 @@ export class JSONFilter {
         /** @alias testStringify */ this.stringifiedTest = this.testStringify;
         /** @alias testStringify */ this.stringifyTest = this.testStringify;
         /** @alias testStringify */ this.testStringified = this.testStringify;
-        if (options instanceof JSONFilter) {
+        if (options instanceof _a) {
             __classPrivateFieldSet(this, _JSONFilter_status, { ...__classPrivateFieldGet(options, _JSONFilter_status, "f") }, "f");
         }
         else if (typeof options !== "undefined") {
             options.entriesCountMaximum ?? (options.entriesCountMaximum = options.entriesCountMax ?? options.maximumEntries ?? options.maxEntries);
             options.entriesCountMinimum ?? (options.entriesCountMinimum = options.entriesCountMin ?? options.minimumEntries ?? options.minEntries);
             options.strictKeys ?? (options.strictKeys = options.keysStrict ?? false);
-            for (let option of ["entriesCountMaximum", "entriesCountMinimum", "keysPattern", "rootType", "strictKeys", "allowEmpty", "entriesCount", "strict"]) {
+            for (const option of ["entriesCountMaximum", "entriesCountMinimum", "keysPattern", "rootType", "strictKeys", "allowEmpty", "entriesCount", "strict"]) {
+                //@ts-ignore Handle by it's method.
                 if (typeof options[option] !== "undefined") {
+                    //@ts-ignore Handle by it's method.
                     this[option](options[option]);
                 }
             }
@@ -105,7 +115,7 @@ export class JSONFilter {
      * @returns {JSONFilter} Another instance of this JSON filter.
      */
     get clone() {
-        return new JSONFilter(this);
+        return new _a(this);
     }
     /**
      * Get the status of this JSON filter.
@@ -121,7 +131,7 @@ export class JSONFilter {
      */
     allowEmpty(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter argument \`allowEmpty\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`allowEmpty\` must be type of boolean!`);
         }
         __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMinimum = value ? 0 : 1;
         return this;
@@ -133,10 +143,10 @@ export class JSONFilter {
      */
     entriesCount(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter argument \`entriesCount\` must be type of number!`);
+            throw new TypeError(`Filter status \`entriesCount\` must be type of number!`);
         }
         if (!(Number.isSafeInteger(value) && value >= 0)) {
-            throw new RangeError(`Filter argument \`entriesCount\` must be a number which is integer, positive, and safe!`);
+            throw new RangeError(`Filter status \`entriesCount\` must be a number which is integer, positive, and safe!`);
         }
         __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMaximum = value;
         __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMinimum = value;
@@ -149,10 +159,10 @@ export class JSONFilter {
      */
     entriesCountMaximum(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter argument \`entriesCountMaximum\` must be type of number!`);
+            throw new TypeError(`Filter status \`entriesCountMaximum\` must be type of number!`);
         }
         if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMinimum)) {
-            throw new RangeError(`Filter argument \`entriesCountMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMinimum}!`);
+            throw new RangeError(`Filter status \`entriesCountMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMinimum}!`);
         }
         __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMaximum = value;
         return this;
@@ -164,10 +174,10 @@ export class JSONFilter {
      */
     entriesCountMinimum(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter argument \`entriesCountMinimum\` must be type of number!`);
+            throw new TypeError(`Filter status \`entriesCountMinimum\` must be type of number!`);
         }
         if (!(Number.isSafeInteger(value) && value >= 0 && value <= __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMaximum)) {
-            throw new RangeError(`Filter argument \`entriesCountMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMaximum}!`);
+            throw new RangeError(`Filter status \`entriesCountMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMaximum}!`);
         }
         __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMinimum = value;
         return this;
@@ -179,7 +189,7 @@ export class JSONFilter {
      */
     keysPattern(value) {
         if (!(value instanceof RegExp) && typeof value !== "undefined") {
-            throw new TypeError(`Filter argument \`keysPattern\` must be instance of regular expression, or type of undefined!`);
+            throw new TypeError(`Filter status \`keysPattern\` must be instance of regular expression, or type of undefined!`);
         }
         __classPrivateFieldGet(this, _JSONFilter_status, "f").keysPattern = value;
         return this;
@@ -190,7 +200,7 @@ export class JSONFilter {
      * @returns {this}
      */
     rootType(value) {
-        __classPrivateFieldGet(this, _JSONFilter_status, "f").rootType = enumResolver(JSONRootTypeEnum, value, "rootType");
+        __classPrivateFieldGet(this, _JSONFilter_status, "f").rootType = enumResolver(JSONRootTypeEnum, value, "Filter status `rootType`");
         return this;
     }
     /**
@@ -200,7 +210,7 @@ export class JSONFilter {
      */
     strict(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter argument \`strict\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`strict\` must be type of boolean!`);
         }
         if (value) {
             __classPrivateFieldGet(this, _JSONFilter_status, "f").keysPattern = jsonLegalKeysPatternRegExp;
@@ -219,7 +229,7 @@ export class JSONFilter {
      */
     strictKeys(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter argument \`strictKeys\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`strictKeys\` must be type of boolean!`);
         }
         __classPrivateFieldGet(this, _JSONFilter_status, "f").keysPattern = value ? jsonLegalKeysPatternRegExp : undefined;
         return this;
@@ -230,11 +240,16 @@ export class JSONFilter {
      * @returns {boolean} Determine result.
      */
     test(item) {
-        let itemEntriesCount = Object.entries(item).length;
-        if (!isJSONInternal(item, __classPrivateFieldGet(this, _JSONFilter_status, "f").keysPattern) ||
+        const itemType = typeof item;
+        if (!isJSONValue(item, __classPrivateFieldGet(this, _JSONFilter_status, "f").keysPattern) ||
             (__classPrivateFieldGet(this, _JSONFilter_status, "f").rootType === "array" && !Array.isArray(item)) ||
-            (__classPrivateFieldGet(this, _JSONFilter_status, "f").rootType === "object" && Array.isArray(item)) ||
-            __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMaximum < itemEntriesCount ||
+            (__classPrivateFieldGet(this, _JSONFilter_status, "f").rootType === "literal" && itemType === "object" && item !== null) ||
+            (__classPrivateFieldGet(this, _JSONFilter_status, "f").rootType === "object" && (item === null ||
+                Array.isArray(item)))) {
+            return false;
+        }
+        const itemEntriesCount = Object.entries(item).length;
+        if (__classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMaximum < itemEntriesCount ||
             itemEntriesCount < __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMinimum) {
             return false;
         }

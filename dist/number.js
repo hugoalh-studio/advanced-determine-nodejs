@@ -22,7 +22,7 @@ export function isNumberFloat(item) {
  * @returns {boolean} Determine result.
  */
 export function isNumberIntegralNumericType(typeName, item) {
-    let [minimum, maximum] = integralNumericTypeRange(typeName);
+    const [minimum, maximum] = integralNumericTypeRange(typeName);
     return (Number.isInteger(item) && Number(minimum) <= item && item <= Number(maximum));
 }
 /**

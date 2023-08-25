@@ -21,12 +21,12 @@ export interface SetFilterOptions extends Partial<SetFilterStatus> {
      * @default undefined
      */
     size?: number;
-    /** @alias sizeMaximum */ sizeMax?: SetFilterStatus["sizeMaximum"];
-    /** @alias sizeMaximum */ maximumSize?: SetFilterStatus["sizeMaximum"];
-    /** @alias sizeMaximum */ maxSize?: SetFilterStatus["sizeMaximum"];
-    /** @alias sizeMinimum */ sizeMin?: SetFilterStatus["sizeMinimum"];
-    /** @alias sizeMinimum */ minimumSize?: SetFilterStatus["sizeMinimum"];
-    /** @alias sizeMinimum */ minSize?: SetFilterStatus["sizeMinimum"];
+    /** @alias sizeMaximum */ sizeMax?: this["sizeMaximum"];
+    /** @alias sizeMaximum */ maximumSize?: this["sizeMaximum"];
+    /** @alias sizeMaximum */ maxSize?: this["sizeMaximum"];
+    /** @alias sizeMinimum */ sizeMin?: this["sizeMinimum"];
+    /** @alias sizeMinimum */ minimumSize?: this["sizeMinimum"];
+    /** @alias sizeMinimum */ minSize?: this["sizeMinimum"];
 }
 /**
  * Filter for `Set`.

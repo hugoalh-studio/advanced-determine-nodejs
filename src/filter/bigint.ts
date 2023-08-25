@@ -43,6 +43,9 @@ export interface BigIntFilterStatus {
 	 */
 	sign: MathematicsSignEnumValuesType;
 }
+export {
+	type BigIntFilterStatus as BigIntegerFilterStatus
+};
 export interface BigIntFilterOptions extends Partial<Omit<BigIntFilterStatus, "ieee754" | "parity" | "primality" | "sign">> {
 	/**
 	 * IEEE-754 mode of the big integer.
@@ -78,6 +81,9 @@ export interface BigIntFilterOptions extends Partial<Omit<BigIntFilterStatus, "i
 	/** @alias minimumExclusive */exclusiveMinimum?: this["minimumExclusive"];
 	/** @alias minimumExclusive */minExclusive?: this["minimumExclusive"];
 }
+export {
+	type BigIntFilterOptions as BigIntegerFilterOptions
+};
 /**
  * Filter for big integer.
  */
@@ -104,7 +110,7 @@ export class BigIntFilter {
 			options.maximumExclusive ??= options.maxExclusive ?? options.exclusiveMaximum ?? options.exclusiveMax;
 			options.minimum ??= options.min;
 			options.minimumExclusive ??= options.minExclusive ?? options.exclusiveMinimum ?? options.exclusiveMin;
-			for (let option of ["ieee754", "maximum", "maximumExclusive", "minimum", "minimumExclusive", "parity", "primality", "sign", "integralNumericType"]) {
+			for (const option of ["ieee754", "maximum", "maximumExclusive", "minimum", "minimumExclusive", "parity", "primality", "sign", "integralNumericType"]) {
 				//@ts-ignore Handle by it's method.
 				if (typeof options[option] !== "undefined") {
 					//@ts-ignore Handle by it's method.
@@ -329,6 +335,9 @@ export class BigIntFilter {
 		return new this(options).test(item);
 	}
 }
+export {
+	BigIntFilter as BigIntegerFilter
+};
 /**
  * Determine item with the big integer filter.
  * @param {unknown} item Item that need to determine.
@@ -339,8 +348,5 @@ export function filterBigInt(item: unknown, options: BigIntFilterOptions = {}): 
 	return new BigIntFilter(options).test(item);
 }
 export {
-	BigIntFilter as BigIntegerFilter,
-	filterBigInt as filterBigInteger,
-	type BigIntFilterOptions as BigIntegerFilterOptions,
-	type BigIntFilterStatus as BigIntegerFilterStatus
+	filterBigInt as filterBigInteger
 };

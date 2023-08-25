@@ -102,19 +102,19 @@ export interface ObjectFilterOptions extends Partial<Omit<ObjectFilterStatus, "e
      * @default false
      */
     plain?: boolean;
-    /** @alias allowRegExp */ allowRegularExpression?: ObjectFilterStatus["allowRegExp"];
-    /** @alias entriesConfigurable */ configurableEntries?: ObjectFilterOptions["entriesConfigurable"];
-    /** @alias entriesCountMaximum */ entriesCountMax?: ObjectFilterStatus["entriesCountMaximum"];
-    /** @alias entriesCountMaximum */ maximumEntries?: ObjectFilterStatus["entriesCountMaximum"];
-    /** @alias entriesCountMaximum */ maxEntries?: ObjectFilterStatus["entriesCountMaximum"];
-    /** @alias entriesCountMinimum */ entriesCountMin?: ObjectFilterStatus["entriesCountMinimum"];
-    /** @alias entriesCountMinimum */ minimumEntries?: ObjectFilterStatus["entriesCountMinimum"];
-    /** @alias entriesCountMinimum */ minEntries?: ObjectFilterStatus["entriesCountMinimum"];
-    /** @alias entriesEnumerable */ enumerableEntries?: ObjectFilterOptions["entriesEnumerable"];
-    /** @alias entriesGetter */ getterEntries?: ObjectFilterOptions["entriesGetter"];
-    /** @alias entriesSetter */ setterEntries?: ObjectFilterOptions["entriesSetter"];
-    /** @alias entriesWritable */ writableEntries?: ObjectFilterOptions["entriesWritable"];
-    /** @alias keysSymbol */ symbolKeys?: ObjectFilterOptions["keysSymbol"];
+    /** @alias allowRegExp */ allowRegularExpression?: this["allowRegExp"];
+    /** @alias entriesConfigurable */ configurableEntries?: this["entriesConfigurable"];
+    /** @alias entriesCountMaximum */ entriesCountMax?: this["entriesCountMaximum"];
+    /** @alias entriesCountMaximum */ maximumEntries?: this["entriesCountMaximum"];
+    /** @alias entriesCountMaximum */ maxEntries?: this["entriesCountMaximum"];
+    /** @alias entriesCountMinimum */ entriesCountMin?: this["entriesCountMinimum"];
+    /** @alias entriesCountMinimum */ minimumEntries?: this["entriesCountMinimum"];
+    /** @alias entriesCountMinimum */ minEntries?: this["entriesCountMinimum"];
+    /** @alias entriesEnumerable */ enumerableEntries?: this["entriesEnumerable"];
+    /** @alias entriesGetter */ getterEntries?: this["entriesGetter"];
+    /** @alias entriesSetter */ setterEntries?: this["entriesSetter"];
+    /** @alias entriesWritable */ writableEntries?: this["entriesWritable"];
+    /** @alias keysSymbol */ symbolKeys?: this["keysSymbol"];
 }
 /**
  * Filter for object.

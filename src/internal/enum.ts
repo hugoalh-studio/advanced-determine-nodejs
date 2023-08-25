@@ -11,13 +11,13 @@ export function enumResolver<I, O>(enumObject: Readonly<Record<string, string>>,
 	if (typeof input !== "string") {
 		throw new TypeError(`${parameterDescription.slice(0, 1).toUpperCase()}${parameterDescription.slice(1)} must be type of string!`);
 	}
-	for (let [enumObjectKey, enumObjectValue] of Object.entries(enumObject)) {
+	for (const [enumObjectKey, enumObjectValue] of Object.entries(enumObject)) {
 		if (
 			input === enumObjectKey ||
 			input === `${enumObjectKey.slice(0, 1).toLowerCase()}${enumObjectKey.slice(1)}` ||
 			input === `${enumObjectKey.slice(0, 1).toUpperCase()}${enumObjectKey.slice(1)}`
 		) {
-			return (enumObjectValue as O);
+			return enumObjectValue as O;
 		}
 	}
 	throw new RangeError(`\`${input}\` is not a valid value for ${parameterDescription.slice(0, 1).toLowerCase()}${parameterDescription.slice(1)}! Must be either of these values: "${Array.from(new Set(Object.keys(enumObject).flatMap((value: string): string[] => {

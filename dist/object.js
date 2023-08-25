@@ -10,7 +10,7 @@ export function isObjectPlain(item) {
         Object.prototype.toString.call(item) !== "[object Object]") {
         return false;
     }
-    let itemPrototype = Object.getPrototypeOf(item);
+    const itemPrototype = Object.getPrototypeOf(item);
     if (itemPrototype !== null && itemPrototype !== Object.prototype) {
         return false;
     }
@@ -21,7 +21,7 @@ export function isObjectPlain(item) {
     if (itemPrototype !== itemShadow) {
         return false;
     }
-    let itemObjectMeta = new ObjectMeta(item);
+    const itemObjectMeta = new ObjectMeta(item);
     if (Object.entries(item).length !== itemObjectMeta.entriesEnumerable.length ||
         itemObjectMeta.entriesConfigurable.length + itemObjectMeta.entriesNonConfigurable.length !== itemObjectMeta.entriesEnumerable.length + itemObjectMeta.entriesNonEnumerable.length ||
         itemObjectMeta.entriesEnumerable.length + itemObjectMeta.entriesNonEnumerable.length !== itemObjectMeta.entriesGetter.length + itemObjectMeta.entriesNonAccessor.length + itemObjectMeta.entriesSetter.length ||

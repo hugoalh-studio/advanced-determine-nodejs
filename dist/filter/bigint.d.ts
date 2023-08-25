@@ -41,6 +41,7 @@ export interface BigIntFilterStatus {
      */
     sign: MathematicsSignEnumValuesType;
 }
+export { type BigIntFilterStatus as BigIntegerFilterStatus };
 export interface BigIntFilterOptions extends Partial<Omit<BigIntFilterStatus, "ieee754" | "parity" | "primality" | "sign">> {
     /**
      * IEEE-754 mode of the big integer.
@@ -67,15 +68,16 @@ export interface BigIntFilterOptions extends Partial<Omit<BigIntFilterStatus, "i
      * @default "any"
      */
     sign?: MathematicsSignEnumKeysType;
-    /** @alias maximum */ max?: BigIntFilterStatus["maximum"];
-    /** @alias maximumExclusive */ exclusiveMax?: BigIntFilterStatus["maximumExclusive"];
-    /** @alias maximumExclusive */ exclusiveMaximum?: BigIntFilterStatus["maximumExclusive"];
-    /** @alias maximumExclusive */ maxExclusive?: BigIntFilterStatus["maximumExclusive"];
-    /** @alias minimum */ min?: BigIntFilterStatus["minimum"];
-    /** @alias minimumExclusive */ exclusiveMin?: BigIntFilterStatus["minimumExclusive"];
-    /** @alias minimumExclusive */ exclusiveMinimum?: BigIntFilterStatus["minimumExclusive"];
-    /** @alias minimumExclusive */ minExclusive?: BigIntFilterStatus["minimumExclusive"];
+    /** @alias maximum */ max?: this["maximum"];
+    /** @alias maximumExclusive */ exclusiveMax?: this["maximumExclusive"];
+    /** @alias maximumExclusive */ exclusiveMaximum?: this["maximumExclusive"];
+    /** @alias maximumExclusive */ maxExclusive?: this["maximumExclusive"];
+    /** @alias minimum */ min?: this["minimum"];
+    /** @alias minimumExclusive */ exclusiveMin?: this["minimumExclusive"];
+    /** @alias minimumExclusive */ exclusiveMinimum?: this["minimumExclusive"];
+    /** @alias minimumExclusive */ minExclusive?: this["minimumExclusive"];
 }
+export { type BigIntFilterOptions as BigIntegerFilterOptions };
 /**
  * Filter for big integer.
  */
@@ -212,6 +214,7 @@ export declare class BigIntFilter {
      */
     static test(item: unknown, options?: BigIntFilterOptions): boolean;
 }
+export { BigIntFilter as BigIntegerFilter };
 /**
  * Determine item with the big integer filter.
  * @param {unknown} item Item that need to determine.
@@ -219,5 +222,5 @@ export declare class BigIntFilter {
  * @returns {boolean} Determine result.
  */
 export declare function filterBigInt(item: unknown, options?: BigIntFilterOptions): boolean;
-export { BigIntFilter as BigIntegerFilter, filterBigInt as filterBigInteger, type BigIntFilterOptions as BigIntegerFilterOptions, type BigIntFilterStatus as BigIntegerFilterStatus };
+export { filterBigInt as filterBigInteger };
 //# sourceMappingURL=bigint.d.ts.map

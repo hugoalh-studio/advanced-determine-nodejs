@@ -40,8 +40,10 @@ export class RegExpFilter {
             options.exactly ?? (options.exactly = options.exact);
             options.ignoreCase ?? (options.ignoreCase = options.caseInsensitive);
             options.multipleLine ?? (options.multipleLine = options.multiLine ?? options.multiline);
-            for (let option of ["dotAll", "exactly", "global", "ignoreCase", "multipleLine", "sticky", "unicode"]) {
+            for (const option of ["dotAll", "exactly", "global", "ignoreCase", "multipleLine", "sticky", "unicode"]) {
+                //@ts-ignore Handle by it's method.
                 if (typeof options[option] !== "undefined") {
+                    //@ts-ignore Handle by it's method.
                     this[option](options[option]);
                 }
             }
@@ -67,7 +69,7 @@ export class RegExpFilter {
      * @returns {this}
      */
     dotAll(value) {
-        __classPrivateFieldGet(this, _RegExpFilter_status, "f").dotAll = enumResolver(ThreePhaseConditionEnum, value, "dotAll");
+        __classPrivateFieldGet(this, _RegExpFilter_status, "f").dotAll = enumResolver(ThreePhaseConditionEnum, value, "Filter status `dotAll`");
         return this;
     }
     /**
@@ -76,7 +78,7 @@ export class RegExpFilter {
      * @returns {this}
      */
     exactly(value) {
-        __classPrivateFieldGet(this, _RegExpFilter_status, "f").exactly = enumResolver(ThreePhaseConditionEnum, value, "exactly");
+        __classPrivateFieldGet(this, _RegExpFilter_status, "f").exactly = enumResolver(ThreePhaseConditionEnum, value, "Filter status `exactly`");
         return this;
     }
     /**
@@ -85,7 +87,7 @@ export class RegExpFilter {
      * @returns {this}
      */
     global(value) {
-        __classPrivateFieldGet(this, _RegExpFilter_status, "f").global = enumResolver(ThreePhaseConditionEnum, value, "global");
+        __classPrivateFieldGet(this, _RegExpFilter_status, "f").global = enumResolver(ThreePhaseConditionEnum, value, "Filter status `global`");
         return this;
     }
     /**
@@ -94,7 +96,7 @@ export class RegExpFilter {
      * @returns {this}
      */
     ignoreCase(value) {
-        __classPrivateFieldGet(this, _RegExpFilter_status, "f").ignoreCase = enumResolver(ThreePhaseConditionEnum, value, "ignoreCase");
+        __classPrivateFieldGet(this, _RegExpFilter_status, "f").ignoreCase = enumResolver(ThreePhaseConditionEnum, value, "Filter status `ignoreCase`");
         return this;
     }
     /**
@@ -103,7 +105,7 @@ export class RegExpFilter {
      * @returns {this}
      */
     multipleLine(value) {
-        __classPrivateFieldGet(this, _RegExpFilter_status, "f").multipleLine = enumResolver(ThreePhaseConditionEnum, value, "multipleLine");
+        __classPrivateFieldGet(this, _RegExpFilter_status, "f").multipleLine = enumResolver(ThreePhaseConditionEnum, value, "Filter status `multipleLine`");
         return this;
     }
     /**
@@ -112,7 +114,7 @@ export class RegExpFilter {
      * @returns {this}
      */
     sticky(value) {
-        __classPrivateFieldGet(this, _RegExpFilter_status, "f").sticky = enumResolver(ThreePhaseConditionEnum, value, "sticky");
+        __classPrivateFieldGet(this, _RegExpFilter_status, "f").sticky = enumResolver(ThreePhaseConditionEnum, value, "Filter status `sticky`");
         return this;
     }
     /**
@@ -121,7 +123,7 @@ export class RegExpFilter {
      * @returns {this}
      */
     unicode(value) {
-        __classPrivateFieldGet(this, _RegExpFilter_status, "f").unicode = enumResolver(ThreePhaseConditionEnum, value, "unicode");
+        __classPrivateFieldGet(this, _RegExpFilter_status, "f").unicode = enumResolver(ThreePhaseConditionEnum, value, "Filter status `unicode`");
         return this;
     }
     /**
@@ -161,6 +163,7 @@ export class RegExpFilter {
     }
 }
 _RegExpFilter_status = new WeakMap();
+export { RegExpFilter as RegExFilter, RegExpFilter as RegularExpressionFilter };
 /**
  * Determine item with the `RegExp` filter.
  * @param {unknown} item Item that need to determine.
@@ -170,4 +173,4 @@ _RegExpFilter_status = new WeakMap();
 export function filterRegExp(item, options = {}) {
     return new RegExpFilter(options).test(item);
 }
-export { filterRegExp as filterRegEx, filterRegExp as filterRegularExpression, RegExpFilter as RegExFilter, RegExpFilter as RegularExpressionFilter };
+export { filterRegExp as filterRegEx, filterRegExp as filterRegularExpression };

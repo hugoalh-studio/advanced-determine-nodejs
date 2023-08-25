@@ -2,14 +2,12 @@ export type EnumCase<T extends string> = T | Capitalize<T> | Uncapitalize<T>;
 /**
  * @template {unknown} I
  * @template {unknown} O
- * @param {Readonly<{ [x: string]: string; }>} enumObject
+ * @param {Readonly<Record<string, string>>} enumObject
  * @param {I} input
- * @param {string} paramName
+ * @param {string} parameterDescription
  * @returns {O}
  */
-export declare function enumResolver<I, O>(enumObject: Readonly<{
-    [x: string]: string;
-}>, input: I, paramName: string): O;
+export declare function enumResolver<I, O>(enumObject: Readonly<Record<string, string>>, input: I, parameterDescription: string): O;
 export declare const IEEE754Enum: Readonly<{
     Any: "any";
     Safe: "safe";
@@ -50,6 +48,7 @@ export type IntegralNumericTypeEnumValuesType = (typeof IntegralNumericTypeEnum)
 export declare const JSONRootTypeEnum: Readonly<{
     Any: "any";
     Array: "array";
+    Literal: "literal";
     Object: "object";
 }>;
 export type JSONRootTypeEnumKeysType = EnumCase<keyof typeof JSONRootTypeEnum>;

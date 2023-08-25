@@ -175,8 +175,6 @@ rules:
     - "warn"
   no-negated-condition:
     - "warn"
-  no-nested-ternary:
-    - "warn"
   no-new:
     - "warn"
   no-new-func:
@@ -202,9 +200,6 @@ rules:
     - "warn"
   no-shadow:
     - "warn"
-    - builtinGlobals: true
-      hoist: "all"
-      ignoreOnInitialization: false
   no-unneeded-ternary:
     - "warn"
     - defaultAssignment: true
@@ -263,23 +258,57 @@ rules:
     - "warn"
     - "never"
     - exceptRange: true
-
-
-
-# TODO: Layout & Formatting
-  accessor-pairs: "off"
-  array-bracket-newline: "off"
+  array-bracket-newline:
+    - "warn"
+    - multiline: true
+      minItems: null
+  array-bracket-spacing:
+    - "warn"
+    - "never"
+    - singleValue: false
+      objectsInArrays: false
+      arraysInArrays: false
   array-element-newline:
     - "warn"
-    - "consistent"
+    - multiline: true
+      minItems: null
+  arrow-parens:
+    - "warn"
+    - "always"
+  arrow-spacing:
+    - "warn"
+    - before: true
+      after: true
+  block-spacing:
+    - "warn"
+    - "always"
   brace-style:
     - "warn"
     - "1tbs"
     - allowSingleLine: false
-  capitalized-comments: "off"
-  complexity: "off"
-  dot-location: "off"
-  dot-notation: "off"
+  comma-dangle:
+    - "warn"
+    - "never"
+  comma-spacing:
+    - "warn"
+    - before: false
+      after: true
+  comma-style:
+    - "warn"
+    - "last"
+  computed-property-spacing:
+    - "warn"
+    - "never"
+    - enforceForClassMembers: true
+  dot-location:
+    - "warn"
+    - "object"
+  eol-last:
+    - "warn"
+    - "always"
+  func-call-spacing:
+    - "warn"
+    - "never"
   function-call-argument-newline:
     - "warn"
     - "consistent"
@@ -290,102 +319,153 @@ rules:
     - "warn"
     - before: false
       after: true
-  id-length:
+  implicit-arrow-linebreak:
     - "warn"
-    - max: 80
-      min: 1
-      properties: "always"
+    - "beside"
   indent:
     - "warn"
     - "tab"
-    - flatTernaryExpressions: false
-      ImportDeclaration: 1
-      MemberExpression: 1
-      ObjectExpression: 1
-      outerIIFEBody: 1
-      SwitchCase: 1
+    - SwitchCase: 1
       VariableDeclarator: 1
-  init-declarations: "off"
-  line-comment-position: "off"
-  linebreak-style: "off"
-  lines-around-comment: "off"
-  lines-between-class-members: "off"
-  max-classes-per-file: "off"
-  max-depth: "off"
-  max-len: "off"
-  max-lines-per-function: "off"
-  max-lines: "off"
-  max-params:
+      outerIIFEBody: 1
+      MemberExpression: 1
+      FunctionDeclaration:
+        parameters: 1
+        body: 1
+      FunctionExpression:
+        parameters: 1
+        body: 1
+      StaticBlock:
+        body: 1
+      CallExpression:
+        arguments: 1
+      ArrayExpression: 1
+      ObjectExpression: 1
+      ImportDeclaration: 1
+      flatTernaryExpressions: true
+      offsetTernaryExpressions: false
+      ignoreComments: false
+  jsx-quotes:
     - "warn"
-    - max: 5
-  max-statements: "off"
-  multiline-comment-style: "off"
+    - "prefer-double"
+  key-spacing:
+    - "warn"
+    - beforeColon: false
+      afterColon: true
+      mode: "strict"
+  keyword-spacing:
+    - "warn"
+    - before: true
+      after: true
   multiline-ternary:
     - "warn"
     - "always-multiline"
-  no-alert: "off"
-  no-bitwise: "off"
-  no-case-declarations: "off"
-  no-console: "off"
-  no-continue: "off"
-  no-empty:
+  new-parens:
     - "warn"
-    - allowEmptyCatch: true
+    - "always"
   no-extra-parens:
     - "warn"
     - "all"
     - conditionalAssign: false
-      ignoreJSX: "multi-line"
-      nestedBinaryExpressions: false
       returnAssign: false
-  no-inline-comments: "off"
-  no-labels: "off"
-  no-magic-numbers: "off"
-  no-plusplus:
+      nestedBinaryExpressions: false
+      ternaryOperandBinaryExpressions: false
+      ignoreJSX: "multi-line"
+      enforceForArrowConditionals: false
+      enforceForSequenceExpressions: false
+      enforceForNewInMemberExpressions: true
+      enforceForFunctionPrototypeMethods: true
+  no-multi-spaces:
     - "warn"
-    - allowForLoopAfterthoughts: true
+  no-multiple-empty-lines:
+    - "warn"
+    - max: 1
   no-tabs:
     - "warn"
     - allowIndentationTabs: true
-  no-ternary: "off"
-  no-undefined: "off"
-  no-var: "off"
+  no-trailing-spaces:
+    - "warn"
+    - skipBlankLines: false
+      ignoreComments: false
+  no-whitespace-before-property:
+    - "warn"
+  nonblock-statement-body-position:
+    - "warn"
+    - "beside"
   object-curly-newline:
     - "warn"
-    - consistent: true
-      multiline: true
+    - multiline: true
+      consistent: true
   object-curly-spacing:
     - "warn"
     - "always"
-  object-shorthand:
+  operator-linebreak:
     - "warn"
-    - "consistent-as-needed"
-  one-var: "off"
   padded-blocks:
     - "warn"
     - "never"
-  prefer-arrow-callback:
+    - allowSingleLineBlocks: false
+  padding-line-between-statements:
     - "warn"
-    - allowNamedFunctions: true
-  prefer-destructuring: "off"
-  prefer-exponentiation-operator: "off"
-  quote-props:
-    - "warn"
-    - "consistent"
   quotes:
     - "warn"
     - "double"
-    - allowTemplateLiterals: true
+    - avoidEscape: false
+      allowTemplateLiterals: true
+  rest-spread-spacing:
+    - "warn"
+    - "never"
   semi:
     - "warn"
     - "always"
     - omitLastInOneLineBlock: false
-  sort-imports: "off"
-  sort-keys: "off"
-  sort-vars: "off"
+      omitLastInOneLineClassBody: false
+  semi-spacing:
+    - "warn"
+    - before: false
+      after: true
+  semi-style:
+    - "warn"
+    - "last"
+  space-before-blocks:
+    - "warn"
+    - "always"
   space-before-function-paren:
     - "warn"
     - anonymous: "always"
       named: "never"
       asyncArrow: "always"
-  spaced-comment: "off"
+  space-in-parens:
+    - "warn"
+    - "never"
+  space-infix-ops:
+    - "warn"
+  space-unary-ops:
+    - "warn"
+  switch-colon-spacing:
+    - "warn"
+    - before: false
+      after: true
+  template-curly-spacing:
+    - "warn"
+    - "never"
+  template-tag-spacing:
+    - "warn"
+    - "never"
+  wrap-iife:
+    - "warn"
+    - "any"
+  yield-star-spacing:
+    - "warn"
+    - before: false
+      after: true
+  "@typescript-eslint/adjacent-overload-signatures":
+    - "warn"
+  "@typescript-eslint/ban-ts-comment":
+    - "warn"
+    - ts-expect-error: "allow-with-description"
+      ts-ignore: "allow-with-description"
+      ts-nocheck: "allow-with-description"
+      ts-check: "allow-with-description"
+  "@typescript-eslint/ban-tslint-comment":
+    - "warn"

@@ -48,8 +48,10 @@ export class BigIntFilter {
             options.maximumExclusive ?? (options.maximumExclusive = options.maxExclusive ?? options.exclusiveMaximum ?? options.exclusiveMax);
             options.minimum ?? (options.minimum = options.min);
             options.minimumExclusive ?? (options.minimumExclusive = options.minExclusive ?? options.exclusiveMinimum ?? options.exclusiveMin);
-            for (let option of ["ieee754", "maximum", "maximumExclusive", "minimum", "minimumExclusive", "parity", "primality", "sign", "integralNumericType"]) {
+            for (const option of ["ieee754", "maximum", "maximumExclusive", "minimum", "minimumExclusive", "parity", "primality", "sign", "integralNumericType"]) {
+                //@ts-ignore Handle by it's method.
                 if (typeof options[option] !== "undefined") {
+                    //@ts-ignore Handle by it's method.
                     this[option](options[option]);
                 }
             }
@@ -75,7 +77,7 @@ export class BigIntFilter {
      * @returns {this}
      */
     ieee754(value) {
-        __classPrivateFieldGet(this, _BigIntFilter_status, "f").ieee754 = enumResolver(IEEE754Enum, value, "ieee754");
+        __classPrivateFieldGet(this, _BigIntFilter_status, "f").ieee754 = enumResolver(IEEE754Enum, value, "Filter status `ieee754`");
         return this;
     }
     /**
@@ -97,11 +99,11 @@ export class BigIntFilter {
     maximum(value) {
         if (typeof value === "bigint") {
             if (typeof __classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum === "bigint" && !(__classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum <= value)) {
-                throw new RangeError(`Filter argument \`maximum\` must be a big integer which is >= ${__classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum}!`);
+                throw new RangeError(`Filter status \`maximum\` must be a big integer which is >= ${__classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum}!`);
             }
         }
         else if (typeof value !== "undefined") {
-            throw new TypeError(`Filter argument \`maximum\` must be type of big integer or undefined!`);
+            throw new TypeError(`Filter status \`maximum\` must be type of big integer or undefined!`);
         }
         __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum = value;
         return this;
@@ -113,7 +115,7 @@ export class BigIntFilter {
      */
     maximumExclusive(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter argument \`maximumExclusive\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`maximumExclusive\` must be type of boolean!`);
         }
         __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximumExclusive = value;
         return this;
@@ -126,11 +128,11 @@ export class BigIntFilter {
     minimum(value) {
         if (typeof value === "bigint") {
             if (typeof __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum === "bigint" && !(value <= __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum)) {
-                throw new RangeError(`Filter argument \`minimum\` must be a big integer which is <= ${__classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum}!`);
+                throw new RangeError(`Filter status \`minimum\` must be a big integer which is <= ${__classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum}!`);
             }
         }
         else if (typeof value !== "undefined") {
-            throw new TypeError(`Filter argument \`minimum\` must be type of big integer or undefined!`);
+            throw new TypeError(`Filter status \`minimum\` must be type of big integer or undefined!`);
         }
         __classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum = value;
         return this;
@@ -142,7 +144,7 @@ export class BigIntFilter {
      */
     minimumExclusive(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter argument \`minimumExclusive\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`minimumExclusive\` must be type of boolean!`);
         }
         __classPrivateFieldGet(this, _BigIntFilter_status, "f").minimumExclusive = value;
         return this;
@@ -153,7 +155,7 @@ export class BigIntFilter {
      * @returns {this}
      */
     parity(value) {
-        __classPrivateFieldGet(this, _BigIntFilter_status, "f").parity = enumResolver(MathematicsParityEnum, value, "parity");
+        __classPrivateFieldGet(this, _BigIntFilter_status, "f").parity = enumResolver(MathematicsParityEnum, value, "Filter status `parity`");
         return this;
     }
     /**
@@ -162,7 +164,7 @@ export class BigIntFilter {
      * @returns {this}
      */
     primality(value) {
-        __classPrivateFieldGet(this, _BigIntFilter_status, "f").primality = enumResolver(MathematicsPrimalityEnum, value, "primality");
+        __classPrivateFieldGet(this, _BigIntFilter_status, "f").primality = enumResolver(MathematicsPrimalityEnum, value, "Filter status `primality`");
         return this;
     }
     /**
@@ -171,7 +173,7 @@ export class BigIntFilter {
      * @returns {this}
      */
     sign(value) {
-        __classPrivateFieldGet(this, _BigIntFilter_status, "f").sign = enumResolver(MathematicsSignEnum, value, "sign");
+        __classPrivateFieldGet(this, _BigIntFilter_status, "f").sign = enumResolver(MathematicsSignEnum, value, "Filter status `sign`");
         return this;
     }
     /**
@@ -264,6 +266,7 @@ export class BigIntFilter {
     }
 }
 _BigIntFilter_status = new WeakMap();
+export { BigIntFilter as BigIntegerFilter };
 /**
  * Determine item with the big integer filter.
  * @param {unknown} item Item that need to determine.
@@ -273,4 +276,4 @@ _BigIntFilter_status = new WeakMap();
 export function filterBigInt(item, options = {}) {
     return new BigIntFilter(options).test(item);
 }
-export { BigIntFilter as BigIntegerFilter, filterBigInt as filterBigInteger };
+export { filterBigInt as filterBigInteger };

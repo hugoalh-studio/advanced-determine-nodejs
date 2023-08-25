@@ -6,16 +6,16 @@ const arrayIndexRegExp = /^(?:0|[1-9]\d*)$/u;
  * @returns {boolean} Determine result.
  */
 export function isArrayStrict(item) {
-    let itemPrototype = Object.getPrototypeOf(item);
+    const itemPrototype = Object.getPrototypeOf(item);
     if ((itemPrototype !== null && itemPrototype !== Array.prototype) ||
         Object.getOwnPropertySymbols(item).length > 0) {
         return false;
     }
-    let itemDescriptors = Object.getOwnPropertyDescriptors(item);
-    for (let itemPropertyKey in itemDescriptors) {
+    const itemDescriptors = Object.getOwnPropertyDescriptors(item);
+    for (const itemPropertyKey in itemDescriptors) {
         if (Object.prototype.hasOwnProperty.call(itemDescriptors, itemPropertyKey)) {
             if (arrayIndexRegExp.test(itemPropertyKey) && Number(itemPropertyKey) < 4294967296) {
-                let itemPropertyDescriptor = itemDescriptors[itemPropertyKey];
+                const itemPropertyDescriptor = itemDescriptors[itemPropertyKey];
                 if (!itemPropertyDescriptor.configurable ||
                     !itemPropertyDescriptor.enumerable ||
                     typeof itemPropertyDescriptor.get !== "undefined" ||
@@ -25,7 +25,7 @@ export function isArrayStrict(item) {
                 }
             }
             else if (itemPropertyKey === "length") {
-                let itemPropertyDescriptor = itemDescriptors[itemPropertyKey];
+                const itemPropertyDescriptor = itemDescriptors[itemPropertyKey];
                 if (itemPropertyDescriptor.configurable ||
                     itemPropertyDescriptor.enumerable ||
                     typeof itemPropertyDescriptor.get !== "undefined" ||

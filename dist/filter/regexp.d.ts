@@ -36,6 +36,7 @@ export interface RegExpFilterStatus {
      */
     unicode: ThreePhaseConditionEnumValuesType;
 }
+export { type RegExpFilterStatus as RegExFilterStatus, type RegExpFilterStatus as RegularExpressionFilterStatus };
 export interface RegExpFilterOptions extends Partial<Omit<RegExpFilterStatus, "dotAll" | "exactly" | "global" | "ignoreCase" | "multipleLine" | "sticky" | "unicode">> {
     /**
      * Whether a dot-all `RegExp`.
@@ -72,11 +73,12 @@ export interface RegExpFilterOptions extends Partial<Omit<RegExpFilterStatus, "d
      * @default "neutral"
      */
     unicode?: ThreePhaseConditionEnumKeysType;
-    /** @alias exactly */ exact?: RegExpFilterOptions["exactly"];
-    /** @alias ignoreCase */ caseInsensitive?: RegExpFilterOptions["ignoreCase"];
-    /** @alias multipleLine */ multiline?: RegExpFilterOptions["multipleLine"];
-    /** @alias multipleLine */ multiLine?: RegExpFilterOptions["multipleLine"];
+    /** @alias exactly */ exact?: this["exactly"];
+    /** @alias ignoreCase */ caseInsensitive?: this["ignoreCase"];
+    /** @alias multipleLine */ multiline?: this["multipleLine"];
+    /** @alias multipleLine */ multiLine?: this["multipleLine"];
 }
+export { type RegExpFilterOptions as RegExFilterOptions, type RegExpFilterOptions as RegularExpressionFilterOptions };
 /**
  * Filter for `RegExp`.
  */
@@ -157,6 +159,7 @@ export declare class RegExpFilter {
      */
     static test(item: unknown, options?: RegExpFilterOptions): boolean;
 }
+export { RegExpFilter as RegExFilter, RegExpFilter as RegularExpressionFilter };
 /**
  * Determine item with the `RegExp` filter.
  * @param {unknown} item Item that need to determine.
@@ -164,5 +167,5 @@ export declare class RegExpFilter {
  * @returns {boolean} Determine result.
  */
 export declare function filterRegExp(item: unknown, options?: RegExpFilterOptions): boolean;
-export { filterRegExp as filterRegEx, filterRegExp as filterRegularExpression, RegExpFilter as RegExFilter, RegExpFilter as RegularExpressionFilter, type RegExpFilterOptions as RegExFilterOptions, type RegExpFilterOptions as RegularExpressionFilterOptions, type RegExpFilterStatus as RegExFilterStatus, type RegExpFilterStatus as RegularExpressionFilterStatus };
+export { filterRegExp as filterRegEx, filterRegExp as filterRegularExpression };
 //# sourceMappingURL=regexp.d.ts.map

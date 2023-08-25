@@ -62,21 +62,21 @@ export interface StringFilterOptions extends Partial<Omit<StringFilterStatus, "a
      * @default "any"
      */
     line?: StringLineEnumKeysType;
-    /** @alias length */ characters?: StringFilterOptions["length"];
-    /** @alias lengthMaximum */ charactersMax?: StringFilterStatus["lengthMaximum"];
-    /** @alias lengthMaximum */ charactersMaximum?: StringFilterStatus["lengthMaximum"];
-    /** @alias lengthMaximum */ lengthMax?: StringFilterStatus["lengthMaximum"];
-    /** @alias lengthMaximum */ maxCharacters?: StringFilterStatus["lengthMaximum"];
-    /** @alias lengthMaximum */ maximumCharacters?: StringFilterStatus["lengthMaximum"];
-    /** @alias lengthMaximum */ maximumLength?: StringFilterStatus["lengthMaximum"];
-    /** @alias lengthMaximum */ maxLength?: StringFilterStatus["lengthMaximum"];
-    /** @alias lengthMinimum */ charactersMin?: StringFilterStatus["lengthMinimum"];
-    /** @alias lengthMinimum */ charactersMinimum?: StringFilterStatus["lengthMinimum"];
-    /** @alias lengthMinimum */ lengthMin?: StringFilterStatus["lengthMinimum"];
-    /** @alias lengthMinimum */ minCharacters?: StringFilterStatus["lengthMinimum"];
-    /** @alias lengthMinimum */ minimumCharacters?: StringFilterStatus["lengthMinimum"];
-    /** @alias lengthMinimum */ minimumLength?: StringFilterStatus["lengthMinimum"];
-    /** @alias lengthMinimum */ minLength?: StringFilterStatus["lengthMinimum"];
+    /** @alias length */ characters?: this["length"];
+    /** @alias lengthMaximum */ charactersMax?: this["lengthMaximum"];
+    /** @alias lengthMaximum */ charactersMaximum?: this["lengthMaximum"];
+    /** @alias lengthMaximum */ lengthMax?: this["lengthMaximum"];
+    /** @alias lengthMaximum */ maxCharacters?: this["lengthMaximum"];
+    /** @alias lengthMaximum */ maximumCharacters?: this["lengthMaximum"];
+    /** @alias lengthMaximum */ maximumLength?: this["lengthMaximum"];
+    /** @alias lengthMaximum */ maxLength?: this["lengthMaximum"];
+    /** @alias lengthMinimum */ charactersMin?: this["lengthMinimum"];
+    /** @alias lengthMinimum */ charactersMinimum?: this["lengthMinimum"];
+    /** @alias lengthMinimum */ lengthMin?: this["lengthMinimum"];
+    /** @alias lengthMinimum */ minCharacters?: this["lengthMinimum"];
+    /** @alias lengthMinimum */ minimumCharacters?: this["lengthMinimum"];
+    /** @alias lengthMinimum */ minimumLength?: this["lengthMinimum"];
+    /** @alias lengthMinimum */ minLength?: this["lengthMinimum"];
 }
 /**
  * Filter for string.

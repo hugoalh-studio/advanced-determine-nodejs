@@ -47,13 +47,13 @@ export interface JSONFilterOptions extends Partial<Omit<JSONFilterStatus, "rootT
      * @default false
      */
     strictKeys?: boolean;
-    /** @alias entriesCountMaximum */ entriesCountMax?: JSONFilterStatus["entriesCountMaximum"];
-    /** @alias entriesCountMaximum */ maxEntries?: JSONFilterStatus["entriesCountMaximum"];
-    /** @alias entriesCountMaximum */ maximumEntries?: JSONFilterStatus["entriesCountMaximum"];
-    /** @alias entriesCountMinimum */ entriesCountMin?: JSONFilterStatus["entriesCountMinimum"];
-    /** @alias entriesCountMinimum */ minEntries?: JSONFilterStatus["entriesCountMinimum"];
-    /** @alias entriesCountMinimum */ minimumEntries?: JSONFilterStatus["entriesCountMinimum"];
-    /** @alias strictKeys */ keysStrict?: JSONFilterOptions["strictKeys"];
+    /** @alias entriesCountMaximum */ entriesCountMax?: this["entriesCountMaximum"];
+    /** @alias entriesCountMaximum */ maxEntries?: this["entriesCountMaximum"];
+    /** @alias entriesCountMaximum */ maximumEntries?: this["entriesCountMaximum"];
+    /** @alias entriesCountMinimum */ entriesCountMin?: this["entriesCountMinimum"];
+    /** @alias entriesCountMinimum */ minEntries?: this["entriesCountMinimum"];
+    /** @alias entriesCountMinimum */ minimumEntries?: this["entriesCountMinimum"];
+    /** @alias strictKeys */ keysStrict?: this["strictKeys"];
 }
 /**
  * Filter for JSON.

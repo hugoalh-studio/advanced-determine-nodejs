@@ -31,21 +31,21 @@ export interface ArrayFilterOptions extends Partial<ArrayFilterStatus> {
      * @default undefined
      */
     length?: number;
-    /** @alias length */ elements?: ArrayFilterOptions["length"];
-    /** @alias lengthMaximum */ elementsMax?: ArrayFilterStatus["lengthMaximum"];
-    /** @alias lengthMaximum */ elementsMaximum?: ArrayFilterStatus["lengthMaximum"];
-    /** @alias lengthMaximum */ lengthMax?: ArrayFilterStatus["lengthMaximum"];
-    /** @alias lengthMaximum */ maxElements?: ArrayFilterStatus["lengthMaximum"];
-    /** @alias lengthMaximum */ maximumElements?: ArrayFilterStatus["lengthMaximum"];
-    /** @alias lengthMaximum */ maximumLength?: ArrayFilterStatus["lengthMaximum"];
-    /** @alias lengthMaximum */ maxLength?: ArrayFilterStatus["lengthMaximum"];
-    /** @alias lengthMinimum */ elementsMin?: ArrayFilterStatus["lengthMinimum"];
-    /** @alias lengthMinimum */ elementsMinimum?: ArrayFilterStatus["lengthMinimum"];
-    /** @alias lengthMinimum */ lengthMin?: ArrayFilterStatus["lengthMinimum"];
-    /** @alias lengthMinimum */ minElements?: ArrayFilterStatus["lengthMinimum"];
-    /** @alias lengthMinimum */ minimumElements?: ArrayFilterStatus["lengthMinimum"];
-    /** @alias lengthMinimum */ minimumLength?: ArrayFilterStatus["lengthMinimum"];
-    /** @alias lengthMinimum */ minLength?: ArrayFilterStatus["lengthMinimum"];
+    /** @alias length */ elements?: this["length"];
+    /** @alias lengthMaximum */ elementsMax?: this["lengthMaximum"];
+    /** @alias lengthMaximum */ elementsMaximum?: this["lengthMaximum"];
+    /** @alias lengthMaximum */ lengthMax?: this["lengthMaximum"];
+    /** @alias lengthMaximum */ maxElements?: this["lengthMaximum"];
+    /** @alias lengthMaximum */ maximumElements?: this["lengthMaximum"];
+    /** @alias lengthMaximum */ maximumLength?: this["lengthMaximum"];
+    /** @alias lengthMaximum */ maxLength?: this["lengthMaximum"];
+    /** @alias lengthMinimum */ elementsMin?: this["lengthMinimum"];
+    /** @alias lengthMinimum */ elementsMinimum?: this["lengthMinimum"];
+    /** @alias lengthMinimum */ lengthMin?: this["lengthMinimum"];
+    /** @alias lengthMinimum */ minElements?: this["lengthMinimum"];
+    /** @alias lengthMinimum */ minimumElements?: this["lengthMinimum"];
+    /** @alias lengthMinimum */ minimumLength?: this["lengthMinimum"];
+    /** @alias lengthMinimum */ minLength?: this["lengthMinimum"];
 }
 /**
  * Filter for array.

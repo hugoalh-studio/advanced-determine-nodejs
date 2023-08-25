@@ -1,23 +1,23 @@
 /**
  * @template {unknown} I
  * @template {unknown} O
- * @param {Readonly<{ [x: string]: string; }>} enumObject
+ * @param {Readonly<Record<string, string>>} enumObject
  * @param {I} input
- * @param {string} paramName
+ * @param {string} parameterDescription
  * @returns {O}
  */
-export function enumResolver(enumObject, input, paramName) {
+export function enumResolver(enumObject, input, parameterDescription) {
     if (typeof input !== "string") {
-        throw new TypeError(`Filter argument \`${paramName}\` must be type of string!`);
+        throw new TypeError(`${parameterDescription.slice(0, 1).toUpperCase()}${parameterDescription.slice(1)} must be type of string!`);
     }
-    for (let [enumObjectKey, enumObjectValue] of Object.entries(enumObject)) {
+    for (const [enumObjectKey, enumObjectValue] of Object.entries(enumObject)) {
         if (input === enumObjectKey ||
             input === `${enumObjectKey.slice(0, 1).toLowerCase()}${enumObjectKey.slice(1)}` ||
             input === `${enumObjectKey.slice(0, 1).toUpperCase()}${enumObjectKey.slice(1)}`) {
             return enumObjectValue;
         }
     }
-    throw new RangeError(`\`${input}\` is not a valid value for filter argument \`${paramName}\`! Must be either of these values: "${Array.from(new Set(Object.keys(enumObject).flatMap((value) => {
+    throw new RangeError(`\`${input}\` is not a valid value for ${parameterDescription.slice(0, 1).toLowerCase()}${parameterDescription.slice(1)}! Must be either of these values: "${Array.from(new Set(Object.keys(enumObject).flatMap((value) => {
         return [value, `${value.slice(0, 1).toLowerCase()}${value.slice(1)}`, `${value.slice(0, 1).toUpperCase()}${value.slice(1)}`];
     })).values()).sort().join("\", \"")}"`);
 }
@@ -57,6 +57,7 @@ export const IntegralNumericTypeEnum = Object.freeze({
 export const JSONRootTypeEnum = Object.freeze({
     Any: "any",
     Array: "array",
+    Literal: "literal",
     Object: "object"
 });
 export const MathematicsFinitenessEnum = Object.freeze({

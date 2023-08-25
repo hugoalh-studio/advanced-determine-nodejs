@@ -50,8 +50,10 @@ export class NumberFilter {
             options.maximumExclusive ?? (options.maximumExclusive = options.maxExclusive ?? options.exclusiveMaximum ?? options.exclusiveMax);
             options.minimum ?? (options.minimum = options.min);
             options.minimumExclusive ?? (options.minimumExclusive = options.minExclusive ?? options.exclusiveMinimum ?? options.exclusiveMin);
-            for (let option of ["finiteness", "ieee754", "maximum", "maximumExclusive", "minimum", "minimumExclusive", "numericType", "parity", "primality", "sign", "integralNumericType"]) {
+            for (const option of ["finiteness", "ieee754", "maximum", "maximumExclusive", "minimum", "minimumExclusive", "numericType", "parity", "primality", "sign", "integralNumericType"]) {
+                //@ts-ignore Handle by it's method.
                 if (typeof options[option] !== "undefined") {
+                    //@ts-ignore Handle by it's method.
                     this[option](options[option]);
                 }
             }
@@ -77,7 +79,7 @@ export class NumberFilter {
      * @returns {this}
      */
     finiteness(value) {
-        __classPrivateFieldGet(this, _NumberFilter_status, "f").finiteness = enumResolver(MathematicsFinitenessEnum, value, "finiteness");
+        __classPrivateFieldGet(this, _NumberFilter_status, "f").finiteness = enumResolver(MathematicsFinitenessEnum, value, "Filter status `finiteness`");
         return this;
     }
     /**
@@ -86,7 +88,7 @@ export class NumberFilter {
      * @returns {this}
      */
     ieee754(value) {
-        __classPrivateFieldGet(this, _NumberFilter_status, "f").ieee754 = enumResolver(IEEE754Enum, value, "ieee754");
+        __classPrivateFieldGet(this, _NumberFilter_status, "f").ieee754 = enumResolver(IEEE754Enum, value, "Filter status `ieee754`");
         return this;
     }
     /**
@@ -95,9 +97,9 @@ export class NumberFilter {
      * @returns {this}
      */
     integralNumericType(value) {
-        let [intrMin, intrMax] = integralNumericTypeRange(value);
-        __classPrivateFieldGet(this, _NumberFilter_status, "f").maximum = Number(intrMax);
-        __classPrivateFieldGet(this, _NumberFilter_status, "f").minimum = Number(intrMin);
+        const [intrMinimum, intrMaximum] = integralNumericTypeRange(value);
+        __classPrivateFieldGet(this, _NumberFilter_status, "f").maximum = Number(intrMaximum);
+        __classPrivateFieldGet(this, _NumberFilter_status, "f").minimum = Number(intrMinimum);
         __classPrivateFieldGet(this, _NumberFilter_status, "f").maximumExclusive = false;
         __classPrivateFieldGet(this, _NumberFilter_status, "f").minimumExclusive = false;
         return this;
@@ -110,11 +112,11 @@ export class NumberFilter {
     maximum(value) {
         if (typeof value === "number" && !Number.isNaN(value)) {
             if (typeof __classPrivateFieldGet(this, _NumberFilter_status, "f").minimum === "number" && !(__classPrivateFieldGet(this, _NumberFilter_status, "f").minimum <= value)) {
-                throw new RangeError(`Filter argument \`maximum\` must be a number which is >= ${__classPrivateFieldGet(this, _NumberFilter_status, "f").minimum}!`);
+                throw new RangeError(`Filter status \`maximum\` must be a number which is >= ${__classPrivateFieldGet(this, _NumberFilter_status, "f").minimum}!`);
             }
         }
         else if (typeof value !== "undefined") {
-            throw new TypeError(`Filter argument \`maximum\` must be type of number or undefined!`);
+            throw new TypeError(`Filter status \`maximum\` must be type of number or undefined!`);
         }
         __classPrivateFieldGet(this, _NumberFilter_status, "f").maximum = value;
         return this;
@@ -126,7 +128,7 @@ export class NumberFilter {
      */
     maximumExclusive(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter argument \`maximumExclusive\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`maximumExclusive\` must be type of boolean!`);
         }
         __classPrivateFieldGet(this, _NumberFilter_status, "f").maximumExclusive = value;
         return this;
@@ -139,11 +141,11 @@ export class NumberFilter {
     minimum(value) {
         if (typeof value === "number" && !Number.isNaN(value)) {
             if (typeof __classPrivateFieldGet(this, _NumberFilter_status, "f").maximum === "number" && !(value <= __classPrivateFieldGet(this, _NumberFilter_status, "f").maximum)) {
-                throw new RangeError(`Filter argument \`minimum\` must be a number which is <= ${__classPrivateFieldGet(this, _NumberFilter_status, "f").maximum}!`);
+                throw new RangeError(`Filter status \`minimum\` must be a number which is <= ${__classPrivateFieldGet(this, _NumberFilter_status, "f").maximum}!`);
             }
         }
         else if (typeof value !== "undefined") {
-            throw new TypeError(`Filter argument \`minimum\` must be type of number or undefined!`);
+            throw new TypeError(`Filter status \`minimum\` must be type of number or undefined!`);
         }
         __classPrivateFieldGet(this, _NumberFilter_status, "f").minimum = value;
         return this;
@@ -155,7 +157,7 @@ export class NumberFilter {
      */
     minimumExclusive(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter argument \`minimumExclusive\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`minimumExclusive\` must be type of boolean!`);
         }
         __classPrivateFieldGet(this, _NumberFilter_status, "f").minimumExclusive = value;
         return this;
@@ -166,7 +168,7 @@ export class NumberFilter {
      * @returns {this}
      */
     numericType(value) {
-        __classPrivateFieldGet(this, _NumberFilter_status, "f").numericType = enumResolver(NumericTypeEnum, value, "numericType");
+        __classPrivateFieldGet(this, _NumberFilter_status, "f").numericType = enumResolver(NumericTypeEnum, value, "Filter status `numericType`");
         return this;
     }
     /**
@@ -175,7 +177,7 @@ export class NumberFilter {
      * @returns {this}
      */
     parity(value) {
-        __classPrivateFieldGet(this, _NumberFilter_status, "f").parity = enumResolver(MathematicsParityEnum, value, "parity");
+        __classPrivateFieldGet(this, _NumberFilter_status, "f").parity = enumResolver(MathematicsParityEnum, value, "Filter status `parity`");
         return this;
     }
     /**
@@ -184,7 +186,7 @@ export class NumberFilter {
      * @returns {this}
      */
     primality(value) {
-        __classPrivateFieldGet(this, _NumberFilter_status, "f").primality = enumResolver(MathematicsPrimalityEnum, value, "primality");
+        __classPrivateFieldGet(this, _NumberFilter_status, "f").primality = enumResolver(MathematicsPrimalityEnum, value, "Filter status `primality`");
         return this;
     }
     /**
@@ -193,7 +195,7 @@ export class NumberFilter {
      * @returns {this}
      */
     sign(value) {
-        __classPrivateFieldGet(this, _NumberFilter_status, "f").sign = enumResolver(MathematicsSignEnum, value, "sign");
+        __classPrivateFieldGet(this, _NumberFilter_status, "f").sign = enumResolver(MathematicsSignEnum, value, "Filter status `sign`");
         return this;
     }
     /**
