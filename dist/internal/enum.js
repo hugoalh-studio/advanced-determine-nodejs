@@ -8,7 +8,7 @@
  */
 export function enumResolver(enumObject, input, parameterDescription) {
     if (typeof input !== "string") {
-        throw new TypeError(`${parameterDescription.slice(0, 1).toUpperCase()}${parameterDescription.slice(1)} must be type of string!`);
+        throw new TypeError(`${parameterDescription.slice(0, 1).toUpperCase()}${parameterDescription.slice(1)} must be a string!`);
     }
     for (const [enumObjectKey, enumObjectValue] of Object.entries(enumObject)) {
         if (input === enumObjectKey ||

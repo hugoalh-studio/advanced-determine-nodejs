@@ -90,7 +90,7 @@ export class ObjectFilter {
      */
     allowArray(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`allowArray\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`allowArray\` must be a boolean!`);
         }
         __classPrivateFieldGet(this, _ObjectFilter_status, "f").allowArray = value;
         return this;
@@ -102,7 +102,7 @@ export class ObjectFilter {
      */
     allowEmpty(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`allowEmpty\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`allowEmpty\` must be a boolean!`);
         }
         __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMinimum = value ? 0 : 1;
         return this;
@@ -114,7 +114,7 @@ export class ObjectFilter {
      */
     allowNull(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`allowNull\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`allowNull\` must be a boolean!`);
         }
         __classPrivateFieldGet(this, _ObjectFilter_status, "f").allowNull = value;
         return this;
@@ -126,7 +126,7 @@ export class ObjectFilter {
      */
     allowRegExp(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`allowRegExp\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`allowRegExp\` must be a boolean!`);
         }
         __classPrivateFieldGet(this, _ObjectFilter_status, "f").allowRegExp = value;
         return this;
@@ -147,7 +147,7 @@ export class ObjectFilter {
      */
     entriesCount(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter status \`entriesCount\` must be type of number!`);
+            throw new TypeError(`Filter status \`entriesCount\` must be a number!`);
         }
         if (!(Number.isSafeInteger(value) && value >= 0)) {
             throw new RangeError(`Filter status \`entriesCount\` must be a number which is integer, positive, and safe!`);
@@ -163,7 +163,7 @@ export class ObjectFilter {
      */
     entriesCountMaximum(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter status \`entriesCountMaximum\` must be type of number!`);
+            throw new TypeError(`Filter status \`entriesCountMaximum\` must be a number!`);
         }
         if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMinimum)) {
             throw new RangeError(`Filter status \`entriesCountMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMinimum}!`);
@@ -178,7 +178,7 @@ export class ObjectFilter {
      */
     entriesCountMinimum(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter status \`entriesCountMinimum\` must be type of number!`);
+            throw new TypeError(`Filter status \`entriesCountMinimum\` must be a number!`);
         }
         if (!(Number.isSafeInteger(value) && value >= 0 && value <= __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMaximum)) {
             throw new RangeError(`Filter status \`entriesCountMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMaximum}!`);
@@ -238,7 +238,7 @@ export class ObjectFilter {
      */
     plain(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`plain\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`plain\` must be a boolean!`);
         }
         if (value) {
             __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesConfigurable = "true";

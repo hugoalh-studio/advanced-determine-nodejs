@@ -65,7 +65,7 @@ export class SetFilter {
      */
     allowEmpty(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`allowEmpty\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`allowEmpty\` must be a boolean!`);
         }
         __classPrivateFieldGet(this, _SetFilter_status, "f").sizeMinimum = value ? 0 : 1;
         return this;
@@ -77,7 +77,7 @@ export class SetFilter {
      */
     size(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter status \`size\` must be type of number!`);
+            throw new TypeError(`Filter status \`size\` must be a number!`);
         }
         if (!(Number.isSafeInteger(value) && value >= 0)) {
             throw new RangeError(`Filter status \`size\` must be a number which is integer, positive, and safe!`);
@@ -93,7 +93,7 @@ export class SetFilter {
      */
     sizeMaximum(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter status \`sizeMaximum\` must be type of number!`);
+            throw new TypeError(`Filter status \`sizeMaximum\` must be a number!`);
         }
         if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= __classPrivateFieldGet(this, _SetFilter_status, "f").sizeMinimum)) {
             throw new RangeError(`Filter status \`sizeMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _SetFilter_status, "f").sizeMinimum}!`);
@@ -108,7 +108,7 @@ export class SetFilter {
      */
     sizeMinimum(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter status \`sizeMinimum\` must be type of number!`);
+            throw new TypeError(`Filter status \`sizeMinimum\` must be a number!`);
         }
         if (!(Number.isSafeInteger(value) && value >= 0 && value <= __classPrivateFieldGet(this, _SetFilter_status, "f").sizeMaximum)) {
             throw new RangeError(`Filter status \`sizeMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _SetFilter_status, "f").sizeMaximum}!`);

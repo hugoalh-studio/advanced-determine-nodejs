@@ -103,7 +103,7 @@ export class BigIntFilter {
             }
         }
         else if (typeof value !== "undefined") {
-            throw new TypeError(`Filter status \`maximum\` must be type of big integer or undefined!`);
+            throw new TypeError(`Filter status \`maximum\` must be a big integer or undefined!`);
         }
         __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum = value;
         return this;
@@ -115,7 +115,7 @@ export class BigIntFilter {
      */
     maximumExclusive(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`maximumExclusive\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`maximumExclusive\` must be a boolean!`);
         }
         __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximumExclusive = value;
         return this;
@@ -132,7 +132,7 @@ export class BigIntFilter {
             }
         }
         else if (typeof value !== "undefined") {
-            throw new TypeError(`Filter status \`minimum\` must be type of big integer or undefined!`);
+            throw new TypeError(`Filter status \`minimum\` must be a big integer or undefined!`);
         }
         __classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum = value;
         return this;
@@ -144,7 +144,7 @@ export class BigIntFilter {
      */
     minimumExclusive(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`minimumExclusive\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`minimumExclusive\` must be a boolean!`);
         }
         __classPrivateFieldGet(this, _BigIntFilter_status, "f").minimumExclusive = value;
         return this;

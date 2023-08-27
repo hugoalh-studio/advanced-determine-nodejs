@@ -131,7 +131,7 @@ export class JSONFilter {
      */
     allowEmpty(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`allowEmpty\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`allowEmpty\` must be a boolean!`);
         }
         __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMinimum = value ? 0 : 1;
         return this;
@@ -143,7 +143,7 @@ export class JSONFilter {
      */
     entriesCount(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter status \`entriesCount\` must be type of number!`);
+            throw new TypeError(`Filter status \`entriesCount\` must be a number!`);
         }
         if (!(Number.isSafeInteger(value) && value >= 0)) {
             throw new RangeError(`Filter status \`entriesCount\` must be a number which is integer, positive, and safe!`);
@@ -159,7 +159,7 @@ export class JSONFilter {
      */
     entriesCountMaximum(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter status \`entriesCountMaximum\` must be type of number!`);
+            throw new TypeError(`Filter status \`entriesCountMaximum\` must be a number!`);
         }
         if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMinimum)) {
             throw new RangeError(`Filter status \`entriesCountMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMinimum}!`);
@@ -174,7 +174,7 @@ export class JSONFilter {
      */
     entriesCountMinimum(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter status \`entriesCountMinimum\` must be type of number!`);
+            throw new TypeError(`Filter status \`entriesCountMinimum\` must be a number!`);
         }
         if (!(Number.isSafeInteger(value) && value >= 0 && value <= __classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMaximum)) {
             throw new RangeError(`Filter status \`entriesCountMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _JSONFilter_status, "f").entriesCountMaximum}!`);
@@ -189,7 +189,7 @@ export class JSONFilter {
      */
     keysPattern(value) {
         if (!(value instanceof RegExp) && typeof value !== "undefined") {
-            throw new TypeError(`Filter status \`keysPattern\` must be instance of regular expression, or type of undefined!`);
+            throw new TypeError(`Filter status \`keysPattern\` must be a RegExp or undefined!`);
         }
         __classPrivateFieldGet(this, _JSONFilter_status, "f").keysPattern = value;
         return this;
@@ -210,7 +210,7 @@ export class JSONFilter {
      */
     strict(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`strict\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`strict\` must be a boolean!`);
         }
         if (value) {
             __classPrivateFieldGet(this, _JSONFilter_status, "f").keysPattern = jsonLegalKeysPatternRegExp;
@@ -229,7 +229,7 @@ export class JSONFilter {
      */
     strictKeys(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`strictKeys\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`strictKeys\` must be a boolean!`);
         }
         __classPrivateFieldGet(this, _JSONFilter_status, "f").keysPattern = value ? jsonLegalKeysPatternRegExp : undefined;
         return this;

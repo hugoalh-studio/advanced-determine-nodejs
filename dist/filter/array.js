@@ -78,7 +78,7 @@ export class ArrayFilter {
      */
     allowEmpty(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`allowEmpty\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`allowEmpty\` must be a boolean!`);
         }
         __classPrivateFieldGet(this, _ArrayFilter_status, "f").lengthMinimum = value ? 0 : 1;
         return this;
@@ -90,7 +90,7 @@ export class ArrayFilter {
      */
     length(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter status \`length\` must be type of number!`);
+            throw new TypeError(`Filter status \`length\` must be a number!`);
         }
         if (!(Number.isSafeInteger(value) && value >= 0)) {
             throw new RangeError(`Filter status \`length\` must be a number which is integer, positive, and safe!`);
@@ -106,7 +106,7 @@ export class ArrayFilter {
      */
     lengthMaximum(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter status \`lengthMaximum\` must be type of number!`);
+            throw new TypeError(`Filter status \`lengthMaximum\` must be a number!`);
         }
         if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= __classPrivateFieldGet(this, _ArrayFilter_status, "f").lengthMinimum)) {
             throw new RangeError(`Filter status \`lengthMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _ArrayFilter_status, "f").lengthMinimum}!`);
@@ -121,7 +121,7 @@ export class ArrayFilter {
      */
     lengthMinimum(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter status \`lengthMinimum\` must be type of number!`);
+            throw new TypeError(`Filter status \`lengthMinimum\` must be a number!`);
         }
         if (!(Number.isSafeInteger(value) && value >= 0 && value <= __classPrivateFieldGet(this, _ArrayFilter_status, "f").lengthMaximum)) {
             throw new RangeError(`Filter status \`lengthMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _ArrayFilter_status, "f").lengthMaximum}!`);
@@ -136,7 +136,7 @@ export class ArrayFilter {
      */
     strict(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`strict\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`strict\` must be a boolean!`);
         }
         __classPrivateFieldGet(this, _ArrayFilter_status, "f").strict = value;
         return this;
@@ -148,7 +148,7 @@ export class ArrayFilter {
      */
     unique(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`unique\` must be type of boolean!`);
+            throw new TypeError(`Filter status \`unique\` must be a boolean!`);
         }
         __classPrivateFieldGet(this, _ArrayFilter_status, "f").unique = value;
         return this;
