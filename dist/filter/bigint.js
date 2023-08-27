@@ -99,11 +99,11 @@ export class BigIntFilter {
     maximum(value) {
         if (typeof value === "bigint") {
             if (typeof __classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum === "bigint" && !(__classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum <= value)) {
-                throw new RangeError(`Filter status \`maximum\` must be a big integer which is >= ${__classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum}!`);
+                throw new RangeError(`Filter status \`maximum\` must be a bigint which is >= ${__classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum}!`);
             }
         }
         else if (typeof value !== "undefined") {
-            throw new TypeError(`Filter status \`maximum\` must be a big integer or undefined!`);
+            throw new TypeError(`Filter status \`maximum\` must be a bigint or undefined!`);
         }
         __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum = value;
         return this;
@@ -128,11 +128,11 @@ export class BigIntFilter {
     minimum(value) {
         if (typeof value === "bigint") {
             if (typeof __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum === "bigint" && !(value <= __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum)) {
-                throw new RangeError(`Filter status \`minimum\` must be a big integer which is <= ${__classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum}!`);
+                throw new RangeError(`Filter status \`minimum\` must be a bigint which is <= ${__classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum}!`);
             }
         }
         else if (typeof value !== "undefined") {
-            throw new TypeError(`Filter status \`minimum\` must be a big integer or undefined!`);
+            throw new TypeError(`Filter status \`minimum\` must be a bigint or undefined!`);
         }
         __classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum = value;
         return this;
