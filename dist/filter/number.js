@@ -112,11 +112,11 @@ export class NumberFilter {
     maximum(value) {
         if (typeof value === "number" && !Number.isNaN(value)) {
             if (typeof __classPrivateFieldGet(this, _NumberFilter_status, "f").minimum === "number" && !(__classPrivateFieldGet(this, _NumberFilter_status, "f").minimum <= value)) {
-                throw new RangeError(`Filter status \`maximum\` must be a number which is >= ${__classPrivateFieldGet(this, _NumberFilter_status, "f").minimum}!`);
+                throw new RangeError(`Filter status \`maximum\` is not a number which is >= ${__classPrivateFieldGet(this, _NumberFilter_status, "f").minimum}!`);
             }
         }
         else if (typeof value !== "undefined") {
-            throw new TypeError(`Filter status \`maximum\` must be a number or undefined!`);
+            throw new TypeError(`Filter status \`maximum\` is not a number or undefined!`);
         }
         __classPrivateFieldGet(this, _NumberFilter_status, "f").maximum = value;
         return this;
@@ -128,7 +128,7 @@ export class NumberFilter {
      */
     maximumExclusive(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`maximumExclusive\` must be a boolean!`);
+            throw new TypeError(`Filter status \`maximumExclusive\` is not a boolean!`);
         }
         __classPrivateFieldGet(this, _NumberFilter_status, "f").maximumExclusive = value;
         return this;
@@ -141,11 +141,11 @@ export class NumberFilter {
     minimum(value) {
         if (typeof value === "number" && !Number.isNaN(value)) {
             if (typeof __classPrivateFieldGet(this, _NumberFilter_status, "f").maximum === "number" && !(value <= __classPrivateFieldGet(this, _NumberFilter_status, "f").maximum)) {
-                throw new RangeError(`Filter status \`minimum\` must be a number which is <= ${__classPrivateFieldGet(this, _NumberFilter_status, "f").maximum}!`);
+                throw new RangeError(`Filter status \`minimum\` is not a number which is <= ${__classPrivateFieldGet(this, _NumberFilter_status, "f").maximum}!`);
             }
         }
         else if (typeof value !== "undefined") {
-            throw new TypeError(`Filter status \`minimum\` must be a number or undefined!`);
+            throw new TypeError(`Filter status \`minimum\` is not a number or undefined!`);
         }
         __classPrivateFieldGet(this, _NumberFilter_status, "f").minimum = value;
         return this;
@@ -157,7 +157,7 @@ export class NumberFilter {
      */
     minimumExclusive(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`minimumExclusive\` must be a boolean!`);
+            throw new TypeError(`Filter status \`minimumExclusive\` is not a boolean!`);
         }
         __classPrivateFieldGet(this, _NumberFilter_status, "f").minimumExclusive = value;
         return this;

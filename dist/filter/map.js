@@ -65,7 +65,7 @@ export class MapFilter {
      */
     allowEmpty(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`allowEmpty\` must be a boolean!`);
+            throw new TypeError(`Filter status \`allowEmpty\` is not a boolean!`);
         }
         __classPrivateFieldGet(this, _MapFilter_status, "f").sizeMinimum = value ? 0 : 1;
         return this;
@@ -77,10 +77,10 @@ export class MapFilter {
      */
     size(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter status \`size\` must be a number!`);
+            throw new TypeError(`Filter status \`size\` is not a number!`);
         }
         if (!(Number.isSafeInteger(value) && value >= 0)) {
-            throw new RangeError(`Filter status \`size\` must be a number which is integer, positive, and safe!`);
+            throw new RangeError(`Filter status \`size\` is not a number which is integer, positive, and safe!`);
         }
         __classPrivateFieldGet(this, _MapFilter_status, "f").sizeMaximum = value;
         __classPrivateFieldGet(this, _MapFilter_status, "f").sizeMinimum = value;
@@ -93,10 +93,10 @@ export class MapFilter {
      */
     sizeMaximum(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter status \`sizeMaximum\` must be a number!`);
+            throw new TypeError(`Filter status \`sizeMaximum\` is not a number!`);
         }
         if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= __classPrivateFieldGet(this, _MapFilter_status, "f").sizeMinimum)) {
-            throw new RangeError(`Filter status \`sizeMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _MapFilter_status, "f").sizeMinimum}!`);
+            throw new RangeError(`Filter status \`sizeMaximum\` is not \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _MapFilter_status, "f").sizeMinimum}!`);
         }
         __classPrivateFieldGet(this, _MapFilter_status, "f").sizeMaximum = value;
         return this;
@@ -108,10 +108,10 @@ export class MapFilter {
      */
     sizeMinimum(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter status \`sizeMinimum\` must be a number!`);
+            throw new TypeError(`Filter status \`sizeMinimum\` is not a number!`);
         }
         if (!(Number.isSafeInteger(value) && value >= 0 && value <= __classPrivateFieldGet(this, _MapFilter_status, "f").sizeMaximum)) {
-            throw new RangeError(`Filter status \`sizeMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _MapFilter_status, "f").sizeMaximum}!`);
+            throw new RangeError(`Filter status \`sizeMinimum\` is not a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _MapFilter_status, "f").sizeMaximum}!`);
         }
         __classPrivateFieldGet(this, _MapFilter_status, "f").sizeMinimum = value;
         return this;

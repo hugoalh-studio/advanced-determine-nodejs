@@ -90,7 +90,7 @@ export class ObjectFilter {
      */
     allowArray(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`allowArray\` must be a boolean!`);
+            throw new TypeError(`Filter status \`allowArray\` is not a boolean!`);
         }
         __classPrivateFieldGet(this, _ObjectFilter_status, "f").allowArray = value;
         return this;
@@ -102,7 +102,7 @@ export class ObjectFilter {
      */
     allowEmpty(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`allowEmpty\` must be a boolean!`);
+            throw new TypeError(`Filter status \`allowEmpty\` is not a boolean!`);
         }
         __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMinimum = value ? 0 : 1;
         return this;
@@ -114,7 +114,7 @@ export class ObjectFilter {
      */
     allowNull(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`allowNull\` must be a boolean!`);
+            throw new TypeError(`Filter status \`allowNull\` is not a boolean!`);
         }
         __classPrivateFieldGet(this, _ObjectFilter_status, "f").allowNull = value;
         return this;
@@ -126,7 +126,7 @@ export class ObjectFilter {
      */
     allowRegExp(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`allowRegExp\` must be a boolean!`);
+            throw new TypeError(`Filter status \`allowRegExp\` is not a boolean!`);
         }
         __classPrivateFieldGet(this, _ObjectFilter_status, "f").allowRegExp = value;
         return this;
@@ -147,10 +147,10 @@ export class ObjectFilter {
      */
     entriesCount(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter status \`entriesCount\` must be a number!`);
+            throw new TypeError(`Filter status \`entriesCount\` is not a number!`);
         }
         if (!(Number.isSafeInteger(value) && value >= 0)) {
-            throw new RangeError(`Filter status \`entriesCount\` must be a number which is integer, positive, and safe!`);
+            throw new RangeError(`Filter status \`entriesCount\` is not a number which is integer, positive, and safe!`);
         }
         __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMaximum = value;
         __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMinimum = value;
@@ -163,10 +163,10 @@ export class ObjectFilter {
      */
     entriesCountMaximum(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter status \`entriesCountMaximum\` must be a number!`);
+            throw new TypeError(`Filter status \`entriesCountMaximum\` is not a number!`);
         }
         if (value !== Infinity && !(Number.isSafeInteger(value) && value >= 0 && value >= __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMinimum)) {
-            throw new RangeError(`Filter status \`entriesCountMaximum\` must be \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMinimum}!`);
+            throw new RangeError(`Filter status \`entriesCountMaximum\` is not \`Infinity\`, or a number which is integer, positive, safe, and >= ${__classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMinimum}!`);
         }
         __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMaximum = value;
         return this;
@@ -178,10 +178,10 @@ export class ObjectFilter {
      */
     entriesCountMinimum(value) {
         if (!(typeof value === "number" && !Number.isNaN(value))) {
-            throw new TypeError(`Filter status \`entriesCountMinimum\` must be a number!`);
+            throw new TypeError(`Filter status \`entriesCountMinimum\` is not a number!`);
         }
         if (!(Number.isSafeInteger(value) && value >= 0 && value <= __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMaximum)) {
-            throw new RangeError(`Filter status \`entriesCountMinimum\` must be a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMaximum}!`);
+            throw new RangeError(`Filter status \`entriesCountMinimum\` is not a number which is integer, positive, safe, and <= ${__classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMaximum}!`);
         }
         __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesCountMinimum = value;
         return this;
@@ -238,7 +238,7 @@ export class ObjectFilter {
      */
     plain(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`plain\` must be a boolean!`);
+            throw new TypeError(`Filter status \`plain\` is not a boolean!`);
         }
         if (value) {
             __classPrivateFieldGet(this, _ObjectFilter_status, "f").entriesConfigurable = "true";

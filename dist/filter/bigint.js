@@ -99,11 +99,11 @@ export class BigIntFilter {
     maximum(value) {
         if (typeof value === "bigint") {
             if (typeof __classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum === "bigint" && !(__classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum <= value)) {
-                throw new RangeError(`Filter status \`maximum\` must be a bigint which is >= ${__classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum}!`);
+                throw new RangeError(`Filter status \`maximum\` is not a bigint which is >= ${__classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum}!`);
             }
         }
         else if (typeof value !== "undefined") {
-            throw new TypeError(`Filter status \`maximum\` must be a bigint or undefined!`);
+            throw new TypeError(`Filter status \`maximum\` is not a bigint or undefined!`);
         }
         __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum = value;
         return this;
@@ -115,7 +115,7 @@ export class BigIntFilter {
      */
     maximumExclusive(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`maximumExclusive\` must be a boolean!`);
+            throw new TypeError(`Filter status \`maximumExclusive\` is not a boolean!`);
         }
         __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximumExclusive = value;
         return this;
@@ -128,11 +128,11 @@ export class BigIntFilter {
     minimum(value) {
         if (typeof value === "bigint") {
             if (typeof __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum === "bigint" && !(value <= __classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum)) {
-                throw new RangeError(`Filter status \`minimum\` must be a bigint which is <= ${__classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum}!`);
+                throw new RangeError(`Filter status \`minimum\` is not a bigint which is <= ${__classPrivateFieldGet(this, _BigIntFilter_status, "f").maximum}!`);
             }
         }
         else if (typeof value !== "undefined") {
-            throw new TypeError(`Filter status \`minimum\` must be a bigint or undefined!`);
+            throw new TypeError(`Filter status \`minimum\` is not a bigint or undefined!`);
         }
         __classPrivateFieldGet(this, _BigIntFilter_status, "f").minimum = value;
         return this;
@@ -144,7 +144,7 @@ export class BigIntFilter {
      */
     minimumExclusive(value = true) {
         if (typeof value !== "boolean") {
-            throw new TypeError(`Filter status \`minimumExclusive\` must be a boolean!`);
+            throw new TypeError(`Filter status \`minimumExclusive\` is not a boolean!`);
         }
         __classPrivateFieldGet(this, _BigIntFilter_status, "f").minimumExclusive = value;
         return this;

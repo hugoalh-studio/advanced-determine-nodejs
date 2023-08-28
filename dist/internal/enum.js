@@ -8,7 +8,7 @@
  */
 export function enumResolver(enumObject, input, parameterDescription) {
     if (typeof input !== "string") {
-        throw new TypeError(`${parameterDescription.slice(0, 1).toUpperCase()}${parameterDescription.slice(1)} must be a string!`);
+        throw new TypeError(`${parameterDescription.slice(0, 1).toUpperCase()}${parameterDescription.slice(1)} is not a string!`);
     }
     for (const [enumObjectKey, enumObjectValue] of Object.entries(enumObject)) {
         if (input === enumObjectKey ||
@@ -17,7 +17,7 @@ export function enumResolver(enumObject, input, parameterDescription) {
             return enumObjectValue;
         }
     }
-    throw new RangeError(`\`${input}\` is not a valid value for ${parameterDescription.slice(0, 1).toLowerCase()}${parameterDescription.slice(1)}! Must be either of these values: "${Array.from(new Set(Object.keys(enumObject).flatMap((value) => {
+    throw new RangeError(`\`${input}\` is not a valid value for ${parameterDescription.slice(0, 1).toLowerCase()}${parameterDescription.slice(1)}! Only accept these values: "${Array.from(new Set(Object.keys(enumObject).flatMap((value) => {
         return [value, `${value.slice(0, 1).toLowerCase()}${value.slice(1)}`, `${value.slice(0, 1).toUpperCase()}${value.slice(1)}`];
     })).values()).sort().join("\", \"")}"`);
 }
