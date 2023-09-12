@@ -70,25 +70,25 @@ A NodeJS module to provide advanced method to determine item.
 
 ## ✍️ Example
 
-- ```ts
+- ```js
   import { isArrayUnique } from "@hugoalh/advanced-determine/array/is-unique";
 
   isArrayUnique([{ foo: "bar" }, { foo: "bar" }]);
   //=> false
   ```
-- ```ts
+- ```js
   import { isArrayUniqueReference } from "@hugoalh/advanced-determine/array/is-unique-reference";
 
   isArrayUniqueReference([{ foo: "bar" }, { foo: "bar" }]);
   //=> true
   ```
-- ```ts
+- ```js
   import { isNumericPrime } from "@hugoalh/advanced-determine/numeric/is-prime";
 
   isNumericPrime(17n);
   //=> true
   ```
-- ```ts
+- ```js
   import { isStringCaseUpper } from "@hugoalh/advanced-determine/string/is-case-upper";
 
   isStringCaseUpper("Hello, world!");
