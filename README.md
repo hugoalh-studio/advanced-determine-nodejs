@@ -10,43 +10,29 @@
 
 A NodeJS module to provide advanced method to determine item.
 
-> **🔗 Other Edition:**
->
-> - [Deno](https://github.com/hugoalh-studio/advanced-determine-deno)
+## 🔰 Begin
 
-## 📓 Documentation (Excerpt)
+### NodeJS
 
-For the full documentation, please visit the [GitHub Repository Wiki](https://github.com/hugoalh-studio/advanced-determine-nodejs/wiki).
+- **Target Version:** ^ v14.15.0 \|\| >= v16.13.0, &:
+  - TypeScript >= v5.1.0 *\[Development\]*
+- **Require Permission:** *N/A*
+- **Domain/Registry:**
+  - [NPM](https://www.npmjs.com/package/@hugoalh/advanced-determine)
+    ```sh
+    npm install @hugoalh/advanced-determine
+    ```
+    ```js
+    import ... from "@hugoalh/advanced-determine";
+    ```
 
-### Getting Started
+> **ℹ️ Notice:** It is also able to import part of the module with sub path if available, see [file `package.json`](./package.json) property `exports` for available sub paths.
 
-- NodeJS ^ v14.15.0 \|\| >= v16.13.0
+## 🧩 API (Excerpt)
 
-```sh
-npm install @hugoalh/advanced-determine
-```
+> **ℹ️ Notice:** Documentation is included inside the script file.
 
-```js
-/* Either */
-import { ... } from "@hugoalh/advanced-determine";// Named Import
-import * as advancedDetermine from "@hugoalh/advanced-determine";// Namespace Import
-```
-
-### API
-
-#### Class
-
-- `ArrayFilter`
-- `BigIntFilter`
-- `JSONFilter`
-- `MapFilter`
-- `NumberFilter`
-- `ObjectFilter`
-- `RegExpFilter`
-- `SetFilter`
-- `StringFilter`
-
-#### Function
+### Function
 
 - `isArrayStrict`
 - `isArrayUnique`
@@ -54,78 +40,61 @@ import * as advancedDetermine from "@hugoalh/advanced-determine";// Namespace Im
 - `isAsyncFunction`
 - `isAsyncGenerator`
 - `isAsyncGeneratorFunction`
+- `isBigIntegerEven`
 - `isBigIntEven`
-- `isBigIntIntegralNumericType`
 - `isBigIntNegative`
 - `isBigIntOdd`
 - `isBigIntPositive`
-- `isBigIntPrime`
 - `isBigIntSafe`
+- `isEmpty`
+- `isJSON`
 - `isNumberEven`
 - `isNumberFloat`
-- `isNumberIntegralNumericType`
 - `isNumberNegative`
 - `isNumberOdd`
 - `isNumberPositive`
-- `isNumberPrime`
 - `isNumberSafe`
+- `isNumericIntegralType`
+- `isNumericPrime`
 - `isObjectPlain`
 - `isStringASCII`
-- `isStringLowerCase`
-- `isStringMultipleLine`
+- `isStringCaseLower`
+- `isStringCaseUpper`
 - `isStringSingleLine`
-- `isStringUpperCase`
+- `isStringTrimmable`
+- `isStringTrimmableEnd`
+- `isStringTrimmableStart`
 - `isSyncFunction`
 - `isSyncGenerator`
 - `isSyncGeneratorFunction`
 
-### Example
+## ✍️ Example
 
-- ```js
-  /* Either */
-  new ArrayFilter().test([]);
-  ArrayFilter.test([]);
-  filterArray([]);
-  //=> false (`allowEmpty` is `false`)
-  ```
-- ```js
-  /* Either */
-  new ArrayFilter({ allowEmpty: true }).test([]);
-  new ArrayFilter().allowEmpty().test([]);
-  ArrayFilter.test([], { allowEmpty: true });
-  filterArray([], { allowEmpty: true });
-  //=> true
-  ```
-- ```js
-  /* Either */
-  new NumberFilter({ ieee754: "safe", numericType: "float", sign: "positive" }).test(8.31);
-  new NumberFilter().ieee754("safe").numericType("float").sign("positive").test(8.31);
-  new NumberFilter().safe().float().positive().test(8.31);
-  NumberFilter.test(8.31, { ieee754: "safe", numericType: "float", sign: "positive" });
-  filterNumber(8.31, { ieee754: "safe", numericType: "float", sign: "positive" });
-  //=> true
-  ```
-- ```js
-  /* Either */
-  new StringFilter().test("");
-  StringFilter.test("");
-  filterString("");
-  //=> false (`allowEmpty` is `false`)
-  ```
-- ```js
-  /* Either */
-  new StringFilter({ allowEmpty: true }).test("");
-  new StringFilter().allowEmpty().test("");
-  StringFilter.test("", { allowEmpty: true });
-  filterString("", { allowEmpty: true });
-  //=> true
-  ```
-- ```js
-  /* Either */
-  new StringFilter({ case: "lower" }).test("Hello World");
-  new StringFilter().case("lower").test("Hello World");
-  new StringFilter().lowerCase().test("Hello World");
-  StringFilter.test("Hello World", { case: "lower" });
-  filterString("Hello World", { case: "lower" });
+- ```ts
+  import { isArrayUnique } from "@hugoalh/advanced-determine/array/is-unique";
+
+  isArrayUnique([{ foo: "bar" }, { foo: "bar" }]);
   //=> false
   ```
+- ```ts
+  import { isArrayUniqueReference } from "@hugoalh/advanced-determine/array/is-unique-reference";
+
+  isArrayUniqueReference([{ foo: "bar" }, { foo: "bar" }]);
+  //=> true
+  ```
+- ```ts
+  import { isNumericPrime } from "@hugoalh/advanced-determine/numeric/is-prime";
+
+  isNumericPrime(17n);
+  //=> true
+  ```
+- ```ts
+  import { isStringCaseUpper } from "@hugoalh/advanced-determine/string/is-case-upper";
+
+  isStringCaseUpper("Hello, world!");
+  //=> false
+  ```
+
+## 🔗 Other Edition
+
+- [Deno](https://github.com/hugoalh-studio/advanced-determine-deno)

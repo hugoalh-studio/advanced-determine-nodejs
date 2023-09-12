@@ -1,12 +1,11 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "12.0.2",
+	"version": "13.0.0",
 	"description": "A module to provide advanced method to determine item.",
 	"keywords": [
 		"determine",
 		"item-check",
 		"item-determine",
-		"item-filter",
 		"item-test"
 	],
 	"homepage": "https://github.com/hugoalh-studio/advanced-determine-nodejs#readme",
@@ -21,71 +20,119 @@
 		".": {
 			"import": "./dist/main.js"
 		},
-		"./filter": {
-			"import": "./dist/filter.js"
+		"./array/is-strict": {
+			"import": "./dist/array/is-strict.js"
 		},
-		"./filter/array": {
-			"import": "./dist/filter/array.js"
+		"./array/is-unique-reference": {
+			"import": "./dist/array/is-unique-reference.js"
 		},
-		"./filter/bigint": {
-			"import": "./dist/filter/bigint.js"
+		"./array/is-unique": {
+			"import": "./dist/array/is-unique.js"
 		},
-		"./filter/big-integer": {
-			"import": "./dist/filter/bigint.js"
+		"./array": {
+			"import": "./dist/array/main.js"
 		},
-		"./filter/json": {
-			"import": "./dist/filter/json.js"
+		"./bigint/is-even": {
+			"import": "./dist/bigint/is-even.js"
 		},
-		"./filter/map": {
-			"import": "./dist/filter/map.js"
+		"./bigint/is-negative": {
+			"import": "./dist/bigint/is-negative.js"
 		},
-		"./filter/number": {
-			"import": "./dist/filter/number.js"
+		"./bigint/is-odd": {
+			"import": "./dist/bigint/is-odd.js"
 		},
-		"./filter/object": {
-			"import": "./dist/filter/object.js"
+		"./bigint/is-positive": {
+			"import": "./dist/bigint/is-positive.js"
 		},
-		"./filter/regex": {
-			"import": "./dist/filter/regexp.js"
+		"./bigint/is-safe": {
+			"import": "./dist/bigint/is-safe.js"
 		},
-		"./filter/regexp": {
-			"import": "./dist/filter/regexp.js"
+		"./bigint": {
+			"import": "./dist/bigint/main.js"
 		},
-		"./filter/regular-expression": {
-			"import": "./dist/filter/regexp.js"
+		"./number/is-even": {
+			"import": "./dist/number/is-even.js"
 		},
-		"./filter/set": {
-			"import": "./dist/filter/set.js"
+		"./number/is-float": {
+			"import": "./dist/number/is-float.js"
 		},
-		"./filter/string": {
-			"import": "./dist/filter/string.js"
+		"./number/is-negative": {
+			"import": "./dist/number/is-negative.js"
 		},
-		"./native": {
-			"import": "./dist/native.js"
+		"./number/is-odd": {
+			"import": "./dist/number/is-odd.js"
 		},
-		"./native/array": {
-			"import": "./dist/native/array.js"
+		"./number/is-positive": {
+			"import": "./dist/number/is-positive.js"
 		},
-		"./native/bigint": {
-			"import": "./dist/native/bigint.js"
+		"./number/is-safe": {
+			"import": "./dist/number/is-safe.js"
 		},
-		"./native/big-integer": {
-			"import": "./dist/native/bigint.js"
+		"./number": {
+			"import": "./dist/number/main.js"
 		},
-		"./native/function": {
-			"import": "./dist/native/function.js"
+		"./numeric/is-integral-type": {
+			"import": "./dist/numeric/is-integral-type.js"
 		},
-		"./native/generator": {
-			"import": "./dist/native/generator.js"
+		"./numeric/is-prime": {
+			"import": "./dist/numeric/is-prime.js"
 		},
-		"./native/number": {
-			"import": "./dist/native/number.js"
+		"./numeric": {
+			"import": "./dist/numeric/main.js"
 		},
-		"./native/object": {
-			"import": "./dist/native/object.js"
+		"./object/is-plain": {
+			"import": "./dist/object/is-plain.js"
 		},
-		"./native/string": {
-			"import": "./dist/native/string.js"
+		"./object": {
+			"import": "./dist/object/main.js"
+		},
+		"./string/is-ascii": {
+			"import": "./dist/string/is-ascii.js"
+		},
+		"./string/is-case-lower": {
+			"import": "./dist/string/is-case-lower.js"
+		},
+		"./string/is-case-upper": {
+			"import": "./dist/string/is-case-upper.js"
+		},
+		"./string/is-singleline": {
+			"import": "./dist/string/is-singleline.js"
+		},
+		"./string/is-trimmable-end": {
+			"import": "./dist/string/is-trimmable-end.js"
+		},
+		"./string/is-trimmable-start": {
+			"import": "./dist/string/is-trimmable-start.js"
+		},
+		"./string/is-trimmable": {
+			"import": "./dist/string/is-trimmable.js"
+		},
+		"./string": {
+			"import": "./dist/string/main.js"
+		},
+		"./is-async-function": {
+			"import": "./dist/is-async-function.js"
+		},
+		"./is-async-generator-function": {
+			"import": "./dist/is-async-generator-function.js"
+		},
+		"./is-async-generator": {
+			"import": "./dist/is-async-generator.js"
+		},
+		"./is-empty": {
+			"import": "./dist/is-empty.js"
+		},
+		"./is-json": {
+			"import": "./dist/is-json.js"
+		},
+		"./is-sync-function": {
+			"import": "./dist/is-sync-function.js"
+		},
+		"./is-sync-generator-function": {
+			"import": "./dist/is-sync-generator-function.js"
+		},
+		"./is-sync-generator": {
+			"import": "./dist/is-sync-generator.js"
 		}
 	},
 	"types": "./dist/main.d.ts",
@@ -94,12 +141,13 @@
 		"url": "git+https://github.com/hugoalh-studio/advanced-determine-nodejs.git"
 	},
 	"dependencies": {
-		"@hugoalh/unique-array": "^3.0.4"
+		"@hugoalh/unique-array": "^3.0.4",
+		"type-fest": "^4.3.1"
 	},
 	"devDependencies": {
 		"@types/node": "^20.6.0",
-		"@typescript-eslint/eslint-plugin": "^6.6.0",
-		"@typescript-eslint/parser": "^6.6.0",
+		"@typescript-eslint/eslint-plugin": "^6.7.0",
+		"@typescript-eslint/parser": "^6.7.0",
 		"eslint": "^8.49.0",
 		"eslint-plugin-only-warn": "^1.1.0",
 		"typescript": "^5.2.2"
