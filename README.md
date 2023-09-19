@@ -22,7 +22,7 @@ A NodeJS module to provide advanced method to determine item.
 - **Domain/Registry:**
   - [NPM](https://www.npmjs.com/package/@hugoalh/advanced-determine)
     ```sh
-    bun add @hugoalh/advanced-determine
+    bun add @hugoalh/advanced-determine[@<Tag>]
     ```
     ```js
     import ... from "@hugoalh/advanced-determine[@<Tag>]";
@@ -38,7 +38,7 @@ A NodeJS module to provide advanced method to determine item.
 - **Domain/Registry:**
   - [NPM](https://www.npmjs.com/package/@hugoalh/advanced-determine)
     ```sh
-    npm install @hugoalh/advanced-determine
+    npm install @hugoalh/advanced-determine[@<Tag>]
     ```
     ```js
     import ... from "@hugoalh/advanced-determine";
