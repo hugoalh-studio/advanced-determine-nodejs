@@ -1,11 +1,17 @@
-export type EnumCase<T extends string> = T | Capitalize<T> | Uncapitalize<T>;
 /**
  * @template {unknown} O
- * @template {unknown} S
+ * @template {unknown} K
  * @param {object} enumObject
- * @param {O | S} input
- * @param {string} parameterDescription
- * @returns {O}
+ * @returns {Set<K>}
  */
-export declare function resolveEnum<O, S>(enumObject: object, input: O | S, parameterDescription: string): O;
+export declare function enumGetKeys<O, K>(enumObject: object): Set<K>;
+/**
+ * @template {unknown} O
+ * @template {unknown} K
+ * @template {unknown} V
+ * @param {object} enumObject
+ * @param {O | K} input
+ * @returns {V | undefined}
+ */
+export declare function enumResolve<O, K, V>(enumObject: object, input: O | K): V | undefined;
 //# sourceMappingURL=enum.d.ts.map
