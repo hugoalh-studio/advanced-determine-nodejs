@@ -1,4 +1,4 @@
-import uniqueArray from "@hugoalh/unique-array";
+import { uniqueArray } from "@hugoalh/unique-array";
 /**
  * Determine whether the array is contain unique elements.
  * @param {unknown[]} item Item that need to determine.

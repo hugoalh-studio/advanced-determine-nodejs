@@ -141,8 +141,8 @@
 		"url": "git+https://github.com/hugoalh-studio/advanced-determine-nodejs.git"
 	},
 	"dependencies": {
-		"@hugoalh/unique-array": "^3.0.4",
-		"type-fest": "^4.3.1"
+		"@hugoalh/unique-array": "^3.0.5",
+		"type-fest": "^4.3.2"
 	},
 	"devDependencies": {
 		"@types/node": "^20.7.0",
