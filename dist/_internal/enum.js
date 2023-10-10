@@ -1,5 +1,4 @@
 /**
- * @template {unknown} O
  * @template {unknown} K
  * @param {object} enumObject
  * @returns {Set<K>}

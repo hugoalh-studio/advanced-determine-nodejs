@@ -1,10 +1,9 @@
 /**
- * @template {unknown} O
  * @template {unknown} K
  * @param {object} enumObject
  * @returns {Set<K>}
  */
-export declare function enumGetKeys<O, K>(enumObject: object): Set<K>;
+export declare function enumGetKeys<K>(enumObject: object): Set<K>;
 /**
  * @template {unknown} O
  * @template {unknown} K
