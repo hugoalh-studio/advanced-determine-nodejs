@@ -11,7 +11,7 @@ jobs:
     with:
       payload: |
         embeds:
-          - title: "Determine (NodeJS)"
+          - title: "Advanced Determine (NodeJS)"
             description: |
               > ${{github.event.repository.description}}
 
@@ -32,9 +32,6 @@ jobs:
                 value: "${{github.event.repository.html_url}}"
                 inline: false
               - name: "NPM"
-                value: "https://www.npmjs.com/package/@hugoalh/determine"
-                inline: false
-              - name: "NPM (Legacy)"
                 value: "https://www.npmjs.com/package/@hugoalh/advanced-determine"
                 inline: false
     secrets:
