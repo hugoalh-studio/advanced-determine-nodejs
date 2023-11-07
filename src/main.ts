@@ -5,6 +5,7 @@ export { isAsyncGenerator, isAsynchronousGenerator } from "./is-async-generator.
 export { isAsyncGeneratorFunction, isAsynchronousGeneratorFunction } from "./is-async-generator-function.js";
 export { isEmpty } from "./is-empty.js";
 export { isJSON, isJSONArray, isJSONObject, isJSONPrimitive, isJSONValue, type JSONArray, type JSONObject, type JSONPrimitive, type JSONValue } from "./is-json.js";
+export { isPrimitive, type Primitive } from "./is-primitive.js";
 export { isSyncFunction, isSynchronousFunction } from "./is-sync-function.js";
 export { isSyncGenerator, isSynchronousGenerator } from "./is-sync-generator.js";
 export { isSyncGeneratorFunction, isSynchronousGeneratorFunction } from "./is-sync-generator-function.js";

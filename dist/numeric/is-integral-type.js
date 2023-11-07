@@ -1,4 +1,6 @@
-import { enumGetKeys, enumResolve } from "../_internal/enum.js";
+/**
+ * Enum of numeric integral type.
+ */
 export var NumericIntegralTypeEnum;
 (function (NumericIntegralTypeEnum) {
     NumericIntegralTypeEnum["bigint"] = "int64";
@@ -85,7 +87,6 @@ export var NumericIntegralTypeEnum;
     NumericIntegralTypeEnum["Ushort"] = "uint16";
     NumericIntegralTypeEnum["UShort"] = "uint16";
 })(NumericIntegralTypeEnum || (NumericIntegralTypeEnum = {}));
-const enumNumericIntegralTypeKeys = enumGetKeys(NumericIntegralTypeEnum);
 /**
  * @access private
  * @param {bigint} base
@@ -109,7 +110,7 @@ function resolveNumericIntegralTypeRangeUIntBase(base) {
  * @returns {NumericIntegralTypeRange}
  */
 function resolveNumericIntegralTypeRange(name) {
-    switch (enumResolve(NumericIntegralTypeEnum, name)) {
+    switch (Object.values(NumericIntegralTypeEnum).includes(name) ? name : NumericIntegralTypeEnum[name]) {
         case "int8":
             return resolveNumericIntegralTypeRangeIntBase(8n);
         case "int16":
@@ -131,7 +132,7 @@ function resolveNumericIntegralTypeRange(name) {
         case "uint128":
             return resolveNumericIntegralTypeRangeUIntBase(128n);
         default:
-            throw new RangeError(`\`${name}\` is not a valid integral numeric type! Only accept these values: ${Array.from(enumNumericIntegralTypeKeys.values()).join(", ")}`);
+            throw new RangeError(`\`${name}\` is not a valid integral numeric type! Only accept these values: ${Array.from(new Set(Object.keys(NumericIntegralTypeEnum).sort()).values()).join(", ")}`);
     }
 }
 /**

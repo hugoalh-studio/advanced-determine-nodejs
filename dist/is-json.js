@@ -18,7 +18,8 @@ export default isJSON;
  * @returns {item is JSONArray} Determine result.
  */
 export function isJSONArray(item) {
-    if (!(Array.isArray(item) && isArrayStrict(item))) {
+    if (!Array.isArray(item) ||
+        !isArrayStrict(item)) {
         return false;
     }
     for (const element of item) {
@@ -70,7 +71,9 @@ export function isJSONPrimitive(item) {
             return true;
         case "number":
             return (!Number.isNaN(item) && item !== -Infinity && item !== Infinity);
-        default:
+        case "object":
             return (item === null);
+        default:
+            return false;
     }
 }

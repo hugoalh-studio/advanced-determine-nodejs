@@ -1,8 +1,20 @@
 import { isArrayStrict } from "./array/is-strict.js";
 import { isObjectPlain } from "./object/is-plain.js";
+/**
+ * Type of JSON primitive.
+ */
 export type JSONPrimitive = boolean | null | number | string;
+/**
+ * Type of JSON array.
+ */
 export type JSONArray = JSONValue[];
+/**
+ * Type of JSON object.
+ */
 export type JSONObject = { [key: string]: JSONValue; };
+/**
+ * Type of JSON value.
+ */
 export type JSONValue = JSONArray | JSONObject | JSONPrimitive;
 /**
  * Determine whether the item is a JSON.
@@ -26,7 +38,10 @@ export default isJSON;
  * @returns {item is JSONArray} Determine result.
  */
 export function isJSONArray(item: unknown): item is JSONArray {
-	if (!(Array.isArray(item) && isArrayStrict(item))) {
+	if (
+		!Array.isArray(item) ||
+		!isArrayStrict(item)
+	) {
 		return false;
 	}
 	for (const element of item) {
@@ -79,7 +94,9 @@ export function isJSONPrimitive(item: unknown): item is JSONPrimitive {
 			return true;
 		case "number":
 			return (!Number.isNaN(item) && item !== -Infinity && item !== Infinity);
-		default:
+		case "object":
 			return (item === null);
+		default:
+			return false;
 	}
 }

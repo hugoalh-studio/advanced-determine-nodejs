@@ -66,6 +66,9 @@ A NodeJS module to provide advanced method to determine item.
 - `isBigIntSafe`
 - `isEmpty`
 - `isJSON`
+- `isJSONArray`
+- `isJSONObject`
+- `isJSONPrimitive`
 - `isNumberEven`
 - `isNumberFloat`
 - `isNumberNegative`
@@ -75,6 +78,7 @@ A NodeJS module to provide advanced method to determine item.
 - `isNumericIntegralType`
 - `isNumericPrime`
 - `isObjectPlain`
+- `isPrimitive`
 - `isStringASCII`
 - `isStringCaseLower`
 - `isStringCaseUpper`
