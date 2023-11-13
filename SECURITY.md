@@ -2,21 +2,25 @@
 
 ## Supported Versions
 
-> | **Legend** | **Description** |
-> |:-:|:--|
-> | L | **LTS:** Long term supported. |
-> | ✔️ | **Active / Current:** Currently supported. |
-> | 👎{🐛} | **Partially (Issue):** Partially supported due to confirmed contains bugs and/or issues. |
-> | 👎{🧓} | **Partially (Old):** Partially supported due to deprecated by newer versions. |
-> | ❌{🐛} | **No (Issue):** Not supported due to confirmed contains bugs and/or issues. |
-> | ❌{🧓} | **No (Old):** Not supported due to too old. |
+> | **Support** | **Legend** | **Description** |
+> |:-:|:-:|:--|
+> | ✔️ | 🟤 | Pending / Pre Release / Unstable |
+> | ✔️ | 🔵 | Current Release |
+> | ✔️ | 🟢 | Long Term Support |
+> | ✔️ | 🟠 | Maintenance |
+> | ❌ | 🔴 | End of Life |
 
-| **Versions** | **Status** | **Target - Bun** | **Target - NodeJS** |
-|:-:|:-:|:-:|:-:|
-| v13.X.X | L | ^ v1.0.0 | ^ v14.15.0 \|\| >= v16.13.0 |
-| v12.X.X | ❌{🧓} | *N/A* | ^ v14.15.0 \|\| >= v16.13.0 |
-| v11.X.X | ❌{🧓} | *N/A* | ^ v14.15.0 \|\| >= v16.13.0 |
-| v10.X.X | ❌{🐛🧓} | *N/A* | ^ v12.20.0 \|\| ^ v14.15.0 \|\| >= v16.13.0 |
+| **Versions** | **Status** | **🔵 Date** | **🟢 Date** | **🔴 Date** | **Target - Bun** | **Target - NodeJS** |
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| v13.X.X | 🟢 | 2023-10-28 | 2023-11-01 | *Unknown* | ^ v1.0.0 | ^ v14.15.0 \|\| >= v16.13.0 |
+| v12.X.X | 🔴 | 2023-07-03 | 2023-07-15 | 2023-11-01 | *N/A* | ^ v14.15.0 \|\| >= v16.13.0 |
+| v11.X.X | 🔴 | 2023-04-15 | 2023-05-01 | 2023-08-01 | *N/A* | ^ v14.15.0 \|\| >= v16.13.0 |
+| v10.X.X | 🔴 | 2023-02-16 | 2023-03-01 | 2023-06-01 | *N/A* | ^ v12.20.0 \|\| ^ v14.15.0 \|\| >= v16.13.0 |
+
+> **ℹ️ Notice:**
+>
+> - The date format is according to ISO 8601 standard.
+> - Versions which not in the list are also end of life.
 
 ## Report Vulnerability
 
