@@ -37,7 +37,6 @@ env:
   greasemonkey: true
 extends:
   - "eslint:recommended"
-  - "plugin:@stylistic/recommended-extends"
   - "plugin:@typescript-eslint/recommended"
 parser: "@typescript-eslint/parser"
 parserOptions:
