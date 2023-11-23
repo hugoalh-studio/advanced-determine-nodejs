@@ -269,9 +269,6 @@ rules:
   "@stylistic/array-bracket-spacing":
     - "warn"
     - "never"
-    - singleValue: false
-      objectsInArrays: false
-      arraysInArrays: false
   "@stylistic/array-element-newline":
     - "warn"
     - "consistent"
@@ -472,3 +469,5 @@ rules:
       ts-check: "allow-with-description"
   "@typescript-eslint/ban-tslint-comment":
     - "warn"
+  "@typescript-eslint/no-duplicate-enum-values":
+    - "off"
