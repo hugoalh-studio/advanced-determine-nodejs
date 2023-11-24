@@ -94,7 +94,10 @@ export var NumericIntegralTypeEnum;
  */
 function resolveNumericIntegralTypeRangeIntBase(base) {
     const gridHalf = (2n ** base) / 2n;
-    return [-gridHalf, gridHalf - 1n];
+    return {
+        maximum: gridHalf - 1n,
+        minimum: -gridHalf
+    };
 }
 /**
  * @access private
@@ -102,7 +105,10 @@ function resolveNumericIntegralTypeRangeIntBase(base) {
  * @returns {NumericIntegralTypeRange}
  */
 function resolveNumericIntegralTypeRangeUIntBase(base) {
-    return [0n, (2n ** base) - 1n];
+    return {
+        maximum: (2n ** base) - 1n,
+        minimum: 0n
+    };
 }
 /**
  * @access private
@@ -142,7 +148,7 @@ function resolveNumericIntegralTypeRange(name) {
  * @returns {boolean} Determine result.
  */
 export function isNumericIntegralType(typeName, item) {
-    const [minimum, maximum] = resolveNumericIntegralTypeRange(typeName);
+    const { minimum, maximum } = resolveNumericIntegralTypeRange(typeName);
     if (typeof item === "bigint") {
         return (minimum <= item && item <= maximum);
     }
