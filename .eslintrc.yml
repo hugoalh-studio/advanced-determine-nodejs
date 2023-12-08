@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://json.schemastore.org/eslintrc.json
-# ESLint v8.54.0 + ESLint Stylistic v1.4.0 + ESLint TypeScript v6.11.0
+# ESLint v8.55.0 + ESLint Stylistic v1.5.0 + ESLint TypeScript v6.13.0
 env:
   browser: true
   node: true
