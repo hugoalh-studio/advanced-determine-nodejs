@@ -1,7 +1,7 @@
 /**
- * Enum of numeric integral type.
+ * Enum of the numeric integral type.
  */
-export enum NumericIntegralTypeEnum {
+export enum NumericIntegralType {
 	bigint = "int64",
 	bigInt = "int64",
 	Bigint = "int64",
@@ -87,9 +87,12 @@ export enum NumericIntegralTypeEnum {
 	UShort = "uint16"
 }
 /**
- * Key of enum of numeric integral type.
+ * Key of enum of the numeric integral type.
  */
-export type NumericIntegralTypeEnumStringify = keyof typeof NumericIntegralTypeEnum;
+export type NumericIntegralTypeStringify = keyof typeof NumericIntegralType;
+/**
+ * @access private
+ */
 interface NumericIntegralTypeRange {
 	maximum: bigint;
 	minimum: bigint;
@@ -119,11 +122,11 @@ function resolveNumericIntegralTypeRangeUIntBase(base: bigint): NumericIntegralT
 }
 /**
  * @access private
- * @param {NumericIntegralTypeEnum | NumericIntegralTypeEnumStringify} name
+ * @param {NumericIntegralType | NumericIntegralTypeStringify} name
  * @returns {NumericIntegralTypeRange}
  */
-function resolveNumericIntegralTypeRange(name: NumericIntegralTypeEnum | NumericIntegralTypeEnumStringify): NumericIntegralTypeRange {
-	switch (Object.values(NumericIntegralTypeEnum).includes(name as NumericIntegralTypeEnum) ? name as `${NumericIntegralTypeEnum}` : NumericIntegralTypeEnum[name]) {
+function resolveNumericIntegralTypeRange(name: NumericIntegralType | NumericIntegralTypeStringify): NumericIntegralTypeRange {
+	switch (NumericIntegralType[name]) {
 		case "int8":
 			return resolveNumericIntegralTypeRangeIntBase(8n);
 		case "int16":
@@ -145,17 +148,17 @@ function resolveNumericIntegralTypeRange(name: NumericIntegralTypeEnum | Numeric
 		case "uint128":
 			return resolveNumericIntegralTypeRangeUIntBase(128n);
 		default:
-			throw new RangeError(`\`${name}\` is not a valid integral numeric type! Only accept these values: ${Array.from(new Set(Object.keys(NumericIntegralTypeEnum).sort()).values()).join(", ")}`);
+			throw new RangeError(`\`${name}\` is not a valid integral numeric type! Only accept these values: ${Array.from(new Set(Object.keys(NumericIntegralType).sort()).values()).join(", ")}`);
 	}
 }
 /**
- * Determine whether the numeric is in the range of the specified integral type.
- * @param {NumericIntegralTypeEnum | NumericIntegralTypeEnumStringify} typeName Name of the integral numeric type.
+ * Determine whether the numeric is in the range of the specify integral type.
+ * @param {NumericIntegralType | NumericIntegralTypeStringify} typeName Name of the integral numeric type.
  * @param {bigint | number} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
-export function isNumericIntegralType(typeName: NumericIntegralTypeEnum | NumericIntegralTypeEnumStringify, item: bigint | number): boolean {
-	const { minimum, maximum } = resolveNumericIntegralTypeRange(typeName);
+export function isNumericIntegralType(typeName: NumericIntegralType | NumericIntegralTypeStringify, item: bigint | number): boolean {
+	const { maximum, minimum } = resolveNumericIntegralTypeRange(typeName);
 	if (typeof item === "bigint") {
 		return (minimum <= item && item <= maximum);
 	}

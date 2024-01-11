@@ -1,7 +1,7 @@
 /**
- * Enum of numeric integral type.
+ * Enum of the numeric integral type.
  */
-export declare enum NumericIntegralTypeEnum {
+export declare enum NumericIntegralType {
     bigint = "int64",
     bigInt = "int64",
     Bigint = "int64",
@@ -87,15 +87,15 @@ export declare enum NumericIntegralTypeEnum {
     UShort = "uint16"
 }
 /**
- * Key of enum of numeric integral type.
+ * Key of enum of the numeric integral type.
  */
-export type NumericIntegralTypeEnumStringify = keyof typeof NumericIntegralTypeEnum;
+export type NumericIntegralTypeStringify = keyof typeof NumericIntegralType;
 /**
- * Determine whether the numeric is in the range of the specified integral type.
- * @param {NumericIntegralTypeEnum | NumericIntegralTypeEnumStringify} typeName Name of the integral numeric type.
+ * Determine whether the numeric is in the range of the specify integral type.
+ * @param {NumericIntegralType | NumericIntegralTypeStringify} typeName Name of the integral numeric type.
  * @param {bigint | number} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
-export declare function isNumericIntegralType(typeName: NumericIntegralTypeEnum | NumericIntegralTypeEnumStringify, item: bigint | number): boolean;
+export declare function isNumericIntegralType(typeName: NumericIntegralType | NumericIntegralTypeStringify, item: bigint | number): boolean;
 export default isNumericIntegralType;
 //# sourceMappingURL=is-integral-type.d.ts.map

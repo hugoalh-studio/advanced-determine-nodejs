@@ -1,5 +1,5 @@
 /**
- * Root for the big integer, approximate. From https://stackoverflow.com/a/64190462.
+ * Return the root of the big integer, approximate. From https://stackoverflow.com/a/64190462.
  * @param {bigint} radicand Radicand.
  * @param {bigint} index Index.
  * @returns {BigIntRootApproximateResult} Root, approximate.
@@ -22,7 +22,7 @@ export function bigintRootApproximate(radicand, index = 2n) {
     let u = radicand;
     while (u < s) {
         s = u;
-        u = ((u * (index - 1n)) + radicand / (u ** (index - 1n))) / index;
+        u = (u * (index - 1n) + radicand / (u ** (index - 1n))) / index;
     }
     return {
         ceil: (s ** index === radicand) ? s : s + 1n,

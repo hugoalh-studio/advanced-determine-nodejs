@@ -1,4 +1,4 @@
-const arrayIndexRegExp = /^(?:0|[1-9]\d*)$/u;
+const regexpArrayIndex = /^(?:0|[1-9]\d*)$/u;
 /**
  * Determine whether the array is not contain custom defined properties.
  * @param {unknown[]} item Item that need to determine.
@@ -18,8 +18,8 @@ export function isArrayStrict(item) {
     }
     const itemDescriptors = Object.getOwnPropertyDescriptors(item);
     for (const itemPropertyKey in itemDescriptors) {
-        if (Object.prototype.hasOwnProperty.call(itemDescriptors, itemPropertyKey)) {
-            if (arrayIndexRegExp.test(itemPropertyKey) && Number(itemPropertyKey) < 4294967296) {
+        if (Object.hasOwn(itemDescriptors, itemPropertyKey)) {
+            if (regexpArrayIndex.test(itemPropertyKey) && Number(itemPropertyKey) < 4294967296) {
                 const itemPropertyDescriptor = itemDescriptors[itemPropertyKey];
                 if (!itemPropertyDescriptor.configurable ||
                     !itemPropertyDescriptor.enumerable ||

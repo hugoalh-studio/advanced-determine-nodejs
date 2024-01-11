@@ -17,9 +17,6 @@
 	"type": "module",
 	"main": "./dist/main.js",
 	"exports": {
-		".": {
-			"import": "./dist/main.js"
-		},
 		"./array/is-strict": {
 			"import": "./dist/array/is-strict.js"
 		},
@@ -35,6 +32,9 @@
 		"./bigint/is-even": {
 			"import": "./dist/bigint/is-even.js"
 		},
+		"./bigint/is-integral-type": {
+			"import": "./dist/bigint/is-integral-type.js"
+		},
 		"./bigint/is-negative": {
 			"import": "./dist/bigint/is-negative.js"
 		},
@@ -43,6 +43,9 @@
 		},
 		"./bigint/is-positive": {
 			"import": "./dist/bigint/is-positive.js"
+		},
+		"./bigint/is-prime": {
+			"import": "./dist/bigint/is-prime.js"
 		},
 		"./bigint/is-safe": {
 			"import": "./dist/bigint/is-safe.js"
@@ -56,6 +59,9 @@
 		"./number/is-float": {
 			"import": "./dist/number/is-float.js"
 		},
+		"./number/is-integral-type": {
+			"import": "./dist/number/is-integral-type.js"
+		},
 		"./number/is-negative": {
 			"import": "./dist/number/is-negative.js"
 		},
@@ -64,6 +70,9 @@
 		},
 		"./number/is-positive": {
 			"import": "./dist/number/is-positive.js"
+		},
+		"./number/is-prime": {
+			"import": "./dist/number/is-prime.js"
 		},
 		"./number/is-safe": {
 			"import": "./dist/number/is-safe.js"
@@ -136,6 +145,9 @@
 		},
 		"./is-sync-generator": {
 			"import": "./dist/is-sync-generator.js"
+		},
+		".": {
+			"import": "./dist/main.js"
 		}
 	},
 	"types": "./dist/main.d.ts",
@@ -144,11 +156,11 @@
 		"url": "git+https://github.com/hugoalh-studio/advanced-determine-nodejs.git"
 	},
 	"dependencies": {
-		"@hugoalh/unique-array": "^3.0.5"
+		"@hugoalh/unique-array": "^4.0.0"
 	},
 	"devDependencies": {
 		"@stylistic/eslint-plugin": "^1.5.3",
-		"@types/node": "^20.10.8",
+		"@types/node": "^20.11.0",
 		"@typescript-eslint/eslint-plugin": "^6.18.1",
 		"@typescript-eslint/parser": "^6.18.1",
 		"eslint": "^8.56.0",

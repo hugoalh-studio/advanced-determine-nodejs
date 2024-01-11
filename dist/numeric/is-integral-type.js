@@ -1,92 +1,92 @@
 /**
- * Enum of numeric integral type.
+ * Enum of the numeric integral type.
  */
-export var NumericIntegralTypeEnum;
-(function (NumericIntegralTypeEnum) {
-    NumericIntegralTypeEnum["bigint"] = "int64";
-    NumericIntegralTypeEnum["bigInt"] = "int64";
-    NumericIntegralTypeEnum["Bigint"] = "int64";
-    NumericIntegralTypeEnum["BigInt"] = "int64";
-    NumericIntegralTypeEnum["biguint"] = "uint64";
-    NumericIntegralTypeEnum["bigUint"] = "uint64";
-    NumericIntegralTypeEnum["bigUInt"] = "uint64";
-    NumericIntegralTypeEnum["BigUint"] = "uint64";
-    NumericIntegralTypeEnum["BigUInt"] = "uint64";
-    NumericIntegralTypeEnum["byte"] = "uint8";
-    NumericIntegralTypeEnum["Byte"] = "uint8";
-    NumericIntegralTypeEnum["char"] = "int8";
-    NumericIntegralTypeEnum["Char"] = "int8";
-    NumericIntegralTypeEnum["int8"] = "int8";
-    NumericIntegralTypeEnum["Int8"] = "int8";
-    NumericIntegralTypeEnum["int16"] = "int16";
-    NumericIntegralTypeEnum["Int16"] = "int16";
-    NumericIntegralTypeEnum["int32"] = "int32";
-    NumericIntegralTypeEnum["Int32"] = "int32";
-    NumericIntegralTypeEnum["int64"] = "int64";
-    NumericIntegralTypeEnum["Int64"] = "int64";
-    NumericIntegralTypeEnum["int128"] = "int128";
-    NumericIntegralTypeEnum["Int128"] = "int128";
-    NumericIntegralTypeEnum["integer"] = "int32";
-    NumericIntegralTypeEnum["Integer"] = "int32";
-    NumericIntegralTypeEnum["long"] = "int64";
-    NumericIntegralTypeEnum["Long"] = "int64";
-    NumericIntegralTypeEnum["rune"] = "int32";
-    NumericIntegralTypeEnum["Rune"] = "int32";
-    NumericIntegralTypeEnum["short"] = "int16";
-    NumericIntegralTypeEnum["Short"] = "int16";
-    NumericIntegralTypeEnum["smallint"] = "int16";
-    NumericIntegralTypeEnum["smallInt"] = "int16";
-    NumericIntegralTypeEnum["SmallInt"] = "int16";
-    NumericIntegralTypeEnum["smalluint"] = "uint16";
-    NumericIntegralTypeEnum["smallUint"] = "uint16";
-    NumericIntegralTypeEnum["smallUInt"] = "uint16";
-    NumericIntegralTypeEnum["SmallUint"] = "uint16";
-    NumericIntegralTypeEnum["SmallUInt"] = "uint16";
-    NumericIntegralTypeEnum["tinyint"] = "int8";
-    NumericIntegralTypeEnum["tinyInt"] = "int8";
-    NumericIntegralTypeEnum["TinyInt"] = "int8";
-    NumericIntegralTypeEnum["tinyuint"] = "uint8";
-    NumericIntegralTypeEnum["tinyUint"] = "uint8";
-    NumericIntegralTypeEnum["tinyUInt"] = "uint8";
-    NumericIntegralTypeEnum["TinyUint"] = "uint8";
-    NumericIntegralTypeEnum["TinyUInt"] = "uint8";
-    NumericIntegralTypeEnum["uchar"] = "uint8";
-    NumericIntegralTypeEnum["uChar"] = "uint8";
-    NumericIntegralTypeEnum["Uchar"] = "uint8";
-    NumericIntegralTypeEnum["UChar"] = "uint8";
-    NumericIntegralTypeEnum["uint8"] = "uint8";
-    NumericIntegralTypeEnum["uInt8"] = "uint8";
-    NumericIntegralTypeEnum["Uint8"] = "uint8";
-    NumericIntegralTypeEnum["UInt8"] = "uint8";
-    NumericIntegralTypeEnum["uint16"] = "uint16";
-    NumericIntegralTypeEnum["uInt16"] = "uint16";
-    NumericIntegralTypeEnum["Uint16"] = "uint16";
-    NumericIntegralTypeEnum["UInt16"] = "uint16";
-    NumericIntegralTypeEnum["uint32"] = "uint32";
-    NumericIntegralTypeEnum["uInt32"] = "uint32";
-    NumericIntegralTypeEnum["Uint32"] = "uint32";
-    NumericIntegralTypeEnum["UInt32"] = "uint32";
-    NumericIntegralTypeEnum["uint64"] = "uint64";
-    NumericIntegralTypeEnum["uInt64"] = "uint64";
-    NumericIntegralTypeEnum["Uint64"] = "uint64";
-    NumericIntegralTypeEnum["UInt64"] = "uint64";
-    NumericIntegralTypeEnum["uint128"] = "uint128";
-    NumericIntegralTypeEnum["uInt128"] = "uint128";
-    NumericIntegralTypeEnum["Uint128"] = "uint128";
-    NumericIntegralTypeEnum["UInt128"] = "uint128";
-    NumericIntegralTypeEnum["uinteger"] = "uint32";
-    NumericIntegralTypeEnum["uInteger"] = "uint32";
-    NumericIntegralTypeEnum["Uinteger"] = "uint32";
-    NumericIntegralTypeEnum["UInteger"] = "uint32";
-    NumericIntegralTypeEnum["ulong"] = "uint64";
-    NumericIntegralTypeEnum["uLong"] = "uint64";
-    NumericIntegralTypeEnum["Ulong"] = "uint64";
-    NumericIntegralTypeEnum["ULong"] = "uint64";
-    NumericIntegralTypeEnum["ushort"] = "uint16";
-    NumericIntegralTypeEnum["uShort"] = "uint16";
-    NumericIntegralTypeEnum["Ushort"] = "uint16";
-    NumericIntegralTypeEnum["UShort"] = "uint16";
-})(NumericIntegralTypeEnum || (NumericIntegralTypeEnum = {}));
+export var NumericIntegralType;
+(function (NumericIntegralType) {
+    NumericIntegralType["bigint"] = "int64";
+    NumericIntegralType["bigInt"] = "int64";
+    NumericIntegralType["Bigint"] = "int64";
+    NumericIntegralType["BigInt"] = "int64";
+    NumericIntegralType["biguint"] = "uint64";
+    NumericIntegralType["bigUint"] = "uint64";
+    NumericIntegralType["bigUInt"] = "uint64";
+    NumericIntegralType["BigUint"] = "uint64";
+    NumericIntegralType["BigUInt"] = "uint64";
+    NumericIntegralType["byte"] = "uint8";
+    NumericIntegralType["Byte"] = "uint8";
+    NumericIntegralType["char"] = "int8";
+    NumericIntegralType["Char"] = "int8";
+    NumericIntegralType["int8"] = "int8";
+    NumericIntegralType["Int8"] = "int8";
+    NumericIntegralType["int16"] = "int16";
+    NumericIntegralType["Int16"] = "int16";
+    NumericIntegralType["int32"] = "int32";
+    NumericIntegralType["Int32"] = "int32";
+    NumericIntegralType["int64"] = "int64";
+    NumericIntegralType["Int64"] = "int64";
+    NumericIntegralType["int128"] = "int128";
+    NumericIntegralType["Int128"] = "int128";
+    NumericIntegralType["integer"] = "int32";
+    NumericIntegralType["Integer"] = "int32";
+    NumericIntegralType["long"] = "int64";
+    NumericIntegralType["Long"] = "int64";
+    NumericIntegralType["rune"] = "int32";
+    NumericIntegralType["Rune"] = "int32";
+    NumericIntegralType["short"] = "int16";
+    NumericIntegralType["Short"] = "int16";
+    NumericIntegralType["smallint"] = "int16";
+    NumericIntegralType["smallInt"] = "int16";
+    NumericIntegralType["SmallInt"] = "int16";
+    NumericIntegralType["smalluint"] = "uint16";
+    NumericIntegralType["smallUint"] = "uint16";
+    NumericIntegralType["smallUInt"] = "uint16";
+    NumericIntegralType["SmallUint"] = "uint16";
+    NumericIntegralType["SmallUInt"] = "uint16";
+    NumericIntegralType["tinyint"] = "int8";
+    NumericIntegralType["tinyInt"] = "int8";
+    NumericIntegralType["TinyInt"] = "int8";
+    NumericIntegralType["tinyuint"] = "uint8";
+    NumericIntegralType["tinyUint"] = "uint8";
+    NumericIntegralType["tinyUInt"] = "uint8";
+    NumericIntegralType["TinyUint"] = "uint8";
+    NumericIntegralType["TinyUInt"] = "uint8";
+    NumericIntegralType["uchar"] = "uint8";
+    NumericIntegralType["uChar"] = "uint8";
+    NumericIntegralType["Uchar"] = "uint8";
+    NumericIntegralType["UChar"] = "uint8";
+    NumericIntegralType["uint8"] = "uint8";
+    NumericIntegralType["uInt8"] = "uint8";
+    NumericIntegralType["Uint8"] = "uint8";
+    NumericIntegralType["UInt8"] = "uint8";
+    NumericIntegralType["uint16"] = "uint16";
+    NumericIntegralType["uInt16"] = "uint16";
+    NumericIntegralType["Uint16"] = "uint16";
+    NumericIntegralType["UInt16"] = "uint16";
+    NumericIntegralType["uint32"] = "uint32";
+    NumericIntegralType["uInt32"] = "uint32";
+    NumericIntegralType["Uint32"] = "uint32";
+    NumericIntegralType["UInt32"] = "uint32";
+    NumericIntegralType["uint64"] = "uint64";
+    NumericIntegralType["uInt64"] = "uint64";
+    NumericIntegralType["Uint64"] = "uint64";
+    NumericIntegralType["UInt64"] = "uint64";
+    NumericIntegralType["uint128"] = "uint128";
+    NumericIntegralType["uInt128"] = "uint128";
+    NumericIntegralType["Uint128"] = "uint128";
+    NumericIntegralType["UInt128"] = "uint128";
+    NumericIntegralType["uinteger"] = "uint32";
+    NumericIntegralType["uInteger"] = "uint32";
+    NumericIntegralType["Uinteger"] = "uint32";
+    NumericIntegralType["UInteger"] = "uint32";
+    NumericIntegralType["ulong"] = "uint64";
+    NumericIntegralType["uLong"] = "uint64";
+    NumericIntegralType["Ulong"] = "uint64";
+    NumericIntegralType["ULong"] = "uint64";
+    NumericIntegralType["ushort"] = "uint16";
+    NumericIntegralType["uShort"] = "uint16";
+    NumericIntegralType["Ushort"] = "uint16";
+    NumericIntegralType["UShort"] = "uint16";
+})(NumericIntegralType || (NumericIntegralType = {}));
 /**
  * @access private
  * @param {bigint} base
@@ -112,11 +112,11 @@ function resolveNumericIntegralTypeRangeUIntBase(base) {
 }
 /**
  * @access private
- * @param {NumericIntegralTypeEnum | NumericIntegralTypeEnumStringify} name
+ * @param {NumericIntegralType | NumericIntegralTypeStringify} name
  * @returns {NumericIntegralTypeRange}
  */
 function resolveNumericIntegralTypeRange(name) {
-    switch (Object.values(NumericIntegralTypeEnum).includes(name) ? name : NumericIntegralTypeEnum[name]) {
+    switch (NumericIntegralType[name]) {
         case "int8":
             return resolveNumericIntegralTypeRangeIntBase(8n);
         case "int16":
@@ -138,17 +138,17 @@ function resolveNumericIntegralTypeRange(name) {
         case "uint128":
             return resolveNumericIntegralTypeRangeUIntBase(128n);
         default:
-            throw new RangeError(`\`${name}\` is not a valid integral numeric type! Only accept these values: ${Array.from(new Set(Object.keys(NumericIntegralTypeEnum).sort()).values()).join(", ")}`);
+            throw new RangeError(`\`${name}\` is not a valid integral numeric type! Only accept these values: ${Array.from(new Set(Object.keys(NumericIntegralType).sort()).values()).join(", ")}`);
     }
 }
 /**
- * Determine whether the numeric is in the range of the specified integral type.
- * @param {NumericIntegralTypeEnum | NumericIntegralTypeEnumStringify} typeName Name of the integral numeric type.
+ * Determine whether the numeric is in the range of the specify integral type.
+ * @param {NumericIntegralType | NumericIntegralTypeStringify} typeName Name of the integral numeric type.
  * @param {bigint | number} item Item that need to determine.
  * @returns {boolean} Determine result.
  */
 export function isNumericIntegralType(typeName, item) {
-    const { minimum, maximum } = resolveNumericIntegralTypeRange(typeName);
+    const { maximum, minimum } = resolveNumericIntegralTypeRange(typeName);
     if (typeof item === "bigint") {
         return (minimum <= item && item <= maximum);
     }

@@ -36,7 +36,7 @@ export function isObjectPlain(item: object): boolean {
 	const itemEntriesWritable: string[] = [];
 	const itemDescriptors = Object.getOwnPropertyDescriptors(item);
 	for (const descriptor in itemDescriptors) {
-		if (Object.prototype.hasOwnProperty.call(itemDescriptors, descriptor)) {
+		if (Object.hasOwn(itemDescriptors, descriptor)) {
 			const descriptorProperties: PropertyDescriptor = itemDescriptors[descriptor];
 			if (descriptorProperties.configurable) {
 				itemEntriesConfigurable.push(descriptor);

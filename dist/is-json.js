@@ -50,7 +50,7 @@ export function isJSONObject(item) {
         return false;
     }
     for (const key in item) {
-        if (Object.prototype.hasOwnProperty.call(item, key)) {
+        if (Object.hasOwn(item, key)) {
             //@ts-ignore Impact not exists.
             if (!isJSON(item[key])) {
                 return false;

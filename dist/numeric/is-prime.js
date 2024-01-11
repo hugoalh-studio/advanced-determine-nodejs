@@ -1,4 +1,4 @@
-import { bigintRootApproximate } from "../_internal/bigint-root-approximate.js";
+import { bigintRootApproximate } from "./_bigint-root-approximate.js";
 /**
  * Determine whether the numeric is prime.
  * @param {bigint | number} item Item that need to determine.
