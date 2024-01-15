@@ -1,6 +1,6 @@
 {
 	"name": "@hugoalh/advanced-determine",
-	"version": "14.0.0",
+	"version": "14.0.1",
 	"description": "A module to provide advanced method to determine item.",
 	"keywords": [
 		"determine",
@@ -200,7 +200,7 @@
 		"url": "git+https://github.com/hugoalh-studio/advanced-determine-nodejs.git"
 	},
 	"dependencies": {
-		"@hugoalh/unique-array": "^4.0.0"
+		"@hugoalh/unique-array": "^4.0.1"
 	},
 	"devDependencies": {
 		"@stylistic/eslint-plugin": "^1.5.3",
