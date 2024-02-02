@@ -199,6 +199,9 @@
 		"type": "git",
 		"url": "git+https://github.com/hugoalh-studio/advanced-determine-nodejs.git"
 	},
+	"scripts": {
+		"build": "tsc"
+	},
 	"dependencies": {
 		"@hugoalh/unique-array": "^4.0.1"
 	},
