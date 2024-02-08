@@ -1,7 +1,6 @@
 # Advanced Determine (NodeJS)
 
 [⚖️ MIT](./LICENSE.md)
-[![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/hugoalh-studio/advanced-determine-nodejs?label=Grade&logo=codefactor&logoColor=ffffff&style=flat-square "CodeFactor Grade")](https://www.codefactor.io/repository/github/hugoalh-studio/advanced-determine-nodejs)
 
 |  | **Release - Latest** | **Release - Pre** |
 |:-:|:-:|:-:|
@@ -11,24 +10,6 @@
 A NodeJS module to provide advanced method to determine item.
 
 ## 🔰 Begin
-
-### Bun
-
-> **🧪 Experimental:** Bun is still under development.
-
-- **Target Version:** ^ v1.0.0, &:
-  - TypeScript >= v5.1.0 *\[Development\]*
-- **Require Permission:** *N/A*
-- **Domain/Registry:**
-  - [NPM](https://www.npmjs.com/package/@hugoalh/advanced-determine)
-    ```sh
-    bun add @hugoalh/advanced-determine[@<Tag>]
-    ```
-    ```js
-    import ... from "@hugoalh/advanced-determine[@<Tag>]";
-    ```
-
-> **ℹ️ Notice:** It is also able to import part of the module with sub path if available, see [file `package.json`](./package.json) property `exports` for available sub paths.
 
 ### NodeJS
 
