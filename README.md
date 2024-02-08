@@ -16,7 +16,7 @@ A NodeJS module to provide advanced method to determine item.
 - **Target Version:** >= v16.13.0, &:
   - TypeScript >= v5.1.0 *\[Development\]*
 - **Require Permission:** *N/A*
-- **Domain/Registry:**
+- **Registry:**
   - [NPM](https://www.npmjs.com/package/@hugoalh/advanced-determine)
     ```sh
     npm install @hugoalh/advanced-determine[@<Tag>]
