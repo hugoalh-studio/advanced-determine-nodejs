@@ -87,6 +87,11 @@ export enum NumericIntegralType {
 	UShort = "uint16"
 }
 /**
+ * Key of enum of the numeric integral type.
+ * @deprecated
+ */
+export type NumericIntegralTypeStringify = keyof typeof NumericIntegralType;
+/**
  * @access private
  */
 interface NumericIntegralTypeRange {
